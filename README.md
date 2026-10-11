@@ -1,36 +1,61 @@
-# Julie Owens — portfolio mockup 02
+# Julie Owens — Digital product portfolio
 
-A working portfolio organized around the visitor’s connections to public services, places, and decisions. It continues v1’s story using the agreed soft black, white, and cool gray direction.
+A personal portfolio about making public services easier to find, understand, and use—and understanding the systems that make them work.
 
-## Review the mockup
+I’m the City of Portland’s lead enterprise digital product manager, with a background in design and development. My work crosses departments, services, and shared platforms: shaping product vision and roadmaps, directing architecture and design, establishing standards and practices, and coordinating delivery.
 
-Open `dist/index.html` in a browser. It is self-contained and requires no build step, external fonts, analytics, or runtime dependencies.
+This portfolio starts with the work and the people it serves. Connection is a design principle: following an everyday need through the information, people, policy, and technology involved in meeting it.
 
-- Four everyday entry points filter the public-facing project inventory.
-- All projects remain available through **All work**; the **Work** navigation link resets the filter.
-- Without JavaScript, the entry points link directly to visible project sections.
-- Project connections open native dialogs, with Escape/Close and restored focus.
-- Notes and the experience overview use native disclosures.
-- Public service links and LinkedIn contact are active. There is no contact submission form.
+## The work
 
-The private hosted preview is for design review. The GitHub version is proposed through a separate branch and pull request. Do not commit directly to `main`, merge a PR, or change the preview’s audience without Julie’s instruction.
+The portfolio brings together three dimensions of my practice:
 
-## Content boundaries
+- **Products and services:** public and employee websites, permitting experiences, public alerts, and other digital products.
+- **Shared practices:** accessibility, content governance, standards, service design methods, and coordination across teams.
+- **Connected systems:** the relationships between policy, organizations, information, and technology—and what happens when they change.
 
-The project names and high-level relationships come from the portfolio project inventory and public City sources. No project-specific role, metric, outcome, or employment dates have been invented. Case studies and the resume remain in preparation. Civic Systems Atlas is the current name; its current interface has not been shared. All project artwork is a conceptual illustration, not a product screenshot.
+The current site introduces Portland.gov, PortlandMaps, public process tools, everyday services, and Civic Systems Atlas. Future case studies will develop the stories of Portland’s government transition, the permitting website experience, digital accessibility remediation, and the collaborative Digital Services Playbook.
 
-## Verification
+Project stories will identify my role, collaborators, and documented outcomes. This is a personal portfolio, not an official City of Portland website.
 
-Check JavaScript syntax, semantic structure, internal anchors, controls, filter behavior, dialog content, and palette contrast before submitting. Responsive layouts include 1000px and 700px breakpoints, reduced-motion support, and visible keyboard focus.
+## Site status
 
-Browser visual QA, keyboard testing in a browser, assistive technology, and zoom/reflow checks remain necessary before public release. Automated checks do not establish accessibility conformance.
+**V1 is the accepted baseline. The hosted site remains private while content and project stories are refined.**
 
-## Source files
+The domain is [julieowens.me](https://julieowens.me); access currently requires authorization. This GitHub repository is public. Publishing the website is a separate decision.
 
-- `dist/index.html`: the complete working mockup
-- `DESIGN-NOTES.md`: the v1 review and design choices
-- `SOURCES.md`: public project references and factual scope
+The site uses a single-page layout and a soft black, white, and cool gray palette. Visitors can explore work through four everyday needs or read the page from beginning to end. Current artwork is conceptual and labeled accordingly.
 
-## Scope of repository access
+## Preview locally
 
-GitHub work for this project is limited to `julegan/portfolio`. Other repositories are outside this task.
+Open [dist/index.html](dist/index.html) in a browser. It contains the complete site, including inline CSS, SVG illustrations, and JavaScript.
+
+No installation or build step is required. There are no external fonts, analytics, or runtime dependencies.
+
+Alternatively, from the repository root, serve the site locally:
+
+```sh
+python3 -m http.server 8000 --directory dist
+```
+
+Then open <http://localhost:8000>.
+
+## Repository guide
+
+| File | Purpose |
+| --- | --- |
+| [dist/index.html](dist/index.html) | Complete portfolio website |
+| [DESIGN-NOTES.md](DESIGN-NOTES.md) | Design decisions and review notes for the accepted version |
+| [SOURCES.md](SOURCES.md) | Source references and factual scope for the accepted version |
+
+## Making changes
+
+Use a separate branch and pull request for changes. Julie reviews and merges them; do not commit directly to `main`. Website publication and changes to its audience require Julie’s explicit instruction.
+
+Before submitting a site change, check the relevant content and links, JavaScript syntax, responsive layout, and keyboard interactions. The site includes a readable baseline without JavaScript, visible focus, native dialogs and disclosures, and reduced-motion support.
+
+Browser, assistive-technology, and zoom/reflow review remain part of preparation for launch. These design choices and automated checks do not establish accessibility conformance.
+
+## Connect
+
+[LinkedIn](https://www.linkedin.com/in/julieh/)
