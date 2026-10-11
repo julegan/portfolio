@@ -1,0 +1,560 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#111214">
+  <meta name="color-scheme" content="light dark">
+  <meta name="description" content="Public digital work, seen through everyday connections. Selected projects and ideas from Julie Owens in Portland, Oregon.">
+  <title>Julie Owens — Public digital work</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 80 80'%3E%3Crect width='80' height='80' fill='%23111214'/%3E%3Ccircle cx='40' cy='40' r='22' fill='none' stroke='%23f1f2f4' stroke-width='3'/%3E%3Ccircle cx='40' cy='40' r='4' fill='%23f1f2f4'/%3E%3C/svg%3E">
+  <style>
+    :root {
+      --ink: #111214; --paper: #f1f2f4; --white: #ffffff;
+      --slate: #46515d; --silver: #cbd1d7; --soft: #adb5c0;
+      --muted: #515963; --line: #c3c9d0; --dark-line: #454b55;
+      --sans: "Avenir Next", Avenir, "Segoe UI", Arial, sans-serif;
+      --mono: "SFMono-Regular", Consolas, "Liberation Mono", monospace;
+      --measure: 1240px;
+      color-scheme: dark;
+    }
+    *, *::before, *::after { box-sizing: border-box; }
+    html { scroll-behavior: smooth; scroll-padding-top: 100px; }
+    body { margin: 0; background: var(--ink); color: var(--paper); font-family: var(--sans); font-size: 16px; line-height: 1.6; }
+    h1, h2, h3, p, figure { margin: 0; }
+    button, input, summary { font: inherit; }
+    button, summary { cursor: pointer; }
+    a { color: inherit; text-decoration-thickness: 1px; text-underline-offset: .25em; }
+    button, a, summary { -webkit-tap-highlight-color: transparent; }
+    button { color: inherit; }
+    ::selection { background: var(--silver); color: var(--ink); }
+    :focus-visible { outline: 3px solid currentColor; outline-offset: 5px; }
+    [hidden] { display: none !important; }
+    .wrap { width: min(var(--measure), calc(100% - 96px)); margin-inline: auto; }
+    .mono { font-family: var(--mono); font-size: 11px; line-height: 1.55; letter-spacing: .075em; text-transform: uppercase; }
+    .label { display: flex; align-items: center; gap: 12px; }
+    .label::before { content: ""; width: 6px; height: 6px; background: currentColor; flex: 0 0 6px; }
+    .muted { color: var(--soft); }
+    .sr-only { position: absolute; width: 1px; height: 1px; padding: 0; overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border: 0; }
+    .skip { position: absolute; left: 20px; top: 15px; padding: 12px 18px; z-index: 10; background: var(--paper); color: var(--ink); transform: translateY(-180%); }
+    .skip:focus { transform: none; }
+    .masthead { position: relative; z-index: 4; }
+    .masthead-inner { display: flex; justify-content: space-between; align-items: center; gap: 24px; min-height: 96px; border-bottom: 1px solid var(--dark-line); }
+    .brand { text-decoration: none; display: flex; gap: 25px; align-items: center; }
+    .brand-name { font-size: 20px; font-weight: 600; letter-spacing: -.055em; }
+    .brand-meta { color: var(--soft); font-family: var(--mono); font-size: 11px; line-height: 1.5; letter-spacing: .04em; }
+    .main-nav { display: flex; list-style: none; margin: 0; padding: 0; gap: 30px; }
+    .main-nav a { display: inline-flex; align-items: center; min-height: 44px; text-decoration: none; font-size: 13px; }
+    .main-nav a:hover { text-decoration: underline; }
+
+    .hero { padding-top: 44px; padding-bottom: 56px; }
+    .hero-top { display: flex; justify-content: space-between; gap: 20px; color: var(--soft); }
+    .hero-grid { display: grid; grid-template-columns: 1.12fr 1fr; gap: 40px; padding-top: 38px; align-items: center; }
+    h1 { font-size: clamp(64px, 8.6vw, 122px); font-weight: 500; line-height: .89; letter-spacing: -.075em; color: var(--white); }
+    h1 span { display: block; }
+    h1 .indent { margin-left: .5em; }
+    .hero-copy { max-width: 34ch; margin-top: 34px; font-size: 19px; line-height: 1.5; color: var(--silver); }
+    .hero-copy span { color: var(--paper); }
+    .hero-credit { display: flex; gap: 16px; align-items: center; margin-top: 36px; }
+    .hero-credit::before { content: ""; height: 1px; width: 40px; background: var(--silver); }
+    .hero-credit p { color: var(--soft); font-size: 12px; line-height: 1.5; }
+    .hero-credit strong { color: var(--paper); font-weight: 500; }
+
+    .connection-art { position: relative; aspect-ratio: 1.18; isolation: isolate; }
+    .connection-art svg { width: 100%; height: 100%; display: block; }
+    .connection-art .art-caption { position: absolute; bottom: 2%; right: 0; color: var(--soft); font-size: 11px; }
+    .hero-paths { display: grid; grid-template-columns: repeat(4, 1fr); border-top: 1px solid var(--dark-line); margin-top: 48px; }
+    .path { display: flex; align-items: center; justify-content: space-between; gap: 14px; padding: 22px 20px; border-bottom: 1px solid var(--dark-line); min-height: 92px; text-decoration: none; transition: background .15s, color .15s; }
+    .path:first-child { padding-left: 0; }
+    .path + .path { border-left: 1px solid var(--dark-line); }
+    .path-number { display: block; color: var(--soft); margin-bottom: 5px; font: 10px var(--mono); }
+    .path-title { font-size: 14px; }
+    .path .arrow { font-size: 20px; align-self: flex-end; }
+    .path:hover, .path[aria-current="true"] { background: var(--paper); color: var(--ink); }
+    .path:hover .path-number, .path[aria-current="true"] .path-number { color: var(--muted); }
+    .path:first-child:hover, .path:first-child[aria-current="true"] { padding-left: 20px; }
+
+    .work { background: var(--paper); color: var(--ink); color-scheme: light; padding-top: 68px; padding-bottom: 100px; }
+    .section-intro { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: end; }
+    .section-intro .mono { margin-bottom: 18px; color: var(--muted); }
+    h2 { font-weight: 500; font-size: clamp(38px, 4.8vw, 64px); line-height: 1.02; letter-spacing: -.055em; }
+    .section-intro p:not(.mono) { max-width: 37ch; justify-self: end; color: var(--muted); font-size: 17px; }
+    .work-tools { margin: 32px 0 42px; min-height: 44px; display: flex; justify-content: space-between; flex-wrap: wrap; align-items: center; gap: 12px 24px; border-block: 1px solid var(--line); padding: 11px 0; }
+    .work-status { font-size: 12px; color: var(--muted); }
+    .filters { display: none; flex-wrap: wrap; gap: 5px; }
+    .has-js .filters { display: flex; }
+    .filter { min-height: 36px; border: 1px solid transparent; border-radius: 0; padding: 5px 11px; background: transparent; font-size: 12px; }
+    .filter:hover { border-color: var(--slate); }
+    .filter[aria-pressed="true"] { background: var(--ink); color: var(--white); }
+
+    .everyday { display: grid; grid-template-columns: .88fr 1.12fr; background: var(--silver); margin-bottom: 66px; }
+    .everyday-intro { padding: 40px; display: flex; flex-direction: column; align-items: start; justify-content: space-between; gap: 32px; }
+    .everyday-intro h3 { font-size: clamp(32px, 3.7vw, 51px); line-height: 1.05; font-weight: 500; letter-spacing: -.055em; max-width: 11ch; }
+    .everyday-intro p { max-width: 31ch; font-size: 15px; color: #343d47; }
+    .everyday-list { border-left: 1px solid #8b96a3; }
+    .small-project { padding: 29px 34px; }
+    .small-project + .small-project { border-top: 1px solid #8b96a3; }
+    .project-topline { display: flex; justify-content: space-between; gap: 20px; align-items: center; margin-bottom: 18px; }
+    .small-project h4 { font-weight: 500; font-size: 23px; letter-spacing: -.03em; margin: 0 0 7px; line-height: 1.3; }
+    .small-project p { font-size: 14px; max-width: 44ch; color: #343d47; }
+    .text-link { font-size: 12px; font-weight: 500; display: inline-flex; gap: 22px; align-items: center; min-height: 44px; }
+    .small-project .text-link { margin-top: 10px; }
+    .dot { width: 7px; height: 7px; border: 1px solid currentColor; border-radius: 50%; }
+
+    .project { display: grid; grid-template-columns: .92fr 1.08fr; gap: 56px; align-items: center; border-top: 1px solid var(--ink); padding-block: 48px 56px; }
+    .project-copy .mono { color: var(--muted); margin-bottom: 20px; }
+    .project-name { font-size: 13px; font-weight: 500; margin-bottom: 11px; }
+    .project h3 { font-size: clamp(40px, 5vw, 65px); font-weight: 500; letter-spacing: -.065em; line-height: 1.02; margin-bottom: 23px; }
+    .project .description { color: var(--muted); max-width: 38ch; font-size: 16px; }
+    .project-links { display: flex; flex-wrap: wrap; align-items: center; gap: 0 26px; margin-top: 20px; }
+    .project-links a { min-height: 44px; }
+    .detail-link { border: none; background: transparent; padding: 0; text-decoration: underline; text-underline-offset: .25em; }
+    .project-visual { position: relative; min-width: 0; min-height: 340px; overflow: hidden; display: grid; align-items: center; border: 1px solid var(--line); background: var(--white); padding: 28px; }
+    .visual-caption { font: 11px var(--mono); line-height: 1.5; text-transform: uppercase; letter-spacing: .025em; position: absolute; bottom: 14px; left: 20px; right: 20px; }
+    .portal-visual { background: #e3e7eb; padding: 36px 40px 46px; }
+    .portal-window { background: var(--ink); color: var(--white); padding: 22px 26px; box-shadow: 12px 12px 0 #aeb7c2; }
+    .window-top { display: flex; justify-content: space-between; gap: 15px; border-bottom: 1px solid #6a737f; padding-bottom: 12px; }
+    .window-top span { font: 9px var(--mono); letter-spacing: .04em; }
+    .window-title { font-size: clamp(26px, 3.6vw, 44px); line-height: 1.02; letter-spacing: -.05em; padding-block: 23px; }
+    .window-search { padding: 13px; font-size: 12px; color: var(--muted); background: var(--white); display: flex; justify-content: space-between; gap: 12px; }
+    .window-bottom { display: flex; gap: 10px 20px; flex-wrap: wrap; margin-top: 19px; font-size: 10px; color: var(--silver); }
+    .maps-visual { padding: 0; background: var(--slate); color: var(--paper); }
+    .maps-visual svg { display: block; width: 100%; height: 340px; }
+    .map-label { position: absolute; top: 25px; left: 25px; color: var(--ink); background: var(--paper); padding: 15px 19px; }
+    .map-label span { display: block; font-size: 10px; font-family: var(--mono); }
+    .map-label strong { font-weight: 500; font-size: 22px; letter-spacing: -.04em; }
+    .process-visual { background: var(--ink); color: var(--paper); padding: 36px 35px 50px; }
+    .process-head { margin-bottom: 20px; color: var(--silver); }
+    .process-steps { display: flex; gap: 6px; list-style: none; padding: 0; margin: 0 0 26px; counter-reset: steps; }
+    .process-steps li { flex: 1; min-width: 0; border-top: 1px solid #77818d; padding-top: 12px; font-size: 12px; }
+    .process-steps li::before { counter-increment: steps; content: "0" counter(steps); display: block; font: 9px var(--mono); color: var(--soft); margin-bottom: 13px; }
+    .process-paper { background: var(--paper); color: var(--ink); padding: 18px 22px; transform: rotate(-3deg); box-shadow: 8px 8px 0 #46515d; }
+    .process-paper strong { display: block; font-size: 27px; font-weight: 500; line-height: 1.15; letter-spacing: -.045em; }
+    .process-paper p { margin-top: 12px; font-size: 11px; }
+    .project-note { font-size: 11px; color: var(--muted); border-top: 1px solid var(--line); padding-top: 18px; }
+
+    .systems { border-top: 1px solid var(--dark-line); padding-block: 76px; }
+    .systems-grid { display: grid; grid-template-columns: .92fr 1.08fr; gap: 56px; align-items: center; }
+    .systems-copy .label { color: var(--soft); margin-bottom: 25px; }
+    .systems h2 { font-size: clamp(43px, 5.4vw, 74px); max-width: 11ch; }
+    .systems-copy > p:not(.label) { max-width: 39ch; font-size: 16px; color: var(--silver); margin-top: 25px; }
+    .systems-credit { margin-top: 28px; }
+    .systems-credit strong { font-size: 16px; font-weight: 500; }
+    .systems-credit .text-link { display: flex; width: max-content; color: var(--silver); margin-top: 5px; }
+    .atlas-art { position: relative; min-width: 0; margin: 0; }
+    .atlas-art svg { width: 100%; display: block; }
+    .atlas-art figcaption { color: var(--soft); font-size: 11px; text-align: right; margin-top: 8px; }
+
+    .notes { background: var(--silver); color: var(--ink); padding-block: 64px 70px; color-scheme: light; }
+    .notes-grid { display: grid; grid-template-columns: .7fr 1.3fr; gap: 60px; }
+    .notes-intro .mono { color: var(--muted); margin-bottom: 20px; }
+    .notes-intro h2 { font-size: clamp(32px, 3.6vw, 47px); max-width: 9ch; }
+    .notes-list { border-top: 1px solid var(--slate); }
+    .question { border-bottom: 1px solid #8b96a3; }
+    .question summary { min-height: 64px; padding: 19px 32px 19px 0; list-style: none; position: relative; font-size: 17px; font-weight: 500; line-height: 1.4; }
+    .question summary::-webkit-details-marker { display: none; }
+    .question summary::after { content: "+"; position: absolute; right: 0; top: 16px; font-weight: 400; font-size: 25px; }
+    .question[open] summary::after { content: "−"; }
+    .question p { font-size: 14px; color: #343d47; max-width: 62ch; padding: 0 30px 23px 0; }
+
+    .profile { padding-block: 70px 52px; }
+    .profile-grid { display: grid; grid-template-columns: .7fr 1.3fr; gap: 60px; }
+    .profile-intro .mono { color: var(--soft); margin-bottom: 20px; }
+    .profile-intro h2 { font-size: clamp(33px, 3.8vw, 48px); letter-spacing: -.055em; }
+    .profile-copy > p { max-width: 62ch; color: var(--silver); font-size: 16px; }
+    .profile-copy > p + p { margin-top: 15px; }
+    .profile-links { display: flex; flex-wrap: wrap; gap: 0 34px; margin-top: 25px; }
+    .profile-links a { min-height: 44px; display: inline-flex; align-items: center; font-size: 14px; }
+    .experience { border-block: 1px solid var(--dark-line); margin-top: 24px; padding: 12px 0; }
+    .experience summary { min-height: 40px; display: flex; align-items: center; justify-content: space-between; font-size: 13px; list-style: none; }
+    .experience summary::-webkit-details-marker { display: none; }
+    .experience summary::after { content: "+"; font-size: 22px; }
+    .experience[open] summary::after { content: "−"; }
+    .experience dl { display: grid; grid-template-columns: 105px 1fr; gap: 12px 24px; font-size: 13px; margin-block: 15px; }
+    .experience dt { color: var(--soft); }
+    .experience dd { margin: 0; }
+    .experience p { font-size: 12px; color: var(--soft); padding-bottom: 8px; }
+    .more-work { padding-top: 25px; margin-top: 26px; border-top: 1px solid var(--dark-line); color: var(--soft); }
+    .more-work p:first-child { margin-bottom: 10px; }
+    .more-work p:last-child { font-size: 13px; }
+    .footer { padding-bottom: 30px; }
+    .footer-inner { padding-top: 22px; display: flex; justify-content: space-between; gap: 20px; border-top: 1px solid var(--dark-line); color: var(--soft); }
+    .footer-inner .mono { font-size: 11px; }
+
+    dialog { color: var(--ink); background: var(--paper); color-scheme: light; width: min(690px, calc(100% - 32px)); max-height: calc(100dvh - 48px); border: 1px solid var(--silver); padding: 0; margin: auto; }
+    dialog::backdrop { background: rgb(0 0 0 / .75); }
+    .dialog-top { position: sticky; top: 0; background: var(--paper); border-bottom: 1px solid var(--line); display: flex; justify-content: space-between; gap: 20px; align-items: center; padding: 18px 28px; }
+    .dialog-top p { color: var(--muted); }
+    .dialog-close { min-height: 44px; border: 1px solid var(--slate); padding: 7px 15px; background: transparent; font-size: 12px; }
+    .dialog-content { padding: 33px 35px 40px; }
+    .dialog-content h2 { font-size: clamp(32px, 5vw, 44px); margin-bottom: 24px; }
+    .dialog-content > p { color: var(--muted); margin-bottom: 24px; }
+    .dialog-content h3 { margin-top: 28px; margin-bottom: 8px; font-size: 15px; font-weight: 600; }
+    .dialog-content ul { padding-left: 21px; color: var(--muted); font-size: 14px; }
+    .dialog-content li + li { margin-top: 7px; }
+    .dialog-note { padding-top: 18px; margin-top: 28px; border-top: 1px solid var(--line); font-size: 12px; }
+    .js-details { display: none; }
+    .has-dialog .js-details { display: inline-flex; }
+
+    @media (min-width: 1500px) { .hero { padding-block: 58px 64px; } }
+    @media (max-width: 1000px) {
+      .wrap { width: calc(100% - 56px); }
+      .brand-meta { display: none; }
+      .hero-grid { gap: 18px; }
+      h1 { font-size: clamp(64px, 9.7vw, 96px); }
+      .hero-copy { font-size: 17px; }
+      .project, .systems-grid { gap: 32px; }
+      .everyday-intro { padding: 30px; }
+      .small-project { padding: 25px; }
+      .portal-visual { padding: 29px 25px 45px; }
+      .section-intro, .notes-grid, .profile-grid { gap: 35px; }
+    }
+    @media (max-width: 700px) {
+      html { scroll-padding-top: 22px; }
+      .wrap { width: calc(100% - 36px); }
+      .masthead-inner { min-height: 80px; gap: 12px; }
+      .brand-name { font-size: 19px; }
+      .main-nav { gap: 16px; }
+      .main-nav a { font-size: 11px; }
+      .main-nav .notes-nav { display: none; }
+      .hero { padding-block: 28px 35px; }
+      .hero-top { font-size: 11px; gap: 18px; }
+      .hero-top .iteration { display: none; }
+      .hero-grid { grid-template-columns: 1fr; gap: 22px; padding-top: 33px; }
+      h1 { font-size: clamp(60px, 15vw, 103px); line-height: .92; }
+      h1 .indent { margin-left: .45em; }
+      .hero-copy { margin-top: 22px; font-size: 17px; max-width: 32ch; }
+      .hero-credit { margin-top: 24px; }
+      .connection-art { aspect-ratio: 1.8; max-height: 260px; width: 100%; }
+      .connection-art svg { object-fit: contain; }
+      .hero-paths { margin-top: 26px; grid-template-columns: 1fr 1fr; }
+      .path { min-height: 87px; padding: 16px 12px; }
+      .path:nth-child(3) { border-left: none; padding-left: 0; }
+      .path:nth-child(3):hover, .path:nth-child(3)[aria-current="true"] { padding-left: 12px; }
+      .path:first-child:hover, .path:first-child[aria-current="true"] { padding-left: 12px; }
+      .path-title { font-size: 12px; }
+      .work { padding-block: 45px 55px; }
+      .section-intro { grid-template-columns: 1fr; gap: 21px; }
+      .section-intro p:not(.mono) { justify-self: start; max-width: 39ch; font-size: 15px; }
+      .work-tools { margin: 26px 0 30px; }
+      .filter { padding-inline: 8px; font-size: 11px; }
+      .work-status { font-size: 11px; }
+      .everyday { grid-template-columns: 1fr; margin-bottom: 42px; }
+      .everyday-intro { padding: 28px; gap: 20px; }
+      .everyday-intro h3 { max-width: 16ch; }
+      .everyday-list { border-left: none; border-top: 1px solid #8b96a3; }
+      .small-project { padding: 24px 28px; }
+      .project { grid-template-columns: 1fr; gap: 27px; padding-block: 33px 40px; }
+      .project h3 { font-size: clamp(41px, 10vw, 60px); max-width: 14ch; margin-bottom: 18px; }
+      .project .description { font-size: 15px; max-width: 41ch; }
+      .project-visual { min-height: 310px; }
+      .maps-visual svg { height: 310px; }
+      .project-note { font-size: 11px; }
+      .systems { padding-block: 45px 50px; }
+      .systems-grid { grid-template-columns: 1fr; gap: 30px; }
+      .systems h2 { max-width: 13ch; font-size: clamp(44px, 11vw, 64px); }
+      .systems-copy > p:not(.label) { font-size: 15px; }
+      .atlas-art { max-width: 540px; }
+      .notes { padding-block: 43px 45px; }
+      .notes-grid, .profile-grid { grid-template-columns: 1fr; gap: 29px; }
+      .notes-intro h2 { max-width: none; font-size: 34px; }
+      .question summary { font-size: 16px; }
+      .profile { padding-block: 45px; }
+      .profile-copy > p { font-size: 15px; }
+      .footer-inner { flex-direction: column; gap: 12px; }
+      .dialog-top { padding-inline: 21px; }
+      .dialog-content { padding: 28px 24px; }
+    }
+    @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } *, *::before, *::after { transition: none !important; animation: none !important; } }
+    @media (forced-colors: active) {
+      .filter[aria-pressed="true"] { border: 2px solid Highlight; }
+      .path[aria-current="true"] { outline: 2px solid Highlight; }
+      .project-visual, .everyday { border: 1px solid CanvasText; }
+    }
+    @media print {
+      body, .work, .systems, .notes { background: white; color: black; }
+      .hero, .hero-paths, .filters, .connection-art, .project-visual, .atlas-art, .main-nav, .js-details, .footer, dialog { display: none !important; }
+      .wrap { width: 100%; }
+      .work, .systems, .notes, .profile { padding-block: 20px; }
+      .project, .systems-grid, .notes-grid, .profile-grid { display: block; }
+      .project { break-inside: avoid; }
+      [data-paths][hidden] { display: grid !important; }
+    }
+  </style>
+</head>
+<body>
+  <a class="skip" href="#main">Skip to main content</a>
+  <header class="masthead" id="top">
+    <div class="wrap masthead-inner">
+      <a class="brand" href="#top" aria-label="Julie Owens, home">
+        <span class="brand-name">Julie Owens</span>
+        <span class="brand-meta">Digital strategy<br>Portland, Oregon</span>
+      </a>
+      <nav aria-label="Main navigation">
+        <ul class="main-nav">
+          <li><a href="#work" data-show-all>Work</a></li>
+          <li><a href="#systems">Systems</a></li>
+          <li class="notes-nav"><a href="#notes">Notes</a></li>
+          <li><a href="#experience">Experience &amp; contact</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+  <main id="main">
+    <section class="hero wrap" aria-labelledby="hero-title">
+      <div class="hero-top mono"><p class="label">Public digital work / a personal portfolio</p><p class="iteration">Working mockup — 02</p></div>
+      <div class="hero-grid">
+        <div>
+          <h1 id="hero-title"><span>How do you</span><span class="indent">connect?</span></h1>
+          <p class="hero-copy">To a place. To a service.<br>To the decisions that shape your day.</p>
+          <div class="hero-credit"><p><strong>Selected work by Julie Owens</strong><br>Digital strategy in local government</p></div>
+        </div>
+        <figure class="connection-art">
+          <svg viewBox="0 0 560 460" role="img" aria-labelledby="connection-title connection-desc" xmlns="http://www.w3.org/2000/svg">
+            <title id="connection-title">Several ways into one connected field</title>
+            <desc id="connection-desc">An abstract composition connects a person with places, services, and decisions. The paths below lead into related projects.</desc>
+            <defs>
+              <pattern id="hero-dots" width="12" height="12" patternUnits="userSpaceOnUse"><circle cx="2" cy="2" r="1" fill="#adb5c0"/></pattern>
+            </defs>
+            <rect x="82" y="18" width="346" height="376" fill="url(#hero-dots)" opacity=".45"/>
+            <rect x="326" y="40" width="172" height="256" fill="#46515d" transform="rotate(10 412 168)"/>
+            <g stroke="#7e8998" fill="none" stroke-width="1.1">
+              <path d="M96 101C266 22 252 195 362 174S479 67 531 143"/>
+              <path d="M58 310C219 338 245 151 428 318"/>
+              <path d="M289 58C217 143 350 205 246 385"/>
+              <circle cx="273" cy="223" r="128"/>
+              <circle cx="273" cy="223" r="96" stroke-dasharray="2 6"/>
+            </g>
+            <path d="M59 310C184 378 273 262 364 174" stroke="#f1f2f4" fill="none" stroke-width="2.5"/>
+            <rect x="67" y="108" width="174" height="117" fill="#f1f2f4" transform="rotate(-9 154 166)"/>
+            <text x="100" y="161" fill="#111214" font-family="Arial,sans-serif" font-size="38" letter-spacing="-2" transform="rotate(-9 100 161)">You are</text>
+            <text x="106" y="196" fill="#111214" font-family="Arial,sans-serif" font-size="38" letter-spacing="-2" transform="rotate(-9 106 196)">here.</text>
+            <circle cx="364" cy="174" r="9" fill="#f1f2f4" stroke="#111214" stroke-width="3"/>
+            <circle cx="59" cy="310" r="7" fill="#111214" stroke="#f1f2f4" stroke-width="2"/>
+            <circle cx="428" cy="318" r="7" fill="#111214" stroke="#f1f2f4" stroke-width="2"/>
+            <circle cx="289" cy="58" r="6" fill="#f1f2f4"/>
+            <g font-family="monospace" font-size="10" letter-spacing="1" fill="#f1f2f4">
+              <text x="315" y="149">A PLACE</text><text x="50" y="342">A SERVICE</text><text x="393" y="350">A DECISION</text>
+            </g>
+            <g stroke="#cbd1d7" stroke-width="1"><path d="M450 398h28m-14-14v28M44 70h22m-11-11v22"/></g>
+            <text x="233" y="423" fill="#adb5c0" font-family="monospace" font-size="9" letter-spacing="1">START WITH A CONNECTION</text>
+          </svg>
+          <figcaption class="art-caption mono">Several ways in. One connected field.</figcaption>
+        </figure>
+      </div>
+      <nav class="hero-paths" aria-label="Explore the work through an everyday need">
+        <a class="path" href="#portland-gov" data-filter="find"><span><span class="path-number">01 / information</span><span class="path-title">Find what I need</span></span><span class="arrow" aria-hidden="true">↘</span></a>
+        <a class="path" href="#portland-maps" data-filter="place"><span><span class="path-number">02 / context</span><span class="path-title">Understand a place</span></span><span class="arrow" aria-hidden="true">↘</span></a>
+        <a class="path" href="#public-process" data-filter="participate"><span><span class="path-number">03 / participation</span><span class="path-title">Take part</span></span><span class="arrow" aria-hidden="true">↘</span></a>
+        <a class="path" href="#everyday" data-filter="everyday"><span><span class="path-number">04 / everyday life</span><span class="path-title">Keep life moving</span></span><span class="arrow" aria-hidden="true">↘</span></a>
+      </nav>
+    </section>
+
+    <section class="work" id="work" aria-labelledby="work-title">
+      <div class="wrap">
+        <div class="section-intro">
+          <div><p class="mono label">01 / the work, from the outside in</p><h2 id="work-title" tabindex="-1">A few ways in.</h2></div>
+          <p>A reminder. A map. A question about your city. The connection starts with something you need.</p>
+        </div>
+        <div class="work-tools">
+          <p class="work-status" id="work-status" role="status" aria-live="polite" aria-atomic="true">Explore the connections below.</p>
+          <div class="filters" role="group" aria-label="Filter selected work">
+            <button class="filter" type="button" data-filter="all" aria-pressed="true" aria-controls="work-results">All work</button>
+            <button class="filter" type="button" data-filter="find" aria-pressed="false" aria-controls="work-results">Find</button>
+            <button class="filter" type="button" data-filter="place" aria-pressed="false" aria-controls="work-results">Understand</button>
+            <button class="filter" type="button" data-filter="participate" aria-pressed="false" aria-controls="work-results">Take part</button>
+            <button class="filter" type="button" data-filter="everyday" aria-pressed="false" aria-controls="work-results">Everyday</button>
+          </div>
+        </div>
+        <div id="work-results">
+          <section class="everyday" id="everyday" data-paths="find everyday" aria-labelledby="everyday-title">
+            <div class="everyday-intro"><p class="mono">Everyday needs / useful connections</p><h3 id="everyday-title">Small tasks.<br>Real life.</h3><p>Some connections are quiet. Knowing when to put the bin out. Finding a place to repair something instead of replacing it.</p></div>
+            <div class="everyday-list">
+              <article class="small-project">
+                <div class="project-topline"><span class="mono">A timely nudge</span><span class="dot" aria-hidden="true"></span></div>
+                <h4>Garbage day reminders</h4><p>A public service that connects a household’s collection schedule to a useful reminder.</p>
+                <a class="text-link" href="https://www.portland.gov/bps/garbage-recycling/home-recycling/garbage-day-reminders">See the public service <span aria-hidden="true">↗</span></a>
+              </article>
+              <article class="small-project">
+                <div class="project-topline"><span class="mono">Local knowledge</span><span class="dot" aria-hidden="true"></span></div>
+                <h4>ResourcefulPDX</h4><p>Practical connections to places to borrow, repair, reuse, and share.</p>
+                <a class="text-link" href="https://www.portland.gov/bps/sustainability/resourcefulpdx">Explore the resources <span aria-hidden="true">↗</span></a>
+              </article>
+            </div>
+          </section>
+
+          <article class="project" id="portland-gov" data-paths="find participate everyday">
+            <div class="project-copy"><p class="mono">01 / public information &amp; services</p><p class="project-name">Portland.gov</p><h3>Find a way in.</h3><p class="description">A city has many services, many responsibilities, and many ways to get lost. Its public website is one place where those paths meet.</p>
+              <div class="project-links"><a class="text-link" href="https://www.portland.gov/">Visit Portland.gov <span aria-hidden="true">↗</span></a><button class="text-link detail-link js-details" type="button" data-project="gov">Follow the connection <span aria-hidden="true">↗</span></button></div>
+            </div>
+            <figure class="project-visual portal-visual" aria-labelledby="portal-caption">
+              <div class="portal-window" aria-hidden="true"><div class="window-top"><span>PUBLIC DIGITAL LIFE</span><span>01 / ENTRY</span></div><p class="window-title">A place<br>to start.</p><div class="window-search"><span>What do you need?</span><span>↗</span></div><div class="window-bottom"><span>Find a service</span><span>Get information</span><span>Take part</span></div></div>
+              <figcaption class="visual-caption" id="portal-caption">An illustrative study of a public entry point</figcaption>
+            </figure>
+          </article>
+
+          <article class="project" id="portland-maps" data-paths="place find">
+            <div class="project-copy"><p class="mono">02 / places &amp; public data</p><p class="project-name">PortlandMaps</p><h3>Put information<br>in place.</h3><p class="description">An address is a starting point. Maps and public data offer another way to understand the city around it.</p>
+              <div class="project-links"><a class="text-link" href="https://www.portlandmaps.com/">Explore PortlandMaps <span aria-hidden="true">↗</span></a><button class="text-link detail-link js-details" type="button" data-project="maps">Follow the connection <span aria-hidden="true">↗</span></button></div>
+            </div>
+            <figure class="project-visual maps-visual" aria-labelledby="map-caption">
+              <svg viewBox="0 0 560 340" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"><defs><pattern id="map-grid" width="48" height="48" patternUnits="userSpaceOnUse" patternTransform="rotate(-13)"><rect width="48" height="48" fill="none" stroke="#7f8b99" stroke-width="1"/></pattern></defs><rect width="560" height="340" fill="url(#map-grid)"/><path d="M363-20C298 58 383 119 319 188s-62 83-8 169" fill="none" stroke="#111214" stroke-width="54"/><path d="M363-20C298 58 383 119 319 188s-62 83-8 169" fill="none" stroke="#cbd1d7" stroke-width="1" stroke-dasharray="3 8"/><path d="M-10 210 581 87M-20 249 582 127" stroke="#cbd1d7" stroke-width="3"/><path d="M0 165 174 123 211 224 37 266Z" fill="#cbd1d7" opacity=".2"/><circle cx="232" cy="183" r="33" fill="none" stroke="#f1f2f4" stroke-width="1"/><circle cx="232" cy="183" r="7" fill="#f1f2f4"/><path d="M240 183h99" stroke="#f1f2f4"/><rect x="339" y="164" width="151" height="39" fill="#f1f2f4"/><text x="353" y="189" fill="#111214" font-family="monospace" font-size="11">A PLACE IN CONTEXT</text></svg>
+              <div class="map-label" aria-hidden="true"><span>Public information</span><strong>Here, in context.</strong></div>
+              <figcaption class="visual-caption" id="map-caption">An illustrative map / no real locations or data</figcaption>
+            </figure>
+          </article>
+
+          <article class="project" id="public-process" data-paths="participate place">
+            <div class="project-copy"><p class="mono">03 / public process</p><p class="project-name">BPS Map App &amp; eCouncil</p><h3>A way to<br>take part.</h3><p class="description">Public decisions have a path of their own. Planning proposals, testimony, and council processes are part of how people follow that path.</p>
+              <div class="project-links"><a class="text-link" href="https://www.portland.gov/bps/planning/maps">Explore planning maps <span aria-hidden="true">↗</span></a><button class="text-link detail-link js-details" type="button" data-project="process">Follow the connection <span aria-hidden="true">↗</span></button></div>
+            </div>
+            <figure class="project-visual process-visual" aria-labelledby="process-caption">
+              <div aria-hidden="true"><p class="process-head mono">A public decision / several moments of access</p><ol class="process-steps"><li>Understand</li><li>Contribute</li><li>Follow</li></ol><div class="process-paper"><strong>What’s changing?<br>Where do I fit?</strong><p>A proposal → a response → a public record</p></div></div>
+              <figcaption class="visual-caption" id="process-caption">An illustrative study of participation</figcaption>
+            </figure>
+          </article>
+        </div>
+        <p class="project-note">Selected connections from the project inventory. Full case studies, contributions, and outcomes are still being prepared.</p>
+      </div>
+    </section>
+
+    <section class="systems" id="systems" aria-labelledby="systems-title">
+      <div class="wrap systems-grid">
+        <div class="systems-copy"><p class="label mono">02 / behind those connections</p><h2 id="systems-title">The parts<br>behind the<br>whole.</h2><p>A public service reaches further than its screen. People, policies, information, and technology all have a part in making it work.</p><div class="systems-credit"><strong>Civic Systems Atlas</strong><button class="text-link detail-link js-details" type="button" data-project="atlas">Look behind the connections <span aria-hidden="true">↗</span></button></div></div>
+        <figure class="atlas-art">
+          <svg viewBox="0 0 560 400" role="img" aria-labelledby="atlas-title atlas-desc" xmlns="http://www.w3.org/2000/svg">
+            <title id="atlas-title">A conceptual view of connected public digital work</title><desc id="atlas-desc">A central public service connects to people, information, technology, and decisions. This illustration is a portfolio concept, not a screenshot of Civic Systems Atlas.</desc>
+            <g fill="none" stroke="#566170" stroke-width="1"><circle cx="282" cy="203" r="150"/><circle cx="282" cy="203" r="95" stroke-dasharray="2 7"/><path d="M63 108 282 203 480 72M282 203 469 310M282 203 98 323M282 203 300 32M98 323 469 310M63 108 469 310"/></g>
+            <path d="M63 108 282 203 469 310" fill="none" stroke="#f1f2f4" stroke-width="2"/>
+            <rect x="219" y="164" width="127" height="78" fill="#f1f2f4"/><text x="238" y="196" fill="#111214" font-family="Arial,sans-serif" font-size="19" letter-spacing="-.7">A public</text><text x="238" y="219" fill="#111214" font-family="Arial,sans-serif" font-size="19" letter-spacing="-.7">service.</text>
+            <g fill="#111214" stroke="#cbd1d7" stroke-width="1.5"><circle cx="63" cy="108" r="7"/><circle cx="480" cy="72" r="7"/><circle cx="469" cy="310" r="7"/><circle cx="98" cy="323" r="7"/><circle cx="300" cy="32" r="5"/></g>
+            <g fill="#cbd1d7" font-family="monospace" font-size="11"><text x="35" y="88">PEOPLE</text><text x="405" y="49">INFORMATION</text><text x="407" y="340">TECHNOLOGY</text><text x="51" y="354">DECISIONS</text><text x="317" y="36">PURPOSE</text></g>
+            <g fill="#7c8795"><circle cx="176" cy="73" r="3"/><circle cx="128" cy="240" r="3"/><circle cx="344" cy="337" r="3"/><circle cx="425" cy="181" r="3"/></g>
+          </svg>
+          <figcaption>Conceptual illustration · the current Atlas view will come next.</figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <section class="notes" id="notes" aria-labelledby="notes-title">
+      <div class="wrap notes-grid"><div class="notes-intro"><p class="mono label">03 / open questions</p><h2 id="notes-title">Worth thinking<br>through.</h2></div><div class="notes-list">
+        <details class="question"><summary>Where does a service really begin?</summary><p>Before a person reaches a website, there is already a question, a constraint, or something they need to do. That earlier moment belongs in the work too.</p></details>
+        <details class="question"><summary>What happens after the handoff?</summary><p>Following a link is one step. What comes next, who helps, and whether someone can finish matter just as much.</p></details>
+        <details class="question"><summary>Who can use what we’ve made?</summary><p>Access shows up in language, structure, keyboard use, readable text, and alternatives. Those choices belong throughout the experience.</p></details>
+      </div></div>
+    </section>
+
+    <section class="profile" id="experience" aria-labelledby="profile-title">
+      <div class="wrap profile-grid"><div class="profile-intro"><p class="mono label">04 / a little context</p><h2 id="profile-title">Behind the work.</h2></div><div class="profile-copy"><p>I’m Julie Owens. I work across public digital platforms at the City of Portland, connecting product decisions with the services and people they affect.</p><p>This is a place to explore that work, the questions around it, and the connections that keep showing up.</p>
+        <details class="experience"><summary>Experience at a glance</summary><dl><dt>Focus</dt><dd>Product and portfolio management for public digital platforms</dd><dt>Organization</dt><dd>City of Portland</dd><dt>Location</dt><dd>Portland, Oregon</dd></dl><p>A reviewed work history and downloadable resume will be added here.</p></details>
+        <div class="profile-links"><a href="https://www.linkedin.com/in/julieh/">Start a conversation on LinkedIn <span aria-hidden="true">&nbsp;↗</span></a><a href="https://github.com/julegan/portfolio">Follow this site on GitHub <span aria-hidden="true">&nbsp;↗</span></a></div>
+        <div class="more-work"><p class="mono">Also in the project inventory</p><p>Master Recyclers · Science magazine · more connections to come</p></div>
+      </div></div>
+    </section>
+  </main>
+  <footer class="footer"><div class="wrap footer-inner"><p class="mono">Julie Owens / Portland, Oregon</p><p class="mono">Personal portfolio · working mockup · October 2026</p><a class="mono" href="#top">Back to the start ↑</a></div></footer>
+
+  <dialog id="project-dialog" aria-labelledby="dialog-title">
+    <div class="dialog-top"><p class="mono">Follow a connection</p><button class="dialog-close" type="button" autofocus>Close <span aria-hidden="true">×</span></button></div>
+    <div class="dialog-content"><h2 id="dialog-title"></h2><p id="dialog-description"></p><h3 id="dialog-context-title"></h3><ul id="dialog-points"></ul><a class="text-link" id="dialog-link" hidden></a><p class="dialog-note" id="dialog-note"></p></div>
+  </dialog>
+  <script>
+    (() => {
+      'use strict';
+      const root = document.documentElement;
+      const categories = { all: 'All work', find: 'Find what I need', place: 'Understand a place', participate: 'Take part', everyday: 'Keep life moving' };
+      const projects = Array.from(document.querySelectorAll('#work-results > [data-paths]'));
+      const paths = Array.from(document.querySelectorAll('.path[data-filter]'));
+      const filterButtons = Array.from(document.querySelectorAll('button.filter'));
+      const status = document.getElementById('work-status');
+      const workTitle = document.getElementById('work-title');
+      const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+      function selectPath(key, moveToWork = false) {
+        if (!Object.prototype.hasOwnProperty.call(categories, key)) return;
+        let visible = 0;
+        projects.forEach(project => {
+          project.hidden = key !== 'all' && !project.dataset.paths.split(' ').includes(key);
+          if (!project.hidden) visible += project.classList.contains('everyday') ? 2 : 1;
+        });
+        filterButtons.forEach(button => button.setAttribute('aria-pressed', String(button.dataset.filter === key)));
+        paths.forEach(path => {
+          if (path.dataset.filter === key) path.setAttribute('aria-current', 'true');
+          else path.removeAttribute('aria-current');
+        });
+        status.textContent = key === 'all' ? 'All connections · explore at your own pace' : categories[key] + ' · ' + visible + ' related connections';
+        if (moveToWork) {
+          workTitle.focus({ preventScroll: true });
+          document.getElementById('work').scrollIntoView({ behavior: reduceMotion.matches ? 'auto' : 'smooth', block: 'start' });
+        }
+      }
+      root.classList.add('has-js');
+      paths.forEach(path => path.addEventListener('click', event => { event.preventDefault(); selectPath(path.dataset.filter, true); }));
+      filterButtons.forEach(button => button.addEventListener('click', () => selectPath(button.dataset.filter)));
+      document.querySelectorAll('[data-show-all]').forEach(link => link.addEventListener('click', () => selectPath('all')));
+      selectPath('all');
+
+      const dialog = document.getElementById('project-dialog');
+      if (typeof dialog.showModal !== 'function') return;
+      root.classList.add('has-dialog');
+      let opener = null;
+      const stories = {
+        gov: {
+          title: 'Portland.gov',
+          description: 'An everyday need meets a public website, then a service, a process, or a person who can help.',
+          context: 'The connected work',
+          points: ['Portland.gov and the earlier Portland websites: portlandoregon.gov and portlandonline.com.', 'Public information, service discovery, and routes into civic participation.', 'The fuller story will connect the public experience to the product and portfolio work behind it.'],
+          url: 'https://www.portland.gov/', link: 'Explore the public website ↗',
+          note: 'Case study in preparation. Specific contributions, chronology, and outcomes will be added after review.'
+        },
+        maps: {
+          title: 'PortlandMaps',
+          description: 'A place becomes an entry point into public information. A map offers a way to make those relationships visible.',
+          context: 'The connected work',
+          points: ['Public access to maps, data, and geographic information.', 'Place-based questions that cross services and organizational boundaries.', 'This is collaborative City work; the case study will identify my contribution alongside the teams responsible for the platform.'],
+          url: 'https://www.portlandmaps.com/', link: 'Explore PortlandMaps ↗',
+          note: 'Case study in preparation. The portfolio illustration is not a screenshot or a real dataset.'
+        },
+        process: {
+          title: 'Public process systems',
+          description: 'A decision connects to a proposal, an opportunity to contribute, and a public process that people need to be able to follow.',
+          context: 'The connected work',
+          points: ['BPS Map App: planning information and opportunities to provide testimony.', 'eCouncil: included in this portfolio’s public process project inventory.', 'The case study will describe how these distinct systems relate and where my work contributed.'],
+          url: 'https://www.portland.gov/bps/planning/maps', link: 'Explore the City’s planning maps ↗',
+          note: 'Case study in preparation. Project roles and outcomes have not been asserted in this mockup.'
+        },
+        atlas: {
+          title: 'Civic Systems Atlas',
+          description: 'The project behind the wider view of public digital work and its connections.',
+          context: 'The next connection to add',
+          points: ['Civic Systems Atlas is the current project name.', 'Its current version has evolved beyond the earlier Digital Strategy Atlas.', 'The project view and case study will be grounded in the current version when it is ready to share.'],
+          note: 'The illustration here is conceptual. It does not represent the current Atlas interface or claim its current features.'
+        }
+      };
+      const title = document.getElementById('dialog-title');
+      const description = document.getElementById('dialog-description');
+      const context = document.getElementById('dialog-context-title');
+      const points = document.getElementById('dialog-points');
+      const link = document.getElementById('dialog-link');
+      const note = document.getElementById('dialog-note');
+      document.querySelectorAll('[data-project]').forEach(button => button.addEventListener('click', () => {
+        const story = stories[button.dataset.project];
+        if (!story) return;
+        opener = button;
+        title.textContent = story.title; description.textContent = story.description; context.textContent = story.context;
+        points.replaceChildren(...story.points.map(point => { const item = document.createElement('li'); item.textContent = point; return item; }));
+        link.hidden = !story.url;
+        if (story.url) { link.href = story.url; link.textContent = story.link; } else { link.removeAttribute('href'); link.textContent = ''; }
+        note.textContent = story.note;
+        dialog.showModal();
+      }));
+      dialog.querySelector('.dialog-close').addEventListener('click', () => dialog.close());
+      dialog.addEventListener('click', event => {
+        if (event.target !== dialog) return;
+        const rect = dialog.getBoundingClientRect();
+        if (event.clientX < rect.left || event.clientX > rect.right || event.clientY < rect.top || event.clientY > rect.bottom) dialog.close();
+      });
+      dialog.addEventListener('close', () => { if (opener) opener.focus({ preventScroll: true }); });
+    })();
+  </script>
+</body>
+</html>
