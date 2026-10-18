@@ -17,17 +17,34 @@ async function audit(page,label){
   console.log(JSON.stringify({view:label,violations,passes:results.passes.length}));
   return violations.map(v=>({view:label,...v}));
 }
+async function assertFavicon(page,label){
+  const href=await page.locator('link[rel="icon"]').getAttribute("href");
+  assert(href, label+" must declare a favicon");
+  const result=await page.evaluate(async url=>{
+    const response=await fetch(url,{cache:"no-store"});
+    return {ok:response.ok,status:response.status,text:await response.text()};
+  },new URL(href,page.url()).href);
+  assert(result.ok&&result.text.includes("<svg"),label+" favicon resource must load as an SVG");
+}
 async function showsViews(browser,viewport){
   const page=await browser.newPage({viewport});
   const errors=[];
   await page.goto(origin+(isPortfolio?"/projects/shows/":"/"),{waitUntil:"networkidle"});
   errors.push(...await audit(page,"SHOWS month "+viewport.width));
+  if(isPortfolio)await assertFavicon(page,"SHOWS");
   await page.locator('[data-view="agenda"]').click();
   errors.push(...await audit(page,"SHOWS list "+viewport.width));
   const event=page.locator("button.event-card").first();
   if(await event.count()){
+    const artwork=event.locator(".show-art");
+    const dimensions=await artwork.boundingBox();
+    assert(dimensions?.width>100&&dimensions?.height>35,"SHOWS event thumbnails must be rendered visibly in List view");
+    assert.equal(await artwork.locator(".show-art-title").textContent(),await event.locator("h3").textContent(),"Thumbnail should identify the same event as the card");
+  }
+  if(await event.count()){
     await event.click();
     assert(await page.locator("#eventDialog").evaluate(el=>el.open),"Event detail dialog must open");
+    assert(await page.locator("#eventDialog .show-art--large").isVisible(),"SHOWS detail dialog thumbnail should be visible");
     errors.push(...await audit(page,"SHOWS event detail "+viewport.width));
     await page.locator("[data-close]").click();
   } else console.log("No events in displayed month; event dialog scan skipped");
@@ -45,8 +62,10 @@ async function main(){
     const page=await browser.newPage({viewport});
     await page.goto(origin+"/",{waitUntil:"networkidle"});
     issues.push(...await audit(page,"Portfolio home "+viewport.width));
+    await assertFavicon(page,"Portfolio home");
     await page.goto(origin+"/projects/",{waitUntil:"networkidle"});
     issues.push(...await audit(page,"Portfolio projects "+viewport.width));
+    await assertFavicon(page,"Projects");
     await page.close();
    }
   }
