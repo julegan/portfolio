@@ -1,0 +1,71 @@
+name: Sync approved SHOWS calendar (review-only)
+on:
+  schedule:
+    - cron: '47 17 * * *'
+  workflow_dispatch:
+permissions:
+  contents: write
+  pull-requests: write
+concurrency:
+  group: portfolio-shows-sync
+  cancel-in-progress: false
+jobs:
+  propose:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Check pending SHOWS sync reviews
+        id: pending
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          count="$(gh pr list --state open --json headRefName --jq '[.[] | select(.headRefName | startswith("automation/shows-sync-"))] | length')"
+          if [ "$count" -gt 0 ]; then
+            echo "skip=true" >> "$GITHUB_OUTPUT"
+            echo "Portfolio sync review already open. Waiting for approval." >> "$GITHUB_STEP_SUMMARY"
+          fi
+      - name: Retrieve reviewed SHOWS source from main
+        if: steps.pending.outputs.skip != 'true'
+        run: |
+          curl --fail --show-error --silent --location --retry 2 --max-time 30             "https://raw.githubusercontent.com/julegan/shows/main/events.js"             --output /tmp/shows-canonical-events.js
+          node --check /tmp/shows-canonical-events.js
+          node - <<'NODE'
+          const assert=require('node:assert/strict');
+          const fs=require('node:fs'),vm=require('node:vm');
+          const c={window:{}};
+          vm.runInNewContext(fs.readFileSync('/tmp/shows-canonical-events.js','utf8'),c);
+          const events=c.window.SHOWS_EVENTS,meta=c.window.SHOWS_DATASET;
+          assert(Array.isArray(events)&&events.length>=182);
+          assert(meta&&meta.totalOccurrences===events.length);
+          const ids=new Set();
+          for(const e of events){
+            assert(e.id&&!ids.has(e.id));ids.add(e.id);
+            assert(e.url?.startsWith('https://'));
+            assert(/^20\d\d-\d\d-\d\dT\d\d:\d\d:\d\d-0[78]:00$/.test(e.startsAt));
+          }
+          console.log('Approved main branch: '+events.length+' dated events.');
+          NODE
+      - name: Propose synced portfolio calendar
+        if: steps.pending.outputs.skip != 'true'
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          dest="dist/projects/shows/events.js"
+          if cmp -s /tmp/shows-canonical-events.js "$dest"; then
+            echo "Portfolio is already synchronized with canonical SHOWS main." >> "$GITHUB_STEP_SUMMARY"
+            exit 0
+          fi
+          branch="automation/shows-sync-$(date -u +%Y%m%d)-$GITHUB_RUN_NUMBER"
+          git config user.name "SHOWS sync bot"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git switch -c "$branch"
+          cp /tmp/shows-canonical-events.js "$dest"
+          git add -- "$dest"
+          git commit -m "Propose portfolio SHOWS data sync from approved main"
+          git push --set-upstream origin "$branch"
+          gh pr create --head "$branch" --base main             --title "Review portfolio SHOWS event sync from canonical main"             --body "Auto-generated from the canonical, editorially approved SHOWS main branch. Please review event changes and merge this snapshot PR to update /projects/shows/. This updates event data only; app and CSS changes require separate development review. No direct publishing is performed."
+          echo "Prepared portfolio snapshot PR. Site was not automatically changed." >> "$GITHUB_STEP_SUMMARY"
