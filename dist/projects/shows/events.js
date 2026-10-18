@@ -4,10 +4,10 @@
 window.SHOWS_DATASET = {
   "sourceCheckedAt": "2026-10-18",
   "coverageThrough": "2027-01-16",
-  "totalOccurrences": 226,
-  "addedOccurrences": 44,
-  "batchId": "auto-discovery-2026-10-18-2",
-  "editorialReview": "Automatically discovered candidates require explicit human PR approval",
+  "totalOccurrences": 237,
+  "addedOccurrences": 11,
+  "batchId": "2026-10-18-black-water-public-calendar",
+  "editorialReview": "Black Water public venue calendar: date-only entries proposed for user approval. No start times asserted.",
   "previousBatches": [
     {
       "batchId": "2026-10-17-expansion",
@@ -24,11 +24,15 @@ window.SHOWS_DATASET = {
     {
       "batchId": "2026-10-17-independent-venues",
       "addedOccurrences": 27
+    },
+    {
+      "batchId": "auto-discovery-2026-10-18-2",
+      "addedOccurrences": 44
     }
   ],
   "newLiveBills": 0,
   "newDjNights": 0,
-  "musicOccurrences": 172
+  "musicOccurrences": 180
 };
 window.SHOWS_EVENTS = [
   {
@@ -567,7 +571,14 @@ window.SHOWS_EVENTS = [
     ],
     "addedIn": "2026-10-17-underground-music",
     "doorsAt": "2026-10-18T21:00:00-07:00",
-    "seriesId": "church-of-hive-verified-2026"
+    "seriesId": "church-of-hive-verified-2026",
+    "artwork": {
+      "url": "https://i.ticketweb.com/i/00/13/09/17/24_Original.jpg?v=2",
+      "sourceUrl": "https://www.startheaterportland.com/tm-event/church-of-hive-8/",
+      "origin": "official-event-page",
+      "credit": "Official event page",
+      "usageApproved": null
+    }
   },
   {
     "id": "auto-star-theater-2026-10-19-8971e3464a60",
@@ -610,6 +621,13 @@ window.SHOWS_EVENTS = [
     "discovery": {
       "sourceId": "star-theater",
       "method": "primary-source-collection"
+    },
+    "artwork": {
+      "url": "https://i.ticketweb.com/i/00/13/09/39/74_Original.jpg?v=4",
+      "sourceUrl": "https://www.startheaterportland.com/tm-event/julia-wolf-94-7-elysian-brewing-space-dust-sessions/",
+      "origin": "official-event-page",
+      "credit": "Official event page",
+      "usageApproved": null
     }
   },
   {
@@ -941,6 +959,13 @@ window.SHOWS_EVENTS = [
     "discovery": {
       "sourceId": "twilight",
       "method": "primary-source-collection"
+    },
+    "artwork": {
+      "url": "https://files.holdmyticket.com/image/upload/q_68,dn_72,f_auto/v6/uploads/flyers2/up9ytzhgyc5hnyzdwpop.jpg",
+      "sourceUrl": "https://www.twilightcafeandbar.com/event/465355/dossey-w-camp-crush-deepest-darkest",
+      "origin": "official-event-page",
+      "credit": "Official event page",
+      "usageApproved": null
     }
   },
   {
@@ -984,6 +1009,13 @@ window.SHOWS_EVENTS = [
     "discovery": {
       "sourceId": "star-theater",
       "method": "primary-source-collection"
+    },
+    "artwork": {
+      "url": "https://i.ticketweb.com/i/00/12/93/03/24_Original.jpg?v=5",
+      "sourceUrl": "https://www.startheaterportland.com/tm-event/gavn-the-salvation-tour/",
+      "origin": "official-event-page",
+      "credit": "Official event page",
+      "usageApproved": null
     }
   },
   {
@@ -1166,6 +1198,49 @@ window.SHOWS_EVENTS = [
     "sourceNote": "The dated venue ticket and artist event feed give October 21; a label tour page gives November 21. This entry follows the dated venue ticket. Confirm with the organizer."
   },
   {
+    "id": "auto-black-water-2026-10-22-def06dad0e51",
+    "title": "IRON LUNG (WA) / SOLITARY RUIN / DEFIANT BODY",
+    "subtitle": "Source-discovered venue event · details need review",
+    "category": "Music",
+    "tags": [
+      "Source-listed Music",
+      "Time needs confirmation",
+      "Format needs confirmation"
+    ],
+    "musicStyles": [],
+    "eventFormat": "unverified",
+    "startTimeKind": "date-only",
+    "startsAt": "2026-10-22T00:00:00-07:00",
+    "endsAt": null,
+    "venue": "Black Water",
+    "address": "5115 NE Sandy Blvd, Portland, OR 97213",
+    "neighborhood": "Rose City Park",
+    "price": "See organizer for current admission",
+    "free": null,
+    "age": "Not published",
+    "description": "Automatically discovered from a primary venue or promoter listing. Date confirmed by venue; no time published Official Black Water public calendar entry",
+    "source": "Black Water",
+    "url": "https://bar.blackwaterpdx.com/",
+    "icon": "♫",
+    "sourceCheckedAt": "2026-10-18",
+    "verificationMethod": "Automated venue data; editorial date, time, event type and cancellation verification required",
+    "sourceCategories": [],
+    "sources": [
+      {
+        "name": "Black Water",
+        "url": "https://bar.blackwaterpdx.com/",
+        "kind": "organizer",
+        "checkedAt": "2026-10-18",
+        "originalCategories": []
+      }
+    ],
+    "addedIn": "auto-discovery-2026-10-18",
+    "discovery": {
+      "sourceId": "black-water",
+      "method": "primary-source-collection"
+    }
+  },
+  {
     "id": "auto-twilight-2026-10-22-7afdf25f88cc",
     "title": "Crashing Wayward w/ DROP the STAR, Purusa",
     "subtitle": "Source-discovered music listing · format and time need review",
@@ -1206,6 +1281,13 @@ window.SHOWS_EVENTS = [
     "discovery": {
       "sourceId": "twilight",
       "method": "primary-source-collection"
+    },
+    "artwork": {
+      "url": "https://files.holdmyticket.com/image/upload/q_68,dn_72,f_auto/v6/uploads/flyers2/4d9wqmwvuh045q6ab2np.jpg",
+      "sourceUrl": "https://www.twilightcafeandbar.com/event/466467/crashing-wayward-w-drop-the-star-purusa",
+      "origin": "official-event-page",
+      "credit": "Official event page",
+      "usageApproved": null
     }
   },
   {
@@ -1296,6 +1378,13 @@ window.SHOWS_EVENTS = [
     "discovery": {
       "sourceId": "star-theater",
       "method": "primary-source-collection"
+    },
+    "artwork": {
+      "url": "https://i.ticketweb.com/i/00/13/06/16/14_Original.jpg?v=3",
+      "sourceUrl": "https://www.startheaterportland.com/tm-event/etana/",
+      "origin": "official-event-page",
+      "credit": "Official event page",
+      "usageApproved": null
     }
   },
   {
@@ -1409,6 +1498,49 @@ window.SHOWS_EVENTS = [
     "addedIn": "2026-10-17-underground-music",
     "doorsAt": "2026-10-22T20:00:00-07:00",
     "sourceNote": "The ticket provider lists 8 PM doors / 8:30 PM show. Some secondary listings give 7 PM. Primary ticket text was available through the search index; the full page was blocked."
+  },
+  {
+    "id": "auto-black-water-2026-10-23-f604bc6d78dc",
+    "title": "DJ SMOOTH HOPPERATOR",
+    "subtitle": "Source-discovered venue event · details need review",
+    "category": "Music",
+    "tags": [
+      "Source-listed Music",
+      "Time needs confirmation",
+      "Format needs confirmation"
+    ],
+    "musicStyles": [],
+    "eventFormat": "unverified",
+    "startTimeKind": "date-only",
+    "startsAt": "2026-10-23T00:00:00-07:00",
+    "endsAt": null,
+    "venue": "Black Water",
+    "address": "5115 NE Sandy Blvd, Portland, OR 97213",
+    "neighborhood": "Rose City Park",
+    "price": "See organizer for current admission",
+    "free": null,
+    "age": "Not published",
+    "description": "Automatically discovered from a primary venue or promoter listing. Date confirmed by venue; no time published Official Black Water public calendar entry",
+    "source": "Black Water",
+    "url": "https://bar.blackwaterpdx.com/",
+    "icon": "♫",
+    "sourceCheckedAt": "2026-10-18",
+    "verificationMethod": "Automated venue data; editorial date, time, event type and cancellation verification required",
+    "sourceCategories": [],
+    "sources": [
+      {
+        "name": "Black Water",
+        "url": "https://bar.blackwaterpdx.com/",
+        "kind": "organizer",
+        "checkedAt": "2026-10-18",
+        "originalCategories": []
+      }
+    ],
+    "addedIn": "auto-discovery-2026-10-18",
+    "discovery": {
+      "sourceId": "black-water",
+      "method": "primary-source-collection"
+    }
   },
   {
     "id": "adx-woolly-sweaters-2026-10-23",
@@ -1541,6 +1673,13 @@ window.SHOWS_EVENTS = [
     "discovery": {
       "sourceId": "twilight",
       "method": "primary-source-collection"
+    },
+    "artwork": {
+      "url": "https://files.holdmyticket.com/image/upload/q_68,dn_72,f_auto/v6/uploads/flyers2/los9qe8weh7crhmmmym9.jpg",
+      "sourceUrl": "https://www.twilightcafeandbar.com/event/466800/halloween-cover-show-w-the-slightest-ure-sparks-five-big-rocks-frank-zappa-hard-pill-deftones-sad-boy-union-bare-naked-ladies-gayvore-gravure",
+      "origin": "official-event-page",
+      "credit": "Official event page",
+      "usageApproved": null
     }
   },
   {
@@ -1646,6 +1785,13 @@ window.SHOWS_EVENTS = [
     "discovery": {
       "sourceId": "star-theater",
       "method": "primary-source-collection"
+    },
+    "artwork": {
+      "url": "https://i.ticketweb.com/i/00/13/55/99/43_Original.jpg?v=13",
+      "sourceUrl": "https://www.startheaterportland.com/tm-event/violet-grohl-be-sweet-to-me-tour/",
+      "origin": "official-event-page",
+      "credit": "Official event page",
+      "usageApproved": null
     }
   },
   {
@@ -1706,6 +1852,92 @@ window.SHOWS_EVENTS = [
     ],
     "addedIn": "2026-10-17-underground-music",
     "doorsAt": "2026-10-23T20:00:00-07:00"
+  },
+  {
+    "id": "auto-black-water-2026-10-24-b25be6075058",
+    "title": "JAB RECORD RELEASE",
+    "subtitle": "Source-discovered venue event · details need review",
+    "category": "Music",
+    "tags": [
+      "Source-listed Music",
+      "Time needs confirmation",
+      "Format needs confirmation"
+    ],
+    "musicStyles": [],
+    "eventFormat": "unverified",
+    "startTimeKind": "date-only",
+    "startsAt": "2026-10-24T00:00:00-07:00",
+    "endsAt": null,
+    "venue": "Black Water",
+    "address": "5115 NE Sandy Blvd, Portland, OR 97213",
+    "neighborhood": "Rose City Park",
+    "price": "See organizer for current admission",
+    "free": null,
+    "age": "Not published",
+    "description": "Automatically discovered from a primary venue or promoter listing. Date confirmed by venue; no time published Official Black Water public calendar entry",
+    "source": "Black Water",
+    "url": "https://bar.blackwaterpdx.com/",
+    "icon": "♫",
+    "sourceCheckedAt": "2026-10-18",
+    "verificationMethod": "Automated venue data; editorial date, time, event type and cancellation verification required",
+    "sourceCategories": [],
+    "sources": [
+      {
+        "name": "Black Water",
+        "url": "https://bar.blackwaterpdx.com/",
+        "kind": "organizer",
+        "checkedAt": "2026-10-18",
+        "originalCategories": []
+      }
+    ],
+    "addedIn": "auto-discovery-2026-10-18",
+    "discovery": {
+      "sourceId": "black-water",
+      "method": "primary-source-collection"
+    }
+  },
+  {
+    "id": "auto-black-water-2026-10-24-dcd4a216f76b",
+    "title": "SPOOKY SPLIT FLIP TOURNAMENT 3PM",
+    "subtitle": "Source-discovered venue event · details need review",
+    "category": "Unclassified",
+    "tags": [
+      "Category needs review",
+      "Time needs confirmation",
+      "Format needs confirmation"
+    ],
+    "musicStyles": [],
+    "eventFormat": "unverified",
+    "startTimeKind": "date-only",
+    "startsAt": "2026-10-24T00:00:00-07:00",
+    "endsAt": null,
+    "venue": "Black Water",
+    "address": "5115 NE Sandy Blvd, Portland, OR 97213",
+    "neighborhood": "Rose City Park",
+    "price": "See organizer for current admission",
+    "free": null,
+    "age": "Not published",
+    "description": "Automatically discovered from a primary venue or promoter listing. Date confirmed by venue; no time published Official Black Water public calendar entry",
+    "source": "Black Water",
+    "url": "https://bar.blackwaterpdx.com/",
+    "icon": "◇",
+    "sourceCheckedAt": "2026-10-18",
+    "verificationMethod": "Automated venue data; editorial date, time, event type and cancellation verification required",
+    "sourceCategories": [],
+    "sources": [
+      {
+        "name": "Black Water",
+        "url": "https://bar.blackwaterpdx.com/",
+        "kind": "organizer",
+        "checkedAt": "2026-10-18",
+        "originalCategories": []
+      }
+    ],
+    "addedIn": "auto-discovery-2026-10-18",
+    "discovery": {
+      "sourceId": "black-water",
+      "method": "primary-source-collection"
+    }
   },
   {
     "id": "psu-farmers-2026-10-24",
@@ -1961,6 +2193,13 @@ window.SHOWS_EVENTS = [
     "discovery": {
       "sourceId": "star-theater",
       "method": "primary-source-collection"
+    },
+    "artwork": {
+      "url": "https://i.ticketweb.com/i/00/13/00/09/04_Original.jpg?v=2",
+      "sourceUrl": "https://www.startheaterportland.com/tm-event/cherry-poppin-daddies-with-los-mal-hablados-and-the-skylarkers/",
+      "origin": "official-event-page",
+      "credit": "Official event page",
+      "usageApproved": null
     }
   },
   {
@@ -2213,7 +2452,14 @@ window.SHOWS_EVENTS = [
       }
     ],
     "addedIn": "2026-10-17-underground-music",
-    "doorsAt": "2026-10-25T18:30:00-07:00"
+    "doorsAt": "2026-10-25T18:30:00-07:00",
+    "artwork": {
+      "url": "https://i.ticketweb.com/i/00/13/00/51/94_Original.jpg?v=5",
+      "sourceUrl": "https://www.startheaterportland.com/tm-event/a-split-second/",
+      "origin": "official-event-page",
+      "credit": "Official event page",
+      "usageApproved": null
+    }
   },
   {
     "id": "twilight-cafe-and-bar-houkago-grind-time-with-kostnateni-biology-skitzotoxin-2026-10-25",
@@ -2375,7 +2621,14 @@ window.SHOWS_EVENTS = [
     ],
     "addedIn": "2026-10-17-underground-music",
     "doorsAt": "2026-10-25T21:00:00-07:00",
-    "seriesId": "church-of-hive-verified-2026"
+    "seriesId": "church-of-hive-verified-2026",
+    "artwork": {
+      "url": "https://i.ticketweb.com/i/00/13/57/71/13_Original.jpg?v=5",
+      "sourceUrl": "https://www.startheaterportland.com/tm-event/church-of-hive-9/",
+      "origin": "official-event-page",
+      "credit": "Official event page",
+      "usageApproved": null
+    }
   },
   {
     "id": "adx-music-monday-2026-10-26",
@@ -2469,6 +2722,49 @@ window.SHOWS_EVENTS = [
     ],
     "addedIn": "2026-10-17-underground-music",
     "doorsAt": "2026-10-26T19:30:00-07:00"
+  },
+  {
+    "id": "auto-black-water-2026-10-27-a3accca027da",
+    "title": "PIGSQUAD SPOOKY GAMES MARATHON - PLAY & WATCH SCARY GAMES",
+    "subtitle": "Source-discovered venue event · details need review",
+    "category": "Unclassified",
+    "tags": [
+      "Category needs review",
+      "Time needs confirmation",
+      "Format needs confirmation"
+    ],
+    "musicStyles": [],
+    "eventFormat": "unverified",
+    "startTimeKind": "date-only",
+    "startsAt": "2026-10-27T00:00:00-07:00",
+    "endsAt": null,
+    "venue": "Black Water",
+    "address": "5115 NE Sandy Blvd, Portland, OR 97213",
+    "neighborhood": "Rose City Park",
+    "price": "See organizer for current admission",
+    "free": null,
+    "age": "Not published",
+    "description": "Automatically discovered from a primary venue or promoter listing. Date confirmed by venue; no time published Official Black Water public calendar entry",
+    "source": "Black Water",
+    "url": "https://bar.blackwaterpdx.com/",
+    "icon": "◇",
+    "sourceCheckedAt": "2026-10-18",
+    "verificationMethod": "Automated venue data; editorial date, time, event type and cancellation verification required",
+    "sourceCategories": [],
+    "sources": [
+      {
+        "name": "Black Water",
+        "url": "https://bar.blackwaterpdx.com/",
+        "kind": "organizer",
+        "checkedAt": "2026-10-18",
+        "originalCategories": []
+      }
+    ],
+    "addedIn": "auto-discovery-2026-10-18",
+    "discovery": {
+      "sourceId": "black-water",
+      "method": "primary-source-collection"
+    }
   },
   {
     "id": "roseland-catch-your-breath-with-tx2-arankai-colorblind-2026-10-27",
@@ -3043,6 +3339,49 @@ window.SHOWS_EVENTS = [
     "addedIn": "2026-10-17-venue-coverage"
   },
   {
+    "id": "auto-black-water-2026-10-29-19a3a2bc3b15",
+    "title": "TELEVISION / WIPERS / PJ HARVEY / NOMEANSNO",
+    "subtitle": "Source-discovered venue event · details need review",
+    "category": "Music",
+    "tags": [
+      "Source-listed Music",
+      "Time needs confirmation",
+      "Format needs confirmation"
+    ],
+    "musicStyles": [],
+    "eventFormat": "unverified",
+    "startTimeKind": "date-only",
+    "startsAt": "2026-10-29T00:00:00-07:00",
+    "endsAt": null,
+    "venue": "Black Water",
+    "address": "5115 NE Sandy Blvd, Portland, OR 97213",
+    "neighborhood": "Rose City Park",
+    "price": "See organizer for current admission",
+    "free": null,
+    "age": "Not published",
+    "description": "Automatically discovered from a primary venue or promoter listing. Date confirmed by venue; no time published Official Black Water public calendar entry",
+    "source": "Black Water",
+    "url": "https://bar.blackwaterpdx.com/",
+    "icon": "♫",
+    "sourceCheckedAt": "2026-10-18",
+    "verificationMethod": "Automated venue data; editorial date, time, event type and cancellation verification required",
+    "sourceCategories": [],
+    "sources": [
+      {
+        "name": "Black Water",
+        "url": "https://bar.blackwaterpdx.com/",
+        "kind": "organizer",
+        "checkedAt": "2026-10-18",
+        "originalCategories": []
+      }
+    ],
+    "addedIn": "auto-discovery-2026-10-18",
+    "discovery": {
+      "sourceId": "black-water",
+      "method": "primary-source-collection"
+    }
+  },
+  {
     "id": "adx-casual-lettering-2026-10-29",
     "title": "Casual Practice: Intro to Casual Style Lettering",
     "subtitle": "Sign painting and brush lettering",
@@ -3241,6 +3580,56 @@ window.SHOWS_EVENTS = [
     "addedIn": "auto-discovery-2026-10-18",
     "discovery": {
       "sourceId": "star-theater",
+      "method": "primary-source-collection"
+    },
+    "artwork": {
+      "url": "https://i.ticketweb.com/i/00/13/05/90/74_Original.jpg?v=5",
+      "sourceUrl": "https://www.startheaterportland.com/tm-event/fenix-flexin/",
+      "origin": "official-event-page",
+      "credit": "Official event page",
+      "usageApproved": null
+    }
+  },
+  {
+    "id": "auto-black-water-2026-10-30-76b8a0161f03",
+    "title": "LOS HACKALS (THE JACKALS) / CHEAP LIFE / THE REPLACEMENTS /TELEVISION",
+    "subtitle": "Source-discovered venue event · details need review",
+    "category": "Music",
+    "tags": [
+      "Source-listed Music",
+      "Time needs confirmation",
+      "Format needs confirmation"
+    ],
+    "musicStyles": [],
+    "eventFormat": "unverified",
+    "startTimeKind": "date-only",
+    "startsAt": "2026-10-30T00:00:00-07:00",
+    "endsAt": null,
+    "venue": "Black Water",
+    "address": "5115 NE Sandy Blvd, Portland, OR 97213",
+    "neighborhood": "Rose City Park",
+    "price": "See organizer for current admission",
+    "free": null,
+    "age": "Not published",
+    "description": "Automatically discovered from a primary venue or promoter listing. Date confirmed by venue; no time published Official Black Water public calendar entry",
+    "source": "Black Water",
+    "url": "https://bar.blackwaterpdx.com/",
+    "icon": "♫",
+    "sourceCheckedAt": "2026-10-18",
+    "verificationMethod": "Automated venue data; editorial date, time, event type and cancellation verification required",
+    "sourceCategories": [],
+    "sources": [
+      {
+        "name": "Black Water",
+        "url": "https://bar.blackwaterpdx.com/",
+        "kind": "organizer",
+        "checkedAt": "2026-10-18",
+        "originalCategories": []
+      }
+    ],
+    "addedIn": "auto-discovery-2026-10-18",
+    "discovery": {
+      "sourceId": "black-water",
       "method": "primary-source-collection"
     }
   },
@@ -3481,6 +3870,56 @@ window.SHOWS_EVENTS = [
     "discovery": {
       "sourceId": "star-theater",
       "method": "primary-source-collection"
+    },
+    "artwork": {
+      "url": "https://i.ticketweb.com/i/00/13/07/04/04_Original.jpg?v=2",
+      "sourceUrl": "https://www.startheaterportland.com/tm-event/constant-debauchery-with-sacre-bleu/",
+      "origin": "official-event-page",
+      "credit": "Official event page",
+      "usageApproved": null
+    }
+  },
+  {
+    "id": "auto-black-water-2026-10-31-34fe20865aba",
+    "title": "THE MISFITS / MENACE /SAXON / RIP / RUDIMENTARY PENI + COSTUME CONTEST & DANCE PARTY",
+    "subtitle": "Source-discovered venue event · details need review",
+    "category": "Music",
+    "tags": [
+      "Source-listed Music",
+      "Time needs confirmation",
+      "Format needs confirmation"
+    ],
+    "musicStyles": [],
+    "eventFormat": "unverified",
+    "startTimeKind": "date-only",
+    "startsAt": "2026-10-31T00:00:00-07:00",
+    "endsAt": null,
+    "venue": "Black Water",
+    "address": "5115 NE Sandy Blvd, Portland, OR 97213",
+    "neighborhood": "Rose City Park",
+    "price": "See organizer for current admission",
+    "free": null,
+    "age": "Not published",
+    "description": "Automatically discovered from a primary venue or promoter listing. Date confirmed by venue; no time published Official Black Water public calendar entry",
+    "source": "Black Water",
+    "url": "https://bar.blackwaterpdx.com/",
+    "icon": "♫",
+    "sourceCheckedAt": "2026-10-18",
+    "verificationMethod": "Automated venue data; editorial date, time, event type and cancellation verification required",
+    "sourceCategories": [],
+    "sources": [
+      {
+        "name": "Black Water",
+        "url": "https://bar.blackwaterpdx.com/",
+        "kind": "organizer",
+        "checkedAt": "2026-10-18",
+        "originalCategories": []
+      }
+    ],
+    "addedIn": "auto-discovery-2026-10-18",
+    "discovery": {
+      "sourceId": "black-water",
+      "method": "primary-source-collection"
     }
   },
   {
@@ -3704,6 +4143,13 @@ window.SHOWS_EVENTS = [
     "discovery": {
       "sourceId": "star-theater",
       "method": "primary-source-collection"
+    },
+    "artwork": {
+      "url": "https://i.ticketweb.com/i/00/13/03/18/14_Original.jpg?v=2",
+      "sourceUrl": "https://www.startheaterportland.com/tm-event/boscos-haus-of-whorrors-halloween-night-direct-from-transylvania/",
+      "origin": "official-event-page",
+      "credit": "Official event page",
+      "usageApproved": null
     }
   },
   {
@@ -4042,6 +4488,13 @@ window.SHOWS_EVENTS = [
     "discovery": {
       "sourceId": "star-theater",
       "method": "primary-source-collection"
+    },
+    "artwork": {
+      "url": "https://i.ticketweb.com/i/00/13/08/13/04_Original.jpg?v=3",
+      "sourceUrl": "https://www.startheaterportland.com/tm-event/church-of-hive-10/",
+      "origin": "official-event-page",
+      "credit": "Official event page",
+      "usageApproved": null
     }
   },
   {
@@ -4173,6 +4626,13 @@ window.SHOWS_EVENTS = [
     "discovery": {
       "sourceId": "star-theater",
       "method": "primary-source-collection"
+    },
+    "artwork": {
+      "url": "https://i.ticketweb.com/i/00/12/91/04/74_Original.jpg?v=9",
+      "sourceUrl": "https://www.startheaterportland.com/tm-event/daley/",
+      "origin": "official-event-page",
+      "credit": "Official event page",
+      "usageApproved": null
     }
   },
   {
@@ -4258,6 +4718,13 @@ window.SHOWS_EVENTS = [
     "discovery": {
       "sourceId": "star-theater",
       "method": "primary-source-collection"
+    },
+    "artwork": {
+      "url": "https://i.ticketweb.com/i/00/13/52/80/13_Original.jpg?v=6",
+      "sourceUrl": "https://www.startheaterportland.com/tm-event/nahko-and-medicine-for-the-people-hoka-10th-anniversary-tour/",
+      "origin": "official-event-page",
+      "credit": "Official event page",
+      "usageApproved": null
     }
   },
   {
@@ -4346,6 +4813,13 @@ window.SHOWS_EVENTS = [
     "discovery": {
       "sourceId": "twilight",
       "method": "primary-source-collection"
+    },
+    "artwork": {
+      "url": "https://files.holdmyticket.com/image/upload/q_68,dn_72,f_auto/v6/uploads/flyers2/vr5uhsmqxyzz1p9v6w71.jpg",
+      "sourceUrl": "https://www.twilightcafeandbar.com/event/463792/wicked-wednesday-w-dj-barbie-saint-dj-speedo",
+      "origin": "official-event-page",
+      "credit": "Official event page",
+      "usageApproved": null
     }
   },
   {
@@ -4477,6 +4951,13 @@ window.SHOWS_EVENTS = [
     "discovery": {
       "sourceId": "star-theater",
       "method": "primary-source-collection"
+    },
+    "artwork": {
+      "url": "https://i.ticketweb.com/i/00/12/99/28/54_Original.jpg?v=3",
+      "sourceUrl": "https://www.startheaterportland.com/tm-event/nahko-and-medicine-for-the-people-hoka-10th-anniversary-tour-2/",
+      "origin": "official-event-page",
+      "credit": "Official event page",
+      "usageApproved": null
     }
   },
   {
@@ -4798,6 +5279,56 @@ window.SHOWS_EVENTS = [
     "discovery": {
       "sourceId": "star-theater",
       "method": "primary-source-collection"
+    },
+    "artwork": {
+      "url": "https://i.ticketweb.com/i/00/13/07/70/54_Original.jpg?v=3",
+      "sourceUrl": "https://www.startheaterportland.com/tm-event/the-hyrule-ball/",
+      "origin": "official-event-page",
+      "credit": "Official event page",
+      "usageApproved": null
+    }
+  },
+  {
+    "id": "auto-black-water-2026-11-07-6e50c45570cc",
+    "title": "HABAK / MALAKILI / VERDANT VORCE / LAUGHTER",
+    "subtitle": "Source-discovered venue event · details need review",
+    "category": "Music",
+    "tags": [
+      "Source-listed Music",
+      "Time needs confirmation",
+      "Format needs confirmation"
+    ],
+    "musicStyles": [],
+    "eventFormat": "unverified",
+    "startTimeKind": "date-only",
+    "startsAt": "2026-11-07T00:00:00-08:00",
+    "endsAt": null,
+    "venue": "Black Water",
+    "address": "5115 NE Sandy Blvd, Portland, OR 97213",
+    "neighborhood": "Rose City Park",
+    "price": "See organizer for current admission",
+    "free": null,
+    "age": "Not published",
+    "description": "Automatically discovered from a primary venue or promoter listing. Date confirmed by venue; no time published Official Black Water public calendar entry",
+    "source": "Black Water",
+    "url": "https://bar.blackwaterpdx.com/",
+    "icon": "♫",
+    "sourceCheckedAt": "2026-10-18",
+    "verificationMethod": "Automated venue data; editorial date, time, event type and cancellation verification required",
+    "sourceCategories": [],
+    "sources": [
+      {
+        "name": "Black Water",
+        "url": "https://bar.blackwaterpdx.com/",
+        "kind": "organizer",
+        "checkedAt": "2026-10-18",
+        "originalCategories": []
+      }
+    ],
+    "addedIn": "auto-discovery-2026-10-18",
+    "discovery": {
+      "sourceId": "black-water",
+      "method": "primary-source-collection"
     }
   },
   {
@@ -5054,7 +5585,14 @@ window.SHOWS_EVENTS = [
       }
     ],
     "addedIn": "2026-10-17-underground-music",
-    "doorsAt": "2026-11-07T19:00:00-08:00"
+    "doorsAt": "2026-11-07T19:00:00-08:00",
+    "artwork": {
+      "url": "https://i.ticketweb.com/i/00/13/62/47/03_Original.jpg?v=9",
+      "sourceUrl": "https://www.startheaterportland.com/tm-event/exhumed-with-jarhead-fertilizer-savage-master-molder/",
+      "origin": "official-event-page",
+      "credit": "Official event page",
+      "usageApproved": null
+    }
   },
   {
     "id": "turn-turn-turn-iroiro-seattle-blesst-chest-trigger-object-grapefruit-2026-11-07",
@@ -5256,6 +5794,13 @@ window.SHOWS_EVENTS = [
     "discovery": {
       "sourceId": "twilight",
       "method": "primary-source-collection"
+    },
+    "artwork": {
+      "url": "https://files.holdmyticket.com/image/upload/q_68,dn_72,f_auto/v6/uploads/flyers2/ktuyc7rlvfyu1kpiyfn6.jpg",
+      "sourceUrl": "https://www.twilightcafeandbar.com/event/468211/yallternative-an-alternative-country-experience-drag-show-w-pyda-pickels-seven-bussy-syrup-nashville-hott-synceirelove-aunt-gore-bunny-angelina-divine",
+      "origin": "official-event-page",
+      "credit": "Official event page",
+      "usageApproved": null
     }
   },
   {
@@ -5492,6 +6037,13 @@ window.SHOWS_EVENTS = [
     "discovery": {
       "sourceId": "star-theater",
       "method": "primary-source-collection"
+    },
+    "artwork": {
+      "url": "https://i.ticketweb.com/i/00/13/57/71/13_Original.jpg?v=5",
+      "sourceUrl": "https://www.startheaterportland.com/tm-event/church-of-hive-11/",
+      "origin": "official-event-page",
+      "credit": "Official event page",
+      "usageApproved": null
     }
   },
   {
@@ -5785,6 +6337,49 @@ window.SHOWS_EVENTS = [
     "seriesId": "shoot-the-moon-2026"
   },
   {
+    "id": "auto-black-water-2026-11-13-1b13559da346",
+    "title": "L.I.E. / CHATTERBOX / TEMPLE / SPEAK OF THE DEAD",
+    "subtitle": "Source-discovered venue event · details need review",
+    "category": "Music",
+    "tags": [
+      "Source-listed Music",
+      "Time needs confirmation",
+      "Format needs confirmation"
+    ],
+    "musicStyles": [],
+    "eventFormat": "unverified",
+    "startTimeKind": "date-only",
+    "startsAt": "2026-11-13T00:00:00-08:00",
+    "endsAt": null,
+    "venue": "Black Water",
+    "address": "5115 NE Sandy Blvd, Portland, OR 97213",
+    "neighborhood": "Rose City Park",
+    "price": "See organizer for current admission",
+    "free": null,
+    "age": "Not published",
+    "description": "Automatically discovered from a primary venue or promoter listing. Date confirmed by venue; no time published Official Black Water public calendar entry",
+    "source": "Black Water",
+    "url": "https://bar.blackwaterpdx.com/",
+    "icon": "♫",
+    "sourceCheckedAt": "2026-10-18",
+    "verificationMethod": "Automated venue data; editorial date, time, event type and cancellation verification required",
+    "sourceCategories": [],
+    "sources": [
+      {
+        "name": "Black Water",
+        "url": "https://bar.blackwaterpdx.com/",
+        "kind": "organizer",
+        "checkedAt": "2026-10-18",
+        "originalCategories": []
+      }
+    ],
+    "addedIn": "auto-discovery-2026-10-18",
+    "discovery": {
+      "sourceId": "black-water",
+      "method": "primary-source-collection"
+    }
+  },
+  {
     "id": "hawthorne-static-dress-2026-11-13",
     "title": "Static Dress",
     "subtitle": "Post-hardcore · With I Promised the World, Car Underwater, Sherane",
@@ -5987,6 +6582,56 @@ window.SHOWS_EVENTS = [
     "addedIn": "auto-discovery-2026-10-18",
     "discovery": {
       "sourceId": "star-theater",
+      "method": "primary-source-collection"
+    },
+    "artwork": {
+      "url": "https://i.ticketweb.com/i/00/13/63/80/43_Original.jpg?v=11",
+      "sourceUrl": "https://www.startheaterportland.com/tm-event/suzy-sheer-with-patch/",
+      "origin": "official-event-page",
+      "credit": "Official event page",
+      "usageApproved": null
+    }
+  },
+  {
+    "id": "auto-black-water-2026-11-14-1edbf5a573e1",
+    "title": "ASIA CONSENT’S WEIRD WORLD DRAG SHOW",
+    "subtitle": "Source-discovered venue event · details need review",
+    "category": "Performance",
+    "tags": [
+      "Source-listed Performance",
+      "Time needs confirmation",
+      "Format needs confirmation"
+    ],
+    "musicStyles": [],
+    "eventFormat": "unverified",
+    "startTimeKind": "date-only",
+    "startsAt": "2026-11-14T00:00:00-08:00",
+    "endsAt": null,
+    "venue": "Black Water",
+    "address": "5115 NE Sandy Blvd, Portland, OR 97213",
+    "neighborhood": "Rose City Park",
+    "price": "See organizer for current admission",
+    "free": null,
+    "age": "Not published",
+    "description": "Automatically discovered from a primary venue or promoter listing. Date confirmed by venue; no time published Official Black Water public calendar entry",
+    "source": "Black Water",
+    "url": "https://bar.blackwaterpdx.com/",
+    "icon": "◇",
+    "sourceCheckedAt": "2026-10-18",
+    "verificationMethod": "Automated venue data; editorial date, time, event type and cancellation verification required",
+    "sourceCategories": [],
+    "sources": [
+      {
+        "name": "Black Water",
+        "url": "https://bar.blackwaterpdx.com/",
+        "kind": "organizer",
+        "checkedAt": "2026-10-18",
+        "originalCategories": []
+      }
+    ],
+    "addedIn": "auto-discovery-2026-10-18",
+    "discovery": {
+      "sourceId": "black-water",
       "method": "primary-source-collection"
     }
   },
