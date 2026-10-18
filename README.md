@@ -18,6 +18,15 @@ The current site introduces Portland.gov, PortlandMaps, public process tools, ev
 
 Project stories will identify my role, collaborators, and documented outcomes. This is a personal portfolio, not an official City of Portland website.
 
+## Personal project gallery
+
+- `/projects/` is the independent ideas/prototypes directory, separate from professional case studies on the home page.
+- `/projects/shows/` embeds a self-contained snapshot of the [SHOWS](https://github.com/julegan/shows) event calendar prototype.
+- Each project card has a thumbnail, date/status, tags, concise description and direct launch link.
+- To add another project, create `dist/projects/<slug>/`, add a thumbnail SVG/image, and replicate a project card in `dist/projects/index.html`. No account, CMS, build system, or external service is necessary for this early gallery.
+- SHOWS's source repository remains the canonical development repository. The portfolio copy is a deployment snapshot; future SHOWS updates must be synced intentionally. The October–November 2026 sample is not a live production calendar.
+- The gallery can grow gradually; the idea of one experiment per month is an aspiration rather than a promised release schedule.
+
 ## Site status
 
 **V1 is the accepted baseline. The hosted site remains private while content and project stories are refined.**
@@ -28,7 +37,9 @@ The site uses a single-page layout and a soft black, white, and cool gray palett
 
 ## Preview locally
 
-Open [dist/index.html](dist/index.html) in a browser. It contains the complete site, including inline CSS, SVG illustrations, and JavaScript.
+Open [dist/index.html](dist/index.html) in a browser for the home page. It contains the original standalone portfolio page, including inline CSS, SVG illustrations, and JavaScript.
+
+For working navigation to `/projects/` and `/projects/shows/`, use the local HTTP server below rather than opening files directly, because the routes are root-relative.
 
 No installation or build step is required. There are no external fonts, analytics, or runtime dependencies.
 
@@ -44,7 +55,9 @@ Then open <http://localhost:8000>.
 
 | File | Purpose |
 | --- | --- |
-| [dist/index.html](dist/index.html) | Complete portfolio website |
+| [dist/index.html](dist/index.html) | Professional portfolio home page |
+| [dist/projects/index.html](dist/projects/index.html) | Personal projects index at `/projects/` |
+| [dist/projects/shows/index.html](dist/projects/shows/index.html) | SHOWS working prototype at `/projects/shows/` |
 | [DESIGN-NOTES.md](DESIGN-NOTES.md) | Design decisions and review notes for the accepted version |
 | [SOURCES.md](SOURCES.md) | Source references and factual scope for the accepted version |
 

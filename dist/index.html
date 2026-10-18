@@ -196,6 +196,12 @@
     .js-details { display: none; }
     .has-dialog .js-details { display: inline-flex; }
 
+    .prototype-teaser { display: flex; align-items: center; justify-content: space-between; gap: 28px; padding-block: 23px; border-top: 1px solid var(--dark-line); border-bottom: 1px solid var(--dark-line); }
+    .prototype-teaser p { margin: 0; }
+    .prototype-teaser .label { color: var(--soft); }
+    .prototype-teaser div > p:last-child { color: var(--paper); font-size: 16px; line-height: 1.6; margin-top: 4px; }
+    .prototype-teaser a { white-space: nowrap; font-size: 13px; color: var(--paper); text-underline-offset: .35em; }
+    @media (max-width: 700px) { .masthead-inner { flex-wrap: wrap; padding-block: 13px; } .main-nav { flex-wrap: wrap; } .prototype-teaser { align-items: start; flex-direction: column; gap: 14px; } .prototype-teaser a { white-space: normal; } }
     @media (min-width: 1500px) { .hero { padding-block: 58px 64px; } }
     @media (max-width: 1000px) {
       .wrap { width: calc(100% - 56px); }
@@ -294,6 +300,7 @@
         <ul class="main-nav">
           <li><a href="#work" data-show-all>Work</a></li>
           <li><a href="#systems">Systems</a></li>
+          <li><a href="/projects/">Projects</a></li>
           <li class="notes-nav"><a href="#notes">Notes</a></li>
           <li><a href="#experience">Experience &amp; contact</a></li>
         </ul>
@@ -349,6 +356,11 @@
         <a class="path" href="#everyday" data-filter="everyday"><span><span class="path-number">04 / everyday life</span><span class="path-title">Keep life moving</span></span><span class="arrow" aria-hidden="true">↘</span></a>
       </nav>
     </section>
+
+    <aside class="prototype-teaser wrap" aria-label="Personal projects">
+      <div><p class="mono label">Beyond the day job / Prototypes</p><p>Ideas don't have to stay on the whiteboard.</p></div>
+      <a href="/projects/">Explore personal projects <span aria-hidden="true">↗</span></a>
+    </aside>
 
     <section class="work" id="work" aria-labelledby="work-title">
       <div class="wrap">

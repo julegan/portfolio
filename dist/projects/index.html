@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#111214"><meta name="color-scheme" content="dark">
+<meta name="description" content="Working ideas and interactive prototypes from Julie Owens. Try a project, follow its progress, and see what comes next.">
+<title>Personal projects — Julie Owens</title>
+<style>
+:root{--ink:#111214;--paper:#f1f2f4;--soft:#abb4bf;--line:#414850;--white:#fff;--card:#1a1d21;--mono:"SFMono-Regular",Consolas,"Liberation Mono",monospace;--sans:"Avenir Next",Avenir,"Segoe UI",Arial,sans-serif;font-family:var(--sans);color:var(--paper);background:var(--ink)}
+*{box-sizing:border-box}body{margin:0;line-height:1.6}a{color:inherit;text-underline-offset:4px}a:focus-visible{outline:3px solid var(--paper);outline-offset:5px}.skip{position:absolute;top:-100px;left:18px;background:var(--paper);color:var(--ink);padding:12px}.skip:focus{top:12px}.wrap{width:min(1190px,calc(100% - 88px));margin-inline:auto}.mono{font-family:var(--mono);font-size:11px;line-height:1.55;letter-spacing:.09em;text-transform:uppercase}.head{display:flex;align-items:center;justify-content:space-between;gap:24px;min-height:94px;border-bottom:1px solid var(--line)}.name{font-weight:600;text-decoration:none;font-size:19px;letter-spacing:-.04em}.nav{display:flex;align-items:center;gap:23px;font-size:13px}.nav .current{color:var(--white);text-decoration:none;border-bottom:1px solid #fff;padding-bottom:5px}.nav a:not(.current){color:var(--soft)}.hero{padding:88px 0 65px;display:grid;grid-template-columns:1.3fr .7fr;gap:54px;align-items:end}.eyebrow{font-family:var(--mono);font-size:11px;letter-spacing:.13em;text-transform:uppercase;color:var(--soft);margin:0 0 25px}.eyebrow:before{content:"";display:inline-block;width:6px;height:6px;background:#f1f2f4;margin-right:11px;vertical-align:2px}.hero h1{font-weight:500;font-size:clamp(57px,8vw,110px);line-height:.9;letter-spacing:-.079em;margin:0}.hero h1 em{font-style:normal;color:#9ba4b0}.intro{max-width:385px;font-size:18px;line-height:1.65;color:#c5ccd5;margin:0 0 5px}.metadata{display:flex;justify-content:space-between;gap:16px;align-items:center;padding:18px 0 15px;border-top:1px solid var(--line);color:var(--soft);margin-top:18px}.metadata span:last-child{text-align:right}.project-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:24px;margin:20px 0 86px}.project{border:1px solid #464e57;background:var(--card);display:flex;flex-direction:column;overflow:hidden;min-width:0}.thumbnail{display:block;background:#202b26;aspect-ratio:1.7;border-bottom:1px solid #464e57;overflow:hidden}.thumbnail img{display:block;width:100%;height:100%;object-fit:cover;transition:transform .2s}.thumbnail:hover img{transform:scale(1.025)}.project-body{padding:28px 30px 30px;display:flex;flex-direction:column;flex:1}.project-meta{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;font-family:var(--mono);font-size:11px;letter-spacing:.05em;color:var(--soft)}.status{display:inline-flex;align-items:center;gap:8px;color:#e0e9e0}.status:before{content:"";height:7px;width:7px;border-radius:50%;background:#cde871;display:inline-block}.project h2{font-size:clamp(27px,3vw,39px);font-weight:520;letter-spacing:-.055em;line-height:1.15;margin:21px 0 11px}.project-desc{font-size:15px;line-height:1.7;color:#c4cbd4;max-width:52ch;margin:0}.tags{list-style:none;display:flex;flex-wrap:wrap;gap:7px;padding:0;margin:23px 0 27px}.tags li{border:1px solid #5b656f;color:#d0d7df;border-radius:40px;padding:5px 10px;font-size:11px}.actions{display:flex;gap:12px;align-items:center;flex-wrap:wrap;margin-top:auto}.launch{display:inline-flex;align-items:center;gap:15px;text-decoration:none;background:var(--paper);color:var(--ink);padding:13px 18px;font-size:13px;font-weight:700;min-height:46px}.launch:hover{background:#d8dee5}.source{font-size:12px;color:#e1e7ec}.small-note{font-size:11px;line-height:1.5;color:var(--soft);margin:18px 0 0}.next{border:1px dashed #525b64;padding:35px 30px;min-height:430px;display:flex;flex-direction:column;justify-content:center;gap:15px}.next .number{font-family:var(--mono);font-size:64px;color:#58636f;line-height:1;letter-spacing:-.08em}.next h2{font-size:30px;font-weight:500;letter-spacing:-.055em;margin:0}.next p{font-size:15px;line-height:1.6;color:var(--soft);max-width:340px;margin:0}.statement{padding:45px 0 72px;border-top:1px solid var(--line);display:grid;grid-template-columns:1fr 1fr;gap:70px}.statement h2{font-size:clamp(29px,3.8vw,52px);letter-spacing:-.06em;line-height:1.1;font-weight:500;margin:0}.statement p{margin:0;color:#bfc7d1;font-size:16px;line-height:1.8}.footer{border-top:1px solid var(--line);display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;padding:25px 0 35px;color:var(--soft);font-family:var(--mono);font-size:11px;letter-spacing:.04em}
+@media(max-width:850px){.wrap{width:calc(100% - 44px)}.hero{grid-template-columns:1fr;gap:26px;padding:63px 0 45px}.intro{max-width:630px}.project-grid{grid-template-columns:1fr}.next{min-height:230px}.statement{grid-template-columns:1fr;gap:25px}}
+@media(max-width:520px){.wrap{width:calc(100% - 32px)}.head{min-height:75px}.nav{gap:12px;font-size:12px}.name{font-size:16px}.hero h1{font-size:clamp(48px,13vw,72px)}.intro{font-size:16px}.project-body{padding:24px 21px}.thumbnail{aspect-ratio:1.45}.metadata{align-items:start}.metadata span:last-child{max-width:140px}.statement{padding:38px 0 55px}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.thumbnail img{transition:none}}
+</style>
+</head>
+<body>
+<a class="skip" href="#main">Skip to projects</a>
+<header class="wrap head">
+  <a class="name" href="/">Julie Owens</a>
+  <nav class="nav" aria-label="Main"><a href="/">Portfolio</a><a class="current" href="/projects/" aria-current="page">Projects</a></nav>
+</header>
+<main id="main" class="wrap">
+  <section class="hero" aria-labelledby="page-heading">
+    <div><p class="eyebrow">Independent experiments / working prototypes</p><h1 id="page-heading">Ideas, made<br><em>real.</em></h1></div>
+    <p class="intro">A growing collection of things I'm exploring. Some solve practical problems, some test an interaction, and some exist because I was curious. Open one up and see how it works.</p>
+  </section>
+  <div class="metadata mono"><span>Personal projects / 001</span><span>Working ideas, not finished products</span></div>
+  <section class="project-grid" aria-label="Projects">
+    <article class="project">
+      <a class="thumbnail" href="/projects/shows/" aria-label="Launch SHOWS calendar prototype"><img src="/projects/shows-thumb.svg" alt="Preview of the SHOWS calendar: bright calendar cards against a dark background" width="1020" height="600"></a>
+      <div class="project-body">
+        <div class="project-meta"><span>01 / OCT 2026</span><span class="status">Working prototype</span></div>
+        <h2>SHOWS</h2>
+        <p class="project-desc">A calendar-first exploration of Portland's music, independent culture, creative learning, and opportunities to participate. Browse by date, find a place, and move events into your own calendar.</p>
+        <ul class="tags" aria-label="Project topics"><li>Event discovery</li><li>Calendar UX</li><li>Community</li><li>Accessible design</li></ul>
+        <div class="actions"><a class="launch" href="/projects/shows/">Launch prototype <span aria-hidden="true">↗</span></a><a class="source" href="https://github.com/julegan/shows" target="_blank" rel="noopener noreferrer">Explore code ↗</a></div>
+        <p class="small-note">Early prototype with a limited historical sample, not a live events service. The project continues to evolve.</p>
+      </div>
+    </article>
+    <section class="next" aria-label="Future projects">
+      <div class="number" aria-hidden="true">02—</div>
+      <p class="eyebrow">What comes next?</p>
+      <h2>An open space for the next idea.</h2>
+      <p>The ambition is a new small, usable prototype roughly each month. The schedule is a creative goal, not a guarantee.</p>
+    </section>
+  </section>
+  <section class="statement" aria-labelledby="why-title">
+    <div><p class="eyebrow">A working approach</p><h2 id="why-title">Less presentation.<br>More participation.</h2></div>
+    <p>I prefer exploring ideas through things you can use. These prototypes are invitations to try a concept, notice what works, and consider what might be better. They aren't endorsements, finished services, or a substitute for the original sources they may reference.</p>
+  </section>
+</main>
+<footer class="wrap footer"><span>Julie Owens / personal projects</span><a href="/">Return to the portfolio ↑</a></footer>
+</body>
+</html>
