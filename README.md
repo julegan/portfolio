@@ -24,7 +24,7 @@ Project stories will identify my role, collaborators, and documented outcomes. T
 - `/projects/shows/` embeds a self-contained snapshot of the [SHOWS](https://github.com/julegan/shows) event calendar prototype.
 - Each project card has a thumbnail, date/status, tags, concise description and direct launch link.
 - To add another project, create `dist/projects/<slug>/`, add a thumbnail SVG/image, and replicate a project card in `dist/projects/index.html`. No account, CMS, build system, or external service is necessary for this early gallery.
-- SHOWS's source repository remains the canonical development repository. The portfolio copy is a deployment snapshot; future SHOWS updates must be synced intentionally. The October–December 2026 snapshot contains 119 dated occurrences, including 65 music dates and the latest 39-date music expansion. It is manually maintained. [SHOWS-EDITORIAL.md](SHOWS-EDITORIAL.md) preserves the original underground music priority; [SHOWS-MUSIC-SOURCES.md](SHOWS-MUSIC-SOURCES.md) records the new bills, genre evidence, source gaps, and review process. [SHOWS-EVENT-SOURCES.md](SHOWS-EVENT-SOURCES.md) retains the earlier source review.
+- SHOWS's source repository remains the canonical development repository. The portfolio copy is a deployment snapshot; future SHOWS updates must be synced intentionally. The October–December 2026 snapshot contains 119 dated occurrences, including 101 music dates and the latest 39-date music expansion. It is manually maintained. [SHOWS-EDITORIAL.md](SHOWS-EDITORIAL.md) preserves the original underground music priority; [SHOWS-MUSIC-SOURCES.md](SHOWS-MUSIC-SOURCES.md) records the new bills, genre evidence, source gaps, and review process. [SHOWS-EVENT-SOURCES.md](SHOWS-EVENT-SOURCES.md) retains the earlier source review.
 - The gallery can grow gradually; the idea of one experiment per month is an aspiration rather than a promised release schedule.
 
 ## Site status
@@ -72,3 +72,6 @@ Browser, assistive-technology, and zoom/reflow review remain part of preparation
 ## Connect
 
 [LinkedIn](https://www.linkedin.com/in/julieh/)
+
+
+The October 17, 2026 SHOWS venue-coverage proposal adds 36 source-linked music dates (155 total occurrences, 101 music). See [SHOWS-VENUE-COVERAGE.md](SHOWS-VENUE-COVERAGE.md) for confirmed venue listings and documented source gaps. The SHOWS source of truth remains `julegan/shows`; this folder is a manually deployed snapshot requiring Julie's review.
