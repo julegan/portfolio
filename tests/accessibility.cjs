@@ -39,7 +39,7 @@ async function showsViews(browser,viewport){
     const artwork=event.locator(".show-art");
     const dimensions=await artwork.boundingBox();
     assert(dimensions?.width>100&&dimensions?.height>35,"SHOWS event thumbnails must be rendered visibly in List view");
-    assert.equal(await artwork.locator(".show-art-title").textContent(),await event.locator("h3").textContent(),"Thumbnail should identify the same event as the card");
+    assert(await artwork.locator(".show-art-placeholder").isVisible(),"Missing-source flyers must have a visible neutral placeholder");
   }
   if(await event.count()){
     await event.click();
