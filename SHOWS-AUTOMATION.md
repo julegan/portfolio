@@ -17,6 +17,6 @@ Both repositories require GitHub **Settings → Actions → General → Workflow
 
 The initial implementation also syncs a one-time change to `dist/projects/shows/app.js`, enabling clear **Listed time** labels and **time unverified** calendar exports for proposed records if an editor merges an automatic discovery PR without refining that field first.
 
-No publication is scheduled until **both** PRs are merged and the platform's existing deployment behavior is confirmed. The canonical JSON adapter itself is still an unverified pilot at No Fun; its first live fetch must be manually tested. No status, ticket inventory, cancellation monitoring or scraper guarantees are implied.
+No publication is scheduled until **both** PRs are merged and the platform's existing deployment behavior is confirmed. The canonical JSON adapter has passed a live source probe in GitHub Actions: 71 official No Fun calendar items were read, 15 new candidates survived conservative source conflict holds, and the complete calendar tests passed on the generated 197-event proposal. The **scheduled bot PR creation and portfolio sync** still require post-merge first-run verification. No status, ticket inventory, cancellation monitoring or scraper guarantees are implied.
 
 See canonical SHOWS [discovery/README.md](https://github.com/julegan/shows/blob/main/discovery/README.md) after that PR is merged for source priorities and limitations.
