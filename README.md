@@ -24,7 +24,7 @@ Project stories will identify my role, collaborators, and documented outcomes. T
 - `/projects/shows/` embeds a self-contained snapshot of the [SHOWS](https://github.com/julegan/shows) event calendar prototype.
 - Each project card has a thumbnail, date/status, tags, concise description and direct launch link.
 - To add another project, create `dist/projects/<slug>/`, add a thumbnail SVG/image, and replicate a project card in `dist/projects/index.html`. No account, CMS, build system, or external service is necessary for this early gallery.
-- SHOWS's source repository remains the canonical development repository. The portfolio copy is a deployment snapshot; future SHOWS updates must be synced intentionally. The October–November 2026 sample is not a live production calendar.
+- SHOWS's source repository remains the canonical development repository. The portfolio copy is a deployment snapshot; future SHOWS updates must be synced intentionally. The October–December 2026 snapshot contains 80 dated occurrences, including 69 additions. It is manually maintained; [SHOWS-EVENT-SOURCES.md](SHOWS-EVENT-SOURCES.md) records the proposed dates, source checks, and editorial review process.
 - The gallery can grow gradually; the idea of one experiment per month is an aspiration rather than a promised release schedule.
 
 ## Site status
