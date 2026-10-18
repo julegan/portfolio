@@ -78,3 +78,8 @@ The October 17, 2026 SHOWS venue-coverage proposal adds 36 source-linked music d
 
 
 SHOWS independent-venue + thumbnail release: [SHOWS-INDEPENDENT-VENUES.md](SHOWS-INDEPENDENT-VENUES.md) documents 27 additional Portland music dates, source conflicts and gaps in data ingestion. [SHOWS-ARTWORK.md](SHOWS-ARTWORK.md) explains non-representational event thumbnails and the review requirements for real flyer artwork. Published snapshot remains manually updated and requires approval.
+
+
+### Proposed SHOWS automation
+
+[SHOWS-AUTOMATION.md](SHOWS-AUTOMATION.md) explains the proposed daily source-of-truth sync from the approved `julegan/shows` main branch to a **portfolio review PR**, with publishing remaining separate. The matching canonical source discovery pilot is reviewed in [SHOWS PR #6](https://github.com/julegan/shows/pull/6). Neither workflow publishes unreviewed events.
