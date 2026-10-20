@@ -9,6 +9,7 @@
   const preview = byId("previewCanvas");
   const status = byId("status");
   const downloadButton = byId("download");
+  const interactiveButton = byId("downloadInteractive");
   const languageButtons = [...document.querySelectorAll("[data-lang]")];
   const photoFields = byId("photoFields");
   const font = 'Arial, Helvetica, sans-serif';
@@ -82,8 +83,8 @@
     return null;
   }
 
-  function buildSvg() {
-    const locale = state.language;
+  function buildSvg(language = state.language) {
+    const locale = language;
     const headline = byId(locale + "Title").value.trim();
     const description = byId(locale + "Desc").value.trim();
     const mode = byId("mode").value;
@@ -94,13 +95,15 @@
     const textLayout = layout(headline, height);
     if (!textLayout) return { message: "That headline does not fit this format. Try shorter text or a taller aspect ratio." };
 
+    const titleId = "hopper-" + locale + "-title";
+    const descriptionId = "hopper-" + locale + "-description";
     const svg = element("svg", {
       xmlns:NS, width:1200, height, viewBox:"0 0 1200 " + height,
-      role:"img", "aria-labelledby":description ? "hopper-title hopper-description" : "hopper-title",
+      role:"img", "aria-labelledby":description ? titleId + " " + descriptionId : titleId,
       "xml:lang":locale
     });
-    svg.append(element("title", {id:"hopper-title"}, headline));
-    if (description) svg.append(element("desc", {id:"hopper-description"}, description));
+    svg.append(element("title", {id:titleId}, headline));
+    if (description) svg.append(element("desc", {id:descriptionId}, description));
     svg.append(element("rect", {width:1200,height,fill:colors.background}));
 
     if (mode === "photo") {
@@ -133,9 +136,20 @@
     return { svg, height, mode };
   }
 
+  function refreshInteractiveExport() {
+    const english = buildSvg("en");
+    const spanish = buildSvg("es");
+    const ready = Boolean(english.svg && spanish.svg);
+    interactiveButton.disabled = !ready;
+    byId("demoHint").textContent = ready
+      ? "Ready: download one self-contained HTML demo that switches languages offline."
+      : "To export an interactive demo, both headlines must fit. Photo mode also needs a valid photo.";
+  }
+
   function render() {
     const mode = byId("mode").value;
     photoFields.hidden = mode !== "photo";
+    refreshInteractiveExport();
     const result = buildSvg();
     if (result.message) { error(result.message); return; }
     state.svg = result.svg;
@@ -163,6 +177,92 @@
     window.setTimeout(() => URL.revokeObjectURL(url),1000);
     status.dataset.error = "false";
     status.textContent = "SVG downloaded. Supply appropriate alt text and review in its publishing context.";
+  }
+
+
+  // Make a completely standalone HTML file. Input text only enters through SVG
+  // DOM text nodes, so it is escaped by the browser's HTML serializer.
+  function buildInteractiveHtml(englishSvg, spanishSvg, initial) {
+    const output = document.implementation.createHTMLDocument("SVG Hopper — Interactive graphic");
+    output.documentElement.lang = initial;
+    output.head.innerHTML = String.raw`<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="color-scheme" content="light">
+<style>
+  :root { font-family: Arial, Helvetica, sans-serif; color: #14191d; background: #edf0f2; }
+  * { box-sizing: border-box; }
+  body { max-width: 1100px; margin: 0 auto; padding: clamp(16px, 4vw, 45px); line-height: 1.5; }
+  header { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 20px; margin-bottom: 20px; }
+  h1 { font-size: clamp(23px, 3vw, 35px); line-height: 1.2; margin: 0; letter-spacing: -.04em; }
+  .controls { display: inline-flex; border: 1px solid #303942; }
+  button { background: #fff; color: #151a1f; border: 0; padding: 12px 21px; font: inherit; min-height: 46px; cursor: pointer; }
+  button + button { border-left: 1px solid #303942; }
+  button[aria-pressed="true"] { background: #182c35; color: #fff; font-weight: 700; }
+  button:focus-visible { outline: 3px solid #005fcc; outline-offset: 4px; position: relative; z-index: 1; }
+  .graphic { border: 1px solid #75838c; background: #fff; overflow: hidden; }
+  .graphic svg { display: block; width: 100%; height: auto; }
+  [hidden] { display: none !important; }
+  .note { max-width: 76ch; font-size: 14px; color: #38444d; }
+</style>`;
+    output.body.innerHTML = String.raw`<main>
+<header><h1>SVG Hopper / Language-ready graphic</h1>
+<div class="controls" role="group" aria-label="Graphic language">
+<button type="button" data-language="en">English</button><button type="button" data-language="es">Español</button></div></header>
+<div id="graphic-en" class="graphic"></div>
+<div id="graphic-es" class="graphic"></div>
+<p id="language-status" role="status" aria-live="polite" class="note"></p>
+<p class="note">The same composition is exported with real SVG text in two languages. Translations are supplied by the author, not generated automatically. When publishing a graphic as an image, use a context-appropriate HTML text alternative. This standalone HTML demonstration is not a Drupal media integration.</p>
+<noscript><p class="note">JavaScript is required to switch languages. The initial graphic is still visible.</p></noscript>
+</main>`;
+    for (const [language, source] of [["en", englishSvg], ["es", spanishSvg]]) {
+      const wrapper = output.getElementById("graphic-" + language);
+      wrapper.hidden = language !== initial;
+      wrapper.appendChild(output.importNode(source, true));
+    }
+    const script = output.createElement("script");
+    script.textContent = String.raw`(() => {
+  const buttons = Array.from(document.querySelectorAll("[data-language]"));
+  function showLanguage(language) {
+    if (language !== "en" && language !== "es") return;
+    for (const code of ["en", "es"]) {
+      document.getElementById("graphic-" + code).hidden = code !== language;
+    }
+    for (const button of buttons) {
+      button.setAttribute("aria-pressed", String(button.dataset.language === language));
+    }
+    document.documentElement.lang = language;
+    document.title = language === "es" ? "SVG Hopper — Demostración interactiva" : "SVG Hopper — Interactive demo";
+    document.getElementById("language-status").textContent =
+      language === "es" ? "Vista previa en español." : "English preview.";
+  }
+  buttons.forEach(button => button.addEventListener("click", () => showLanguage(button.dataset.language)));
+  showLanguage(document.documentElement.lang);
+})();`;
+    output.body.appendChild(script);
+    return "<!doctype html>\n" + output.documentElement.outerHTML;
+  }
+
+  function downloadInteractive() {
+    const english = buildSvg("en");
+    const spanish = buildSvg("es");
+    if (!english.svg || !spanish.svg) {
+      status.dataset.error = "true";
+      status.textContent = "Both language versions must fit before exporting the interactive demo.";
+      refreshInteractiveExport();
+      return;
+    }
+    const html = buildInteractiveHtml(english.svg, spanish.svg, state.language);
+    const blob = new Blob([html], {type:"text/html;charset=utf-8"});
+    const url = URL.createObjectURL(blob);
+    const link = document.createElement("a");
+    link.href = url;
+    link.download = "svg-hopper-interactive-" + byId("ratio").value.replace(":", "x") + ".html";
+    document.body.append(link);
+    link.click();
+    link.remove();
+    window.setTimeout(() => URL.revokeObjectURL(url), 1000);
+    status.dataset.error = "false";
+    status.textContent = "Interactive HTML demo downloaded. Open it in a browser and switch between English and Spanish offline.";
   }
 
   function readPhoto(file) {
@@ -208,5 +308,6 @@
     render();
   }));
   downloadButton.addEventListener("click", download);
+  interactiveButton.addEventListener("click", downloadInteractive);
   render();
 })();
