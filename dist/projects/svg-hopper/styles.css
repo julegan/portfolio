@@ -3,3 +3,7 @@
 @media(max-width:1050px){.studio{grid-template-columns:1fr}.preview-section{position:static}.controls{max-width:none}.preview-canvas{min-height:0}}
 @media(max-width:680px){.shell{width:calc(100% - 30px)}.site-header{min-height:75px}.header-meta{font-size:10px}.intro{grid-template-columns:1fr;padding:52px 0 40px;gap:22px}.intro-aside{justify-self:start}.controls{padding:22px}.preview-header{padding:20px;align-items:start;flex-wrap:wrap}.preview-bottom{padding:15px 20px}.preview-help{padding:0 20px 22px}.notes{grid-template-columns:1fr;gap:16px;padding:40px 0}.intro h1{font-size:clamp(58px,15vw,95px)}.studio{margin-bottom:50px}}
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+
+/* Keep the interactive export visible and discoverable alongside the plain SVG export. */
+#downloadInteractive{flex:1 1 185px}
+#demoHint{margin-top:4px;margin-bottom:10px}
