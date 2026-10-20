@@ -1,0 +1,112 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#101317">
+  <meta name="description" content="SVG Hopper: an experimental, no-code graphic composer for editable text, flexible formats, and language-ready SVGs.">
+  <title>SVG Hopper — graphic composer prototype</title>
+  <link rel="stylesheet" href="./styles.css">
+  <script src="./app.js" defer></script>
+</head>
+<body>
+<a class="skip" href="#composer">Skip to composer</a>
+<header class="shell site-header">
+  <a class="wordmark" href="/projects/" aria-label="Back to all projects">← Julie Owens / Projects</a>
+  <span class="header-meta">INDEPENDENT EXPERIMENT · V0.1</span>
+</header>
+<main class="shell" id="main">
+  <div class="intro">
+    <div>
+      <p class="eyebrow">A tiny tool for useful graphics</p>
+      <h1>SVG <em>Hopper.</em></h1>
+      <p class="lede">Make a graphic without making a new file for every language. Choose a look, add your text or a photo, and export an SVG.</p>
+    </div>
+    <div class="intro-aside">
+      <span class="number">01 /</span>
+      <p>Real SVG text. Optional raster photo. No AI guesses, subscriptions, uploads to a server, or build step.</p>
+    </div>
+  </div>
+
+  <div class="studio" id="composer">
+    <form id="controls" class="controls" novalidate>
+      <h2>Compose</h2>
+      <p class="section-note">Start with the example, then change anything below.</p>
+      <fieldset>
+        <legend><span class="step">01</span> Composition</legend>
+        <div class="fields">
+          <label for="mode">Background
+            <select id="mode"><option value="vector">Vector shapes — no photo</option><option value="photo">Your photo + SVG text</option></select>
+          </label>
+          <label for="preset">Style
+            <select id="preset"><option value="ink">Ink / monochrome</option><option value="blue">Blue / civic-inspired</option><option value="green">Green / resource-inspired</option></select>
+          </label>
+          <label for="ratio">Aspect ratio
+            <select id="ratio"><option value="16:9">16:9 / landscape</option><option value="4:3">4:3 / editorial</option><option value="1:1">1:1 / square</option><option value="9:16">9:16 / portrait</option></select>
+          </label>
+          <div id="photoFields" class="photo-fields" hidden>
+            <label for="photo">Choose a photo (PNG, JPEG or WebP; max 8 MB)
+              <input type="file" id="photo" accept="image/png,image/jpeg,image/webp">
+            </label>
+            <label for="photoFit">Photo framing
+              <select id="photoFit"><option value="cover">Fill frame (may crop)</option><option value="contain">Show full photo (may add margins)</option></select>
+            </label>
+            <p class="hint">The photo stays raster. The words and overlays remain SVG elements. Selected images stay in your browser.</p>
+          </div>
+        </div>
+      </fieldset>
+      <fieldset>
+        <legend><span class="step">02</span> Your words</legend>
+        <div class="fields">
+          <label for="enTitle">English headline
+            <textarea id="enTitle" rows="2" maxlength="150" required>Repair is a resource.</textarea>
+          </label>
+          <label for="esTitle">Spanish headline <span class="optional">(provide reviewed text)</span>
+            <textarea id="esTitle" rows="2" maxlength="150">Reparar es aprovechar.</textarea>
+          </label>
+          <label for="enDesc">Image description, English <span class="optional">(optional)</span>
+            <textarea id="enDesc" rows="2" maxlength="300" placeholder="Only describe meaningful visual information beyond the headline."></textarea>
+          </label>
+          <label for="esDesc">Image description, Spanish <span class="optional">(optional)</span>
+            <textarea id="esDesc" rows="2" maxlength="300" placeholder="Describe la información visual que aporta algo nuevo."></textarea>
+          </label>
+        </div>
+      </fieldset>
+      <fieldset>
+        <legend><span class="step">03</span> Language</legend>
+        <div class="segmented" role="group" aria-label="Preview language">
+          <button type="button" data-lang="en" class="lang-button" aria-pressed="true">English</button>
+          <button type="button" data-lang="es" class="lang-button" aria-pressed="false">Español</button>
+        </div>
+        <p class="hint">SVG Hopper does not translate text. You supply and review each language version.</p>
+      </fieldset>
+      <div class="form-actions">
+        <button type="submit" class="primary" id="generate">Generate SVG <span aria-hidden="true">↗</span></button>
+        <button type="button" class="secondary" id="download" disabled>Download SVG ↓</button>
+      </div>
+      <p id="status" class="status" role="status" aria-live="polite">Ready to generate the sample.</p>
+    </form>
+
+    <section class="preview-section" aria-labelledby="preview-heading">
+      <div class="preview-header"><div><p class="eyebrow">Live composition</p><h2 id="preview-heading">Your graphic</h2></div><span id="sizeLabel" class="preview-meta">1200 × 675 · SVG</span></div>
+      <div class="preview-canvas" id="previewCanvas" aria-label="SVG preview"></div>
+      <div class="preview-bottom">
+        <span id="fileType">100% vector illustration</span>
+        <span id="languageLabel">English preview</span>
+      </div>
+      <p class="hint preview-help">This preview shows an inline SVG. SVG files embedded on websites as ordinary images do not automatically switch languages; your publishing system needs to handle that separately.</p>
+    </section>
+  </div>
+
+  <section class="notes" aria-labelledby="notes-title">
+    <div><p class="eyebrow">Why this exists</p><h2 id="notes-title">Less production overhead.<br>More accessible communication.</h2></div>
+    <div>
+      <p>People should be able to focus on their message instead of solving typography, layout, translation, and image-format problems from scratch.</p>
+      <p><strong>Prototype limits:</strong> This tool uses example styles—not official government branding. It keeps text as text and uses an opaque panel for predictable contrast. It does not certify WCAG conformance or the quality of translations. Review exported graphics and supply a context-appropriate HTML <code>alt</code> attribute when publishing them as images.</p>
+      <p>Built independently as an open-ended experiment. <a href="https://github.com/julegan/portfolio/tree/main/dist/projects/svg-hopper" rel="noopener noreferrer">Source in the portfolio repository ↗</a></p>
+    </div>
+  </section>
+</main>
+<footer class="shell footer"><a href="/projects/">← All projects</a><span>SVG Hopper / Prototype 0.1</span></footer>
+</body>
+</html>
