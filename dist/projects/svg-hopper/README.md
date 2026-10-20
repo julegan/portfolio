@@ -1,4 +1,4 @@
-# SVG Hopper 0.1 — browser-only prototype
+# SVG Hopper 0.2 — browser-only prototype
 
 A small, independent demonstration of configurable, language-ready SVG graphics. This is not a City of Portland service or official brand implementation.
 
@@ -21,6 +21,7 @@ No build, account, AI model, API key, backend, or dependency install required. F
 - English and Spanish **user-supplied** copy and optional descriptions. Languages are switched by rendering the same composition with different real `<text>`/`<tspan>` nodes; no automatic translation.
 - High-contrast, opaque text panels, explicit SVG `<title>`, optional `<desc>`, and download as actual standalone SVG.
 - Dynamic text wrapping and font-size adjustment, with an error rather than exporting text that cannot be laid out.
+- **Download interactive demo**: a self-contained `.html` file with both language versions embedded as real inline SVGs. Language buttons work after export, offline. No servers, scripts, or assets are fetched.
 
 ## Review checklist
 
@@ -28,14 +29,17 @@ No build, account, AI model, API key, backend, or dependency install required. F
 2. Switch to Spanish, then blank the Spanish headline and confirm generation/download blocks. Enter the translation again.
 3. Select **Your photo + SVG text**, upload a valid local JPEG/PNG/WebP, and compare **fill frame** versus **show full photo**.
 4. Try each aspect ratio with short and long text. Long copy must fit inside the solid text panel or show an explicit validation message.
-5. Verify keyboard-only controls, visible focus, the status message, and layouts at small viewport sizes and browser zoom.
-6. Open the saved SVG in an independent viewer; try using it in a simple HTML page with a context-appropriate `<img alt="...">`.
+5. Download the interactive HTML with both headlines, open it offline, and switch English/Spanish using mouse, keyboard and screen reader. Confirm correct `<html lang>`, aria-pressed state, visibility and translated `<title>`/`<desc>` text. Test starting from Spanish selection too.
+6. Clear or greatly lengthen either headline and verify the interactive export disables itself rather than making a broken download.
+7. Verify keyboard-only controls, visible focus, the status message, and layouts at small viewport sizes and browser zoom.
+8. Open the saved SVG in an independent viewer; try using it in a simple HTML page with a context-appropriate `<img alt="...">`.
 
 ## Known limitations
 
 - This proof of concept does **not** translate text, integrate with Drupal, apply an organization's approved design tokens, or certify WCAG compliance.
-- SVG text is editable and language-ready, **not automatically translated** when an SVG is displayed by a CMS as a conventional image (`<img>`). Drupal would need a deliberate translation/rendering strategy.
+- SVG text is editable and language-ready, **not automatically translated** when an SVG is displayed by a CMS as a conventional image (`<img>`). The interactive export is a full HTML page containing two inline SVGs plus local JavaScript, **not** a single auto-translating SVG file. Drupal would need a deliberate translation/rendering strategy.
 - The image description is encoded in `<desc>` for inline SVG. An image published as `<img>` still requires an appropriate HTML `alt` attribute.
+- Photo-backed interactive HTML exports may be large because the photo is embedded independently in both language SVGs. All text remains vector.
 - Uploaded photos stay raster even though they are embedded inside the SVG. Fully vector output is available only in **Vector shapes** mode.
 - SVG aspect ratios are presets, not a freely editable canvas; photo cropping uses center alignment. The composer does not analyze the photo content.
 - SVG fonts refer to common system fonts. Different installed fonts/renderers may render text differently; production systems would need controlled font assets and fuller text-layout testing.

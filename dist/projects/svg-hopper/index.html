@@ -13,7 +13,7 @@
 <a class="skip" href="#composer">Skip to composer</a>
 <header class="shell site-header">
   <a class="wordmark" href="/projects/" aria-label="Back to all projects">← Julie Owens / Projects</a>
-  <span class="header-meta">INDEPENDENT EXPERIMENT · V0.1</span>
+  <span class="header-meta">INDEPENDENT EXPERIMENT · V0.2</span>
 </header>
 <main class="shell" id="main">
   <div class="intro">
@@ -83,7 +83,9 @@
       <div class="form-actions">
         <button type="submit" class="primary" id="generate">Generate SVG <span aria-hidden="true">↗</span></button>
         <button type="button" class="secondary" id="download" disabled>Download SVG ↓</button>
+        <button type="button" class="secondary" id="downloadInteractive" disabled>Download interactive demo ↓</button>
       </div>
+      <p id="demoHint" class="hint">The interactive demo includes both languages in a single offline HTML file.</p>
       <p id="status" class="status" role="status" aria-live="polite">Ready to generate the sample.</p>
     </form>
 
@@ -94,7 +96,7 @@
         <span id="fileType">100% vector illustration</span>
         <span id="languageLabel">English preview</span>
       </div>
-      <p class="hint preview-help">This preview shows an inline SVG. SVG files embedded on websites as ordinary images do not automatically switch languages; your publishing system needs to handle that separately.</p>
+      <p class="hint preview-help">This preview shows an inline SVG. Download an interactive HTML demo to switch between languages after export. An SVG displayed as an ordinary image does not automatically change languages; a publishing system needs integration for that.</p>
     </section>
   </div>
 
@@ -103,10 +105,11 @@
     <div>
       <p>People should be able to focus on their message instead of solving typography, layout, translation, and image-format problems from scratch.</p>
       <p><strong>Prototype limits:</strong> This tool uses example styles—not official government branding. It keeps text as text and uses an opaque panel for predictable contrast. It does not certify WCAG conformance or the quality of translations. Review exported graphics and supply a context-appropriate HTML <code>alt</code> attribute when publishing them as images.</p>
+      <p>The interactive demo is a standalone HTML page, not a multilingual SVG file or Drupal integration. Open the downloaded HTML in a browser and use its language buttons.</p>
       <p>Built independently as an open-ended experiment. <a href="https://github.com/julegan/portfolio/tree/main/dist/projects/svg-hopper" rel="noopener noreferrer">Source in the portfolio repository ↗</a></p>
     </div>
   </section>
 </main>
-<footer class="shell footer"><a href="/projects/">← All projects</a><span>SVG Hopper / Prototype 0.1</span></footer>
+<footer class="shell footer"><a href="/projects/">← All projects</a><span>SVG Hopper / Prototype 0.2</span></footer>
 </body>
 </html>
