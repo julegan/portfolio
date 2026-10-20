@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1020" height="600" viewBox="0 0 1020 600" role="img" aria-labelledby="title desc">
+<title id="title">SVG Hopper prototype preview</title>
+<desc id="desc">Abstract vector forms and the editable-style headline Repair is a resource on a dark panel.</desc>
+<rect width="1020" height="600" fill="#dcefe6"/>
+<circle cx="805" cy="165" r="260" fill="#aad39e"/>
+<circle cx="710" cy="208" r="150" fill="none" stroke="#6e9679" stroke-width="14"/>
+<path d="M-40 210 Q370 -75 800 245" fill="none" stroke="#5e9278" stroke-width="7"/>
+<path d="M80 90H180" stroke="#19392f" stroke-width="14"/>
+<rect x="0" y="282" width="1020" height="318" fill="#19392f"/>
+<rect x="70" y="315" width="88" height="8" fill="#aad39e"/>
+<text x="70" y="427" fill="#fff" font-family="Arial,Helvetica,sans-serif" font-weight="700" font-size="70" letter-spacing="-1.5">Repair is</text>
+<text x="70" y="509" fill="#fff" font-family="Arial,Helvetica,sans-serif" font-weight="700" font-size="70" letter-spacing="-1.5">a resource.</text>
+<text x="762" y="559" fill="#d5e8de" font-family="Arial,Helvetica,sans-serif" font-size="19" letter-spacing="3">SVG HOPPER</text>
+</svg>
