@@ -62,7 +62,8 @@
     const items=filtered();
     const date=new Date(state.month+"-01T12:00:00Z");
     $("period").textContent=monthFmt.format(date);
-    $("resultCount").textContent=items.length+" event"+(items.length===1?"":"s")+" in view"+(state.selectedDay?" · "+readableDay(state.selectedDay):"");
+    const periodLabel=state.quick==="all"?" in "+monthFmt.format(date):" in view";
+    $("resultCount").textContent=items.length+" event"+(items.length===1?"":"s")+periodLabel+" · "+events.length+" total event"+(events.length===1?"":"s")+(state.selectedDay?" · "+readableDay(state.selectedDay):"");
     $("exportVisible").disabled=!items.length;
     document.querySelectorAll("[data-view]").forEach(b=>b.setAttribute("aria-pressed",String(b.dataset.view===state.view)));
     document.querySelectorAll("[data-quick]").forEach(b=>b.setAttribute("aria-pressed",String(b.dataset.quick===state.quick)));
