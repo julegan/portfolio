@@ -25,3 +25,6 @@ jobs:
         env:
           SHOWS_PORTFOLIO: '1'
         run: node tests/accessibility.cjs
+
+      - name: A/B preview behavior and accessibility
+        run: node tests/shows-previews.cjs
