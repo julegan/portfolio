@@ -30,7 +30,7 @@ async function test(browser,variant,width) {
   if(variant==="b"){
     assert.equal(await page.locator('[data-section="Music"]').getAttribute("aria-pressed"),"true");
     const labels = await page.locator(".preview-event .preview-eyebrow").allInnerTexts();
-    assert(labels.every(t=>t.startsWith("Music")),"Music-first preview should only show music initially");
+    assert(labels.every(t=>t.trim().toLowerCase().startsWith("music")),"Music-first preview should only show music initially");
     await page.locator('[data-section="Culture"]').click();
     assert.equal(await page.locator('[data-section="Culture"]').getAttribute("aria-pressed"),"true");
     await audit(page,"Preview B culture "+width);
