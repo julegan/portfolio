@@ -71,7 +71,7 @@
       groups.get(day).push(e);
     }
     let html = "";
-    if (state.start === today && !groups.has(today)) {
+    if (state.start === today && !groups.has(today) && groups.size > 0) {
       html += '<div class="preview-empty"><h3>Nothing listed today yet.</h3><p>Keep scrolling for upcoming events. This pilot does not have complete coverage of every venue.</p></div>';
     }
     for (const [day, list] of groups) {
