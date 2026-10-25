@@ -63,7 +63,7 @@ async function showsViews(browser,viewport){
       };
     });
     assert(snapshot.total>=470,"Approved SHOWS event snapshot loads");
-    assert(snapshot.withArtwork>=310,"Previously approved artwork references are loaded");
+    assert(snapshot.withArtwork>=318,"Approved and newly proposed artwork references are loaded");
     assert(snapshot.hasApprovedFlyer,"Recently approved show artwork appears in loaded event data");
   }
   const ymd=()=>{
