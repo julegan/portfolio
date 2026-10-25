@@ -181,3 +181,53 @@ body:not([data-preview]) .preview-shell{padding-top:0}
     width:100%;
   }
 }
+
+
+/* The native iOS WebKit date control miscalculates padded 100%-width fields.
+   Keep the date picker, but put the border and padding on a bounded wrapper. */
+.preview-filters .preview-date-field{
+  display:flex;
+  align-items:center;
+  width:100%;
+  min-width:0;
+  max-width:100%;
+  min-height:44px;
+  padding:0 11px;
+  border:1px solid #929e93;
+  border-radius:4px;
+  background:#fff;
+  box-sizing:border-box;
+  overflow:hidden;
+}
+.preview-filters .preview-date-field input[type="date"]{
+  -webkit-appearance:none;
+  appearance:none;
+  display:block;
+  flex:1 1 0;
+  width:100%;
+  max-width:100%;
+  min-width:0;
+  min-height:42px;
+  margin:0;
+  padding:0;
+  border:0;
+  border-radius:0;
+  background:transparent;
+  color:var(--ink);
+  font:inherit;
+  text-align:center;
+  box-sizing:border-box;
+}
+.preview-filters .preview-date-field input[type="date"]::-webkit-date-and-time-value{
+  min-height:1.5em;
+  height:1.5em;
+  line-height:1.5em;
+  text-align:center;
+}
+.preview-filters .preview-date-field:focus-within{
+  outline:3px solid #24518c;
+  outline-offset:3px;
+}
+.preview-filters .preview-date-field input[type="date"]:focus-visible{
+  outline:none;
+}
