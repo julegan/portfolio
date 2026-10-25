@@ -1,5 +1,7 @@
 "use strict";
 const assert=require("node:assert/strict");
+const fs=require("node:fs");
+const crypto=require("node:crypto");
 const { chromium }=require("playwright");
 const axePath=require.resolve("axe-core/axe.min.js");
 const isPortfolio=process.env.SHOWS_PORTFOLIO==="1";
@@ -33,7 +35,37 @@ async function showsViews(browser,viewport){
   page.on("pageerror",e=>pageErrors.push(e.message));
   const response=await page.goto(origin+(isPortfolio?"/projects/shows/":"/"),{waitUntil:"domcontentloaded"});
   assert.equal(response.status(),200,"SHOWS homepage must load");
+  assert.equal(await page.locator("main h1").count(),1,"Event browsing page has one primary heading");
+  assert.equal(await page.locator("main h1").innerText(),"Upcoming in Portland","Direct page heading replaces slogan");
+  assert.equal(await page.locator(".masthead .hero").count(),0,"No oversized marketing hero above events");
+  assert.equal(await page.locator(".shows-intro").count(),1,"Compact editorial intro appears above browsing");
+  if(viewport.width<=680){
+    const headerHeight=await page.locator(".masthead").evaluate(el=>el.getBoundingClientRect().height);
+    const introHeight=await page.locator(".shows-intro").evaluate(el=>el.getBoundingClientRect().height);
+    assert(headerHeight<=155,"Mobile masthead must leave room for event browsing");
+    assert(introHeight<=225,"Mobile editorial intro should remain compact");
+  }
   if(isPortfolio)await assertFavicon(page,"SHOWS");
+  if(isPortfolio){
+    // A new reviewed events.js must result in a new static script URL.
+    // Otherwise mobile browsers/CDNs may keep the previous artwork snapshot.
+    const data=fs.readFileSync("dist/projects/shows/events.js");
+    const blob=Buffer.concat([Buffer.from("blob "+data.length+"\0"),data]);
+    const version=crypto.createHash("sha1").update(blob).digest("hex").slice(0,12);
+    const src=await page.locator('script[src^="./events.js"]').getAttribute("src");
+    assert.equal(src,"./events.js?v="+version,"SHOWS asset URL must version its current data content");
+    const snapshot=await page.evaluate(()=>{
+      const events=window.SHOWS_EVENTS||[];
+      return {
+        total:events.length,
+        withArtwork:events.filter(e=>!!e.artwork?.url).length,
+        hasApprovedFlyer:!!events.find(e=>e.id==="dantes-blitzkid-2026-10-27")?.artwork?.url
+      };
+    });
+    assert(snapshot.total>=470,"Approved SHOWS event snapshot loads");
+    assert(snapshot.withArtwork>=318,"Approved and newly proposed artwork references are loaded");
+    assert(snapshot.hasApprovedFlyer,"Recently approved show artwork appears in loaded event data");
+  }
   const ymd=()=>{
     const fields=new Intl.DateTimeFormat("en-US",{timeZone:"America/Los_Angeles",year:"numeric",month:"2-digit",day:"2-digit"}).formatToParts(new Date());
     const p=t=>fields.find(x=>x.type===t).value;return p("year")+"-"+p("month")+"-"+p("day");
