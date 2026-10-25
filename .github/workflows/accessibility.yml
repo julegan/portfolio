@@ -28,3 +28,5 @@ jobs:
 
       - name: A/B preview behavior and accessibility
         run: node tests/shows-previews.cjs
+      - name: Mobile native date field fits all viewport widths
+        run: node tests/shows-mobile-date.cjs
