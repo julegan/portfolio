@@ -50,7 +50,7 @@ async function showsViews(browser,viewport){
     // A new reviewed events.js must result in a new static script URL.
     // Otherwise mobile browsers/CDNs may keep the previous artwork snapshot.
     const data=fs.readFileSync("dist/projects/shows/events.js");
-    const blob=Buffer.concat([Buffer.from("blob "+data.length+"\\0"),data]);
+    const blob=Buffer.concat([Buffer.from("blob "+data.length+"\0"),data]);
     const version=crypto.createHash("sha1").update(blob).digest("hex").slice(0,12);
     const src=await page.locator('script[src^="./events.js"]').getAttribute("src");
     assert.equal(src,"./events.js?v="+version,"SHOWS asset URL must version its current data content");
