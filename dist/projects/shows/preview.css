@@ -186,27 +186,33 @@ body:not([data-preview]) .preview-shell{padding-top:0}
 /* The native iOS WebKit date control miscalculates padded 100%-width fields.
    Keep the date picker, but put the border and padding on a bounded wrapper. */
 .preview-filters .preview-date-field{
-  display:flex;
-  align-items:center;
+  /* Don't use a flex container here: it blockifies the native date input,
+     triggering WebKit bug 139848 (iPhone date text aligned to the top). */
+  display:block;
   width:100%;
   min-width:0;
   max-width:100%;
-  min-height:44px;
+  height:44px;
   padding:0 11px;
   border:1px solid #929e93;
   border-radius:4px;
   background:#fff;
   box-sizing:border-box;
+  line-height:42px;
+  text-align:center;
   overflow:hidden;
 }
 .preview-filters .preview-date-field input[type="date"]{
   -webkit-appearance:none;
   appearance:none;
-  display:block;
-  flex:1 1 0;
+  /* Native iOS date values are vertically centered with inline-block,
+     unlike display:block or a blockified flex item. */
+  display:inline-block;
+  vertical-align:middle;
   width:100%;
   max-width:100%;
   min-width:0;
+  height:42px;
   min-height:42px;
   margin:0;
   padding:0;
