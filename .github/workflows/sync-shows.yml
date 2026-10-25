@@ -64,8 +64,20 @@ jobs:
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git switch -c "$branch"
           cp /tmp/shows-canonical-events.js "$dest"
-          git add -- "$dest"
-          git commit -m "Propose portfolio SHOWS data sync from approved main"
+          # Static hosting can cache events.js across releases. Use Git's content
+          # hash as the public asset version so a reviewed sync also refreshes it.
+          version="$(git hash-object "$dest" | cut -c1-12)"
+          SHOWS_EVENTS_VERSION="$version" node - <<'NODE'
+          const fs=require('node:fs');
+          const page='dist/projects/shows/index.html';
+          const html=fs.readFileSync(page,'utf8');
+          const match=/<script src="\.\/events\.js(?:\?v=[a-f0-9]+)?"><\/script>/;
+          if(!match.test(html))throw Error('Missing supported SHOWS event script reference');
+          const next=html.replace(match,'<script src="./events.js?v='+process.env.SHOWS_EVENTS_VERSION+'"></script>');
+          fs.writeFileSync(page,next);
+          NODE
+          git add -- "$dest" dist/projects/shows/index.html
+          git commit -m "Propose approved SHOWS data sync and refresh event asset version"
           git push --set-upstream origin "$branch"
-          gh pr create --head "$branch" --base main             --title "Review portfolio SHOWS event sync from canonical main"             --body "Auto-generated from the canonical, editorially approved SHOWS main branch. Please review event changes and merge this snapshot PR to update /projects/shows/. This updates event data only; app and CSS changes require separate development review. No direct publishing is performed."
+          gh pr create --head "$branch" --base main             --title "Review portfolio SHOWS event sync from canonical main"             --body "Auto-generated from the canonical, editorially approved SHOWS main branch. Please review event changes and merge this snapshot PR to update /projects/shows/. This updates event data and the related static script URL cache version only; app logic and CSS require separate development review. No direct publishing is performed."
           echo "Prepared portfolio snapshot PR. Site was not automatically changed." >> "$GITHUB_STEP_SUMMARY"

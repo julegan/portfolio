@@ -75,7 +75,7 @@
   function art(e, detail) {
     const a = e.artwork;
     const ok = a && /^https:\/\/[^<>"'\s]+$/i.test(a.url || "") && /^https:\/\//i.test(a.sourceUrl || "") &&
-      (a.origin === "official-event-page" || a.usageApproved === true) && a.usageApproved !== false;
+      (a.origin === "official-event-page" || a.origin === "official-venue-calendar" || a.usageApproved === true) && a.usageApproved !== false;
     const content = ok ? '<img alt="" loading="lazy" decoding="async" referrerpolicy="strict-origin-when-cross-origin" src="' + esc(a.url) + '">' : '<span>No flyer available</span>';
     return '<span aria-hidden="true" class="' + (detail ? "preview-detail-art" : "preview-art") + '">' + content + '</span>';
   }
@@ -141,8 +141,8 @@
     $("freeOnly").setAttribute("aria-pressed", String(state.onlyFree));
     $("savedOnly").setAttribute("aria-pressed", String(state.onlySaved));
     document.querySelectorAll("[data-view]").forEach(b => b.setAttribute("aria-pressed", String(b.dataset.view === state.view)));
-    $("previewTitle").textContent = state.view === "month" ? monthLabel :
-      state.start === today ? "Happening from today" : "Happening from "+state.start;
+    $("previewTitle").textContent = state.view === "month" ? monthLabel + " in Portland" :
+      state.start === today ? "Upcoming in Portland" : "From " + state.start;
   }
   function icsEscape(s) { return String(s || "").replace(/\\/g,"\\\\").replace(/\r?\n/g,"\\n").replace(/,/g,"\\,").replace(/;/g,"\\;"); }
   function icsDate(date) { return date.toISOString().replace(/[-:]/g,"").replace(/\.\d{3}/,""); }
