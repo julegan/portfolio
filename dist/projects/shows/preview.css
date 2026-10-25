@@ -1,5 +1,5 @@
 
-/* Two review-only SHOWS layouts. Existing production calendar remains untouched. */
+/* Date-first SHOWS discovery layout, adapted from the user-selected mixed-feed experiment. */
 .preview-hero{padding:38px 0 35px;align-items:start}
 .preview-hero h1{font-size:clamp(2.55rem,5.6vw,5rem)}
 .preview-hero .eyebrow{margin-bottom:14px}
@@ -73,3 +73,38 @@
  .preview-navigation .preview-tab{flex:1}
  .preview-dialog .detail-actions{grid-template-columns:1fr}
 }
+
+/* Supplemental month overview. Day list, not month, is the landing experience. */
+[hidden]{display:none!important}
+.preview-navigation{padding-top:16px}
+.preview-actions button[aria-pressed=true]{background:var(--dark);color:#fff;border-color:var(--dark)}
+.preview-hero h1{max-width:850px}
+.preview-intro{padding:28px 0 16px}
+.preview-note{margin-top:42px}
+.shows-month-controls{display:flex;gap:11px;align-items:center;flex-wrap:wrap;padding:7px 0 18px}
+.shows-month-controls h3{font-size:23px;letter-spacing:-.03em;margin:0;min-width:160px;text-align:center}
+.shows-month-controls button{min-width:44px;min-height:44px;border:1px solid #899888;color:#293a2c;background:#fff;border-radius:24px;font-size:20px}
+.shows-month-help{font-size:12px;line-height:1.5;color:#445449;margin:0 0 12px}
+.shows-month-grid{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));border-top:1px solid #cdd7cb;border-left:1px solid #cdd7cb;background:#fff}
+.shows-weekday{display:block;font-weight:780;font-size:11px;text-align:center;background:#f0f2ec;padding:14px 0;border-right:1px solid #cdd7cb;border-bottom:1px solid #cdd7cb}
+.shows-month-blank{display:block;min-height:88px;background:#f7f8f5;border-right:1px solid #cdd7cb;border-bottom:1px solid #cdd7cb}
+.shows-month-date{display:flex;flex-direction:column;align-items:flex-start;gap:13px;text-align:left;padding:12px;min-width:0;min-height:88px;border:0;border-right:1px solid #cdd7cb;border-bottom:1px solid #cdd7cb;background:#fff;color:#29382c}
+.shows-month-date:hover{background:#eff5e9}
+.shows-month-today{background:#f5f9e6}
+.shows-date-number{font-weight:800;font-size:14px}
+.shows-month-today .shows-date-number{background:var(--dark);color:#fff;padding:7px 10px;border-radius:40px;margin:-7px -10px}
+.shows-date-count{font-size:12px;font-weight:770;padding:4px 7px;background:#e1ebdb;border-radius:12px}
+.preview-event .preview-art{flex-shrink:0}
+.preview-dialog .detail-actions [data-series]{grid-column:auto}
+@media(max-width:680px){
+  .shows-month-controls h3{flex:1;min-width:130px}
+  .shows-month-date{min-height:66px;padding:6px 3px;gap:8px;align-items:center;text-align:center}
+  .shows-month-blank{min-height:66px}
+  .shows-weekday{font-size:10px;padding:10px 0}
+  .shows-date-number{font-size:12px}
+  .shows-month-today .shows-date-number{margin:-4px -5px;padding:4px 7px}
+  .shows-date-count{font-size:10px;padding:3px 4px;max-width:100%}
+}
+
+.preview-place a{color:#1d5035;text-decoration:underline;text-underline-offset:3px;font-size:12px;font-weight:720}
+.preview-dialog .detail-info a{color:#1d5035;text-decoration:underline;text-underline-offset:3px}
