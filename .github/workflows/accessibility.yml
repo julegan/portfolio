@@ -15,7 +15,7 @@ jobs:
       - name: Install browser accessibility testing
         run: |
           npm install --no-save --no-package-lock playwright axe-core
-          npx playwright install --with-deps chromium
+          npx playwright install --with-deps chromium webkit
       - name: Serve static site
         run: |
           python3 -m http.server 4173 --bind 127.0.0.1 --directory dist >/tmp/shows-site.log 2>&1 &
