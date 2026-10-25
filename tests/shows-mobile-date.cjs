@@ -27,6 +27,11 @@ const origin="http://127.0.0.1:4173";
      bodyWidth:document.body.scrollWidth,
      input:box(input),wrap:box(wrap),label:box(label),container:box(container),frame:box(frame),
      dateAppearance:getComputedStyle(input).appearance,
+     dateDisplay:getComputedStyle(input).display,
+     dateVerticalAlign:getComputedStyle(input).verticalAlign,
+     wrapperDisplay:getComputedStyle(wrap).display,
+     inputHeight:getComputedStyle(input).height,
+     wrapperLineHeight:getComputedStyle(wrap).lineHeight,
      datePadding:getComputedStyle(input).paddingLeft,
      wrapperPadding:getComputedStyle(wrap).paddingLeft,
      dateMinWidth:getComputedStyle(input).minWidth,
@@ -35,6 +40,11 @@ const origin="http://127.0.0.1:4173";
    });
    const msg=engine+" "+width+"px: "+JSON.stringify(measurements);
    assert.equal(measurements.dateAppearance,"none","WebKit native date must not override CSS dimensions: "+msg);
+   assert.equal(measurements.wrapperDisplay,"block","Avoid flex blockification of native date input in iPhone WebKit: "+msg);
+   assert.equal(measurements.dateDisplay,"inline-block","Avoid iOS date text top alignment from display:block: "+msg);
+   assert.equal(measurements.dateVerticalAlign,"middle","Date element should center within the bordered wrapper: "+msg);
+   assert.equal(measurements.inputHeight,"42px","Date control height should match wrapper inner height: "+msg);
+   assert.equal(measurements.wrapperLineHeight,"42px","Vertical centering line box should match available height: "+msg);
    assert.equal(measurements.datePadding,"0px","Move date input padding into wrapper to avoid iOS WebKit width bug: "+msg);
    assert(measurements.wrapperPadding!=="0px","Wrapper preserves comfortable touch spacing: "+msg);
    assert(measurements.input.width>40,"Native date control stays usable: "+msg);
