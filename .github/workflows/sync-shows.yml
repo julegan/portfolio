@@ -2,6 +2,7 @@ name: Sync approved SHOWS calendar (review-only)
 on:
   schedule:
     - cron: '47 17 * * *'
+    - cron: '47 3 * * *'
   workflow_dispatch:
 permissions:
   contents: write
