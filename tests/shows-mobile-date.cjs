@@ -18,14 +18,20 @@ const origin="http://127.0.0.1:4173";
     const input=document.querySelector("#fromDate");
     const label=document.querySelector("#fromDateLabel");
     const wrap=document.querySelector(".preview-date-field");
+    const visible=document.querySelector("#fromDateDisplay");
     const container=document.querySelector(".preview-filters");
     const frame=document.querySelector("main");
-    const box=el=>{const x=el.getBoundingClientRect();return {left:x.left,right:x.right,width:x.width}};
+    const box=el=>{const x=el.getBoundingClientRect();return {left:x.left,right:x.right,top:x.top,bottom:x.bottom,width:x.width,height:x.height}};
     return {
      viewport:document.documentElement.clientWidth,
      documentWidth:document.documentElement.scrollWidth,
      bodyWidth:document.body.scrollWidth,
-     input:box(input),wrap:box(wrap),label:box(label),container:box(container),frame:box(frame),
+     input:box(input),wrap:box(wrap),visible:box(visible),label:box(label),container:box(container),frame:box(frame),
+     dateVisible:visible.textContent,
+     dateVisibleHidden:visible.getAttribute("aria-hidden"),
+     nativeOpacity:getComputedStyle(input).opacity,
+     nativePosition:getComputedStyle(input).position,
+     wrapperAlign:getComputedStyle(wrap).alignItems,
      dateAppearance:getComputedStyle(input).appearance,
      dateDisplay:getComputedStyle(input).display,
      dateVerticalAlign:getComputedStyle(input).verticalAlign,
@@ -39,13 +45,18 @@ const origin="http://127.0.0.1:4173";
     };
    });
    const msg=engine+" "+width+"px: "+JSON.stringify(measurements);
-   assert.equal(measurements.dateAppearance,"none","WebKit native date must not override CSS dimensions: "+msg);
-   assert.equal(measurements.wrapperDisplay,"block","Avoid flex blockification of native date input in iPhone WebKit: "+msg);
-   assert.equal(measurements.dateDisplay,"inline-block","Avoid iOS date text top alignment from display:block: "+msg);
-   assert.equal(measurements.dateVerticalAlign,"middle","Date element should center within the bordered wrapper: "+msg);
-   assert.equal(measurements.inputHeight,"42px","Date control height should match wrapper inner height: "+msg);
-   assert.equal(measurements.wrapperLineHeight,"42px","Vertical centering line box should match available height: "+msg);
-   assert.equal(measurements.datePadding,"0px","Move date input padding into wrapper to avoid iOS WebKit width bug: "+msg);
+   assert.equal(measurements.dateAppearance,"none","Native date control retains predictable dimensions: "+msg);
+   assert.equal(measurements.wrapperDisplay,"flex","Date display wrapper is flex centered: "+msg);
+   assert.equal(measurements.wrapperAlign,"center","Date text is vertically centered: "+msg);
+   assert.equal(measurements.nativeOpacity,"0","Safari's native date glyphs are hidden: "+msg);
+   assert.equal(measurements.nativePosition,"absolute","Native control overlays the visible date: "+msg);
+   assert.equal(measurements.dateVisibleHidden,"true","Do not duplicate native value for screen readers: "+msg);
+   assert(Math.abs((measurements.visible.top+measurements.visible.bottom)/2-
+     (measurements.wrap.top+measurements.wrap.bottom)/2)<1,"Date text center matches wrapper center: "+msg);
+   assert(Math.abs(measurements.input.height-measurements.wrap.height)<1 &&
+     Math.abs(measurements.input.width-measurements.wrap.width)<1,"Picker fills whole 44px field: "+msg);
+   assert(measurements.dateVisible.length>5,"Date display loads from state: "+msg);
+   assert.equal(measurements.datePadding,"0px","Keep iOS overflow workaround: "+msg);
    assert(measurements.wrapperPadding!=="0px","Wrapper preserves comfortable touch spacing: "+msg);
    assert(measurements.input.width>40,"Native date control stays usable: "+msg);
    assert(measurements.input.left>=measurements.frame.left-1,"Date control remains inside content left edge: "+msg);
@@ -59,9 +70,13 @@ const origin="http://127.0.0.1:4173";
    assert(/^\d{4}-\d{2}-\d{2}$/.test(measurements.dateValue),"Native date picker keeps valid value");
    await page.locator("#fromDate").fill("2026-11-07");
    assert.equal(await page.locator("#fromDate").inputValue(),"2026-11-07","Date remains keyboard/picker accessible");
+   assert.equal(await page.locator("#fromDateDisplay").textContent(),"Nov 7, 2026","Displayed date updates when picker changes");
    await page.locator("#fromDate").focus();
    const outline=await page.locator(".preview-date-field").evaluate(el=>getComputedStyle(el).outlineStyle);
    assert.equal(outline,"solid","Date picker focus remains clearly visible");
+   await page.locator("#jumpToday").click();
+   assert.equal(await page.locator("#fromDate").inputValue(),measurements.dateValue,"Start today resets native date value");
+   assert.equal(await page.locator("#fromDateDisplay").textContent(),measurements.dateVisible,"Start today resets visible date");
    assert.deepEqual(errors,[],"No browser errors at "+width+"px");
    await page.close();
    console.log("PASS SHOWS mobile date width for "+engine+" at "+width+"px");
