@@ -183,57 +183,24 @@ body:not([data-preview]) .preview-shell{padding-top:0}
 }
 
 
-/* The native iOS WebKit date control miscalculates padded 100%-width fields.
-   Keep the date picker, but put the border and padding on a bounded wrapper. */
+/* Safari misplaces native date text. Show a centered display label while
+   retaining the original native input as a full-size accessible picker. */
 .preview-filters .preview-date-field{
-  /* Don't use a flex container here: it blockifies the native date input,
-     triggering WebKit bug 139848 (iPhone date text aligned to the top). */
-  display:block;
-  width:100%;
-  min-width:0;
-  max-width:100%;
-  height:44px;
-  padding:0 11px;
-  border:1px solid #929e93;
-  border-radius:4px;
-  background:#fff;
-  box-sizing:border-box;
-  line-height:42px;
-  text-align:center;
-  overflow:hidden;
+ position:relative;display:flex;align-items:center;justify-content:center;
+ width:100%;min-width:0;max-width:100%;height:44px;padding:0 11px;
+ box-sizing:border-box;border:1px solid #929e93;border-radius:4px;background:#fff;overflow:hidden;
+}
+.preview-filters .preview-date-display{
+ display:block;width:100%;min-width:0;white-space:nowrap;overflow:hidden;
+ text-overflow:ellipsis;text-align:center;line-height:1.2;color:var(--ink);
+ font-size:inherit;font-weight:inherit;pointer-events:none;
 }
 .preview-filters .preview-date-field input[type="date"]{
-  -webkit-appearance:none;
-  appearance:none;
-  /* Native iOS date values are vertically centered with inline-block,
-     unlike display:block or a blockified flex item. */
-  display:inline-block;
-  vertical-align:middle;
-  width:100%;
-  max-width:100%;
-  min-width:0;
-  height:42px;
-  min-height:42px;
-  margin:0;
-  padding:0;
-  border:0;
-  border-radius:0;
-  background:transparent;
-  color:var(--ink);
-  font:inherit;
-  text-align:center;
-  box-sizing:border-box;
+ position:absolute;inset:0;z-index:1;display:block;
+ -webkit-appearance:none;appearance:none;
+ width:100%;min-width:0;max-width:100%;height:100%;min-height:0;
+ box-sizing:border-box;margin:0;padding:0;border:0;border-radius:0;
+ background:transparent;opacity:0;cursor:pointer;
 }
-.preview-filters .preview-date-field input[type="date"]::-webkit-date-and-time-value{
-  min-height:1.5em;
-  height:1.5em;
-  line-height:1.5em;
-  text-align:center;
-}
-.preview-filters .preview-date-field:focus-within{
-  outline:3px solid #24518c;
-  outline-offset:3px;
-}
-.preview-filters .preview-date-field input[type="date"]:focus-visible{
-  outline:none;
-}
+.preview-filters .preview-date-field:focus-within{outline:3px solid #24518c;outline-offset:3px}
+.preview-filters .preview-date-field input[type="date"]:focus-visible{outline:none}
