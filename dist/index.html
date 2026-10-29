@@ -7,8 +7,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#111214">
   <meta name="color-scheme" content="light dark">
-  <meta name="description" content="Public digital work, seen through everyday connections. Selected projects and ideas from Julie Owens in Portland, Oregon.">
-  <title>Julie Owens — Public digital work</title>
+  <meta name="description" content="Julie Owens: designer and digital product portfolio leader working across civic technology, design systems, accessibility, digital equity, and antiracist product practice.">
+  <title>Julie Owens — Design, digital products & systems</title>
   <style>
     :root {
       --ink: #111214; --paper: #f1f2f4; --white: #ffffff;
@@ -287,6 +287,51 @@
       .project { break-inside: avoid; }
       [data-paths][hidden] { display: grid !important; }
     }
+
+    /* Portfolio emphasis: design, product leadership, equitable public access. */
+    .hero h1 { font-size: clamp(40px, 5.5vw, 76px); line-height: 1.03; letter-spacing: -.06em; }
+    .hero h1 span { white-space: nowrap; }
+    .hero-copy { font-size: 17px; max-width: 44ch; }
+    .hero-credit { max-width: 50ch; }
+    .project .description { max-width: 52ch; }
+    .design-visual { background: #e1e5ea; padding: 29px 25px 49px; }
+    .design-diagram { background: white; border: 1px solid #7a8590; padding: 23px; width: 100%; box-shadow: 9px 9px 0 #adb7c2; }
+    .design-diagram-grid { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 13px; margin: 20px 0; }
+    .design-diagram-grid > div { min-width:0; border:1px solid #a3adb7; padding: 13px; display: flex; align-items: flex-start; flex-direction: column; gap: 9px; }
+    .design-diagram-grid small { font: 10px var(--mono); }
+    .design-line { height: 9px; width: 100%; background:#647487; }
+    .design-line.short { width: 56%; }
+    .design-demo-button { font-size: 12px; padding: 9px 12px; background: #111214; color: white; }
+    .design-demo-field { border: 1px solid #6a7482; font-size: 11px; padding: 8px; overflow-wrap: anywhere; }
+    .design-diagram-tags { display: flex; flex-wrap: wrap; gap: 7px; }
+    .design-diagram-tags span { background: #e2e7ee; border: 1px solid #97a4b3; font-size: 10px; padding: 4px 8px; }
+    .practice-visual { background: #2c3746; color: var(--paper); padding: 32px 28px 49px; }
+    .practice-diagram { border: 1px solid #a5b1c1; width: 100%; padding: 26px 22px; }
+    .practice-grid { display: grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap: 12px; margin: 21px 0; }
+    .practice-grid span { border: 1px solid #aebccc; padding: 14px 7px; text-align: center; font-size: 13px; }
+    .practice-diagram > p:last-child { color: #d7dfe9; font-size: 13px; }
+    .earlier-work { border-top: 1px solid var(--line); padding-top: 34px; margin-top: 29px; }
+    .earlier-intro { display: flex; align-items: end; justify-content: space-between; gap: 30px; }
+    .earlier-intro h3 { font-size: clamp(27px, 3.6vw, 44px); font-weight: 500; letter-spacing: -.055em; line-height:1.1; margin-top: 8px; }
+    .earlier-intro > p { max-width: 40ch; color: var(--muted); font-size: 14px; }
+    .earlier-items { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 25px; margin-top: 28px; }
+    .earlier-items > div { border-top: 1px solid var(--line); padding-top: 18px; }
+    .earlier-items h4 { font-size: 19px; font-weight: 550; }
+    .earlier-items p { color: var(--muted); font-size: 13px; margin-top: 7px; }
+    .earlier-items a { display: inline-flex; min-height: 44px; align-items: center; font-size: 12px; }
+    .notes-context { font-size: 14px; color: #343d47; margin-top: 20px; max-width: 34ch; }
+    .question a { font-weight: 600; }
+    .more-work a { color: var(--paper); }
+    @media(max-width:700px) {
+      .hero h1 { font-size: clamp(35px, 9vw, 48px); }
+      .hero h1 span { white-space: normal; }
+      .hero-copy { font-size: 16px; }
+      .earlier-intro { display: block; }
+      .earlier-intro > p { margin-top: 13px; }
+      .earlier-items { grid-template-columns: 1fr; }
+      .design-visual, .practice-visual { min-height: 285px; }
+    }
+    @media print { .design-visual, .practice-visual { display:none!important; } }
   </style>
 </head>
 <body>
@@ -295,14 +340,14 @@
     <div class="wrap masthead-inner">
       <a class="brand" href="#top">
         <span class="brand-name">Julie Owens</span>
-        <span class="brand-meta">Digital strategy<br>Portland, Oregon</span>
+        <span class="brand-meta">Design &amp; product leadership<br>Portland, Oregon</span>
       </a>
       <nav aria-label="Main navigation">
         <ul class="main-nav">
           <li><a href="#work" data-show-all>Work</a></li>
-          <li><a href="#systems">Systems</a></li>
+          <li><a href="#systems">Systems &amp; practice</a></li>
           <li><a href="/projects/">Projects</a></li>
-          <li class="notes-nav"><a href="#notes">Notes</a></li>
+          <li class="notes-nav"><a href="#notes">Principles</a></li>
           <li><a href="#experience">Experience &amp; contact</a></li>
         </ul>
       </nav>
@@ -310,17 +355,17 @@
   </header>
   <main id="main">
     <section class="hero wrap" aria-labelledby="hero-title">
-      <div class="hero-top mono"><p class="label">Public digital work / a personal portfolio</p><p class="iteration">Working mockup — 02</p></div>
+      <div class="hero-top mono"><p class="label">Public digital work / a personal portfolio</p><p class="iteration">Independent portfolio</p></div>
       <div class="hero-grid">
         <div>
-          <h1 id="hero-title"><span>How do you</span><span class="indent">connect?</span></h1>
-          <p class="hero-copy">To a place. To a service.<br>To the decisions that shape your day.</p>
-          <div class="hero-credit"><p><strong>Selected work by Julie Owens</strong><br>Digital strategy in local government</p></div>
+          <h1 id="hero-title"><span>Design doesn’t</span><span>stop at the</span><span>interface.</span></h1>
+          <p class="hero-copy">I started as a designer. Today I lead product management across a portfolio of City of Portland digital platforms, connecting design, strategy, technology, and people to make public services work better.</p>
+          <div class="hero-credit"><p><strong>Julie Owens · Portland, Oregon</strong><br>Accessibility, digital equity, and antiracism are core to how I practice product management.</p></div>
         </div>
         <figure class="connection-art">
           <svg viewBox="0 0 560 460" role="img" aria-labelledby="connection-title connection-desc" xmlns="http://www.w3.org/2000/svg">
-            <title id="connection-title">Several ways into one connected field</title>
-            <desc id="connection-desc">An abstract composition connects a person with places, services, and decisions. The paths below lead into related projects.</desc>
+            <title id="connection-title">A conceptual map of connected public digital systems</title>
+            <desc id="connection-desc">Relationships between people, services, and decisions extend far beyond any one screen.</desc>
             <defs>
               <pattern id="hero-dots" width="12" height="12" patternUnits="userSpaceOnUse"><circle cx="2" cy="2" r="1" fill="#adb5c0"/></pattern>
             </defs>
@@ -345,16 +390,16 @@
               <text x="315" y="149">A PLACE</text><text x="50" y="342">A SERVICE</text><text x="393" y="350">A DECISION</text>
             </g>
             <g stroke="#cbd1d7" stroke-width="1"><path d="M450 398h28m-14-14v28M44 70h22m-11-11v22"/></g>
-            <text x="233" y="423" fill="#adb5c0" font-family="monospace" font-size="9" letter-spacing="1">START WITH A CONNECTION</text>
+            <text x="233" y="423" fill="#adb5c0" font-family="monospace" font-size="9" letter-spacing="1">LOOK BEYOND THE INTERFACE</text>
           </svg>
-          <figcaption class="art-caption mono">Several ways in. One connected field.</figcaption>
+          <figcaption class="art-caption mono">One interface. Many connected systems.</figcaption>
         </figure>
       </div>
-      <nav class="hero-paths" aria-label="Explore the work through an everyday need">
-        <a class="path" href="#portland-gov" data-filter="find"><span><span class="path-number">01 / information</span><span class="path-title">Find what I need</span></span><span class="arrow" aria-hidden="true">↘</span></a>
-        <a class="path" href="#portland-maps" data-filter="place"><span><span class="path-number">02 / context</span><span class="path-title">Understand a place</span></span><span class="arrow" aria-hidden="true">↘</span></a>
-        <a class="path" href="#public-process" data-filter="participate"><span><span class="path-number">03 / participation</span><span class="path-title">Take part</span></span><span class="arrow" aria-hidden="true">↘</span></a>
-        <a class="path" href="#everyday" data-filter="everyday"><span><span class="path-number">04 / everyday life</span><span class="path-title">Keep life moving</span></span><span class="arrow" aria-hidden="true">↘</span></a>
+      <nav class="hero-paths" aria-label="Explore areas of practice">
+        <a class="path" href="#portland-gov" data-filter="portfolio"><span><span class="path-number">01 / stewardship</span><span class="path-title">Digital portfolio</span></span><span class="arrow" aria-hidden="true">↘</span></a>
+        <a class="path" href="#design-system" data-filter="design"><span><span class="path-number">02 / access</span><span class="path-title">Design &amp; equity</span></span><span class="arrow" aria-hidden="true">↘</span></a>
+        <a class="path" href="#public-process" data-filter="civic"><span><span class="path-number">03 / participation</span><span class="path-title">Public participation</span></span><span class="arrow" aria-hidden="true">↘</span></a>
+        <a class="path" href="#product-practice" data-filter="practice"><span><span class="path-number">04 / organization</span><span class="path-title">Product practice</span></span><span class="arrow" aria-hidden="true">↘</span></a>
       </nav>
     </section>
 
@@ -366,74 +411,83 @@
     <section class="work" id="work" aria-labelledby="work-title">
       <div class="wrap">
         <div class="section-intro">
-          <div><p class="mono label">01 / the work, from the outside in</p><h2 id="work-title" tabindex="-1">A few ways in.</h2></div>
-          <p>A reminder. A map. A question about your city. The connection starts with something you need.</p>
+          <div><p class="mono label">01 / selected work &amp; ongoing practice</p><h2 id="work-title" tabindex="-1">The work behind<br>the work.</h2></div>
+          <p>Public websites are visible. The decisions, patterns, relationships, and teams behind them are part of the product, too.</p>
         </div>
         <div class="work-tools">
-          <p class="work-status" id="work-status" role="status" aria-live="polite" aria-atomic="true">Explore the connections below.</p>
+          <p class="work-status" id="work-status" role="status" aria-live="polite" aria-atomic="true">Explore the work and practice below.</p>
           <div class="filters" role="group" aria-label="Filter selected work">
             <button class="filter" type="button" data-filter="all" aria-pressed="true" aria-controls="work-results">All work</button>
-            <button class="filter" type="button" data-filter="find" aria-pressed="false" aria-controls="work-results">Find</button>
-            <button class="filter" type="button" data-filter="place" aria-pressed="false" aria-controls="work-results">Understand</button>
-            <button class="filter" type="button" data-filter="participate" aria-pressed="false" aria-controls="work-results">Take part</button>
-            <button class="filter" type="button" data-filter="everyday" aria-pressed="false" aria-controls="work-results">Everyday</button>
+            <button class="filter" type="button" data-filter="portfolio" aria-pressed="false" aria-controls="work-results">Portfolio</button>
+            <button class="filter" type="button" data-filter="design" aria-pressed="false" aria-controls="work-results">Design &amp; access</button>
+            <button class="filter" type="button" data-filter="civic" aria-pressed="false" aria-controls="work-results">Civic participation</button>
+            <button class="filter" type="button" data-filter="practice" aria-pressed="false" aria-controls="work-results">Practice</button>
           </div>
         </div>
         <div id="work-results">
-          <section class="everyday" id="everyday" data-paths="find everyday" aria-labelledby="everyday-title">
-            <div class="everyday-intro"><p class="mono">Everyday needs / useful connections</p><h3 id="everyday-title">Small tasks.<br>Real life.</h3><p>Some connections are quiet. Knowing when to put the bin out. Finding a place to repair something instead of replacing it.</p></div>
-            <div class="everyday-list">
-              <article class="small-project">
-                <div class="project-topline"><span class="mono">A timely nudge</span><span class="dot" aria-hidden="true"></span></div>
-                <h4>Garbage day reminders</h4><p>A public service that connects a household’s collection schedule to a useful reminder.</p>
-                <a class="text-link" href="https://www.portland.gov/bps/garbage-recycling/home-recycling/garbage-day-reminders">See the public service <span aria-hidden="true">↗</span></a>
-              </article>
-              <article class="small-project">
-                <div class="project-topline"><span class="mono">Local knowledge</span><span class="dot" aria-hidden="true"></span></div>
-                <h4>ResourcefulPDX</h4><p>Practical connections to places to borrow, repair, reuse, and share.</p>
-                <a class="text-link" href="https://www.portland.gov/bps/sustainability/resourcefulpdx">Explore the resources <span aria-hidden="true">↗</span></a>
-              </article>
-            </div>
-          </section>
-
-          <article class="project" id="portland-gov" data-paths="find participate everyday">
-            <div class="project-copy"><p class="mono">01 / public information &amp; services</p><p class="project-name">Portland.gov</p><h3>Find a way in.</h3><p class="description">A city has many services, many responsibilities, and many ways to get lost. Its public website is one place where those paths meet.</p>
-              <div class="project-links"><a class="text-link" href="https://www.portland.gov/">Visit Portland.gov <span aria-hidden="true">↗</span></a><button class="text-link detail-link js-details" type="button" data-project="gov">Follow the connection <span aria-hidden="true">↗</span></button></div>
+          <article class="project" id="portland-gov" data-paths="portfolio practice">
+            <div class="project-copy">
+              <p class="mono">01 / enterprise digital product leadership</p><p class="project-name">Portland.gov and connected digital platforms</p>
+              <h3>More than<br>one website.</h3>
+              <p class="description">I manage an interconnected portfolio of public and employee digital platforms, working across product strategy, roadmaps, site architecture, governance, shared standards, and delivery across departments. The goal is a coherent, sustainable public service ecosystem—not a pile of independent projects.</p>
+              <div class="project-links"><a class="text-link" href="https://www.portland.gov/">Explore Portland.gov <span aria-hidden="true">↗</span></a><button class="text-link detail-link js-details" type="button" data-project="gov">My role and approach <span aria-hidden="true">↗</span></button></div>
             </div>
             <figure class="project-visual portal-visual" aria-labelledby="portal-caption">
               <div class="portal-window" aria-hidden="true"><div class="window-top"><span>PUBLIC DIGITAL LIFE</span><span>01 / ENTRY</span></div><p class="window-title">A place<br>to start.</p><div class="window-search"><span>What do you need?</span><span>↗</span></div><div class="window-bottom"><span>Find a service</span><span>Get information</span><span>Take part</span></div></div>
-              <figcaption class="visual-caption" id="portal-caption">An illustrative study of a public entry point</figcaption>
+              <figcaption class="visual-caption" id="portal-caption">A conceptual study · not a screenshot of Portland.gov</figcaption>
             </figure>
           </article>
-
-          <article class="project" id="portland-maps" data-paths="place find">
-            <div class="project-copy"><p class="mono">02 / places &amp; public data</p><p class="project-name">PortlandMaps</p><h3>Put information<br>in place.</h3><p class="description">An address is a starting point. Maps and public data offer another way to understand the city around it.</p>
-              <div class="project-links"><a class="text-link" href="https://www.portlandmaps.com/">Explore PortlandMaps <span aria-hidden="true">↗</span></a><button class="text-link detail-link js-details" type="button" data-project="maps">Follow the connection <span aria-hidden="true">↗</span></button></div>
+          <article class="project" id="design-system" data-paths="design portfolio">
+            <div class="project-copy">
+              <p class="mono">02 / design systems &amp; equitable access</p><p class="project-name">Design systems · accessibility · digital equity</p>
+              <h3>Design is<br>infrastructure.</h3>
+              <p class="description">Design is where my career began, and it remains fundamental to my work. I help shape shared design patterns and product practices around ADA Title II digital accessibility, equity, and usable public services. Antiracist practice and language access belong in product decisions—not as a final layer of polish.</p>
+              <div class="project-links"><a class="text-link" href="https://www.portland.gov/officeofequity/digital-accessibility">Explore City accessibility resources <span aria-hidden="true">↗</span></a><button class="text-link detail-link js-details" type="button" data-project="design">How I approach access <span aria-hidden="true">↗</span></button></div>
             </div>
-            <figure class="project-visual maps-visual" aria-labelledby="map-caption">
-              <svg viewBox="0 0 560 340" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"><defs><pattern id="map-grid" width="48" height="48" patternUnits="userSpaceOnUse" patternTransform="rotate(-13)"><rect width="48" height="48" fill="none" stroke="#7f8b99" stroke-width="1"/></pattern></defs><rect width="560" height="340" fill="url(#map-grid)"/><path d="M363-20C298 58 383 119 319 188s-62 83-8 169" fill="none" stroke="#111214" stroke-width="54"/><path d="M363-20C298 58 383 119 319 188s-62 83-8 169" fill="none" stroke="#cbd1d7" stroke-width="1" stroke-dasharray="3 8"/><path d="M-10 210 581 87M-20 249 582 127" stroke="#cbd1d7" stroke-width="3"/><path d="M0 165 174 123 211 224 37 266Z" fill="#cbd1d7" opacity=".2"/><circle cx="232" cy="183" r="33" fill="none" stroke="#f1f2f4" stroke-width="1"/><circle cx="232" cy="183" r="7" fill="#f1f2f4"/><path d="M240 183h99" stroke="#f1f2f4"/><rect x="339" y="164" width="151" height="39" fill="#f1f2f4"/><text x="353" y="189" fill="#111214" font-family="monospace" font-size="11">A PLACE IN CONTEXT</text></svg>
-              <div class="map-label" aria-hidden="true"><span>Public information</span><strong>Here, in context.</strong></div>
-              <figcaption class="visual-caption" id="map-caption">An illustrative map / no real locations or data</figcaption>
+            <figure class="project-visual design-visual" aria-labelledby="design-caption">
+              <div class="design-diagram" aria-hidden="true">
+                <p class="mono">A shared language for digital services</p>
+                <div class="design-diagram-grid"><div><small>STRUCTURE</small><span class="design-line"></span><span class="design-line short"></span><span class="design-line"></span></div><div><small>INTERACTION</small><span class="design-demo-button">Continue</span><span class="design-demo-field">A labeled field</span></div></div>
+                <div class="design-diagram-tags"><span>Keyboard access</span><span>Readability</span><span>Assistive tech</span><span>Language</span></div>
+              </div>
+              <figcaption class="visual-caption" id="design-caption">Conceptual illustration · not an official City design-system component</figcaption>
             </figure>
           </article>
-
-          <article class="project" id="public-process" data-paths="participate place">
-            <div class="project-copy"><p class="mono">03 / public process</p><p class="project-name">BPS Map App &amp; eCouncil</p><h3>A way to<br>take part.</h3><p class="description">Public decisions have a path of their own. Planning proposals, testimony, and council processes are part of how people follow that path.</p>
-              <div class="project-links"><a class="text-link" href="https://www.portland.gov/bps/planning/maps">Explore planning maps <span aria-hidden="true">↗</span></a><button class="text-link detail-link js-details" type="button" data-project="process">Follow the connection <span aria-hidden="true">↗</span></button></div>
+          <article class="project" id="public-process" data-paths="civic design">
+            <div class="project-copy">
+              <p class="mono">03 / government transition &amp; public participation</p><p class="project-name">Council District lookup · Council pages · eCouncil</p>
+              <h3>Make public<br>change usable.</h3>
+              <p class="description">Portland’s transition to a new form of government changed how residents find representatives and engage with public decisions. I directed the Council District lookup and Council landing-page delivery and supervised eCouncil changes supporting the new structure.</p>
+              <div class="project-links"><a class="text-link" href="https://www.portland.gov/council">Explore Portland City Council <span aria-hidden="true">↗</span></a><button class="text-link detail-link js-details" type="button" data-project="process">My contributions <span aria-hidden="true">↗</span></button></div>
             </div>
             <figure class="project-visual process-visual" aria-labelledby="process-caption">
               <div aria-hidden="true"><p class="process-head mono">A public decision / several moments of access</p><ol class="process-steps"><li>Understand</li><li>Contribute</li><li>Follow</li></ol><div class="process-paper"><strong>What’s changing?<br>Where do I fit?</strong><p>A proposal → a response → a public record</p></div></div>
-              <figcaption class="visual-caption" id="process-caption">An illustrative study of participation</figcaption>
+              <figcaption class="visual-caption" id="process-caption">Conceptual illustration of public participation</figcaption>
             </figure>
           </article>
+          <article class="project" id="product-practice" data-paths="practice portfolio">
+            <div class="project-copy">
+              <p class="mono">04 / operating models &amp; product stewardship</p><p class="project-name">Digital Services Playbook · shared practices</p>
+              <h3>Good systems<br>help teams work.</h3>
+              <p class="description">Much of my work is designing how digital product teams operate across organizational boundaries: shared methods, visible priorities, stewardship, and room for collaboration. I co-created the Digital Services Playbook with my team and continue exploring how to make portfolio dependencies and tradeoffs more visible.</p>
+              <div class="project-links"><a class="text-link" href="https://www.portland.gov/digital-services/news/2026/5/5/playbook-helps-city-teams-build-better-digital-services">Read about our Playbook <span aria-hidden="true">↗</span></a><button class="text-link detail-link js-details" type="button" data-project="practice">Principles in practice <span aria-hidden="true">↗</span></button></div>
+            </div>
+            <figure class="project-visual practice-visual" aria-labelledby="practice-caption"><div class="practice-diagram" aria-hidden="true"><p class="mono">An operating model is a set of relationships</p><div class="practice-grid"><span>Strategy</span><span>Products</span><span>Capacity</span><span>Outcomes</span></div><p>Clarity enables collaboration. Ownership makes change sustainable.</p></div><figcaption class="visual-caption" id="practice-caption">Conceptual practice model · not a formally adopted City framework</figcaption></figure>
+          </article>
         </div>
-        <p class="project-note">Selected connections from the project inventory. Full case studies, contributions, and outcomes are still being prepared.</p>
+        <section class="earlier-work" id="earlier" aria-labelledby="earlier-title">
+          <div class="earlier-intro"><div><p class="mono">Earlier work / service design</p><h3 id="earlier-title">Where some of this started.</h3></div><p>Earlier contributions that shaped my approach. These programs have continued to evolve since my involvement.</p></div>
+          <div class="earlier-items">
+            <div><h4>Garbage day reminders</h4><p>Earlier service design connecting a household schedule with a useful reminder.</p><a href="https://www.portland.gov/bps/garbage-recycling/home-recycling/garbage-day-reminders">View today’s City service ↗</a></div>
+            <div><h4>ResourcefulPDX</h4><p>Earlier work connecting people with resources to borrow, repair, reuse, and share.</p><a href="https://www.portland.gov/bps/sustainability/resourcefulpdx">View today’s City resources ↗</a></div>
+          </div>
+        </section>
       </div>
     </section>
 
     <section class="systems" id="systems" aria-labelledby="systems-title">
       <div class="wrap systems-grid">
-        <div class="systems-copy"><p class="label mono">02 / behind those connections</p><h2 id="systems-title">The parts<br>behind the<br>whole.</h2><p>A public service reaches further than its screen. People, policies, information, and technology all have a part in making it work.</p><div class="systems-credit"><strong>Civic Systems Atlas</strong><button class="text-link detail-link js-details" type="button" data-project="atlas">Look behind the connections <span aria-hidden="true">↗</span></button></div></div>
+        <div class="systems-copy"><p class="label mono">02 / making systems visible</p><h2 id="systems-title">Make the<br>invisible<br>visible.</h2><p>A digital service is never only its interface. People, policies, information, technology, governance, and capacity determine whether it works—and whether it can keep working. I’m exploring ways to map those relationships to inform product decisions.</p><div class="systems-credit"><strong>Civic Systems Atlas</strong><button class="text-link detail-link js-details" type="button" data-project="atlas">Explore the idea <span aria-hidden="true">↗</span></button></div></div>
         <figure class="atlas-art">
           <svg viewBox="0 0 560 400" role="img" aria-labelledby="atlas-title atlas-desc" xmlns="http://www.w3.org/2000/svg">
             <title id="atlas-title">A conceptual view of connected public digital work</title><desc id="atlas-desc">A central public service connects to people, information, technology, and decisions. This illustration is a portfolio concept, not a screenshot of Civic Systems Atlas.</desc>
@@ -444,39 +498,43 @@
             <g fill="#cbd1d7" font-family="monospace" font-size="11"><text x="35" y="88">PEOPLE</text><text x="405" y="49">INFORMATION</text><text x="407" y="340">TECHNOLOGY</text><text x="51" y="354">DECISIONS</text><text x="317" y="36">PURPOSE</text></g>
             <g fill="#7c8795"><circle cx="176" cy="73" r="3"/><circle cx="128" cy="240" r="3"/><circle cx="344" cy="337" r="3"/><circle cx="425" cy="181" r="3"/></g>
           </svg>
-          <figcaption>Conceptual illustration · the current Atlas view will come next.</figcaption>
+          <figcaption>Conceptual illustration · not a screenshot of the current Atlas interface.</figcaption>
         </figure>
       </div>
     </section>
 
     <section class="notes" id="notes" aria-labelledby="notes-title">
-      <div class="wrap notes-grid"><div class="notes-intro"><p class="mono label">03 / open questions</p><h2 id="notes-title">Worth thinking<br>through.</h2></div><div class="notes-list">
-        <details class="question"><summary>Where does a service really begin?</summary><p>Before a person reaches a website, there is already a question, a constraint, or something they need to do. That earlier moment belongs in the work too.</p></details>
-        <details class="question"><summary>What happens after the handoff?</summary><p>Following a link is one step. What comes next, who helps, and whether someone can finish matter just as much.</p></details>
-        <details class="question"><summary>Who can use what we’ve made?</summary><p>Access shows up in language, structure, keyboard use, readable text, and alternatives. Those choices belong throughout the experience.</p></details>
+      <div class="wrap notes-grid"><div class="notes-intro"><p class="mono label">03 / a practice with convictions</p><h2 id="notes-title">Principles have consequences.</h2><p class="notes-context">These are commitments I bring to product decisions—not a claim that every barrier has been solved.</p></div><div class="notes-list">
+        <details class="question"><summary>Accessibility belongs in the product.</summary><p>ADA Title II digital accessibility affects roadmaps, design systems, content, procurement, testing, and maintenance—not simply a compliance audit at the end. <a href="https://www.ada.gov/resources/2024-03-08-web-rule/">Title II web accessibility ↗</a></p></details>
+        <details class="question"><summary>Digital equity and antiracism should change what gets prioritized.</summary><p>Whose needs shape requirements? Which barriers are considered urgent? Who has the opportunity to influence decisions? I want teams to examine those questions and be accountable to the people affected by their products.</p></details>
+        <details class="question"><summary>Language access is a distinct responsibility.</summary><p>Clear and accessible content matters, and so does people's ability to engage across languages. Title VI nondiscrimination and language access are connected to—but distinct from—ADA Title II disability access. <a href="https://www.justice.gov/crt/fcs/TitleVI">Title VI civil rights ↗</a></p></details>
+        <details class="question"><summary>A pilot needs a plan for what comes next.</summary><p>New services need a path to ownership, maintenance, improvement, or retirement. Capacity, governance, and what we choose not to build matter just as much as launch.</p></details>
+        <details class="question"><summary>Shared standards should make room for teams and people.</summary><p>Good operating models clarify decisions and responsibilities across silos. They should make collaboration easier without treating every service, community, or team as identical.</p></details>
       </div></div>
     </section>
 
     <section class="profile" id="experience" aria-labelledby="profile-title">
-      <div class="wrap profile-grid"><div class="profile-intro"><p class="mono label">04 / a little context</p><h2 id="profile-title">Behind the work.</h2></div><div class="profile-copy"><p>I’m Julie Owens. I work across public digital platforms at the City of Portland, connecting product decisions with the services and people they affect.</p><p>This is a place to explore that work, the questions around it, and the connections that keep showing up.</p>
-        <details class="experience"><summary>Experience at a glance</summary><dl><dt>Focus</dt><dd>Product and portfolio management for public digital platforms</dd><dt>Organization</dt><dd>City of Portland</dd><dt>Location</dt><dd>Portland, Oregon</dd></dl><p>A reviewed work history and downloadable resume will be added here.</p></details>
-        <div class="profile-links"><a href="https://www.linkedin.com/in/julieh/">Start a conversation on LinkedIn <span aria-hidden="true">&nbsp;↗</span></a><a href="https://github.com/julegan/portfolio">Follow this site on GitHub <span aria-hidden="true">&nbsp;↗</span></a></div>
-        <div class="more-work"><p class="mono">Also in the project inventory</p><p>Master Recyclers · Science magazine · more connections to come</p></div>
+      <div class="wrap profile-grid"><div class="profile-intro"><p class="mono label">04 / the person behind the practice</p><h2 id="profile-title">A designer,<br>still designing.</h2></div><div class="profile-copy">
+        <p>I’m Julie Owens. I made my career as a designer and still approach my work through design. Today, I lead digital product management across City of Portland platforms, connecting product strategy, shared standards, public access, and the organizational practices behind them.</p>
+        <p>Digital equity, accessibility, and antiracism are foundational to how I practice product management. I care about making the invisible visible: the barriers, relationships, and decisions shaping people’s experiences of government.</p>
+        <details class="experience"><summary>Experience at a glance</summary><dl><dt>Role</dt><dd>Enterprise digital product and portfolio management</dd><dt>Design</dt><dd>Design systems, accessible and equitable public services</dd><dt>Practice</dt><dd>Cross-team standards, governance, and sustainable delivery</dd><dt>Organization</dt><dd>City of Portland</dd><dt>Location</dt><dd>Portland, Oregon</dd></dl></details>
+        <div class="profile-links"><a href="https://www.linkedin.com/in/julieh/">Connect on LinkedIn <span aria-hidden="true">&nbsp;↗</span></a><a href="https://github.com/julegan/portfolio">Portfolio source on GitHub <span aria-hidden="true">&nbsp;↗</span></a></div>
+        <div class="more-work"><p class="mono">Independent work</p><p>Outside my City role, I prototype ideas like <a href="/projects/shows/">SHOWS</a> and <a href="/projects/svg-hopper/">SVG Hopper</a>. These are personal experiments, not City products.</p></div>
       </div></div>
     </section>
   </main>
-  <footer class="footer"><div class="wrap footer-inner"><p class="mono">Julie Owens / Portland, Oregon</p><p class="mono">Personal portfolio · working mockup · October 2026</p><a class="mono" href="#top">Back to the start ↑</a></div></footer>
+  <footer class="footer"><div class="wrap footer-inner"><p class="mono">Julie Owens / Portland, Oregon</p><p class="mono">Personal perspectives · not an official City of Portland website</p><a class="mono" href="#top">Back to the start ↑</a></div></footer>
 
   <dialog id="project-dialog" aria-labelledby="dialog-title">
-    <div class="dialog-top"><p class="mono">Follow a connection</p><button class="dialog-close" type="button" autofocus>Close <span aria-hidden="true">×</span></button></div>
+    <div class="dialog-top"><p class="mono">Behind the work</p><button class="dialog-close" type="button" autofocus>Close <span aria-hidden="true">×</span></button></div>
     <div class="dialog-content"><h2 id="dialog-title"></h2><p id="dialog-description"></p><h3 id="dialog-context-title"></h3><ul id="dialog-points"></ul><a class="text-link" id="dialog-link" hidden></a><p class="dialog-note" id="dialog-note"></p></div>
   </dialog>
   <script>
     (() => {
       'use strict';
       const root = document.documentElement;
-      const categories = { all: 'All work', find: 'Find what I need', place: 'Understand a place', participate: 'Take part', everyday: 'Keep life moving' };
-      const projects = Array.from(document.querySelectorAll('#work-results > [data-paths]'));
+      const categories = { all: 'All selected work', portfolio: 'Digital product portfolio', design: 'Design and equitable access', civic: 'Public participation', practice: 'Product practice' };
+       const projects = Array.from(document.querySelectorAll('#work-results > [data-paths]'));
       const paths = Array.from(document.querySelectorAll('.path[data-filter]'));
       const filterButtons = Array.from(document.querySelectorAll('button.filter'));
       const status = document.getElementById('work-status');
@@ -487,14 +545,14 @@
         let visible = 0;
         projects.forEach(project => {
           project.hidden = key !== 'all' && !project.dataset.paths.split(' ').includes(key);
-          if (!project.hidden) visible += project.classList.contains('everyday') ? 2 : 1;
+          if (!project.hidden) visible += 1;
         });
         filterButtons.forEach(button => button.setAttribute('aria-pressed', String(button.dataset.filter === key)));
         paths.forEach(path => {
           if (path.dataset.filter === key) path.setAttribute('aria-current', 'true');
           else path.removeAttribute('aria-current');
         });
-        status.textContent = key === 'all' ? 'All connections · explore at your own pace' : categories[key] + ' · ' + visible + ' related connections';
+        status.textContent = key === 'all' ? 'Four areas of selected work and practice' : categories[key] + ' · ' + visible + ' related areas';
         if (moveToWork) {
           workTitle.focus({ preventScroll: true });
           document.getElementById('work').scrollIntoView({ behavior: reduceMotion.matches ? 'auto' : 'smooth', block: 'start' });
@@ -511,39 +569,13 @@
       root.classList.add('has-dialog');
       let opener = null;
       const stories = {
-        gov: {
-          title: 'Portland.gov',
-          description: 'An everyday need meets a public website, then a service, a process, or a person who can help.',
-          context: 'The connected work',
-          points: ['Portland.gov and the earlier Portland websites: portlandoregon.gov and portlandonline.com.', 'Public information, service discovery, and routes into civic participation.', 'The fuller story will connect the public experience to the product and portfolio work behind it.'],
-          url: 'https://www.portland.gov/', link: 'Explore the public website ↗',
-          note: 'Case study in preparation. Specific contributions, chronology, and outcomes will be added after review.'
-        },
-        maps: {
-          title: 'PortlandMaps',
-          description: 'A place becomes an entry point into public information. A map offers a way to make those relationships visible.',
-          context: 'The connected work',
-          points: ['Public access to maps, data, and geographic information.', 'Place-based questions that cross services and organizational boundaries.', 'This is collaborative City work; the case study will identify my contribution alongside the teams responsible for the platform.'],
-          url: 'https://www.portlandmaps.com/', link: 'Explore PortlandMaps ↗',
-          note: 'Case study in preparation. The portfolio illustration is not a screenshot or a real dataset.'
-        },
-        process: {
-          title: 'Public process systems',
-          description: 'A decision connects to a proposal, an opportunity to contribute, and a public process that people need to be able to follow.',
-          context: 'The connected work',
-          points: ['BPS Map App: planning information and opportunities to provide testimony.', 'eCouncil: included in this portfolio’s public process project inventory.', 'The case study will describe how these distinct systems relate and where my work contributed.'],
-          url: 'https://www.portland.gov/bps/planning/maps', link: 'Explore the City’s planning maps ↗',
-          note: 'Case study in preparation. Project roles and outcomes have not been asserted in this mockup.'
-        },
-        atlas: {
-          title: 'Civic Systems Atlas',
-          description: 'The project behind the wider view of public digital work and its connections.',
-          context: 'The next connection to add',
-          points: ['Civic Systems Atlas is the current project name.', 'Its current version has evolved beyond the earlier Digital Strategy Atlas.', 'The project view and case study will be grounded in the current version when it is ready to share.'],
-          note: 'The illustration here is conceptual. It does not represent the current Atlas interface or claim its current features.'
-        }
-      };
-      const title = document.getElementById('dialog-title');
+         gov: { title: 'Digital product & portfolio leadership', description: 'A shared portfolio of services, teams, design decisions, and technology.', context: 'My work', points: ['Lead product direction for Portland.gov and related public and employee digital platforms.', 'Connect architecture, prioritization, standards, and governance across teams.', 'This is collaborative City work, not a claim of sole authorship of the products.'], url: 'https://www.portland.gov/', link: 'Explore Portland.gov ↗', note: 'Personal account of my role. Outcome-specific case studies will require documented evidence.' },
+         design: { title: 'Design systems, accessibility & equity', description: 'Accessible and equitable product decisions begin long before launch.', context: 'My commitments in practice', points: ['Shape shared design patterns and practices that support consistent, accessible digital services.', 'Treat ADA Title II web accessibility as a product stewardship responsibility.', 'Use digital equity and antiracist product thinking to examine whose needs inform decisions and whose barriers are prioritized.', 'Consider language access and Title VI nondiscrimination as distinct but connected concerns.'], url: 'https://www.portland.gov/officeofequity/digital-accessibility', link: 'City digital accessibility resources ↗', note: 'These are priorities and areas of practice, not claims that any product or organization has achieved comprehensive compliance.' },
+         process: { title: 'Portland government transition', description: 'Translating structural civic changes into findable, usable digital experiences.', context: 'My contributions', points: ['Directed delivery of the Council District lookup, Council landing pages and Councilor pages.', 'Supervised improvements to eCouncil to support the new form of government.', 'Coordinated with City teams to support public information and participation.'], url: 'https://www.portland.gov/council', link: 'Explore Portland City Council ↗', note: 'Collaborative City work, with individual contributions distinguished from team results.' },
+         practice: { title: 'Product operating models & shared practices', description: 'How teams make decisions is part of the design.', context: 'An ongoing practice', points: ['Co-created the Digital Services Playbook with a multidisciplinary team.', 'Develop product management standards and repeatable processes across silos.', 'Look at portfolio ownership, capacity, tradeoffs, maintenance, and decommissioning alongside delivery.'], url: 'https://www.portland.gov/digital-services/news/2026/5/5/playbook-helps-city-teams-build-better-digital-services', link: 'Read about the team’s Playbook ↗', note: 'The illustrated operating model is conceptual, not a formally adopted City framework.' },
+         atlas: { title: 'Civic Systems Atlas', description: 'An evolving way to examine connected public digital systems.', context: 'Exploration in progress', points: ['Map relationships across strategy, capabilities, products, services, technology, data and people.', 'Make dependencies and tradeoffs visible for better product decisions.', 'The current project is private; the drawing is a conceptual portfolio illustration.'], note: 'Not a screenshot of the Atlas or a claim of its deployed capabilities.' }
+       };
+       const title = document.getElementById('dialog-title');
       const description = document.getElementById('dialog-description');
       const context = document.getElementById('dialog-context-title');
       const points = document.getElementById('dialog-points');
