@@ -184,6 +184,7 @@ async function main(){
     assert(await page.locator('#portlandmaps').isVisible(),"PortlandMaps remains discoverable using design filter");
     await page.locator('button.filter[data-filter="all"]').click();
     assert(await page.locator('#portlandmaps').isVisible(),"All-work view restores PortlandMaps");
+    assert(!/not an official City of Portland website|not a City website/i.test(await page.locator('body').innerText()),"No unnecessary City-site disclaimer in personal portfolio");
     await page.goto(origin+"/projects/",{waitUntil:"networkidle"});
     issues.push(...await audit(page,"Portfolio projects "+viewport.width));
     await assertFavicon(page,"Projects");
