@@ -1,16 +1,16 @@
 # Tubes v1 — knitting patterns worked in the round
 
 Tubes is a browser-only, no-account knitting pattern playground at
-\`/projects/tubes/\` on the portfolio. It makes real stitch charts and written
+`/projects/tubes/` on the portfolio. It makes real stitch charts and written
 round-by-round instructions from one deterministic model.
 
 ## Run
 
-Serve the portfolio's \`dist/\` folder using a local HTTP server:
+Serve the portfolio's `dist/` folder using a local HTTP server:
 
-\`\`\`sh
+```sh
 python3 -m http.server 8000 --directory dist
-\`\`\`
+```
 
 Visit http://localhost:8000/projects/tubes/. No bundler, backend, API key,
 account, font download, or third-party script is required.
@@ -61,15 +61,15 @@ circumference and gauge. The generated model is capped at 240 stitches and
   as its companion. Print uses the platform print UI; automatic PDF file
   downloading is not provided.
 - Browser saves may disappear when browser data is cleared. Download
-  \`.tubes.json\` files to back up or move editable designs between devices.
+  `.tubes.json` files to back up or move editable designs between devices.
 - No user-supplied image-to-chart conversion, yarn library, yarn quantities,
   ZIP bundle, sharing links, or custom palette editing in v1.
 
 ## Checks
 
-\`\`\`sh
+```sh
 node tests/tubes.test.mjs
-\`\`\`
+```
 
 The Tubes workflow also runs browser controls/export smoke checks on
 desktop and mobile via Playwright. Visual and hands-on knitting review

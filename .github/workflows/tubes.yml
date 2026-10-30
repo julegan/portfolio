@@ -24,7 +24,7 @@ jobs:
         run: node tests/tubes.test.mjs
       - name: Install headless browser
         run: |
-          npm install --no-save --no-package-lock playwright
+          npm install --no-save --no-package-lock playwright axe-core
           npx playwright install --with-deps chromium
       - name: Serve portfolio
         run: |

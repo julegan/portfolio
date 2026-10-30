@@ -1,6 +1,7 @@
 "use strict";
 const assert=require("node:assert/strict");
 const {chromium}=require("playwright");
+const axePath=require.resolve("axe-core/axe.min.js");
 const base="http://127.0.0.1:4173/projects/tubes/";
 (async()=>{
   const browser=await chromium.launch({headless:true,args:["--no-sandbox"]});
@@ -15,7 +16,6 @@ const base="http://127.0.0.1:4173/projects/tubes/";
       assert.equal(await page.locator("#stitchCount").innerText(),"120");
       assert.equal(await page.locator("#roundCount").innerText(),"84");
       await page.locator("#repeats").fill("11");
-      await page.locator("#repeats").dispatchEvent("change");
       assert.equal(await page.locator("#stitchCount").innerText(),"132","More repeats grows tube");
       await page.locator("#undo").click();
       assert.equal(await page.locator("#stitchCount").innerText(),"120");
@@ -46,6 +46,12 @@ const base="http://127.0.0.1:4173/projects/tubes/";
       await page.locator("#editType").selectOption("p");
       await page.locator("#applyEdit").click();
       assert.match(await page.locator("#status").innerText(),/updated/);
+      await page.addScriptTag({path:axePath});
+      const audit=await page.evaluate(()=>window.axe.run(document,{
+        runOnly:{type:"tag",values:["wcag2a","wcag2aa","wcag21a","wcag21aa"]}
+      }));
+      const violations=audit.violations.map(v=>({id:v.id,where:v.nodes.map(n=>n.target.join(" ")).slice(0,5)}));
+      assert.deepEqual(violations,[],"Tubes must pass baseline automated WCAG 2.1 AA axe checks");
       const horizontalOverflow=await page.evaluate(()=>document.documentElement.scrollWidth>innerWidth+2);
       assert.equal(horizontalOverflow,false,"Page itself must not overflow viewport; chart can scroll internally.");
       assert.deepEqual(errors,[],"No uncaught browser errors");
