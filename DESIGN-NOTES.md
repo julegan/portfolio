@@ -10,7 +10,8 @@ The process is intentionally iterative. A change is a hypothesis to test—not a
 
 - First person, conversational but specific. Personal rather than institutional.
 - The formal role can appear alongside a broad design/leadership identity without dominating the site.
-- Two decades of collaborative civic digital work are better presented as connected threads than as artificially isolated projects or invented outcome metrics.
+- Two decades of collaborative civic digital work are better presented as connected threads than as artificially isolated projects or invented outcome metrics. Collaboration is not a reason to erase specific contributions: say **I designed** where Julie did, and **we built** where it was collective. Never confuse humility with a lack of authorship.
+- The first mobile-first PortlandMaps.com design was Julie’s contribution more than a decade ago. The City’s later redesign/modernization in June 2026 was delivered by others. Present her contribution as a distinct design lineage, using conceptual imagery clearly separated from screenshots.
 - The original public-process platform story begins with discovery, user workshops, journey mapping, and conversion of paper processes for community members and City operations. It subsequently evolved through multiple generations including eCouncil. The original system name and precise chronology still need confirmation; avoid the false claim that Julie supervised eCouncil staff or personally designed every successor.
 - Retain clear commitments to accessibility, digital equity, antiracism, Title II disability access, and distinct Title VI/language access obligations. These describe principles and areas of practice, not universal compliance outcomes.
 

@@ -12,6 +12,7 @@ The site is intentionally in progress. Its visual direction is art-directed, typ
 | --- | --- |
 | `/` | Home: design, civic digital work, values, systems, and the person behind the work |
 | `/projects/` | Two collections: useful creative tools and the Possible Realities laboratory |
+
 | `/projects/shows/` | SHOWS, a reviewed Portland music and independent culture calendar snapshot |
 | `/projects/svg-hopper/` | SVG Hopper, a language-ready graphic composer prototype |
 | `/projects/tubes/` | Tubes, a local-first pattern generator for knitting in the round |
@@ -55,3 +56,7 @@ Operational material: [SHOWS-AUTOMATION.md](SHOWS-AUTOMATION.md), [SHOWS-EDITORI
 All changes go to a new branch and PR. Julie reviews and merges; never commit directly to `main` or auto-merge. Favor small, reversible design iterations. Keep old public routes working, protect SHOWS data provenance, and avoid invented professional results or individual-credit claims. See [AGENTS.md](AGENTS.md) and [DESIGN-NOTES.md](DESIGN-NOTES.md).
 
 Contact: [LinkedIn](https://www.linkedin.com/in/julieh/).
+
+## Design lineage: PortlandMaps
+
+The homepage includes Julie’s personal account of designing the **first mobile-first PortlandMaps.com interface** more than a decade ago. This was one contribution within a collaborative City effort. The City’s June 2026 modernization was delivered by subsequent teams and must not be attributed to the earlier designer. The accompanying visual is abstract, not a screenshot. Public release context: [PortlandMaps modernization (June 2026)](https://www.portland.gov/bts/cgis/news/2026/6/4/new-and-improved-portlandmaps-coming-soon).

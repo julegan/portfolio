@@ -169,6 +169,14 @@ async function main(){
     assert.equal(await page.locator("#field-nodes [data-field-node]").count(),9,"Diagram has nine moving points");
     const pathDestinations=await page.locator(".hero-doors .door").evaluateAll(nodes=>nodes.map(n=>new URL(n.href).pathname));
     assert.deepEqual(pathDestinations,["/projects/","/projects/","/"],"Paths remain within the site");
+    assert.equal(await page.locator('#work-results > [data-paths]').count(),5,"Five selected practice and design threads");
+    assert.equal(await page.locator('#portlandmaps').count(),1,"PortlandMaps design contribution is prominent");
+    assert.match(await page.locator('#portlandmaps .description').innerText(),/first mobile-first/i);
+    assert.match(await page.locator('#portlandmaps .visual-caption').innerText(),/not a screenshot/i);
+    await page.locator('button.filter[data-filter="design"]').click();
+    assert(await page.locator('#portlandmaps').isVisible(),"PortlandMaps remains discoverable using design filter");
+    await page.locator('button.filter[data-filter="all"]').click();
+    assert(await page.locator('#portlandmaps').isVisible(),"All-work view restores PortlandMaps");
     await page.goto(origin+"/projects/",{waitUntil:"networkidle"});
     issues.push(...await audit(page,"Portfolio projects "+viewport.width));
     await assertFavicon(page,"Projects");

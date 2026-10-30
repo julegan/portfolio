@@ -339,6 +339,10 @@
     }
     @media print { .design-visual, .practice-visual { display:none!important; } }
 
+    .maps-study { min-height: 350px; overflow: hidden; border-color: #748291; padding: 0; background: #263542; color: #f1f2f4; }
+    .maps-study svg { width: 100%; height: 350px; display: block; }
+    .maps-study .visual-caption { color: #e4eaf1; text-shadow: 0 1px 3px #15232b; }
+    @media (max-width: 700px) { .maps-study { min-height: 290px; } .maps-study svg { height: 310px; } }
     /* Edition 03 — a readable portfolio with room for the irrational. */
     .hero { position: relative; padding-top: 48px; }
     .hero-grid { grid-template-columns: 1.04fr .96fr; align-items: center; gap: clamp(26px,4vw,75px); }
@@ -516,7 +520,7 @@
       <div class="wrap">
         <div class="section-intro">
           <div><p class="mono label">01 / selected work &amp; ongoing practice</p><h2 id="work-title" tabindex="-1">The work<br>is never just<br>the work.</h2></div>
-          <p>Twenty years of work cannot be neatly divided into separate case studies. Here are some of the threads I’ve helped shape, alongside many other people.</p>
+          <p>Two decades of work don’t separate neatly into case studies. These are some of the things I’ve designed and helped shape alongside many talented people. Both parts of that sentence matter.</p>
         </div>
         <div class="work-tools">
           <p class="work-status" id="work-status" role="status" aria-live="polite" aria-atomic="true">Explore the work and practice below.</p>
@@ -557,9 +561,47 @@
               <figcaption class="visual-caption" id="design-caption">Conceptual illustration · not an official City design-system component</figcaption>
             </figure>
           </article>
+          <article class="project" id="portlandmaps" data-paths="design portfolio">
+            <div class="project-copy">
+              <p class="mono">03 / an earlier design chapter</p>
+              <p class="project-name">PortlandMaps.com · the first mobile-first design</p>
+              <h3>A whole city<br>in your pocket.</h3>
+              <p class="description">More than a decade ago, I designed the first mobile-first version of PortlandMaps.com as part of a collaborative City effort. The challenge was bringing complex public mapping and property information to smaller screens. Other teams have continued developing the service, including a major modernization in 2026. This is a design contribution from an earlier generation, not a claim to the current interface.</p>
+              <div class="project-links"><a class="text-link" href="https://www.portlandmaps.com/">Visit PortlandMaps today <span aria-hidden="true">↗</span></a><button class="text-link detail-link js-details" type="button" data-project="maps">Design across generations <span aria-hidden="true">↗</span></button></div>
+            </div>
+            <figure class="project-visual maps-visual maps-study" aria-labelledby="portlandmaps-caption">
+              <svg viewBox="0 0 560 370" role="img" aria-labelledby="portlandmaps-art-title portlandmaps-art-description" xmlns="http://www.w3.org/2000/svg">
+                <title id="portlandmaps-art-title">An abstract mapping study for small screens</title>
+                <desc id="portlandmaps-art-description">A grid of imaginary streets, map coordinates, and a small handheld outline. The artwork is conceptual, not an image of either generation of PortlandMaps.</desc>
+                <defs>
+                  <pattern id="map-mesh" width="40" height="40" patternUnits="userSpaceOnUse"><path d="M40 0H0V40" fill="none" stroke="#bdcad6" stroke-width=".9" opacity=".3"/></pattern>
+                  <clipPath id="mobile-clip"><rect x="206" y="50" width="155" height="265" rx="7"/></clipPath>
+                </defs>
+                <rect x="0" y="0" width="560" height="370" fill="#263542"/>
+                <rect x="0" y="0" width="560" height="370" fill="url(#map-mesh)"/>
+                <g fill="none" stroke="#a6b9c9" stroke-width="2" opacity=".7">
+                  <path d="M0 53Q160 138 560 17"/>
+                  <path d="M-30 302Q220 197 560 340"/>
+                  <path d="M98 0L155 370M459 0L401 370"/>
+                </g>
+                <g fill="none" stroke="#d6e0e8" stroke-width="2.5"><path d="M75 253L180 175L262 217L341 125L481 98"/></g>
+                <circle cx="75" cy="253" r="5" fill="#e5edf4"/><circle cx="481" cy="98" r="5" fill="#e5edf4"/>
+                <rect x="193" y="35" width="181" height="295" rx="18" fill="#0d131a" stroke="#e2e8ec" stroke-width="3"/>
+                <rect x="206" y="50" width="155" height="265" rx="7" fill="#d4dce3"/>
+                <g clip-path="url(#mobile-clip)">
+                  <rect x="206" y="50" width="155" height="265" fill="#ced7df"/>
+                  <g stroke="#718da0" fill="none"><path d="M206 76L361 116M206 130L361 165M230 50L240 315M319 50L300 315M206 273L361 218M206 198L361 250" stroke-width="8"/><path d="M206 76L361 116M206 130L361 165M230 50L240 315M319 50L300 315M206 273L361 218M206 198L361 250" stroke="#eef2f5" stroke-width="4"/></g>
+                  <circle cx="295" cy="180" r="19" fill="#162c3b" stroke="#f4f6f7" stroke-width="4"/><circle cx="295" cy="180" r="5" fill="#f4f6f7"/>
+                </g>
+                <rect x="256" y="322" width="55" height="3" rx="2" fill="#c7d1da"/>
+                <g font-family="monospace" font-size="12" fill="#e5ebf1" letter-spacing="1.2"><text x="25" y="31">MAP / 01</text><text x="420" y="352">ANYWHERE →</text></g>
+              </svg>
+              <figcaption class="visual-caption" id="portlandmaps-caption">Conceptual graphic · not a screenshot of the original or current PortlandMaps</figcaption>
+            </figure>
+          </article>
           <article class="project" id="public-process" data-paths="civic design">
             <div class="project-copy">
-              <p class="mono">03 / public participation &amp; service design</p><p class="project-name">Public-process platforms · eCouncil evolution · government transition</p>
+              <p class="mono">04 / public participation &amp; service design</p><p class="project-name">Public-process platforms · eCouncil evolution · government transition</p>
               <h3>From paper<br>to participation.</h3>
               <p class="description">One early project began with discovery, workshops, and mapping the experiences of residents and City staff. I designed a digital public-process platform that replaced a paper-based process on both sides of the counter. Its foundations evolved through later systems, including eCouncil. Years later, the work continues in new forms as government changes.</p>
               <div class="project-links"><a class="text-link" href="https://www.portland.gov/council">Explore Portland City Council <span aria-hidden="true">↗</span></a><button class="text-link detail-link js-details" type="button" data-project="process">My contributions <span aria-hidden="true">↗</span></button></div>
@@ -571,7 +613,7 @@
           </article>
           <article class="project" id="product-practice" data-paths="practice portfolio">
             <div class="project-copy">
-              <p class="mono">04 / operating models &amp; product stewardship</p><p class="project-name">Digital Services Playbook · shared practices</p>
+              <p class="mono">05 / operating models &amp; product stewardship</p><p class="project-name">Digital Services Playbook · shared practices</p>
               <h3>Good systems<br>help teams work.</h3>
               <p class="description">Much of my work is designing how digital product teams operate across organizational boundaries: shared methods, visible priorities, stewardship, and room for collaboration. I co-created the Digital Services Playbook with my team and continue exploring how to make portfolio dependencies and tradeoffs more visible.</p>
               <div class="project-links"><a class="text-link" href="https://www.portland.gov/digital-services/news/2026/5/5/playbook-helps-city-teams-build-better-digital-services">Read about our Playbook <span aria-hidden="true">↗</span></a><button class="text-link detail-link js-details" type="button" data-project="practice">Principles in practice <span aria-hidden="true">↗</span></button></div>
@@ -656,7 +698,7 @@
           if (path.dataset.filter === key) path.setAttribute('aria-current', 'true');
           else path.removeAttribute('aria-current');
         });
-        status.textContent = key === 'all' ? 'Four areas of selected work and practice' : categories[key] + ' · ' + visible + ' related areas';
+        status.textContent = key === 'all' ? projects.length + ' threads of work and practice' : categories[key] + ' · ' + visible + ' related threads';
         if (moveToWork) {
           workTitle.focus({ preventScroll: true });
           document.getElementById('work').scrollIntoView({ behavior: reduceMotion.matches ? 'auto' : 'smooth', block: 'start' });
@@ -704,8 +746,9 @@
       root.classList.add('has-dialog');
       let opener = null;
       const stories = {
-         gov: { title: 'Digital product & portfolio leadership', description: 'A shared portfolio of services, teams, design decisions, and technology.', context: 'My work', points: ['Lead product direction for Portland.gov and related public and employee digital platforms.', 'Connect architecture, prioritization, standards, and governance across teams.', 'This is collaborative City work, not a claim of sole authorship of the products.'], url: 'https://www.portland.gov/', link: 'Explore Portland.gov ↗', note: 'Personal account of my role. Outcome-specific case studies will require documented evidence.' },
+         gov: { title: 'Digital product & portfolio leadership', description: 'A shared portfolio of services, teams, design decisions, and technology.', context: 'My part in the collective work', points: ['Lead product direction for Portland.gov and related public and employee digital platforms.', 'Connect architecture, prioritization, standards, and governance across teams.', 'Work with many City colleagues whose expertise and contributions shape the products we build and maintain.'], url: 'https://www.portland.gov/', link: 'Explore Portland.gov ↗', note: 'A personal perspective on shared, evolving work—not a claim of sole authorship.' },
          design: { title: 'Design systems, accessibility & equity', description: 'Accessible and equitable product decisions begin long before launch.', context: 'My commitments in practice', points: ['Shape shared design patterns and practices that support consistent, accessible digital services.', 'Treat ADA Title II web accessibility as a product stewardship responsibility.', 'Use digital equity and antiracist product thinking to examine whose needs inform decisions and whose barriers are prioritized.', 'Consider language access and Title VI nondiscrimination as distinct but connected concerns.'], url: 'https://www.portland.gov/officeofequity/digital-accessibility', link: 'City digital accessibility resources ↗', note: 'These are priorities and areas of practice, not claims that any product or organization has achieved comprehensive compliance.' },
+         maps: { title: 'PortlandMaps: designing for the smaller screen', description: 'My first mobile-first PortlandMaps design was one chapter in a much longer, collaborative public technology effort.', context: 'What I contributed', points: ['Designed the first mobile-first version of PortlandMaps.com more than a decade ago.', 'Worked within a collaborative City effort to bring complex mapping and property information to smaller screens.', 'The City modernized PortlandMaps again in June 2026; that work belongs to the teams responsible for the newer implementation.', 'Public digital products do not stop evolving when one designer’s part is complete.'], url: 'https://www.portland.gov/bts/cgis/news/2026/6/4/new-and-improved-portlandmaps-coming-soon', link: 'Read about the 2026 PortlandMaps update ↗', note: 'The personal design contribution is Julie’s account; the City documents the newer release and credits the continuing GIS work. The illustration is not an archived interface.' },
          process: { title: 'From paper to public participation', description: 'Designing a new public process from both sides: the community experience and the work of running it.', context: 'A long-running design thread', points: ['Conducted discovery, user workshops and journey mapping to understand the original paper-based process.', 'Designed the City’s first digital public-process platform, serving public participation and internal business operations.', 'The platform was subsequently adapted and redesigned through multiple generations, including the later eCouncil system.', 'Continued contributing to public-facing civic experiences as Portland’s government structure changed.'], url: 'https://www.portland.gov/council', link: 'Explore today’s Council information ↗', note: 'A personal recollection of an early foundational project, not a claim of sole authorship of later implementations. The original platform name and detailed chronology remain to be confirmed.' },
          practice: { title: 'Product operating models & shared practices', description: 'How teams make decisions is part of the design.', context: 'An ongoing practice', points: ['Co-created the Digital Services Playbook with a multidisciplinary team.', 'Develop product management standards and repeatable processes across silos.', 'Look at portfolio ownership, capacity, tradeoffs, maintenance, and decommissioning alongside delivery.'], url: 'https://www.portland.gov/digital-services/news/2026/5/5/playbook-helps-city-teams-build-better-digital-services', link: 'Read about the team’s Playbook ↗', note: 'The illustrated operating model is conceptual, not a formally adopted City framework.' },
          atlas: { title: 'Civic Systems Atlas', description: 'An evolving way to examine connected public digital systems.', context: 'Exploration in progress', points: ['Map relationships across strategy, capabilities, products, services, technology, data and people.', 'Make dependencies and tradeoffs visible for better product decisions.', 'The current project is private; the drawing is a conceptual portfolio illustration.'], note: 'Not a screenshot of the Atlas or a claim of its deployed capabilities.' }
