@@ -25,3 +25,7 @@ The current Civic Systems Atlas source and demo remain private and were not acce
 - **City of Portland:** [PortlandMaps overview](https://www.portland.gov/bts/cgis/portlandmaps). States the new version was deployed June 24, 2026.
 
 These public sources establish platform chronology and the continuity of the service, but **do not independently establish individual design attribution**. The portfolio's design attribution comes from Julie's firsthand account. The portfolio illustration is conceptual, not an archival screenshot.
+
+### Additional firsthand PortlandMaps design detail (October 30, 2026)
+
+Julie described several interrelated design decisions behind the first mobile-first version: moving beyond the former click-to-pan/zoom map to continuous draggable, zoomable navigation; using device geolocation to orient a person at the actual property; enabling on-site access to relevant property information and permits for work or house shopping; reorganizing the information architecture; and incorporating the City's improved aerial imagery and custom professionally designed basemaps. This is firsthand design history, not independent source verification of the implementation timeline or a claim that Julie personally produced the GIS data, imagery, or basemaps.

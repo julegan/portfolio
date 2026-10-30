@@ -172,7 +172,14 @@ async function main(){
     assert.equal(await page.locator('#work-results > [data-paths]').count(),5,"Five selected practice and design threads");
     assert.equal(await page.locator('#portlandmaps').count(),1,"PortlandMaps design contribution is prominent");
     assert.match(await page.locator('#portlandmaps .description').innerText(),/first mobile-first/i);
+    assert.match(await page.locator('#portlandmaps .description').innerText(),/property and permit information/i,"On-site property use case is visible");
+    assert.match(await page.locator('#portlandmaps .description').innerText(),/aerial imagery/i,"Imaging and basemap capabilities are acknowledged");
     assert.match(await page.locator('#portlandmaps .visual-caption').innerText(),/not a screenshot/i);
+    await page.locator('#portlandmaps [data-project="maps"]').click();
+    assert(await page.locator('#project-dialog').evaluate(el=>el.open),"PortlandMaps detail opens");
+    assert.match(await page.locator('#dialog-description').innerText(),/Location and on-site access/i);
+    assert.match(await page.locator('#dialog-points').innerText(),/location permission/i);
+    await page.locator('#project-dialog .dialog-close').click();
     await page.locator('button.filter[data-filter="design"]').click();
     assert(await page.locator('#portlandmaps').isVisible(),"PortlandMaps remains discoverable using design filter");
     await page.locator('button.filter[data-filter="all"]').click();
