@@ -1,0 +1,35 @@
+name: Tubes v1 pattern and browser checks
+on:
+  pull_request:
+    paths:
+      - 'dist/projects/tubes/**'
+      - 'tests/tubes*'
+      - '.github/workflows/tubes.yml'
+  push:
+    branches: [main]
+    paths:
+      - 'dist/projects/tubes/**'
+      - 'tests/tubes*'
+      - '.github/workflows/tubes.yml'
+jobs:
+  tests:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Check deterministic knitting model
+        run: node tests/tubes.test.mjs
+      - name: Install headless browser
+        run: |
+          npm install --no-save --no-package-lock playwright axe-core
+          npx playwright install --with-deps chromium
+      - name: Serve portfolio
+        run: |
+          python3 -m http.server 4173 --bind 127.0.0.1 --directory dist >/tmp/tubes-site.log 2>&1 &
+          for n in $(seq 1 15); do curl -fsS http://127.0.0.1:4173/projects/tubes/ >/dev/null && exit 0 || sleep 1; done
+          exit 1
+      - name: Exercise controls and exports on desktop and mobile
+        run: node tests/tubes-browser.cjs
