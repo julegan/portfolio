@@ -24,7 +24,7 @@ account, font download, or third-party script is required.
 - 1–6 colors in four palettes, four complexity levels, optional purl texture.
 - Deterministic generation with repeatable random seed; Generate another,
   Undo, and Redo.
-- Actual stitch chart (round 1 at bottom), clickable color editing, and
+- Actual right-to-left stitch chart (round 1 at bottom), clickable color editing, and
   precise labeled round/stitch editor for keyboard users.
 - Schematic cylinder drawn from *the same stitch cells* as the chart.
   It shows the front half of the tube; it is not a photo or fabric simulation.

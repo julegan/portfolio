@@ -171,7 +171,7 @@ export function patternMarkdown(project,model){
     "- This is a generated design, not a gauge-tested pattern. Knit a swatch and check fit.",
     "- For stranded colorwork, manage long floats and yarn dominance. Longest computed unused-color span: "+maxFloat(g,s.colors)+" stitches.",
     "- No increases, decreases, cables, lace, shaping, or construction-specific finishing are included in v1.",
-    "- Chart reads bottom-up (Round 1 at bottom); knitting proceeds in rounds.",
+    "- Chart reads bottom-up, and every round reads right-to-left (Round 1 at bottom).",
     "- PNG/SVG charts are visual companions; the .tubes.json file is the editable source.",
     ""
   ].join("\n");

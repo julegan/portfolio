@@ -15,6 +15,7 @@ const base="http://127.0.0.1:4173/projects/tubes/";
       assert(await page.locator("#graphic svg.chart rect").count()>500,"Chart renders real stitch cells");
       assert.equal(await page.locator("#stitchCount").innerText(),"120");
       assert.equal(await page.locator("#roundCount").innerText(),"84");
+      assert.equal(Number(await page.locator("#graphic svg.chart rect").nth(1).getAttribute("x")),37+119*12,"First stitch is on the right of round 1 chart");
       await page.locator("#repeats").fill("11");
       assert.equal(await page.locator("#stitchCount").innerText(),"132","More repeats grows tube");
       await page.locator("#undo").click();
