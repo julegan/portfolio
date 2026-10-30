@@ -5,14 +5,50 @@
   <link rel="icon" type="image/svg+xml" href="./favicon.svg">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="theme-color" content="#111214"><meta name="color-scheme" content="dark">
-<meta name="description" content="Working ideas and interactive prototypes from Julie Owens. Try a project, follow its progress, and see what comes next.">
-<title>Personal projects — Julie Owens</title>
+<meta name="description" content="A collection of useful tools, strange questions and experiments still becoming. Made by Julie Owens.">
+<title>Making & wondering — Julie Owens</title>
+<link rel="canonical" href="https://julieowens.me/projects/">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://julieowens.me/projects/">
+<meta property="og:title" content="Making & wondering — Julie Owens">
+<meta property="og:description" content="Useful tools, strange questions and small experiments from Julie Owens.">
+<meta name="twitter:card" content="summary">
 <style>
 :root{--ink:#111214;--paper:#f1f2f4;--soft:#abb4bf;--line:#414850;--white:#fff;--card:#1a1d21;--mono:"SFMono-Regular",Consolas,"Liberation Mono",monospace;--sans:"Avenir Next",Avenir,"Segoe UI",Arial,sans-serif;font-family:var(--sans);color:var(--paper);background:var(--ink)}
 *{box-sizing:border-box}body{margin:0;line-height:1.6}a{color:inherit;text-underline-offset:4px}a:focus-visible{outline:3px solid var(--paper);outline-offset:5px}.skip{position:absolute;top:-100px;left:18px;background:var(--paper);color:var(--ink);padding:12px}.skip:focus{top:12px}.wrap{width:min(1190px,calc(100% - 88px));margin-inline:auto}.mono{font-family:var(--mono);font-size:11px;line-height:1.55;letter-spacing:.09em;text-transform:uppercase}.head{display:flex;align-items:center;justify-content:space-between;gap:24px;min-height:94px;border-bottom:1px solid var(--line)}.name{font-weight:600;text-decoration:none;font-size:19px;letter-spacing:-.04em}.nav{display:flex;align-items:center;gap:23px;font-size:13px}.nav .current{color:var(--white);text-decoration:none;border-bottom:1px solid #fff;padding-bottom:5px}.nav a:not(.current){color:var(--soft)}.hero{padding:88px 0 65px;display:grid;grid-template-columns:1.3fr .7fr;gap:54px;align-items:end}.eyebrow{font-family:var(--mono);font-size:11px;letter-spacing:.13em;text-transform:uppercase;color:var(--soft);margin:0 0 25px}.eyebrow:before{content:"";display:inline-block;width:6px;height:6px;background:#f1f2f4;margin-right:11px;vertical-align:2px}.hero h1{font-weight:500;font-size:clamp(57px,8vw,110px);line-height:.9;letter-spacing:-.079em;margin:0}.hero h1 em{font-style:normal;color:#9ba4b0}.intro{max-width:385px;font-size:18px;line-height:1.65;color:#c5ccd5;margin:0 0 5px}.metadata{display:flex;justify-content:space-between;gap:16px;align-items:center;padding:18px 0 15px;border-top:1px solid var(--line);color:var(--soft);margin-top:18px}.metadata span:last-child{text-align:right}.project-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:24px;margin:20px 0 86px}.project{border:1px solid #464e57;background:var(--card);display:flex;flex-direction:column;overflow:hidden;min-width:0;position:relative;isolation:isolate}.project--beam::before{content:"";position:absolute;inset:0;pointer-events:none;z-index:2;border:2px solid transparent;background:linear-gradient(110deg,transparent 0%,transparent 35%,#d6e1ed 48%,#8c9fae 50%,transparent 63%,transparent 100%) border-box;background-size:260% 100%;background-position:100% 0;-webkit-mask:linear-gradient(#000 0 0) padding-box,linear-gradient(#000 0 0);-webkit-mask-composite:xor;mask:linear-gradient(#000 0 0) padding-box,linear-gradient(#000 0 0);mask-composite:exclude;opacity:0;transition:opacity .2s}.project--beam:hover::before,.project--beam:focus-within::before{opacity:1;animation:beam-travel 1.5s linear infinite}@keyframes beam-travel{to{background-position:-100% 0}}.thumbnail{display:block;background:#202b26;aspect-ratio:1.7;border-bottom:1px solid #464e57;overflow:hidden}.thumbnail img{display:block;width:100%;height:100%;object-fit:cover;transition:transform .2s}.thumbnail:hover img{transform:scale(1.025)}.project-body{padding:28px 30px 30px;display:flex;flex-direction:column;flex:1}.project-meta{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;font-family:var(--mono);font-size:11px;letter-spacing:.05em;color:var(--soft)}.status{display:inline-flex;align-items:center;gap:8px;color:#e0e9e0}.status:before{content:"";height:7px;width:7px;border-radius:50%;background:#cde871;display:inline-block}.project h2{font-size:clamp(27px,3vw,39px);font-weight:520;letter-spacing:-.055em;line-height:1.15;margin:21px 0 11px}.project-desc{font-size:15px;line-height:1.7;color:#c4cbd4;max-width:52ch;margin:0}.tags{list-style:none;display:flex;flex-wrap:wrap;gap:7px;padding:0;margin:23px 0 27px}.tags li{border:1px solid #5b656f;color:#d0d7df;border-radius:40px;padding:5px 10px;font-size:11px}.actions{display:flex;gap:12px;align-items:center;flex-wrap:wrap;margin-top:auto}.launch{display:inline-flex;align-items:center;gap:15px;text-decoration:none;background:var(--paper);color:var(--ink);padding:13px 18px;font-size:13px;font-weight:700;min-height:46px}.launch:hover{background:#d8dee5}.source{font-size:12px;color:#e1e7ec}.small-note{font-size:11px;line-height:1.5;color:var(--soft);margin:18px 0 0}.next{border:1px dashed #525b64;padding:35px 30px;min-height:430px;display:flex;flex-direction:column;justify-content:center;gap:15px}.next .number{font-family:var(--mono);font-size:64px;color:#58636f;line-height:1;letter-spacing:-.08em}.next h2{font-size:30px;font-weight:500;letter-spacing:-.055em;margin:0}.next p{font-size:15px;line-height:1.6;color:var(--soft);max-width:340px;margin:0}.statement{padding:45px 0 72px;border-top:1px solid var(--line);display:grid;grid-template-columns:1fr 1fr;gap:70px}.statement h2{font-size:clamp(29px,3.8vw,52px);letter-spacing:-.06em;line-height:1.1;font-weight:500;margin:0}.statement p{margin:0;color:#bfc7d1;font-size:16px;line-height:1.8}.footer{border-top:1px solid var(--line);display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;padding:25px 0 35px;color:var(--soft);font-family:var(--mono);font-size:11px;letter-spacing:.04em}
 @media(max-width:850px){.wrap{width:calc(100% - 44px)}.hero{grid-template-columns:1fr;gap:26px;padding:63px 0 45px}.intro{max-width:630px}.project-grid{grid-template-columns:1fr}.next{min-height:230px}.statement{grid-template-columns:1fr;gap:25px}}
 @media(max-width:520px){.wrap{width:calc(100% - 32px)}.head{min-height:75px}.nav{gap:12px;font-size:12px}.name{font-size:16px}.hero h1{font-size:clamp(48px,13vw,72px)}.intro{font-size:16px}.project-body{padding:24px 21px}.thumbnail{aspect-ratio:1.45}.metadata{align-items:start}.metadata span:last-child{max-width:140px}.statement{padding:38px 0 55px}}
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.thumbnail img{transition:none}.project--beam::before{animation:none!important;transition:none;background:#d6e1ed border-box;opacity:0}.project--beam:hover::before,.project--beam:focus-within::before{opacity:1}}
+
+.family-heading { display: grid; grid-template-columns: 1.2fr .8fr; align-items: end; gap: 30px; margin: 72px 0 24px; }
+.family-heading h2 { margin: 0; font-size: clamp(45px,6.2vw,88px); line-height: .98; font-weight: 500; letter-spacing: -.072em; }
+.family-heading > p { margin: 0 0 5px; max-width: 42ch; color: #c5ccd5; }
+.project-family > .project-grid { margin-top: 25px; margin-bottom: 64px; }
+.project-grid .project h3 { font-size: clamp(27px,3vw,39px); font-weight: 520; letter-spacing: -.055em; line-height: 1.15; margin: 21px 0 11px; }
+.laboratory { border-top: 1px solid #626d78; padding-top: 4px; }
+.laboratory .family-heading h2 { font-family: Georgia,"Times New Roman",serif; font-style: italic; letter-spacing: -.065em; }
+.lab-feature { display: grid; grid-template-columns: 1.05fr .95fr; background: #e5e9ee; color: #111214; overflow: hidden; border: 1px solid #bec9d4; min-height: 425px; }
+.lab-feature-copy { padding: clamp(26px,5vw,63px); align-self: center; }
+.lab-feature .eyebrow { color: #485661; }
+.lab-feature h3 { font-size: clamp(38px,4.6vw,71px); line-height: 1.07; font-weight: 500; letter-spacing: -.055em; margin: 5px 0 25px; }
+.lab-feature h3 em { font-family: Georgia,"Times New Roman",serif; font-weight: 400; }
+.lab-feature-copy > p:not(.eyebrow):not(.small-note) { font-size: 16px; max-width: 45ch; line-height: 1.65; }
+.lab-feature .small-note { color: #43515d; }
+.lab-launch { display: inline-flex; min-height: 48px; padding: 12px 20px; background: #111214; color: #fff; font-size: 13px; font-weight: 650; text-decoration: none; gap: 18px; align-items: center; margin-top: 26px; }
+.lab-launch:hover,.lab-launch:focus-visible { background: #384653; }
+.lab-launch:focus-visible { outline: 3px solid #111214; outline-offset: 4px; }
+.lab-art { display: block; width: 100%; height: 100%; min-height: 350px; background: #152029; }
+.experiment-intro { display: flex; justify-content: space-between; align-items: baseline; gap: 30px; margin-top: 50px; border-bottom: 1px solid #52606c; padding-bottom: 12px; }
+.experiment-intro > p:last-child { max-width: 55ch; font-size: 13px; color: #c5ccd5; }
+.experiment-grid { grid-template-columns: repeat(3,minmax(0,1fr)); }
+.experiment-grid .project-desc { font-size: 14px; }
+.experiment-grid .thumbnail { aspect-ratio: 1.6; }
+.experiment-grid .project-body { padding: 23px 21px 27px; }
+.experiment-grid .project-meta { font-size: 10px; }
+.experiment-grid .project h3 { font-size: clamp(23px,2.3vw,32px); }
+@media(max-width:960px){ .experiment-grid { grid-template-columns: 1fr 1fr; } .lab-feature { grid-template-columns: 1fr 1fr; }}
+@media(max-width:850px){ .family-heading { grid-template-columns: 1fr; gap: 16px; } .family-heading h2 { font-size: clamp(45px,9vw,72px); } .lab-feature { grid-template-columns: 1fr; } .lab-art { max-height: 280px; min-height: 220px; } .experiment-intro { display: block; } .experiment-intro > p:last-child { margin-top: 8px; } }
+@media(max-width:560px){ .experiment-grid { grid-template-columns: 1fr; } .lab-feature h3 { font-size: 40px; } .family-heading { margin-top: 60px; } }
 </style>
 </head>
 <body>
@@ -23,62 +59,90 @@
 </header>
 <main id="main" class="wrap">
   <section class="hero" aria-labelledby="page-heading">
-    <div><p class="eyebrow">Independent experiments / working prototypes</p><h1 id="page-heading">Ideas, made<br><em>real.</em></h1></div>
-    <p class="intro">A growing collection of things I'm exploring. Some solve practical problems, some test an interaction, and some exist because I was curious. Open one up and see how it works.</p>
+    <div><p class="eyebrow">Independent experiments / working prototypes</p><h1 id="page-heading">Making &amp;<br><em>wondering.</em></h1></div>
+    <p class="intro">A few things that work. A few things that might never make sense. All of them started with wanting to find out.</p>
   </section>
-  <div class="metadata mono"><span>Personal projects / 007</span><span>Working ideas, not finished products</span></div>
-  <section class="project-grid" aria-label="Projects">
-    <article class="project project--beam">
+
+  <div class="metadata mono"><span>Useful / unnecessary / not yet understood</span><span>Everything can change</span></div>
+  <section class="project-family" aria-labelledby="tools-title" id="tools">
+    <div class="family-heading"><div><p class="eyebrow">01 / Making useful things</p><h2 id="tools-title">Tools for<br>real life.</h2></div><p>Small independent products with a practical job to do. Not finished, not hypothetical: you can open them and try them.</p></div>
+    <div class="project-grid">
+      <article class="project project--beam">
       <a class="thumbnail" href="/projects/shows/" aria-label="Launch SHOWS calendar prototype"><img src="/projects/shows-thumb.svg" alt="Preview of the SHOWS calendar: bright calendar cards against a dark background" width="1020" height="600"></a>
       <div class="project-body">
-        <div class="project-meta"><span>01 / OCT 2026</span><span class="status">Working prototype</span></div>
-        <h2>SHOWS</h2>
+        <div class="project-meta"><span>01 / calendar</span><span class="status">Working prototype</span></div>
+        <h3>SHOWS</h3>
         <p class="project-desc">Underground metal, punk, goth, rock, and hardcore, alongside Portland's independent culture and community. Browse by date or music style, find a place, and move events into your own calendar.</p>
         <ul class="tags" aria-label="Project topics"><li>Event discovery</li><li>Calendar UX</li><li>Community</li><li>Accessible design</li></ul>
         <div class="actions"><a class="launch" href="/projects/shows/">Launch prototype <span aria-hidden="true">↗</span></a><a class="source" href="https://github.com/julegan/shows" target="_blank" rel="noopener noreferrer">Explore code ↗</a></div>
-        <p class="small-note">Working prototype with manually checked October–December 2026 listings. Confirm current details with organizers.</p>
+        <p class="small-note">Working prototype with a rolling, reviewed source snapshot. Confirm current details with organizers.</p>
       </div>
     </article>
-    <article class="project project--beam">
+      <article class="project project--beam">
       <a class="thumbnail" href="/projects/svg-hopper/" aria-label="Launch SVG Hopper graphic composer"><img src="/projects/svg-hopper-thumb.svg" alt="SVG Hopper demo: abstract vector shapes above a high-contrast text panel" width="1020" height="600"></a>
       <div class="project-body">
-        <div class="project-meta"><span>02 / OCT 2026</span><span class="status">Working prototype</span></div>
-        <h2>SVG Hopper</h2>
+        <div class="project-meta"><span>02 / graphics</span><span class="status">Working prototype</span></div>
+        <h3>SVG Hopper</h3>
         <p class="project-desc">Compose language-ready graphics with actual SVG text. Choose a vector-only composition or bring a photo, set a style, preview English and Spanish copy, and export an SVG—no design software required.</p>
         <ul class="tags" aria-label="Project topics"><li>SVG</li><li>Language access</li><li>No-code</li><li>Accessible design</li></ul>
         <div class="actions"><a class="launch" href="/projects/svg-hopper/">Try the composer <span aria-hidden="true">↗</span></a><a class="source" href="https://github.com/julegan/portfolio/tree/main/dist/projects/svg-hopper" target="_blank" rel="noopener noreferrer">Explore code ↗</a></div>
         <p class="small-note">Independent proof of concept. Example styles are not City of Portland-approved designs; human review is still required for translations and accessibility.</p>
       </div>
     </article>
-    <article class="project project--beam">
-      <a class="thumbnail" href="/projects/chaos/" aria-label="Explore the interactive chaos experiment"><div style="height:100%;display:grid;place-items:center;background:radial-gradient(ellipse at 40% 50%,#19444b,#0b111b 68%);color:#a4ffff;font:clamp(25px,4vw,60px) Georgia,serif;text-align:center">∞ <span style="color:#ff9bbd">∞</span></div></a>
-      <div class="project-body">
-        <div class="project-meta"><span>03 / OCT 2026</span><span class="status">Interactive experiment</span></div>
-        <h2>Almost the Same</h2>
-        <p class="project-desc">Two nearly identical beginnings. Two diverging trajectories. Play with a strange attractor and the mathematics of chaos.</p>
-        <ul class="tags" aria-label="Project topics"><li>Chaos</li><li>Mathematics</li><li>Personal curiosity</li></ul>
-        <div class="actions"><a class="launch" href="/projects/chaos/">Explore experiment <span aria-hidden="true">↗</span></a></div>
-        <p class="small-note">An interactive Lorenz-system visualization, not a literal simulation of parallel universes.</p>
-      </div>
-    </article>
-    <article class="project project--beam"><a class="thumbnail" href="/projects/relationships/" aria-label="Explore Only Between"><div style="height:100%;display:grid;place-items:center;background:radial-gradient(ellipse,#24434b,#0a121b);color:#b1e5e0;font-size:clamp(25px,4vw,54px);letter-spacing:.3em">○—○—○</div></a><div class="project-body"><div class="project-meta"><span>04 / OCT 2026</span><span class="status">Interactive experiment</span></div><h2>Only Between</h2><p class="project-desc">Can something recognizable emerge from changing relationships? Adjust the rules of a tiny network universe and see whether structures persist.</p><ul class="tags" aria-label="Project topics"><li>Emergence</li><li>Networks</li><li>Curiosity</li></ul><div class="actions"><a class="launch" href="/projects/relationships/">Explore experiment <span aria-hidden="true">↗</span></a></div><p class="small-note">An exploratory mathematical model, not evidence about the fundamental nature of reality.</p></div></article>
-    <article class="project project--beam"><a class="thumbnail" href="/projects/without-coordinates/" aria-label="Explore Without Coordinates"><div style="height:100%;display:grid;place-items:center;background:radial-gradient(ellipse,#1c3c4b,#09121b);color:#a3e6df;font-size:clamp(23px,4vw,52px);letter-spacing:.2em">·—·—·</div></a><div class="project-body"><div class="project-meta"><span>05 / OCT 2026</span><span class="status">Interactive experiment</span></div><h2>Without Coordinates</h2><p class="project-desc">Can relationships give us a useful notion of distance without predefined space? Change a network's rules and test the geometry of its connections.</p><ul class="tags" aria-label="Project topics"><li>Geometry</li><li>Emergence</li><li>Networks</li></ul><div class="actions"><a class="launch" href="/projects/without-coordinates/">Explore experiment <span aria-hidden="true">↗</span></a></div><p class="small-note">Graph distance is defined mathematically; visual placement does not imply physical space.</p></div></article>
-    <article class="project project--beam"><a class="thumbnail" href="/projects/possible-realities/" aria-label="Open Possible Realities Laboratory"><div style="height:100%;display:grid;place-items:center;background:radial-gradient(ellipse at 55% 45%,#2b5357,#0b1015 70%);color:#c7eee9;font-size:clamp(30px,5vw,68px);letter-spacing:-.06em">? → ∞</div></a><div class="project-body"><div class="project-meta"><span>06 / OCT 2026</span><span class="status">Open laboratory</span></div><h2>Possible Realities</h2><p class="project-desc">What if space, time, and objects aren't the starting ingredients? Explore small experimental worlds, challenge assumptions, and keep a notebook of what you discover.</p><ul class="tags" aria-label="Project topics"><li>Emergence</li><li>Computational experiments</li><li>Open inquiry</li></ul><div class="actions"><a class="launch" href="/projects/possible-realities/">Enter laboratory <span aria-hidden="true">↗</span></a></div><p class="small-note">Experimental models are not evidence that our universe follows the same rules.</p></div></article>
-    <article class="project project--beam">
+      <article class="project project--beam">
       <a class="thumbnail" href="/projects/tubes/" aria-label="Launch Tubes knitting pattern generator"><img src="/projects/tubes-thumb.svg" alt="Tubes preview: colorful knitting-chart diamonds on a dark grid" width="1020" height="600"></a>
       <div class="project-body">
-        <div class="project-meta"><span>07 / OCT 2026</span><span class="status">Working prototype</span></div>
-        <h2>Tubes</h2>
+        <div class="project-meta"><span>03 / knitting</span><span class="status">Working prototype</span></div>
+        <h3>Tubes</h3>
         <p class="project-desc">Make colorful knitting patterns for projects worked in the round. Explore repeat math, preview the actual stitch chart, edit stitches, then save, reimport, or print your design.</p>
         <ul class="tags" aria-label="Project topics"><li>Knitting</li><li>Generative patterns</li><li>Creative tools</li><li>Local-first</li></ul>
         <div class="actions"><a class="launch" href="/projects/tubes/">Design a pattern <span aria-hidden="true">↗</span></a><a class="source" href="https://github.com/julegan/portfolio/tree/main/dist/projects/tubes" target="_blank" rel="noopener noreferrer">Explore code ↗</a></div>
         <p class="small-note">An experimental stitch-count-preserving colorwork generator. Patterns are not test-knit; verify gauge and floats.</p>
       </div>
     </article>
+    </div>
+  </section>
+  <section class="project-family laboratory" aria-labelledby="lab-title" id="laboratory">
+    <div class="family-heading"><div><p class="eyebrow">02 / Unnecessary investigations</p><h2 id="lab-title">A laboratory<br>of maybes.</h2></div><p>Begin with an unreasonable question. Change the rules. Notice what survives. No pitch deck, product requirement, or predetermined answer.</p></div>
+    <article class="lab-feature">
+      <div class="lab-feature-copy">
+        <p class="eyebrow">Open laboratory / Possible Realities</p>
+        <h3>What if we start<br><em>somewhere else?</em></h3>
+        <p>What if space, time, and objects aren't the starting ingredients? Explore tiny experimental worlds, try a rule, record an observation, and follow the questions that survive.</p>
+        <a class="lab-launch" href="/projects/possible-realities/">Enter Possible Realities <span aria-hidden="true">↗</span></a>
+        <p class="small-note">Defined mathematical experiments, not evidence about the physical universe.</p>
+      </div>
+      <svg class="lab-art" aria-hidden="true" focusable="false" viewBox="0 0 600 490" xmlns="http://www.w3.org/2000/svg">
+        <defs><pattern id="lab-dots" width="28" height="28" patternUnits="userSpaceOnUse"><circle cx="2" cy="2" r="1.5" fill="#8c9ca9"/></pattern></defs>
+        <rect width="600" height="490" fill="url(#lab-dots)" opacity=".35"/>
+        <circle cx="310" cy="240" r="181" fill="none" stroke="#dbe5ed" stroke-width="1"/>
+        <circle cx="310" cy="240" r="117" fill="none" stroke="#dbe5ed" stroke-dasharray="5 9"/>
+        <circle cx="310" cy="240" r="52" fill="none" stroke="#dbe5ed" stroke-width="2"/>
+        <path d="M77 345 206 175 330 390 496 129 M104 120 330 390 515 328 206 175" fill="none" stroke="#dbe5ed" stroke-width="1.3"/>
+        <circle cx="77" cy="345" r="8" fill="#dbe5ed"/><circle cx="206" cy="175" r="8" fill="#dbe5ed"/><circle cx="330" cy="390" r="8" fill="#dbe5ed"/><circle cx="496" cy="129" r="8" fill="#dbe5ed"/>
+        <g fill="#dbe5ed" font-family="monospace" font-size="12"><text x="35" y="405">INPUT ?</text><text x="450" y="92">OUTPUT ?</text><text x="312" y="247" text-anchor="middle" font-size="55">?</text></g>
+      </svg>
+    </article>
+    <div class="experiment-intro"><p class="eyebrow">Field notes / smaller experiments</p><p>These investigations live inside the same questions. Every experiment keeps its own working URL.</p></div>
+    <div class="project-grid experiment-grid">
+      <article class="project project--beam">
+      <a class="thumbnail" href="/projects/chaos/" aria-label="Explore the interactive chaos experiment"><div style="height:100%;display:grid;place-items:center;background:radial-gradient(ellipse at 40% 50%,#19444b,#0b111b 68%);color:#a4ffff;font:clamp(25px,4vw,60px) Georgia,serif;text-align:center">∞ <span style="color:#ff9bbd">∞</span></div></a>
+      <div class="project-body">
+        <div class="project-meta"><span>01 / chaos</span><span class="status">Interactive experiment</span></div>
+        <h3>Almost the Same</h3>
+        <p class="project-desc">Two nearly identical beginnings. Two diverging trajectories. Play with a strange attractor and the mathematics of chaos.</p>
+        <ul class="tags" aria-label="Project topics"><li>Chaos</li><li>Mathematics</li><li>Personal curiosity</li></ul>
+        <div class="actions"><a class="launch" href="/projects/chaos/">Explore experiment <span aria-hidden="true">↗</span></a></div>
+        <p class="small-note">An interactive Lorenz-system visualization, not a literal simulation of parallel universes.</p>
+      </div>
+    </article>
+      <article class="project project--beam"><a class="thumbnail" href="/projects/relationships/" aria-label="Explore Only Between"><div style="height:100%;display:grid;place-items:center;background:radial-gradient(ellipse,#24434b,#0a121b);color:#b1e5e0;font-size:clamp(25px,4vw,54px);letter-spacing:.3em">○—○—○</div></a><div class="project-body"><div class="project-meta"><span>02 / relationships</span><span class="status">Interactive experiment</span></div><h3>Only Between</h3><p class="project-desc">Can something recognizable emerge from changing relationships? Adjust the rules of a tiny network universe and see whether structures persist.</p><ul class="tags" aria-label="Project topics"><li>Emergence</li><li>Networks</li><li>Curiosity</li></ul><div class="actions"><a class="launch" href="/projects/relationships/">Explore experiment <span aria-hidden="true">↗</span></a></div><p class="small-note">An exploratory mathematical model, not evidence about the fundamental nature of reality.</p></div></article>
+      <article class="project project--beam"><a class="thumbnail" href="/projects/without-coordinates/" aria-label="Explore Without Coordinates"><div style="height:100%;display:grid;place-items:center;background:radial-gradient(ellipse,#1c3c4b,#09121b);color:#a3e6df;font-size:clamp(23px,4vw,52px);letter-spacing:.2em">·—·—·</div></a><div class="project-body"><div class="project-meta"><span>03 / emergence</span><span class="status">Interactive experiment</span></div><h3>Without Coordinates</h3><p class="project-desc">Can relationships give us a useful notion of distance without predefined space? Change a network's rules and test the geometry of its connections.</p><ul class="tags" aria-label="Project topics"><li>Geometry</li><li>Emergence</li><li>Networks</li></ul><div class="actions"><a class="launch" href="/projects/without-coordinates/">Explore experiment <span aria-hidden="true">↗</span></a></div><p class="small-note">Graph distance is defined mathematically; visual placement does not imply physical space.</p></div></article>
+    </div>
   </section>
   <section class="statement" aria-labelledby="why-title">
-    <div><p class="eyebrow">A working approach</p><h2 id="why-title">Less presentation.<br>More participation.</h2></div>
-    <p>I prefer exploring ideas through things you can use. These prototypes are invitations to try a concept, notice what works, and consider what might be better. They aren't endorsements, finished services, or a substitute for the original sources they may reference.</p>
+    <div><p class="eyebrow">A working approach</p><h2 id="why-title">Make a thing.<br>Find a question.</h2></div>
+    <p>This is not a product catalog or a promise of finished answers. I build, test, notice, and revise. The work changes as the questions do.</p>
   </section>
 </main>
 <footer class="wrap footer"><span>Julie Owens / personal projects</span><a href="/">Return to the portfolio ↑</a></footer>

@@ -7,8 +7,14 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#111214">
   <meta name="color-scheme" content="light dark">
-  <meta name="description" content="Julie Owens: designer and digital product portfolio leader working across civic technology, design systems, accessibility, digital equity, and antiracist product practice.">
-  <title>Julie Owens — Design, digital products & systems</title>
+  <meta name="description" content="Julie Owens: a personal space for design, civic digital work, creative tools, strange questions and experiments in progress.">
+  <title>Julie Owens — Design, systems & experiments</title>
+  <link rel="canonical" href="https://julieowens.me/">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://julieowens.me/">
+  <meta property="og:title" content="Julie Owens — Design, systems & experiments">
+  <meta property="og:description" content="A personal space for civic digital work, design, strange questions and things in progress.">
+  <meta name="twitter:card" content="summary">
   <style>
     :root {
       --ink: #111214; --paper: #f1f2f4; --white: #ffffff;
@@ -332,6 +338,78 @@
       .design-visual, .practice-visual { min-height: 285px; }
     }
     @media print { .design-visual, .practice-visual { display:none!important; } }
+
+    .maps-study { min-height: 350px; overflow: hidden; border-color: #748291; padding: 0; background: #263542; color: #f1f2f4; }
+    .maps-study svg { width: 100%; height: 350px; display: block; }
+    .maps-study .visual-caption { color: #e4eaf1; text-shadow: 0 1px 3px #15232b; }
+    @media (max-width: 700px) { .maps-study { min-height: 290px; } .maps-study svg { height: 310px; } }
+    /* Edition 03 — a readable portfolio with room for the irrational. */
+    .hero { position: relative; padding-top: 48px; }
+    .hero-grid { grid-template-columns: 1.04fr .96fr; align-items: center; gap: clamp(26px,4vw,75px); }
+    .hero h1 { font-size: clamp(66px,7.45vw,119px); line-height: .91; letter-spacing: -.084em; max-width: none; }
+    .hero h1 span { display: block; white-space: nowrap; }
+    .hero h1 .hero-accent { font: italic 400 .79em/.95 Georgia,"Times New Roman",serif; letter-spacing: -.095em; color: #c9d1d9; margin: .12em 0 .02em .34em; transform: rotate(-4deg); transform-origin: left center; }
+    .hero-copy { max-width: 40ch; font-size: 18px; margin-top: 39px; line-height: 1.6; }
+    .hero-credit { max-width: 41ch; }
+    .connection-art { position: relative; aspect-ratio: auto; transform: rotate(2.5deg); margin: 0; }
+    .connection-art svg { display: block; width: 100%; height: auto; }
+    .connection-art .art-caption { position: static; display: flex; justify-content: space-between; gap: 15px; align-items: center; padding: 12px 0 0; text-transform: none; transform: rotate(-2.5deg); }
+    .field-caption .mono { font-size: 10px; color: #cad0d9; letter-spacing: .04em; }
+    .field-caption button { display: none; border: 1px solid #7a8796; padding: 9px 13px; background: transparent; color: #f1f2f4; cursor: pointer; min-height: 44px; min-width: 132px; font: 12px var(--sans); text-align: center; }
+    .has-js .field-caption button { display: inline-flex; align-items: center; justify-content: center; gap: 12px; }
+    .field-caption button:hover, .field-caption button:focus-visible { background: #f1f2f4; color: #111214; }
+    .hero-doors { display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); border-top: 1px solid #7e8996; margin-top: 45px; }
+    .door { position: relative; min-width: 0; display: flex; flex-direction: column; align-items: flex-start; justify-content: flex-start; min-height: 185px; padding: 23px 27px 33px 19px; border-bottom: 1px solid #7e8996; color: #f1f2f4; text-decoration: none; transition: background .18s,color .18s; }
+    .door:first-child { padding-left: 0; }
+    .door + .door { border-left: 1px solid #7e8996; }
+    .door-index { color: #aeb9c5; }
+    .door strong { font-weight: 500; font-size: clamp(20px,2vw,28px); max-width: 16ch; line-height: 1.2; letter-spacing: -.05em; margin-top: 20px; }
+    .door-detail { color: #adb5c0; font-size: 12px; margin-top: auto; padding-top: 20px; padding-right: 26px; }
+    .door-arrow { position: absolute; right: 15px; bottom: 28px; font-size: 23px; }
+    .door:hover,.door:focus-visible { background: #e1e6ec; color: #111214; }
+    .door:hover .door-index,.door:hover .door-detail,.door:focus-visible .door-index,.door:focus-visible .door-detail { color: #46515d; }
+    .field-note { border-bottom: 1px solid var(--dark-line); display: flex; gap: 28px; align-items: center; padding-block: 24px; }
+    .field-note > p:first-child { flex: 0 0 auto; color: #aab4bf; }
+    .field-note > p:nth-child(2) { font: italic 24px/1.3 Georgia,"Times New Roman",serif; letter-spacing: -.025em; color: #e6e9ed; }
+    .field-note-mark { margin-left: auto; color: #c8d2dc; font-size: 36px; }
+    .work .section-intro h2 { max-width: 14ch; }
+    @media(max-width:1050px) {
+      .hero-grid { grid-template-columns: 1fr 1fr; gap: 25px; }
+      .hero h1 { font-size: clamp(53px,6.8vw,82px); }
+      .door { min-height: 190px; }
+      .door strong { font-size: 22px; }
+    }
+    @media(max-width:700px) {
+      .hero { padding-top: 28px; }
+      .hero-grid { grid-template-columns: 1fr; gap: 34px; }
+      .hero h1 { font-size: clamp(62px,13vw,93px); }
+      .hero h1 span { white-space: normal; }
+      .hero h1 .hero-accent { margin-left: .2em; transform: rotate(-2deg); }
+      .hero-copy { margin-top: 28px; font-size: 17px; }
+      .connection-art { width: min(100%,540px); margin-inline: auto; aspect-ratio: auto; max-height: none; transform: none; }
+      .connection-art .art-caption { transform: none; }
+      .hero-doors { grid-template-columns: 1fr; margin-top: 35px; }
+      .door,.door:first-child { min-height: 118px; padding: 18px 50px 19px 0; border-left: none; }
+      .door + .door { border-left: none; }
+      .door strong { max-width: 25ch; margin-top: 8px; font-size: 24px; }
+      .door-detail { padding-top: 8px; }
+      .door-arrow { right: 6px; bottom: 21px; }
+      .field-note { padding-block: 25px; gap: 12px; flex-wrap: wrap; }
+      .field-note > p:nth-child(2) { font-size: 21px; flex: 1 1 60%; }
+      .field-note-mark { display: none; }
+    }
+    @media(max-width:380px) {
+      .hero h1 { font-size: clamp(49px,13vw,60px); }
+      .field-caption { flex-wrap: wrap; }
+    }
+    @media(prefers-reduced-motion:reduce) {
+      .door { transition: none; }
+      .hero h1 .hero-accent { transform: none; }
+      .connection-art { transform: none; }
+    }
+    @media(forced-colors:active) {
+      .door,.field-caption button { border: 1px solid CanvasText; }
+    }
   </style>
 </head>
 <body>
@@ -340,7 +418,7 @@
     <div class="wrap masthead-inner">
       <a class="brand" href="#top">
         <span class="brand-name">Julie Owens</span>
-        <span class="brand-meta">Design &amp; product leadership<br>Portland, Oregon</span>
+        <span class="brand-meta">Design / systems / experiments<br>Portland, Oregon</span>
       </a>
       <nav aria-label="Main navigation">
         <ul class="main-nav">
@@ -355,64 +433,94 @@
   </header>
   <main id="main">
     <section class="hero wrap" aria-labelledby="hero-title">
-      <div class="hero-top mono"><p class="label">Public digital work / a personal portfolio</p><p class="iteration">Independent portfolio</p></div>
+      <div class="hero-top mono"><p class="label">A personal archive of useful and useless ideas</p><p class="iteration">Not a roadmap / not finished</p></div>
       <div class="hero-grid">
         <div>
-          <h1 id="hero-title"><span>Design doesn’t</span><span>stop at the</span><span>interface.</span></h1>
-          <p class="hero-copy">I started as a designer. Today I lead product management across a portfolio of City of Portland digital platforms, connecting design, strategy, technology, and people to make public services work better.</p>
-          <div class="hero-credit"><p><strong>Julie Owens · Portland, Oregon</strong><br>Accessibility, digital equity, and antiracism are core to how I practice product management.</p></div>
+          <h1 id="hero-title"><span>I make</span><span>things.</span><span class="hero-accent">Some are</span><span>questions.</span></h1>
+          <p class="hero-copy">I design public digital services for a living. I also build strange little tools, follow improbable questions, and make things just to see what happens. <span>This is a home for all of it.</span></p>
+          <div class="hero-credit"><p><strong>Julie Owens / Designer &amp; Principal Product Manager, Enterprise Digital Platforms</strong><br>Twenty years shaping public digital services. Still making things for the joy of finding out.</p></div>
         </div>
         <figure class="connection-art">
-          <svg viewBox="0 0 560 460" role="img" aria-labelledby="connection-title connection-desc" xmlns="http://www.w3.org/2000/svg">
-            <title id="connection-title">A conceptual map of connected public digital systems</title>
-            <desc id="connection-desc">Relationships between people, services, and decisions extend far beyond any one screen.</desc>
+          <svg id="possibility-field" viewBox="0 0 560 460" role="img" aria-labelledby="connection-title connection-desc" xmlns="http://www.w3.org/2000/svg">
+            <title id="connection-title">A small, changeable network of ideas</title>
+            <desc id="connection-desc">Nine points and eleven relationships form a deliberately speculative diagram. The Reconfigure button cycles between three different arrangements. This is an art experiment, not a scientific model.</desc>
             <defs>
-              <pattern id="hero-dots" width="12" height="12" patternUnits="userSpaceOnUse"><circle cx="2" cy="2" r="1" fill="#adb5c0"/></pattern>
+              <pattern id="field-grid" width="26" height="26" patternUnits="userSpaceOnUse"><path d="M26 0H0V26" stroke="#5b6b75" stroke-width=".65" fill="none"/></pattern>
+              <linearGradient id="field-wash" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#19232c"/><stop offset="1" stop-color="#0c0f14"/></linearGradient>
             </defs>
-            <rect x="82" y="18" width="346" height="376" fill="url(#hero-dots)" opacity=".45"/>
-            <rect x="326" y="40" width="172" height="256" fill="#46515d" transform="rotate(10 412 168)"/>
-            <g stroke="#7e8998" fill="none" stroke-width="1.1">
-              <path d="M96 101C266 22 252 195 362 174S479 67 531 143"/>
-              <path d="M58 310C219 338 245 151 428 318"/>
-              <path d="M289 58C217 143 350 205 246 385"/>
-              <circle cx="273" cy="223" r="128"/>
-              <circle cx="273" cy="223" r="96" stroke-dasharray="2 6"/>
+            <rect width="560" height="460" rx="2" fill="url(#field-wash)"/>
+            <rect width="560" height="460" fill="url(#field-grid)" opacity=".48"/>
+            <g stroke="#ccd4dc" stroke-width="1.4" fill="none" opacity=".78" id="field-edges">
+              <path data-field-edge="0" d="M83 89 Q138 45 193 61"/>
+                <path data-field-edge="1" d="M193 61 L317 101"/>
+                <path data-field-edge="2" d="M317 101 L465 77"/>
+                <path data-field-edge="3" d="M83 89 Q89.5 149 96 269"/>
+                <path data-field-edge="4" d="M96 269 L246 224"/>
+                <path data-field-edge="5" d="M246 224 L415 268"/>
+                <path data-field-edge="6" d="M415 268 Q450.5 300.5 486 393"/>
+                <path data-field-edge="7" d="M415 268 L316 380"/>
+                <path data-field-edge="8" d="M317 101 L246 224"/>
+                <path data-field-edge="9" d="M465 77 Q440 142.5 415 268"/>
+                <path data-field-edge="10" d="M246 224 L316 380"/>
             </g>
-            <path d="M59 310C184 378 273 262 364 174" stroke="#f1f2f4" fill="none" stroke-width="2.5"/>
-            <rect x="67" y="108" width="174" height="117" fill="#f1f2f4" transform="rotate(-9 154 166)"/>
-            <text x="100" y="161" fill="#111214" font-family="Arial,sans-serif" font-size="38" letter-spacing="-2" transform="rotate(-9 100 161)">You are</text>
-            <text x="106" y="196" fill="#111214" font-family="Arial,sans-serif" font-size="38" letter-spacing="-2" transform="rotate(-9 106 196)">here.</text>
-            <circle cx="364" cy="174" r="9" fill="#f1f2f4" stroke="#111214" stroke-width="3"/>
-            <circle cx="59" cy="310" r="7" fill="#111214" stroke="#f1f2f4" stroke-width="2"/>
-            <circle cx="428" cy="318" r="7" fill="#111214" stroke="#f1f2f4" stroke-width="2"/>
-            <circle cx="289" cy="58" r="6" fill="#f1f2f4"/>
-            <g font-family="monospace" font-size="10" letter-spacing="1" fill="#f1f2f4">
-              <text x="315" y="149">A PLACE</text><text x="50" y="342">A SERVICE</text><text x="393" y="350">A DECISION</text>
+            <g fill="#edf0f4" stroke="#0c0f14" stroke-width="2" id="field-nodes">
+              <circle data-field-node="0" cx="83" cy="89" r="6"/>
+                <circle data-field-node="1" cx="193" cy="61" r="6"/>
+                <circle data-field-node="2" cx="317" cy="101" r="6"/>
+                <circle data-field-node="3" cx="465" cy="77" r="6"/>
+                <circle data-field-node="4" cx="96" cy="269" r="6"/>
+                <circle data-field-node="5" cx="246" cy="224" r="9"/>
+                <circle data-field-node="6" cx="415" cy="268" r="6"/>
+                <circle data-field-node="7" cx="316" cy="380" r="6"/>
+                <circle data-field-node="8" cx="486" cy="393" r="6"/>
             </g>
-            <g stroke="#cbd1d7" stroke-width="1"><path d="M450 398h28m-14-14v28M44 70h22m-11-11v22"/></g>
-            <text x="233" y="423" fill="#adb5c0" font-family="monospace" font-size="9" letter-spacing="1">LOOK BEYOND THE INTERFACE</text>
+            <circle cx="280" cy="230" r="169" stroke="#7b8998" fill="none" stroke-width=".65" stroke-dasharray="2 9"/>
+            <path d="M17 31h42m-21-21v42M502 426h43m-22-22v43" stroke="#bac5cf" stroke-width="1.3"/>
+            <g font-family="monospace" font-size="12" fill="#e4e9ed" letter-spacing="2">
+              <text x="25" y="443">SOME QUESTIONS</text>
+              <text x="535" y="28" text-anchor="end">HAVE NO BRIEF</text>
+            </g>
+            <text x="280" y="236" text-anchor="middle" fill="#e6eaef" font-size="82" font-family="Georgia,serif" font-style="italic" opacity=".82">?</text>
           </svg>
-          <figcaption class="art-caption mono">One interface. Many connected systems.</figcaption>
+          <figcaption class="art-caption field-caption">
+            <span id="field-status" class="mono" aria-live="polite" aria-atomic="true">Arrangement 01 / a starting hypothesis</span>
+            <button id="field-reshuffle" type="button" aria-controls="possibility-field">Reconfigure <span aria-hidden="true">↗</span></button>
+          </figcaption>
         </figure>
       </div>
-      <nav class="hero-paths" aria-label="Explore areas of practice">
-        <a class="path" href="#portland-gov" data-filter="portfolio"><span><span class="path-number">01 / stewardship</span><span class="path-title">Digital portfolio</span></span><span class="arrow" aria-hidden="true">↘</span></a>
-        <a class="path" href="#design-system" data-filter="design"><span><span class="path-number">02 / access</span><span class="path-title">Design &amp; equity</span></span><span class="arrow" aria-hidden="true">↘</span></a>
-        <a class="path" href="#public-process" data-filter="civic"><span><span class="path-number">03 / participation</span><span class="path-title">Public participation</span></span><span class="arrow" aria-hidden="true">↘</span></a>
-        <a class="path" href="#product-practice" data-filter="practice"><span><span class="path-number">04 / organization</span><span class="path-title">Product practice</span></span><span class="arrow" aria-hidden="true">↘</span></a>
+      <nav class="hero-doors" aria-label="Choose a path through the site">
+        <a class="door" href="/projects/#tools">
+          <span class="door-index mono">01 / USEFUL</span>
+          <strong>Things with a job to do.</strong>
+          <span class="door-detail">SHOWS / SVG Hopper / Tubes</span>
+          <span class="door-arrow" aria-hidden="true">↗</span>
+        </a>
+        <a class="door" href="/projects/#laboratory">
+          <span class="door-index mono">02 / UNANSWERED</span>
+          <strong>Questions without a business case.</strong>
+          <span class="door-detail">Possible Realities / strange experiments</span>
+          <span class="door-arrow" aria-hidden="true">↗</span>
+        </a>
+        <a class="door" href="#work" data-show-all>
+          <span class="door-index mono">03 / BUILT TO LAST</span>
+          <strong>Two decades inside the systems.</strong>
+          <span class="door-detail">Design / public services / product practice</span>
+          <span class="door-arrow" aria-hidden="true">↓</span>
+        </a>
       </nav>
     </section>
 
-    <aside class="prototype-teaser wrap" aria-label="Personal projects">
-      <div><p class="mono label">Beyond the day job / Prototypes</p><p>Ideas don't have to stay on the whiteboard.</p></div>
-      <a href="/projects/">Explore personal projects <span aria-hidden="true">↗</span></a>
+    <aside class="field-note wrap" aria-label="A note on making things">
+      <p class="mono">Field note / 001</p>
+      <p>Not every good question needs to become a deliverable.</p>
+      <span class="field-note-mark" aria-hidden="true">※</span>
     </aside>
 
     <section class="work" id="work" aria-labelledby="work-title">
       <div class="wrap">
         <div class="section-intro">
-          <div><p class="mono label">01 / selected work &amp; ongoing practice</p><h2 id="work-title" tabindex="-1">The work behind<br>the work.</h2></div>
-          <p>Public websites are visible. The decisions, patterns, relationships, and teams behind them are part of the product, too.</p>
+          <div><p class="mono label">01 / selected work &amp; ongoing practice</p><h2 id="work-title" tabindex="-1">The work<br>is never just<br>the work.</h2></div>
+          <p>Two decades of work don’t separate neatly into case studies. These are some of the things I’ve designed and helped shape alongside many talented people. Both parts of that sentence matter.</p>
         </div>
         <div class="work-tools">
           <p class="work-status" id="work-status" role="status" aria-live="polite" aria-atomic="true">Explore the work and practice below.</p>
@@ -453,11 +561,49 @@
               <figcaption class="visual-caption" id="design-caption">Conceptual illustration · not an official City design-system component</figcaption>
             </figure>
           </article>
+          <article class="project" id="portlandmaps" data-paths="design portfolio">
+            <div class="project-copy">
+              <p class="mono">03 / an earlier design chapter</p>
+              <p class="project-name">PortlandMaps.com · the first mobile-first design</p>
+              <h3>What’s here,<br>right now?</h3>
+              <p class="description">The old PortlandMaps required clicking to pan and zoom. When I designed its first mobile-first experience more than a decade ago, the interesting question became: what could someone learn while standing right there? Fluid panning and zooming, device location, property and permit information on the go, an overhauled information architecture, aerial imagery, and custom City basemaps made the map a different kind of tool. I did this as part of a collaborative effort; other teams have carried it forward, including the 2026 modernization.</p>
+              <div class="project-links"><a class="text-link" href="https://www.portlandmaps.com/">Visit PortlandMaps today <span aria-hidden="true">↗</span></a><button class="text-link detail-link js-details" type="button" data-project="maps">The decisions behind it <span aria-hidden="true">↗</span></button></div>
+            </div>
+            <figure class="project-visual maps-visual maps-study" aria-labelledby="portlandmaps-caption">
+              <svg viewBox="0 0 560 370" role="img" aria-labelledby="portlandmaps-art-title portlandmaps-art-description" xmlns="http://www.w3.org/2000/svg">
+                <title id="portlandmaps-art-title">An abstract mapping study for small screens</title>
+                <desc id="portlandmaps-art-description">A grid of imaginary streets, map coordinates, and a small handheld outline. The artwork is conceptual, not an image of either generation of PortlandMaps.</desc>
+                <defs>
+                  <pattern id="map-mesh" width="40" height="40" patternUnits="userSpaceOnUse"><path d="M40 0H0V40" fill="none" stroke="#bdcad6" stroke-width=".9" opacity=".3"/></pattern>
+                  <clipPath id="mobile-clip"><rect x="206" y="50" width="155" height="265" rx="7"/></clipPath>
+                </defs>
+                <rect x="0" y="0" width="560" height="370" fill="#263542"/>
+                <rect x="0" y="0" width="560" height="370" fill="url(#map-mesh)"/>
+                <g fill="none" stroke="#a6b9c9" stroke-width="2" opacity=".7">
+                  <path d="M0 53Q160 138 560 17"/>
+                  <path d="M-30 302Q220 197 560 340"/>
+                  <path d="M98 0L155 370M459 0L401 370"/>
+                </g>
+                <g fill="none" stroke="#d6e0e8" stroke-width="2.5"><path d="M75 253L180 175L262 217L341 125L481 98"/></g>
+                <circle cx="75" cy="253" r="5" fill="#e5edf4"/><circle cx="481" cy="98" r="5" fill="#e5edf4"/>
+                <rect x="193" y="35" width="181" height="295" rx="18" fill="#0d131a" stroke="#e2e8ec" stroke-width="3"/>
+                <rect x="206" y="50" width="155" height="265" rx="7" fill="#d4dce3"/>
+                <g clip-path="url(#mobile-clip)">
+                  <rect x="206" y="50" width="155" height="265" fill="#ced7df"/>
+                  <g stroke="#718da0" fill="none"><path d="M206 76L361 116M206 130L361 165M230 50L240 315M319 50L300 315M206 273L361 218M206 198L361 250" stroke-width="8"/><path d="M206 76L361 116M206 130L361 165M230 50L240 315M319 50L300 315M206 273L361 218M206 198L361 250" stroke="#eef2f5" stroke-width="4"/></g>
+                  <circle cx="295" cy="180" r="26" fill="none" stroke="#162c3b" stroke-width="2" opacity=".7"/><circle cx="295" cy="180" r="19" fill="#162c3b" stroke="#f4f6f7" stroke-width="4"/><circle cx="295" cy="180" r="5" fill="#f4f6f7"/>
+                </g>
+                <rect x="256" y="322" width="55" height="3" rx="2" fill="#c7d1da"/>
+                <g font-family="monospace" font-size="12" fill="#e5ebf1" letter-spacing="1.2"><text x="25" y="31">MAP / 01</text><text x="25" y="317">YOU ARE HERE</text><text x="25" y="335">↳ PROPERTY DATA</text><text x="420" y="352">ON SITE →</text></g>
+              </svg>
+              <figcaption class="visual-caption" id="portlandmaps-caption">Conceptual graphic · not a screenshot of the original or current PortlandMaps</figcaption>
+            </figure>
+          </article>
           <article class="project" id="public-process" data-paths="civic design">
             <div class="project-copy">
-              <p class="mono">03 / government transition &amp; public participation</p><p class="project-name">Council District lookup · Council pages · eCouncil</p>
-              <h3>Make public<br>change usable.</h3>
-              <p class="description">Portland’s transition to a new form of government changed how residents find representatives and engage with public decisions. I directed the Council District lookup and Council landing-page delivery and supervised eCouncil changes supporting the new structure.</p>
+              <p class="mono">04 / public participation &amp; service design</p><p class="project-name">Public-process platforms · eCouncil evolution · government transition</p>
+              <h3>From paper<br>to participation.</h3>
+              <p class="description">One early project began with discovery, workshops, and mapping the experiences of residents and City staff. I designed a digital public-process platform that replaced a paper-based process on both sides of the counter. Its foundations evolved through later systems, including eCouncil. Years later, the work continues in new forms as government changes.</p>
               <div class="project-links"><a class="text-link" href="https://www.portland.gov/council">Explore Portland City Council <span aria-hidden="true">↗</span></a><button class="text-link detail-link js-details" type="button" data-project="process">My contributions <span aria-hidden="true">↗</span></button></div>
             </div>
             <figure class="project-visual process-visual" aria-labelledby="process-caption">
@@ -467,7 +613,7 @@
           </article>
           <article class="project" id="product-practice" data-paths="practice portfolio">
             <div class="project-copy">
-              <p class="mono">04 / operating models &amp; product stewardship</p><p class="project-name">Digital Services Playbook · shared practices</p>
+              <p class="mono">05 / operating models &amp; product stewardship</p><p class="project-name">Digital Services Playbook · shared practices</p>
               <h3>Good systems<br>help teams work.</h3>
               <p class="description">Much of my work is designing how digital product teams operate across organizational boundaries: shared methods, visible priorities, stewardship, and room for collaboration. I co-created the Digital Services Playbook with my team and continue exploring how to make portfolio dependencies and tradeoffs more visible.</p>
               <div class="project-links"><a class="text-link" href="https://www.portland.gov/digital-services/news/2026/5/5/playbook-helps-city-teams-build-better-digital-services">Read about our Playbook <span aria-hidden="true">↗</span></a><button class="text-link detail-link js-details" type="button" data-project="practice">Principles in practice <span aria-hidden="true">↗</span></button></div>
@@ -515,15 +661,15 @@
 
     <section class="profile" id="experience" aria-labelledby="profile-title">
       <div class="wrap profile-grid"><div class="profile-intro"><p class="mono label">04 / the person behind the practice</p><h2 id="profile-title">A designer,<br>still designing.</h2></div><div class="profile-copy">
-        <p>I’m Julie Owens. I made my career as a designer and still approach my work through design. Today, I lead digital product management across City of Portland platforms, connecting product strategy, shared standards, public access, and the organizational practices behind them.</p>
-        <p>Digital equity, accessibility, and antiracism are foundational to how I practice product management. I care about making the invisible visible: the barriers, relationships, and decisions shaping people’s experiences of government.</p>
-        <details class="experience"><summary>Experience at a glance</summary><dl><dt>Role</dt><dd>Enterprise digital product and portfolio management</dd><dt>Design</dt><dd>Design systems, accessible and equitable public services</dd><dt>Practice</dt><dd>Cross-team standards, governance, and sustainable delivery</dd><dt>Organization</dt><dd>City of Portland</dd><dt>Location</dt><dd>Portland, Oregon</dd></dl></details>
+        <p>I’m Julie Owens, a designer, maker, and Principal Product Manager for Enterprise Digital Platforms at the City of Portland. My work and the City’s websites have evolved together over two decades. It is collaborative, layered, and difficult to pull apart into a neat timeline—which is part of what makes systems interesting to me.</p>
+        <p>Design is still my way of thinking. I care about accessibility, digital equity, antiracism, and the invisible structures behind decisions. And I care about making things for no reason more official than curiosity. </p>
+        <details class="experience"><summary>Experience at a glance</summary><dl><dt>Role</dt><dd>Principal Product Manager · Enterprise Digital Platforms</dd><dt>Design</dt><dd>Design systems, accessible and equitable public services</dd><dt>Practice</dt><dd>Cross-team standards, governance, and sustainable delivery</dd><dt>Organization</dt><dd>City of Portland</dd><dt>Location</dt><dd>Portland, Oregon</dd></dl></details>
         <div class="profile-links"><a href="https://www.linkedin.com/in/julieh/">Connect on LinkedIn <span aria-hidden="true">&nbsp;↗</span></a><a href="https://github.com/julegan/portfolio">Portfolio source on GitHub <span aria-hidden="true">&nbsp;↗</span></a></div>
-        <div class="more-work"><p class="mono">Independent work</p><p>Outside my City role, I prototype ideas like <a href="/projects/shows/">SHOWS</a> and <a href="/projects/svg-hopper/">SVG Hopper</a>. These are personal experiments, not City products.</p></div>
+        <div class="more-work"><p class="mono">Independent work</p><p>Outside my City role I make <a href="/projects/shows/">SHOWS</a>, <a href="/projects/svg-hopper/">SVG Hopper</a>, <a href="/projects/tubes/">Tubes</a>, and the <a href="/projects/possible-realities/">Possible Realities laboratory</a>. Some things are useful; some exist because I wanted to find out what happens. I follow them wherever they lead.</p></div>
       </div></div>
     </section>
   </main>
-  <footer class="footer"><div class="wrap footer-inner"><p class="mono">Julie Owens / Portland, Oregon</p><p class="mono">Personal perspectives · not an official City of Portland website</p><a class="mono" href="#top">Back to the start ↑</a></div></footer>
+  <footer class="footer"><div class="wrap footer-inner"><p class="mono">Julie Owens / Portland, Oregon</p><p class="mono">Ideas in progress · design, work, curiosity</p><a class="mono" href="#top">Back to the start ↑</a></div></footer>
 
   <dialog id="project-dialog" aria-labelledby="dialog-title">
     <div class="dialog-top"><p class="mono">Behind the work</p><button class="dialog-close" type="button" autofocus>Close <span aria-hidden="true">×</span></button></div>
@@ -552,12 +698,43 @@
           if (path.dataset.filter === key) path.setAttribute('aria-current', 'true');
           else path.removeAttribute('aria-current');
         });
-        status.textContent = key === 'all' ? 'Four areas of selected work and practice' : categories[key] + ' · ' + visible + ' related areas';
+        status.textContent = key === 'all' ? projects.length + ' threads of work and practice' : categories[key] + ' · ' + visible + ' related threads';
         if (moveToWork) {
           workTitle.focus({ preventScroll: true });
           document.getElementById('work').scrollIntoView({ behavior: reduceMotion.matches ? 'auto' : 'smooth', block: 'start' });
         }
       }
+
+      // A deliberate toy: change the relationships, keep the questions.
+      const field = document.getElementById('possibility-field');
+      const reconfigure = document.getElementById('field-reshuffle');
+      const fieldStatus = document.getElementById('field-status');
+      if (field && reconfigure && fieldStatus) {
+        const arrangements = [[[83,89],[193,61],[317,101],[465,77],[96,269],[246,224],[415,268],[316,380],[486,393]],[[71,192],[176,77],[325,54],[475,176],[105,380],[245,310],[399,191],[302,408],[505,343]],[[88,63],[165,207],[342,73],[465,182],[93,355],[257,137],[428,341],[267,391],[501,422]]];
+        const connections = [[[0,1],[1,2],[2,3],[0,4],[4,5],[5,6],[6,8],[6,7],[2,5],[3,6],[5,7]],[[0,4],[0,5],[1,2],[2,5],[2,3],[3,6],[6,7],[5,8],[4,7],[1,5],[7,8]],[[0,1],[0,2],[1,5],[5,3],[3,8],[3,6],[4,7],[4,1],[7,6],[2,6],[6,8]]];
+        const labels = ['a starting hypothesis', 'a different possibility', 'nothing is settled'];
+        const nodeElements = Array.from(field.querySelectorAll('[data-field-node]'));
+        const edgeElements = Array.from(field.querySelectorAll('[data-field-edge]'));
+        let arrangement = 0;
+        reconfigure.addEventListener('click', () => {
+          arrangement = (arrangement + 1) % arrangements.length;
+          const positions = arrangements[arrangement];
+          nodeElements.forEach((node, i) => {
+            node.setAttribute('cx', String(positions[i][0]));
+            node.setAttribute('cy', String(positions[i][1]));
+          });
+          edgeElements.forEach((edge, i) => {
+            const pair = connections[arrangement][i];
+            const a = positions[pair[0]], b = positions[pair[1]];
+            const d = i % 3 === 0
+              ? 'M' + a[0] + ' ' + a[1] + ' Q' + ((a[0]+b[0])/2) + ' ' + ((a[1]+b[1])/2-30) + ' ' + b[0] + ' ' + b[1]
+              : 'M' + a[0] + ' ' + a[1] + ' L' + b[0] + ' ' + b[1];
+            edge.setAttribute('d', d);
+          });
+          fieldStatus.textContent = 'Arrangement 0' + (arrangement + 1) + ' / ' + labels[arrangement];
+        });
+      }
+
       root.classList.add('has-js');
       paths.forEach(path => path.addEventListener('click', event => { event.preventDefault(); selectPath(path.dataset.filter, true); }));
       filterButtons.forEach(button => button.addEventListener('click', () => selectPath(button.dataset.filter)));
@@ -569,9 +746,10 @@
       root.classList.add('has-dialog');
       let opener = null;
       const stories = {
-         gov: { title: 'Digital product & portfolio leadership', description: 'A shared portfolio of services, teams, design decisions, and technology.', context: 'My work', points: ['Lead product direction for Portland.gov and related public and employee digital platforms.', 'Connect architecture, prioritization, standards, and governance across teams.', 'This is collaborative City work, not a claim of sole authorship of the products.'], url: 'https://www.portland.gov/', link: 'Explore Portland.gov ↗', note: 'Personal account of my role. Outcome-specific case studies will require documented evidence.' },
+         gov: { title: 'Digital product & portfolio leadership', description: 'A shared portfolio of services, teams, design decisions, and technology.', context: 'My part in the collective work', points: ['Lead product direction for Portland.gov and related public and employee digital platforms.', 'Connect architecture, prioritization, standards, and governance across teams.', 'Work with many City colleagues whose expertise and contributions shape the products we build and maintain.'], url: 'https://www.portland.gov/', link: 'Explore Portland.gov ↗', note: 'A personal perspective on shared, evolving work—not a claim of sole authorship.' },
          design: { title: 'Design systems, accessibility & equity', description: 'Accessible and equitable product decisions begin long before launch.', context: 'My commitments in practice', points: ['Shape shared design patterns and practices that support consistent, accessible digital services.', 'Treat ADA Title II web accessibility as a product stewardship responsibility.', 'Use digital equity and antiracist product thinking to examine whose needs inform decisions and whose barriers are prioritized.', 'Consider language access and Title VI nondiscrimination as distinct but connected concerns.'], url: 'https://www.portland.gov/officeofequity/digital-accessibility', link: 'City digital accessibility resources ↗', note: 'These are priorities and areas of practice, not claims that any product or organization has achieved comprehensive compliance.' },
-         process: { title: 'Portland government transition', description: 'Translating structural civic changes into findable, usable digital experiences.', context: 'My contributions', points: ['Directed delivery of the Council District lookup, Council landing pages and Councilor pages.', 'Supervised improvements to eCouncil to support the new form of government.', 'Coordinated with City teams to support public information and participation.'], url: 'https://www.portland.gov/council', link: 'Explore Portland City Council ↗', note: 'Collaborative City work, with individual contributions distinguished from team results.' },
+         maps: { title: 'PortlandMaps: from navigating a map to understanding where you stand', description: 'The mobile-first design was not just a smaller map. Location and on-site access to information opened up a different way of using City data.', context: 'Design decisions and opportunities', points: ['The previous interface required click-to-pan and click-to-zoom navigation. A fluid slippy map made panning and zooming natural on a touch device.', 'With location permission, someone on a job site or viewing a house could see where they were standing and look up that property’s data and permits from their phone.', 'A substantial information-architecture redesign helped connect map exploration with the information people came to find.', 'The experience incorporated the City’s increasingly detailed aerial imagery and professionally created custom basemaps. Those mapping resources were collaborative City work, not maps I claim to have produced alone.', 'I designed the first mobile-first experience with City colleagues. The service continued through later generations, including a modernization in 2026 by subsequent teams.'], url: 'https://www.portland.gov/bts/cgis/news/2026/6/4/new-and-improved-portlandmaps-coming-soon', link: 'Read about the 2026 PortlandMaps update ↗', note: 'This account of design decisions is Julie’s firsthand recollection. It distinguishes her contribution from the work of GIS specialists and later implementation teams. The illustration is a conceptual study, not an archival interface.' },
+         process: { title: 'From paper to public participation', description: 'Designing a new public process from both sides: the community experience and the work of running it.', context: 'A long-running design thread', points: ['Conducted discovery, user workshops and journey mapping to understand the original paper-based process.', 'Designed the City’s first digital public-process platform, serving public participation and internal business operations.', 'The platform was subsequently adapted and redesigned through multiple generations, including the later eCouncil system.', 'Continued contributing to public-facing civic experiences as Portland’s government structure changed.'], url: 'https://www.portland.gov/council', link: 'Explore today’s Council information ↗', note: 'A personal recollection of an early foundational project, not a claim of sole authorship of later implementations. The original platform name and detailed chronology remain to be confirmed.' },
          practice: { title: 'Product operating models & shared practices', description: 'How teams make decisions is part of the design.', context: 'An ongoing practice', points: ['Co-created the Digital Services Playbook with a multidisciplinary team.', 'Develop product management standards and repeatable processes across silos.', 'Look at portfolio ownership, capacity, tradeoffs, maintenance, and decommissioning alongside delivery.'], url: 'https://www.portland.gov/digital-services/news/2026/5/5/playbook-helps-city-teams-build-better-digital-services', link: 'Read about the team’s Playbook ↗', note: 'The illustrated operating model is conceptual, not a formally adopted City framework.' },
          atlas: { title: 'Civic Systems Atlas', description: 'An evolving way to examine connected public digital systems.', context: 'Exploration in progress', points: ['Map relationships across strategy, capabilities, products, services, technology, data and people.', 'Make dependencies and tradeoffs visible for better product decisions.', 'The current project is private; the drawing is a conceptual portfolio illustration.'], note: 'Not a screenshot of the Atlas or a claim of its deployed capabilities.' }
        };

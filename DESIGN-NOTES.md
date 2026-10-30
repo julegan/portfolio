@@ -1,28 +1,42 @@
-# Portfolio mockup 02 — design review
+# Design notes — personal portfolio, living edition (October 2026)
 
-## What carries forward from v1
+## Purpose
 
-- The connection question serves as a design principle for the whole experience.
-- Everyday needs lead into public services, digital platforms, and the systems behind them.
-- The visitor encounters examples of the work before a short introduction to Julie.
-- The chosen palette is soft black, white, and cool gray. The hero text now sits on a solid dark field with no competing artwork behind it.
-- Civic Systems Atlas retains its current name; the current private version will be reviewed before its interface or features are shown.
-- Notes, experience, and contact stay close to the work in one continuous page.
+This is a personal space that expresses a creative and professional practice. It is not a résumé microsite, an official City of Portland page, or a corporate case-study catalog. The design should convey an experienced designer and product leader who is still curious, experimental, and willing to figure things out in public.
 
-## What changes in this pass
+The process is intentionally iterative. A change is a hypothesis to test—not a permanent design mandate.
 
-The opening question is **How do you connect?** Four concrete entry points let the visitor navigate by a need: finding information, understanding a place, taking part, or keeping everyday life moving. The page also supports a continuous reading path.
+## Voice and professional work
 
-The full narrative begins with garbage day reminders and ResourcefulPDX, then moves through Portland.gov, PortlandMaps, and public process systems. Civic Systems Atlas appears afterward as the wider system view. This keeps the story grounded in the experience of accessing government.
+- First person, conversational but specific. Personal rather than institutional.
+- The formal role can appear alongside a broad design/leadership identity without dominating the site.
+- Two decades of collaborative civic digital work are better presented as connected threads than as artificially isolated projects or invented outcome metrics. Collaboration is not a reason to erase specific contributions: say **I designed** where Julie did, and **we built** where it was collective. Never confuse humility with a lack of authorship.
+- The first mobile-first PortlandMaps.com design was Julie’s contribution more than a decade ago. Its distinctive design decisions: moving beyond click-to-pan and zoom to continuous touch map navigation; using device location so people at a property, job site, or house viewing could find property records and permits; restructuring the information architecture; and making City-produced aerial imagery and professionally designed basemaps usable in that context. The GIS imagery, basemaps, and product were collaborative work, and the City’s later modernization in June 2026 was delivered by subsequent teams. Present her contribution as a distinct design lineage, using conceptual imagery clearly separated from screenshots.
+- The original public-process platform story begins with discovery, user workshops, journey mapping, and conversion of paper processes for community members and City operations. It subsequently evolved through multiple generations including eCouncil. The original system name and precise chronology still need confirmation; avoid the false claim that Julie supervised eCouncil staff or personally designed every successor.
+- Retain clear commitments to accessibility, digital equity, antiracism, Title II disability access, and distinct Title VI/language access obligations. These describe principles and areas of practice, not universal compliance outcomes.
 
-The page alternates open project rows, a compact everyday-service panel, a dark system view, and simple disclosures. Typography, conceptual artwork, and spacing carry the visual identity without a repetitive card grid or a promotional biography.
+## Art direction
 
-The project links distinguish the live public services from the portfolio’s developing case-study narrative. Concept artwork is labeled. The Atlas visual does not reconstruct its unseen current version. Notes are draft portfolio questions, not claimed published articles.
+Soft black, cool white, cool gray, strong contrast; an editorial foundation made more expressive through unusual typesetting, interrupted grid rhythms, intentional negative space, and conceptual diagrams. Avoid cosmetic novelty with no meaning. Differentiate experiments visually without turning the professional work into a corporate résumé.
 
-## Next content work
+The exploratory opening now reads **“I make things. Some are questions.”** The home page has three entrances (practical tools, experimental questions, collaborative public digital work) rather than leading with professional categories. The graphic is a three-state interactive network: a conceptual toy, deliberately **not** a scientific simulation or accessibility-dependent navigation.
 
-1. Review specific contributions, collaborators, chronology, and outcomes for each project.
-2. Add the current Civic Systems Atlas snapshot after it is shared.
-3. Develop the reviewed resume and choose a direct contact route if needed.
-4. Replace conceptual studies with suitable project evidence where it strengthens the story.
-5. Complete browser, keyboard, screen-reader, and zoom/reflow review before a public release.
+This art direction is an experiment, not a permanent personal brand. We are deliberately maintaining tension between credible professional experience and intellectual curiosity without requiring everything to justify itself as career collateral. Keep this playful and revisable.
+
+## Project architecture
+
+The project gallery now distinguishes useful tools (SHOWS, SVG Hopper, Tubes) from exploratory work (Possible Realities). Almost the Same, Only Between, and Without Coordinates remain individually launchable investigations within the laboratory. Do not break or silently redirect their routes.
+
+## Design and accessibility guardrails
+
+Preserve semantic headings, keyboard operability, readable text, sufficient contrast, focused dialogs, prefers-reduced-motion behavior, reflow/zoom support, and descriptive links. Automated axe checks are part of QA, not evidence of full accessibility conformance.
+
+Avoid invented case-study metrics and literal visual reconstructions of City products without approved source material. Concept art should remain identifiable as concept art. Public professional work is collaborative, with changing roles and product generations.
+
+## Proposed next investigations
+
+1. Test the first expressive homepage and grouped gallery on mobile and desktop, including keyboard-only use.
+2. Consider a visual system that unifies the personal site without flattening each prototype’s own personality.
+3. Explore the public-process design lineage as an editorial story, only when personal details and chronology are confirmed.
+4. Review whether earlier SHOWS A/B preview routes and dated research files should be archived as historical references, rather than removing them impulsively.
+5. Move towards a maintainable system of shared tokens or components only when the benefit outweighs complexity for a small static site.
