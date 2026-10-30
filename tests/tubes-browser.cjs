@@ -8,6 +8,7 @@ const base="http://127.0.0.1:4173/projects/tubes/";
   try{
     for(const width of [1280,390]){
       const page=await browser.newPage({viewport:{width,height:850},acceptDownloads:true});
+      page.setDefaultTimeout(8000);
       const errors=[];page.on("pageerror",e=>errors.push(e.message));
       const response=await page.goto(base,{waitUntil:"networkidle"});
       assert.equal(response.status(),200);
@@ -44,6 +45,7 @@ const base="http://127.0.0.1:4173/projects/tubes/";
       assert.match((await pngPromise).suggestedFilename(),/\.png$/);
       await page.locator("#saveLocal").click();
       assert(await page.locator("#savedList option").count()>1);
+      await page.locator("details.editor summary").click();
       await page.locator("#editRound").fill("1");
       await page.locator("#editStitch").fill("1");
       await page.locator("#editType").selectOption("p");
