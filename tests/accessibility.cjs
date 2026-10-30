@@ -155,6 +155,20 @@ async function main(){
     await page.goto(origin+"/",{waitUntil:"networkidle"});
     issues.push(...await audit(page,"Portfolio home "+viewport.width));
     await assertFavicon(page,"Portfolio home");
+    // The expressive home offers purposeful routes and a deterministic network toy.
+    assert.equal(await page.locator(".hero-doors .door").count(),3,"Three paths into tools, questions and work");
+    const reconfigure=page.locator("#field-reshuffle");
+    assert(await reconfigure.isVisible(),"Interactive field control is available with JavaScript");
+    assert.match(await page.locator("#field-status").innerText(),/Arrangement 01/);
+    await reconfigure.click();
+    assert.match(await page.locator("#field-status").innerText(),/Arrangement 02/,"Reconfiguring changes the diagram state");
+    await reconfigure.click();
+    assert.match(await page.locator("#field-status").innerText(),/Arrangement 03/);
+    await reconfigure.click();
+    assert.match(await page.locator("#field-status").innerText(),/Arrangement 01/,"Field cycles back to initial state");
+    assert.equal(await page.locator("#field-nodes [data-field-node]").count(),9,"Diagram has nine moving points");
+    const pathDestinations=await page.locator(".hero-doors .door").evaluateAll(nodes=>nodes.map(n=>new URL(n.href).pathname));
+    assert.deepEqual(pathDestinations,["/projects/","/projects/","/"],"Paths remain within the site");
     await page.goto(origin+"/projects/",{waitUntil:"networkidle"});
     issues.push(...await audit(page,"Portfolio projects "+viewport.width));
     await assertFavicon(page,"Projects");
