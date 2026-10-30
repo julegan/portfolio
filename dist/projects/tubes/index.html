@@ -1,0 +1,110 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#15161c">
+<meta name="description" content="Tubes: design colorful, knittable patterns worked in the round. Preview, edit, save, reopen, and print without an account.">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<link rel="stylesheet" href="./styles.css">
+<script type="module" src="./app.mjs"></script>
+<title>Tubes — a knitting pattern playground</title>
+</head>
+<body>
+<a class="skip" href="#studio">Skip to the pattern studio</a>
+<header class="shell top"><a href="/projects/" class="back">← Julie Owens / Projects</a><span class="micro">INDEPENDENT EXPERIMENT / V1</span></header>
+<main class="shell">
+  <section class="hero">
+    <div><p class="kicker">Knitting, but make it a playground</p><h1>Tubes<span class="period">.</span></h1>
+      <p class="lede">A little design studio for things knit in the round. Generate a motif, change the rules, edit individual stitches, then take the pattern to your needles.</p>
+      <p class="subline">Real stitches. Real charts. No fake finished photos, accounts, or uploads to a server.</p></div>
+    <div class="hero-art" aria-hidden="true"><div class="art-grid" id="heroTiles"></div><span class="art-caption">ONE STITCH AT A TIME →</span></div>
+  </section>
+  <div class="layout" id="studio">
+    <form class="panel controls" id="controls">
+      <div class="panel-head"><span class="micro">01 / THE RULES</span><h2>Make a tube</h2><p>Start with a generated pattern and make it yours.</p></div>
+      <label for="name">Project name<input id="name" name="name" maxlength="80" value="My first tube"></label>
+      <fieldset><legend>Size & yarn</legend>
+        <div class="fields">
+          <label for="weight">Yarn weight<select id="weight" name="weight">
+            <option value="lace">Lace</option><option value="fingering">Fingering</option><option value="sport">Sport</option><option value="dk">DK</option><option value="worsted" selected>Worsted</option><option value="bulky">Bulky</option>
+          </select></label>
+          <label for="circumference">Target circumference (in)<input id="circumference" name="circumference" type="number" min="8" max="60" step=".5" value="24"></label>
+          <label for="height">Target height (in)<input id="height" name="height" type="number" min="3" max="40" step=".5" value="12"></label>
+          <label for="stitches4">Stitches / 4 in<input id="stitches4" name="stitches4" type="number" min="8" max="48" step=".5" value="20"></label>
+          <label for="rounds4">Rounds / 4 in<input id="rounds4" name="rounds4" type="number" min="10" max="65" step=".5" value="28"></label>
+        </div>
+        <p class="hint">Weight suggests a starting gauge. Enter swatched gauge for meaningful dimensions.</p>
+      </fieldset>
+      <fieldset><legend>Motif & repetition</legend>
+        <div class="fields">
+          <label for="design">Design family<select id="design" name="design">
+            <option value="diamonds">Diamonds</option><option value="chevrons">Chevrons</option><option value="waves">Waves</option><option value="speckles">Speckles</option><option value="landscape">Little landscape</option>
+          </select></label>
+          <label for="arrangement">Around the tube<select id="arrangement" name="arrangement">
+            <option value="repeat">Repeat a motif</option><option value="scene">One wraparound design</option>
+          </select></label>
+          <label for="vertical">Up the tube<select id="vertical" name="vertical">
+            <option value="repeat">Repeat vertically</option><option value="once">Design once</option>
+          </select></label>
+          <label for="motifWidth">Motif width (stitches)<input id="motifWidth" name="motifWidth" type="number" min="4" max="32" step="1" value="12"></label>
+          <label for="repeats">Times around<input id="repeats" name="repeats" type="number" min="1" max="30" step="1" value="10"></label>
+          <label for="complexity">Complexity <output id="complexityOutput" for="complexity">2 / 4</output><input id="complexity" name="complexity" type="range" min="1" max="4" step="1" value="2"></label>
+        </div>
+        <p class="hint" id="repeatHint">Repeating the motif sets the cast-on count. Changing repeats changes the finished circumference.</p>
+      </fieldset>
+      <fieldset><legend>Color & stitches</legend>
+        <div class="fields">
+          <label for="palette">Color story<select id="palette" name="palette"><option value="electric">Electric</option><option value="garden">Garden</option><option value="dusk">Dusk</option><option value="graphic">Graphic</option></select></label>
+          <label for="colors">Yarn colors <output id="colorsOutput" for="colors">4</output><input id="colors" name="colors" type="range" min="1" max="6" value="4"></label>
+        </div>
+        <label class="checkbox-label"><input id="texture" name="texture" type="checkbox"> Allow purl stitches for texture</label>
+        <p class="hint">Knit stitches are always available. V1 does not yet generate lace, cables, or shaping.</p>
+      </fieldset>
+      <div class="generate"><button id="generate" class="primary" type="button">↻ Generate another</button><button id="undo" type="button" disabled>Undo</button><button id="redo" type="button" disabled>Redo</button></div>
+    </form>
+    <div class="results">
+      <section class="panel work" aria-labelledby="chart-title">
+        <div class="section-header"><div><span class="micro">02 / THE PATTERN</span><h2 id="chart-title">Your stitch chart</h2></div><span class="pill" id="seedTag">SEED 20261029</span></div>
+        <div class="stats" aria-live="polite">
+          <div><strong id="stitchCount">120</strong><span>Cast-on stitches</span></div>
+          <div><strong id="roundCount">84</strong><span>Total rounds</span></div>
+          <div><strong id="finishedSize">24 × 12 in</strong><span>Est. circumference × height</span></div>
+        </div>
+        <p class="hint">Round 1 is at the bottom. Each square is one stitch. Click a square to change its color; use the accessible stitch editor below for precise edits.</p>
+        <div class="tabs" role="group" aria-label="Preview type"><button type="button" id="chartTab" aria-pressed="true">Flat chart</button><button type="button" id="tubeTab" aria-pressed="false">On the tube</button></div>
+        <div class="canvas-wrap" id="chartWrap"><div id="graphic" class="graphic" role="img" aria-label="Generated stitch chart"></div></div>
+        <p class="graphic-caption" id="graphicCaption">Flat chart / bottom to top. Swipe horizontally to inspect every stitch.</p>
+        <div class="legend" id="colorLegend" aria-label="Yarn color key"></div>
+        <details class="editor"><summary>Fine-tune one stitch</summary><div class="editor-grid">
+          <label for="editRound">Round (bottom up)<input id="editRound" type="number" value="1" min="1" step="1"></label>
+          <label for="editStitch">Stitch number<input id="editStitch" type="number" value="1" min="1" step="1"></label>
+          <label for="editColor">Color<select id="editColor"></select></label>
+          <label for="editType">Stitch<select id="editType"><option value="k">Knit</option><option value="p">Purl</option></select></label>
+          <button type="button" id="applyEdit">Apply edit</button>
+        </div><p class="hint">Manual changes are stored in your editable Tubes project. Generating again clears individual edits.</p></details>
+      </section>
+      <section class="panel exports" aria-labelledby="exportTitle">
+        <div class="section-header"><div><span class="micro">03 / KEEP IT</span><h2 id="exportTitle">Save & take it with you</h2></div></div>
+        <p>Save to this browser or keep a portable copy you can reopen on another device. No account needed.</p>
+        <div class="buttons"><button type="button" id="saveLocal" class="primary">Save in this browser</button><button type="button" id="downloadProject">Download editable .tubes.json</button><label for="openProject" class="file-button">Open a .tubes.json file<input id="openProject" type="file" accept=".json,.tubes.json,application/json"></label></div>
+        <label for="savedList">Saved designs on this device<select id="savedList"><option value="">Choose a saved pattern…</option></select></label>
+        <p class="hint">Browser saves can be cleared. Download an editable file to keep a reliable backup.</p>
+        <div class="export-row">
+          <label for="exportView">Graphic to export<select id="exportView"><option value="chart">Flat chart</option><option value="tube">Tube preview</option></select></label>
+          <div class="buttons"><button type="button" id="downloadPng">PNG</button><button type="button" id="downloadSvg">SVG</button><button type="button" id="downloadMd">Markdown</button><button type="button" id="downloadPdf">Print / Save as PDF</button></div>
+        </div>
+        <p class="hint">PDF uses your browser's print dialog. Choose “Save as PDF” or print on paper; charts are tiled into readable sections. Markdown includes written round instructions.</p>
+      </section>
+      <section class="notes">
+        <h2>Before you cast on</h2>
+        <p>These are experimental knitting instructions, not test-knitted patterns. Check your gauge, yarn quantities, motif alignment, and floats before a full project. Colorwork may need caught floats. Every v1 round preserves stitch count; no increases, decreases, cables, or lace.</p>
+        <p id="floatNote" class="warning"></p>
+      </section>
+    </div>
+  </div>
+  <p class="status" role="status" aria-live="polite" id="status">Ready to knit something weird.</p>
+</main>
+<footer class="shell footer"><span>TUBES / A PORTFOLIO EXPERIMENT</span><a href="/projects/">← All projects</a></footer>
+</body>
+</html>

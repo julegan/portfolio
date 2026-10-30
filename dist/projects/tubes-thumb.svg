@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1020 600" role="img" aria-labelledby="t d">
+<title id="t">Tubes colorful knitting chart</title><desc id="d">Bright jewel-colored diamond stitches arranged on a dark knitting chart grid, with TUBES title.</desc>
+<rect width="1020" height="600" fill="#171820"/>
+<rect x="42" y="42" width="936" height="516" rx="22" fill="#23232c" stroke="#494350"/>
+<defs><pattern id="grid" width="32" height="32" patternUnits="userSpaceOnUse"><rect width="32" height="32" fill="#2d2841"/><path d="M32 0H0V32" fill="none" stroke="#8e85a1" opacity=".25"/></pattern></defs>
+<rect x="82" y="93" width="504" height="413" fill="url(#grid)"/>
+<g shape-rendering="crispEdges">
+<path d="M82 93h504v413H82z" fill="none" stroke="#a99bac"/>
+<path d="M306 122h64v32h-64z M274 154h128v32H274z M242 186h192v32H242z M210 218h256v32H210z M242 250h192v32H242z M274 282h128v32H274z M306 314h64v32h-64z" fill="#e7ab59"/>
+<path d="M146 122h64v32h-64z M114 154h128v32H114z M82 186h192v32H82z M114 218h128v32H114z M146 250h64v32h-64z" fill="#e66ea2"/>
+<path d="M466 346h64v32h-64z M434 378h128v32H434z M402 410h184v32H402z M434 442h128v32H434z M466 474h64v32h-64z" fill="#69d1c1"/>
+<path d="M306 346h64v32h-64z M274 378h128v32H274z M242 410h192v32H242z M274 442h128v32H274z M306 474h64v32h-64z" fill="#ac9cf4"/>
+</g>
+<text x="638" y="260" fill="#f9f0f4" font-family="Arial,sans-serif" font-size="101" font-weight="750" letter-spacing="-8">Tubes<tspan fill="#fa9cc2">.</tspan></text>
+<text x="641" y="307" fill="#c8c3d0" font-family="Arial,sans-serif" font-size="19" letter-spacing="1">KNITTING IN THE ROUND</text>
+<g font-family="monospace" font-size="16" fill="#aeb0c2"><text x="644" y="399">COLOR / STITCH / REPEAT</text><text x="644" y="429">MAKE IT. KNIT IT.</text></g>
+</svg>
