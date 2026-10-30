@@ -30,6 +30,7 @@ const base="http://127.0.0.1:4173/projects/tubes/";
       assert.match(download.suggestedFilename(),/\.tubes\.json$/);
       const projectPath=await download.path();
       await page.locator("#openProject").setInputFiles(projectPath);
+      await page.waitForFunction(()=>document.getElementById("status").textContent.includes("opened"));
       assert.match(await page.locator("#status").innerText(),/opened/i);
       const markdownPromise=page.waitForEvent("download");
       await page.locator("#downloadMd").click();
