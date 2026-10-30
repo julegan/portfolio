@@ -19,7 +19,7 @@ The process is intentionally iterative. A change is a hypothesis to test—not a
 
 Soft black, cool white, cool gray, strong contrast; an editorial foundation made more expressive through unusual typesetting, interrupted grid rhythms, intentional negative space, and conceptual diagrams. Avoid cosmetic novelty with no meaning. Differentiate experiments visually without turning the professional work into a corporate résumé.
 
-The exploratory opening now reads **“I make things. Some are questions.”** The home page has three entrances (practical tools, experimental questions, collaborative public digital work) rather than leading with professional categories. The graphic is a three-state interactive network: a conceptual toy, deliberately **not** a scientific simulation or accessibility-dependent navigation.
+The exploratory opening now reads **“I make things. Some are questionable.”** The home page has three entrances (practical tools, experimental questions, collaborative public digital work) rather than leading with professional categories. The graphic is a three-state interactive network: a conceptual toy, deliberately **not** a scientific simulation or accessibility-dependent navigation.
 
 This art direction is an experiment, not a permanent personal brand. We are deliberately maintaining tension between credible professional experience and intellectual curiosity without requiring everything to justify itself as career collateral. Keep this playful and revisable.
 
