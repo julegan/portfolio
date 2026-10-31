@@ -150,6 +150,13 @@ async function main(){
  const issues=[];
  try{
   if(isPortfolio){
+   // Retired A/B demonstrations must not be inadvertently republished.
+   for (const oldRoute of ["preview-a","preview-b"]) {
+    assert.equal(fs.existsSync("dist/projects/shows/"+oldRoute+"/index.html"),false,
+      "Retired SHOWS "+oldRoute+" page must not be deployed");
+   }
+   assert.equal(fs.existsSync("dist/projects/shows/preview.js"),false,
+     "Legacy SHOWS preview renderer must not be deployed");
    for(const viewport of [{width:1440,height:900},{width:390,height:844}]){
     const page=await browser.newPage({viewport});
     await page.goto(origin+"/",{waitUntil:"networkidle"});
