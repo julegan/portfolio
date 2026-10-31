@@ -23,6 +23,8 @@ The site is intentionally in progress. Its visual direction is art-directed, typ
 
 The last three experiments are linked as independent investigations within Possible Realities. Their existing URLs are preserved.
 
+The retired SHOWS A/B comparison pages (`/projects/shows/preview-a/` and `/projects/shows/preview-b/`) are intentionally **not** deployed. The production SHOWS calendar uses `/projects/shows/` and still depends on `preview.css` despite that stylesheet's historical name. Do not restore the discarded demo pages or delete active production styles during future snapshot updates.
+
 ## Build and hosting
 
 This is a static site: HTML, CSS, SVG and browser JavaScript in `dist/`, with no bundler or mandatory account. Cloudflare serves `./dist` using `wrangler.jsonc`.

@@ -38,7 +38,7 @@ Avoid invented case-study metrics and literal visual reconstructions of City pro
 1. Test the first expressive homepage and grouped gallery on mobile and desktop, including keyboard-only use.
 2. Consider a visual system that unifies the personal site without flattening each prototype’s own personality.
 3. Explore the public-process design lineage as an editorial story, only when personal details and chronology are confirmed.
-4. Review whether earlier SHOWS A/B preview routes and dated research files should be archived as historical references, rather than removing them impulsively.
+4. Preserve active prototype routes while continuing to identify and remove genuinely unreferenced test pages; retain dated SHOWS research as historical documentation.
 5. Move towards a maintainable system of shared tokens or components only when the benefit outweighs complexity for a small static site.
 
 ## Science editorial illustration (October 30, 2026)
@@ -46,3 +46,7 @@ Avoid invented case-study metrics and literal visual reconstructions of City pro
 Show early print editorial art as an authored visual practice, not merely a historical résumé credential. The three annual *Science* Cell Signaling covers (May 31, 2002; June 6, 2003; November 26, 2004) are the starting gallery. Publish all personal work under the single current portfolio identity, **Julie Owens**; do not add past surnames. This is an artist-led narrative drawn from Julie's firsthand account, not a claim of independent verification of every cover credit.
 
 Retain the covers' original colors amid the mostly monochrome site. The initial cover thumbnails are low-resolution crops from Science's original issue pages captured and supplied for this portfolio; replace them with authorized higher-resolution files if/when available. Do not confuse these published covers with the site's conceptual illustrations. Link every cover to its issue and identify AAAS as rights holder.
+
+## Prototype cleanup (October 30, 2026)
+
+The A/B test for SHOWS was resolved in favor of the mixed, date-first calendar, now published at `/projects/shows/`. Remove its two obsolete public preview pages, their dedicated legacy renderer (`preview.js`), and their preview-specific browser test; the normal SHOWS browser and mobile-date tests remain. Keep `preview.css`: despite its legacy filename, the **production** SHOWS page loads it. The canonical `julegan/shows` source no longer ships the A/B pages. The three Possible Realities experiments remain active, independently linked projects, not old previews.
