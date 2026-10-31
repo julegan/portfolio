@@ -1,0 +1,8 @@
+# Cloudflare Workers static-asset headers (not applied to Worker-generated responses).
+# These conservative defaults should not affect existing interactive projects.
+# Add and test an enforcing Content-Security-Policy in a separate PR.
+/*
+  X-Content-Type-Options: nosniff
+  X-Frame-Options: SAMEORIGIN
+  Referrer-Policy: strict-origin-when-cross-origin
+  Permissions-Policy: camera=(), microphone=(), geolocation=(), payment=(), usb=()
