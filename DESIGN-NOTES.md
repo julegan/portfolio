@@ -40,3 +40,9 @@ Avoid invented case-study metrics and literal visual reconstructions of City pro
 3. Explore the public-process design lineage as an editorial story, only when personal details and chronology are confirmed.
 4. Review whether earlier SHOWS A/B preview routes and dated research files should be archived as historical references, rather than removing them impulsively.
 5. Move towards a maintainable system of shared tokens or components only when the benefit outweighs complexity for a small static site.
+
+## Science editorial illustration (October 30, 2026)
+
+Show early print editorial art as an authored visual practice, not merely a historical résumé credential. The three annual *Science* Cell Signaling covers (May 31, 2002; June 6, 2003; November 26, 2004) are the starting gallery. Publish all personal work under the single current portfolio identity, **Julie Owens**; do not add past surnames. This is an artist-led narrative drawn from Julie's firsthand account, not a claim of independent verification of every cover credit.
+
+Retain the covers' original colors amid the mostly monochrome site. The initial cover thumbnails are low-resolution crops from Science's original issue pages captured and supplied for this portfolio; replace them with authorized higher-resolution files if/when available. Do not confuse these published covers with the site's conceptual illustrations. Link every cover to its issue and identify AAAS as rights holder.

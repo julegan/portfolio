@@ -140,6 +140,18 @@
     .process-paper p { margin-top: 12px; font-size: 11px; }
     .project-note { font-size: 11px; color: var(--muted); border-top: 1px solid var(--line); padding-top: 18px; }
 
+    /* The original editorial images stay in color; the surrounding frame stays spare. */
+    .science-visual { display: block; background: var(--ink); color: var(--paper); padding: 20px; min-height: 0; border-color: var(--ink); }
+    .science-covers { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; align-items: start; }
+    .science-cover { display: block; min-width: 0; text-decoration: none; }
+    .science-cover img { display: block; width: 100%; height: auto; aspect-ratio: 3 / 4; object-fit: contain; object-position: top center; background: #fff; }
+    .science-cover:hover img { outline: 2px solid var(--white); outline-offset: 3px; }
+    .science-cover-year { display: block; margin-top: 12px; color: var(--soft); font: 10px var(--mono); }
+    .science-cover-title { display: block; margin-top: 3px; font-size: 12px; font-weight: 500; line-height: 1.3; }
+    .science-cover .science-cover-link { display: block; color: var(--silver); margin-top: 5px; font: 10px var(--mono); }
+    .science-visual figcaption { padding-top: 15px; color: var(--soft); font: 10px/1.5 var(--mono); }
+
+
     .systems { border-top: 1px solid var(--dark-line); padding-block: 76px; }
     .systems-grid { display: grid; grid-template-columns: .92fr 1.08fr; gap: 56px; align-items: center; }
     .systems-copy .label { color: var(--soft); margin-bottom: 25px; }
@@ -261,6 +273,14 @@
       .project h3 { font-size: clamp(41px, 10vw, 60px); max-width: 14ch; margin-bottom: 18px; }
       .project .description { font-size: 15px; max-width: 41ch; }
       .project-visual { min-height: 310px; }
+      .science-visual { padding: 19px; min-height: 0; }
+      .science-covers { grid-template-columns: 1fr; gap: 17px; }
+      .science-cover { display: grid; grid-template-columns: minmax(98px, 126px) minmax(0, 1fr); column-gap: 15px; align-items: start; }
+      .science-cover img { grid-row: span 3; }
+      .science-cover-year { margin-top: 0; }
+      .science-cover-title { font-size: 15px; align-self: start; }
+      .science-cover .science-cover-link { align-self: start; }
+
       .maps-visual svg { height: 310px; }
       .project-note { font-size: 11px; }
       .systems { padding-block: 45px 50px; }
@@ -620,6 +640,33 @@
               <div class="project-links"><a class="text-link" href="https://www.portland.gov/digital-services/news/2026/5/5/playbook-helps-city-teams-build-better-digital-services">Read about our Playbook <span aria-hidden="true">↗</span></a><button class="text-link detail-link js-details" type="button" data-project="practice">Principles in practice <span aria-hidden="true">↗</span></button></div>
             </div>
             <figure class="project-visual practice-visual" aria-labelledby="practice-caption"><div class="practice-diagram" aria-hidden="true"><p class="mono">An operating model is a set of relationships</p><div class="practice-grid"><span>Strategy</span><span>Products</span><span>Capacity</span><span>Outcomes</span></div><p>Clarity enables collaboration. Ownership makes change sustainable.</p></div><figcaption class="visual-caption" id="practice-caption">Conceptual practice model · not a formally adopted City framework</figcaption></figure>
+          </article>
+
+          <article class="project science-project" id="science-illustration" data-paths="design">
+            <div class="project-copy">
+              <p class="mono">06 / illustration &amp; visual explanation</p>
+              <p class="project-name">Science · annual Cell Signaling covers, 2002–2004</p>
+              <h3>Drawing<br>connections.</h3>
+              <p class="description">Long before I was mapping digital systems in government, I was drawing signaling systems for <em>Science</em>. Maps, networks, pathways, structures, relationships—it turns out I have been making versions of the same questions for a very long time.</p>
+              <p class="description" style="margin-top: 17px">As an editorial illustrator, I created print covers and scientific figures to make complicated ideas visible. These three covers are a small part of that work, and an unexpected prehistory of what I make now.</p>
+            </div>
+            <figure class="project-visual science-visual" aria-labelledby="science-gallery-caption">
+              <div class="science-covers">
+                <a class="science-cover" href="https://www.science.org/toc/science/296/5573" aria-label="View the May 31, 2002 Mapping Cellular Signaling issue at Science">
+                  <img src="/assets/science-cover-2002.webp" width="197" height="264" loading="lazy" decoding="async" alt="Science cover featuring bright blue branching cellular pathways over an electronic grid and a luminous center.">
+                  <span class="science-cover-year">31 MAY 2002</span><span class="science-cover-title">Mapping Cellular Signaling</span><span class="science-cover-link">View issue ↗</span>
+                </a>
+                <a class="science-cover" href="https://www.science.org/toc/science/300/5625" aria-label="View the June 6, 2003 Building Signaling Connections issue at Science">
+                  <img src="/assets/science-cover-2003.webp" width="198" height="254" loading="lazy" decoding="async" alt="Science cover showing a three-dimensional model of red and white spherical nodes joined by slender rods against a white background.">
+                  <span class="science-cover-year">06 JUN 2003</span><span class="science-cover-title">Building Signaling Connections</span><span class="science-cover-link">View issue ↗</span>
+                </a>
+                <a class="science-cover" href="https://www.science.org/toc/science/306/5701" aria-label="View the November 26, 2004 Cell Signaling issue at Science">
+                  <img src="/assets/science-cover-2004.webp" width="198" height="252" loading="lazy" decoding="async" alt="Science cover with two abstract egg-like cellular forms on a yellow background with small blue dots.">
+                  <span class="science-cover-year">26 NOV 2004</span><span class="science-cover-title">Cell Signaling</span><span class="science-cover-link">View issue ↗</span>
+                </a>
+              </div>
+              <figcaption id="science-gallery-caption">Selected original Science cover illustrations · © AAAS · previews cropped from publisher issue pages</figcaption>
+            </figure>
           </article>
         </div>
         <section class="earlier-work" id="earlier" aria-labelledby="earlier-title">
