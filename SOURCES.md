@@ -29,3 +29,13 @@ These public sources establish platform chronology and the continuity of the ser
 ### Additional firsthand PortlandMaps design detail (October 30, 2026)
 
 Julie described several interrelated design decisions behind the first mobile-first version: moving beyond the former click-to-pan/zoom map to continuous draggable, zoomable navigation; using device geolocation to orient a person at the actual property; enabling on-site access to relevant property information and permits for work or house shopping; reorganizing the information architecture; and incorporating the City's improved aerial imagery and custom professionally designed basemaps. This is firsthand design history, not independent source verification of the implementation timeline or a claim that Julie personally produced the GIS data, imagery, or basemaps.
+
+## Science editorial illustration — three confirmed issue records (October 30, 2026)
+
+Julie identified these three *Science* magazine covers as original illustration work through direct visual confirmation against the publisher's issue pages. Dates and issue numbers are established by the publisher's issue pages; individual art attribution is from Julie's firsthand account.
+
+- [31 May 2002 — *Mapping Cellular Signaling*, Science 296(5573)](https://www.science.org/toc/science/296/5573)
+- [6 June 2003 — *Building Signaling Connections*, Science 300(5625)](https://www.science.org/toc/science/300/5625)
+- [26 November 2004 — *Cell Signaling*, Science 306(5701)](https://www.science.org/toc/science/306/5701)
+
+Gallery assets are small WebP crops of the publisher's covers as captured in screenshots that Julie supplied. They have no mobile UI/chrome, but are deliberately not presented as archival high-resolution files. Cover publication/copyright belongs to AAAS; review any reuse conditions when sourcing archival replacements. The imagery is original editorial work, not newly recreated illustrations.
