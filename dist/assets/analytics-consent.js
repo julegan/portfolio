@@ -50,9 +50,25 @@
   }
 
   function startAnalytics() {
-    if (!isProduction || browserOptOut || choice !== "allow" || loaded) return;
-    loaded = true;
+    if (!isProduction || browserOptOut || choice !== "allow") return;
     window[optOutKey] = false;
+    if (loaded) {
+      // A visitor can change their mind again without a reload.
+      window.gtag("consent", "update", {
+        analytics_storage: "granted",
+        ad_storage: "denied",
+        ad_user_data: "denied",
+        ad_personalization: "denied"
+      });
+      window.gtag("config", MEASUREMENT_ID, {
+        send_page_view: true,
+        allow_google_signals: false,
+        allow_ad_personalization_signals: false,
+        page_location: window.location.origin + window.location.pathname
+      });
+      return;
+    }
+    loaded = true;
     window.dataLayer = window.dataLayer || [];
     window.gtag = function () { window.dataLayer.push(arguments); };
     // Block all advertising consent categories, even after analytics opt-in.
