@@ -28,7 +28,7 @@ test("one shared, first-party consent loader on all nine portfolio pages", () =>
 });
 test("GA4 measurement and privacy guardrails match the approved opt-in tag", () => {
   assert.match(js, /G-LMS6LWDK63/);
-  assert.match(js, /"gtag\/js\?id="/);
+  assert.match(js, /googletagmanager\\.com\/gtag\/js\\?id=/);
   assert.match(js, /analytics_storage: "granted"/);
   assert.match(js, /ad_storage: "denied"/);
   assert.match(js, /ad_user_data: "denied"/);
