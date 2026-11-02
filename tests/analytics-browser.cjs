@@ -25,6 +25,9 @@ async function main(){
     const context=await browser.newContext();
     const tagRequests=[];
     const pageErrors=[];
+    // Browser script creation and outgoing network requests occur on different
+    // turns. Wait for the fulfilled vendor response before asserting counts.
+    const isTagResponse=response=>response.url().startsWith("https://www.googletagmanager.com/gtag/js?id=")&&response.status()===200;
     await context.route("https://julieowens.me/**",localRoute);
     await context.route("https://www.googletagmanager.com/**",route=>{
       tagRequests.push(route.request().url());
@@ -43,8 +46,9 @@ async function main(){
     assert(!await page.locator("#portfolio-analytics-choices").isVisible(),"Choice respected across pages");
     await page.getByRole("button",{name:"Analytics preferences"}).click();
     assert(await page.locator("#portfolio-analytics-choices").isVisible(),"Preference can be reopened from footer");
+    const firstTag=page.waitForResponse(isTagResponse);
     await page.locator("#portfolio-analytics-allow").click();
-    await page.waitForFunction(()=>!!document.querySelector("#portfolio-google-tag"));
+    await firstTag;
     assert.equal(tagRequests.length,1,"One Google tag request following consent on production");
     const flags=await page.evaluate(()=>({
       disabled:window["ga-disable-G-LMS6LWDK63"],
@@ -56,8 +60,9 @@ async function main(){
     const config=flags.data.find(x=>x[0]==="config");
     assert.equal(config[1],"G-LMS6LWDK63");
     assert.equal(config[2].page_location,origin+"/projects/","No query strings or hashes in analytics page location");
+    const secondTag=page.waitForResponse(isTagResponse);
     await page.goto(origin+"/projects/shows/",{waitUntil:"load"});
-    await page.waitForFunction(()=>!!document.querySelector("#portfolio-google-tag"));
+    await secondTag;
     assert.equal(tagRequests.length,2,"Stored opt-in applies to other portfolio routes");
     await page.getByRole("button",{name:"Analytics preferences"}).click();
     await page.locator("#portfolio-analytics-decline").click();
@@ -68,8 +73,9 @@ async function main(){
 
     // Verify changing one's mind again without reloading reinits analytics.
     await page.getByRole("button",{name:"Analytics preferences"}).click();
+    const thirdTag=page.waitForResponse(isTagResponse);
     await page.locator("#portfolio-analytics-allow").click();
-    await page.waitForFunction(()=>!!document.querySelector("#portfolio-google-tag"));
+    await thirdTag;
     assert.equal(tagRequests.length,3);
     await page.getByRole("button",{name:"Analytics preferences"}).click();
     await page.locator("#portfolio-analytics-decline").click();
