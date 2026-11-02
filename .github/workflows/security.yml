@@ -15,4 +15,5 @@ jobs:
         with:
           node-version: '22'
       - name: Check static security headers and pinned Actions
-        run: node --test tests/security-headers.test.mjs
+        run: node --check dist/assets/analytics-consent.js
+          node --test tests/security-headers.test.mjs tests/analytics-consent.test.mjs

@@ -28,5 +28,8 @@ jobs:
           SHOWS_PORTFOLIO: '1'
         run: node tests/accessibility.cjs
 
+      - name: GA4 opt-in and browser privacy controls
+        run: node tests/analytics-browser.cjs
+
       - name: Mobile native date field fits all viewport widths
         run: node tests/shows-mobile-date.cjs
