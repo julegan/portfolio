@@ -1,8 +1,8 @@
 name: Sync approved SHOWS calendar (review-only)
 on:
   schedule:
-    - cron: '47 17 * * *'
-    - cron: '47 3 * * *'
+    # Poll approved SHOWS updates every two hours; no cross-repo token required.
+    - cron: '47 */2 * * *'
   workflow_dispatch:
 permissions:
   contents: write
@@ -19,18 +19,7 @@ jobs:
       - uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7.1.0
         with:
           node-version: '22'
-      - name: Check pending SHOWS sync reviews
-        id: pending
-        env:
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: |
-          count="$(gh pr list --state open --json headRefName --jq '[.[] | select(.headRefName | startswith("automation/shows-sync-"))] | length')"
-          if [ "$count" -gt 0 ]; then
-            echo "skip=true" >> "$GITHUB_OUTPUT"
-            echo "Portfolio sync review already open. Waiting for approval." >> "$GITHUB_STEP_SUMMARY"
-          fi
       - name: Retrieve reviewed SHOWS source from main
-        if: steps.pending.outputs.skip != 'true'
         run: |
           curl --fail --show-error --silent --location --retry 2 --max-time 30             "https://raw.githubusercontent.com/julegan/shows/main/events.js"             --output /tmp/shows-canonical-events.js
           node --check /tmp/shows-canonical-events.js
@@ -50,23 +39,58 @@ jobs:
           }
           console.log('Approved main branch: '+events.length+' dated events.');
           NODE
-      - name: Propose synced portfolio calendar
-        if: steps.pending.outputs.skip != 'true'
+      - name: Create or refresh the single rolling portfolio publication PR
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
+          set -euo pipefail
           dest="dist/projects/shows/events.js"
+          # Only bot-authored, expected snapshot PRs may be automatically
+          # refreshed. Never rewrite an unrelated feature/design PR.
+          mapfile -t prs < <(gh pr list --state open --limit 100 --json headRefName,number \
+            --jq '.[] | select(.headRefName | test("^automation/shows-sync-[0-9]{8}-[0-9]+$")) | .number')
+          if [ "${#prs[@]}" -gt 1 ]; then
+            echo "::error::Multiple SHOWS sync PRs are open; manual reconciliation required."
+            exit 1
+          fi
+          number="${prs[0]:-}"
+          if [ -n "$number" ]; then
+            author="$(gh pr view "$number" --json author --jq '.author.login')"
+            if [ "$author" != "app/github-actions" ] && [ "$author" != "github-actions[bot]" ]; then
+              echo "::error::Refusing to overwrite a non-bot authored PR."
+              exit 1
+            fi
+            changed="$(gh pr view "$number" --json files --jq '.files[].path')"
+            if [ "$(printf '%s\n' "$changed" | grep -v -E '^(dist/projects/shows/events\.js|dist/projects/shows/index\.html)$' || true)" ]; then
+              echo "::error::Pending sync PR changes unexpected files; manual review required."
+              exit 1
+            fi
+          fi
           if cmp -s /tmp/shows-canonical-events.js "$dest"; then
-            echo "Portfolio is already synchronized with canonical SHOWS main." >> "$GITHUB_STEP_SUMMARY"
+            echo "Portfolio main already matches approved canonical SHOWS." >> "$GITHUB_STEP_SUMMARY"
+            if [ -n "$number" ]; then
+              gh pr close "$number" --comment "Canonical SHOWS and Portfolio main now match; closing obsolete bot-created sync proposal."
+              echo "Closed obsolete sync proposal #$number." >> "$GITHUB_STEP_SUMMARY"
+            fi
             exit 0
           fi
-          branch="automation/shows-sync-$(date -u +%Y%m%d)-$GITHUB_RUN_NUMBER"
           git config user.name "SHOWS sync bot"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git switch -c "$branch"
+          if [ -n "$number" ]; then
+            branch="$(gh pr view "$number" --json headRefName --jq '.headRefName')"
+            git fetch --no-tags origin "$branch"
+            old_sha="$(git rev-parse FETCH_HEAD)"
+            git show "$old_sha:$dest" > /tmp/shows-pending-events.js
+            if cmp -s /tmp/shows-pending-events.js /tmp/shows-canonical-events.js; then
+              echo "Open sync PR #$number already contains the newest approved SHOWS dataset." >> "$GITHUB_STEP_SUMMARY"
+              exit 0
+            fi
+            git switch -C "$branch" main
+          else
+            branch="automation/shows-sync-$(date -u +%Y%m%d)-$GITHUB_RUN_NUMBER"
+            git switch -c "$branch"
+          fi
           cp /tmp/shows-canonical-events.js "$dest"
-          # Static hosting can cache events.js across releases. Use Git's content
-          # hash as the public asset version so a reviewed sync also refreshes it.
           version="$(git hash-object "$dest" | cut -c1-12)"
           SHOWS_EVENTS_VERSION="$version" node - <<'NODE'
           const fs=require('node:fs');
@@ -74,11 +98,17 @@ jobs:
           const html=fs.readFileSync(page,'utf8');
           const match=/<script src="\.\/events\.js(?:\?v=[a-f0-9]+)?"><\/script>/;
           if(!match.test(html))throw Error('Missing supported SHOWS event script reference');
-          const next=html.replace(match,'<script src="./events.js?v='+process.env.SHOWS_EVENTS_VERSION+'"></script>');
-          fs.writeFileSync(page,next);
+          fs.writeFileSync(page,html.replace(match,'<script src="./events.js?v='+process.env.SHOWS_EVENTS_VERSION+'"></script>'));
           NODE
           git add -- "$dest" dist/projects/shows/index.html
-          git commit -m "Propose approved SHOWS data sync and refresh event asset version"
-          git push --set-upstream origin "$branch"
-          gh pr create --head "$branch" --base main             --title "Review portfolio SHOWS event sync from canonical main"             --body "Auto-generated from the canonical, editorially approved SHOWS main branch. Please review event changes and merge this snapshot PR to update /projects/shows/. This updates event data and the related static script URL cache version only; app logic and CSS require separate development review. No direct publishing is performed."
-          echo "Prepared portfolio snapshot PR. Site was not automatically changed." >> "$GITHUB_STEP_SUMMARY"
+          git commit -m "Sync latest approved SHOWS events and refresh asset version"
+          if [ -n "$number" ]; then
+            git push --force-with-lease="refs/heads/$branch:$old_sha" origin "$branch"
+            echo "Updated rolling Portfolio sync PR #$number with latest approved canonical events." >> "$GITHUB_STEP_SUMMARY"
+          else
+            git push --set-upstream origin "$branch"
+            gh pr create --head "$branch" --base main \
+              --title "Publish latest approved SHOWS events" \
+              --body "Automated rolling sync from the approved SHOWS main branch. Only the event dataset and its cache-busting HTML reference change. New approved canonical snapshots refresh this PR rather than creating duplicates. Merge this PR to publish via Cloudflare; interface changes are outside scope."
+            echo "Opened the single rolling portfolio publication PR." >> "$GITHUB_STEP_SUMMARY"
+          fi

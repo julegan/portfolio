@@ -2,16 +2,16 @@
 
 SHOWS has two repositories. `julegan/shows` is the canonical source; `julegan/portfolio` holds the deployed website snapshot in `dist/projects/shows/`. Do not deploy unreviewed canonical discovery candidates.
 
-## Connected operational cycle
+## Connected operating cycle
 
-1. The canonical `julegan/shows` **daily combined refresh** discovers dated official event listings and collects official event artwork in the same worktree, producing **one canonical review PR** if either changes.
-2. After review and merge into canonical `main`, this repository's `.github/workflows/sync-shows.yml` checks **twice daily at 03:47 and 17:47 UTC**, or on manual dispatch, for differences between the **approved** canonical `events.js` and the portfolio snapshot.
-3. The sync rejects invalid event data, duplicate IDs, non-HTTPS source URLs and invalid Pacific offsets. If unchanged, it exits without creating a PR.
-4. If different and no sync PR is already awaiting review, the workflow prepares a **portfolio review PR** that updates only `dist/projects/shows/events.js` and its cache-busting version in `dist/projects/shows/index.html`. No app design/logic changes are included.
-5. **Human approval and merge** are still required to publish. Cloudflare must then deploy the updated portfolio repo. Check the live calendar after merging.
+1. **SHOWS collects daily** (and following discovery-source changes): official venue/booking event records, independent sources, original artwork and coverage-gap reports. The importer validates source IDs, local dates, venue identity and uncertainty labels. Unresolved conflicts remain held; they are not silently published.
+2. **One rolling canonical PR:** when `julegan/shows` proposes new event data or images, the workflow creates one source-linked review PR. Later collections update that *same* bot-owned PR with the freshest verified snapshot, rather than blocking or proliferating proposals. The owner still merges that PR into canonical `main`.
+3. **Portfolio checks every two hours** at minute 47 UTC (schedule is best effort, not a guaranteed real-time cross-repository webhook), or on manual dispatch. It retrieves the canonical **approved** `events.js` from `main` and validates event IDs, source URLs, Pacific offsets and total count.
+4. **One rolling publication PR:** if the approved snapshot differs from the deployed portfolio `main`, the workflow creates or updates one bot-owned sync PR limited to `dist/projects/shows/events.js` and the corresponding cache-version link in `index.html`. An already-current publication PR is left unchanged. When portfolio `main` is current, an obsolete bot sync PR is closed.
+5. **Publication:** a human merges the portfolio publication PR. Cloudflare deploys the changed site. The workflow does not auto-merge or push directly to the live branch.
 
-Both repositories need GitHub Actions settings that permit **creation** of PRs. Bots do not approve or merge them. GitHub scheduled workflows are best effort and may be delayed. A still-open canonical PR prevents the next source refresh proposal; a still-open portfolio sync PR prevents another portfolio sync proposal. If a review PR becomes stale, review/close it rather than merging an outdated snapshot.
+Both repositories require GitHub Actions permission to create PRs. Only generated bot branches and expected data files may be refreshed; the push uses a lease so concurrent updates are not overwritten. PR workflow changes and app design changes still use ordinary development review. The automatic schedule eliminates manual action runs, but there are still two optional human merge points (canonical approval and portfolio release). GitHub scheduling can be delayed, and importer access failures remain visible in action reports.
 
 **Future coverage:** The canonical discovery window is rolling 400 days, not a fixed 2026/December calendar. Shows only appear after the original venue announces them and a human approves the PR. The workflow does not invent dates, images, end times or ticket availability. Source cancellations/reschedules of already approved entries need a separate reconciliation capability.
 
-**Operational order:** merge infrastructure PRs; run the canonical combined workflow and review its generated PR; let the portfolio sync cycle run or use **Actions → Sync approved SHOWS calendar (review-only) → Run workflow**; review its generated PR; verify Cloudflare. No cross-repository secret, direct publishing, or unattended merges are required.
+**Operational order:** merge the automation improvements; the source and sync jobs will run on their schedules. Merge the canonical rolling PR when additions are acceptable; the portfolio sync will prepare its current publication PR within the following polling window. Merge that PR to deploy. An urgent manual run remains available in Actions; no cross-repository secret or unattended merge is required.
