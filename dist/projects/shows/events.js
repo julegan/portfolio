@@ -4,10 +4,10 @@
 window.SHOWS_DATASET = {
   "sourceCheckedAt": "2026-11-03",
   "coverageThrough": "2027-09-09",
-  "totalOccurrences": 1052,
-  "addedOccurrences": 1,
-  "batchId": "2026-11-03-primary-high-limit-band-tour",
-  "editorialReview": "Automatically discovered candidates require explicit human PR approval",
+  "totalOccurrences": 1075,
+  "addedOccurrences": 9,
+  "batchId": "2026-11-03-curated-alt-markets",
+  "editorialReview": "Source-backed curated alternative market candidates require explicit human PR approval",
   "previousBatches": [
     {
       "batchId": "2026-10-17-expansion",
@@ -120,11 +120,23 @@ window.SHOWS_DATASET = {
     {
       "batchId": "auto-discovery-2026-11-03-33",
       "addedOccurrences": 6
+    },
+    {
+      "batchId": "2026-11-03-primary-high-limit-band-tour",
+      "addedOccurrences": 1
+    },
+    {
+      "batchId": "auto-discovery-2026-11-03-37",
+      "addedOccurrences": 9
+    },
+    {
+      "batchId": "auto-discovery-2026-11-03-39",
+      "addedOccurrences": 5
     }
   ],
-  "newLiveBills": 1,
+  "newLiveBills": 0,
   "newDjNights": 0,
-  "musicOccurrences": 331
+  "musicOccurrences": 335
 };
 window.SHOWS_EVENTS = [
   {
@@ -1121,9 +1133,9 @@ window.SHOWS_EVENTS = [
     "id": "auto-no-fun-2026-10-21-fa0e839c73d3",
     "title": "NO FUN KARAOKE",
     "subtitle": "Source-discovered venue event · details need review",
-    "category": "Other",
+    "category": "Karaoke",
     "tags": [
-      "Source-listed Other",
+      "Source-listed Karaoke",
       "Time needs confirmation",
       "Format needs confirmation"
     ],
@@ -1165,7 +1177,8 @@ window.SHOWS_EVENTS = [
     "discovery": {
       "sourceId": "no-fun",
       "method": "primary-source-collection"
-    }
+    },
+    "classificationEvidence": "Event-specific source wording"
   },
   {
     "id": "wonder-slift-with-rhododendron-2026-10-21",
@@ -5009,9 +5022,9 @@ window.SHOWS_EVENTS = [
     "id": "auto-dantes-2026-10-26-b0cc4a3c73af",
     "title": "KARAOKE FROM HELL",
     "subtitle": "Source-discovered venue event · details need review",
-    "category": "Other",
+    "category": "Karaoke",
     "tags": [
-      "Source-listed Other",
+      "Source-listed Karaoke",
       "Time needs confirmation",
       "Format needs confirmation"
     ],
@@ -5053,7 +5066,8 @@ window.SHOWS_EVENTS = [
     "discovery": {
       "sourceId": "dantes",
       "method": "primary-source-collection"
-    }
+    },
+    "classificationEvidence": "Event-specific source wording"
   },
   {
     "id": "auto-black-water-2026-10-27-a3accca027da",
@@ -6164,9 +6178,9 @@ window.SHOWS_EVENTS = [
     "id": "auto-no-fun-2026-10-28-ea30a74bf832",
     "title": "NO FUN KARAOKE",
     "subtitle": "Source-discovered venue event · details need review",
-    "category": "Other",
+    "category": "Karaoke",
     "tags": [
-      "Source-listed Other",
+      "Source-listed Karaoke",
       "Time needs confirmation",
       "Format needs confirmation"
     ],
@@ -6208,7 +6222,8 @@ window.SHOWS_EVENTS = [
     "discovery": {
       "sourceId": "no-fun",
       "method": "primary-source-collection"
-    }
+    },
+    "classificationEvidence": "Event-specific source wording"
   },
   {
     "id": "auto-mississippi-polaris-2026-10-28-089ed3d5aa00",
@@ -10000,9 +10015,9 @@ window.SHOWS_EVENTS = [
     "id": "auto-showdown-2026-11-02-5a7897dd51da",
     "title": "Square Dancing with Old Time Highway and Caller Amy Hofer / KARAOKE @ 9:30",
     "subtitle": "Source-discovered venue event · details need review",
-    "category": "Other",
+    "category": "Karaoke",
     "tags": [
-      "Source-listed Other",
+      "Source-listed Karaoke",
       "Time needs confirmation",
       "Format needs confirmation"
     ],
@@ -10311,9 +10326,9 @@ window.SHOWS_EVENTS = [
     "id": "auto-dantes-2026-11-02-bd335ff94d16",
     "title": "KARAOKE FROM HELL",
     "subtitle": "Source-discovered venue event · details need review",
-    "category": "Other",
+    "category": "Karaoke",
     "tags": [
-      "Source-listed Other",
+      "Source-listed Karaoke",
       "Time needs confirmation",
       "Format needs confirmation"
     ],
@@ -10355,7 +10370,8 @@ window.SHOWS_EVENTS = [
     "discovery": {
       "sourceId": "dantes",
       "method": "primary-source-collection"
-    }
+    },
+    "classificationEvidence": "Event-specific source wording"
   },
   {
     "id": "auto-no-fun-2026-11-03-87e3c642e792",
@@ -10858,9 +10874,9 @@ window.SHOWS_EVENTS = [
     "id": "auto-high-water-2026-11-03-bbd884ef963e",
     "title": "Karaoke Night - Free!",
     "subtitle": "Source-discovered venue event · details need review",
-    "category": "Other",
+    "category": "Karaoke",
     "tags": [
-      "Source-listed Other",
+      "Source-listed Karaoke",
       "Time needs confirmation",
       "Format needs confirmation"
     ],
@@ -11452,9 +11468,9 @@ window.SHOWS_EVENTS = [
     "id": "auto-no-fun-2026-11-04-e2275423ec2d",
     "title": "NO FUN KARAOKE",
     "subtitle": "Source-discovered venue event · details need review",
-    "category": "Other",
+    "category": "Karaoke",
     "tags": [
-      "Source-listed Other",
+      "Source-listed Karaoke",
       "Time needs confirmation",
       "Format needs confirmation"
     ],
@@ -11496,7 +11512,8 @@ window.SHOWS_EVENTS = [
     "discovery": {
       "sourceId": "no-fun",
       "method": "primary-source-collection"
-    }
+    },
+    "classificationEvidence": "Event-specific source wording"
   },
   {
     "id": "roseland-pinhead-gunpowder-2026-11-04",
@@ -13869,6 +13886,63 @@ window.SHOWS_EVENTS = [
     }
   },
   {
+    "id": "auto-dantes-2026-11-06-99b4616f2e9e",
+    "title": "HOTWAX disco~glam~metal~punk~hiphop",
+    "subtitle": "Source-discovered venue event · details need review",
+    "category": "Music",
+    "tags": [
+      "Source-listed Music",
+      "Source-mentioned Metal",
+      "Source-mentioned Punk",
+      "Time needs confirmation",
+      "Format needs confirmation",
+      "Separate same-day source listing; review bill and room"
+    ],
+    "musicStyles": [
+      "Metal",
+      "Punk"
+    ],
+    "eventFormat": "unverified",
+    "classificationEvidence": "Event-specific source genre wording",
+    "startTimeKind": "listed",
+    "startsAt": "2026-11-06T23:55:00-08:00",
+    "endsAt": null,
+    "venue": "Dante's",
+    "address": "350 W Burnside St, Portland, OR 97209",
+    "neighborhood": "Old Town",
+    "price": "See organizer for current admission",
+    "free": null,
+    "age": "Not published",
+    "description": "Automatically discovered from a primary venue or promoter listing. Primary Dante's event detail explicitly specifies showtime and Pacific date Official Dante's event detail listing; show type, performance time and cancellation status remain subject to editorial review",
+    "source": "Dante's",
+    "url": "https://www.danteslive.com/tm-event/hotwax-discoglammetalpunkhiphop-24/",
+    "icon": "♫",
+    "sourceCheckedAt": "2026-11-03",
+    "verificationMethod": "Automated venue data; editorial date, time, event type and cancellation verification required",
+    "sourceCategories": [],
+    "sources": [
+      {
+        "name": "Dante's",
+        "url": "https://www.danteslive.com/tm-event/hotwax-discoglammetalpunkhiphop-24/",
+        "kind": "organizer",
+        "checkedAt": "2026-11-03",
+        "originalCategories": []
+      }
+    ],
+    "artwork": {
+      "url": "https://i.ticketweb.com/i/00/13/50/81/33_Original.jpg?v=10",
+      "sourceUrl": "https://www.danteslive.com/tm-event/hotwax-discoglammetalpunkhiphop-24/",
+      "origin": "official-event-page",
+      "credit": "Official event page",
+      "usageApproved": null
+    },
+    "addedIn": "auto-discovery-2026-11-03",
+    "discovery": {
+      "sourceId": "dantes",
+      "method": "primary-source-collection"
+    }
+  },
+  {
     "id": "auto-kenton-club-2026-11-07-749f7900c0f3",
     "title": "DJ Action Slacks",
     "subtitle": "Source-discovered venue event · details need review",
@@ -14170,6 +14244,66 @@ window.SHOWS_EVENTS = [
     ],
     "addedIn": "2026-10-17-expansion",
     "seriesId": "saturday-market-2026"
+  },
+  {
+    "id": "oddities-expo-2026-11-07",
+    "seriesId": "oddities-expo-portland-2026",
+    "title": "Oddities & Curiosities Expo",
+    "subtitle": "Saturday · Taxidermy, strange art, horror and curiosities",
+    "category": "Markets",
+    "tags": [
+      "Oddities",
+      "Horror",
+      "Independent makers",
+      "Ticketed"
+    ],
+    "startsAt": "2026-11-07T10:00:00-08:00",
+    "endsAt": "2026-11-07T17:00:00-08:00",
+    "venue": "Oregon Convention Center",
+    "address": "777 NE Martin Luther King Jr Blvd, Portland, OR 97232",
+    "neighborhood": "Lloyd District",
+    "price": "Ticketed — see organizer",
+    "free": false,
+    "age": "See organizer",
+    "description": "Saturday at the Portland stop of the touring Oddities & Curiosities Expo, featuring unusual art, handmade goods, antiques, odd jewelry and curated curiosities. The event venue confirms November 7–8, and the organizer's general FAQ lists show hours of 10 AM–5 PM each day.",
+    "source": "Oregon Convention Center",
+    "url": "https://www.oregoncc.org/attend/events/2026/11/oddities-curiosities-expo-2026",
+    "icon": "▦",
+    "sourceCheckedAt": "2026-11-03",
+    "verificationMethod": "Original organizer / host published event details; proposed for human review before publication",
+    "sourceCategories": [
+      "Markets"
+    ],
+    "sources": [
+      {
+        "name": "Oregon Convention Center",
+        "url": "https://www.oregoncc.org/attend/events/2026/11/oddities-curiosities-expo-2026",
+        "kind": "organizer",
+        "checkedAt": "2026-11-03",
+        "originalCategories": [
+          "Markets"
+        ]
+      },
+      {
+        "name": "Oddities & Curiosities Expo schedule",
+        "url": "https://odditiesandcuriositiesexpo.com/pages/schedule-tickets",
+        "kind": "organizer",
+        "checkedAt": "2026-11-03",
+        "originalCategories": [
+          "Markets"
+        ]
+      },
+      {
+        "name": "Organizer's posted show hours",
+        "url": "https://odditiesandcuriositiesexpo.com/pages/faq",
+        "kind": "organizer",
+        "checkedAt": "2026-11-03",
+        "originalCategories": [
+          "Markets"
+        ]
+      }
+    ],
+    "addedIn": "2026-11-03-curated-alt-markets"
   },
   {
     "id": "auto-mississippi-polaris-2026-11-07-2f3630166587",
@@ -15335,6 +15469,63 @@ window.SHOWS_EVENTS = [
     }
   },
   {
+    "id": "auto-dantes-2026-11-07-5f568bf7fead",
+    "title": "SMASH disco~glam~metal~punk-hiphop",
+    "subtitle": "Source-discovered venue event · details need review",
+    "category": "Music",
+    "tags": [
+      "Source-listed Music",
+      "Source-mentioned Metal",
+      "Source-mentioned Punk",
+      "Time needs confirmation",
+      "Format needs confirmation",
+      "Separate same-day source listing; review bill and room"
+    ],
+    "musicStyles": [
+      "Metal",
+      "Punk"
+    ],
+    "eventFormat": "unverified",
+    "classificationEvidence": "Event-specific source genre wording",
+    "startTimeKind": "listed",
+    "startsAt": "2026-11-07T23:30:00-08:00",
+    "endsAt": null,
+    "venue": "Dante's",
+    "address": "350 W Burnside St, Portland, OR 97209",
+    "neighborhood": "Old Town",
+    "price": "See organizer for current admission",
+    "free": null,
+    "age": "Not published",
+    "description": "Automatically discovered from a primary venue or promoter listing. Primary Dante's event detail explicitly specifies showtime and Pacific date Official Dante's event detail listing; show type, performance time and cancellation status remain subject to editorial review",
+    "source": "Dante's",
+    "url": "https://www.danteslive.com/tm-event/smash-discoglammetalpunk-hiphop-5/",
+    "icon": "♫",
+    "sourceCheckedAt": "2026-11-03",
+    "verificationMethod": "Automated venue data; editorial date, time, event type and cancellation verification required",
+    "sourceCategories": [],
+    "sources": [
+      {
+        "name": "Dante's",
+        "url": "https://www.danteslive.com/tm-event/smash-discoglammetalpunk-hiphop-5/",
+        "kind": "organizer",
+        "checkedAt": "2026-11-03",
+        "originalCategories": []
+      }
+    ],
+    "artwork": {
+      "url": "https://i.ticketweb.com/i/00/12/78/14/34_Original.jpg?v=12",
+      "sourceUrl": "https://www.danteslive.com/tm-event/smash-discoglammetalpunk-hiphop-5/",
+      "origin": "official-event-page",
+      "credit": "Official event page",
+      "usageApproved": null
+    },
+    "addedIn": "auto-discovery-2026-11-03",
+    "discovery": {
+      "sourceId": "dantes",
+      "method": "primary-source-collection"
+    }
+  },
+  {
     "id": "adx-drywall-repair-2026-11-08",
     "title": "Butch Bootcamp: Drywall Repair",
     "subtitle": "Practical repair skills with sliding-scale pricing",
@@ -15442,6 +15633,66 @@ window.SHOWS_EVENTS = [
     ],
     "addedIn": "2026-10-17-expansion",
     "seriesId": "lents-farmers-2026"
+  },
+  {
+    "id": "oddities-expo-2026-11-08",
+    "seriesId": "oddities-expo-portland-2026",
+    "title": "Oddities & Curiosities Expo",
+    "subtitle": "Sunday · Odd art, skulls, curiosities and independent vendors",
+    "category": "Markets",
+    "tags": [
+      "Oddities",
+      "Horror",
+      "Independent makers",
+      "Ticketed"
+    ],
+    "startsAt": "2026-11-08T10:00:00-08:00",
+    "endsAt": "2026-11-08T17:00:00-08:00",
+    "venue": "Oregon Convention Center",
+    "address": "777 NE Martin Luther King Jr Blvd, Portland, OR 97232",
+    "neighborhood": "Lloyd District",
+    "price": "Ticketed — see organizer",
+    "free": false,
+    "age": "See organizer",
+    "description": "Sunday at the Portland stop of the touring Oddities & Curiosities Expo. The original venue listing confirms November 7–8, and the expo's organizer lists 10 AM–5 PM show hours on both days.",
+    "source": "Oregon Convention Center",
+    "url": "https://www.oregoncc.org/attend/events/2026/11/oddities-curiosities-expo-2026",
+    "icon": "▦",
+    "sourceCheckedAt": "2026-11-03",
+    "verificationMethod": "Original organizer / host published event details; proposed for human review before publication",
+    "sourceCategories": [
+      "Markets"
+    ],
+    "sources": [
+      {
+        "name": "Oregon Convention Center",
+        "url": "https://www.oregoncc.org/attend/events/2026/11/oddities-curiosities-expo-2026",
+        "kind": "organizer",
+        "checkedAt": "2026-11-03",
+        "originalCategories": [
+          "Markets"
+        ]
+      },
+      {
+        "name": "Oddities & Curiosities Expo schedule",
+        "url": "https://odditiesandcuriositiesexpo.com/pages/schedule-tickets",
+        "kind": "organizer",
+        "checkedAt": "2026-11-03",
+        "originalCategories": [
+          "Markets"
+        ]
+      },
+      {
+        "name": "Organizer's posted show hours",
+        "url": "https://odditiesandcuriositiesexpo.com/pages/faq",
+        "kind": "organizer",
+        "checkedAt": "2026-11-03",
+        "originalCategories": [
+          "Markets"
+        ]
+      }
+    ],
+    "addedIn": "2026-11-03-curated-alt-markets"
   },
   {
     "id": "auto-mission-theater-2026-11-08-1b90ecbee627",
@@ -15992,6 +16243,57 @@ window.SHOWS_EVENTS = [
     "addedIn": "2026-10-17-venue-coverage"
   },
   {
+    "id": "auto-mammoth-nw-2026-11-08-c735d9a1fccb",
+    "title": "Strawberry Fuzz",
+    "subtitle": "Source-discovered venue event · details need review",
+    "category": "Unclassified",
+    "tags": [
+      "Category needs review",
+      "Time needs confirmation",
+      "Format needs confirmation"
+    ],
+    "musicStyles": [],
+    "eventFormat": "unverified",
+    "classificationEvidence": "No verified event type or genre",
+    "startTimeKind": "listed",
+    "startsAt": "2026-11-08T20:00:00-08:00",
+    "endsAt": null,
+    "venue": "Hawthorne Lounge",
+    "address": "1507 SE 39th Ave, Portland, OR 97214",
+    "neighborhood": "Sunnyside",
+    "price": "See organizer for current admission",
+    "free": null,
+    "age": "Not published",
+    "description": "Automatically discovered from a primary venue or promoter listing. Mammoth original promoter detail independently confirms weekday, full date/year, room, and Show clock; Doors is not used as start time First-party Mammoth Northwest promoter listing for Hawthorne Lounge. Verify status and event format before publication.",
+    "source": "Mammoth Northwest",
+    "url": "https://mammothnw.com/event/strawberry-fuzz-2/hawthorne-theatre-lounge/portland-oregon/",
+    "icon": "◇",
+    "sourceCheckedAt": "2026-11-03",
+    "verificationMethod": "Automated venue data; editorial date, time, event type and cancellation verification required",
+    "sourceCategories": [],
+    "sources": [
+      {
+        "name": "Mammoth Northwest",
+        "url": "https://mammothnw.com/event/strawberry-fuzz-2/hawthorne-theatre-lounge/portland-oregon/",
+        "kind": "organizer",
+        "checkedAt": "2026-11-03",
+        "originalCategories": []
+      }
+    ],
+    "artwork": {
+      "url": "https://mammothnw.com/wp-content/uploads/2026/10/strawberry-fuzz.jfif",
+      "sourceUrl": "https://mammothnw.com/event/strawberry-fuzz-2/hawthorne-theatre-lounge/portland-oregon/",
+      "origin": "official-event-page",
+      "credit": "Official event page",
+      "usageApproved": null
+    },
+    "addedIn": "auto-discovery-2026-11-03",
+    "discovery": {
+      "sourceId": "mammoth-nw",
+      "method": "primary-source-collection"
+    }
+  },
+  {
     "id": "auto-roseland-2026-11-08-273f2d7dfe98",
     "title": "Syd: Beard Tour",
     "subtitle": "Source-discovered venue event · details need review",
@@ -16229,6 +16531,58 @@ window.SHOWS_EVENTS = [
     }
   },
   {
+    "id": "auto-dantes-2026-11-08-02aee0c4c754",
+    "title": "SINFERNO CABARET",
+    "subtitle": "Source-discovered venue event · details need review",
+    "category": "Unclassified",
+    "tags": [
+      "Category needs review",
+      "Time needs confirmation",
+      "Format needs confirmation",
+      "Separate same-day source listing; review bill and room"
+    ],
+    "musicStyles": [],
+    "eventFormat": "unverified",
+    "classificationEvidence": "No verified event type or genre",
+    "startTimeKind": "listed",
+    "startsAt": "2026-11-08T22:00:00-08:00",
+    "endsAt": null,
+    "venue": "Dante's",
+    "address": "350 W Burnside St, Portland, OR 97209",
+    "neighborhood": "Old Town",
+    "price": "See organizer for current admission",
+    "free": null,
+    "age": "Not published",
+    "description": "Automatically discovered from a primary venue or promoter listing. Primary Dante's event detail explicitly specifies showtime and Pacific date Official Dante's event detail listing; show type, performance time and cancellation status remain subject to editorial review",
+    "source": "Dante's",
+    "url": "https://www.danteslive.com/tm-event/sinferno-cabaret-10/",
+    "icon": "◇",
+    "sourceCheckedAt": "2026-11-03",
+    "verificationMethod": "Automated venue data; editorial date, time, event type and cancellation verification required",
+    "sourceCategories": [],
+    "sources": [
+      {
+        "name": "Dante's",
+        "url": "https://www.danteslive.com/tm-event/sinferno-cabaret-10/",
+        "kind": "organizer",
+        "checkedAt": "2026-11-03",
+        "originalCategories": []
+      }
+    ],
+    "artwork": {
+      "url": "https://i.ticketweb.com/i/00/12/94/77/84_Original.jpg?v=12",
+      "sourceUrl": "https://www.danteslive.com/tm-event/sinferno-cabaret-10/",
+      "origin": "official-event-page",
+      "credit": "Official event page",
+      "usageApproved": null
+    },
+    "addedIn": "auto-discovery-2026-11-03",
+    "discovery": {
+      "sourceId": "dantes",
+      "method": "primary-source-collection"
+    }
+  },
+  {
     "id": "auto-starday-tavern-2026-11-09-1f48954a3784",
     "title": "Open Mic with Snow Bootz The Tiger",
     "subtitle": "Source-discovered venue event · details need review",
@@ -16377,9 +16731,9 @@ window.SHOWS_EVENTS = [
     "id": "auto-showdown-2026-11-09-c784b70927ca",
     "title": "Square Dancing with Caller Steph Noll / KARAOKE @ 9:30",
     "subtitle": "Source-discovered venue event · details need review",
-    "category": "Other",
+    "category": "Karaoke",
     "tags": [
-      "Source-listed Other",
+      "Source-listed Karaoke",
       "Time needs confirmation",
       "Format needs confirmation"
     ],
@@ -16681,9 +17035,9 @@ window.SHOWS_EVENTS = [
     "id": "auto-dantes-2026-11-09-6b51afc78aff",
     "title": "KARAOKE FROM HELL",
     "subtitle": "Source-discovered venue event · details need review",
-    "category": "Other",
+    "category": "Karaoke",
     "tags": [
-      "Source-listed Other",
+      "Source-listed Karaoke",
       "Time needs confirmation",
       "Format needs confirmation"
     ],
@@ -16725,7 +17079,8 @@ window.SHOWS_EVENTS = [
     "discovery": {
       "sourceId": "dantes",
       "method": "primary-source-collection"
-    }
+    },
+    "classificationEvidence": "Event-specific source wording"
   },
   {
     "id": "auto-aladdin-theater-2026-11-10-e27453541235",
@@ -17322,9 +17677,9 @@ window.SHOWS_EVENTS = [
     "id": "auto-high-water-2026-11-10-3cb5d441309a",
     "title": "Karaoke Night - Free!",
     "subtitle": "Source-discovered venue event · details need review",
-    "category": "Other",
+    "category": "Karaoke",
     "tags": [
-      "Source-listed Other",
+      "Source-listed Karaoke",
       "Time needs confirmation",
       "Format needs confirmation"
     ],
@@ -17857,9 +18212,9 @@ window.SHOWS_EVENTS = [
     "id": "auto-no-fun-2026-11-11-e8a9d50b4b1c",
     "title": "NO FUN KARAOKE",
     "subtitle": "Source-discovered venue event · details need review",
-    "category": "Other",
+    "category": "Karaoke",
     "tags": [
-      "Source-listed Other",
+      "Source-listed Karaoke",
       "Time needs confirmation",
       "Format needs confirmation"
     ],
@@ -17901,7 +18256,8 @@ window.SHOWS_EVENTS = [
     "discovery": {
       "sourceId": "no-fun",
       "method": "primary-source-collection"
-    }
+    },
+    "classificationEvidence": "Event-specific source wording"
   },
   {
     "id": "auto-mississippi-polaris-2026-11-11-4156e79e836a",
@@ -20836,6 +21192,57 @@ window.SHOWS_EVENTS = [
     }
   },
   {
+    "id": "auto-mammoth-nw-2026-11-14-03b473f71a68",
+    "title": "Cero Viejo",
+    "subtitle": "Source-discovered venue event · details need review",
+    "category": "Unclassified",
+    "tags": [
+      "Category needs review",
+      "Time needs confirmation",
+      "Format needs confirmation"
+    ],
+    "musicStyles": [],
+    "eventFormat": "unverified",
+    "classificationEvidence": "No verified event type or genre",
+    "startTimeKind": "listed",
+    "startsAt": "2026-11-14T20:00:00-08:00",
+    "endsAt": null,
+    "venue": "Hawthorne Lounge",
+    "address": "1507 SE 39th Ave, Portland, OR 97214",
+    "neighborhood": "Sunnyside",
+    "price": "See organizer for current admission",
+    "free": null,
+    "age": "Not published",
+    "description": "Automatically discovered from a primary venue or promoter listing. Mammoth original promoter detail independently confirms weekday, full date/year, room, and Show clock; Doors is not used as start time First-party Mammoth Northwest promoter listing for Hawthorne Lounge. Verify status and event format before publication.",
+    "source": "Mammoth Northwest",
+    "url": "https://mammothnw.com/event/cero-viejo/hawthorne-theatre-lounge/portland-oregon/",
+    "icon": "◇",
+    "sourceCheckedAt": "2026-11-03",
+    "verificationMethod": "Automated venue data; editorial date, time, event type and cancellation verification required",
+    "sourceCategories": [],
+    "sources": [
+      {
+        "name": "Mammoth Northwest",
+        "url": "https://mammothnw.com/event/cero-viejo/hawthorne-theatre-lounge/portland-oregon/",
+        "kind": "organizer",
+        "checkedAt": "2026-11-03",
+        "originalCategories": []
+      }
+    ],
+    "artwork": {
+      "url": "https://mammothnw.com/wp-content/uploads/2026/10/cero-viejo.jfif",
+      "sourceUrl": "https://mammothnw.com/event/cero-viejo/hawthorne-theatre-lounge/portland-oregon/",
+      "origin": "official-event-page",
+      "credit": "Official event page",
+      "usageApproved": null
+    },
+    "addedIn": "auto-discovery-2026-11-03",
+    "discovery": {
+      "sourceId": "mammoth-nw",
+      "method": "primary-source-collection"
+    }
+  },
+  {
     "id": "auto-showdown-2026-11-14-1c9caeab80a0",
     "title": "Chris Acker with Lucas Benoit",
     "subtitle": "Source-discovered venue event · details need review",
@@ -21712,6 +22119,114 @@ window.SHOWS_EVENTS = [
       "sourceId": "mississippi-polaris",
       "method": "primary-source-collection"
     }
+  },
+  {
+    "id": "auto-dantes-2026-11-14-c6564df66cc7",
+    "title": "SMASH disco~glam~metal~punk-hiphop",
+    "subtitle": "Source-discovered venue event · details need review",
+    "category": "Music",
+    "tags": [
+      "Source-listed Music",
+      "Source-mentioned Metal",
+      "Source-mentioned Punk",
+      "Time needs confirmation",
+      "Format needs confirmation",
+      "Separate same-day source listing; review bill and room"
+    ],
+    "musicStyles": [
+      "Metal",
+      "Punk"
+    ],
+    "eventFormat": "unverified",
+    "classificationEvidence": "Event-specific source genre wording",
+    "startTimeKind": "listed",
+    "startsAt": "2026-11-14T23:30:00-08:00",
+    "endsAt": null,
+    "venue": "Dante's",
+    "address": "350 W Burnside St, Portland, OR 97209",
+    "neighborhood": "Old Town",
+    "price": "See organizer for current admission",
+    "free": null,
+    "age": "Not published",
+    "description": "Automatically discovered from a primary venue or promoter listing. Primary Dante's event detail explicitly specifies showtime and Pacific date Official Dante's event detail listing; show type, performance time and cancellation status remain subject to editorial review",
+    "source": "Dante's",
+    "url": "https://www.danteslive.com/tm-event/smash-discoglammetalpunk-hiphop-6/",
+    "icon": "♫",
+    "sourceCheckedAt": "2026-11-03",
+    "verificationMethod": "Automated venue data; editorial date, time, event type and cancellation verification required",
+    "sourceCategories": [],
+    "sources": [
+      {
+        "name": "Dante's",
+        "url": "https://www.danteslive.com/tm-event/smash-discoglammetalpunk-hiphop-6/",
+        "kind": "organizer",
+        "checkedAt": "2026-11-03",
+        "originalCategories": []
+      }
+    ],
+    "artwork": {
+      "url": "https://i.ticketweb.com/i/00/12/78/14/34_Original.jpg?v=12",
+      "sourceUrl": "https://www.danteslive.com/tm-event/smash-discoglammetalpunk-hiphop-6/",
+      "origin": "official-event-page",
+      "credit": "Official event page",
+      "usageApproved": null
+    },
+    "addedIn": "auto-discovery-2026-11-03",
+    "discovery": {
+      "sourceId": "dantes",
+      "method": "primary-source-collection"
+    }
+  },
+  {
+    "id": "umbrae-dark-market-2026-11-15",
+    "title": "Umbrae Noctis Dark Market",
+    "subtitle": "Sunday · Dark vendors and alternative art; opening time TBA",
+    "category": "Markets",
+    "tags": [
+      "Goth",
+      "Oddities",
+      "Independent makers",
+      "Time needs confirmation"
+    ],
+    "startsAt": "2026-11-15T00:00:00-08:00",
+    "endsAt": null,
+    "startTimeKind": "date-only",
+    "venue": "The Coffin Club",
+    "address": "421 SE Grand Ave, Portland, OR 97214",
+    "neighborhood": "Buckman",
+    "price": "Admission not confirmed — check organizer",
+    "free": null,
+    "age": "See organizer",
+    "description": "Umbrae Noctis Festival confirms a Sunday, November 15 Dark Market at The Coffin Club, with otherworldly alternative goods. The organizer's FAQ does not publish market hours, so the midnight timestamp is a date-only sorting placeholder and is NOT an opening time.",
+    "source": "Umbrae Noctis Festival",
+    "url": "https://www.umbraenoctisfestival.com/faq",
+    "icon": "▦",
+    "sourceCheckedAt": "2026-11-03",
+    "verificationMethod": "Original organizer / host published event details; proposed for human review before publication",
+    "sourceCategories": [
+      "Markets"
+    ],
+    "sources": [
+      {
+        "name": "Umbrae Noctis Festival",
+        "url": "https://www.umbraenoctisfestival.com/faq",
+        "kind": "organizer",
+        "checkedAt": "2026-11-03",
+        "originalCategories": [
+          "Markets"
+        ]
+      },
+      {
+        "name": "2026 festival overview",
+        "url": "https://www.umbraenoctisfestival.com/",
+        "kind": "organizer",
+        "checkedAt": "2026-11-03",
+        "originalCategories": [
+          "Markets"
+        ]
+      }
+    ],
+    "addedIn": "2026-11-03-curated-alt-markets"
   },
   {
     "id": "king-farmers-2026-11-15",
@@ -22834,6 +23349,110 @@ window.SHOWS_EVENTS = [
     }
   },
   {
+    "id": "auto-revolution-hall-2026-11-15-3ba20a794526",
+    "title": "Ron Funches (Late Show)",
+    "subtitle": "Source-discovered venue event · details need review",
+    "category": "Unclassified",
+    "tags": [
+      "Category needs review",
+      "Time needs confirmation",
+      "Format needs confirmation",
+      "Separate same-day source listing; review bill and room"
+    ],
+    "musicStyles": [],
+    "eventFormat": "unverified",
+    "classificationEvidence": "No verified event type or genre",
+    "startTimeKind": "listed",
+    "startsAt": "2026-11-15T22:00:00-08:00",
+    "endsAt": null,
+    "venue": "Revolution Hall",
+    "address": "1300 SE Stark St, Portland, OR 97214",
+    "neighborhood": "Buckman",
+    "price": "See organizer for current admission",
+    "free": null,
+    "age": "Not published",
+    "description": "Automatically discovered from a primary venue or promoter listing. Original Revolution Hall event card with complete year, exact room and explicitly labeled show time Official venue listing; lineup and show format need editorial review.",
+    "source": "Revolution Hall",
+    "url": "https://www.etix.com/ticket/p/95442431/ron-funches-late-show-portland-revolution-hall",
+    "icon": "◇",
+    "sourceCheckedAt": "2026-11-03",
+    "verificationMethod": "Automated venue data; editorial date, time, event type and cancellation verification required",
+    "sourceCategories": [],
+    "sources": [
+      {
+        "name": "Revolution Hall",
+        "url": "https://www.etix.com/ticket/p/95442431/ron-funches-late-show-portland-revolution-hall",
+        "kind": "organizer",
+        "checkedAt": "2026-11-03",
+        "originalCategories": []
+      }
+    ],
+    "artwork": {
+      "url": "https://cdn.etix.com/etix/performance-image/performance_image_1200w/0833bee748230824c44044d1befe3cac.jpg",
+      "sourceUrl": "https://www.revolutionhall.com/",
+      "origin": "official-event-page",
+      "credit": "Official Revolution Hall event flyer via venue-linked Etix",
+      "usageApproved": null
+    },
+    "addedIn": "auto-discovery-2026-11-03",
+    "discovery": {
+      "sourceId": "revolution-hall",
+      "method": "primary-source-collection"
+    }
+  },
+  {
+    "id": "auto-dantes-2026-11-15-d0f4da548d1a",
+    "title": "SINFERNO CABARET",
+    "subtitle": "Source-discovered venue event · details need review",
+    "category": "Unclassified",
+    "tags": [
+      "Category needs review",
+      "Time needs confirmation",
+      "Format needs confirmation",
+      "Separate same-day source listing; review bill and room"
+    ],
+    "musicStyles": [],
+    "eventFormat": "unverified",
+    "classificationEvidence": "No verified event type or genre",
+    "startTimeKind": "listed",
+    "startsAt": "2026-11-15T22:00:00-08:00",
+    "endsAt": null,
+    "venue": "Dante's",
+    "address": "350 W Burnside St, Portland, OR 97209",
+    "neighborhood": "Old Town",
+    "price": "See organizer for current admission",
+    "free": null,
+    "age": "Not published",
+    "description": "Automatically discovered from a primary venue or promoter listing. Primary Dante's event detail explicitly specifies showtime and Pacific date Official Dante's event detail listing; show type, performance time and cancellation status remain subject to editorial review",
+    "source": "Dante's",
+    "url": "https://www.danteslive.com/tm-event/sinferno-cabaret-11/",
+    "icon": "◇",
+    "sourceCheckedAt": "2026-11-03",
+    "verificationMethod": "Automated venue data; editorial date, time, event type and cancellation verification required",
+    "sourceCategories": [],
+    "sources": [
+      {
+        "name": "Dante's",
+        "url": "https://www.danteslive.com/tm-event/sinferno-cabaret-11/",
+        "kind": "organizer",
+        "checkedAt": "2026-11-03",
+        "originalCategories": []
+      }
+    ],
+    "artwork": {
+      "url": "https://i.ticketweb.com/i/00/12/94/77/84_Original.jpg?v=12",
+      "sourceUrl": "https://www.danteslive.com/tm-event/sinferno-cabaret-11/",
+      "origin": "official-event-page",
+      "credit": "Official event page",
+      "usageApproved": null
+    },
+    "addedIn": "auto-discovery-2026-11-03",
+    "discovery": {
+      "sourceId": "dantes",
+      "method": "primary-source-collection"
+    }
+  },
+  {
     "id": "auto-starday-tavern-2026-11-16-a4b8fcbf52f3",
     "title": "Open Mic with Scott Allen",
     "subtitle": "Source-discovered venue event · details need review",
@@ -22982,9 +23601,9 @@ window.SHOWS_EVENTS = [
     "id": "auto-showdown-2026-11-16-de4daf4ab837",
     "title": "Square Dancing with Caller Andy Grummon and Probably Polly String Band / KARAOKE @ 9:30",
     "subtitle": "Source-discovered venue event · details need review",
-    "category": "Other",
+    "category": "Karaoke",
     "tags": [
-      "Source-listed Other",
+      "Source-listed Karaoke",
       "Time needs confirmation",
       "Format needs confirmation"
     ],
@@ -23874,9 +24493,9 @@ window.SHOWS_EVENTS = [
     "id": "auto-high-water-2026-11-17-44782804d37a",
     "title": "Karaoke Night - Free!",
     "subtitle": "Source-discovered venue event · details need review",
-    "category": "Other",
+    "category": "Karaoke",
     "tags": [
-      "Source-listed Other",
+      "Source-listed Karaoke",
       "Time needs confirmation",
       "Format needs confirmation"
     ],
@@ -24474,9 +25093,9 @@ window.SHOWS_EVENTS = [
     "id": "auto-no-fun-2026-11-18-65030434ad63",
     "title": "NO FUN KARAOKE",
     "subtitle": "Source-discovered venue event · details need review",
-    "category": "Other",
+    "category": "Karaoke",
     "tags": [
-      "Source-listed Other",
+      "Source-listed Karaoke",
       "Time needs confirmation",
       "Format needs confirmation"
     ],
@@ -24518,7 +25137,8 @@ window.SHOWS_EVENTS = [
     "discovery": {
       "sourceId": "no-fun",
       "method": "primary-source-collection"
-    }
+    },
+    "classificationEvidence": "Event-specific source wording"
   },
   {
     "id": "auto-holocene-2026-11-18-52f85819f3f3",
@@ -26779,6 +27399,100 @@ window.SHOWS_EVENTS = [
     "seriesId": "outlet-riso-basics-2026"
   },
   {
+    "id": "nopo-arts-market-2026-11-21",
+    "seriesId": "nopo-arts-market-november-2026",
+    "title": "NoPo Creatives Arts Market",
+    "subtitle": "Saturday · Small makers, local art and live music",
+    "category": "Markets",
+    "tags": [
+      "Independent makers",
+      "Art & DIY",
+      "Local music",
+      "Free"
+    ],
+    "startsAt": "2026-11-21T10:00:00-08:00",
+    "endsAt": "2026-11-21T18:00:00-08:00",
+    "venue": "Peninsula Odd Fellows Lodge",
+    "address": "4834 N Lombard St, Portland, OR 97203",
+    "neighborhood": "St. Johns",
+    "price": "Free admission · purchases extra",
+    "free": true,
+    "age": "See organizer",
+    "description": "First day of NoPo Creatives' intentionally small, community-centered Arts Market at Peninsula Odd Fellows, featuring local makers, handmade goods, live music and food. The organizer's vendor information explicitly lists Saturday show hours of 10 AM–6 PM.",
+    "accessibility": "Organizer says the market is in an upstairs second-floor lodge room with no elevator.",
+    "source": "NoPo Creatives",
+    "url": "https://nopocreatives.com/vendor-information/",
+    "icon": "▦",
+    "sourceCheckedAt": "2026-11-03",
+    "verificationMethod": "Original organizer / host published event details; proposed for human review before publication",
+    "sourceCategories": [
+      "Markets"
+    ],
+    "sources": [
+      {
+        "name": "NoPo Creatives",
+        "url": "https://nopocreatives.com/vendor-information/",
+        "kind": "organizer",
+        "checkedAt": "2026-11-03",
+        "originalCategories": [
+          "Markets"
+        ]
+      },
+      {
+        "name": "NoPo Creatives market overview",
+        "url": "https://nopocreatives.com/",
+        "kind": "organizer",
+        "checkedAt": "2026-11-03",
+        "originalCategories": [
+          "Markets"
+        ]
+      }
+    ],
+    "addedIn": "2026-11-03-curated-alt-markets"
+  },
+  {
+    "id": "plus-plus-bizarre-2026-11-21",
+    "title": "Plus Plus Bizarre Bazaar",
+    "subtitle": "Indie comics, zines, physical media, art and games",
+    "category": "Markets",
+    "tags": [
+      "Zines",
+      "Comics",
+      "Independent publishing",
+      "DIY art",
+      "Free"
+    ],
+    "startsAt": "2026-11-21T12:00:00-08:00",
+    "endsAt": "2026-11-21T17:00:00-08:00",
+    "venue": "Portland Art Museum · Fred & Suzanne Fields Ballroom",
+    "address": "1219 SW Park Ave, Portland, OR 97205",
+    "neighborhood": "Downtown",
+    "price": "Free admission · purchases extra",
+    "free": true,
+    "age": "Open to the public",
+    "description": "Free market featuring indie publishers, comics and zines, physical media, game designers, film distributors and artist-made goods, hosted by PAM CUT in the museum's Fields Ballroom.",
+    "source": "Portland Art Museum",
+    "url": "https://portlandartmuseum.org/event/plus-plus-media-market/",
+    "icon": "▦",
+    "sourceCheckedAt": "2026-11-03",
+    "verificationMethod": "Original organizer / host published event details; proposed for human review before publication",
+    "sourceCategories": [
+      "Markets"
+    ],
+    "sources": [
+      {
+        "name": "Portland Art Museum",
+        "url": "https://portlandartmuseum.org/event/plus-plus-media-market/",
+        "kind": "organizer",
+        "checkedAt": "2026-11-03",
+        "originalCategories": [
+          "Markets"
+        ]
+      }
+    ],
+    "addedIn": "2026-11-03-curated-alt-markets"
+  },
+  {
     "id": "auto-turn-turn-turn-2026-11-21-198fe422488c",
     "title": "Joel P West + Jennie Wayne",
     "subtitle": "Source-discovered venue event · details need review",
@@ -27334,6 +28048,63 @@ window.SHOWS_EVENTS = [
     }
   },
   {
+    "id": "auto-dantes-2026-11-21-7ec12edb3342",
+    "title": "SMASH disco~glam~metal~punk-hiphop",
+    "subtitle": "Source-discovered venue event · details need review",
+    "category": "Music",
+    "tags": [
+      "Source-listed Music",
+      "Source-mentioned Metal",
+      "Source-mentioned Punk",
+      "Time needs confirmation",
+      "Format needs confirmation",
+      "Separate same-day source listing; review bill and room"
+    ],
+    "musicStyles": [
+      "Metal",
+      "Punk"
+    ],
+    "eventFormat": "unverified",
+    "classificationEvidence": "Event-specific source genre wording",
+    "startTimeKind": "listed",
+    "startsAt": "2026-11-21T23:30:00-08:00",
+    "endsAt": null,
+    "venue": "Dante's",
+    "address": "350 W Burnside St, Portland, OR 97209",
+    "neighborhood": "Old Town",
+    "price": "See organizer for current admission",
+    "free": null,
+    "age": "Not published",
+    "description": "Automatically discovered from a primary venue or promoter listing. Primary Dante's event detail explicitly specifies showtime and Pacific date Official Dante's event detail listing; show type, performance time and cancellation status remain subject to editorial review",
+    "source": "Dante's",
+    "url": "https://www.danteslive.com/tm-event/smash-discoglammetalpunk-hiphop-7/",
+    "icon": "♫",
+    "sourceCheckedAt": "2026-11-03",
+    "verificationMethod": "Automated venue data; editorial date, time, event type and cancellation verification required",
+    "sourceCategories": [],
+    "sources": [
+      {
+        "name": "Dante's",
+        "url": "https://www.danteslive.com/tm-event/smash-discoglammetalpunk-hiphop-7/",
+        "kind": "organizer",
+        "checkedAt": "2026-11-03",
+        "originalCategories": []
+      }
+    ],
+    "artwork": {
+      "url": "https://i.ticketweb.com/i/00/12/78/14/34_Original.jpg?v=12",
+      "sourceUrl": "https://www.danteslive.com/tm-event/smash-discoglammetalpunk-hiphop-7/",
+      "origin": "official-event-page",
+      "credit": "Official event page",
+      "usageApproved": null
+    },
+    "addedIn": "auto-discovery-2026-11-03",
+    "discovery": {
+      "sourceId": "dantes",
+      "method": "primary-source-collection"
+    }
+  },
+  {
     "id": "king-farmers-2026-11-22",
     "title": "King Farmers Market",
     "subtitle": "Seasonal food and local growers",
@@ -27404,6 +28175,109 @@ window.SHOWS_EVENTS = [
     ],
     "addedIn": "2026-10-17-expansion",
     "seriesId": "lents-farmers-2026"
+  },
+  {
+    "id": "nopo-arts-market-2026-11-22",
+    "seriesId": "nopo-arts-market-november-2026",
+    "title": "NoPo Creatives Arts Market",
+    "subtitle": "Sunday · Independent makers and community art",
+    "category": "Markets",
+    "tags": [
+      "Independent makers",
+      "Art & DIY",
+      "Local music",
+      "Free"
+    ],
+    "startsAt": "2026-11-22T10:00:00-08:00",
+    "endsAt": "2026-11-22T17:00:00-08:00",
+    "venue": "Peninsula Odd Fellows Lodge",
+    "address": "4834 N Lombard St, Portland, OR 97203",
+    "neighborhood": "St. Johns",
+    "price": "Free admission · purchases extra",
+    "free": true,
+    "age": "See organizer",
+    "description": "Second day of the NoPo Creatives Arts Market at the Peninsula Odd Fellows upstairs lodge room, featuring independent makers, local art and community-oriented creative work. The organizer confirms Sunday market hours of 10 AM–5 PM.",
+    "accessibility": "Organizer says the market is in an upstairs second-floor lodge room with no elevator.",
+    "source": "NoPo Creatives",
+    "url": "https://nopocreatives.com/vendor-information/",
+    "icon": "▦",
+    "sourceCheckedAt": "2026-11-03",
+    "verificationMethod": "Original organizer / host published event details; proposed for human review before publication",
+    "sourceCategories": [
+      "Markets"
+    ],
+    "sources": [
+      {
+        "name": "NoPo Creatives",
+        "url": "https://nopocreatives.com/vendor-information/",
+        "kind": "organizer",
+        "checkedAt": "2026-11-03",
+        "originalCategories": [
+          "Markets"
+        ]
+      },
+      {
+        "name": "NoPo Creatives market overview",
+        "url": "https://nopocreatives.com/",
+        "kind": "organizer",
+        "checkedAt": "2026-11-03",
+        "originalCategories": [
+          "Markets"
+        ]
+      }
+    ],
+    "addedIn": "2026-11-03-curated-alt-markets"
+  },
+  {
+    "id": "moon-market-2026-11-22",
+    "seriesId": "moon-market-holiday-2026",
+    "title": "PDX Moon Market",
+    "subtitle": "Independent local art, makers, music and unusual gifts · November",
+    "category": "Markets",
+    "tags": [
+      "Independent makers",
+      "Local art",
+      "Holiday pop-up",
+      "Free"
+    ],
+    "startsAt": "2026-11-22T11:00:00-08:00",
+    "endsAt": "2026-11-22T16:00:00-08:00",
+    "venue": "Everett West",
+    "address": "914 NW Everett St, Portland, OR 97209",
+    "neighborhood": "Pearl District",
+    "price": "Free admission · purchases extra",
+    "free": true,
+    "age": "All ages",
+    "description": "Organizer-advertised 2026 Moon Market date at Everett West, featuring independent Portland makers, local art, music, gifts and refreshments. The organizer lists 11 AM–4 PM for November 22 and December 19–20; the 2026 year is confirmed on its vendor application page.",
+    "source": "PDX Moon Market",
+    "url": "https://www.pdxmoonmarket.com/",
+    "icon": "▦",
+    "sourceCheckedAt": "2026-11-03",
+    "verificationMethod": "Original organizer / host published event details; proposed for human review before publication",
+    "sourceCategories": [
+      "Markets"
+    ],
+    "sources": [
+      {
+        "name": "PDX Moon Market",
+        "url": "https://www.pdxmoonmarket.com/",
+        "kind": "organizer",
+        "checkedAt": "2026-11-03",
+        "originalCategories": [
+          "Markets"
+        ]
+      },
+      {
+        "name": "Original 2026 vendor date evidence",
+        "url": "https://www.pdxmoonmarket.com/participate/become-a-vendor-portland-oregon-1",
+        "kind": "organizer",
+        "checkedAt": "2026-11-03",
+        "originalCategories": [
+          "Markets"
+        ]
+      }
+    ],
+    "addedIn": "2026-11-03-curated-alt-markets"
   },
   {
     "id": "auto-starday-tavern-2026-11-22-47e12b9d1ff5",
@@ -28500,9 +29374,9 @@ window.SHOWS_EVENTS = [
     "id": "auto-high-water-2026-11-24-ac7a87ea56e2",
     "title": "Karaoke Night - Free!",
     "subtitle": "Source-discovered venue event · details need review",
-    "category": "Other",
+    "category": "Karaoke",
     "tags": [
-      "Source-listed Other",
+      "Source-listed Karaoke",
       "Time needs confirmation",
       "Format needs confirmation"
     ],
@@ -28827,9 +29701,9 @@ window.SHOWS_EVENTS = [
     "id": "auto-no-fun-2026-11-25-1f7ec0dd8f78",
     "title": "NO FUN KARAOKE",
     "subtitle": "Source-discovered venue event · details need review",
-    "category": "Other",
+    "category": "Karaoke",
     "tags": [
-      "Source-listed Other",
+      "Source-listed Karaoke",
       "Time needs confirmation",
       "Format needs confirmation"
     ],
@@ -28871,7 +29745,8 @@ window.SHOWS_EVENTS = [
     "discovery": {
       "sourceId": "no-fun",
       "method": "primary-source-collection"
-    }
+    },
+    "classificationEvidence": "Event-specific source wording"
   },
   {
     "id": "auto-aladdin-theater-2026-11-25-6d67fa98a9f7",
@@ -30646,6 +31521,58 @@ window.SHOWS_EVENTS = [
     "classificationSourceUrl": "https://pdxshows.auto-flow.co/"
   },
   {
+    "id": "auto-dantes-2026-11-28-462ada63e244",
+    "title": "HIDEOUS MONSTER 10 YEAR ANNIVERSARY with Sunset The Machine & High Five Danger",
+    "subtitle": "Source-discovered venue event · details need review",
+    "category": "Unclassified",
+    "tags": [
+      "Category needs review",
+      "Time needs confirmation",
+      "Format needs confirmation",
+      "Separate same-day source listing; review bill and room"
+    ],
+    "musicStyles": [],
+    "eventFormat": "unverified",
+    "classificationEvidence": "No verified event type or genre",
+    "startTimeKind": "listed",
+    "startsAt": "2026-11-28T21:00:00-08:00",
+    "endsAt": null,
+    "venue": "Dante's",
+    "address": "350 W Burnside St, Portland, OR 97209",
+    "neighborhood": "Old Town",
+    "price": "See organizer for current admission",
+    "free": null,
+    "age": "Not published",
+    "description": "Automatically discovered from a primary venue or promoter listing. Primary Dante's event detail explicitly specifies showtime and Pacific date Official Dante's event detail listing; show type, performance time and cancellation status remain subject to editorial review",
+    "source": "Dante's",
+    "url": "https://www.danteslive.com/tm-event/hideous-monster-10-year-anniversary-with-sunset-the-machine-high-five-danger/",
+    "icon": "◇",
+    "sourceCheckedAt": "2026-11-03",
+    "verificationMethod": "Automated venue data; editorial date, time, event type and cancellation verification required",
+    "sourceCategories": [],
+    "sources": [
+      {
+        "name": "Dante's",
+        "url": "https://www.danteslive.com/tm-event/hideous-monster-10-year-anniversary-with-sunset-the-machine-high-five-danger/",
+        "kind": "organizer",
+        "checkedAt": "2026-11-03",
+        "originalCategories": []
+      }
+    ],
+    "artwork": {
+      "url": "https://i.ticketweb.com/i/00/13/12/83/24_Original.jpg?v=2",
+      "sourceUrl": "https://www.danteslive.com/tm-event/hideous-monster-10-year-anniversary-with-sunset-the-machine-high-five-danger/",
+      "origin": "official-event-page",
+      "credit": "Official event page",
+      "usageApproved": null
+    },
+    "addedIn": "auto-discovery-2026-11-03",
+    "discovery": {
+      "sourceId": "dantes",
+      "method": "primary-source-collection"
+    }
+  },
+  {
     "id": "auto-star-theater-2026-11-28-a6f81228bfae",
     "title": "QUEEN MOTHER with Kiss Me Kiss Me Kiss Me",
     "subtitle": "Source-discovered music listing · format and time need review",
@@ -31428,9 +32355,9 @@ window.SHOWS_EVENTS = [
     "id": "auto-showdown-2026-11-30-7073c6f52ca9",
     "title": "Square Dancing / KARAOKE @ 9:30",
     "subtitle": "Source-discovered venue event · details need review",
-    "category": "Other",
+    "category": "Karaoke",
     "tags": [
-      "Source-listed Other",
+      "Source-listed Karaoke",
       "Time needs confirmation",
       "Format needs confirmation"
     ],
@@ -31839,9 +32766,9 @@ window.SHOWS_EVENTS = [
     "id": "auto-high-water-2026-12-01-59fcbb900b98",
     "title": "Karaoke Night - Free!",
     "subtitle": "Source-discovered venue event · details need review",
-    "category": "Other",
+    "category": "Karaoke",
     "tags": [
-      "Source-listed Other",
+      "Source-listed Karaoke",
       "Time needs confirmation",
       "Format needs confirmation"
     ],
@@ -31886,9 +32813,9 @@ window.SHOWS_EVENTS = [
     "id": "auto-no-fun-2026-12-02-224a9a098523",
     "title": "NO FUN KARAOKE",
     "subtitle": "Source-discovered venue event · details need review",
-    "category": "Other",
+    "category": "Karaoke",
     "tags": [
-      "Source-listed Other",
+      "Source-listed Karaoke",
       "Time needs confirmation",
       "Format needs confirmation"
     ],
@@ -31930,7 +32857,8 @@ window.SHOWS_EVENTS = [
     "discovery": {
       "sourceId": "no-fun",
       "method": "primary-source-collection"
-    }
+    },
+    "classificationEvidence": "Event-specific source wording"
   },
   {
     "id": "auto-holocene-2026-12-02-021e80dd5a92",
@@ -34105,6 +35033,72 @@ window.SHOWS_EVENTS = [
     }
   },
   {
+    "id": "high-limit-room-guilt-trip-gates-to-hell-mauled-2026-12-06",
+    "title": "Guilt Trip with Gates to Hell & Mauled",
+    "subtitle": "Metal, hardcore · original artist tour listing",
+    "category": "Music",
+    "tags": [
+      "Hardcore",
+      "Metal",
+      "Live music",
+      "Time needs confirmation"
+    ],
+    "musicStyles": [
+      "Hardcore",
+      "Metal"
+    ],
+    "musicStyleEvidence": {
+      "basis": "Guilt Trip's artist-associated concert profile explicitly identifies metal and hardcore punk; Roadrunner Records lists the band as a current heavy-music artist. These describe the headliner, not an unsupported claim about every supporting band.",
+      "urls": [
+        "https://www.bandsintown.com/e/1040132341-guilt-trip-at-high-limit-room?came_from=900",
+        "https://www.roadrunnerrecords.com/"
+      ]
+    },
+    "eventFormat": "live",
+    "startTimeKind": "listed",
+    "startsAt": "2026-12-06T18:00:00-08:00",
+    "endsAt": null,
+    "venue": "High Limit Room",
+    "address": "720 SE Hawthorne Blvd, Portland, OR 97214",
+    "neighborhood": "Central Eastside",
+    "price": "See organizer for admission",
+    "free": null,
+    "age": "Confirm event-specific age policy with venue",
+    "description": "Guilt Trip's own official 2026 tour schedule confirms a December 6 Portland appearance at High Limit Room with Gates to Hell and Mauled. It lists 6:00 PM, but does not establish whether this is doors or performance time. Check the original artist or venue for current tickets, lineup and start-time details.",
+    "source": "Guilt Trip · official artist tour",
+    "url": "https://www.guilttripmhc.com/",
+    "icon": "♫",
+    "sourceCheckedAt": "2026-11-03",
+    "verificationMethod": "Original band tour date + lineup and listed clock; separate artist-associated concert confirmation of 2026 date and venue",
+    "sourceCategories": [],
+    "sources": [
+      {
+        "name": "Guilt Trip · official artist tour",
+        "url": "https://www.guilttripmhc.com/",
+        "kind": "artist",
+        "checkedAt": "2026-11-03",
+        "originalCategories": []
+      },
+      {
+        "name": "Artist concert entry",
+        "url": "https://www.bandsintown.com/e/1040132341-guilt-trip-at-high-limit-room?came_from=900",
+        "kind": "supporting-reference",
+        "checkedAt": "2026-11-03",
+        "originalCategories": []
+      },
+      {
+        "name": "High Limit Room · visitor and accessibility details",
+        "url": "https://highlimitroompdx.com/info/",
+        "kind": "organizer",
+        "checkedAt": "2026-11-03",
+        "originalCategories": []
+      }
+    ],
+    "addedIn": "2026-11-03-primary-high-limit-band-tour",
+    "sourceNote": "6:00 PM from Guilt Trip official tour routing. It has not been verified whether this is doors or the show. Do not call it a performance start.",
+    "accessibility": "The venue reports an upstairs room without a wheelchair lift; contact the venue in advance about accessibility."
+  },
+  {
     "id": "auto-dantes-2026-12-06-26195df233d8",
     "title": "THE NAUGHTY LIST",
     "subtitle": "Source-discovered venue event · details need review",
@@ -34604,6 +35598,58 @@ window.SHOWS_EVENTS = [
     }
   },
   {
+    "id": "auto-dantes-2026-12-06-51ee49275b11",
+    "title": "SINFERNO CABARET",
+    "subtitle": "Source-discovered venue event · details need review",
+    "category": "Unclassified",
+    "tags": [
+      "Category needs review",
+      "Time needs confirmation",
+      "Format needs confirmation",
+      "Separate same-day source listing; review bill and room"
+    ],
+    "musicStyles": [],
+    "eventFormat": "unverified",
+    "classificationEvidence": "No verified event type or genre",
+    "startTimeKind": "listed",
+    "startsAt": "2026-12-06T22:00:00-08:00",
+    "endsAt": null,
+    "venue": "Dante's",
+    "address": "350 W Burnside St, Portland, OR 97209",
+    "neighborhood": "Old Town",
+    "price": "See organizer for current admission",
+    "free": null,
+    "age": "Not published",
+    "description": "Automatically discovered from a primary venue or promoter listing. Primary Dante's event detail explicitly specifies showtime and Pacific date Official Dante's event detail listing; show type, performance time and cancellation status remain subject to editorial review",
+    "source": "Dante's",
+    "url": "https://www.danteslive.com/tm-event/sinferno-cabaret-14/",
+    "icon": "◇",
+    "sourceCheckedAt": "2026-11-03",
+    "verificationMethod": "Automated venue data; editorial date, time, event type and cancellation verification required",
+    "sourceCategories": [],
+    "sources": [
+      {
+        "name": "Dante's",
+        "url": "https://www.danteslive.com/tm-event/sinferno-cabaret-14/",
+        "kind": "organizer",
+        "checkedAt": "2026-11-03",
+        "originalCategories": []
+      }
+    ],
+    "artwork": {
+      "url": "https://i.ticketweb.com/i/00/12/94/77/84_Original.jpg?v=12",
+      "sourceUrl": "https://www.danteslive.com/tm-event/sinferno-cabaret-14/",
+      "origin": "official-event-page",
+      "credit": "Official event page",
+      "usageApproved": null
+    },
+    "addedIn": "auto-discovery-2026-11-03",
+    "discovery": {
+      "sourceId": "dantes",
+      "method": "primary-source-collection"
+    }
+  },
+  {
     "id": "auto-starday-tavern-2026-12-07-ed60ebdcfc1b",
     "title": "Open Mic with Lucas Benoit",
     "subtitle": "Source-discovered venue event · details need review",
@@ -34701,9 +35747,9 @@ window.SHOWS_EVENTS = [
     "id": "auto-showdown-2026-12-07-c62188988193",
     "title": "Square Dancing w/ Caller Steph Noll / KARAOKE @ 9:30",
     "subtitle": "Source-discovered venue event · details need review",
-    "category": "Other",
+    "category": "Karaoke",
     "tags": [
-      "Source-listed Other",
+      "Source-listed Karaoke",
       "Time needs confirmation",
       "Format needs confirmation"
     ],
@@ -35207,9 +36253,9 @@ window.SHOWS_EVENTS = [
     "id": "auto-high-water-2026-12-08-8d5959d961d6",
     "title": "Karaoke Night - Free!",
     "subtitle": "Source-discovered venue event · details need review",
-    "category": "Other",
+    "category": "Karaoke",
     "tags": [
-      "Source-listed Other",
+      "Source-listed Karaoke",
       "Time needs confirmation",
       "Format needs confirmation"
     ],
@@ -35452,9 +36498,9 @@ window.SHOWS_EVENTS = [
     "id": "auto-no-fun-2026-12-09-bdbd989c1bd3",
     "title": "NO FUN KARAOKE",
     "subtitle": "Source-discovered venue event · details need review",
-    "category": "Other",
+    "category": "Karaoke",
     "tags": [
-      "Source-listed Other",
+      "Source-listed Karaoke",
       "Time needs confirmation",
       "Format needs confirmation"
     ],
@@ -35496,7 +36542,8 @@ window.SHOWS_EVENTS = [
     "discovery": {
       "sourceId": "no-fun",
       "method": "primary-source-collection"
-    }
+    },
+    "classificationEvidence": "Event-specific source wording"
   },
   {
     "id": "auto-holocene-2026-12-09-0ca2aea39f38",
@@ -38148,9 +39195,9 @@ window.SHOWS_EVENTS = [
     "id": "auto-high-water-2026-12-15-32333ff2ce4d",
     "title": "Karaoke Night - Free!",
     "subtitle": "Source-discovered venue event · details need review",
-    "category": "Other",
+    "category": "Karaoke",
     "tags": [
-      "Source-listed Other",
+      "Source-listed Karaoke",
       "Time needs confirmation",
       "Format needs confirmation"
     ],
@@ -38340,9 +39387,9 @@ window.SHOWS_EVENTS = [
     "id": "auto-no-fun-2026-12-16-a44fddad21c7",
     "title": "NO FUN KARAOKE",
     "subtitle": "Source-discovered venue event · details need review",
-    "category": "Other",
+    "category": "Karaoke",
     "tags": [
-      "Source-listed Other",
+      "Source-listed Karaoke",
       "Time needs confirmation",
       "Format needs confirmation"
     ],
@@ -38384,7 +39431,8 @@ window.SHOWS_EVENTS = [
     "discovery": {
       "sourceId": "no-fun",
       "method": "primary-source-collection"
-    }
+    },
+    "classificationEvidence": "Event-specific source wording"
   },
   {
     "id": "auto-starday-tavern-2026-12-16-23a32e383d96",
@@ -39076,6 +40124,57 @@ window.SHOWS_EVENTS = [
     }
   },
   {
+    "id": "moon-market-2026-12-19",
+    "seriesId": "moon-market-holiday-2026",
+    "title": "PDX Moon Market",
+    "subtitle": "Independent local art, makers, music and unusual gifts · December Saturday",
+    "category": "Markets",
+    "tags": [
+      "Independent makers",
+      "Local art",
+      "Holiday pop-up",
+      "Free"
+    ],
+    "startsAt": "2026-12-19T11:00:00-08:00",
+    "endsAt": "2026-12-19T16:00:00-08:00",
+    "venue": "Everett West",
+    "address": "914 NW Everett St, Portland, OR 97209",
+    "neighborhood": "Pearl District",
+    "price": "Free admission · purchases extra",
+    "free": true,
+    "age": "All ages",
+    "description": "Organizer-advertised 2026 Moon Market date at Everett West, featuring independent Portland makers, local art, music, gifts and refreshments. The organizer lists 11 AM–4 PM for November 22 and December 19–20; the 2026 year is confirmed on its vendor application page.",
+    "source": "PDX Moon Market",
+    "url": "https://www.pdxmoonmarket.com/",
+    "icon": "▦",
+    "sourceCheckedAt": "2026-11-03",
+    "verificationMethod": "Original organizer / host published event details; proposed for human review before publication",
+    "sourceCategories": [
+      "Markets"
+    ],
+    "sources": [
+      {
+        "name": "PDX Moon Market",
+        "url": "https://www.pdxmoonmarket.com/",
+        "kind": "organizer",
+        "checkedAt": "2026-11-03",
+        "originalCategories": [
+          "Markets"
+        ]
+      },
+      {
+        "name": "Original 2026 vendor date evidence",
+        "url": "https://www.pdxmoonmarket.com/participate/become-a-vendor-portland-oregon-1",
+        "kind": "organizer",
+        "checkedAt": "2026-11-03",
+        "originalCategories": [
+          "Markets"
+        ]
+      }
+    ],
+    "addedIn": "2026-11-03-curated-alt-markets"
+  },
+  {
     "id": "auto-no-fun-2026-12-19-3b12f0ac9099",
     "title": "You, The Audience • TBA • TBA",
     "subtitle": "Source-discovered music listing · format and time need review",
@@ -39115,6 +40214,57 @@ window.SHOWS_EVENTS = [
     "addedIn": "auto-discovery-2026-10-18",
     "discovery": {
       "sourceId": "no-fun",
+      "method": "primary-source-collection"
+    }
+  },
+  {
+    "id": "auto-mammoth-nw-2026-12-19-79431931f341",
+    "title": "Couch Dog",
+    "subtitle": "Source-discovered venue event · details need review",
+    "category": "Unclassified",
+    "tags": [
+      "Category needs review",
+      "Time needs confirmation",
+      "Format needs confirmation"
+    ],
+    "musicStyles": [],
+    "eventFormat": "unverified",
+    "classificationEvidence": "No verified event type or genre",
+    "startTimeKind": "listed",
+    "startsAt": "2026-12-19T20:00:00-08:00",
+    "endsAt": null,
+    "venue": "Hawthorne Lounge",
+    "address": "1507 SE 39th Ave, Portland, OR 97214",
+    "neighborhood": "Sunnyside",
+    "price": "See organizer for current admission",
+    "free": null,
+    "age": "Not published",
+    "description": "Automatically discovered from a primary venue or promoter listing. Mammoth original promoter detail independently confirms weekday, full date/year, room, and Show clock; Doors is not used as start time First-party Mammoth Northwest promoter listing for Hawthorne Lounge. Verify status and event format before publication.",
+    "source": "Mammoth Northwest",
+    "url": "https://mammothnw.com/event/couch-dog-2/hawthorne-theatre-lounge/portland-oregon/",
+    "icon": "◇",
+    "sourceCheckedAt": "2026-11-03",
+    "verificationMethod": "Automated venue data; editorial date, time, event type and cancellation verification required",
+    "sourceCategories": [],
+    "sources": [
+      {
+        "name": "Mammoth Northwest",
+        "url": "https://mammothnw.com/event/couch-dog-2/hawthorne-theatre-lounge/portland-oregon/",
+        "kind": "organizer",
+        "checkedAt": "2026-11-03",
+        "originalCategories": []
+      }
+    ],
+    "artwork": {
+      "url": "https://mammothnw.com/wp-content/uploads/2026/09/couch-dog.jfif",
+      "sourceUrl": "https://mammothnw.com/event/couch-dog-2/hawthorne-theatre-lounge/portland-oregon/",
+      "origin": "official-event-page",
+      "credit": "Official event page",
+      "usageApproved": null
+    },
+    "addedIn": "auto-discovery-2026-11-03",
+    "discovery": {
+      "sourceId": "mammoth-nw",
       "method": "primary-source-collection"
     }
   },
@@ -39412,6 +40562,57 @@ window.SHOWS_EVENTS = [
       "sourceId": "dantes",
       "method": "primary-source-collection"
     }
+  },
+  {
+    "id": "moon-market-2026-12-20",
+    "seriesId": "moon-market-holiday-2026",
+    "title": "PDX Moon Market",
+    "subtitle": "Independent local art, makers, music and unusual gifts · December Sunday",
+    "category": "Markets",
+    "tags": [
+      "Independent makers",
+      "Local art",
+      "Holiday pop-up",
+      "Free"
+    ],
+    "startsAt": "2026-12-20T11:00:00-08:00",
+    "endsAt": "2026-12-20T16:00:00-08:00",
+    "venue": "Everett West",
+    "address": "914 NW Everett St, Portland, OR 97209",
+    "neighborhood": "Pearl District",
+    "price": "Free admission · purchases extra",
+    "free": true,
+    "age": "All ages",
+    "description": "Organizer-advertised 2026 Moon Market date at Everett West, featuring independent Portland makers, local art, music, gifts and refreshments. The organizer lists 11 AM–4 PM for November 22 and December 19–20; the 2026 year is confirmed on its vendor application page.",
+    "source": "PDX Moon Market",
+    "url": "https://www.pdxmoonmarket.com/",
+    "icon": "▦",
+    "sourceCheckedAt": "2026-11-03",
+    "verificationMethod": "Original organizer / host published event details; proposed for human review before publication",
+    "sourceCategories": [
+      "Markets"
+    ],
+    "sources": [
+      {
+        "name": "PDX Moon Market",
+        "url": "https://www.pdxmoonmarket.com/",
+        "kind": "organizer",
+        "checkedAt": "2026-11-03",
+        "originalCategories": [
+          "Markets"
+        ]
+      },
+      {
+        "name": "Original 2026 vendor date evidence",
+        "url": "https://www.pdxmoonmarket.com/participate/become-a-vendor-portland-oregon-1",
+        "kind": "organizer",
+        "checkedAt": "2026-11-03",
+        "originalCategories": [
+          "Markets"
+        ]
+      }
+    ],
+    "addedIn": "2026-11-03-curated-alt-markets"
   },
   {
     "id": "auto-mission-theater-2026-12-20-fda1e35e4624",
@@ -39762,9 +40963,9 @@ window.SHOWS_EVENTS = [
     "id": "auto-high-water-2026-12-22-51fb481de39b",
     "title": "Karaoke Night - Free!",
     "subtitle": "Source-discovered venue event · details need review",
-    "category": "Other",
+    "category": "Karaoke",
     "tags": [
-      "Source-listed Other",
+      "Source-listed Karaoke",
       "Time needs confirmation",
       "Format needs confirmation"
     ],
@@ -39897,9 +41098,9 @@ window.SHOWS_EVENTS = [
     "id": "auto-no-fun-2026-12-23-7cd598c24013",
     "title": "NO FUN KARAOKE",
     "subtitle": "Source-discovered venue event · details need review",
-    "category": "Other",
+    "category": "Karaoke",
     "tags": [
-      "Source-listed Other",
+      "Source-listed Karaoke",
       "Time needs confirmation",
       "Format needs confirmation"
     ],
@@ -39941,7 +41142,8 @@ window.SHOWS_EVENTS = [
     "discovery": {
       "sourceId": "no-fun",
       "method": "primary-source-collection"
-    }
+    },
+    "classificationEvidence": "Event-specific source wording"
   },
   {
     "id": "auto-no-fun-2026-12-24-2d391355e748",
@@ -40738,9 +41940,9 @@ window.SHOWS_EVENTS = [
     "id": "auto-high-water-2026-12-29-7c563399179a",
     "title": "Karaoke Night - Free!",
     "subtitle": "Source-discovered venue event · details need review",
-    "category": "Other",
+    "category": "Karaoke",
     "tags": [
-      "Source-listed Other",
+      "Source-listed Karaoke",
       "Time needs confirmation",
       "Format needs confirmation"
     ],
@@ -40834,9 +42036,9 @@ window.SHOWS_EVENTS = [
     "id": "auto-no-fun-2026-12-30-99af56c0a88e",
     "title": "NO FUN KARAOKE",
     "subtitle": "Source-discovered venue event · details need review",
-    "category": "Other",
+    "category": "Karaoke",
     "tags": [
-      "Source-listed Other",
+      "Source-listed Karaoke",
       "Time needs confirmation",
       "Format needs confirmation"
     ],
@@ -40878,7 +42080,8 @@ window.SHOWS_EVENTS = [
     "discovery": {
       "sourceId": "no-fun",
       "method": "primary-source-collection"
-    }
+    },
+    "classificationEvidence": "Event-specific source wording"
   },
   {
     "id": "auto-starday-tavern-2026-12-30-b632631cc475",
@@ -41780,9 +42983,9 @@ window.SHOWS_EVENTS = [
     "id": "auto-high-water-2027-01-05-b5af73007ca2",
     "title": "Karaoke Night - Free!",
     "subtitle": "Source-discovered venue event · details need review",
-    "category": "Other",
+    "category": "Karaoke",
     "tags": [
-      "Source-listed Other",
+      "Source-listed Karaoke",
       "Time needs confirmation",
       "Format needs confirmation"
     ],
@@ -42028,9 +43231,9 @@ window.SHOWS_EVENTS = [
     "id": "auto-high-water-2027-01-12-e04539eaf485",
     "title": "Karaoke Night - Free!",
     "subtitle": "Source-discovered venue event · details need review",
-    "category": "Other",
+    "category": "Karaoke",
     "tags": [
-      "Source-listed Other",
+      "Source-listed Karaoke",
       "Time needs confirmation",
       "Format needs confirmation"
     ],
@@ -42665,9 +43868,9 @@ window.SHOWS_EVENTS = [
     "id": "auto-high-water-2027-01-19-1fc717644e18",
     "title": "Karaoke Night - Free!",
     "subtitle": "Source-discovered venue event · details need review",
-    "category": "Other",
+    "category": "Karaoke",
     "tags": [
-      "Source-listed Other",
+      "Source-listed Karaoke",
       "Time needs confirmation",
       "Format needs confirmation"
     ],
@@ -43217,9 +44420,9 @@ window.SHOWS_EVENTS = [
     "id": "auto-high-water-2027-01-26-81ecf6dbb53f",
     "title": "Karaoke Night - Free!",
     "subtitle": "Source-discovered venue event · details need review",
-    "category": "Other",
+    "category": "Karaoke",
     "tags": [
-      "Source-listed Other",
+      "Source-listed Karaoke",
       "Time needs confirmation",
       "Format needs confirmation"
     ],
@@ -43621,9 +44824,9 @@ window.SHOWS_EVENTS = [
     "id": "auto-high-water-2027-02-02-adb0d066f6a9",
     "title": "Karaoke Night - Free!",
     "subtitle": "Source-discovered venue event · details need review",
-    "category": "Other",
+    "category": "Karaoke",
     "tags": [
-      "Source-listed Other",
+      "Source-listed Karaoke",
       "Time needs confirmation",
       "Format needs confirmation"
     ],
@@ -44070,6 +45273,57 @@ window.SHOWS_EVENTS = [
     }
   },
   {
+    "id": "auto-mammoth-nw-2027-02-07-e2337ac2d084",
+    "title": "Riley!",
+    "subtitle": "Source-discovered venue event · details need review",
+    "category": "Unclassified",
+    "tags": [
+      "Category needs review",
+      "Time needs confirmation",
+      "Format needs confirmation"
+    ],
+    "musicStyles": [],
+    "eventFormat": "unverified",
+    "classificationEvidence": "No verified event type or genre",
+    "startTimeKind": "listed",
+    "startsAt": "2027-02-07T19:00:00-08:00",
+    "endsAt": null,
+    "venue": "High Limit Room",
+    "address": "720 SE Hawthorne Blvd, Portland, OR 97214",
+    "neighborhood": "Buckman",
+    "price": "See organizer for current admission",
+    "free": null,
+    "age": "Not published",
+    "description": "Automatically discovered from a primary venue or promoter listing. Mammoth original promoter detail independently confirms weekday, full date/year, room, and Show clock; Doors is not used as start time First-party Mammoth Northwest promoter listing for High Limit Room. Verify status and event format before publication.",
+    "source": "Mammoth Northwest",
+    "url": "https://mammothnw.com/event/riley/high-limit-room/portland-oregon/",
+    "icon": "◇",
+    "sourceCheckedAt": "2026-11-03",
+    "verificationMethod": "Automated venue data; editorial date, time, event type and cancellation verification required",
+    "sourceCategories": [],
+    "sources": [
+      {
+        "name": "Mammoth Northwest",
+        "url": "https://mammothnw.com/event/riley/high-limit-room/portland-oregon/",
+        "kind": "organizer",
+        "checkedAt": "2026-11-03",
+        "originalCategories": []
+      }
+    ],
+    "artwork": {
+      "url": "https://mammothnw.com/wp-content/uploads/2026/11/Riley-HLR-PDX-2027-scaled.jpg",
+      "sourceUrl": "https://mammothnw.com/event/riley/high-limit-room/portland-oregon/",
+      "origin": "official-event-page",
+      "credit": "Official event page",
+      "usageApproved": null
+    },
+    "addedIn": "auto-discovery-2026-11-03",
+    "discovery": {
+      "sourceId": "mammoth-nw",
+      "method": "primary-source-collection"
+    }
+  },
+  {
     "id": "auto-aladdin-theater-2027-02-07-68578c2aa916",
     "title": "Watch What Crappens: In The Mix Tour",
     "subtitle": "Source-discovered venue event · details need review",
@@ -44174,9 +45428,9 @@ window.SHOWS_EVENTS = [
     "id": "auto-high-water-2027-02-09-525c5151fccb",
     "title": "Karaoke Night - Free!",
     "subtitle": "Source-discovered venue event · details need review",
-    "category": "Other",
+    "category": "Karaoke",
     "tags": [
-      "Source-listed Other",
+      "Source-listed Karaoke",
       "Time needs confirmation",
       "Format needs confirmation"
     ],
@@ -44726,9 +45980,9 @@ window.SHOWS_EVENTS = [
     "id": "auto-high-water-2027-02-16-58cae085b59d",
     "title": "Karaoke Night - Free!",
     "subtitle": "Source-discovered venue event · details need review",
-    "category": "Other",
+    "category": "Karaoke",
     "tags": [
-      "Source-listed Other",
+      "Source-listed Karaoke",
       "Time needs confirmation",
       "Format needs confirmation"
     ],
@@ -45485,9 +46739,9 @@ window.SHOWS_EVENTS = [
     "id": "auto-high-water-2027-02-23-8d41a5680764",
     "title": "Karaoke Night - Free!",
     "subtitle": "Source-discovered venue event · details need review",
-    "category": "Other",
+    "category": "Karaoke",
     "tags": [
-      "Source-listed Other",
+      "Source-listed Karaoke",
       "Time needs confirmation",
       "Format needs confirmation"
     ],
@@ -45669,6 +46923,57 @@ window.SHOWS_EVENTS = [
     "addedIn": "auto-discovery-2026-10-29",
     "discovery": {
       "sourceId": "aladdin-theater",
+      "method": "primary-source-collection"
+    }
+  },
+  {
+    "id": "auto-mammoth-nw-2027-02-27-cbe37fe9b45b",
+    "title": "Caskets",
+    "subtitle": "Source-discovered venue event · details need review",
+    "category": "Unclassified",
+    "tags": [
+      "Category needs review",
+      "Time needs confirmation",
+      "Format needs confirmation"
+    ],
+    "musicStyles": [],
+    "eventFormat": "unverified",
+    "classificationEvidence": "No verified event type or genre",
+    "startTimeKind": "listed",
+    "startsAt": "2027-02-27T19:30:00-08:00",
+    "endsAt": null,
+    "venue": "High Limit Room",
+    "address": "720 SE Hawthorne Blvd, Portland, OR 97214",
+    "neighborhood": "Buckman",
+    "price": "See organizer for current admission",
+    "free": null,
+    "age": "Not published",
+    "description": "Automatically discovered from a primary venue or promoter listing. Mammoth original promoter detail independently confirms weekday, full date/year, room, and Show clock; Doors is not used as start time First-party Mammoth Northwest promoter listing for High Limit Room. Verify status and event format before publication.",
+    "source": "Mammoth Northwest",
+    "url": "https://mammothnw.com/event/caskets/high-limit-room/portland-oregon/",
+    "icon": "◇",
+    "sourceCheckedAt": "2026-11-03",
+    "verificationMethod": "Automated venue data; editorial date, time, event type and cancellation verification required",
+    "sourceCategories": [],
+    "sources": [
+      {
+        "name": "Mammoth Northwest",
+        "url": "https://mammothnw.com/event/caskets/high-limit-room/portland-oregon/",
+        "kind": "organizer",
+        "checkedAt": "2026-11-03",
+        "originalCategories": []
+      }
+    ],
+    "artwork": {
+      "url": "https://mammothnw.com/wp-content/uploads/2026/11/Raleigh-Promos-4-of-6.jpg",
+      "sourceUrl": "https://mammothnw.com/event/caskets/high-limit-room/portland-oregon/",
+      "origin": "official-event-page",
+      "credit": "Official event page",
+      "usageApproved": null
+    },
+    "addedIn": "auto-discovery-2026-11-03",
+    "discovery": {
+      "sourceId": "mammoth-nw",
       "method": "primary-source-collection"
     }
   },
@@ -46129,9 +47434,9 @@ window.SHOWS_EVENTS = [
     "id": "auto-high-water-2027-03-02-db61ec202c98",
     "title": "Karaoke Night - Free!",
     "subtitle": "Source-discovered venue event · details need review",
-    "category": "Other",
+    "category": "Karaoke",
     "tags": [
-      "Source-listed Other",
+      "Source-listed Karaoke",
       "Time needs confirmation",
       "Format needs confirmation"
     ],
@@ -46683,9 +47988,9 @@ window.SHOWS_EVENTS = [
     "id": "auto-high-water-2027-03-09-ceb1b71e01e0",
     "title": "Karaoke Night - Free!",
     "subtitle": "Source-discovered venue event · details need review",
-    "category": "Other",
+    "category": "Karaoke",
     "tags": [
-      "Source-listed Other",
+      "Source-listed Karaoke",
       "Time needs confirmation",
       "Format needs confirmation"
     ],
@@ -47536,9 +48841,9 @@ window.SHOWS_EVENTS = [
     "id": "auto-high-water-2027-03-16-e6e0de32dd86",
     "title": "Karaoke Night - Free!",
     "subtitle": "Source-discovered venue event · details need review",
-    "category": "Other",
+    "category": "Karaoke",
     "tags": [
-      "Source-listed Other",
+      "Source-listed Karaoke",
       "Time needs confirmation",
       "Format needs confirmation"
     ],
@@ -47888,9 +49193,9 @@ window.SHOWS_EVENTS = [
     "id": "auto-high-water-2027-03-23-ceea31353119",
     "title": "Karaoke Night - Free!",
     "subtitle": "Source-discovered venue event · details need review",
-    "category": "Other",
+    "category": "Karaoke",
     "tags": [
-      "Source-listed Other",
+      "Source-listed Karaoke",
       "Time needs confirmation",
       "Format needs confirmation"
     ],
@@ -48291,9 +49596,9 @@ window.SHOWS_EVENTS = [
     "id": "auto-high-water-2027-03-30-967bb1f30fe0",
     "title": "Karaoke Night - Free!",
     "subtitle": "Source-discovered venue event · details need review",
-    "category": "Other",
+    "category": "Karaoke",
     "tags": [
-      "Source-listed Other",
+      "Source-listed Karaoke",
       "Time needs confirmation",
       "Format needs confirmation"
     ],
@@ -48947,9 +50252,9 @@ window.SHOWS_EVENTS = [
     "id": "auto-high-water-2027-04-06-e5a28b57f3d3",
     "title": "Karaoke Night - Free!",
     "subtitle": "Source-discovered venue event · details need review",
-    "category": "Other",
+    "category": "Karaoke",
     "tags": [
-      "Source-listed Other",
+      "Source-listed Karaoke",
       "Time needs confirmation",
       "Format needs confirmation"
     ],
@@ -49293,9 +50598,9 @@ window.SHOWS_EVENTS = [
     "id": "auto-high-water-2027-04-13-a2bd44aafd37",
     "title": "Karaoke Night - Free!",
     "subtitle": "Source-discovered venue event · details need review",
-    "category": "Other",
+    "category": "Karaoke",
     "tags": [
-      "Source-listed Other",
+      "Source-listed Karaoke",
       "Time needs confirmation",
       "Format needs confirmation"
     ],
@@ -49544,9 +50849,9 @@ window.SHOWS_EVENTS = [
     "id": "auto-high-water-2027-04-20-666ac9a92b7e",
     "title": "Karaoke Night - Free!",
     "subtitle": "Source-discovered venue event · details need review",
-    "category": "Other",
+    "category": "Karaoke",
     "tags": [
-      "Source-listed Other",
+      "Source-listed Karaoke",
       "Time needs confirmation",
       "Format needs confirmation"
     ],
@@ -49743,9 +51048,9 @@ window.SHOWS_EVENTS = [
     "id": "auto-high-water-2027-04-27-49905e470be0",
     "title": "Karaoke Night - Free!",
     "subtitle": "Source-discovered venue event · details need review",
-    "category": "Other",
+    "category": "Karaoke",
     "tags": [
-      "Source-listed Other",
+      "Source-listed Karaoke",
       "Time needs confirmation",
       "Format needs confirmation"
     ],
@@ -49942,9 +51247,9 @@ window.SHOWS_EVENTS = [
     "id": "auto-high-water-2027-05-04-81e03c10c567",
     "title": "Karaoke Night - Free!",
     "subtitle": "Source-discovered venue event · details need review",
-    "category": "Other",
+    "category": "Karaoke",
     "tags": [
-      "Source-listed Other",
+      "Source-listed Karaoke",
       "Time needs confirmation",
       "Format needs confirmation"
     ],
@@ -50091,9 +51396,9 @@ window.SHOWS_EVENTS = [
     "id": "auto-high-water-2027-05-11-207193c53f61",
     "title": "Karaoke Night - Free!",
     "subtitle": "Source-discovered venue event · details need review",
-    "category": "Other",
+    "category": "Karaoke",
     "tags": [
-      "Source-listed Other",
+      "Source-listed Karaoke",
       "Time needs confirmation",
       "Format needs confirmation"
     ],
@@ -50490,9 +51795,9 @@ window.SHOWS_EVENTS = [
     "id": "auto-high-water-2027-05-18-03d3cde43975",
     "title": "Karaoke Night - Free!",
     "subtitle": "Source-discovered venue event · details need review",
-    "category": "Other",
+    "category": "Karaoke",
     "tags": [
-      "Source-listed Other",
+      "Source-listed Karaoke",
       "Time needs confirmation",
       "Format needs confirmation"
     ],
@@ -50639,9 +51944,9 @@ window.SHOWS_EVENTS = [
     "id": "auto-high-water-2027-05-25-652687f26533",
     "title": "Karaoke Night - Free!",
     "subtitle": "Source-discovered venue event · details need review",
-    "category": "Other",
+    "category": "Karaoke",
     "tags": [
-      "Source-listed Other",
+      "Source-listed Karaoke",
       "Time needs confirmation",
       "Format needs confirmation"
     ],
@@ -50737,9 +52042,9 @@ window.SHOWS_EVENTS = [
     "id": "auto-high-water-2027-06-01-3f8b60d8d590",
     "title": "Karaoke Night - Free!",
     "subtitle": "Source-discovered venue event · details need review",
-    "category": "Other",
+    "category": "Karaoke",
     "tags": [
-      "Source-listed Other",
+      "Source-listed Karaoke",
       "Time needs confirmation",
       "Format needs confirmation"
     ],
@@ -50937,9 +52242,9 @@ window.SHOWS_EVENTS = [
     "id": "auto-high-water-2027-06-08-4573f4d1e233",
     "title": "Karaoke Night - Free!",
     "subtitle": "Source-discovered venue event · details need review",
-    "category": "Other",
+    "category": "Karaoke",
     "tags": [
-      "Source-listed Other",
+      "Source-listed Karaoke",
       "Time needs confirmation",
       "Format needs confirmation"
     ],
@@ -51081,9 +52386,9 @@ window.SHOWS_EVENTS = [
     "id": "auto-high-water-2027-06-15-ffb02f4d8751",
     "title": "Karaoke Night - Free!",
     "subtitle": "Source-discovered venue event · details need review",
-    "category": "Other",
+    "category": "Karaoke",
     "tags": [
-      "Source-listed Other",
+      "Source-listed Karaoke",
       "Time needs confirmation",
       "Format needs confirmation"
     ],
@@ -51128,9 +52433,9 @@ window.SHOWS_EVENTS = [
     "id": "auto-high-water-2027-06-22-9512c46aabed",
     "title": "Karaoke Night - Free!",
     "subtitle": "Source-discovered venue event · details need review",
-    "category": "Other",
+    "category": "Karaoke",
     "tags": [
-      "Source-listed Other",
+      "Source-listed Karaoke",
       "Time needs confirmation",
       "Format needs confirmation"
     ],
@@ -51175,9 +52480,9 @@ window.SHOWS_EVENTS = [
     "id": "auto-high-water-2027-06-29-9af2638fac33",
     "title": "Karaoke Night - Free!",
     "subtitle": "Source-discovered venue event · details need review",
-    "category": "Other",
+    "category": "Karaoke",
     "tags": [
-      "Source-listed Other",
+      "Source-listed Karaoke",
       "Time needs confirmation",
       "Format needs confirmation"
     ],
@@ -51222,9 +52527,9 @@ window.SHOWS_EVENTS = [
     "id": "auto-high-water-2027-07-06-e58cf0047aaa",
     "title": "Karaoke Night - Free!",
     "subtitle": "Source-discovered venue event · details need review",
-    "category": "Other",
+    "category": "Karaoke",
     "tags": [
-      "Source-listed Other",
+      "Source-listed Karaoke",
       "Time needs confirmation",
       "Format needs confirmation"
     ],
@@ -51316,9 +52621,9 @@ window.SHOWS_EVENTS = [
     "id": "auto-high-water-2027-07-13-ac3ddb68ac86",
     "title": "Karaoke Night - Free!",
     "subtitle": "Source-discovered venue event · details need review",
-    "category": "Other",
+    "category": "Karaoke",
     "tags": [
-      "Source-listed Other",
+      "Source-listed Karaoke",
       "Time needs confirmation",
       "Format needs confirmation"
     ],
@@ -51363,9 +52668,9 @@ window.SHOWS_EVENTS = [
     "id": "auto-high-water-2027-07-20-f1b09e8e823f",
     "title": "Karaoke Night - Free!",
     "subtitle": "Source-discovered venue event · details need review",
-    "category": "Other",
+    "category": "Karaoke",
     "tags": [
-      "Source-listed Other",
+      "Source-listed Karaoke",
       "Time needs confirmation",
       "Format needs confirmation"
     ],
@@ -51410,9 +52715,9 @@ window.SHOWS_EVENTS = [
     "id": "auto-high-water-2027-07-27-6ed81a4db9fd",
     "title": "Karaoke Night - Free!",
     "subtitle": "Source-discovered venue event · details need review",
-    "category": "Other",
+    "category": "Karaoke",
     "tags": [
-      "Source-listed Other",
+      "Source-listed Karaoke",
       "Time needs confirmation",
       "Format needs confirmation"
     ],
@@ -51457,9 +52762,9 @@ window.SHOWS_EVENTS = [
     "id": "auto-high-water-2027-08-03-511216aead91",
     "title": "Karaoke Night - Free!",
     "subtitle": "Source-discovered venue event · details need review",
-    "category": "Other",
+    "category": "Karaoke",
     "tags": [
-      "Source-listed Other",
+      "Source-listed Karaoke",
       "Time needs confirmation",
       "Format needs confirmation"
     ],
@@ -51504,9 +52809,9 @@ window.SHOWS_EVENTS = [
     "id": "auto-high-water-2027-08-10-61f3d5597d13",
     "title": "Karaoke Night - Free!",
     "subtitle": "Source-discovered venue event · details need review",
-    "category": "Other",
+    "category": "Karaoke",
     "tags": [
-      "Source-listed Other",
+      "Source-listed Karaoke",
       "Time needs confirmation",
       "Format needs confirmation"
     ],
@@ -51598,9 +52903,9 @@ window.SHOWS_EVENTS = [
     "id": "auto-high-water-2027-08-17-5ce597a5f2cf",
     "title": "Karaoke Night - Free!",
     "subtitle": "Source-discovered venue event · details need review",
-    "category": "Other",
+    "category": "Karaoke",
     "tags": [
-      "Source-listed Other",
+      "Source-listed Karaoke",
       "Time needs confirmation",
       "Format needs confirmation"
     ],
@@ -51645,9 +52950,9 @@ window.SHOWS_EVENTS = [
     "id": "auto-high-water-2027-08-24-de6cd00d646d",
     "title": "Karaoke Night - Free!",
     "subtitle": "Source-discovered venue event · details need review",
-    "category": "Other",
+    "category": "Karaoke",
     "tags": [
-      "Source-listed Other",
+      "Source-listed Karaoke",
       "Time needs confirmation",
       "Format needs confirmation"
     ],
@@ -51692,9 +52997,9 @@ window.SHOWS_EVENTS = [
     "id": "auto-high-water-2027-08-31-72771b6a4fe5",
     "title": "Karaoke Night - Free!",
     "subtitle": "Source-discovered venue event · details need review",
-    "category": "Other",
+    "category": "Karaoke",
     "tags": [
-      "Source-listed Other",
+      "Source-listed Karaoke",
       "Time needs confirmation",
       "Format needs confirmation"
     ],
@@ -51739,9 +53044,9 @@ window.SHOWS_EVENTS = [
     "id": "auto-high-water-2027-09-07-9a85c76b18bb",
     "title": "Karaoke Night - Free!",
     "subtitle": "Source-discovered venue event · details need review",
-    "category": "Other",
+    "category": "Karaoke",
     "tags": [
-      "Source-listed Other",
+      "Source-listed Karaoke",
       "Time needs confirmation",
       "Format needs confirmation"
     ],
@@ -51828,71 +53133,5 @@ window.SHOWS_EVENTS = [
       "sourceId": "high-water",
       "method": "primary-source-collection"
     }
-  },
-  {
-    "id": "high-limit-room-guilt-trip-gates-to-hell-mauled-2026-12-06",
-    "title": "Guilt Trip with Gates to Hell & Mauled",
-    "subtitle": "Metal, hardcore · original artist tour listing",
-    "category": "Music",
-    "tags": [
-      "Hardcore",
-      "Metal",
-      "Live music",
-      "Time needs confirmation"
-    ],
-    "musicStyles": [
-      "Hardcore",
-      "Metal"
-    ],
-    "musicStyleEvidence": {
-      "basis": "Guilt Trip's artist-associated concert profile explicitly identifies metal and hardcore punk; Roadrunner Records lists the band as a current heavy-music artist. These describe the headliner, not an unsupported claim about every supporting band.",
-      "urls": [
-        "https://www.bandsintown.com/e/1040132341-guilt-trip-at-high-limit-room?came_from=900",
-        "https://www.roadrunnerrecords.com/"
-      ]
-    },
-    "eventFormat": "live",
-    "startTimeKind": "listed",
-    "startsAt": "2026-12-06T18:00:00-08:00",
-    "endsAt": null,
-    "venue": "High Limit Room",
-    "address": "720 SE Hawthorne Blvd, Portland, OR 97214",
-    "neighborhood": "Central Eastside",
-    "price": "See organizer for admission",
-    "free": null,
-    "age": "Confirm event-specific age policy with venue",
-    "description": "Guilt Trip's own official 2026 tour schedule confirms a December 6 Portland appearance at High Limit Room with Gates to Hell and Mauled. It lists 6:00 PM, but does not establish whether this is doors or performance time. Check the original artist or venue for current tickets, lineup and start-time details.",
-    "source": "Guilt Trip · official artist tour",
-    "url": "https://www.guilttripmhc.com/",
-    "icon": "♫",
-    "sourceCheckedAt": "2026-11-03",
-    "verificationMethod": "Original band tour date + lineup and listed clock; separate artist-associated concert confirmation of 2026 date and venue",
-    "sourceCategories": [],
-    "sources": [
-      {
-        "name": "Guilt Trip · official artist tour",
-        "url": "https://www.guilttripmhc.com/",
-        "kind": "artist",
-        "checkedAt": "2026-11-03",
-        "originalCategories": []
-      },
-      {
-        "name": "Artist concert entry",
-        "url": "https://www.bandsintown.com/e/1040132341-guilt-trip-at-high-limit-room?came_from=900",
-        "kind": "supporting-reference",
-        "checkedAt": "2026-11-03",
-        "originalCategories": []
-      },
-      {
-        "name": "High Limit Room · visitor and accessibility details",
-        "url": "https://highlimitroompdx.com/info/",
-        "kind": "organizer",
-        "checkedAt": "2026-11-03",
-        "originalCategories": []
-      }
-    ],
-    "addedIn": "2026-11-03-primary-high-limit-band-tour",
-    "sourceNote": "6:00 PM from Guilt Trip official tour routing. It has not been verified whether this is doors or the show. Do not call it a performance start.",
-    "accessibility": "The venue reports an upstairs room without a wheelchair lift; contact the venue in advance about accessibility."
   }
 ];
