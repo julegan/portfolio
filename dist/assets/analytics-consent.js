@@ -143,7 +143,6 @@
     settingsButton.type = "button";
     settingsButton.className = "portfolio-analytics-settings";
     settingsButton.textContent = "Analytics preferences";
-    settingsButton.setAttribute("aria-label", "Analytics preferences");
     settingsButton.setAttribute("aria-controls", "portfolio-analytics-choices");
     settingsButton.setAttribute("aria-expanded", "false");
     footer.appendChild(settingsButton);
