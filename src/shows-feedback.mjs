@@ -5,6 +5,10 @@ const categories = {
   "missing-event": "Missing event",
   bug: "Bug report"
 };
+// Existing Cloudflare Turnstile widget; public sitekey, never the private secret.
+const TURNSTILE_SITEKEY = "0x4AAAAAAFy9aFxzAhvclH7_";
+const TURNSTILE_ACTION = "shows_feedback";
+const PRODUCTION_HOSTNAMES = new Set(["julieowens.me", "www.julieowens.me"]);
 const responseHeaders = {
   "Content-Type": "application/json; charset=utf-8",
   "Cache-Control": "no-store",
@@ -15,7 +19,7 @@ function json(value, status = 200) {
 }
 function configured(env) {
   return Boolean(env.SHOWS_FEEDBACK_GITHUB_TOKEN &&
-    env.SHOWS_FEEDBACK_TURNSTILE_SECRET && env.SHOWS_FEEDBACK_TURNSTILE_SITEKEY);
+    env.SHOWS_FEEDBACK_TURNSTILE_SECRET);
 }
 function quote(value) {
   // GitHub issues are public. Avoid accidental mention notifications.
@@ -26,11 +30,12 @@ export default {
   async fetch(request, env) {
     const url = new URL(request.url);
     if (url.pathname === "/api/shows/feedback/config" && request.method === "GET") {
-      return json({ enabled: configured(env), ...(configured(env) ? { sitekey: env.SHOWS_FEEDBACK_TURNSTILE_SITEKEY } : {}) });
+      const enabled = configured(env) && PRODUCTION_HOSTNAMES.has(url.hostname);
+      return json({ enabled, ...(enabled ? { sitekey: TURNSTILE_SITEKEY } : {}) });
     }
     if (url.pathname !== "/api/shows/feedback") return json({ error: "Not found" }, 404);
     if (request.method !== "POST") return json({ error: "Method not allowed" }, 405);
-    if (!configured(env)) return json({ error: "Feedback is not available yet" }, 503);
+    if (!configured(env) || !PRODUCTION_HOSTNAMES.has(url.hostname)) return json({ error: "Feedback is not available yet" }, 503);
     if (request.headers.get("Origin") !== url.origin) return json({ error: "Origin not allowed" }, 403);
     if (!(request.headers.get("Content-Type") || "").toLowerCase().startsWith("application/json"))
       return json({ error: "Expected JSON" }, 415);
@@ -65,6 +70,8 @@ export default {
     try {
       const verification = await fetch("https://challenges.cloudflare.com/turnstile/v0/siteverify", {
         method: "POST",
+        headers: { "Content-Type": "application/x-www-form-urlencoded" },
+        signal: AbortSignal.timeout(10_000),
         body: new URLSearchParams({
           secret: env.SHOWS_FEEDBACK_TURNSTILE_SECRET,
           response: token
@@ -72,7 +79,8 @@ export default {
       });
       if (verification.ok) {
         const data = await verification.json();
-        verified = data.success === true && data.hostname === url.hostname;
+        verified = data.success === true && data.action === TURNSTILE_ACTION &&
+          data.hostname === url.hostname && PRODUCTION_HOSTNAMES.has(data.hostname);
       }
     } catch (_) {}
     if (!verified) return json({ error: "Verification failed. Please retry." }, 403);
