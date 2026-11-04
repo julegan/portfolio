@@ -15,13 +15,13 @@ const {chromium}=require("playwright");
     const data=await page.evaluate(from=>{
       const all=window.SHOWS_EVENTS||[];
       const future=all.filter(e=>e.startsAt.slice(0,10)>=from);
-      const excluded=e=>/^(?:closed|closure|venue closed|no events?)\\b/i.test(String(e.title||"").trim()) ||
+      const excluded=e=>/^(?:closed|closure|venue closed|no events?)\b/i.test(String(e.title||"").trim()) ||
         (e.category==="Markets"&&/farmers? markets?|produce market|farm stand/.test([e.title,e.subtitle,...(e.tags||[])].join(" ").toLowerCase()));
       return {
         total:all.length, future:future.length, eligible:future.filter(e=>!excluded(e)).length,
         categoryExamples:["Other","Performance","Workshops"].map(category=>future.find(e=>e.category===category&&!excluded(e))?.title||null),
         excludedFarmers:future.some(e=>e.category==="Markets"&&/farmers? markets?/i.test(e.title)),
-        closures:future.filter(e=>/^(?:closed|closure|venue closed|no events?)\\b/i.test(String(e.title||"").trim())).length
+        closures:future.filter(e=>/^(?:closed|closure|venue closed|no events?)\b/i.test(String(e.title||"").trim())).length
       };
     },from);
     assert(data.eligible>0,"Sample calendar has upcoming approved records");
