@@ -40,6 +40,9 @@ test("GA4 measurement and privacy guardrails match the approved opt-in tag", () 
   assert.match(js, /saveChoice\("deny"\)/);
   assert.match(js, /clearAnalyticsCookies\(\)/);
   assert.match(css, /\.portfolio-analytics-panel/);
+  assert.match(css, /\.portfolio-analytics-settings--prompt/);
+  assert.match(js, /Analytics off · Options/);
+  assert.doesNotMatch(js, /if \(choice === null && !browserOptOut\) showPanel\(false\)/);
   assert.match(css, /:focus-visible/);
 });
 test("SHOWS accurately discloses optional tracking without implying saved events are sent", () => {
