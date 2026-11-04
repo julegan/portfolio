@@ -38,7 +38,7 @@ async function main(){
     page.on("pageerror",error=>pageErrors.push(error.message));
     await page.goto(origin+"/",{waitUntil:"load"});
     assert(!await page.locator("#portfolio-analytics-choices").isVisible(),"First visit never opens an intrusive analytics panel");
-    const prompt=page.getByRole("button",{name:"Analytics preferences"});
+    const prompt=page.getByRole("button",{name:"Analytics off · Options"});
     assert(await prompt.isVisible(),"Compact analytics control is available on first visit");
     assert.match(await prompt.innerText(),/Analytics off/,"The compact button makes disabled state explicit");
     assert.equal(await prompt.evaluate(el=>getComputedStyle(el).position),"fixed","Initial choice is a small, fixed button");
@@ -48,7 +48,8 @@ async function main(){
     assert(await page.locator("#portfolio-analytics-choices").isVisible(),"Explicit action opens details and choice");
     assert.equal(await prompt.getAttribute("aria-expanded"),"true");
     await page.locator("#portfolio-analytics-decline").click();
-    assert(!await prompt.evaluate(el=>el.classList.contains("portfolio-analytics-settings--prompt")),"After choice the floating prompt returns to a footer preference control");
+    assert(!await page.locator(".portfolio-analytics-settings").evaluate(el=>el.classList.contains("portfolio-analytics-settings--prompt")),"After choice the floating prompt returns to a footer preference control");
+    assert(await page.getByRole("button",{name:"Analytics preferences"}).isVisible(),"Stored choice restores accessible footer preference control");
     assert.equal(await page.evaluate(()=>localStorage.getItem("julieowens.analytics.choice.v1")),"deny");
     assert.equal(tagRequests.length,0,"Decline never calls Google");
     await page.goto(origin+"/projects/",{waitUntil:"load"});
