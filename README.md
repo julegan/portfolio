@@ -55,7 +55,7 @@ Tests: `node --test tests/analytics-consent.test.mjs` (static structure) and `no
 
 [`julegan/shows`](https://github.com/julegan/shows) is the canonical development repository. This portfolio contains the approved deployment snapshot under `dist/projects/shows/`.
 
-The [review-only sync workflow](.github/workflows/sync-shows.yml) checks the canonical `main` branch twice daily and proposes a **portfolio pull request** only when approved event data has changed. It does **not** merge, publish, or change application CSS/logic automatically. A human reviews and merges the portfolio PR before the hosted copy changes. Do not assume a historical event count or a fixed October–December window represents the current collection.
+The [review-only sync workflow](.github/workflows/sync-shows.yml) polls the canonical `main` branch **every two hours** for newly approved event data and creates or refreshes **one rolling portfolio publication PR**. An open proposal stays current rather than blocking the next snapshot; routine action runs are automatic. The workflow never merges, publishes, or changes application CSS/logic itself. The portfolio PR still needs a human merge before the hosted copy changes. Do not assume a historical event count or a fixed October–December window represents the current collection.
 
 Operational material: [SHOWS-AUTOMATION.md](SHOWS-AUTOMATION.md), [SHOWS-EDITORIAL.md](SHOWS-EDITORIAL.md), and the evidence/review files named `SHOWS-*.md`. Historical research notes may contain older snapshots; retain their dated context.
 
