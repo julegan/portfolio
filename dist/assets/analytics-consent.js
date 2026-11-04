@@ -118,6 +118,11 @@
         : "Your preference: not selected. Analytics is off.";
       allowButton.hidden = false;
     }
+    // Unchosen visitors see only a quiet, collapsed control. No tracking is
+    // enabled until the visitor opens the panel and affirmatively opts in.
+    const needsChoice = choice === null && !browserOptOut;
+    settingsButton.classList.toggle("portfolio-analytics-settings--prompt", needsChoice);
+    settingsButton.textContent = needsChoice ? "Analytics off · Options" : "Analytics preferences";
     settingsButton.setAttribute("aria-expanded", String(!panel.hidden));
   }
 
@@ -183,8 +188,9 @@
       if (event.key === "Escape") hidePanel(true);
     });
 
+    // Never open a banner on first visit; the compact button stays available
+    // until a preference is chosen or a browser privacy signal blocks analytics.
     panel.hidden = true;
-    if (choice === null && !browserOptOut) showPanel(false);
     updatePanel();
   }
 
