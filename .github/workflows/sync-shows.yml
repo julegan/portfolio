@@ -80,7 +80,8 @@ jobs:
             branch="$(gh pr view "$number" --json headRefName --jq '.headRefName')"
             git fetch --no-tags origin "$branch"
             old_sha="$(git rev-parse FETCH_HEAD)"
-            if git show "$old_sha:$dest" | cmp -s - /tmp/shows-canonical-events.js; then
+            git show "$old_sha:$dest" > /tmp/shows-pending-events.js
+            if cmp -s /tmp/shows-pending-events.js /tmp/shows-canonical-events.js; then
               echo "Open sync PR #$number already contains the newest approved SHOWS dataset." >> "$GITHUB_STEP_SUMMARY"
               exit 0
             fi
