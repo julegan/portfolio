@@ -76,3 +76,7 @@ Contact: [LinkedIn](https://www.linkedin.com/in/julieh/).
 ## Design lineage: PortlandMaps
 
 The homepage includes Julie’s personal account of designing the **first mobile-first PortlandMaps.com interface** more than a decade ago. This was one contribution within a collaborative City effort. The City’s June 2026 modernization was delivered by subsequent teams and must not be attributed to the earlier designer. The accompanying visual is abstract, not a screenshot. Public release context: [PortlandMaps modernization (June 2026)](https://www.portland.gov/bts/cgis/news/2026/6/4/new-and-improved-portlandmaps-coming-soon).
+
+## Account-free SHOWS feedback
+
+The SHOWS interface provides a feedback form for ideas, listing corrections, missing events and bugs. It appears only after the Cloudflare Worker receiver is securely configured with Turnstile and a GitHub Issues token. It opens public review issues, never automatically changes the calendar. Setup, privacy safeguards and a live verification checklist: [SHOWS-FEEDBACK.md](SHOWS-FEEDBACK.md).
