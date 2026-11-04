@@ -33,3 +33,6 @@ jobs:
 
       - name: Mobile native date field fits all viewport widths
         run: node tests/shows-mobile-date.cjs
+
+      - name: SHOWS includes source-listed events regardless of genre/category
+        run: node tests/shows-inclusive-feed.cjs
