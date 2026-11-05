@@ -1,30 +1,143 @@
 <!doctype html>
-<html lang="en"><head>
-<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Color Lab — Julie Owens</title>
-<meta name="description" content="Explore which shades of a hue meet your text contrast target on a chosen background.">
-<link rel="icon" href="../favicon.svg" type="image/svg+xml">
-<link rel="stylesheet" href="lab.css"><link rel="stylesheet" href="/assets/analytics-consent.css">
-<script defer src="/assets/analytics-consent.js"></script><script type="module" src="lab.mjs"></script>
-</head><body>
-<header><a href="/projects/">← Projects</a><a href="/">Julie Owens</a></header>
-<main><h1>Color Lab</h1><p class="intro">Choose a background. Explore the colors you can read against it.</p>
-<noscript>Enable JavaScript to explore the color space.</noscript>
-<div class="bench"><section><h2>Contrast settings</h2>
-<label for="bg">Background</label><div class="pair"><input type="color" id="bg" value="#17161a"><input id="hex" aria-label="Background hex code" aria-describedby="error" value="#17161A" spellcheck="false" autocapitalize="characters"></div>
-<p id="error" role="status"></p>
-<label for="target">Text contrast target</label>
-<select id="target"><option value="4.5">AA · Regular text · 4.5:1</option><option value="3">AA · Large text · 3:1</option><option value="7">AAA · Regular text · 7:1</option><option value="4.5">AAA · Large text · 4.5:1</option></select>
-<h2 class="preview-title">Type specimen</h2><div id="specimen">Color in context</div>
-<div class="reading"><strong id="foreground"></strong><span id="ratio"></span></div>
-</section><section class="map"><h2>Accessible color space</h2>
-<label for="hue">Hue <output id="degrees" for="hue">320°</output></label>
-<input id="hue" type="range" min="0" max="359" value="320">
-<div class="axis"><span>↑ Lighter</span><span>More chroma →</span></div>
-<div id="field" aria-hidden="true"></div>
-<div class="legend"><span><i class="low"></i>Below target</span><span><i class="outside"></i>Outside sRGB</span></div>
-<label for="choices">Available foregrounds</label><select id="choices"></select>
-<p id="count" role="status"></p></section>
-</div>
-<details><summary>How to read the color space</summary><p>Each tile samples the same hue. Move up for more OKLCH lightness or right for more chroma, the intensity of a hue. Click a colored tile or use Available foregrounds to try it.</p><p>Striped tiles fall short of your selected contrast target. Dotted tiles fall outside the sRGB range used for hex colors. Contrast is measured from the final hex pair. Large text starts at 24 CSS pixels, or about 18.67 pixels when bold.</p><p><a href="https://www.w3.org/WAI/WCAG22/Understanding/contrast-minimum.html">WCAG text contrast</a> · <a href="https://www.w3.org/TR/css-color-4/#ok-lab">OKLCH in CSS Color 4</a></p></details>
-</main><footer><a href="/projects/">All projects</a></footer></body></html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#151518">
+  <title>Color Lab — Julie Owens</title>
+  <meta name="description" content="Explore text colors with contrast guidance, reading samples and a palette saved in your browser.">
+  <link rel="icon" href="../favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="lab.css">
+  <link rel="stylesheet" href="/assets/analytics-consent.css">
+  <script defer src="/assets/analytics-consent.js"></script>
+  <script type="module" src="lab.mjs"></script>
+</head>
+<body>
+  <a class="skip" href="#main">Skip to the color picker</a>
+  <header><a href="/projects/">← Projects</a><a href="/">Julie Owens</a></header>
+  <main id="main">
+    <h1>Color Lab</h1>
+    <p class="intro">Find a color that works. Then see how it reads.</p>
+    <noscript>Enable JavaScript to explore the color space.</noscript>
+
+    <div class="bench">
+      <section class="settings" aria-labelledby="settings-title">
+        <h2 id="settings-title">Start with your colors</h2>
+        <label for="bg">Background</label>
+        <div class="pair">
+          <input type="color" id="bg" value="#17161a">
+          <input id="hex" aria-label="Background hex code" aria-describedby="background-error" value="#17161A" spellcheck="false">
+        </div>
+        <p id="background-error" class="error" role="status"></p>
+        <label for="reference">Starting text color</label>
+        <div class="pair">
+          <input type="color" id="reference" value="#de85f2">
+          <input id="reference-hex" aria-label="Starting text hex code" aria-describedby="reference-error" value="#DE85F2" spellcheck="false">
+        </div>
+        <p id="reference-error" class="error" role="status"></p>
+        <label for="target">Text contrast target</label>
+        <select id="target">
+          <option value="aa-normal">AA · Regular text · 4.5:1</option>
+          <option value="aa-large">AA · Large text · 3:1</option>
+          <option value="aaa-normal">AAA · Regular text · 7:1</option>
+          <option value="aaa-large">AAA · Large text · 4.5:1</option>
+        </select>
+        <div class="result">
+          <p class="small">Selected text color</p>
+          <div class="reading"><strong id="foreground"></strong><span id="ratio"></span></div>
+          <p id="selection-status" role="status"></p>
+          <p id="margin" class="small"></p>
+        </div>
+        <div class="suggestion">
+          <h3>Keep the hue</h3>
+          <p id="suggestion-description"></p>
+          <button id="apply-suggestion" type="button" hidden>Use nearby shade</button>
+          <button id="restore-reference" class="quiet" type="button">Return to starting color</button>
+        </div>
+      </section>
+
+      <section class="map" aria-labelledby="map-title">
+        <h2 id="map-title">Explore the available space</h2>
+        <div class="control-heading"><label for="hue">Hue</label><input id="hue-number" aria-label="Hue in degrees" type="number" min="0" max="360" step="0.1" value="320"></div>
+        <input id="hue" type="range" min="0" max="360" step="0.1" value="320">
+        <div class="axis"><span>↑ Lighter</span><span>More chroma →</span></div>
+        <div class="map-frame">
+          <canvas id="field" width="240" height="160" aria-hidden="true"></canvas>
+          <span id="marker" aria-hidden="true"></span>
+        </div>
+        <div class="legend"><span><i class="low"></i>Below target</span><span><i class="outside"></i>Outside sRGB</span></div>
+        <p class="small" id="map-help">Drag through the colored area, or fine-tune with the controls below. Chroma is the intensity of a hue.</p>
+        <div class="fine-controls">
+          <div>
+            <div class="control-heading"><label for="lightness">Lightness</label><input id="lightness-number" aria-label="Lightness value" type="number" min="0" max="1" step="0.001"></div>
+            <input id="lightness" type="range" min="0" max="1" step="0.001" aria-describedby="map-help">
+          </div>
+          <div>
+            <div class="control-heading"><label for="chroma">Chroma</label><input id="chroma-number" aria-label="Chroma value" type="number" min="0" max="0.4" step="0.001"></div>
+            <input id="chroma" type="range" min="0" max="0.4" step="0.001" aria-describedby="map-help">
+          </div>
+        </div>
+        <p id="map-message" class="small" role="status"></p>
+      </section>
+    </div>
+
+    <section class="reading-lab" aria-labelledby="reading-title">
+      <div class="section-heading"><h2 id="reading-title">How does it read?</h2><button id="aim-higher" class="quiet" type="button">Aim for AAA regular text</button></div>
+      <p id="reading-feedback"></p>
+      <p class="small">Reading comfort also depends on the reader, display and font rendering. Compare several lines at the size you plan to use.</p>
+      <div class="specimen-grid">
+        <div class="specimen-card">
+          <div class="specimen-label"><h3>Starting color</h3><span id="original-values"></span></div>
+          <div id="original-specimen" class="specimen" data-contrast-specimen>
+            <p class="sample-heading">Color in context</p>
+            <p class="sample-body"></p>
+            <p class="sample-label">Small label · 0123456789</p>
+          </div>
+          <p id="original-checks" class="sample-checks"></p>
+        </div>
+        <div class="specimen-card">
+          <div class="specimen-label"><h3>Selected color</h3><span id="selected-values"></span></div>
+          <div id="selected-specimen" class="specimen" data-contrast-specimen>
+            <p class="sample-heading">Color in context</p>
+            <p class="sample-body"></p>
+            <p class="sample-label">Small label · 0123456789</p>
+          </div>
+          <p id="selected-checks" class="sample-checks"></p>
+        </div>
+      </div>
+      <details class="reading-options">
+        <summary>Adjust the reading samples</summary>
+        <div class="typography-controls">
+          <div><label for="text-size">Body size in CSS pixels</label><input id="text-size" type="number" min="12" max="40" step="1" value="16"></div>
+          <div><label for="text-weight">Weight</label><select id="text-weight"><option value="300">Light · 300</option><option value="400" selected>Regular · 400</option><option value="500">Medium · 500</option><option value="700">Bold · 700</option></select></div>
+          <div><label for="font-family">Font</label><select id="font-family"><option value="sans">System sans serif</option><option value="serif">System serif</option><option value="mono">System monospace</option></select></div>
+          <div><label for="line-height">Line spacing</label><select id="line-height"><option value="1.25">Compact · 1.25</option><option value="1.6" selected>Open · 1.6</option><option value="2">Double · 2</option></select></div>
+        </div>
+        <label for="sample-text">Preview text</label>
+        <textarea id="sample-text" rows="3">At the edge of the garden, the light changes. Take a moment to follow these lines and notice how easily your eyes move from one word to the next.</textarea>
+      </details>
+      <div class="actions"><button id="copy-pair" type="button">Copy color pair</button><button id="save-pair" class="quiet" type="button">Save pair in this browser</button></div>
+      <label id="copy-fallback-label" for="copy-fallback" hidden>Copy this CSS</label>
+      <textarea id="copy-fallback" readonly rows="3" hidden></textarea>
+      <p id="action-status" class="small" role="status"></p>
+    </section>
+
+    <section class="saved-section" aria-labelledby="saved-title">
+      <h2 id="saved-title">Saved pairs</h2>
+      <p class="small">Pairs stay in this browser and can be cleared with site data. Copy the CSS to keep a pair elsewhere.</p>
+      <p id="storage-status" class="small" role="status"></p>
+      <div id="saved-pairs" class="saved-grid"></div>
+    </section>
+
+    <details class="method">
+      <summary>About the contrast feedback</summary>
+      <p>The map uses OKLCH to explore hue, lightness and chroma. It samples a finer grid of opaque sRGB colors. Stripes mark colors below your chosen target. Dots mark positions outside sRGB.</p>
+      <p>A nearby shade is a close sampled option at the starting hue, ranked by distance in Oklab. Applying it is your choice. Changing the background or target keeps your selected color visible so you can compare.</p>
+      <p>WCAG text contrast is evaluated on the final hex colors, using the unrounded ratio. Feedback under each sample accounts for its size and weight. Large text starts at 24 CSS pixels, or 18⅔ CSS pixels at a bold weight. The heading uses bold text. Font availability and rendering vary by device.</p>
+      <p>Thin strokes can appear faint even when a color pair meets its contrast target. Try a stronger weight, a larger size or a higher contrast target, and compare with readers who will use your design.</p>
+      <p><a href="https://www.w3.org/WAI/WCAG22/Understanding/contrast-minimum.html">WCAG minimum text contrast</a> · <a href="https://www.w3.org/WAI/WCAG22/Understanding/contrast-enhanced.html">Enhanced text contrast</a> · <a href="https://www.w3.org/WAI/perspective-videos/customizable/">Customizable text</a> · <a href="https://www.w3.org/TR/css-color-4/#ok-lab">OKLCH in CSS Color 4</a></p>
+    </details>
+  </main>
+  <footer><a href="/projects/">All projects</a></footer>
+</body>
+</html>
