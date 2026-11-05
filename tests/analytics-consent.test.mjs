@@ -40,8 +40,11 @@ test("GA4 measurement and privacy guardrails match the approved opt-in tag", () 
   assert.match(js, /saveChoice\("deny"\)/);
   assert.match(js, /clearAnalyticsCookies\(\)/);
   assert.match(css, /\.portfolio-analytics-panel/);
-  assert.match(css, /\.portfolio-analytics-settings--prompt/);
-  assert.match(js, /Analytics off · Options/);
+  assert.doesNotMatch(css, /\.portfolio-analytics-settings--prompt/);
+  assert.doesNotMatch(css, /position:\s*fixed/);
+  assert.match(css, /position:\s*static/);
+  assert.doesNotMatch(js, /Analytics off · Options/);
+  assert.match(js, /footer\.insertAdjacentElement\("afterend", panel\)/);
   assert.doesNotMatch(js, /if \(choice === null && !browserOptOut\) showPanel\(false\)/);
   assert.match(css, /:focus-visible/);
 });
