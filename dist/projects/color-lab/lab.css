@@ -42,8 +42,8 @@ textarea { resize: vertical; }
 .map-frame { position: relative; }
 #field { width: 100%; aspect-ratio: 1.5; display: block; touch-action: none; cursor: crosshair; background: #222127; }
 #marker { position: absolute; width: 16px; height: 16px; border: 2px solid #fff; box-shadow: 0 0 0 2px #111; border-radius: 50%; transform: translate(-50%, -50%); pointer-events: none; }
-.low { background: repeating-linear-gradient(135deg, #514c58 0 2px, #28262e 2px 7px); }
-.outside { background: radial-gradient(#726c79 1px, transparent 1px) 0 0 / 5px 5px; }
+.low { background: repeating-linear-gradient(135deg, #514c58 0 2px, #28262e 2px 8px); }
+.outside { background: radial-gradient(#726c79 .7px, transparent .7px) 0 0 / 6px 6px; }
 .legend { justify-content: flex-start; flex-wrap: wrap; gap: 16px; margin-top: 13px; }
 .legend i { display: inline-block; width: 22px; height: 16px; margin-right: 7px; vertical-align: middle; }
 .result { padding-top: 18px; margin-top: 22px; border-top: 1px solid var(--line); }

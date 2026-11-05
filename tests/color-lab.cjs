@@ -31,7 +31,7 @@ async function applyHex(page, id, value) {
 
 async function engineChecks() {
   const engine = await import('../dist/projects/color-lab/engine.mjs');
-  const { normalizeHex, sample, toOKLCH, contrast, nearbyShade } = engine;
+  const { normalizeHex, sample, sampleRGB, rgbLuminance, toOKLCH, contrast, nearbyShade } = engine;
   assert.equal(normalizeHex('f0c'), '#FF00CC');
   assert.equal(normalizeHex('#ffff0000'), null);
   assert.equal(contrast('#000000', '#FFFFFF'), 21);
@@ -41,7 +41,11 @@ async function engineChecks() {
   for (const color of ['#000000', '#FFFFFF', '#FF0000', '#00FF00', '#0000FF', '#17161A', '#DE85F2']) {
     const point = toOKLCH(color);
     assert.equal(sample(point.lightness, point.chroma, point.hue), color);
+    assert.deepEqual(sampleRGB(point.lightness, point.chroma, point.hue), color.slice(1).match(/../g).map(pair => parseInt(pair, 16)));
   }
+  assert.equal(rgbLuminance([255, 0, 0]), 0.2126);
+  assert.equal(rgbLuminance([0, 255, 0]), 0.7152);
+  assert.equal(rgbLuminance([0, 0, 255]), 0.0722);
   assert.equal(sample(0.5, 0.4, 100), null);
   assert.equal(nearbyShade('#777777', '#777777', 7), null);
   assert.equal(nearbyShade('#FFFFFF', '#000000', 7), '#FFFFFF');
@@ -51,6 +55,59 @@ async function engineChecks() {
   assert(contrast(fitted, '#FFFFFF') >= 7, 'A suggestion passes after hex quantization');
   assert(Math.abs(toOKLCH(fitted).hue - toOKLCH('#DE85F2').hue) < 1, 'Chromatic suggestion keeps the starting hue');
   console.log('PASS Color Lab conversion, exact thresholds and hue-preserving suggestions');
+}
+
+async function assertMapResolution(page) {
+  await page.waitForFunction(() => {
+    const field = document.getElementById('field');
+    const bounds = field.getBoundingClientRect();
+    return field.width === Math.round(bounds.width * devicePixelRatio) &&
+      field.height === Math.round(bounds.height * devicePixelRatio);
+  });
+}
+
+async function mapRenderingChecks(browser, name, deviceScaleFactor) {
+  const context = await browser.newContext({ viewport: { width: 1000, height: 900 }, deviceScaleFactor });
+  const page = await context.newPage();
+  const { sample, toOKLCH, contrast } = await import('../dist/projects/color-lab/engine.mjs');
+  try {
+    await page.goto(origin + '/projects/color-lab/');
+    await assertMapResolution(page);
+    const pixels = await page.locator('#field').evaluate(field => ({
+      width: field.width,
+      height: field.height,
+      rows: [0.1, 0.35, 0.6, 0.85].map(fraction => {
+        const y = Math.floor(fraction * (field.height - 1));
+        return { y, data: Array.from(field.getContext('2d').getImageData(0, y, field.width, 1).data) };
+      })
+    }));
+    let allowed = 0;
+    let belowTarget = 0;
+    let outsideGamut = 0;
+    for (const row of pixels.rows) {
+      for (let x = 0; x < pixels.width; x++) {
+        const hex = sample(1 - row.y / (pixels.height - 1), x / (pixels.width - 1) * 0.4, toOKLCH('#DE85F2').hue);
+        const actual = row.data.slice(x * 4, x * 4 + 3);
+        if (!hex) {
+          outsideGamut++;
+          assert([[114, 108, 121], [34, 33, 39]].some(color => color.every((channel, index) => channel === actual[index])));
+        } else if (contrast(hex, '#17161A') < 4.5) {
+          belowTarget++;
+          assert([[81, 76, 88], [40, 38, 46]].some(color => color.every((channel, index) => channel === actual[index])));
+        } else {
+          allowed++;
+          const expected = hex.slice(1).match(/../g).map(pair => parseInt(pair, 16));
+          assert.deepEqual(actual, expected, 'Visible color pixels match the picker, including pixels beside each boundary');
+        }
+      }
+    }
+    assert(allowed && belowTarget && outsideGamut, 'The checks cross both map boundaries');
+    await page.setViewportSize({ width: 640, height: 900 });
+    await assertMapResolution(page);
+    console.log('PASS Color Lab native map resolution, exact boundary pixels and resizing ' + name + ' density ' + deviceScaleFactor);
+  } finally {
+    await context.close();
+  }
 }
 
 async function browserChecks(browser, name, viewport) {
@@ -202,6 +259,7 @@ async function main() {
   for (const [name, type] of [['Chromium', chromium], ['WebKit', webkit]]) {
     const browser = await type.launch();
     try {
+      for (const density of [1, 2, 3]) await mapRenderingChecks(browser, name, density);
       for (const viewport of [{ width: 1440, height: 1000 }, { width: 390, height: 844 }, { width: 320, height: 780 }]) {
         await browserChecks(browser, name, viewport);
       }
