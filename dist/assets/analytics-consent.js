@@ -118,23 +118,19 @@
         : "Your preference: not selected. Analytics is off.";
       allowButton.hidden = false;
     }
-    // Unchosen visitors see only a quiet, collapsed control. No tracking is
-    // enabled until the visitor opens the panel and affirmatively opts in.
-    const needsChoice = choice === null && !browserOptOut;
-    settingsButton.classList.toggle("portfolio-analytics-settings--prompt", needsChoice);
-    settingsButton.textContent = needsChoice ? "Analytics off · Options" : "Analytics preferences";
+    // The footer-only control is always in document flow; no automatic prompt.
     settingsButton.setAttribute("aria-expanded", String(!panel.hidden));
   }
 
   function showPanel(focusHeading) {
     panel.hidden = false;
     updatePanel();
-    if (focusHeading) panel.querySelector("h2").focus({ preventScroll: true });
+    if (focusHeading) panel.querySelector("h2").focus();
   }
   function hidePanel(returnFocus) {
     panel.hidden = true;
     updatePanel();
-    if (returnFocus) settingsButton.focus({ preventScroll: true });
+    if (returnFocus) settingsButton.focus();
   }
 
   function buildControls() {
@@ -163,7 +159,10 @@
       '  <button id="portfolio-analytics-close" type="button">Close</button>',
       '</div>'
     ].join("");
-    document.body.appendChild(panel);
+    // Expanded preferences sit below the footer in normal page flow, not on
+    // top of any page content. All deployed pages have a footer.
+    if (footer === document.body) footer.appendChild(panel);
+    else footer.insertAdjacentElement("afterend", panel);
 
     status = panel.querySelector("#portfolio-analytics-status");
     allowButton = panel.querySelector("#portfolio-analytics-allow");
@@ -188,8 +187,8 @@
       if (event.key === "Escape") hidePanel(true);
     });
 
-    // Never open a banner on first visit; the compact button stays available
-    // until a preference is chosen or a browser privacy signal blocks analytics.
+    // Privacy by default: no automatic prompt, banner, cookie, or Google tag.
+    // People can choose to open their preferences from the footer.
     panel.hidden = true;
     updatePanel();
   }
