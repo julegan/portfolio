@@ -1,4 +1,5 @@
 import { normalizeHex, toOKLCH, sample, sampleRGB, rgbLuminance, contrast, nearbyShade } from './engine.mjs';
+import { createExplorer } from './explorer.mjs';
 
 const byId = id => document.getElementById(id);
 const targets = {
@@ -23,6 +24,8 @@ let hue = position.hue;
 let suggestion = null;
 let drawRequested = false;
 let bodySize = 16;
+let spaceView = '2d';
+const explorer = createExplorer(byId('space'), useColor);
 
 function ratioText(value) {
   // Keep the displayed figure below the exact value at a threshold boundary.
@@ -157,6 +160,19 @@ function updateSelection() {
   byId('margin').textContent = margin + (measured >= target ? ' above ' : ' below ') + 'your ' + target + ':1 target.';
   syncCoordinates();
   updateSamples();
+  explorer.update({ active: spaceView === '3d', background, selected, hue, target });
+}
+
+for (const [buttonId, mode] of [['show-map', '2d'], ['show-space', '3d']]) {
+  byId(buttonId).addEventListener('click', () => {
+    spaceView = mode;
+    byId('map-view').hidden = mode !== '2d';
+    byId('space-view').hidden = mode !== '3d';
+    byId('show-map').setAttribute('aria-pressed', String(mode === '2d'));
+    byId('show-space').setAttribute('aria-pressed', String(mode === '3d'));
+    updateSelection();
+    requestMap();
+  });
 }
 
 function updateSuggestion() {

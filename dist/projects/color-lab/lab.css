@@ -103,3 +103,12 @@ footer { border-top: 1px solid var(--line); padding: 20px 0; }
 }
 #hue::-webkit-slider-runnable-track { background: var(--hue-track); border-radius: 12px; }
 #hue::-moz-range-track { background: var(--hue-track); border-radius: 12px; height: 12px; }
+.view-switch, .space-actions { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 18px; }
+.view-switch button[aria-pressed=true] { background: #eeeaf2; color: #151518; border-color: #eeeaf2; }
+.view-switch button[aria-pressed=false] { background: transparent; color: #f3f1ec; border-color: var(--line); }
+#space { display: block; width: 100%; aspect-ratio: 1.2; background: #101013; outline: 1px solid #58545f; outline-offset: -1px; border-radius: 4px; touch-action: none; cursor: grab; }
+.space-options { display: flex; flex-wrap: wrap; gap: 4px 20px; margin-bottom: 14px; }
+.space-options label { display: flex; align-items: center; gap: 10px; margin: 0; min-height: 44px; font-weight: 500; font-size: 14px; cursor: pointer; }
+.space-options input[type=checkbox] { width: 18px; min-height: 18px; height: 18px; padding: 0; margin: 0; flex: none; accent-color: #eeeaf2; }
+.camera-options { padding: 8px 0 14px; border-block: 1px solid #58545f; margin: 12px 0; }
+.camera-options output { float: right; font: 14px monospace; }

@@ -58,8 +58,13 @@
 
       <section class="map" aria-labelledby="map-title">
         <h2 id="map-title">Explore the available space</h2>
+        <div class="view-switch" role="group" aria-label="Color space view">
+          <button id="show-map" type="button" aria-pressed="true" aria-controls="map-view">Color map</button>
+          <button id="show-space" class="quiet" type="button" aria-pressed="false" aria-controls="space-view">3D explorer</button>
+        </div>
         <div class="control-heading"><label for="hue">Hue</label><input id="hue-number" aria-label="Hue in degrees" type="number" min="0" max="360" step="0.1" value="320"></div>
         <input id="hue" type="range" min="0" max="360" step="0.1" value="320">
+        <div id="map-view">
         <div class="axis"><span>↑ Lighter</span><span>More chroma →</span></div>
         <div class="map-frame">
           <canvas id="field" width="240" height="160" aria-hidden="true"></canvas>
@@ -67,14 +72,35 @@
         </div>
         <div class="legend"><span><i class="low"></i>Below target</span><span><i class="outside"></i>Outside sRGB</span></div>
         <p class="small" id="map-help">Drag through the colored area, or fine-tune with the controls below. Chroma is the intensity of a hue.</p>
+        </div>
+        <div id="space-view" hidden>
+          <canvas id="space" width="640" height="520" aria-hidden="true"></canvas>
+          <p class="small" id="space-help">Drag to rotate. Pinch to zoom. Tap a colored sample to select it. The outlined plane follows the hue slider. The ring marks your selected color.</p>
+          <p id="space-status" class="small" role="status"></p>
+          <div class="space-options">
+            <label><input id="show-excluded" type="checkbox" checked>Show samples below target</label>
+            <label><input id="isolate-slice" type="checkbox">Isolate hue slice</label>
+          </div>
+          <div class="space-actions"><button id="face-slice" class="quiet" type="button">Face hue slice</button><button id="reset-camera" class="quiet" type="button">Reset view</button></div>
+          <details class="camera-options">
+            <summary>Camera controls</summary>
+            <label for="rotation">Rotation <output id="rotation-value" for="rotation">−80°</output></label>
+            <input id="rotation" type="range" min="-180" max="180" step="1" value="-80">
+            <label for="tilt">Tilt <output id="tilt-value" for="tilt">20°</output></label>
+            <input id="tilt" type="range" min="-75" max="75" step="1" value="20">
+            <label for="zoom">Zoom <output id="zoom-value" for="zoom">100%</output></label>
+            <input id="zoom" type="range" min="60" max="160" step="1" value="100">
+          </details>
+          <p class="small">Sampled sRGB colors in Oklab space. Height is lightness, angle is hue and distance from the axis is chroma. Use the lightness and chroma controls to select colors from either view.</p>
+        </div>
         <div class="fine-controls">
           <div>
             <div class="control-heading"><label for="lightness">Lightness</label><input id="lightness-number" aria-label="Lightness value" type="number" min="0" max="1" step="0.001"></div>
-            <input id="lightness" type="range" min="0" max="1" step="0.001" aria-describedby="map-help">
+            <input id="lightness" type="range" min="0" max="1" step="0.001">
           </div>
           <div>
             <div class="control-heading"><label for="chroma">Chroma</label><input id="chroma-number" aria-label="Chroma value" type="number" min="0" max="0.4" step="0.001"></div>
-            <input id="chroma" type="range" min="0" max="0.4" step="0.001" aria-describedby="map-help">
+            <input id="chroma" type="range" min="0" max="0.4" step="0.001">
           </div>
         </div>
         <p id="map-message" class="small" role="status"></p>

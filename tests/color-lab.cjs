@@ -57,13 +57,13 @@ async function engineChecks() {
   console.log('PASS Color Lab conversion, exact thresholds and hue-preserving suggestions');
 }
 
-async function assertMapResolution(page) {
-  await page.waitForFunction(() => {
-    const field = document.getElementById('field');
+async function assertMapResolution(page, id = 'field') {
+  await page.waitForFunction(id => {
+    const field = document.getElementById(id);
     const bounds = field.getBoundingClientRect();
     return field.width === Math.round(bounds.width * devicePixelRatio) &&
       field.height === Math.round(bounds.height * devicePixelRatio);
-  });
+  }, id);
 }
 
 async function mapRenderingChecks(browser, name, deviceScaleFactor) {
@@ -104,14 +104,125 @@ async function mapRenderingChecks(browser, name, deviceScaleFactor) {
     assert(allowed && belowTarget && outsideGamut, 'The checks cross both map boundaries');
     await page.setViewportSize({ width: 640, height: 900 });
     await assertMapResolution(page);
+    await page.locator('#show-space').click();
+    await assertMapResolution(page, 'space');
     console.log('PASS Color Lab native map resolution, exact boundary pixels and resizing ' + name + ' density ' + deviceScaleFactor);
   } finally {
     await context.close();
   }
 }
 
+async function explorerGeometryChecks() {
+  const { colorPoint, colorSamples, projector } = await import('../dist/projects/color-lab/explorer.mjs');
+  const { toOKLCH, contrast } = await import('../dist/projects/color-lab/engine.mjs');
+  const colors = colorSamples();
+  assert(colors.length > 5000, 'Volume samples cover the sRGB gamut');
+  assert.equal(new Set(colors.map(color => color.hex)).size, colors.length, 'Samples are unique hex colors');
+  assert(Math.abs(colorPoint('#000000')[1] + 1) < 1e-6);
+  assert(Math.abs(colorPoint('#FFFFFF')[1] - 1) < 1e-6);
+  for (const color of colors) {
+    const oklch = toOKLCH(color.hex);
+    assert(Math.abs(Math.hypot(color.point[0], color.point[2]) - 2 * oklch.chroma) < 1e-8);
+    assert(Math.abs(color.point[1] - 2 * (oklch.lightness - 0.5)) < 1e-8);
+  }
+  assert.equal(colors.filter(color => contrast(color.hex, '#777777') >= 7).length, 0);
+  const project = projector({ rotation: 0, tilt: 0, zoom: 1 }, 600, 600);
+  assert.equal(project([0, 0, 0]).x, 300);
+  assert.equal(project([0, 0, 0]).y, 300);
+  assert(project([1, 0, 0]).x > 300);
+  assert(project([0, 1, 0]).y < 300);
+  console.log('PASS 3D explorer color coordinates, unique gamut samples and projection');
+}
+
+async function explorerChecks(page, name, viewport) {
+  const { colorSamples, projector } = await import('../dist/projects/color-lab/explorer.mjs');
+  const { contrast, toOKLCH } = await import('../dist/projects/color-lab/engine.mjs');
+  await applyHex(page, '#reference-hex', '#DE85F2');
+  const initialColor = await page.locator('#foreground').innerText();
+  await page.locator('#show-space').click();
+  assert.equal(await page.locator('#show-space').getAttribute('aria-pressed'), 'true');
+  assert.equal(await page.locator('#map-view').isVisible(), false);
+  await assertMapResolution(page, 'space');
+  assert.equal(await page.locator('#foreground').innerText(), initialColor, 'Switching views preserves the selected color');
+  const volumeStatus = await page.locator('#space-status').innerText();
+  assert.match(volumeStatus, /sampled colors meet the target/);
+  await page.getByText('Camera controls', { exact: true }).click();
+  await page.locator('#rotation').press('ArrowRight');
+  assert.equal(await page.locator('#rotation').inputValue(), '-79');
+  assert.equal(await page.locator('#foreground').innerText(), initialColor, 'Camera controls preserve color selection');
+
+  await page.locator('#space').scrollIntoViewIfNeeded();
+  let box = await page.locator('#space').boundingBox();
+  await page.mouse.move(box.x + box.width * 0.45, box.y + box.height * 0.4);
+  await page.mouse.down();
+  await page.mouse.move(box.x + box.width * 0.6, box.y + box.height * 0.5, { steps: 8 });
+  await page.mouse.up();
+  assert.notEqual(await page.locator('#rotation').inputValue(), '-79', 'Dragging rotates the model');
+  assert.equal(await page.locator('#foreground').innerText(), initialColor, 'Dragging never picks a sample');
+  if (name === 'Chromium' && viewport.width < 760) {
+    const session = await page.context().newCDPSession(page);
+    const centerX = box.x + box.width / 2;
+    const centerY = box.y + box.height / 2;
+    await session.send('Input.dispatchTouchEvent', {
+      type: 'touchStart',
+      touchPoints: [{ x: centerX - 30, y: centerY, id: 1 }, { x: centerX + 30, y: centerY, id: 2 }]
+    });
+    await session.send('Input.dispatchTouchEvent', {
+      type: 'touchMove',
+      touchPoints: [{ x: centerX - 45, y: centerY, id: 1 }, { x: centerX + 45, y: centerY, id: 2 }]
+    });
+    await session.send('Input.dispatchTouchEvent', { type: 'touchEnd', touchPoints: [] });
+    await session.detach();
+    assert(Number(await page.locator('#zoom').inputValue()) > 100, 'A two-finger pinch zooms the model');
+    assert.equal(await page.locator('#foreground').innerText(), initialColor, 'Ending a pinch never selects a color');
+  }
+  await page.locator('#reset-camera').click();
+  assert.equal(await page.locator('#rotation').inputValue(), '-80');
+  assert.equal(await page.locator('#tilt').inputValue(), '20');
+  await page.locator('#isolate-slice').check();
+  assert.notEqual(await page.locator('#space-status').innerText(), volumeStatus, 'Isolating the hue changes the sample set');
+  await page.locator('#show-excluded').uncheck();
+  await page.locator('#face-slice').click();
+  assert.equal(await page.locator('#tilt').inputValue(), '0');
+  await audit(page, name + ' 3D explorer and expanded camera controls ' + viewport.width);
+
+  await page.locator('#space').scrollIntoViewIfNeeded();
+  box = await page.locator('#space').boundingBox();
+  const hue = toOKLCH(initialColor).hue;
+  const candidate = colorSamples(hue).find(color => {
+    const position = toOKLCH(color.hex);
+    return color.hex !== initialColor && contrast(color.hex, '#17161A') >= 4.5 &&
+      position.chroma > 0.08 && position.lightness > 0.65 && position.lightness < 0.85;
+  });
+  assert(candidate, 'A distinct selectable sample exists in the current hue slice');
+  const project = projector({ rotation: hue * Math.PI / 180, tilt: 0, zoom: 1 }, box.width, box.height);
+  const point = project(candidate.point);
+  if (viewport.width < 760) await page.touchscreen.tap(box.x + point.x, box.y + point.y);
+  else await page.locator('#space').click({ position: { x: point.x, y: point.y } });
+  const picked = await page.locator('#foreground').innerText();
+  assert.notEqual(picked, initialColor, 'Tapping or clicking a visible 3D sample selects a color');
+  assert(contrast(picked, '#17161A') >= 4.5);
+  assert.equal(await page.locator('#reference-hex').inputValue(), '#DE85F2', '3D selection preserves the starting color');
+  assert.match(await page.locator('#selected-values').innerText(), new RegExp(picked));
+  await page.locator('#save-pair').click();
+  assert(await page.getByRole('button', { name: 'Load pair ' + picked + ' on #17161A', exact: true }).isVisible());
+  await page.locator('#show-map').click();
+  await assertMapResolution(page);
+  assert.equal(await page.locator('#foreground').innerText(), picked);
+  await page.locator('#show-space').click();
+  await assertMapResolution(page, 'space');
+  assert.equal(await page.locator('#foreground').innerText(), picked);
+
+  await applyHex(page, '#hex', '#777777');
+  await page.locator('#target').selectOption('aaa-normal');
+  assert.match(await page.locator('#space-status').innerText(), /^0 of /);
+  assert.equal(await page.locator('#foreground').innerText(), picked, 'An impossible contrast target preserves the current choice');
+  await audit(page, name + ' 3D empty eligible set ' + viewport.width);
+  console.log('PASS 3D explorer selection, rotation, touch/keyboard controls, view sync and saving ' + name + ' ' + viewport.width);
+}
+
 async function browserChecks(browser, name, viewport) {
-  const context = await browser.newContext({ viewport });
+  const context = await browser.newContext({ viewport, hasTouch: viewport.width < 760 });
   await context.addInitScript(() => {
     // Exercise the usable fallback on browsers that refuse clipboard access.
     Object.defineProperty(navigator, 'clipboard', {
@@ -207,6 +318,7 @@ async function browserChecks(browser, name, viewport) {
 
     await page.getByText('About the contrast feedback', { exact: true }).click();
     await audit(page, name + ' saved pairs, methods and copy fallback ' + viewport.width);
+    await explorerChecks(page, name, viewport);
     const overflow = await page.evaluate(() => ({
       fits: document.documentElement.scrollWidth <= innerWidth + 1,
       outside: Array.from(document.querySelectorAll('main *')).filter(element => {
@@ -256,6 +368,7 @@ async function storageChecks(browser) {
 
 async function main() {
   await engineChecks();
+  await explorerGeometryChecks();
   for (const [name, type] of [['Chromium', chromium], ['WebKit', webkit]]) {
     const browser = await type.launch();
     try {
