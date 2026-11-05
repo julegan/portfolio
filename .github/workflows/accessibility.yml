@@ -28,6 +28,9 @@ jobs:
           SHOWS_PORTFOLIO: '1'
         run: node tests/accessibility.cjs
 
+      - name: Color Lab readability, saved pairs and WCAG checks
+        run: node tests/color-lab.cjs
+
       - name: GA4 opt-in and browser privacy controls
         run: node tests/analytics-browser.cjs
 
