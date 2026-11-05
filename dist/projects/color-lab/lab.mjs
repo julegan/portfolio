@@ -1,4 +1,4 @@
-import { normalizeHex, toOKLCH, sample, contrast, nearbyShade } from './engine.mjs';
+import { normalizeHex, toOKLCH, sample, sampleRGB, rgbLuminance, contrast, nearbyShade } from './engine.mjs';
 
 const byId = id => document.getElementById(id);
 const targets = {
@@ -44,24 +44,39 @@ function syncCoordinates() {
 
 function drawMap() {
   drawRequested = false;
-  const { width, height } = field;
+  const bounds = field.getBoundingClientRect();
+  if (!bounds.width || !bounds.height) return;
+  const pixelRatio = window.devicePixelRatio || 1;
+  const width = Math.max(2, Math.round(bounds.width * pixelRatio));
+  const height = Math.max(2, Math.round(bounds.height * pixelRatio));
+  if (field.width !== width) field.width = width;
+  if (field.height !== height) field.height = height;
   const pixels = context.createImageData(width, height);
   const target = targets[byId('target').value];
+  const backgroundRGB = background.slice(1).match(/../g).map(pair => parseInt(pair, 16));
+  const backgroundLuminance = rgbLuminance(backgroundRGB);
   for (let y = 0; y < height; y++) {
     for (let x = 0; x < width; x++) {
-      const hex = sample(1 - y / (height - 1), x / (width - 1) * 0.4, hue);
-      let rgb;
-      if (!hex) {
-        const dot = x % 4 === 0 && y % 4 === 0;
+      let rgb = sampleRGB(1 - y / (height - 1), x / (width - 1) * 0.4, hue);
+      const cssX = x / pixelRatio;
+      const cssY = y / pixelRatio;
+      if (!rgb) {
+        const dot = Math.hypot(cssX % 6 - 3, cssY % 6 - 3) < 0.7;
         rgb = dot ? [114, 108, 121] : [34, 33, 39];
-      } else if (contrast(hex, background) < target) {
-        const stripe = (x + y) % 7 < 2;
-        rgb = stripe ? [81, 76, 88] : [40, 38, 46];
       } else {
-        rgb = hex.slice(1).match(/../g).map(pair => parseInt(pair, 16));
+        const luminance = rgbLuminance(rgb);
+        const measured = (Math.max(luminance, backgroundLuminance) + 0.05) /
+          (Math.min(luminance, backgroundLuminance) + 0.05);
+        if (measured < target) {
+          const stripe = (cssX + cssY) % 8 < 2;
+          rgb = stripe ? [81, 76, 88] : [40, 38, 46];
+        }
       }
       const offset = (y * width + x) * 4;
-      pixels.data.set([...rgb, 255], offset);
+      pixels.data[offset] = rgb[0];
+      pixels.data[offset + 1] = rgb[1];
+      pixels.data[offset + 2] = rgb[2];
+      pixels.data[offset + 3] = 255;
     }
   }
   context.putImageData(pixels, 0, 0);
@@ -72,6 +87,17 @@ function requestMap() {
   drawRequested = true;
   requestAnimationFrame(drawMap);
 }
+
+new ResizeObserver(requestMap).observe(field);
+
+function watchPixelRatio() {
+  const query = window.matchMedia('(resolution: ' + (window.devicePixelRatio || 1) + 'dppx)');
+  query.addEventListener('change', () => {
+    requestMap();
+    watchPixelRatio();
+  }, { once: true });
+}
+watchPixelRatio();
 
 function sampleTargets(size, weight) {
   const large = size >= 24 || (size >= 56 / 3 && weight >= 700);

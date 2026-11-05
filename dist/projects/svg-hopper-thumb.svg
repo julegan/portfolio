@@ -1,14 +1,53 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="1020" height="600" viewBox="0 0 1020 600" role="img" aria-labelledby="title desc">
-<title id="title">SVG Hopper prototype preview</title>
-<desc id="desc">Abstract vector forms and the editable-style headline Repair is a resource on a dark panel.</desc>
-<rect width="1020" height="600" fill="#dcefe6"/>
-<circle cx="805" cy="165" r="260" fill="#aad39e"/>
-<circle cx="710" cy="208" r="150" fill="none" stroke="#6e9679" stroke-width="14"/>
-<path d="M-40 210 Q370 -75 800 245" fill="none" stroke="#5e9278" stroke-width="7"/>
-<path d="M80 90H180" stroke="#19392f" stroke-width="14"/>
-<rect x="0" y="282" width="1020" height="318" fill="#19392f"/>
-<rect x="70" y="315" width="88" height="8" fill="#aad39e"/>
-<text x="70" y="427" fill="#fff" font-family="Arial,Helvetica,sans-serif" font-weight="700" font-size="70" letter-spacing="-1.5">Repair is</text>
-<text x="70" y="509" fill="#fff" font-family="Arial,Helvetica,sans-serif" font-weight="700" font-size="70" letter-spacing="-1.5">a resource.</text>
-<text x="762" y="559" fill="#d5e8de" font-family="Arial,Helvetica,sans-serif" font-size="19" letter-spacing="3">SVG HOPPER</text>
+  <title id="title">SVG Hopper graphic composer</title>
+  <desc id="desc">A bone-colored artboard with editable letterforms, a Bezier curve and its control points, framed by a soft black composer with cool gray controls.</desc>
+  <defs>
+    <pattern id="grid" width="30" height="30" patternUnits="userSpaceOnUse">
+      <path d="M30 0H0V30" fill="none" stroke="#d0d0cf" stroke-width="1"/>
+    </pattern>
+    <clipPath id="artboard">
+      <rect x="286" y="116" width="668" height="414" rx="3"/>
+    </clipPath>
+  </defs>
+  <rect width="1020" height="600" fill="#151517"/>
+  <rect x="42" y="42" width="936" height="516" rx="10" fill="#202024" stroke="#55555e"/>
+  <path d="M42 90H978M250 90V558" fill="none" stroke="#55555e"/>
+  <g fill="#bbbfc8">
+    <circle cx="70" cy="66" r="4"/><circle cx="86" cy="66" r="4"/><circle cx="102" cy="66" r="4"/>
+  </g>
+  <g font-family="Arial,Helvetica,sans-serif">
+    <text x="278" y="72" fill="#d6d7dc" font-size="17">SVG Hopper</text>
+    <text x="70" y="146" fill="#f1f0eb" font-size="19" font-weight="600">Text</text>
+    <rect x="68" y="165" width="154" height="40" rx="4" fill="#2b2b32" stroke="#777983"/>
+    <text x="82" y="192" fill="#f1f0eb" font-size="23">Aa</text>
+    <text x="70" y="254" fill="#f1f0eb" font-size="19" font-weight="600">Shapes</text>
+    <g fill="none" stroke="#c2c6cf" stroke-width="2">
+      <rect x="70" y="276" width="40" height="40" rx="3"/>
+      <circle cx="145" cy="296" r="20"/>
+      <path d="M181 316L201 277L221 316Z"/>
+    </g>
+    <path d="M70 358H222" stroke="#55555e"/>
+    <g stroke="#7d818b">
+      <rect x="70" y="383" width="40" height="34" fill="#151517"/>
+      <rect x="126" y="383" width="40" height="34" fill="#aab0bb"/>
+      <rect x="182" y="383" width="40" height="34" fill="#f1f0eb"/>
+    </g>
+    <rect x="68" y="478" width="154" height="42" rx="4" fill="#f1f0eb"/>
+    <text x="145" y="505" fill="#151517" text-anchor="middle" font-size="16" font-weight="700">Export SVG</text>
+  </g>
+  <rect x="286" y="116" width="668" height="414" rx="3" fill="#f1f0eb"/>
+  <g clip-path="url(#artboard)">
+    <rect x="286" y="116" width="668" height="414" fill="url(#grid)"/>
+    <circle cx="886" cy="148" r="174" fill="#c3c8d0"/>
+    <path d="M273 478C370 248 530 569 679 365S824 284 970 388" fill="none" stroke="#555e6d" stroke-width="9"/>
+    <path d="M273 478L370 248M679 365L530 569M679 365L824 284M970 388L824 284" fill="none" stroke="#727e90" stroke-width="1.5"/>
+    <text x="350" y="350" fill="#17181c" font-family="Arial,Helvetica,sans-serif" font-size="210" font-weight="600" letter-spacing="-15">Aa</text>
+    <rect x="336" y="175" width="266" height="190" fill="none" stroke="#626f82" stroke-width="1.5"/>
+    <g fill="#f1f0eb" stroke="#626f82" stroke-width="2">
+      <rect x="331" y="170" width="10" height="10"/><rect x="597" y="170" width="10" height="10"/>
+      <rect x="331" y="360" width="10" height="10"/><rect x="597" y="360" width="10" height="10"/>
+      <rect x="674" y="360" width="10" height="10"/>
+      <circle cx="370" cy="248" r="5"/><circle cx="530" cy="569" r="5"/><circle cx="824" cy="284" r="5"/>
+    </g>
+  </g>
 </svg>
