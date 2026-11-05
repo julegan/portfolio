@@ -358,7 +358,7 @@ function renderSaved() {
     const load = document.createElement('button');
     load.type = 'button';
     load.textContent = 'Load pair';
-    load.setAttribute('aria-label', 'Load ' + pair.foreground + ' on ' + pair.background);
+    load.setAttribute('aria-label', 'Load pair ' + pair.foreground + ' on ' + pair.background);
     load.addEventListener('click', () => {
       background = pair.background;
       reference = pair.foreground;

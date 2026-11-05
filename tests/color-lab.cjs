@@ -115,7 +115,7 @@ async function browserChecks(browser, name, viewport) {
     assert.equal(await page.locator('.saved-card').count(), 2);
     await page.reload();
     assert.equal(await page.locator('.saved-card').count(), 2, 'Saved pairs survive a reload');
-    await page.getByRole('button', { name: 'Load ' + candidate + ' on #FFFFFF', exact: true }).click();
+    await page.getByRole('button', { name: 'Load pair ' + candidate + ' on #FFFFFF', exact: true }).click();
     assert.equal(await page.locator('#hex').inputValue(), '#FFFFFF');
     assert.equal(await page.locator('#foreground').innerText(), candidate);
     assert.equal(await page.locator('#target').inputValue(), 'aaa-normal');
