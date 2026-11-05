@@ -104,6 +104,8 @@ async function mapRenderingChecks(browser, name, deviceScaleFactor) {
     assert(allowed && belowTarget && outsideGamut, 'The checks cross both map boundaries');
     await page.setViewportSize({ width: 640, height: 900 });
     await assertMapResolution(page);
+    await page.locator('#show-space').click();
+    await assertMapResolution(page, 'space');
     console.log('PASS Color Lab native map resolution, exact boundary pixels and resizing ' + name + ' density ' + deviceScaleFactor);
   } finally {
     await context.close();
@@ -157,6 +159,23 @@ async function explorerChecks(page, name, viewport) {
   await page.mouse.up();
   assert.notEqual(await page.locator('#rotation').inputValue(), '-79', 'Dragging rotates the model');
   assert.equal(await page.locator('#foreground').innerText(), initialColor, 'Dragging never picks a sample');
+  if (name === 'Chromium' && viewport.width < 760) {
+    const session = await page.context().newCDPSession(page);
+    const centerX = box.x + box.width / 2;
+    const centerY = box.y + box.height / 2;
+    await session.send('Input.dispatchTouchEvent', {
+      type: 'touchStart',
+      touchPoints: [{ x: centerX - 30, y: centerY, id: 1 }, { x: centerX + 30, y: centerY, id: 2 }]
+    });
+    await session.send('Input.dispatchTouchEvent', {
+      type: 'touchMove',
+      touchPoints: [{ x: centerX - 45, y: centerY, id: 1 }, { x: centerX + 45, y: centerY, id: 2 }]
+    });
+    await session.send('Input.dispatchTouchEvent', { type: 'touchEnd', touchPoints: [] });
+    await session.detach();
+    assert(Number(await page.locator('#zoom').inputValue()) > 100, 'A two-finger pinch zooms the model');
+    assert.equal(await page.locator('#foreground').innerText(), initialColor, 'Ending a pinch never selects a color');
+  }
   await page.locator('#reset-camera').click();
   assert.equal(await page.locator('#rotation').inputValue(), '-80');
   assert.equal(await page.locator('#tilt').inputValue(), '20');
