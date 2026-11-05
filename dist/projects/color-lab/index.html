@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="en"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Color Lab — Julie Owens</title>
+<meta name="description" content="Explore which shades of a hue meet your text contrast target on a chosen background.">
+<link rel="icon" href="../favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="lab.css"><link rel="stylesheet" href="/assets/analytics-consent.css">
+<script defer src="/assets/analytics-consent.js"></script><script type="module" src="lab.mjs"></script>
+</head><body>
+<header><a href="/projects/">← Projects</a><a href="/">Julie Owens</a></header>
+<main><h1>Color Lab</h1><p class="intro">Choose a background. Explore the colors you can read against it.</p>
+<noscript>Enable JavaScript to explore the color space.</noscript>
+<div class="bench"><section><h2>Contrast settings</h2>
+<label for="bg">Background</label><div class="pair"><input type="color" id="bg" value="#17161a"><input id="hex" aria-label="Background hex code" aria-describedby="error" value="#17161A" spellcheck="false" autocapitalize="characters"></div>
+<p id="error" role="status"></p>
+<label for="target">Text contrast target</label>
+<select id="target"><option value="4.5">AA · Regular text · 4.5:1</option><option value="3">AA · Large text · 3:1</option><option value="7">AAA · Regular text · 7:1</option><option value="4.5">AAA · Large text · 4.5:1</option></select>
+<h2 class="preview-title">Type specimen</h2><div id="specimen">Color in context</div>
+<div class="reading"><strong id="foreground"></strong><span id="ratio"></span></div>
+</section><section class="map"><h2>Accessible color space</h2>
+<label for="hue">Hue <output id="degrees" for="hue">320°</output></label>
+<input id="hue" type="range" min="0" max="359" value="320">
+<div class="axis"><span>↑ Lighter</span><span>More chroma →</span></div>
+<div id="field" aria-hidden="true"></div>
+<div class="legend"><span><i class="low"></i>Below target</span><span><i class="outside"></i>Outside sRGB</span></div>
+<label for="choices">Available foregrounds</label><select id="choices"></select>
+<p id="count" role="status"></p></section>
+</div>
+<details><summary>How to read the color space</summary><p>Each tile samples the same hue. Move up for more OKLCH lightness or right for more chroma, the intensity of a hue. Click a colored tile or use Available foregrounds to try it.</p><p>Striped tiles fall short of your selected contrast target. Dotted tiles fall outside the sRGB range used for hex colors. Contrast is measured from the final hex pair. Large text starts at 24 CSS pixels, or about 18.67 pixels when bold.</p><p><a href="https://www.w3.org/WAI/WCAG22/Understanding/contrast-minimum.html">WCAG text contrast</a> · <a href="https://www.w3.org/TR/css-color-4/#ok-lab">OKLCH in CSS Color 4</a></p></details>
+</main><footer><a href="/projects/">All projects</a></footer></body></html>
