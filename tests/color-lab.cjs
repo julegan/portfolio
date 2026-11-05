@@ -150,7 +150,14 @@ async function browserChecks(browser, name, viewport) {
 
     await page.getByText('About the contrast feedback', { exact: true }).click();
     await audit(page, name + ' saved pairs, methods and copy fallback ' + viewport.width);
-    assert.equal(await page.evaluate(() => document.documentElement.scrollWidth > innerWidth + 1), false, 'Fits viewport ' + viewport.width);
+    const overflow = await page.evaluate(() => ({
+      fits: document.documentElement.scrollWidth <= innerWidth + 1,
+      outside: Array.from(document.querySelectorAll('main *')).filter(element => {
+        const rect = element.getBoundingClientRect();
+        return rect.right > innerWidth + 1;
+      }).map(element => element.id || element.className || element.tagName).slice(0, 12)
+    }));
+    assert(overflow.fits, 'Fits viewport ' + viewport.width + ', outside elements ' + overflow.outside.join(', '));
     assert.deepEqual(errors, [], 'No uncaught page errors');
     console.log('PASS Color Lab reading, preservation, fitting, keyboard, saves and accessibility ' + name + ' ' + viewport.width);
   } finally {

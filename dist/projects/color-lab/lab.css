@@ -36,7 +36,8 @@ textarea { resize: vertical; }
 .control-heading { margin-top: 10px; }
 .control-heading label { margin: 0; }
 .control-heading input { width: 95px; flex: none; font-family: monospace; }
-.fine-controls { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+.fine-controls { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 24px; }
+.fine-controls > div, .typography-controls > div { min-width: 0; }
 .axis { margin: 7px 0 10px; }
 .map-frame { position: relative; }
 #field { width: 100%; aspect-ratio: 1.5; display: block; touch-action: none; cursor: crosshair; background: #222127; }
@@ -88,10 +89,12 @@ footer { border-top: 1px solid var(--line); padding: 20px 0; }
   .bench .settings { padding-left: 0; }
   .bench .map { border-right: 0; border-top: 1px solid var(--line); padding-right: 0; }
   .specimen-grid, .saved-grid { grid-template-columns: 1fr; }
-  .typography-controls { grid-template-columns: 1fr 1fr; }
+  .typography-controls { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+@media (max-width: 520px) {
+  .fine-controls { grid-template-columns: 1fr; gap: 0; }
 }
 @media (max-width: 380px) {
-  .fine-controls { grid-template-columns: 1fr; gap: 0; }
   .typography-controls { grid-template-columns: 1fr; }
 }
 @media (forced-colors: active) {
