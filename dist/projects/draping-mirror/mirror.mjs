@@ -93,7 +93,7 @@ function render(focus = false) {
 }
 function resetSession() {
   stage = 0; index = 0; answers = {}; active = 0; seen = new Set([0]); practice = null; resting = false; resultPreview = null;
-  $('guidance').hidden = true; $('help').setAttribute('aria-expanded','false');
+  $('guidance').hidden = true; $('help').setAttribute('aria-expanded','false'); $('mirror-note').textContent='';
   $('source-tools').open = true; render();
 }
 function go(stageNumber, questionIndex = 0) {
@@ -159,10 +159,10 @@ function persist() {
 }
 function saveShown() {
   const drape=resting ? REST_DRAPE : (practice?.drapes ?? displayPair)[active];
-  if(palette.includes(drape.hex)){ $('palette-status').textContent='That color is already saved.'; return; }
+  if(palette.includes(drape.hex)){ $('palette-status').textContent='That color is already saved.'; $('mirror-note').textContent='That color is already in Saved colors.'; return; }
   if(palette.length>=20){ $('palette-status').textContent='Your collection has 20 colors. Remove one before adding another.'; $('saved').open=true; return; }
   palette.push(drape.hex); persist(); paletteView();
-  $('mirror-note').textContent=`${drape.name} saved. Open Saved colors below to download or remove it.`;
+  $('mirror-note').textContent=storageAvailable ? `${drape.name} saved. Open Saved colors below to download or remove it.` : `${drape.name} kept for this session. Browser storage is unavailable; download it from Saved colors to keep a copy.`;
 }
 function download(blob,filename) {
   if(!blob){status('The download could not be created. Try again.');return;}

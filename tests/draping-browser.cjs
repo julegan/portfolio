@@ -79,7 +79,7 @@ async function cameraChecks(browser){
 async function fallbackChecks(browser){
  const context=await browser.newContext();await context.addInitScript(()=>{Object.defineProperty(window,'localStorage',{get(){throw Error('Storage blocked');}});Object.defineProperty(navigator.mediaDevices,'getUserMedia',{configurable:true,value:async()=>{throw new DOMException('Denied','NotAllowedError');}});});const page=await context.newPage();
  try{
-  await page.goto(origin+'/projects/draping-mirror/');await page.waitForFunction(()=>!document.getElementById('begin').disabled);await page.locator('#begin').click();await page.locator('#save-shown').click();assert.match(await page.locator('#palette-status').innerText(),/unavailable/);
+  await page.goto(origin+'/projects/draping-mirror/');await page.waitForFunction(()=>!document.getElementById('begin').disabled);await page.locator('#begin').click();await page.locator('#save-shown').click();assert(await page.locator('#mirror-note').isVisible());assert.match(await page.locator('#mirror-note').innerText(),/storage is unavailable/);
   for(let i=0;i<16;i++)await choose(page,'unsure');assert.equal(await page.locator('#result-title').innerText(),'Still exploring');assert.match(await page.locator('#flow-description').innerText(),/remains open/);
   await openSource(page);await page.locator('#start-camera').click();await page.waitForFunction(()=>document.getElementById('source-status').textContent.includes('not granted'));assert(await page.locator('#start-camera').isEnabled());
   console.log('PASS all-uncertain results, blocked storage and camera-denial fallback');
