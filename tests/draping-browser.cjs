@@ -92,6 +92,18 @@ async function comparisonChecks(browser,name,width){
   console.log('PASS '+name+' guided session, evidence revision, learning mode, pixels, local images, exports, privacy and accessibility '+width);
  }finally{await context.close();}
 }
+async function reflowChecks(browser,name){
+ const context=await browser.newContext({viewport:{width:256,height:440}}),page=await context.newPage();
+ try{
+  await page.goto(origin+'/projects/draping-mirror/');await page.waitForFunction(()=>!document.getElementById('begin').disabled);await page.locator('#begin').click();
+  await page.locator('#show-b').click();await page.locator('[data-answer="unsure"]').click();await page.locator('#next').click();await audit(page,name+' short/zoomed comparison');
+  await openSource(page);await page.locator('#browse-before').click();await page.locator('#wardrobe button').last().click();
+  assert.match(await page.locator('#explore-caption').innerText(),/Mint cream/);await audit(page,name+' short/zoomed explorer');
+  assert(await page.evaluate(()=>{const d=document.getElementById('palette-explorer');return d.clientHeight<=innerHeight&&d.scrollHeight>d.clientHeight;}),'short or zoomed explorer can scroll instead of clipping');
+  await page.locator('#close-explorer').click();assert(await page.locator('#prepare').isVisible());
+  console.log('PASS '+name+' short/zoomed view reflows without trapping controls');
+ }finally{await context.close();}
+}
 async function cameraChecks(browser){
  const context=await browser.newContext();await context.addInitScript(()=>{
   window.testCamera={stops:0,requests:[]};Object.defineProperty(navigator.mediaDevices,'getUserMedia',{configurable:true,value:async constraints=>{
@@ -116,4 +128,4 @@ async function fallbackChecks(browser){
   console.log('PASS all-uncertain results, blocked storage and camera-denial fallback');
  }finally{await context.close();}
 }
-(async()=>{for(const[name,type]of[['Chromium',chromium],['WebKit',webkit]]){const browser=await type.launch();try{for(const width of[1440,390,320])await comparisonChecks(browser,name,width);await fallbackChecks(browser);if(name==='Chromium')await cameraChecks(browser);}finally{await browser.close();}}})().catch(e=>{console.error(e);process.exitCode=1;});
+(async()=>{for(const[name,type]of[['Chromium',chromium],['WebKit',webkit]]){const browser=await type.launch();try{for(const width of[1440,390,320])await comparisonChecks(browser,name,width);await fallbackChecks(browser);await reflowChecks(browser,name);if(name==='Chromium')await cameraChecks(browser);}finally{await browser.close();}}})().catch(e=>{console.error(e);process.exitCode=1;});
