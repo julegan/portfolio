@@ -1,8 +1,8 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
-import { toOKLCH } from '../dist/projects/color-lab/engine.mjs';
-import { STUDIES, fitColor, compareColors, portraitCrop, landmarkFrame, readPalette } from '../dist/projects/color-lab/draping/drapes.mjs';
+import { toOKLCH } from '../dist/projects/draping-mirror/color.mjs';
+import { PALETTE_KEY, STUDIES, fitColor, compareColors, portraitCrop, landmarkFrame, readPalette } from '../dist/projects/draping-mirror/drapes.mjs';
 import worker from '../src/shows-feedback.mjs';
 import { isDrapingPath } from '../src/draping-headers.mjs';
 
@@ -52,19 +52,32 @@ test('only draping paths receive camera permission; requests cannot upload photo
     calls.push(request.method);
     return new Response('<html>mirror</html>', { headers: { 'Content-Type': 'text/html', 'Permissions-Policy': 'camera=(), microphone=()' } });
   } } };
-  assert(isDrapingPath('/projects/color-lab/draping/'));
+  assert(isDrapingPath('/projects/draping-mirror/'));
+  assert(isDrapingPath('/projects/draping-mirror'));
   assert(!isDrapingPath('/projects/color-lab/'));
-  assert(!isDrapingPath('/projects/color-lab/draping-other/'));
-  const response = await worker.fetch(new Request('https://julieowens.me/projects/color-lab/draping/'), env);
+  assert(!isDrapingPath('/projects/color-lab/draping/'));
+  assert(!isDrapingPath('/projects/draping-mirror-other/'));
+  const response = await worker.fetch(new Request('https://julieowens.me/projects/draping-mirror/'), env);
   assert.equal(response.status, 200);
   assert.match(response.headers.get('Permissions-Policy'), /^camera=\(self\), microphone=\(\)/);
   assert.match(response.headers.get('Content-Security-Policy'), /connect-src 'self'/);
   assert.match(response.headers.get('Content-Security-Policy'), /form-action 'none'/);
   for (const method of ['POST', 'PUT', 'PATCH']) {
-    const result = await worker.fetch(new Request('https://julieowens.me/projects/color-lab/draping/', { method, body: 'private photo' }), env);
+    const result = await worker.fetch(new Request('https://julieowens.me/projects/draping-mirror/', { method, body: 'private photo' }), env);
     assert.equal(result.status, 405);
   }
   assert.deepEqual(calls, ['GET']);
   const config = readFileSync(new URL('../wrangler.jsonc', import.meta.url), 'utf8');
-  assert.match(config, /"\/projects\/color-lab\/draping\/\*"/);
+  assert.match(config, /"\/projects\/draping-mirror\/\*"/);
+});
+
+test('personal color and digital color selection remain independent projects', () => {
+  const read = path => readFileSync(new URL('../' + path, import.meta.url), 'utf8');
+  for (const file of ['index.html', 'mirror.css', 'mirror.mjs', 'drapes.mjs', 'color.mjs']) {
+    const source = read('dist/projects/draping-mirror/' + file);
+    assert.doesNotMatch(source, /color[- .]?lab|\.\.\/.*(?:\.css|\.mjs)/i, file + ' must not depend on Color Lab');
+  }
+  assert.doesNotMatch(read('dist/projects/color-lab/index.html'), /draping/i);
+  assert.match(read('dist/projects/index.html'), /href="\/projects\/draping-mirror\/"/);
+  assert.equal(PALETTE_KEY, 'julieowens.draping-mirror.palette.v1');
 });

@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1020" height="600" viewBox="0 0 1020 600">
+  <title>Draping mirror: one portrait, two colors</title>
+  <defs>
+    <g id="portrait">
+      <ellipse cx="0" cy="0" rx="77" ry="106" fill="#23232a"/>
+      <path d="M-29 63H29L36 121H-36Z" fill="#b5a99d"/>
+      <ellipse cy="-1" rx="57" ry="78" fill="#d1c6b9"/>
+      <path d="M-58-5C-72-94-17-111 25-85 57-67 69-30 57 9L40-35C0-24-16-51-35-40Z" fill="#29272e"/>
+      <path d="M-35-3Q-23-10-11-3M11-3Q23-10 35-3" fill="none" stroke="#57515b" stroke-width="3" stroke-linecap="round"/>
+      <path d="M-4 8-9 29H3M-16 47Q0 55 16 47" fill="none" stroke="#8a7372" stroke-width="3" stroke-linecap="round"/>
+    </g>
+    <clipPath id="window"><rect x="0" y="0" width="330" height="410" rx="8"/></clipPath>
+  </defs>
+  <rect width="1020" height="600" fill="#151518"/>
+  <g transform="translate(155 85)" clip-path="url(#window)">
+    <rect width="330" height="410" fill="#c6c4bf"/>
+    <path d="M-20 280Q165 206 350 280V430H-20Z" fill="#71374d"/>
+    <use href="#portrait" transform="translate(165 158)"/>
+    <path d="M0 320Q155 269 330 340M0 359Q165 315 330 380" fill="none" stroke="#c0a4b2" stroke-width="2" opacity=".35"/>
+  </g>
+  <g transform="translate(535 85)" clip-path="url(#window)">
+    <rect width="330" height="410" fill="#c6c4bf"/>
+    <path d="M-20 280Q165 206 350 280V430H-20Z" fill="#94745c"/>
+    <use href="#portrait" transform="translate(165 158)"/>
+    <path d="M0 320Q155 269 330 340M0 359Q165 315 330 380" fill="none" stroke="#ded0bf" stroke-width="2" opacity=".35"/>
+  </g>
+  <g fill="none" stroke="#74717c"><rect x="155" y="85" width="330" height="410" rx="8"/><rect x="535" y="85" width="330" height="410" rx="8"/></g>
+  <g fill="#cfccd5" font-family="system-ui,sans-serif" font-size="14" letter-spacing="3"><text x="155" y="542">ONE PORTRAIT</text><text x="865" y="542" text-anchor="end">TWO COLORS</text></g>
+</svg>

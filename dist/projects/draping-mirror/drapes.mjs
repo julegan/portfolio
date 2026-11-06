@@ -1,6 +1,6 @@
-import { normalizeHex, toOKLCH, sample } from '../engine.mjs';
+import { normalizeHex, toOKLCH, sample } from './color.mjs';
 
-export const PALETTE_KEY = 'julieowens.colorlab.drapes.v1';
+export const PALETTE_KEY = 'julieowens.draping-mirror.palette.v1';
 export const DEFAULT_FRAME = Object.freeze({ x: 0.5, y: 0.42, zoom: 1 });
 
 // Keep the requested lightness and hue; reduce chroma until it fits sRGB.

@@ -26,9 +26,12 @@ async function comparisonChecks(browser, name, width) {
   page.on('pageerror', e => errors.push(e.message));
   page.on('request', request => {
     if (new URL(request.url()).origin !== origin || request.method() !== 'GET') unexpected.push(request.url());
+    assert(!new URL(request.url()).pathname.startsWith('/projects/color-lab/'), 'The mirror never requests picker assets');
   });
   try {
-    await page.goto(origin + '/projects/color-lab/draping/');
+    await page.goto(origin + '/projects/draping-mirror/');
+    assert.equal(await page.title(), 'Draping mirror — Julie Owens');
+    assert.equal(await page.locator('header a').getAttribute('href'), '/projects/');
     await page.waitForFunction(() => document.getElementById('source-tag').textContent === 'Illustrated sample');
     await audit(page, name + ' initial ' + width);
     const before = await facePixels(page);
@@ -47,6 +50,7 @@ async function comparisonChecks(browser, name, width) {
     await page.locator('#download-palette').click();
     const palettePath = await (await paletteDownload).path();
     const exported = JSON.parse(require('node:fs').readFileSync(palettePath, 'utf8'));
+    assert.equal(exported.format, 'draping-mirror-palette');
     assert.deepEqual(Object.keys(exported).sort(), ['colors', 'format', 'version']);
     assert.equal(exported.colors.length, 1);
 
@@ -78,6 +82,7 @@ async function comparisonChecks(browser, name, width) {
     assert.equal(shot.readUInt32BE(16), 1920); assert.equal(shot.readUInt32BE(20), 1320);
     const storage = await page.evaluate(async () => ({ local: { ...localStorage }, session: { ...sessionStorage }, databases: typeof indexedDB.databases === 'function' ? (await indexedDB.databases()).length : null }));
     assert.equal(Object.keys(storage.local).length, 1);
+    assert.deepEqual(Object.keys(storage.local), ['julieowens.draping-mirror.palette.v1']);
     assert(!JSON.stringify(storage).includes('data:image'));
     assert.deepEqual(storage.session, {});
     if (storage.databases !== null) assert.equal(storage.databases, 0);
@@ -115,7 +120,7 @@ async function cameraChecks(browser) {
   });
   const page = await context.newPage();
   try {
-    await page.goto(origin + '/projects/color-lab/draping/');
+    await page.goto(origin + '/projects/draping-mirror/');
     await page.locator('#start-camera').click();
     await page.waitForFunction(() => !document.getElementById('freeze').disabled);
     assert.equal(await page.locator('#download-comparison').isEnabled(), false);
@@ -149,7 +154,7 @@ async function fallbackChecks(browser) {
   });
   const page = await context.newPage();
   try {
-    await page.goto(origin + '/projects/color-lab/draping/');
+    await page.goto(origin + '/projects/draping-mirror/');
     await page.locator('#save-a').click();
     assert(await page.locator('#download-palette').isEnabled());
     assert.match(await page.locator('#palette-status').innerText(), /unavailable/);

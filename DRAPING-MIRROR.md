@@ -1,6 +1,10 @@
 # Draping mirror prototype
 
-Route: `/projects/color-lab/draping/`, linked from the Color Lab picker. Review through a portfolio PR; no deployment or merge is part of this change.
+Route: `/projects/draping-mirror/`, an independent project linked from the portfolio projects page. Review through a portfolio PR; no deployment or merge is part of this change.
+
+## Project boundary
+
+Draping mirror explores personal color through portraits and virtual drapes, with physical clothing and fabric as its context. Color Lab serves digital text-color selection and readability. These are independent sibling projects: no nested routes, cross-project navigation, stylesheet imports, JavaScript imports or shared saved palettes. Draping mirror owns its UI, color-coordinate math, vendor assets, palette key and exports under `dist/projects/draping-mirror/`. Its storage key is `julieowens.draping-mirror.palette.v1`; exported palettes use `draping-mirror-palette` version 1. Standard color science can inform both projects without giving them a shared product workflow.
 
 ## Experience
 
@@ -29,11 +33,11 @@ The managed browser preview can lack WebGL; in that case MediaPipe initializatio
 
 ## Sources
 
-- [CSS Color 4 / OKLCH](https://www.w3.org/TR/css-color-4/#ok-lab): shared engine, final sRGB values.
+- [CSS Color 4 / OKLCH](https://www.w3.org/TR/css-color-4/#ok-lab): project-local color-coordinate math, final sRGB values.
 - [MediaPipe Face Landmarker for Web](https://developers.google.com/edge/mediapipe/solutions/vision/face_landmarker/web_js): position landmarks, not identity recognition.
 - [NIST camera color error study](https://www.nist.gov/publications/color-error-digital-camera-image-capture-process): recorded colors depend on capture conditions.
 - [CIECAM16 simultaneous contrast research](https://doi.org/10.1002/col.22980): context effects are an exploration prompt, not a validated personal beauty score.
 
 ## Next decisions after trying it
 
-Choose a documented seasonal framework, assess how helpful the explanation language is, and decide whether hair/clothing segmentation materially improves the experience. Reuse existing Color Lab color math; keep personal images on-device.
+Choose a documented seasonal framework, assess how helpful the explanation language is, and decide whether hair/clothing segmentation materially improves the experience. Keep this personal-color experience independent from Color Lab and keep personal images on-device. Detailed mobile usability work follows Julie’s device feedback.

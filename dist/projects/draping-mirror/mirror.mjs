@@ -1,4 +1,4 @@
-import { normalizeHex, toOKLCH } from '../engine.mjs';
+import { normalizeHex, toOKLCH } from './color.mjs';
 import { PALETTE_KEY, DEFAULT_FRAME, STUDIES, fitColor, compareColors, portraitCrop, landmarkFrame, readPalette, samplePosition } from './drapes.mjs';
 
 const $ = id => document.getElementById(id);
@@ -372,7 +372,7 @@ $('portrait-a').addEventListener('click', event => {
   $('sample-x').value = Math.max(15, Math.min(85, x * 100)); $('sample-y').value = Math.max(12, Math.min(83, y * 100)); paint();
 });
 $('save-a').addEventListener('click', () => keep(0)); $('save-b').addEventListener('click', () => keep(1));
-$('download-palette').addEventListener('click', () => download(new Blob([JSON.stringify({ format: 'color-lab-palette', version: 1, colors: palette }, null, 2)], { type: 'application/json' }), 'color-lab-palette.json'));
+$('download-palette').addEventListener('click', () => download(new Blob([JSON.stringify({ format: 'draping-mirror-palette', version: 1, colors: palette }, null, 2)], { type: 'application/json' }), 'draping-mirror-palette.json'));
 $('download-comparison').addEventListener('click', () => {
   if (mode === 'camera' || !hasPortrait()) return;
   // Render fresh, without the inspection markers, before exporting.
@@ -381,8 +381,8 @@ $('download-comparison').addEventListener('click', () => {
   const ctx = canvas.getContext('2d'); ctx.fillStyle = '#151518'; ctx.fillRect(0, 0, canvas.width, canvas.height);
   ctx.drawImage(panels[0], 0, 0); ctx.drawImage(panels[1], 960, 0);
   ctx.fillStyle = '#F3F1EC'; ctx.font = '26px system-ui'; ctx.fillText(`A · ${colors[0]}`, 30, 1245); ctx.fillText(`B · ${colors[1]}`, 990, 1245);
-  ctx.fillStyle = '#CFCCD5'; ctx.font = '22px system-ui'; ctx.fillText(`Color Lab · ${mode === 'demo' ? 'Illustrated sample' : 'Same portrait in both views'} · Virtual draping preview`, 30, 1290);
-  canvas.toBlob(blob => { download(blob, 'color-lab-drape-comparison.png'); canvas.width = 0; canvas.height = 0; }, 'image/png');
+  ctx.fillStyle = '#CFCCD5'; ctx.font = '22px system-ui'; ctx.fillText(`Draping mirror · ${mode === 'demo' ? 'Illustrated sample' : 'Same portrait in both views'} · Virtual draping preview`, 30, 1290);
+  canvas.toBlob(blob => { download(blob, 'draping-mirror-comparison.png'); canvas.width = 0; canvas.height = 0; }, 'image/png');
   inspecting = prior; paint(); status('Comparison prepared for download. Your portrait has not been uploaded.');
 });
 document.addEventListener('visibilitychange', () => {

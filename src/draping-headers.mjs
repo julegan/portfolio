@@ -1,6 +1,6 @@
 // These routes only serve shipped app assets. No photo upload route exists.
 export function isDrapingPath(path) {
-  return path === '/projects/color-lab/draping' || path.startsWith('/projects/color-lab/draping/');
+  return path === '/projects/draping-mirror' || path.startsWith('/projects/draping-mirror/');
 }
 
 export async function drapingAsset(request, env) {
