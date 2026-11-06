@@ -39,7 +39,7 @@ async function explorerChecks(page,name,width){
  // label and a real hit area; rows may not collapse into overlapping colors.
  await page.locator('[data-group="colors"]').click();
  const layout=await page.evaluate(()=>{const d=document.getElementById('palette-explorer'),w=document.getElementById('wardrobe'),p=document.getElementById('portrait-explorer').getBoundingClientRect(),buttons=[...w.querySelectorAll('button')].map(b=>b.getBoundingClientRect());return{height:innerHeight,dialog:d.getBoundingClientRect().toJSON(),scrollHeight:w.scrollHeight,clientHeight:w.clientHeight,portrait:p.toJSON(),first:buttons[0].toJSON(),next:buttons[4].toJSON()};});
- assert(layout.first.height>=100);assert(layout.clientHeight>=101,'at least one complete chip and label fits');assert(layout.next.top>=layout.first.bottom,'chips do not overlap');assert(layout.scrollHeight>layout.clientHeight,'long collection has its own scroll area');assert(layout.portrait.top>=0&&layout.portrait.bottom<=layout.height);
+ assert(layout.first.height>=100);assert(layout.clientHeight>=101,'at least one complete chip and label fits: '+JSON.stringify(layout));assert(layout.next.top>=layout.first.bottom,'chips do not overlap');assert(layout.scrollHeight>layout.clientHeight,'long collection has its own scroll area');assert(layout.portrait.top>=0&&layout.portrait.bottom<=layout.height);
  await page.locator('#wardrobe button').last().focus();await audit(page,name+' explorer '+width);
  await page.locator('#close-explorer').click();assert.equal(await page.locator('#result-title').innerText(),'True Winter','browsing does not reclassify');
 }

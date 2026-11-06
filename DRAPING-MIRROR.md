@@ -26,11 +26,11 @@ Each home season has a full-range collection, plus separate True, thermal, depth
 
 ## Phone experience
 
-A single portrait with A/B swapping is the default. During a phone comparison, the question, portrait, named color chips, four observation choices and Continue share one viewport. Back, a readable stage name/count, Help and More are always visible. The phone view uses available viewport height rather than stacking the full page between questions. Short or zoomed screens can still scroll; browser zoom remains available, and select controls use 16px text to avoid iOS input zoom.
+A single portrait with A/B swapping is the default. During a phone comparison, the question, portrait, named color chips, four observation choices and Continue share one viewport. Back, a readable stage name/count, Help and Tools are always visible. The phone view uses available viewport height rather than stacking the full page between questions. Short or zoomed screens can still scroll; browser zoom remains available, and select controls use 16px text to avoid iOS input zoom.
 
 Help and occasional tools use native modal sheets with explicit Done controls, Escape support and focus restoration. These hold stronger practice, neutral rest, optional side-by-side comparison, saving/export, and a route back to portrait setup. A source change still resets observations. Detailed capture controls are kept on the setup screen.
 
-Seasonal exploration has its own full-screen phone view. The portrait and family/flow selectors remain visible while the chip collection scrolls below. Colors, Neutrals and Metals each have a clear collection button with a count. Chips include both the actual color/finish preview and a readable name. Previous drape reverses the last change, even across families, so users can test a neighboring season without repeatedly scrolling back to a distant portrait. It is available before the guided session and from the result.
+Seasonal exploration has its own full-screen phone view. The portrait and family/flow selectors remain visible while the chip collection scrolls below. Colors, Neutrals and Metals each have a clear collection button. Chips include both the actual color/finish preview and a readable name. Previous drape reverses the last change, even across families, so users can test a neighboring season without repeatedly scrolling back to a distant portrait. It is available before the guided session and from the result.
 
 ## Privacy and capture
 

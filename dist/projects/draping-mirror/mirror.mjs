@@ -157,7 +157,7 @@ function paintExplorer() {
 function renderWardrobe() {
   const family=$('palette-family').value, flow=$('palette-flow').value;
   const swatches=wardrobePalette(family,flow).filter(d=>d.group===collectionGroup);
-  $('wardrobe-note').textContent=collectionGroup==='metals' ? 'Simulated finishes. Try them here, then check real jewelry.' : 'Tap a chip to drape it. Scroll this collection for more.';
+  $('wardrobe-note').textContent=collectionGroup==='metals' ? 'Simulated finishes. Try them here, then check real jewelry.' : 'Tap a chip to drape it. Scroll for more.';
   document.querySelectorAll('[data-group]').forEach(button=>button.setAttribute('aria-pressed',String(button.dataset.group===collectionGroup)));
   $('wardrobe').replaceChildren(...swatches.map(drape => {
     const button=document.createElement('button'); button.type='button'; button.dataset.drape=drape.id; button.setAttribute('aria-label','Try '+drape.name); button.setAttribute('aria-pressed',String(drape.id===exploreDrape.id));
@@ -194,9 +194,10 @@ function persist() {
 function saveShown() { saveDrape(resting ? REST_DRAPE : (practice?.drapes ?? displayPair)[active]); }
 function saveDrape(drape, target='mirror-note') {
   if(palette.includes(drape.hex)){ $('palette-status').textContent='That color is already saved.'; $(target).textContent='That color is already in Saved colors.'; return; }
-  if(palette.length>=20){ $('palette-status').textContent='Your collection has 20 colors. Remove one before adding another.'; $('saved').open=true; $(target).textContent='Your collection has 20 colors. Open Saved colors & tools to remove one.'; return; }
+  if(palette.length>=20){ $('palette-status').textContent='Your collection has 20 colors. Remove one before adding another.'; $('saved').open=true; $(target).textContent='Your collection has 20 colors. Open Tools → Saved colors to remove one.'; return; }
   palette.push(drape.hex); persist(); paletteView();
-  $(target).textContent=storageAvailable ? `${drape.name} saved. Open Saved colors & tools to download or remove it.` : `${drape.name} kept for this session. Browser storage is unavailable; download it from Saved colors to keep a copy.`;
+  if(target==='explore-status') { $(target).textContent=storageAvailable ? `${drape.name} saved.` : 'Kept for this session. Download in Tools.'; return; }
+  $(target).textContent=storageAvailable ? `${drape.name} saved. Open Tools → Saved colors to download or remove it.` : `${drape.name} kept for this session. Browser storage is unavailable; download it from Saved colors to keep a copy.`;
 }
 function download(blob,filename) {
   if(!blob){status('The download could not be created. Try again.');return;}
