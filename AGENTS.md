@@ -4,7 +4,7 @@ Julie Owens directs and approves this independent, personal creative and profess
 
 ## Independent color projects
 
-Color Lab (`/projects/color-lab/`) is the accessible digital color picker and readability explorer. Draping mirror (`/projects/draping-mirror/`) is a separate personal-color project for portraits, clothing and virtual drapes. Keep their routes, navigation, styles, runtime code, saved palettes and product plans independent. Do not make personal color analysis a mode of Color Lab. See `DRAPING-MIRROR.md` for its scope and privacy model.
+Color Lab (`/projects/color-lab/`) is the accessible digital color picker and readability explorer. Draping mirror (`/projects/draping-mirror/`) is a separate personal-color project for portraits, clothing and virtual drapes. Keep their routes, navigation, styles, runtime code, saved palettes and product plans independent. Do not make personal color analysis a mode of Color Lab. Draping mirror uses a guided, phone-oriented consultation with original prepared drapes: strong comparisons first, then closer season/flow checks. Drapes are study materials independent of the portfolio UI palette; do not add hex pickers or brand-tint the drapes. Preserve uncertain observations rather than forcing a season, and keep photos on-device. See `DRAPING-MIRROR.md` for its scope and privacy model.
 
 ## SHOWS snapshot
 

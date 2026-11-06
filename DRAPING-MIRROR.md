@@ -1,43 +1,56 @@
-# Draping mirror prototype
+# Draping mirror: guided personal color session
 
-Route: `/projects/draping-mirror/`, an independent project linked from the portfolio projects page. Review through a portfolio PR; no deployment or merge is part of this change.
+Route: `/projects/draping-mirror/`, an independent project linked from the portfolio projects page. Changes are reviewed through a portfolio PR; Julie merges and publishes.
 
-## Project boundary
+## Product boundary and brief
 
-Draping mirror explores personal color through portraits and virtual drapes, with physical clothing and fabric as its context. Color Lab serves digital text-color selection and readability. These are independent sibling projects: no nested routes, cross-project navigation, stylesheet imports, JavaScript imports or shared saved palettes. Draping mirror owns its UI, color-coordinate math, vendor assets, palette key and exports under `dist/projects/draping-mirror/`. Its storage key is `julieowens.draping-mirror.palette.v1`; exported palettes use `draping-mirror-palette` version 1. Standard color science can inform both projects without giving them a shared product workflow.
+This experience guides a personal color consultation: prepare a portrait, explore undertone, establish a working home season, refine its flow, cross-check the observations, and explore finishing colors. It is independent from the digital accessibility picker. No nested routes, cross-project navigation, runtime imports, stylesheet imports or shared palettes connect the two projects.
 
-## Experience
+The interface retains the portfolio's soft black, neutral typography and controls. **Drapes are study materials, not brand colors.** Their hues, lightness, intensity and simulated finishes are independently chosen for each comparison. They must not be muted, recolored or constrained to the website theme.
 
-- Live front-camera mirror, local JPEG/PNG/WebP selection (HEIC if the browser can decode it), freeze frame, and explicit portrait clearing.
-- Shared portrait crop and unmodified central pixels in both drapes. Frozen comparisons stop camera capture. Backgrounding and leaving the page stop capture too.
-- On-demand face framing, with horizontal, vertical and zoom controls as a fallback. The portrait window is an oval crop, not a segmented clothing replacement. Room mapping and WebXR are not used.
-- Prepared depth and intensity studies, exploratory red/green/neutral pairs, custom hex colors and OKLCH fine tuning with sRGB fitting.
-- Separate measured color relationships, suggested visual experiments and session-only pair preferences. Feature sampling reports recorded pixels and lightness gaps. It does not establish an undertone, personal season, attractiveness, skin health or physical reflectance.
-- Saved colors and palette JSON contain only hex colors; comparison PNG is an explicit local download. Seasonal classification is deliberately undecided.
+The opening comparisons deliberately exaggerate differences. Later comparisons are closer. “Help me see the difference” provides face-focused guidance; subtler comparisons can temporarily switch to a stronger practice pair, whose observations never count toward the result. The visitor can record A, B, both, or uncertainty. Both drapes must have been shown before recording a comparison. A neutral rest and optional side-by-side view are available.
 
-## Privacy and delivery
+## Original collection and interpretation
 
-There is no upload API or server-side photo storage. A selected File is decoded locally through a blob URL, drawn to a bounded canvas, and released. The file input and blob URL are cleared. Portrait canvases are session memory and cleared on explicit removal and page exit. No service worker, IndexedDB, sessionStorage or localStorage portrait persistence is used. The page does not load the portfolio analytics script.
+`session.mjs` defines our original study collection in OKLCH, using project-local color-coordinate functions and chroma reduction to fit sRGB. No commercial drape kit, measured swatch collection, palette assets or proprietary instructions are copied. Names, coordinates, groupings, prompts and heuristics are authored here. Color values remain behind the interface; visitors use prepared named drapes rather than color inputs or hex codes.
 
-All runtime/model assets are pinned and served from this site, not a third-party CDN. Only a user-selected hex palette is persisted in localStorage. Browser/OS memory management is outside the app; this is not a forensic erasure guarantee.
+The four home directions use conventional seasonal vocabulary: warm/bright (Spring), cool/soft (Summer), warm/soft (Autumn), cool/bright (Winter). Three closer comparisons explore temperature, depth and intensity within the tentative home family. Possible refinement labels are True (balanced), Warm/Cool, Light/Deep, and Bright/Soft as appropriate to the home family, giving 16 possible working labels. These labels are an exploratory framework, **not a validated diagnostic instrument or an automatic assessment of a face**.
 
-The portfolio's global `camera=()` header remains intact. The existing Worker serves the new route with a replacement `camera=(self)` Permissions-Policy, other sensitive permissions disabled, a same-origin CSP, and GET/HEAD-only handling. The `ASSETS` binding serves shipped app files. No portrait request body is accepted or logged by the app. Actual Cloudflare response headers should be checked after the review merge.
+The result follows the visitor's recorded observations. Each of temperature and intensity needs at least two decisive observations and a margin of at least two to narrow a home season. Ties, skipped comparisons and both-work responses do not count as evidence for either direction. Mixed evidence is disclosed. A flow needs decisive responses to all three refinement comparisons; competing variants remain unresolved. True requires affirmative preference for the anchor in all three comparisons, rather than being assigned for uncertainty. If confirmation changes the home family, prior flow evidence is not reused for the new home.
+
+Changing an earlier response clears all subsequent branch-dependent observations. A new portrait resets the session. A practice result for the illustrated sample is explicitly identified as practice and cannot describe the visitor. Season suggestions include an explanation of the recorded pattern, a revisitable comparison history and original wardrobe exploration colors.
+
+The finishing stage includes whites, dark and middle neutrals, polished silver/gold previews, and satin rose-copper/champagne previews. These support wardrobe exploration and do not score the season. Metal gradients simulate appearance only; they do not reproduce physical reflections onto skin. Final exploration colors are distinct from the pronounced diagnostic comparisons.
+
+## Phone experience
+
+A single large portrait with A/B swapping is the default. At phone widths, the observation prompt appears before the mirror, followed by the response controls. Camera/photo setup is collapsible once a session begins. The setup instructions, detailed framing, learning guidance, saved collection and methodology disclose on demand. No floating overlay covers the portrait. The user can go back, revisit a result comparison, restart, or clear their portrait.
+
+## Privacy and capture
+
+Camera and local JPEG/PNG/WebP selection (HEIC when browser-supported) are retained. Camera capture must freeze before a guided comparison can begin. Freezing, backgrounding, clearing and leaving stop capture. Portraits and observations remain in memory; clearing, reloading and leaving discard them. No portrait, face landmarks or session responses are persisted. Source images are bounded to 1600 pixels on their longest dimension, decoded from local blob URLs and released. The file input is cleared.
+
+A shared source crop supplies unmodified central pixels in every drape. Transparent image regions get identical neutral backing, including where the oval overlaps the drape. The portrait window remains an oval crop, not clothing segmentation. Automatic face-position framing is optional and uses the pinned same-origin MediaPipe runtime/model in `vendor/`; manual position and zoom remain available.
+
+Only explicitly saved hex colors persist under `julieowens.draping-mirror.palette.v1`. Palette JSON contains format, version and hex colors only. PNG comparison downloads intentionally include the portrait. There are no analytics, third-party runtime requests, upload API, service worker, IndexedDB or portrait browser-storage records. Browser/OS memory management is not a forensic erasure guarantee.
+
+The Worker preserves the site-wide camera deny baseline and replaces it only for `/projects/draping-mirror` and descendants, with a same-origin CSP and GET/HEAD-only handling. Actual Cloudflare camera/CSP headers require deployed verification after Julie merges.
 
 ## Validation
 
 `node --test tests/draping.test.mjs tests/shows-feedback.test.mjs tests/security-headers.test.mjs tests/analytics-consent.test.mjs tests/shows-sync-workflow.test.mjs`
 
-The accessibility workflow also runs `node tests/draping-browser.cjs` with Playwright and axe in Chromium and WebKit at 1440, 390 and 320 CSS pixels. It checks unchanged portrait pixels, local image decoding, same-origin GET-only network activity, model initialization or its manual fallback, palette-only persistence, PNG/JSON exports, and camera lifecycle with a synthetic stream. These are browser-engine checks, not physical iPhone camera verification.
+The browser workflow runs `node tests/draping-browser.cjs` in Chromium and WebKit at 1440, 390 and 320 CSS pixels. It covers the full guided sequence, revising earlier observations, non-scoring practice drapes, unresolved outcomes, identical portrait pixels, transparent local images, PNG/JSON exports, palette-only persistence, camera lifecycle, blocked storage, denied camera access and automated accessibility checks. Real iPhone camera performance and human perception of these exploratory drapes need further device/practitioner review.
 
-The managed browser preview can lack WebGL; in that case MediaPipe initialization correctly falls back to manual framing. Physical Safari camera behavior and tracking performance need Julie's device review before treating this as a finished AR experience.
+## Research informing the interaction
 
-## Sources
+- [Colour Analysis Studio, Matthew's session](https://www.youtube.com/watch?v=jNjLgRpG4_Q), 2024-11-29. Available transcript: undertone comparisons from 0:50; broad intensity at 8:40; subgroup comparisons at 11:47; balanced/True discussion at 20:23; neighboring-group cross-checks at 21:14. The analyst reverses drape order and guides observations of the face. This informs interaction research, not scientific validation or a copied drape inventory.
+- [Colour Analysis Studio, Marina's session](https://www.youtube.com/watch?v=IU_Uq3oN5qQ), 2025-01-04. Published chapters include undertone (0:56), intensity (7:50), subgroups (10:24), and borderline checks (21:03). Chapter/description research, not a claim of a complete watched session.
+- [NIST: Color Error in the Digital Camera Image Capture Process](https://www.nist.gov/publications/color-error-digital-camera-image-capture-process). Capture errors vary with camera and illumination; virtual previews do not recreate real fabric's illumination effects.
+- [NIST: Color and Appearance](https://www.nist.gov/publications/chapter-10-color-and-appearance). Material appearance includes illumination/viewing conditions, gloss and other effects beyond a flat color.
+- [CSS Color 4 / OKLCH](https://www.w3.org/TR/css-color-4/#ok-lab). Color-coordinate math describes the shipped colors, not a person's season.
+- [MediaPipe Face Landmarker for Web](https://developers.google.com/edge/mediapipe/solutions/vision/face_landmarker/web_js). Framing uses position landmarks, not identity recognition or color classification.
 
-- [CSS Color 4 / OKLCH](https://www.w3.org/TR/css-color-4/#ok-lab): project-local color-coordinate math, final sRGB values.
-- [MediaPipe Face Landmarker for Web](https://developers.google.com/edge/mediapipe/solutions/vision/face_landmarker/web_js): position landmarks, not identity recognition.
-- [NIST camera color error study](https://www.nist.gov/publications/color-error-digital-camera-image-capture-process): recorded colors depend on capture conditions.
-- [CIECAM16 simultaneous contrast research](https://doi.org/10.1002/col.22980): context effects are an exploration prompt, not a validated personal beauty score.
+## Next review
 
-## Next decisions after trying it
-
-Choose a documented seasonal framework, assess how helpful the explanation language is, and decide whether hair/clothing segmentation materially improves the experience. Keep this personal-color experience independent from Color Lab and keep personal images on-device. Detailed mobile usability work follows Julie’s device feedback.
+Review the phone flow and compare real portraits in several lighting conditions. Assess whether the strong-to-subtle progression and observation language are useful across varied complexions, whether the original drapes sufficiently distinguish their intended dimension, and how a practitioner would revise the sequence and evidence heuristic. Add segmentation only if it materially improves the draping experience. Keep personal images on-device and the project independent.

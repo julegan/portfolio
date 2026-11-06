@@ -1,410 +1,229 @@
-import { normalizeHex, toOKLCH } from './color.mjs';
-import { PALETTE_KEY, DEFAULT_FRAME, STUDIES, fitColor, compareColors, portraitCrop, landmarkFrame, readPalette, samplePosition } from './drapes.mjs';
+import { PALETTE_KEY, readPalette, fitColor } from './drapes.mjs';
+import { toOKLCH } from './color.mjs';
+import { STAGES, HOMES, REST_DRAPE, questionsFor, allQuestions, recordAnswer, profile, wardrobePalette } from './session.mjs';
+import { createPortrait } from './portrait.mjs';
 
 const $ = id => document.getElementById(id);
-const video = $('camera');
+let stage = 0, index = 0, answers = {}, active = 0, resting = false, comparing = false, practice = null;
+let seen = new Set([0]), palette = [], storageAvailable = true, capture;
+let displayPair = [REST_DRAPE, REST_DRAPE], resultPreview = null;
 const panels = [$('portrait-a'), $('portrait-b')];
-// Personal image data lives only in these in-memory canvases, never storage.
-const photo = document.createElement('canvas');
-const liveFrame = document.createElement('canvas');
-const portrait = document.createElement('canvas');
-portrait.width = 560; portrait.height = 740;
-liveFrame.width = 0; liveFrame.height = 0;
-let mode = 'empty', stream = null, frame = { ...DEFAULT_FRAME }, manualFrame = false;
-let colors = [...STUDIES.reds.colors], names = [...STUDIES.reds.names];
-let palette = [], storageAvailable = true, inspecting = false;
-let operation = 0, animation = 0, trackerPromise, tracker = null, lastDetection = 0, lastPaint = 0;
-const votes = new Map();
 const status = message => { $('source-status').textContent = message; };
-const trackingStatus = message => { if ($('tracking-status').textContent !== message) $('tracking-status').textContent = message; };
-const hasPortrait = () => mode !== 'empty';
-const pairKey = () => colors.join('/');
-const samplePoint = () => samplePosition(Number($('sample-x').value) / 100, Number($('sample-y').value) / 100);
+const current = () => questionsFor(stage, answers)[index];
+const canAssess = () => capture && capture.mode !== 'empty' && capture.mode !== 'camera';
+const sources = { empty: 'No portrait', demo: 'Illustrated sample', photo: 'Your photo · session only', camera: 'Live camera', frozen: 'Frozen frame · camera off' };
 
-function releaseCamera() {
-  cancelAnimationFrame(animation);
-  animation = 0;
-  stream?.getTracks().forEach(track => track.stop());
-  stream = null;
-  video.pause(); video.srcObject = null;
-}
-
-function sourceControls() {
-  $('freeze').disabled = mode !== 'camera' || !liveFrame.width;
-  $('clear').disabled = mode === 'empty';
-  $('download-comparison').disabled = !hasPortrait() || mode === 'camera';
-  $('inspect').disabled = !hasPortrait() || mode === 'camera';
-  $('auto-frame').disabled = !hasPortrait() || mode === 'demo';
-  $('start-camera').disabled = mode === 'camera';
-  $('source-tag').textContent = { demo: 'Illustrated sample', photo: 'Your photo · session only', camera: 'Live camera', frozen: 'Frozen frame · camera off', empty: 'No portrait' }[mode];
-}
-
-function frameControls() {
-  $('frame-x').value = frame.x * 100;
-  $('frame-y').value = frame.y * 100;
-  $('frame-scale').value = frame.zoom * 100;
-}
-
-function drawPanel(canvas, color) {
-  const ctx = canvas.getContext('2d');
-  // A fixed 2x backing store keeps both portrait windows pixel-identical.
-  if (canvas.width !== 960) { canvas.width = 960; canvas.height = 1200; }
-  ctx.setTransform(2, 0, 0, 2, 0, 0);
-  ctx.clearRect(0, 0, 480, 600);
-  ctx.fillStyle = '#D4D1CC'; ctx.fillRect(0, 0, 480, 600);
-  ctx.fillStyle = color;
-  ctx.beginPath(); ctx.moveTo(0, 352); ctx.quadraticCurveTo(240, 267, 480, 352); ctx.lineTo(480, 600); ctx.lineTo(0, 600); ctx.closePath(); ctx.fill();
-  // The same unmodified image is clipped into the same oval in both views.
-  ctx.save(); ctx.beginPath(); ctx.ellipse(240, 216, 140, 185, 0, 0, Math.PI * 2); ctx.clip();
-  // Transparent PNG areas get an identical neutral backing, including where
-  // the window overlaps the drape. A drape must never bleed into the portrait.
-  ctx.fillStyle = '#D4D1CC'; ctx.fillRect(100, 31, 280, 370);
-  if (hasPortrait()) ctx.drawImage(portrait, 100, 31, 280, 370);
-  else {
-    ctx.fillStyle = '#39373D'; ctx.fillRect(100, 31, 280, 370);
-    ctx.fillStyle = '#DFDCE5'; ctx.font = '16px system-ui'; ctx.textAlign = 'center'; ctx.fillText('Add a portrait', 240, 215);
+function metallicFill(ctx, drape) {
+  const { lightness: l, chroma: c, hue: h } = toOKLCH(drape.hex);
+  const gradient = ctx.createLinearGradient(0, 250, 480, 570);
+  const amount = drape.finish === 'polished' ? .24 : .12;
+  for (const [stop, shift] of [[0,-amount],[.25,amount*.4],[.39,-amount*.5],[.55,amount],[.7,-amount*.3],[1,amount*.5]]) {
+    gradient.addColorStop(stop, fitColor(Math.max(.08,Math.min(.98,l+shift)),c,h).hex);
   }
-  ctx.restore();
-  ctx.strokeStyle = '#151518'; ctx.lineWidth = 1.3; ctx.beginPath(); ctx.ellipse(240, 216, 140, 185, 0, 0, Math.PI * 2); ctx.stroke();
-  if (inspecting && hasPortrait() && mode !== 'camera') {
-    const point = samplePoint();
-    const x = 100 + point.x * 280;
-    const y = 31 + point.y * 370;
-    ctx.beginPath(); ctx.arc(x, y, 6, 0, Math.PI * 2); ctx.strokeStyle = '#FFF'; ctx.lineWidth = 4; ctx.stroke(); ctx.strokeStyle = '#151518'; ctx.lineWidth = 2; ctx.stroke();
-  }
+  return gradient;
 }
-
+function drawPanel(canvas, drape) {
+  const ctx = canvas.getContext('2d'); ctx.setTransform(2,0,0,2,0,0); ctx.clearRect(0,0,480,600);
+  // Surface colors are study content; interface theme colors never tint them.
+  ctx.fillStyle = '#D4D1CC'; ctx.fillRect(0,0,480,600);
+  ctx.fillStyle = drape.finish === 'matte' ? drape.hex : metallicFill(ctx,drape);
+  ctx.beginPath(); ctx.moveTo(0,352); ctx.quadraticCurveTo(240,267,480,352); ctx.lineTo(480,600); ctx.lineTo(0,600); ctx.closePath(); ctx.fill();
+  // Fixed, quiet folds are confined to the cloth, below the portrait window.
+  ctx.save(); ctx.strokeStyle = '#FFFFFF18'; ctx.lineWidth = 1;
+  for (let y = 438; y < 600; y += 65) { ctx.beginPath(); ctx.moveTo(0,y); ctx.quadraticCurveTo(235,y-50,480,y+15); ctx.stroke(); } ctx.restore();
+  ctx.save(); ctx.beginPath(); ctx.ellipse(240,216,140,185,0,0,Math.PI*2); ctx.clip();
+  // The same neutral backing also protects transparent portrait pixels.
+  ctx.fillStyle = '#D4D1CC'; ctx.fillRect(100,31,280,370); capture?.draw(ctx); ctx.restore();
+  ctx.strokeStyle = '#65615B'; ctx.lineWidth = .7; ctx.beginPath(); ctx.ellipse(240,216,140,185,0,0,Math.PI*2); ctx.stroke();
+}
 function paint() {
-  if (hasPortrait()) {
-    const source = mode === 'camera' ? liveFrame : photo;
-    if (source.width > 0 && source.height > 0) {
-      const crop = portraitCrop(source.width, source.height, frame);
-      const ctx = portrait.getContext('2d', { willReadFrequently: true });
-      ctx.clearRect(0, 0, portrait.width, portrait.height);
-      ctx.save();
-      // Front camera behaves like a mirror, including in the frozen image.
-      if (mode === 'camera' || mode === 'frozen') { ctx.translate(portrait.width, 0); ctx.scale(-1, 1); }
-      ctx.drawImage(source, crop.x, crop.y, crop.width, crop.height, 0, 0, portrait.width, portrait.height);
-      ctx.restore();
-    }
-  }
-  panels.forEach((panel, index) => drawPanel(panel, colors[index]));
-  featureAnalysis();
+  const pair = practice?.drapes ?? displayPair;
+  drawPanel(panels[0],resting ? REST_DRAPE : pair[active]); drawPanel(panels[1],resting ? REST_DRAPE : pair[1-active]);
+  $('caption-current').textContent = resting ? REST_DRAPE.name : pair[active].name;
+  $('caption-other').textContent = resting ? REST_DRAPE.name : pair[1-active].name;
+  $('drape-letter').textContent = stage === 0 || resting ? '—' : active === 0 ? 'A' : 'B';
+  $('other-letter').textContent = active === 0 ? 'B' : 'A';
+  $('finish-current').textContent = !resting && pair[active].finish !== 'matte' ? 'Metallic preview' : '';
+  $('name-a').textContent = pair[0].name; $('name-b').textContent = pair[1].name;
+  $('show-a').setAttribute('aria-pressed',String(active === 0 && !resting)); $('show-b').setAttribute('aria-pressed',String(active === 1 && !resting));
+  $('rest').setAttribute('aria-pressed',String(resting));
 }
-
-function featureAnalysis() {
-  const show = inspecting && hasPortrait() && mode !== 'camera';
-  $('feature-comparison').hidden = !show;
-  if (!show) return;
-  const position = samplePoint();
-  const x = Math.round(position.x * (portrait.width - 1));
-  const y = Math.round(position.y * (portrait.height - 1));
-  const pixels = portrait.getContext('2d', { willReadFrequently: true }).getImageData(x - 2, y - 2, 5, 5).data;
-  const rgb = [0, 0, 0];
-  for (let i = 0; i < pixels.length; i += 4) rgb.forEach((_, channel) => { rgb[channel] += pixels[i + channel]; });
-  const hex = '#' + rgb.map(channel => Math.round(channel / 25).toString(16).padStart(2, '0')).join('').toUpperCase();
-  const point = toOKLCH(hex);
-  const gaps = colors.map(color => Math.abs(toOKLCH(color).lightness - point.lightness) * 100);
-  $('sample-status').textContent = `Recorded sample: ${hex}${mode === 'demo' ? ' · illustrated sample, not a person' : ''}.`;
-  $('feature-comparison').textContent = `Image sample ${hex}: the lightness gap is ${gaps[0].toFixed(1)} points to A and ${gaps[1].toFixed(1)} to B. ${Math.abs(gaps[0] - gaps[1]) < 1 ? 'Both drapes have a similar lightness difference from this sample.' : `${gaps[0] > gaps[1] ? 'A' : 'B'} has the stronger light–dark separation from this sample.`} This describes recorded pixels; it does not measure a change in your face or decide which effect suits you.`;
-}
-
-async function loadTracker() {
-  if (tracker) return tracker;
-  if (!trackerPromise) {
-    trackingStatus('Loading face framing on this device… Manual controls remain available.');
-    trackerPromise = (async () => {
-      const { FilesetResolver, FaceLandmarker } = await import('./vendor/vision_bundle.mjs');
-      const files = await FilesetResolver.forVisionTasks(new URL('vendor/wasm', import.meta.url).href);
-      tracker = await FaceLandmarker.createFromOptions(files, {
-        baseOptions: { modelAssetPath: new URL('vendor/face_landmarker.task', import.meta.url).href, delegate: 'CPU' },
-        runningMode: 'VIDEO', numFaces: 1, outputFaceBlendshapes: false, outputFacialTransformationMatrixes: false
-      });
-      return tracker;
-    })().catch(error => { trackerPromise = null; throw error; });
-  }
-  return trackerPromise;
-}
-
-function findFrame(source, smooth = false) {
-  if (!tracker || manualFrame || mode === 'empty' || mode === 'demo') return;
-  const detection = tracker.detectForVideo(source, performance.now());
-  const next = landmarkFrame(detection.faceLandmarks[0], source.width, source.height);
-  if (next) {
-    for (const key of ['x', 'y', 'zoom']) frame[key] = smooth ? frame[key] * .65 + next[key] * .35 : next[key];
-    frameControls(); trackingStatus('Face framing is active. Adjusting a framing slider switches to manual control.');
-  } else trackingStatus('No single face found. Try facing the camera or use the framing controls.');
-}
-
-async function autoFrame() {
-  const token = operation;
-  manualFrame = false; frame = { ...DEFAULT_FRAME }; frameControls(); paint();
-  try {
-    await loadTracker();
-    if (token !== operation || !hasPortrait()) return;
-    findFrame(mode === 'camera' ? liveFrame : photo); paint();
-  } catch (_) { trackingStatus('Automatic framing is unavailable here. Use the framing controls to position your portrait.'); }
-}
-
-function cameraLoop(now) {
-  if (mode !== 'camera') return;
-  if (video.readyState >= 2 && now - lastPaint > 45) {
-    lastPaint = now;
-    const width = Math.min(960, video.videoWidth);
-    const height = Math.round(width * video.videoHeight / video.videoWidth);
-    if (liveFrame.width !== width || liveFrame.height !== height) { liveFrame.width = width; liveFrame.height = height; }
-    liveFrame.getContext('2d').drawImage(video, 0, 0, width, height);
-    $('freeze').disabled = false;
-    if (now - lastDetection > 180 && tracker && !manualFrame) {
-      lastDetection = now;
-      try { findFrame(liveFrame, true); } catch (_) { manualFrame = true; trackingStatus('Face tracking paused. Use the framing controls.'); }
-    }
-    paint();
-  }
-  animation = requestAnimationFrame(cameraLoop);
-}
-
-async function startCamera() {
-  const token = ++operation;
-  releaseCamera();
-  liveFrame.width = 0; liveFrame.height = 0;
-  if (!navigator.mediaDevices?.getUserMedia) { status('Camera access needs a supported browser and HTTPS. You can choose a photo instead.'); return; }
-  status('Waiting for camera permission…'); $('start-camera').disabled = true; $('clear').disabled = false;
-  try {
-    const acquired = await navigator.mediaDevices.getUserMedia({ video: { facingMode: 'user', width: { ideal: 960 }, height: { ideal: 720 } }, audio: false });
-    if (token !== operation) { acquired.getTracks().forEach(track => track.stop()); return; }
-    stream = acquired; video.srcObject = acquired;
-    acquired.getVideoTracks().forEach(track => track.addEventListener('ended', () => { if (mode === 'camera') freezeFrame('Camera connection ended. The last frame is ready to compare.'); }, { once: true }));
-    await video.play();
-    if (token !== operation) { acquired.getTracks().forEach(track => track.stop()); return; }
-    photo.width = 0; photo.height = 0;
-    mode = 'camera'; inspecting = false; $('inspect').setAttribute('aria-pressed', 'false');
-    manualFrame = false; frame = { ...DEFAULT_FRAME }; frameControls(); sourceControls();
-    status('Live mirror. Face the camera in even light; freeze a frame for comparisons and downloads.');
-    animation = requestAnimationFrame(cameraLoop);
-    loadTracker().then(() => { if (token !== operation) return; trackingStatus('Face framing is ready.'); }).catch(() => { trackingStatus('Face framing could not load. Use the framing controls.'); });
-  } catch (error) {
-    if (token !== operation) return;
-    releaseCamera(); sourceControls();
-    status(error.name === 'NotAllowedError' ? 'Camera permission was not granted. You can allow it in browser settings or choose a photo.' : 'The camera could not start. Close other camera apps or choose a photo.');
-  }
-}
-
-function freezeFrame(message = 'Frame frozen. The camera is off; both drapes use this identical image.') {
-  if (mode !== 'camera') return;
-  if (!liveFrame.width) { clearPortrait(); status('Camera stopped before a frame was available. Start it again when you’re ready.'); return; }
-  photo.width = liveFrame.width; photo.height = liveFrame.height;
-  photo.getContext('2d').drawImage(liveFrame, 0, 0);
-  releaseCamera(); mode = 'frozen'; ++operation;
-  sourceControls(); paint(); status(message);
-}
-
-async function choosePhoto(file) {
-  if (!file) return;
-  if (file.size > 20 * 1024 * 1024) { status('Choose an image smaller than 20 MB.'); return; }
-  if (!/^image\/(jpeg|png|webp|heic|heif)$/.test(file.type)) { status('Choose a JPEG, PNG or WebP photo. Convert HEIC to JPEG if your browser cannot open it.'); return; }
-  const token = ++operation;
-  releaseCamera();
-  // Decode directly from the local File. No FormData, fetch or server upload.
-  status('Opening your photo on this device…');
-  const url = URL.createObjectURL(file);
-  let image;
-  try {
-    image = new Image(); image.src = url; await image.decode();
-    if (token !== operation) return;
-    const factor = Math.min(1, 1600 / Math.max(image.naturalWidth, image.naturalHeight));
-    photo.width = Math.max(1, Math.round(image.naturalWidth * factor)); photo.height = Math.max(1, Math.round(image.naturalHeight * factor));
-    photo.getContext('2d').drawImage(image, 0, 0, photo.width, photo.height);
-    mode = 'photo'; frame = { ...DEFAULT_FRAME }; manualFrame = false;
-    sourceControls(); frameControls(); paint();
-    status('Your photo is ready. It stays in this session; clear it at any time.');
-    autoFrame();
-  } catch (_) {
-    if (token !== operation) return;
-    // A previously live source has been stopped, so never leave a live UI behind.
-    if (mode === 'camera') clearPortrait();
-    sourceControls(); status('This image could not be opened. Try a JPEG, PNG or WebP photo.');
-  } finally { URL.revokeObjectURL(url); if (image) image.src = ''; }
-}
-
-function clearPortrait() {
-  ++operation; releaseCamera(); mode = 'empty'; inspecting = false;
-  photo.width = 0; photo.height = 0; liveFrame.width = 0; liveFrame.height = 0;
-  portrait.getContext('2d').clearRect(0, 0, portrait.width, portrait.height);
-  $('photo').value = ''; $('inspect').setAttribute('aria-pressed', 'false');
-  $('sample-status').textContent = 'The portrait and its sample have been cleared.';
-  sourceControls(); paint(); status('Portrait cleared. Your saved colors do not contain a photo.');
-}
-
-function preference() {
-  const chosen = votes.get(pairKey());
-  document.querySelectorAll('[data-vote]').forEach(button => button.setAttribute('aria-pressed', String(button.dataset.vote === chosen)));
-  const text = { a: 'You preferred A for this pair.', b: 'You preferred B for this pair.', both: 'You liked both options.', unsure: 'You’re still exploring this pair.' }[chosen];
-  $('preference-status').textContent = text ? `${text} This impression stays in this session.` : 'There is no score to chase. Look for the effect you want.';
-}
-
-function explain() {
-  const result = compareColors(...colors);
-  $('measured-heading').textContent = Math.abs(result.lightness) > 8 ? 'Notice the light–dark difference' : Math.abs(result.chroma) > .015 ? 'Notice the change in intensity' : 'Look for the smaller differences';
-  $('measured-body').textContent = `${result.lightnessText} ${result.chromaText} These are properties of the drapes, calculated from their final colors.`;
-  $('color-measurements').textContent = result.first && ['A', 'B'].map((side, i) => {
-    const point = i ? result.second : result.first;
-    return `${side} ${colors[i]}\nL ${(point.lightness * 100).toFixed(1)} · C ${point.chroma.toFixed(3)} · h ${point.chroma < .005 ? 'neutral' : point.hue.toFixed(1) + '°'}`;
-  }).join('\n\n');
-  $('suggestion-heading').textContent = Math.abs(result.lightness) > 8 ? 'Which framing do you want?' : 'Try changing just the intensity';
-  $('suggestion-body').textContent = Math.abs(result.lightness) > 8 ? 'Compare the lighter and deeper framing. Does one bring the emphasis you want to your face? Use the feature sample to inspect light–dark separation. Stronger separation is an effect to explore, not a higher score.' : 'Compare the quieter and more vivid framing. Surrounding colors can influence how the same face appears. Match B’s hue and lightness to A to focus the comparison on chroma.';
-  featureAnalysis();
-}
-
-function syncColors(syncSliders = true) {
-  ['a', 'b'].forEach((side, index) => {
-    $('color-' + side).value = colors[index]; $('hex-' + side).value = colors[index];
-    $('caption-' + side).textContent = names[index]; $('code-' + side).textContent = colors[index];
-    $('hex-' + side).removeAttribute('aria-invalid');
+function observations() {
+  const q = current(), ready = canAssess() && seen.size === 2 && !practice && !resting;
+  document.querySelectorAll('[data-answer]').forEach(button => {
+    button.disabled = !ready;
+    button.setAttribute('aria-pressed',String(q && answers[q.id] === button.dataset.answer));
+    if (['a','b'].includes(button.dataset.answer)) button.textContent = q?.axis === 'finish' ? `I’d choose ${button.dataset.answer.toUpperCase()}` : `${button.dataset.answer.toUpperCase()} looks clearer`;
   });
-  if (syncSliders) {
-    const point = toOKLCH(colors[$('edit-side').value === 'a' ? 0 : 1]);
-    $('drape-lightness').value = point.lightness; $('drape-chroma').value = point.chroma;
+  $('next').disabled = !ready || !q || !Object.hasOwn(answers,q.id);
+  $('answer-hint').textContent = practice ? 'Practice only. Return to the closer comparison to record an observation.' : !canAssess() ? 'Add a photo or freeze a camera frame to compare.' : resting ? 'Return to A or B when your eye is ready.' : seen.size < 2 ? 'See both drapes, then record what you notice.' : 'You’ve seen both. What do you notice in your face?';
+}
+function stepView() {
+  $('steps').replaceChildren(...STAGES.map((name,i) => {
+    const li = document.createElement('li'); if (i === stage) li.setAttribute('aria-current','step');
+    li.setAttribute('aria-label',`${i+1}. ${name}${i === stage ? ', current step' : ''}`);
+    const n = document.createElement('span'); n.className = 'step-number'; n.textContent = i+1; n.setAttribute('aria-hidden','true');
+    const label = document.createElement('span'); label.className = 'step-name'; label.textContent = name;
+    li.append(n,label); return li;
+  }));
+}
+function renderQuestion() {
+  const q = current(); if (!q) return;
+  displayPair = q.drapes; resultPreview = null;
+  $('question-stage').textContent = `${STAGES[stage]} · ${index+1} of ${questionsFor(stage,answers).length}${q.subtle ? ' · closer comparison' : ''}`;
+  $('question-title').textContent = q.title; $('question-prompt').textContent = q.prompt; $('question-guide').textContent = q.guide;
+  $('mirror-context').textContent = q.purpose;
+  $('stronger').hidden = !q.subtle;
+  const selected = answers[q.id];
+  $('observation-status').textContent = selected ? ({ a:'You recorded clearer framing with A.', b:'You recorded clearer framing with B.', both:'You recorded that both work. This leaves the direction open.', unsure:'You left this comparison open. The session will preserve that uncertainty.' }[selected]) : '';
+  $('next').textContent = stage === 5 && index === questionsFor(5,answers).length-1 ? 'See my direction' : 'Continue';
+  const p = profile(answers);
+  $('branch-note').textContent = stage === 3 ? `Flow explores smaller differences within a working seasonal family. ${p.leader ? `Your observations currently point toward ${p.leader.name}.` : 'Your home season is still open; these comparisons are exploratory.'}` : stage === 5 ? 'These finishing touches help you explore colors and metals. They do not change the season suggestion.' : '';
+  paint(); observations();
+}
+function render(focus = false) {
+  $('main').classList.toggle('in-session',stage > 0); stepView();
+  $('prepare').hidden = stage !== 0; $('question').hidden = stage === 0 || stage === 6; $('results').hidden = stage !== 6;
+  $('drape-switch').hidden = stage === 0; $('view-tools').hidden = stage === 0;
+  $('practice-tag').hidden = !practice; $('exit-practice').hidden = !practice;
+  if (stage === 0) { displayPair = [REST_DRAPE,REST_DRAPE]; $('mirror-context').textContent = 'Your starting portrait'; paint(); }
+  else if (stage === 6) renderResults();
+  else renderQuestion();
+  if (focus) (stage === 6 ? $('result-title') : stage > 0 ? $('question-title') : $('begin')).focus({preventScroll:true});
+}
+function resetSession() {
+  stage = 0; index = 0; answers = {}; active = 0; seen = new Set([0]); practice = null; resting = false; resultPreview = null;
+  $('guidance').hidden = true; $('help').setAttribute('aria-expanded','false');
+  $('source-tools').open = true; render();
+}
+function go(stageNumber, questionIndex = 0) {
+  stage = stageNumber; index = questionIndex; active = 0; seen = new Set(comparing ? [0,1] : [0]); practice = null; resting = false;
+  $('guidance').hidden = true; $('help').setAttribute('aria-expanded','false'); $('source-tools').open = false;
+  render(true);
+  $('steps').scrollIntoView({block:'start',behavior:'instant'});
+}
+function evidenceLine(label,evidence,positive,negative) {
+  const p = document.createElement('p');
+  const undecided = 4-evidence.total;
+  p.textContent = `${label}: ${positive} ${evidence.positive} · ${negative} ${evidence.negative} · undecided ${undecided}.`;
+  return p;
+}
+function renderResults() {
+  const p = profile(answers), demo = capture?.mode === 'demo';
+  $('result-kicker').textContent = demo ? 'PRACTICE RESULT · ILLUSTRATION' : 'YOUR WORKING DIRECTION';
+  $('result-title').textContent = p.label;
+  $('result-description').textContent = demo ? 'This result describes your choices for the illustration, not your own coloring. Try a personal portrait for your session.' : p.leader ? `Your recorded comparisons point toward ${p.label}. This is an exploratory suggestion from your observations, ready to check with real fabric.` : 'Your observations do not yet distinguish a season consistently. Keep the possibilities open, review a comparison, or try another portrait in more even light.';
+  $('evidence').replaceChildren(evidenceLine('Undertone',p.temperature,'warm','cool'),evidenceLine('Intensity',p.intensity,'bright','soft'));
+  if (p.mixed) { const note=document.createElement('p'); note.textContent='Some comparisons pointed in different directions. Treat this as a starting point and revisit the differences.'; $('evidence').append(note); }
+  $('flow-description').textContent = !p.leader ? 'Flow remains open while the home season is unresolved.' : p.flow ? `The closer comparisons suggest ${p.flow.kind === 'balanced' ? 'a balanced expression of this season' : `the ${p.flow.label.split(' ')[0].toLowerCase()} direction within this family`}. This prototype has not been validated against professional analysis.` : 'The closer comparisons did not single out one flow. We can suggest the home season without forcing a subtype.';
+  $('palette-family').value = p.leader?.id ?? p.candidates[0].id;
+  $('review-list').replaceChildren();
+  for (const q of allQuestions(answers).filter(q => q.axis !== 'finish')) {
+    const li=document.createElement('li');
+    const choice=answers[q.id], description = choice === 'a' || choice === 'b' ? q.drapes[choice === 'a' ? 0:1].name : choice === 'both' ? 'both work' : 'undecided';
+    const button=document.createElement('button'); button.type='button'; button.className='text-button'; button.textContent=`${q.title} — ${description}`;
+    button.addEventListener('click',() => { for(let s=1;s<=4;s++){ const i=questionsFor(s,answers).findIndex(item=>item.id===q.id); if(i>=0){go(s,i);break;} } });
+    li.append(button); $('review-list').append(li);
   }
-  const point = toOKLCH(colors[$('edit-side').value === 'a' ? 0 : 1]);
-  $('lightness-value').textContent = (point.lightness * 100).toFixed(1);
-  $('chroma-value').textContent = point.chroma.toFixed(3);
-  $('pair-description').textContent = STUDIES[$('pair-study').value].description;
-  $('color-error').textContent = '';
-  preference(); explain(); paint();
+  renderWardrobe();
+  if (!resultPreview) { displayPair=[REST_DRAPE,REST_DRAPE]; $('mirror-context').textContent='Explore your finishing colors'; }
+  paint();
 }
-
-function setColor(index, value) {
-  const normalized = normalizeHex(value);
-  if (!normalized) { $('hex-' + (index ? 'b' : 'a')).setAttribute('aria-invalid', 'true'); $('color-error').textContent = 'Enter a hex color with 3 or 6 digits, such as #126C54.'; return; }
-  colors[index] = normalized; names[index] = 'Your color'; $('pair-study').value = 'custom'; syncColors();
+function renderWardrobe() {
+  const family=$('palette-family').value, p=profile(answers);
+  const swatches=wardrobePalette(family,p.leader?.id === family ? p.flow?.kind : null);
+  $('wardrobe-note').textContent=`Original ${HOMES[family].name} exploration colors. Tap one to try it; “Save this color” adds it to your personal collection.`;
+  $('wardrobe').replaceChildren(...swatches.map(drape => {
+    const button=document.createElement('button'); button.type='button'; button.setAttribute('aria-label','Try '+drape.name);
+    const swatch=document.createElement('span'); swatch.style.backgroundColor=drape.hex; swatch.setAttribute('aria-hidden','true');
+    const label=document.createElement('span'); label.textContent=drape.name; button.append(swatch,label);
+    button.addEventListener('click',()=>{ resultPreview=drape; displayPair=[drape,REST_DRAPE]; active=0; resting=false; $('mirror-context').textContent='Wardrobe exploration · '+HOMES[family].name; paint(); }); return button;
+  }));
 }
-
 function paletteView() {
-  $('palette').replaceChildren();
-  $('download-palette').disabled = palette.length === 0;
-  if (!palette.length && !$('palette-status').textContent) $('palette-status').textContent = 'Keep a color from either drape to start your palette.';
-  for (const color of palette) {
-    const chip = document.createElement('div'); chip.className = 'palette-chip';
-    const swatch = document.createElement('span'); swatch.className = 'chip-color'; swatch.style.backgroundColor = color;
-    const label = document.createElement('p'); label.textContent = color;
-    const actions = document.createElement('div'); actions.className = 'chip-actions';
-    const use = document.createElement('button'); use.type = 'button'; use.className = 'quiet'; use.textContent = 'Use'; use.setAttribute('aria-label', `Use ${color} for drape ${$('edit-side').value.toUpperCase()}`);
-    use.addEventListener('click', () => setColor($('edit-side').value === 'a' ? 0 : 1, color));
-    const remove = document.createElement('button'); remove.type = 'button'; remove.className = 'quiet'; remove.textContent = 'Remove'; remove.setAttribute('aria-label', `Remove ${color} from palette`);
-    remove.addEventListener('click', () => { palette = palette.filter(value => value !== color); persistPalette(); paletteView(); $('palette-status').textContent = `Removed ${color}.`; $('download-palette').focus(); });
-    actions.append(use, remove); chip.append(swatch, label, actions); $('palette').append(chip);
-  }
+  $('palette-count').textContent=palette.length; $('download-palette').disabled=palette.length===0;
+  $('palette').replaceChildren(...palette.map((hex,i)=>{
+    const chip=document.createElement('div'); chip.className='palette-chip';
+    const color=document.createElement('span'); color.className='chip-color'; color.style.backgroundColor=hex;
+    const known=[...allQuestions(answers).flatMap(q=>q.drapes),...Object.keys(HOMES).flatMap(h=>wardrobePalette(h))].find(d=>d.hex===hex);
+    const label=document.createElement('p'); label.textContent=known?.name ?? `Saved color ${i+1}`;
+    const actions=document.createElement('div'); actions.className='chip-actions';
+    const remove=document.createElement('button'); remove.type='button'; remove.className='quiet'; remove.textContent='Remove'; remove.setAttribute('aria-label','Remove '+label.textContent);
+    remove.addEventListener('click',()=>{ palette=palette.filter(c=>c!==hex); persist(); paletteView(); $('download-palette').focus(); });
+    actions.append(remove); chip.append(color,label,actions); return chip;
+  }));
 }
-
-function persistPalette() {
-  if (storageAvailable) {
-    try { localStorage.setItem(PALETTE_KEY, JSON.stringify(palette)); }
-    catch (_) { storageAvailable = false; }
-  }
-  $('palette-status').textContent = storageAvailable ? 'Colors saved in this browser. No portrait is saved.' : 'Browser storage is unavailable. Colors will last for this session; download the palette to keep them.';
+function persist() {
+  if(storageAvailable) try {localStorage.setItem(PALETTE_KEY,JSON.stringify(palette));} catch(_){storageAvailable=false;}
+  $('palette-status').textContent=storageAvailable ? 'Color saved in this browser. No portrait or session observations are stored.' : 'Browser storage is unavailable. Download your colors to keep them after this session.';
 }
-
-function keep(index) {
-  if (palette.includes(colors[index])) { $('palette-status').textContent = 'That color is already in your palette.'; return; }
-  if (palette.length >= 20) { $('palette-status').textContent = 'Your palette has 20 colors. Remove one before adding another.'; return; }
-  palette.push(colors[index]); persistPalette(); paletteView();
+function saveShown() {
+  const drape=resting ? REST_DRAPE : (practice?.drapes ?? displayPair)[active];
+  if(palette.includes(drape.hex)){ $('palette-status').textContent='That color is already saved.'; return; }
+  if(palette.length>=20){ $('palette-status').textContent='Your collection has 20 colors. Remove one before adding another.'; $('saved').open=true; return; }
+  palette.push(drape.hex); persist(); paletteView();
+  $('mirror-note').textContent=`${drape.name} saved. Open Saved colors below to download or remove it.`;
 }
-
-function download(blob, filename) {
-  if (!blob) { status('The download could not be created. Try again.'); return; }
-  const url = URL.createObjectURL(blob);
-  const link = document.createElement('a'); link.href = url; link.download = filename;
-  document.body.append(link); link.click(); link.remove();
-  setTimeout(() => URL.revokeObjectURL(url), 30000);
+function download(blob,filename) {
+  if(!blob){status('The download could not be created. Try again.');return;}
+  const url=URL.createObjectURL(blob), a=document.createElement('a'); a.href=url; a.download=filename;
+  document.body.append(a); a.click(); a.remove(); setTimeout(()=>URL.revokeObjectURL(url),30000);
 }
-
-$('start-camera').addEventListener('click', startCamera);
-$('freeze').addEventListener('click', () => freezeFrame());
-$('clear').addEventListener('click', clearPortrait);
-$('photo').addEventListener('change', event => { const file = event.target.files[0]; event.target.value = ''; choosePhoto(file); });
-$('auto-frame').addEventListener('click', autoFrame);
-for (const id of ['frame-x', 'frame-y', 'frame-scale']) $(id).addEventListener('input', () => {
-  manualFrame = true; frame = { x: Number($('frame-x').value) / 100, y: Number($('frame-y').value) / 100, zoom: Number($('frame-scale').value) / 100 };
-  trackingStatus('Manual framing. Use “Find face & reset framing” to return to automatic framing.'); paint();
-});
-$('pair-study').addEventListener('change', () => {
-  const study = STUDIES[$('pair-study').value];
-  if (study.colors) { colors = [...study.colors]; names = [...study.names]; }
-  syncColors(); $('gamut-status').textContent = 'Adjust one property to explore its effect.';
-});
-for (const [index, side] of ['a', 'b'].entries()) {
-  $('color-' + side).addEventListener('input', event => setColor(index, event.target.value));
-  $('hex-' + side).addEventListener('change', event => setColor(index, event.target.value));
-}
-$('edit-side').addEventListener('change', () => { syncColors(); paletteView(); });
-for (const id of ['drape-lightness', 'drape-chroma']) $(id).addEventListener('input', () => {
-  const index = $('edit-side').value === 'a' ? 0 : 1;
-  const point = toOKLCH(colors[index]);
-  const fitted = fitColor(Number($('drape-lightness').value), Number($('drape-chroma').value), point.hue);
-  colors[index] = fitted.hex; names[index] = 'Your color'; $('pair-study').value = 'custom';
-  syncColors(false);
-  $('gamut-status').textContent = fitted.fitted ? 'Intensity was reduced to keep this hue and lightness inside sRGB. The numbers show the displayed color.' : 'The requested color fits inside sRGB.';
-});
-$('isolate-chroma').addEventListener('click', () => {
-  const a = toOKLCH(colors[0]), b = toOKLCH(colors[1]);
-  const fitted = fitColor(a.lightness, b.chroma, a.hue);
-  setColor(1, fitted.hex);
-  $('gamut-status').textContent = fitted.fitted ? 'B now matches A’s hue and lightness approximately; its chroma was reduced to fit sRGB.' : 'B now matches A’s hue and lightness approximately, retaining its own chroma.';
-});
-document.querySelectorAll('[data-vote]').forEach(button => button.addEventListener('click', () => { votes.set(pairKey(), button.dataset.vote); preference(); }));
-$('show-numbers').addEventListener('click', () => {
-  const expanded = $('show-numbers').getAttribute('aria-expanded') !== 'true';
-  $('show-numbers').setAttribute('aria-expanded', String(expanded)); $('color-measurements').hidden = !expanded;
-  $('show-numbers').textContent = expanded ? 'Hide the numbers' : 'Show the numbers';
-});
-$('inspect').addEventListener('click', () => {
-  inspecting = !inspecting; $('inspect').setAttribute('aria-pressed', String(inspecting));
-  $('portrait-a').dataset.inspecting = String(inspecting); paint();
-});
-for (const id of ['sample-x', 'sample-y']) $(id).addEventListener('input', paint);
-$('portrait-a').addEventListener('click', event => {
-  if (!inspecting || mode === 'camera') return;
-  const box = event.currentTarget.getBoundingClientRect();
-  const x = ((event.clientX - box.left) / box.width * 480 - 100) / 280;
-  const y = ((event.clientY - box.top) / box.height * 600 - 31) / 370;
-  if (((x - .5) / .5) ** 2 + ((y - .5) / .5) ** 2 > 1) return;
-  $('sample-x').value = Math.max(15, Math.min(85, x * 100)); $('sample-y').value = Math.max(12, Math.min(83, y * 100)); paint();
-});
-$('save-a').addEventListener('click', () => keep(0)); $('save-b').addEventListener('click', () => keep(1));
-$('download-palette').addEventListener('click', () => download(new Blob([JSON.stringify({ format: 'draping-mirror-palette', version: 1, colors: palette }, null, 2)], { type: 'application/json' }), 'draping-mirror-palette.json'));
-$('download-comparison').addEventListener('click', () => {
-  if (mode === 'camera' || !hasPortrait()) return;
-  // Render fresh, without the inspection markers, before exporting.
-  const prior = inspecting; inspecting = false; paint();
-  const canvas = document.createElement('canvas'); canvas.width = 1920; canvas.height = 1320;
-  const ctx = canvas.getContext('2d'); ctx.fillStyle = '#151518'; ctx.fillRect(0, 0, canvas.width, canvas.height);
-  ctx.drawImage(panels[0], 0, 0); ctx.drawImage(panels[1], 960, 0);
-  ctx.fillStyle = '#F3F1EC'; ctx.font = '26px system-ui'; ctx.fillText(`A · ${colors[0]}`, 30, 1245); ctx.fillText(`B · ${colors[1]}`, 990, 1245);
-  ctx.fillStyle = '#CFCCD5'; ctx.font = '22px system-ui'; ctx.fillText(`Draping mirror · ${mode === 'demo' ? 'Illustrated sample' : 'Same portrait in both views'} · Virtual draping preview`, 30, 1290);
-  canvas.toBlob(blob => { download(blob, 'draping-mirror-comparison.png'); canvas.width = 0; canvas.height = 0; }, 'image/png');
-  inspecting = prior; paint(); status('Comparison prepared for download. Your portrait has not been uploaded.');
-});
-document.addEventListener('visibilitychange', () => {
-  if (document.hidden) {
-    if (mode === 'camera') freezeFrame('Camera stopped while this page was in the background. Your last frame is ready to compare.');
-    else { ++operation; releaseCamera(); sourceControls(); }
+capture=createPortrait($('camera'),{
+  onFrame:paint,
+  onTracking:message=>{ $('tracking-status').textContent=message; },
+  onStatus:status,
+  onState(state,reason){
+    if(reason==='source'||reason==='clear') resetSession();
+    $('source-tag').textContent=sources[state.mode];
+    $('freeze').hidden=state.mode!=='camera'; $('clear').hidden=!state.waiting&&(state.mode==='demo'||state.mode==='empty'); $('clear').textContent=state.waiting?'Cancel camera':'Clear portrait'; $('use-sample').hidden=state.mode==='demo';
+    $('freeze').disabled=!state.canFreeze; $('clear').disabled=state.mode==='empty'&&!state.waiting;
+    $('start-camera').disabled=state.mode==='camera'||Boolean(state.waiting);
+    $('auto-frame').disabled=state.mode==='empty'||state.mode==='demo';
+    $('download-comparison').disabled=!state.ready||state.mode==='camera';
+    $('begin').disabled=!state.ready||Boolean(state.waiting)||(state.mode==='camera'&&!state.canFreeze);
+    $('begin').textContent=state.mode==='demo'?'Begin with illustration':state.mode==='camera'?'Freeze & begin':'Begin my session';
+    for(const [id,key,factor] of [['frame-x','x',100],['frame-y','y',100],['frame-scale','zoom',100]]) $(id).value=state.frame[key]*factor;
+    if(stage>0&&stage<6) observations();
   }
 });
-window.addEventListener('pagehide', () => { clearPortrait(); tracker?.close(); tracker = null; trackerPromise = null; });
-
-try { palette = readPalette(localStorage.getItem(PALETTE_KEY)); }
-catch (_) {
-  try { localStorage.getItem(PALETTE_KEY); $('palette-status').textContent = 'The saved palette could not be read. You can start a new palette.'; }
-  catch (_) { storageAvailable = false; $('palette-status').textContent = 'Browser storage is unavailable. You can still explore and download your palette.'; }
-}
-paletteView(); syncColors(); sourceControls();
-// A clearly labeled, repo-native illustration makes exploration possible before
-// a visitor grants camera access or chooses a personal photo.
-const initialOperation = operation;
-const demo = new Image(); demo.src = 'sample.svg';
-demo.decode().then(() => {
-  if (initialOperation !== operation || mode !== 'empty') return;
-  photo.width = demo.naturalWidth; photo.height = demo.naturalHeight; photo.getContext('2d').drawImage(demo, 0, 0);
-  mode = 'demo'; frameControls(); sourceControls(); paint();
-}).catch(() => { status('Choose a photo or use the live camera to begin.'); });
+$('start-camera').addEventListener('click',()=>capture.startCamera()); $('freeze').addEventListener('click',()=>capture.freeze());
+$('clear').addEventListener('click',()=>{ $('photo').value='';capture.clear(); });
+$('use-sample').addEventListener('click',()=>capture.sample());
+$('photo').addEventListener('change',event=>{ const file=event.target.files[0]; event.target.value=''; capture.choosePhoto(file); });
+$('auto-frame').addEventListener('click',()=>capture.autoFrame());
+for(const id of ['frame-x','frame-y','frame-scale']) $(id).addEventListener('input',()=>capture.setFrame({x:Number($('frame-x').value)/100,y:Number($('frame-y').value)/100,zoom:Number($('frame-scale').value)/100}));
+$('begin').addEventListener('click',()=>{ if(capture.mode==='camera') capture.freeze(); if(canAssess())go(1); });
+for(const [i,id] of ['show-a','show-b'].entries()) $(id).addEventListener('click',()=>{active=i;resting=false;seen.add(i);paint();observations();});
+$('rest').addEventListener('click',()=>{resting=!resting;paint();observations();});
+$('compare-view').addEventListener('click',()=>{
+  comparing=!comparing; $('second-view').hidden=!comparing; $('portrait-pair').classList.toggle('comparing',comparing);
+  $('compare-view').setAttribute('aria-pressed',String(comparing)); $('compare-view').textContent=comparing?'One mirror':'Side by side';
+  if(comparing)seen=new Set([0,1]);paint();observations();
+});
+$('help').addEventListener('click',()=>{ const open=$('guidance').hidden; $('guidance').hidden=!open; $('help').setAttribute('aria-expanded',String(open)); });
+$('stronger').addEventListener('click',()=>{
+  const q=current();
+  practice=q.id.includes('depth')?{drapes:[{...REST_DRAPE,name:'Deep blue-green',hex:fitColor(.32,.05,195).hex},{...REST_DRAPE,name:'Light blue-green',hex:fitColor(.84,.05,195).hex}]}:questionsFor(q.axis==='temperature'||q.id.includes('temperature')?1:2,answers)[0];
+  active=0;resting=false; $('practice-tag').hidden=false; $('exit-practice').hidden=false; paint();observations();
+});
+$('exit-practice').addEventListener('click',()=>{practice=null;active=0;seen=new Set(comparing?[0,1]:[0]);$('practice-tag').hidden=true;$('exit-practice').hidden=true;paint();observations();});
+document.querySelectorAll('[data-answer]').forEach(button=>button.addEventListener('click',()=>{answers=recordAnswer(answers,current().id,button.dataset.answer);renderQuestion();}));
+$('next').addEventListener('click',()=>{ if($('next').disabled)return; if(index+1<questionsFor(stage,answers).length)go(stage,index+1);else go(stage+1); });
+$('back').addEventListener('click',()=>{if(index>0)go(stage,index-1);else if(stage>1)go(stage-1,questionsFor(stage-1,answers).length-1);else{stage=0;render();$('source-tools').open=true;}});
+$('restart').addEventListener('click',()=>{resetSession();$('begin').focus();});
+$('palette-family').addEventListener('change',()=>{resultPreview=null;displayPair=[REST_DRAPE,REST_DRAPE];active=0;resting=false;$('mirror-context').textContent='Wardrobe exploration · '+HOMES[$('palette-family').value].name;renderWardrobe();paint();});
+$('save-shown').addEventListener('click',saveShown);
+$('download-palette').addEventListener('click',()=>download(new Blob([JSON.stringify({format:'draping-mirror-palette',version:1,colors:palette},null,2)],{type:'application/json'}),'draping-mirror-palette.json'));
+$('download-comparison').addEventListener('click',()=>{
+  if(!canAssess())return;
+  const pair=practice?.drapes??displayPair, canvas=document.createElement('canvas');canvas.width=1920;canvas.height=1320;
+  const ctx=canvas.getContext('2d');ctx.fillStyle='#151518';ctx.fillRect(0,0,1920,1320);
+  const a=document.createElement('canvas'),b=document.createElement('canvas');a.width=b.width=960;a.height=b.height=1200;
+  drawPanel(a,pair[0]);drawPanel(b,pair[1]);ctx.drawImage(a,0,0);ctx.drawImage(b,960,0);
+  ctx.fillStyle='#F3F1EC';ctx.font='26px system-ui';ctx.fillText('A · '+pair[0].name,30,1245);ctx.fillText('B · '+pair[1].name,990,1245);
+  ctx.fillStyle='#CFCCD5';ctx.font='22px system-ui';ctx.fillText('Draping mirror · '+(capture.mode==='demo'?'Illustrated practice':'Same portrait in both views')+' · Virtual drapes',30,1290);
+  canvas.toBlob(blob=>{download(blob,'draping-mirror-comparison.png');canvas.width=canvas.height=a.width=a.height=b.width=b.height=0;},'image/png');
+});
+try{palette=readPalette(localStorage.getItem(PALETTE_KEY));}catch(_){try{localStorage.getItem(PALETTE_KEY);$('palette-status').textContent='The saved colors could not be read. You can start a new collection.';}catch(_){storageAvailable=false;$('palette-status').textContent='Browser storage is unavailable. Download your colors to keep them.';}}
+paletteView();render();capture.sample();
