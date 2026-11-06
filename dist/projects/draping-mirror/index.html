@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#151518">
+  <meta name="description" content="A guided personal color session. Compare prepared virtual drapes, learn what to notice, and explore your season and palette. Photos stay on your device.">
+  <title>Draping mirror — Julie Owens</title>
+  <link rel="icon" href="../favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="mirror.css">
+  <script type="module" src="mirror.mjs"></script>
+</head>
+<body>
+<a class="skip" href="#main">Skip to the draping session</a>
+<header class="site-header"><a href="/projects/">← All projects</a><span>Personal color / an experiment</span></header>
+<main id="main">
+  <div class="masthead"><h1>Draping mirror</h1><button id="open-tools" class="quiet" type="button" aria-label="Saved colors and session tools">Tools</button></div>
+  <p id="intro" class="intro">A guided session in personal color. Compare prepared drapes and learn what to notice.</p>
+  <nav aria-label="Session progress"><ol id="steps" class="steps"></ol></nav>
+  <details id="source-tools" open class="source-tools">
+    <summary>Your portrait <span id="source-tag">Loading illustration…</span></summary>
+    <div class="source-bar"><button id="start-camera" type="button">Use camera</button><label class="file-button" for="photo">Choose photo<input id="photo" type="file" accept="image/jpeg,image/png,image/webp,image/heic,image/heif"></label><button id="freeze" type="button" class="quiet" disabled>Freeze frame</button><button id="clear" type="button" class="quiet" disabled>Clear portrait</button><button id="use-sample" type="button" class="text-button">Use illustration</button></div>
+    <p class="small">Photos and video stay on your device for this session. Only colors you explicitly save remain in this browser.</p>
+    <p id="source-status" class="small" role="status" aria-live="polite">Loading an illustrated portrait so you can try the process.</p>
+    <details class="framing"><summary>Adjust portrait framing</summary><div class="frame-controls"><div><label for="frame-x">Left / right</label><input id="frame-x" type="range" min="0" max="100" value="50"></div><div><label for="frame-y">Up / down</label><input id="frame-y" type="range" min="0" max="100" value="42"></div><div><label for="frame-scale">Zoom</label><input id="frame-scale" type="range" min="70" max="400" value="100"></div></div><button id="auto-frame" class="quiet" type="button" disabled>Find face</button><p id="tracking-status" class="small" role="status">Framing controls work without automatic tracking.</p></details>
+  </details>
+  <noscript>This session needs JavaScript. Camera and photo processing happen in your browser.</noscript>
+  <div class="session-layout">
+    <section class="mirror-workspace" aria-label="Draping mirror">
+      <div class="mirror-heading"><span id="mirror-context">Your starting portrait</span><span id="practice-tag" hidden>Practice only</span></div>
+      <div id="portrait-pair" class="portrait-pair">
+        <figure><canvas id="portrait-a" width="960" height="1200" aria-label="Portrait with the current drape. The portrait stays unchanged as drapes are swapped."></canvas><figcaption><span id="drape-letter" class="letter">—</span><span id="caption-current">Neutral cape</span><span id="finish-current" class="finish-label"></span></figcaption></figure>
+        <figure id="second-view" hidden><canvas id="portrait-b" width="960" height="1200" aria-label="The same portrait with the other drape for comparison."></canvas><figcaption><span id="other-letter" class="letter">B</span><span id="caption-other"></span></figcaption></figure>
+      </div>
+      <div id="drape-switch" class="drape-switch" role="group" aria-label="Swap the prepared drapes" hidden><button type="button" id="show-a" aria-pressed="true">Show A<span id="name-a"></span></button><button type="button" id="show-b" aria-pressed="false">Show B<span id="name-b"></span></button></div>
+
+      <button id="exit-practice" type="button" class="quiet" hidden>Return to the closer comparison</button>
+    </section>
+    <section class="consultation" aria-label="Your guided session">
+      <div id="prepare">
+        <p class="eyebrow">BEFORE WE BEGIN</p><h2>Ready to compare?</h2>
+        <p>Choose a portrait, then compare one pair at a time: undertone, home season, and flow.</p>
+        <button id="begin" type="button" disabled>Begin with illustration</button><button id="browse-before" class="quiet browse-button" type="button" disabled>Explore the seasonal drapes</button>
+        <details class="setup-guide"><summary>Get your lighting &amp; portrait ready</summary><ul class="prep-list"><li><strong>Even, neutral light.</strong> Face a window; avoid mixed lighting and strong shadows.</li><li><strong>A clear view of your face.</strong> Move hair away and use a photo without filters or makeup where practical.</li><li><strong>One steady portrait.</strong> Freeze the camera before comparing, so every drape frames the same image.</li></ul></details>
+        <p class="small">Use your own portrait for a personal session, or the illustration for practice.</p>
+      </div>
+      <div id="question" hidden>
+        <div class="question-intro"><div class="question-topline"><button id="back" type="button" class="text-button" aria-label="Back to the previous comparison">← Back</button><p id="question-stage" class="eyebrow"></p><button id="help" class="text-button" type="button" aria-expanded="false" aria-controls="guidance">Help</button><button id="question-tools" class="text-button" type="button">Tools</button></div><h2 id="question-title" tabindex="-1"></h2><p id="question-prompt" class="question-prompt"></p></div><div class="question-actions">
+        <p id="answer-hint" class="small" role="status">See both drapes, then record what you notice.</p>
+        <div id="observations" class="observations" role="group" aria-label="Record your observation"><button type="button" data-answer="a">A looks clearer</button><button type="button" data-answer="b">B looks clearer</button><button type="button" data-answer="both">Both work</button><button type="button" data-answer="unsure">Not sure</button></div>
+        <p id="observation-status" class="small" role="status"></p>
+        <div class="session-navigation"><button id="next" type="button" disabled>Continue</button></div>
+        </div>
+      </div>
+      <div id="results" hidden>
+        <p id="result-kicker" class="eyebrow"></p><h2 id="result-title" tabindex="-1"></h2><p id="result-description"></p>
+        <div id="evidence" class="evidence"></div><p id="flow-description" class="small"></p>
+        <details id="review"><summary>Review the comparisons behind this</summary><ol id="review-list"></ol></details>
+        <div class="result-check"><h3>Does it hold across more colors?</h3><p>Try several hues, neutrals and metals from your home season and its flows. Compare neighboring families too; one favorite drape is only a starting point.</p><button id="browse-results" type="button">Try the seasonal drapes</button></div>
+        <button id="restart" type="button" class="quiet">Start another session</button>
+      </div>
+    </section>
+  </div>
+  <details class="method"><summary>About the session &amp; your privacy</summary>
+    <p>This is a guided experiment in personal color. Its working season and flow suggestions come from the comparisons you record. It does not inspect your face to classify you. Conflicting answers, ties and missing observations remain uncertain; they do not become a more precise result.</p>
+    <p>The drapes are our own prepared color studies, independent of the interface’s palette and any commercial draping kit. The opening comparisons are intentionally pronounced; refinement and confirmation use smaller differences. Neutrals and simulated metals explore personal preferences and do not decide your season.</p>
+    <p>The same unmodified portrait is framed by each drape. A screen does not reproduce fabric or jewelry reflecting light onto skin. The oval window is a crop, not clothing replacement. Cameras, lighting and displays affect color; compare your working direction with real fabric.</p>
+    <p>Portraits stay in browser memory. Clearing, reloading or leaving discards the portrait and session observations. Only colors you explicitly save go into browser storage. Downloading a comparison deliberately creates a portrait file on your device. There are no analytics or photo uploads on this page.</p>
+    <p>Optional automatic framing downloads a face-position model from this site, about 23 MB on first use. Processing stays on the device; manual framing remains available.</p>
+    <p><a href="https://www.youtube.com/watch?v=jNjLgRpG4_Q">Practitioner session: undertone through refinement</a> · <a href="https://www.youtube.com/watch?v=IU_Uq3oN5qQ">Practitioner session: checking neighboring groups</a> · <a href="https://www.nist.gov/publications/color-error-digital-camera-image-capture-process">Research on camera color accuracy</a></p>
+  </details>
+</main>
+<footer><a href="/projects/">All projects</a><span>A guided experiment in personal color.</span></footer>
+<dialog id="guidance" class="sheet" aria-labelledby="help-title">
+  <div class="sheet-heading"><h2 id="help-title">What to look for</h2><button id="close-help" class="quiet" type="button">Done</button></div>
+  <p id="question-guide"></p><p class="small">Compare A → B → A. Watch your face, and give your eye time. “Not sure” is a useful observation.</p>
+  <button id="stronger" type="button" class="quiet">Practice a stronger difference</button><p id="branch-note" class="small"></p>
+</dialog>
+<dialog id="session-tools" class="sheet" aria-labelledby="tools-title">
+  <div class="sheet-heading"><h2 id="tools-title">Session tools</h2><button id="close-tools" class="quiet" type="button">Done</button></div>
+  <div id="view-tools" class="view-tools" hidden><button id="rest" type="button" class="quiet" aria-pressed="false">Rest in neutral</button><button id="compare-view" type="button" class="quiet" aria-pressed="false">Side by side</button><button id="save-shown" class="quiet" type="button">Save this color</button></div>
+  <p id="mirror-note" class="small mirror-note" role="status" aria-live="polite"></p>
+  <button id="download-comparison" class="text-button" type="button" disabled>Download this comparison · PNG</button><button id="change-portrait" class="text-button" type="button">Change portrait or framing</button>
+  <details id="saved" class="saved"><summary>Saved colors <span id="palette-count">0</span></summary><p class="small">A personal collection, saved only when you choose. Download a copy to keep it if browser data is cleared.</p><p id="palette-status" class="small" role="status"></p><div id="palette" class="palette"></div><button id="download-palette" class="quiet" type="button" disabled>Download saved colors · JSON</button></details>
+</dialog>
+<dialog id="palette-explorer" class="explorer" aria-labelledby="explorer-title">
+  <div class="explorer-heading"><h2 id="explorer-title">Seasonal drapes</h2><button id="close-explorer" class="quiet" type="button">Done</button></div>
+  <div class="collection-choices"><div><label for="palette-family">Home season</label><select id="palette-family"><option value="spring">Spring</option><option value="summer">Summer</option><option value="autumn">Autumn</option><option value="winter">Winter</option></select></div><div><label for="palette-flow">Home range or flow</label><select id="palette-flow"></select></div></div>
+  <div class="explorer-mirror"><canvas id="portrait-explorer" width="960" height="1200" aria-label="Your unchanged portrait with a selected seasonal drape."></canvas><p id="explore-caption" role="status">Choose a drape below</p><div class="explorer-actions"><button id="explore-previous" type="button" class="quiet" aria-label="Return to the previous drape" disabled>Previous</button><button id="explore-rest" type="button" class="quiet" aria-label="Rest with the neutral cape">Rest</button><button id="explore-save" type="button">Save color</button></div><p id="explore-status" class="small" role="status"></p></div>
+  <div class="collection-browser"><div id="collection-groups" class="collection-groups" role="group" aria-label="Drape collection"><button type="button" data-group="colors" aria-pressed="true">Colors</button><button type="button" data-group="neutrals" aria-pressed="false">Neutrals</button><button type="button" data-group="metals" aria-pressed="false">Metals</button></div><p id="wardrobe-note" class="small"></p><div id="wardrobe" class="wardrobe" tabindex="0" role="region" aria-label="Seasonal drapes; scroll for more colors"></div></div>
+  <p class="explorer-footnote">Original exploration sets. Metallics simulate a finish. Browsing does not change your session result.</p>
+</dialog>
+<video id="camera" autoplay muted playsinline hidden></video>
+</body></html>
