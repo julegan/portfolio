@@ -5,7 +5,7 @@
   "assets": {
     "directory": "./dist",
     "binding": "ASSETS",
-    "run_worker_first": ["/api/shows/feedback*"]
+    "run_worker_first": ["/api/shows/feedback*", "/projects/color-lab/draping", "/projects/color-lab/draping/*"]
   },
   "previews": {}
 }

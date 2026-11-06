@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#151518">
+  <meta name="description" content="A private virtual draping mirror. Compare colors around the same portrait, explore the differences and keep a personal palette.">
+  <title>Draping mirror · Color Lab — Julie Owens</title>
+  <link rel="icon" href="../../favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="../lab.css">
+  <link rel="stylesheet" href="mirror.css">
+  <script type="module" src="mirror.mjs"></script>
+</head>
+<body>
+  <a class="skip" href="#main">Skip to the draping mirror</a>
+  <header><a href="../">← Color Lab</a><a href="/projects/">All projects</a></header>
+  <main id="main">
+    <div class="title-line"><p class="eyebrow">COLOR LAB / PERSONAL COLOR</p><span class="prototype">Prototype 01</span></div>
+    <h1>Draping mirror</h1>
+    <p class="intro">One portrait. Two colors. See what changes.</p>
+    <div class="source-bar" aria-label="Choose a portrait source">
+      <button id="start-camera" type="button">Use live camera</button>
+      <label class="file-button" for="photo">Choose a photo<input id="photo" type="file" accept="image/jpeg,image/png,image/webp,image/heic,image/heif"></label>
+      <button id="freeze" class="quiet" type="button" disabled>Freeze frame</button>
+      <button id="clear" class="quiet" type="button" disabled>Clear portrait</button>
+    </div>
+    <p class="privacy-note">On your device, for this session. Photos and video are never uploaded. Only colors you choose to save stay in this browser.</p>
+    <p id="source-status" class="status" role="status" aria-live="polite">Exploring an illustrated sample. Add your own portrait whenever you’re ready.</p>
+    <noscript>This mirror needs JavaScript. Camera and photo processing happen in your browser.</noscript>
+
+    <div class="mirror-layout">
+      <section class="mirror-workspace" aria-labelledby="mirror-title">
+        <div class="section-heading"><h2 id="mirror-title">Compare the drapes</h2><span id="source-tag" class="source-tag">Illustrated sample</span></div>
+        <div class="portrait-pair">
+          <figure><canvas id="portrait-a" width="480" height="600" aria-label="Portrait surrounded by drape A. Use the sample controls below to inspect a feature."></canvas><figcaption><span class="letter">A</span><span id="caption-a">Cranberry</span><span id="code-a">#8C244A</span></figcaption></figure>
+          <figure><canvas id="portrait-b" width="480" height="600" aria-label="The identical portrait surrounded by drape B."></canvas><figcaption><span class="letter">B</span><span id="caption-b">Clay</span><span id="code-b">#B86B46</span></figcaption></figure>
+        </div>
+        <div class="comparison-votes" role="group" aria-label="Your preference for this pair">
+          <span>Your impression</span><button type="button" data-vote="a" aria-pressed="false">Prefer A</button><button type="button" data-vote="b" aria-pressed="false">Prefer B</button><button type="button" data-vote="both" aria-pressed="false">Both</button><button type="button" data-vote="unsure" aria-pressed="false">Unsure</button>
+        </div>
+        <p id="preference-status" class="small" role="status">There is no score to chase. Look for the effect you want.</p>
+        <details id="framing" class="tool-details">
+          <summary>Adjust portrait framing</summary>
+          <p class="small">Automatic framing follows a single face. These controls also work without face tracking.</p>
+          <div class="frame-controls">
+            <div><label for="frame-x">Horizontal position</label><input id="frame-x" type="range" min="0" max="100" value="50"></div>
+            <div><label for="frame-y">Vertical position</label><input id="frame-y" type="range" min="0" max="100" value="42"></div>
+            <div><label for="frame-scale">Portrait zoom</label><input id="frame-scale" type="range" min="70" max="400" value="100"></div>
+          </div>
+          <button type="button" class="quiet" id="auto-frame">Find face &amp; reset framing</button>
+          <p id="tracking-status" class="small" role="status">Face tracking loads on demand. The illustrated sample uses manual framing.</p>
+        </details>
+        <details class="tool-details">
+          <summary>Inspect a feature color</summary>
+          <p id="sample-help" class="small">Freeze a live frame first. Choose a position on the portrait to compare its recorded color with the drapes. This samples image pixels, not your true skin or eye color.</p>
+          <div class="sample-controls"><div><label for="sample-x">Sample position: left to right</label><input id="sample-x" type="range" min="15" max="85" value="50"></div><div><label for="sample-y">Sample position: top to bottom</label><input id="sample-y" type="range" min="12" max="83" value="48"></div></div>
+          <button id="inspect" class="quiet" type="button" aria-pressed="false">Show sample &amp; measurements</button>
+          <p id="sample-status" class="small" role="status">Use the position controls or tap portrait A to move the sample.</p>
+        </details>
+        <div class="export-actions"><button id="download-comparison" class="quiet" type="button">Download comparison</button><span class="small">A PNG saved to your device.</span></div>
+      </section>
+
+      <aside class="drape-controls" aria-labelledby="drapes-title">
+        <p class="eyebrow">THE COMPARISON</p><h2 id="drapes-title">Choose your colors</h2>
+        <label for="pair-study">Start with a pair</label>
+        <select id="pair-study"><option value="reds">Red: cranberry / clay</option><option value="depth">Explore depth: teal</option><option value="intensity">Explore intensity: plum</option><option value="neutrals">Neutrals: soft black / ivory</option><option value="greens">Green: emerald / olive</option><option value="custom">Your own pair</option></select>
+        <p id="pair-description" class="small"></p>
+        <fieldset class="color-edit"><legend>Drape A</legend><input id="color-a" type="color" value="#8c244a" aria-label="Choose drape A color"><input id="hex-a" value="#8C244A" aria-label="Drape A hex code" spellcheck="false" maxlength="7"></fieldset>
+        <fieldset class="color-edit"><legend>Drape B</legend><input id="color-b" type="color" value="#b86b46" aria-label="Choose drape B color"><input id="hex-b" value="#B86B46" aria-label="Drape B hex code" spellcheck="false" maxlength="7"></fieldset>
+        <p id="color-error" class="error" role="status"></p>
+        <label for="edit-side">Fine-tune a drape</label><select id="edit-side"><option value="a">Drape A</option><option value="b" selected>Drape B</option></select>
+        <label for="drape-lightness">Lightness <output id="lightness-value" for="drape-lightness"></output></label><input id="drape-lightness" type="range" min="0.08" max="0.96" step="0.01">
+        <label for="drape-chroma">Intensity · chroma <output id="chroma-value" for="drape-chroma"></output></label><input id="drape-chroma" type="range" min="0" max="0.3" step="0.005">
+        <p id="gamut-status" class="small" role="status">Adjust one property to explore its effect.</p>
+        <div class="control-actions"><button id="save-a" class="quiet" type="button">Keep A</button><button id="save-b" class="quiet" type="button">Keep B</button></div>
+      </aside>
+    </div>
+
+    <section class="explanation" aria-labelledby="explanation-title">
+      <div><p class="eyebrow">WHAT CHANGED?</p><h2 id="explanation-title">Look closer</h2><p class="small">Color relationships can be measured. Whether you like their effect is yours to explore.</p></div>
+      <div class="explanation-grid"><article><span class="evidence-label">Measured · drape colors</span><h3 id="measured-heading"></h3><p id="measured-body"></p><button id="show-numbers" class="quiet" type="button" aria-expanded="false" aria-controls="color-measurements">Show the numbers</button><div id="color-measurements" hidden></div></article>
+      <article><span class="evidence-label">Try this · visual exploration</span><h3 id="suggestion-heading"></h3><p id="suggestion-body"></p><button id="isolate-chroma" class="quiet" type="button">Match B’s hue &amp; lightness to A</button></article></div>
+      <p id="feature-comparison" class="feature-comparison" hidden></p>
+    </section>
+
+    <section class="palette-section" aria-labelledby="palette-title"><div class="section-heading"><h2 id="palette-title">Colors to come back to</h2><button id="download-palette" class="quiet" type="button" disabled>Download palette</button></div><p class="small">Only hex colors are saved here. Browser data can be cleared; download a copy to keep them elsewhere.</p><p id="palette-status" class="small" role="status"></p><div id="palette" class="palette"></div></section>
+    <details class="method"><summary>How this prototype works</summary>
+      <p>Live video and chosen photographs are processed on your device. Freezing a frame stops the camera and uses one portrait for both drapes. Clearing, reloading or closing the page discards the session’s portrait. Downloading a comparison intentionally creates a file on your device.</p>
+      <p>The oval is a virtual portrait window. The surrounding color does not change the pixels inside it, or reproduce light reflected from real fabric. Cameras, lighting and displays affect recorded color. Use this to explore relationships and test impressions with physical fabric when it matters.</p>
+      <p>Lightness and chroma come from OKLCH. Comparisons use the final sRGB hex colors. Colors outside sRGB are fitted by reducing chroma. These measurements describe this image and these colors, and do not determine a season, undertone, attractiveness or health.</p>
+      <p>Face tracking uses a model downloaded from this site (about 23 MB on first use). Processing stays in your browser; the page has no analytics, upload endpoint or photo storage. If tracking is unavailable, use the framing controls.</p>
+      <p><a href="https://www.w3.org/TR/css-color-4/#ok-lab">OKLCH color coordinates</a> · <a href="https://developers.google.com/edge/mediapipe/solutions/vision/face_landmarker/web_js">MediaPipe face landmarks</a> · <a href="https://www.nist.gov/publications/color-error-digital-camera-image-capture-process">Camera color accuracy research</a></p>
+    </details>
+  </main><footer><a href="../">Back to the Color Lab picker</a><span>Private by design. Curious by nature.</span></footer>
+  <video id="camera" autoplay muted playsinline hidden></video>
+</body>
+</html>

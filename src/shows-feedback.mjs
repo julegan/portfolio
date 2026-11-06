@@ -1,4 +1,5 @@
-// Account-free SHOWS feedback receiver. Runs only for /api/shows/feedback*.
+// Account-free SHOWS feedback and a static, camera-enabled draping route.
+import { isDrapingPath, drapingAsset } from './draping-headers.mjs';
 const categories = {
   idea: "Idea",
   correction: "Listing correction",
@@ -29,6 +30,7 @@ function quote(value) {
 export default {
   async fetch(request, env) {
     const url = new URL(request.url);
+    if (isDrapingPath(url.pathname)) return drapingAsset(request, env);
     if (url.pathname === "/api/shows/feedback/config" && request.method === "GET") {
       const enabled = configured(env) && PRODUCTION_HOSTNAMES.has(url.hostname);
       return json({ enabled, ...(enabled ? { sitekey: TURNSTILE_SITEKEY } : {}) });
