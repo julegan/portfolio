@@ -1,25 +1,32 @@
 import { PALETTE_KEY, readPalette, fitColor } from './drapes.mjs';
 import { toOKLCH } from './color.mjs';
-import { STAGES, HOMES, REST_DRAPE, questionsFor, allQuestions, recordAnswer, profile, wardrobePalette } from './session.mjs';
+import { STAGES, HOMES, REST_DRAPE, questionsFor, allQuestions, recordAnswer, profile, wardrobePalette, FLOW_KINDS, flowOptions } from './session.mjs';
 import { createPortrait } from './portrait.mjs';
 
 const $ = id => document.getElementById(id);
 let stage = 0, index = 0, answers = {}, active = 0, resting = false, comparing = false, practice = null;
 let seen = new Set([0]), palette = [], storageAvailable = true, capture;
-let displayPair = [REST_DRAPE, REST_DRAPE], resultPreview = null;
+let displayPair = [REST_DRAPE, REST_DRAPE];
+let exploreDrape = REST_DRAPE, previousDrape = null, collectionGroup = 'colors';
+const closeDialog = id => { if ($(id).open) $(id).close(); };
 const panels = [$('portrait-a'), $('portrait-b')];
 const status = message => { $('source-status').textContent = message; };
 const current = () => questionsFor(stage, answers)[index];
 const canAssess = () => capture && capture.mode !== 'empty' && capture.mode !== 'camera';
 const sources = { empty: 'No portrait', demo: 'Illustrated sample', photo: 'Your photo · session only', camera: 'Live camera', frozen: 'Frozen frame · camera off' };
 
-function metallicFill(ctx, drape) {
+function metalStops(drape) {
   const { lightness: l, chroma: c, hue: h } = toOKLCH(drape.hex);
-  const gradient = ctx.createLinearGradient(0, 250, 480, 570);
   const amount = drape.finish === 'polished' ? .24 : .12;
-  for (const [stop, shift] of [[0,-amount],[.25,amount*.4],[.39,-amount*.5],[.55,amount],[.7,-amount*.3],[1,amount*.5]]) {
-    gradient.addColorStop(stop, fitColor(Math.max(.08,Math.min(.98,l+shift)),c,h).hex);
-  }
+  return [[0,-amount],[.25,amount*.4],[.39,-amount*.5],[.55,amount],[.7,-amount*.3],[1,amount*.5]].map(([stop,shift]) =>
+    [stop,fitColor(Math.max(.08,Math.min(.98,l+shift)),c,h).hex]);
+}
+function swatchFill(drape) {
+  return drape.finish === 'matte' ? drape.hex : `linear-gradient(130deg,${metalStops(drape).map(([stop,hex])=>`${hex} ${stop*100}%`).join(',')})`;
+}
+function metallicFill(ctx, drape) {
+  const gradient = ctx.createLinearGradient(0, 250, 480, 570);
+  for (const [stop,hex] of metalStops(drape)) gradient.addColorStop(stop,hex);
   return gradient;
 }
 function drawPanel(canvas, drape) {
@@ -47,6 +54,8 @@ function paint() {
   $('name-a').textContent = pair[0].name; $('name-b').textContent = pair[1].name;
   $('show-a').setAttribute('aria-pressed',String(active === 0 && !resting)); $('show-b').setAttribute('aria-pressed',String(active === 1 && !resting));
   $('rest').setAttribute('aria-pressed',String(resting));
+  $('show-a').style.setProperty('--swatch',swatchFill(pair[0])); $('show-b').style.setProperty('--swatch',swatchFill(pair[1]));
+  paintExplorer();
 }
 function observations() {
   const q = current(), ready = canAssess() && seen.size === 2 && !practice && !resting;
@@ -56,7 +65,7 @@ function observations() {
     if (['a','b'].includes(button.dataset.answer)) button.textContent = q?.axis === 'finish' ? `I’d choose ${button.dataset.answer.toUpperCase()}` : `${button.dataset.answer.toUpperCase()} looks clearer`;
   });
   $('next').disabled = !ready || !q || !Object.hasOwn(answers,q.id);
-  $('answer-hint').textContent = practice ? 'Practice only. Return to the closer comparison to record an observation.' : !canAssess() ? 'Add a photo or freeze a camera frame to compare.' : resting ? 'Return to A or B when your eye is ready.' : seen.size < 2 ? 'See both drapes, then record what you notice.' : 'You’ve seen both. What do you notice in your face?';
+  $('answer-hint').textContent = practice ? 'Practice only. Return to the closer comparison to record an observation.' : !canAssess() ? 'Add a photo or freeze a frame to compare.' : resting ? 'Return to A or B when your eye is ready.' : seen.size < 2 ? 'Tap A and B to compare, then choose.' : 'Which drape supports your face?';
 }
 function stepView() {
   $('steps').replaceChildren(...STAGES.map((name,i) => {
@@ -69,8 +78,8 @@ function stepView() {
 }
 function renderQuestion() {
   const q = current(); if (!q) return;
-  displayPair = q.drapes; resultPreview = null;
-  $('question-stage').textContent = `${STAGES[stage]} · ${index+1} of ${questionsFor(stage,answers).length}${q.subtle ? ' · closer comparison' : ''}`;
+  displayPair = q.drapes;
+  $('question-stage').textContent = `${STAGES[stage]} · ${index+1} / ${questionsFor(stage,answers).length}`;
   $('question-title').textContent = q.title; $('question-prompt').textContent = q.prompt; $('question-guide').textContent = q.guide;
   $('mirror-context').textContent = q.purpose;
   $('stronger').hidden = !q.subtle;
@@ -82,7 +91,9 @@ function renderQuestion() {
   paint(); observations();
 }
 function render(focus = false) {
-  $('main').classList.toggle('in-session',stage > 0); stepView();
+  $('main').classList.toggle('in-session',stage > 0); $('main').classList.toggle('at-results',stage === 6);
+  document.body.classList.toggle('is-comparing',stage > 0 && stage < 6); document.body.classList.toggle('is-results',stage === 6);
+  $('source-tools').hidden = stage !== 0; stepView();
   $('prepare').hidden = stage !== 0; $('question').hidden = stage === 0 || stage === 6; $('results').hidden = stage !== 6;
   $('drape-switch').hidden = stage === 0; $('view-tools').hidden = stage === 0;
   $('practice-tag').hidden = !practice; $('exit-practice').hidden = !practice;
@@ -92,15 +103,15 @@ function render(focus = false) {
   if (focus) (stage === 6 ? $('result-title') : stage > 0 ? $('question-title') : $('begin')).focus({preventScroll:true});
 }
 function resetSession() {
-  stage = 0; index = 0; answers = {}; active = 0; seen = new Set([0]); practice = null; resting = false; resultPreview = null;
-  $('guidance').hidden = true; $('help').setAttribute('aria-expanded','false'); $('mirror-note').textContent='';
+  stage = 0; index = 0; answers = {}; active = 0; seen = new Set([0]); practice = null; resting = false;
+  closeDialog('guidance'); closeDialog('session-tools'); closeDialog('palette-explorer'); $('mirror-note').textContent='';
   $('source-tools').open = true; render();
 }
 function go(stageNumber, questionIndex = 0) {
   stage = stageNumber; index = questionIndex; active = 0; seen = new Set(comparing ? [0,1] : [0]); practice = null; resting = false;
-  $('guidance').hidden = true; $('help').setAttribute('aria-expanded','false'); $('source-tools').open = false;
+  closeDialog('guidance'); closeDialog('session-tools'); closeDialog('palette-explorer'); $('source-tools').open = stageNumber === 0;
   render(true);
-  $('steps').scrollIntoView({block:'start',behavior:'instant'});
+  window.scrollTo({top:0,behavior:'instant'});
 }
 function evidenceLine(label,evidence,positive,negative) {
   const p = document.createElement('p');
@@ -117,6 +128,7 @@ function renderResults() {
   if (p.mixed) { const note=document.createElement('p'); note.textContent='Some comparisons pointed in different directions. Treat this as a starting point and revisit the differences.'; $('evidence').append(note); }
   $('flow-description').textContent = !p.leader ? 'Flow remains open while the home season is unresolved.' : p.flow ? `The closer comparisons suggest ${p.flow.kind === 'balanced' ? 'a balanced expression of this season' : `the ${p.flow.label.split(' ')[0].toLowerCase()} direction within this family`}. This prototype has not been validated against professional analysis.` : 'The closer comparisons did not single out one flow. We can suggest the home season without forcing a subtype.';
   $('palette-family').value = p.leader?.id ?? p.candidates[0].id;
+  renderFlows(p.leader ? p.flow?.kind : 'home');
   $('review-list').replaceChildren();
   for (const q of allQuestions(answers).filter(q => q.axis !== 'finish')) {
     const li=document.createElement('li');
@@ -126,26 +138,48 @@ function renderResults() {
     li.append(button); $('review-list').append(li);
   }
   renderWardrobe();
-  if (!resultPreview) { displayPair=[REST_DRAPE,REST_DRAPE]; $('mirror-context').textContent='Explore your finishing colors'; }
+  displayPair=[REST_DRAPE,REST_DRAPE]; $('mirror-context').textContent='Explore your finishing colors';
   paint();
 }
-function renderWardrobe() {
-  const family=$('palette-family').value, p=profile(answers);
-  const swatches=wardrobePalette(family,p.leader?.id === family ? p.flow?.kind : null);
-  $('wardrobe-note').textContent=`Original ${HOMES[family].name} exploration colors. Tap one to try it; “Save this color” adds it to your personal collection.`;
-  $('wardrobe').replaceChildren(...swatches.map(drape => {
-    const button=document.createElement('button'); button.type='button'; button.setAttribute('aria-label','Try '+drape.name);
-    const swatch=document.createElement('span'); swatch.style.backgroundColor=drape.hex; swatch.setAttribute('aria-hidden','true');
-    const label=document.createElement('span'); label.textContent=drape.name; button.append(swatch,label);
-    button.addEventListener('click',()=>{ resultPreview=drape; displayPair=[drape,REST_DRAPE]; active=0; resting=false; $('mirror-context').textContent='Wardrobe exploration · '+HOMES[family].name; paint(); }); return button;
+function renderFlows(selected = 'home') {
+  $('palette-flow').replaceChildren(...flowOptions($('palette-family').value).map(flow=>{
+    const option=document.createElement('option'); option.value=flow.id; option.textContent=flow.id==='home' ? 'Full home range' : flow.label; return option;
   }));
+  $('palette-flow').value=FLOW_KINDS.includes(selected) ? selected : 'home';
+}
+function paintExplorer() {
+  drawPanel($('portrait-explorer'),exploreDrape);
+  const label=exploreDrape.family ? flowOptions(exploreDrape.family).find(f=>f.id===exploreDrape.flow).label : '';
+  $('explore-caption').textContent=exploreDrape === REST_DRAPE ? 'Neutral cape · choose a drape below' : `${exploreDrape.name} · ${label}${exploreDrape.finish !== 'matte' ? ' · metallic preview' : ''}`;
+  $('explore-previous').disabled=!previousDrape; $('explore-save').disabled=exploreDrape===REST_DRAPE;
+  $('wardrobe').querySelectorAll('button').forEach(button=>button.setAttribute('aria-pressed',String(button.dataset.drape===exploreDrape.id)));
+}
+function renderWardrobe() {
+  const family=$('palette-family').value, flow=$('palette-flow').value;
+  const swatches=wardrobePalette(family,flow).filter(d=>d.group===collectionGroup);
+  $('wardrobe-note').textContent=collectionGroup==='metals' ? 'Simulated finishes. Try them here, then check real jewelry.' : 'Tap a chip to drape it. Scroll this collection for more.';
+  document.querySelectorAll('[data-group]').forEach(button=>button.setAttribute('aria-pressed',String(button.dataset.group===collectionGroup)));
+  $('wardrobe').replaceChildren(...swatches.map(drape => {
+    const button=document.createElement('button'); button.type='button'; button.dataset.drape=drape.id; button.setAttribute('aria-label','Try '+drape.name); button.setAttribute('aria-pressed',String(drape.id===exploreDrape.id));
+    const swatch=document.createElement('span'); swatch.style.background=swatchFill(drape); swatch.setAttribute('aria-hidden','true');
+    const label=document.createElement('span'); label.textContent=drape.name; button.append(swatch,label);
+    button.addEventListener('click',()=>{
+      if(exploreDrape.id!==drape.id) previousDrape=exploreDrape===REST_DRAPE?previousDrape:exploreDrape;
+      exploreDrape=drape; $('explore-status').textContent=''; paintExplorer();
+    }); return button;
+  }));
+  $('wardrobe').scrollTop=0;
+}
+function openExplorer() {
+  if(capture.mode==='camera') capture.freeze();
+  renderWardrobe(); paintExplorer(); $('palette-explorer').showModal();
 }
 function paletteView() {
   $('palette-count').textContent=palette.length; $('download-palette').disabled=palette.length===0;
   $('palette').replaceChildren(...palette.map((hex,i)=>{
     const chip=document.createElement('div'); chip.className='palette-chip';
     const color=document.createElement('span'); color.className='chip-color'; color.style.backgroundColor=hex;
-    const known=[...allQuestions(answers).flatMap(q=>q.drapes),...Object.keys(HOMES).flatMap(h=>wardrobePalette(h))].find(d=>d.hex===hex);
+    const known=[...allQuestions(answers).flatMap(q=>q.drapes),...Object.keys(HOMES).flatMap(h=>FLOW_KINDS.flatMap(flow=>wardrobePalette(h,flow)))].find(d=>d.hex===hex);
     const label=document.createElement('p'); label.textContent=known?.name ?? `Saved color ${i+1}`;
     const actions=document.createElement('div'); actions.className='chip-actions';
     const remove=document.createElement('button'); remove.type='button'; remove.className='quiet'; remove.textContent='Remove'; remove.setAttribute('aria-label','Remove '+label.textContent);
@@ -157,12 +191,12 @@ function persist() {
   if(storageAvailable) try {localStorage.setItem(PALETTE_KEY,JSON.stringify(palette));} catch(_){storageAvailable=false;}
   $('palette-status').textContent=storageAvailable ? 'Color saved in this browser. No portrait or session observations are stored.' : 'Browser storage is unavailable. Download your colors to keep them after this session.';
 }
-function saveShown() {
-  const drape=resting ? REST_DRAPE : (practice?.drapes ?? displayPair)[active];
-  if(palette.includes(drape.hex)){ $('palette-status').textContent='That color is already saved.'; $('mirror-note').textContent='That color is already in Saved colors.'; return; }
-  if(palette.length>=20){ $('palette-status').textContent='Your collection has 20 colors. Remove one before adding another.'; $('saved').open=true; return; }
+function saveShown() { saveDrape(resting ? REST_DRAPE : (practice?.drapes ?? displayPair)[active]); }
+function saveDrape(drape, target='mirror-note') {
+  if(palette.includes(drape.hex)){ $('palette-status').textContent='That color is already saved.'; $(target).textContent='That color is already in Saved colors.'; return; }
+  if(palette.length>=20){ $('palette-status').textContent='Your collection has 20 colors. Remove one before adding another.'; $('saved').open=true; $(target).textContent='Your collection has 20 colors. Open Saved colors & tools to remove one.'; return; }
   palette.push(drape.hex); persist(); paletteView();
-  $('mirror-note').textContent=storageAvailable ? `${drape.name} saved. Open Saved colors below to download or remove it.` : `${drape.name} kept for this session. Browser storage is unavailable; download it from Saved colors to keep a copy.`;
+  $(target).textContent=storageAvailable ? `${drape.name} saved. Open Saved colors & tools to download or remove it.` : `${drape.name} kept for this session. Browser storage is unavailable; download it from Saved colors to keep a copy.`;
 }
 function download(blob,filename) {
   if(!blob){status('The download could not be created. Try again.');return;}
@@ -180,8 +214,10 @@ capture=createPortrait($('camera'),{
     $('freeze').disabled=!state.canFreeze; $('clear').disabled=state.mode==='empty'&&!state.waiting;
     $('start-camera').disabled=state.mode==='camera'||Boolean(state.waiting);
     $('auto-frame').disabled=state.mode==='empty'||state.mode==='demo';
+    document.querySelector('.framing').hidden=state.mode==='empty'||state.mode==='demo';
     $('download-comparison').disabled=!state.ready||state.mode==='camera';
     $('begin').disabled=!state.ready||Boolean(state.waiting)||(state.mode==='camera'&&!state.canFreeze);
+    $('browse-before').disabled=$('begin').disabled;
     $('begin').textContent=state.mode==='demo'?'Begin with illustration':state.mode==='camera'?'Freeze & begin':'Begin my session';
     for(const [id,key,factor] of [['frame-x','x',100],['frame-y','y',100],['frame-scale','zoom',100]]) $(id).value=state.frame[key]*factor;
     if(stage>0&&stage<6) observations();
@@ -195,24 +231,36 @@ $('auto-frame').addEventListener('click',()=>capture.autoFrame());
 for(const id of ['frame-x','frame-y','frame-scale']) $(id).addEventListener('input',()=>capture.setFrame({x:Number($('frame-x').value)/100,y:Number($('frame-y').value)/100,zoom:Number($('frame-scale').value)/100}));
 $('begin').addEventListener('click',()=>{ if(capture.mode==='camera') capture.freeze(); if(canAssess())go(1); });
 for(const [i,id] of ['show-a','show-b'].entries()) $(id).addEventListener('click',()=>{active=i;resting=false;seen.add(i);paint();observations();});
-$('rest').addEventListener('click',()=>{resting=!resting;paint();observations();});
+$('rest').addEventListener('click',()=>{resting=!resting;closeDialog('session-tools');paint();observations();});
 $('compare-view').addEventListener('click',()=>{
   comparing=!comparing; $('second-view').hidden=!comparing; $('portrait-pair').classList.toggle('comparing',comparing);
   $('compare-view').setAttribute('aria-pressed',String(comparing)); $('compare-view').textContent=comparing?'One mirror':'Side by side';
-  if(comparing)seen=new Set([0,1]);paint();observations();
+  if(comparing)seen=new Set([0,1]);closeDialog('session-tools');paint();observations();
 });
-$('help').addEventListener('click',()=>{ const open=$('guidance').hidden; $('guidance').hidden=!open; $('help').setAttribute('aria-expanded',String(open)); });
+$('help').addEventListener('click',()=>{ $('guidance').showModal(); $('help').setAttribute('aria-expanded','true'); });
+$('close-help').addEventListener('click',()=>closeDialog('guidance'));
+$('guidance').addEventListener('close',()=>$('help').setAttribute('aria-expanded','false'));
+for(const id of ['open-tools','question-tools']) $(id).addEventListener('click',()=>$('session-tools').showModal());
+$('close-tools').addEventListener('click',()=>closeDialog('session-tools'));
+$('change-portrait').addEventListener('click',()=>go(0));
+for(const id of ['browse-before','browse-results']) $(id).addEventListener('click',openExplorer);
+$('close-explorer').addEventListener('click',()=>closeDialog('palette-explorer'));
 $('stronger').addEventListener('click',()=>{
   const q=current();
   practice=q.id.includes('depth')?{drapes:[{...REST_DRAPE,name:'Deep blue-green',hex:fitColor(.32,.05,195).hex},{...REST_DRAPE,name:'Light blue-green',hex:fitColor(.84,.05,195).hex}]}:questionsFor(q.axis==='temperature'||q.id.includes('temperature')?1:2,answers)[0];
-  active=0;resting=false; $('practice-tag').hidden=false; $('exit-practice').hidden=false; paint();observations();
+  closeDialog('guidance'); active=0;resting=false; $('practice-tag').hidden=false; $('exit-practice').hidden=false; paint();observations();
 });
 $('exit-practice').addEventListener('click',()=>{practice=null;active=0;seen=new Set(comparing?[0,1]:[0]);$('practice-tag').hidden=true;$('exit-practice').hidden=true;paint();observations();});
 document.querySelectorAll('[data-answer]').forEach(button=>button.addEventListener('click',()=>{answers=recordAnswer(answers,current().id,button.dataset.answer);renderQuestion();}));
 $('next').addEventListener('click',()=>{ if($('next').disabled)return; if(index+1<questionsFor(stage,answers).length)go(stage,index+1);else go(stage+1); });
-$('back').addEventListener('click',()=>{if(index>0)go(stage,index-1);else if(stage>1)go(stage-1,questionsFor(stage-1,answers).length-1);else{stage=0;render();$('source-tools').open=true;}});
+$('back').addEventListener('click',()=>{if(index>0)go(stage,index-1);else if(stage>1)go(stage-1,questionsFor(stage-1,answers).length-1);else go(0);});
 $('restart').addEventListener('click',()=>{resetSession();$('begin').focus();});
-$('palette-family').addEventListener('change',()=>{resultPreview=null;displayPair=[REST_DRAPE,REST_DRAPE];active=0;resting=false;$('mirror-context').textContent='Wardrobe exploration · '+HOMES[$('palette-family').value].name;renderWardrobe();paint();});
+$('palette-family').addEventListener('change',()=>{renderFlows();renderWardrobe();});
+$('palette-flow').addEventListener('change',renderWardrobe);
+document.querySelectorAll('[data-group]').forEach(button=>button.addEventListener('click',()=>{collectionGroup=button.dataset.group;renderWardrobe();}));
+$('explore-previous').addEventListener('click',()=>{if(previousDrape){[exploreDrape,previousDrape]=[previousDrape,exploreDrape];$('explore-status').textContent='';paintExplorer();}});
+$('explore-rest').addEventListener('click',()=>{if(exploreDrape!==REST_DRAPE)previousDrape=exploreDrape;exploreDrape=REST_DRAPE;$('explore-status').textContent='';paintExplorer();});
+$('explore-save').addEventListener('click',()=>saveDrape(exploreDrape,'explore-status'));
 $('save-shown').addEventListener('click',saveShown);
 $('download-palette').addEventListener('click',()=>download(new Blob([JSON.stringify({format:'draping-mirror-palette',version:1,colors:palette},null,2)],{type:'application/json'}),'draping-mirror-palette.json'));
 $('download-comparison').addEventListener('click',()=>{
@@ -226,4 +274,4 @@ $('download-comparison').addEventListener('click',()=>{
   canvas.toBlob(blob=>{download(blob,'draping-mirror-comparison.png');canvas.width=canvas.height=a.width=a.height=b.width=b.height=0;},'image/png');
 });
 try{palette=readPalette(localStorage.getItem(PALETTE_KEY));}catch(_){try{localStorage.getItem(PALETTE_KEY);$('palette-status').textContent='The saved colors could not be read. You can start a new collection.';}catch(_){storageAvailable=false;$('palette-status').textContent='Browser storage is unavailable. Download your colors to keep them.';}}
-paletteView();render();capture.sample();
+renderFlows();renderWardrobe();paletteView();render();capture.sample();

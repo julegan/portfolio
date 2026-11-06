@@ -3,7 +3,7 @@ import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
 import { toOKLCH, normalizeHex } from '../dist/projects/draping-mirror/color.mjs';
 import { PALETTE_KEY, fitColor, portraitCrop, landmarkFrame, readPalette } from '../dist/projects/draping-mirror/drapes.mjs';
-import { questionsFor, allQuestions, profile, recordAnswer, wardrobePalette } from '../dist/projects/draping-mirror/session.mjs';
+import { questionsFor, allQuestions, profile, recordAnswer, wardrobePalette, HOMES, FLOW_KINDS, flowOptions } from '../dist/projects/draping-mirror/session.mjs';
 import worker from '../src/shows-feedback.mjs';
 import { isDrapingPath } from '../src/draping-headers.mjs';
 
@@ -38,9 +38,29 @@ test('all four home directions and their four refinement outcomes are reachable 
     for(const kind of ['balanced','thermal','depth','energy']){
       const refined={...answers};
       for(const q of questionsFor(3,answers)){const chosen=q.values.includes(kind)?kind:'balanced';refined[q.id]=q.values.indexOf(chosen)===0?'a':'b';}
-      const result=profile(refined);assert.equal(result.leader.id,home);assert.equal(result.flow.kind,kind);assert.equal(wardrobePalette(home,kind).length,8);
+      const result=profile(refined);assert.equal(result.leader.id,home);assert.equal(result.flow.kind,kind);assert.equal(wardrobePalette(home,kind).length,36);
     }
   }
+});
+test('every home and flow has a broad, independently browsable collection including neutrals and metals',()=>{
+  for(const home of Object.keys(HOMES)) {
+    assert.equal(flowOptions(home).length,5);
+    const base=wardrobePalette(home);
+    for(const kind of FLOW_KINDS) {
+      const colors=wardrobePalette(home,kind);
+      assert.equal(colors.length,36);assert.equal(new Set(colors.map(d=>d.id)).size,36);
+      assert.equal(colors.filter(d=>d.group==='colors').length,22);
+      assert.equal(colors.filter(d=>d.group==='neutrals').length,8);
+      assert.equal(colors.filter(d=>d.group==='metals').length,6);
+      for(const d of colors) {assert.equal(d.hex,normalizeHex(d.hex));assert.equal(d.family,home);assert.equal(d.flow,kind);assert.equal(d.finish!=='matte',d.group==='metals');}
+      if(kind!=='home') {
+        for(const group of ['colors','neutrals','metals'])assert(colors.some((d,i)=>d.group===group&&d.hex!==base[i].hex),`${home} ${kind} changes ${group}`);
+      }
+    }
+    const ls=base.filter(d=>d.group==='neutrals').map(d=>toOKLCH(d.hex).lightness);
+    assert(Math.max(...ls)-Math.min(...ls)>.6,'neutral drapes cover pale through dark');
+  }
+  assert.deepEqual(wardrobePalette('unknown'),[]);
 });
 test('changing an earlier answer clears later branch-dependent observations',()=>{
   const original={...coolBright,'flow-depth':'b','finish-metals':'b'};

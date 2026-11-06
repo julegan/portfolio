@@ -8,7 +8,7 @@ This experience guides a personal color consultation: prepare a portrait, explor
 
 The interface retains the portfolio's soft black, neutral typography and controls. **Drapes are study materials, not brand colors.** Their hues, lightness, intensity and simulated finishes are independently chosen for each comparison. They must not be muted, recolored or constrained to the website theme.
 
-The opening comparisons deliberately exaggerate differences. Later comparisons are closer. “Help me see the difference” provides face-focused guidance; subtler comparisons can temporarily switch to a stronger practice pair, whose observations never count toward the result. The visitor can record A, B, both, or uncertainty. Both drapes must have been shown before recording a comparison. A neutral rest and optional side-by-side view are available.
+The opening comparisons deliberately exaggerate differences. Later comparisons are closer. “Help” provides face-focused guidance; subtler comparisons can temporarily switch to a stronger practice pair, whose observations never count toward the result. The visitor can record A, B, both, or uncertainty. Both drapes must have been shown before recording a comparison. A neutral rest and optional side-by-side view are available.
 
 ## Original collection and interpretation
 
@@ -18,13 +18,19 @@ The four home directions use conventional seasonal vocabulary: warm/bright (Spri
 
 The result follows the visitor's recorded observations. Each of temperature and intensity needs at least two decisive observations and a margin of at least two to narrow a home season. Ties, skipped comparisons and both-work responses do not count as evidence for either direction. Mixed evidence is disclosed. A flow needs decisive responses to all three refinement comparisons; competing variants remain unresolved. True requires affirmative preference for the anchor in all three comparisons, rather than being assigned for uncertainty. If confirmation changes the home family, prior flow evidence is not reused for the new home.
 
-Changing an earlier response clears all subsequent branch-dependent observations. A new portrait resets the session. A practice result for the illustrated sample is explicitly identified as practice and cannot describe the visitor. Season suggestions include an explanation of the recorded pattern, a revisitable comparison history and original wardrobe exploration colors.
+Changing an earlier response clears all subsequent branch-dependent observations. A new portrait resets the session. A practice result for the illustrated sample is explicitly identified as practice and cannot describe the visitor. Season suggestions include an explanation of the recorded pattern, a revisitable comparison history and a direct invitation to cross-check the direction across more colors.
 
 The finishing stage includes whites, dark and middle neutrals, polished silver/gold previews, and satin rose-copper/champagne previews. These support wardrobe exploration and do not score the season. Metal gradients simulate appearance only; they do not reproduce physical reflections onto skin. Final exploration colors are distinct from the pronounced diagnostic comparisons.
 
+Each home season has a full-range collection, plus separate True, thermal, depth and intensity flow collections: 20 browsable collections in total. Each contains **36 drapes: 22 colors, eight neutrals spanning light to dark, and six simulated metallics**. Flow changes affect all three groups; the thermal variant changes hue rather than simply relabeling the same set. These are original exploration recipes, not canonical or professionally validated seasonal prescriptions. Every chip can be applied to the unchanged portrait. The browser can keep the previous drape for rapid comparison across collections, return to neutral, and explicitly save a color. Browsing never counts as classification evidence.
+
 ## Phone experience
 
-A single large portrait with A/B swapping is the default. At phone widths, the observation prompt appears before the mirror, followed by the response controls. Camera/photo setup is collapsible once a session begins. The setup instructions, detailed framing, learning guidance, saved collection and methodology disclose on demand. No floating overlay covers the portrait. The user can go back, revisit a result comparison, restart, or clear their portrait.
+A single portrait with A/B swapping is the default. During a phone comparison, the question, portrait, named color chips, four observation choices and Continue share one viewport. Back, a readable stage name/count, Help and More are always visible. The phone view uses available viewport height rather than stacking the full page between questions. Short or zoomed screens can still scroll; browser zoom remains available, and select controls use 16px text to avoid iOS input zoom.
+
+Help and occasional tools use native modal sheets with explicit Done controls, Escape support and focus restoration. These hold stronger practice, neutral rest, optional side-by-side comparison, saving/export, and a route back to portrait setup. A source change still resets observations. Detailed capture controls are kept on the setup screen.
+
+Seasonal exploration has its own full-screen phone view. The portrait and family/flow selectors remain visible while the chip collection scrolls below. Colors, Neutrals and Metals each have a clear collection button with a count. Chips include both the actual color/finish preview and a readable name. Previous drape reverses the last change, even across families, so users can test a neighboring season without repeatedly scrolling back to a distant portrait. It is available before the guided session and from the result.
 
 ## Privacy and capture
 
@@ -40,7 +46,7 @@ The Worker preserves the site-wide camera deny baseline and replaces it only for
 
 `node --test tests/draping.test.mjs tests/shows-feedback.test.mjs tests/security-headers.test.mjs tests/analytics-consent.test.mjs tests/shows-sync-workflow.test.mjs`
 
-The browser workflow runs `node tests/draping-browser.cjs` in Chromium and WebKit at 1440, 390 and 320 CSS pixels. It covers the full guided sequence, revising earlier observations, non-scoring practice drapes, unresolved outcomes, identical portrait pixels, transparent local images, PNG/JSON exports, palette-only persistence, camera lifecycle, blocked storage, denied camera access and automated accessibility checks. Real iPhone camera performance and human perception of these exploratory drapes need further device/practitioner review.
+The browser workflow runs `node tests/draping-browser.cjs` in Chromium and WebKit at 1440 × 900, 390 × 744 and 320 × 568 CSS pixels. It covers the full guided sequence, revising earlier observations, non-scoring practice drapes, unresolved outcomes, identical portrait pixels, transparent local images, PNG/JSON exports, palette-only persistence, camera lifecycle, blocked storage, denied camera access and automated accessibility checks. Phone checks assert that the portrait, prompt, drape controls, responses and Continue remain in the viewport through every comparison, and that chip labels/rows do not overlap. Explorer checks cover home/flow selection, all collection types, swapping the previous drape, local saves, unchanged portrait pixels, independently scrolling chips and unchanged classification. Real iPhone camera performance and human perception of these exploratory drapes need further device/practitioner review.
 
 ## Research informing the interaction
 
@@ -51,6 +57,16 @@ The browser workflow runs `node tests/draping-browser.cjs` in Chromium and WebKi
 - [CSS Color 4 / OKLCH](https://www.w3.org/TR/css-color-4/#ok-lab). Color-coordinate math describes the shipped colors, not a person's season.
 - [MediaPipe Face Landmarker for Web](https://developers.google.com/edge/mediapipe/solutions/vision/face_landmarker/web_js). Framing uses position landmarks, not identity recognition or color classification.
 
-## Next review
+## Success criterion and next human review
 
-Review the phone flow and compare real portraits in several lighting conditions. Assess whether the strong-to-subtle progression and observation language are useful across varied complexions, whether the original drapes sufficiently distinguish their intended dimension, and how a practitioner would revise the sequence and evidence heuristic. Add segmentation only if it materially improves the draping experience. Keep personal images on-device and the project independent.
+The product succeeds if people can use it to arrive at a useful, repeatable understanding of their season. Automated tests verify behavior and privacy, not that outcome. More drapes alone do not validate the heuristic.
+
+Run a small formative phone study before claiming accuracy:
+
+1. Ask participants to start with their own portrait and complete the process unaided. Observe whether they can find the first action, swap drapes, express uncertainty, use Help, and reach a working direction without zooming or losing the portrait.
+2. Ask them to explain their temperature, home and flow in their own words, using several colors and neutrals as evidence. Record where they cannot perceive a difference rather than treating every completed session as a success.
+3. For participants with an independent in-person analysis, keep that label out of the app until after completion. Compare home-season agreement and flow agreement separately, including unresolved results and mismatches; do not count a forced answer as success.
+4. Repeat with a second portrait in controlled neutral lighting, then compare selected drapes with actual fabric. Check whether the working direction is stable and where capture/display effects change it.
+5. Review the prompts and color pairs with a practitioner across varied complexions. Revise weak comparisons from observed failures before tuning scores to fit expected labels.
+
+Keep study portraits on participants’ devices. There is no new telemetry, portrait submission or participant-data collection feature in this iteration. Real iPhone camera/viewport behavior, perceived color differences and the classification model still need that human review.
