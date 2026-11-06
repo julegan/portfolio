@@ -56,6 +56,9 @@ function drawPanel(canvas, color) {
   ctx.beginPath(); ctx.moveTo(0, 352); ctx.quadraticCurveTo(240, 267, 480, 352); ctx.lineTo(480, 600); ctx.lineTo(0, 600); ctx.closePath(); ctx.fill();
   // The same unmodified image is clipped into the same oval in both views.
   ctx.save(); ctx.beginPath(); ctx.ellipse(240, 216, 140, 185, 0, 0, Math.PI * 2); ctx.clip();
+  // Transparent PNG areas get an identical neutral backing, including where
+  // the window overlaps the drape. A drape must never bleed into the portrait.
+  ctx.fillStyle = '#D4D1CC'; ctx.fillRect(100, 31, 280, 370);
   if (hasPortrait()) ctx.drawImage(portrait, 100, 31, 280, 370);
   else {
     ctx.fillStyle = '#39373D'; ctx.fillRect(100, 31, 280, 370);

@@ -14,7 +14,8 @@ async function facePixels(page) {
   return page.evaluate(() => ['portrait-a', 'portrait-b'].map(id => {
     const ctx = document.getElementById(id).getContext('2d');
     // Central patch is inside the oval, excluding its boundary and crosshair.
-    return Array.from(ctx.getImageData(400, 300, 100, 100).data);
+    return [...ctx.getImageData(400, 300, 100, 100).data,
+      ...ctx.getImageData(450, 730, 40, 30).data];
   }));
 }
 
@@ -64,6 +65,7 @@ async function comparisonChecks(browser, name, width) {
       const canvas = document.createElement('canvas'); canvas.width = 640; canvas.height = 800;
       const ctx = canvas.getContext('2d'); ctx.fillStyle = '#567891'; ctx.fillRect(0, 0, 640, 800);
       ctx.fillStyle = '#B29278'; ctx.fillRect(200, 160, 240, 430);
+      ctx.clearRect(0, 600, 640, 200); // transparent pixels over the drape area
       return canvas.toDataURL('image/png').split(',')[1];
     });
     await page.locator('#photo').setInputFiles({ name: 'synthetic-test.png', mimeType: 'image/png', buffer: Buffer.from(png, 'base64') });
