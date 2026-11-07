@@ -25,10 +25,9 @@ jobs:
           node --check /tmp/shows-canonical-events.js
           node - <<'NODE'
           const assert=require('node:assert/strict');
-          const fs=require('node:fs'),vm=require('node:vm');
-          const c={window:{}};
-          vm.runInNewContext(fs.readFileSync('/tmp/shows-canonical-events.js','utf8'),c);
-          const events=c.window.SHOWS_EVENTS,meta=c.window.SHOWS_DATASET;
+          const fs=require('node:fs');
+          const {parse}=require('./scripts/trusted-shows-sync.cjs');
+          const {events,meta}=parse(fs.readFileSync('/tmp/shows-canonical-events.js','utf8'));
           assert(Array.isArray(events)&&events.length>=182);
           assert(meta&&meta.totalOccurrences===events.length);
           const ids=new Set();
