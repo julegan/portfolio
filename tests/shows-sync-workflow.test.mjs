@@ -20,6 +20,28 @@ test("SYNC polls approved canonical main and maintains one rolling PR",()=>{
   assert(!s.includes("git push origin main"),"No direct publishing");
   assert(!s.includes("if: steps.pending.outputs.skip"),"Pending PRs should be refreshed, not skipped");
 });
+test("Data-only trusted portfolio publishing has a separate fail-closed bot lane",()=>{
+ const trusted=section("Auto-publish only additive, independently trusted SHOWS events");
+ const normal=section("Create or refresh the single rolling portfolio publication PR");
+ assert(trusted.includes("node scripts/trusted-shows-sync.cjs"),"Trusted event diff policy is independently checked");
+ assert(trusted.includes('git add -- "$dest" dist/projects/shows/index.html'),"Only event dataset and cache-bust may be staged");
+ assert(trusted.includes("git push origin HEAD:refs/heads/main"),"Only optimistic non-force protected-branch push is attempted");
+ assert(!trusted.includes("--force")&&!trusted.includes("gh pr merge"),"Source trust cannot force or merge unrelated code");
+ assert(trusted.includes("git reset --mixed HEAD~1")&&trusted.includes('git restore -- "$dest"'),
+  "Rejected trusted publish restores the original portfolio state");
+ assert(text.indexOf("      - name: Auto-publish only additive")<text.indexOf("      - name: Create or refresh the single rolling portfolio publication PR"),
+  "Trusted data attempt must run before manual review fallback");
+ assert(normal.includes("gh pr create"),"Normal human review path remains unchanged");
+});
+test("Trusted auto-sync shell is syntactically valid",()=>{
+ const s=section("Auto-publish only additive, independently trusted SHOWS events");
+ const off=s.indexOf("        run: |\n");
+ assert(off>=0);
+ const script=s.slice(off+"        run: |\n".length).split("\n")
+  .map(line=>line.startsWith("          ")?line.slice(10):line).join("\n");
+ const result=spawnSync("bash",["-n"],{input:script,encoding:"utf8"});
+ assert.equal(result.status,0,result.stderr||"Trusted shell syntax invalid");
+});
 test("The rolling shell workflow is syntactically valid",()=>{
   const s=section("Create or refresh the single rolling portfolio publication PR");
   const offset=s.indexOf("        run: |\n");

@@ -18,5 +18,5 @@ jobs:
         run: node --test tests/shows-feedback.test.mjs
       - name: Check static security headers and pinned Actions
         run: node --check dist/assets/analytics-consent.js
-          node --test tests/security-headers.test.mjs tests/analytics-consent.test.mjs tests/shows-sync-workflow.test.mjs
+          node --test tests/security-headers.test.mjs tests/analytics-consent.test.mjs tests/shows-sync-workflow.test.mjs tests/trusted-shows-sync.test.mjs
 

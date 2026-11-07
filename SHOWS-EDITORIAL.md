@@ -49,3 +49,9 @@ These sources may reveal record-release concerts, benefit bills, DIY house shows
 Report newly added music bills, relevant styles, and covered core venues. Count recurring market dates separately. A large total is not evidence that the core scenes have been covered. Document unreadable sources and held-back listings so the next pass can address the gaps without repeating completed work.
 
 The calendar is the product: people should be able to find something worth attending, understand what is known, and put the event or verified series in their personal calendar. Do not add social profiles or intentional personal-data collection as part of event discovery.
+
+## Owner-authorized no-touch trusted additions (November 2026)
+
+SHOWS now supports a narrowly scoped trusted-original source lane. Automatic event additions may originate only from reviewed adapter code that independently verifies the exact venue, original dated event permalink, published **show** time (not doors), and an unambiguous event identity. It cannot change or delete previously approved events or publish disputed rooms/dates, same-day duplicates, pending-rights artwork, unsupported genre claims or unreviewed source adapters.
+
+Portfolio automatically synchronizes only canonical SHOWS snapshots whose complete delta is new events with explicit trusted-origin proof and with every previously published portfolio record unchanged. Everything else goes to the normal rolling human-review PR. This is an owner-authorized **data-only** exception; code/design changes remain subject to ordinary review, and protected-branch restrictions are never bypassed.
