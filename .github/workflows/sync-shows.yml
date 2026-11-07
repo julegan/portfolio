@@ -1,4 +1,4 @@
-name: Sync approved SHOWS calendar (review-only)
+name: Sync approved SHOWS calendar (trusted originals + review)
 on:
   schedule:
     # Poll approved SHOWS updates every two hours; no cross-repo token required.
@@ -39,6 +39,46 @@ jobs:
           }
           console.log('Approved main branch: '+events.length+' dated events.');
           NODE
+      - name: Auto-publish only additive, independently trusted SHOWS events
+        run: |
+          set -euo pipefail
+          dest="dist/projects/shows/events.js"
+          decision="/tmp/shows-trusted-sync-decision.json"
+          if ! node scripts/trusted-shows-sync.cjs "$dest" /tmp/shows-canonical-events.js "$decision"; then
+            echo "::warning::Trusted snapshot validation failed; continuing with normal portfolio review PR."
+            exit 0
+          fi
+          safe="$(node -p 'require("/tmp/shows-trusted-sync-decision.json").safe ? "yes" : "no"')"
+          if [ "$safe" != "yes" ]; then
+            echo "Approved SHOWS main has edits, mixed sources, artwork rights or no new safe additions; normal portfolio review applies." >> "$GITHUB_STEP_SUMMARY"
+            exit 0
+          fi
+          # Snapshot contains ONLY new trusted original records; every existing
+          # published event is byte-equivalent in canonical event JSON.
+          cp /tmp/shows-canonical-events.js "$dest"
+          version="$(git hash-object "$dest" | cut -c1-12)"
+          SHOWS_EVENTS_VERSION="$version" node - <<'NODE'
+          const fs=require('node:fs');
+          const file='dist/projects/shows/index.html';
+          const html=fs.readFileSync(file,'utf8');
+          const match=/<script src="\.\/events\.js(?:\?v=[a-f0-9]+)?"><\/script>/;
+          if(!match.test(html))throw Error('Missing supported SHOWS event script reference');
+          fs.writeFileSync(file,html.replace(match,'<script src="./events.js?v='+process.env.SHOWS_EVENTS_VERSION+'"></script>'));
+          NODE
+          git config user.name "SHOWS trusted-sync bot"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -- "$dest" dist/projects/shows/index.html
+          git commit -m "Publish trusted, append-only SHOWS event snapshot"
+          if git push origin HEAD:refs/heads/main; then
+            git branch -f main "$(git rev-parse HEAD)" 2>/dev/null || true
+            echo "Trusted original SHOWS additions published to Portfolio; interface and existing events untouched." >> "$GITHUB_STEP_SUMMARY"
+          else
+            # Branch protection or a new main commit prevents automatic
+            # publishing. The existing rolling PR will carry the exact copy.
+            git reset --mixed HEAD~1
+            git restore -- "$dest" dist/projects/shows/index.html
+            echo "::warning::Portfolio trusted data update rejected; falling back to normal human-reviewed sync PR."
+          fi
       - name: Create or refresh the single rolling portfolio publication PR
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
