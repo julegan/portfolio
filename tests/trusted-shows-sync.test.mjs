@@ -44,6 +44,12 @@ test("No unverified source is ever auto-published to the portfolio",()=>{
   assert.equal(result.safe,false,result.reason);
  }
 });
+test("Non-executing canonical snapshot parser allows comments but rejects executable prefixes",()=>{
+ const raw=snapshot([old,newer]);
+ assert.equal(parse("/* SHOWS calendar data */\n"+raw).events.length,2);
+ assert.throws(()=>parse("throw new Error('execute');\n"+raw),/Executable prefix/);
+ assert.throws(()=>parse("window.SHOWS_DATASET = foo;\n"+raw),/Executable prefix/);
+});
 test("Large catch-up batches, empty deltas and conflicting IDs fail closed",()=>{
  const many=Array.from({length:13},(_,i)=>simple("n"+i,"Show "+i));
  assert.equal(examine({current:snapshot([old]),canonical:snapshot([old,...many])}).safe,false);
