@@ -11,6 +11,10 @@ function parse(code){
  // retrieved JavaScript from the public GitHub repository.
  const match=code.match(/window\.SHOWS_DATASET\s*=\s*(\{[\s\S]*?\});\s*window\.SHOWS_EVENTS\s*=\s*(\[[\s\S]*?\]);\s*$/);
  if(!match)throw Error("Unrecognized canonical SHOWS JSON dataset format");
+ const index=code.indexOf("window.SHOWS_DATASET");
+ const prefix=code.slice(0,index);
+ if(!/^(?:\s|\/\/[^\n]*\n|\/\*[\s\S]*?\*\/)*$/.test(prefix))
+  throw Error("Executable prefix in canonical SHOWS dataset is not eligible for automatic sync");
  const meta=JSON.parse(match[1]),events=JSON.parse(match[2]);
  if(!Array.isArray(events)||!meta||meta.totalOccurrences!==events.length||events.length<1)
   throw Error("Unverified SHOWS event array");
