@@ -2,14 +2,16 @@
 // SHOWS source of truth is its reviewed canonical main branch. Only a small,
 // additive trusted-original delta may bypass a second manual portfolio merge.
 // All other changes go through the existing bot-authored review PR.
-const fs=require("node:fs"),vm=require("node:vm");
+const fs=require("node:fs");
 const allowed=new Set(["jack-london-revue","alberta-rose-theatre"]);
 function parse(code){
- if(typeof code!=="string"||!code.startsWith("window.SHOWS_DATASET")||code.length>6000000)
+ if(typeof code!=="string"||code.length>6000000)
   throw Error("Missing or oversized SHOWS snapshot");
- const sandbox={window:{}};
- vm.runInNewContext(code,sandbox,{timeout:2500});
- const events=sandbox.window.SHOWS_EVENTS,meta=sandbox.window.SHOWS_DATASET;
+ // Parse a strictly JSON-assignment snapshot: do NOT evaluate remotely
+ // retrieved JavaScript from the public GitHub repository.
+ const match=code.match(/window\.SHOWS_DATASET\s*=\s*(\{[\s\S]*?\});\s*window\.SHOWS_EVENTS\s*=\s*(\[[\s\S]*?\]);\s*$/);
+ if(!match)throw Error("Unrecognized canonical SHOWS JSON dataset format");
+ const meta=JSON.parse(match[1]),events=JSON.parse(match[2]);
  if(!Array.isArray(events)||!meta||meta.totalOccurrences!==events.length||events.length<1)
   throw Error("Unverified SHOWS event array");
  const ids=new Set();
