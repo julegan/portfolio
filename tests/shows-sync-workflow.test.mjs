@@ -33,6 +33,15 @@ test("Data-only trusted portfolio publishing has a separate fail-closed bot lane
   "Trusted data attempt must run before manual review fallback");
  assert(normal.includes("gh pr create"),"Normal human review path remains unchanged");
 });
+test("Trusted auto-sync shell is syntactically valid",()=>{
+ const s=section("Auto-publish only additive, independently trusted SHOWS events");
+ const off=s.indexOf("        run: |\n");
+ assert(off>=0);
+ const script=s.slice(off+"        run: |\n".length).split("\n")
+  .map(line=>line.startsWith("          ")?line.slice(10):line).join("\n");
+ const result=spawnSync("bash",["-n"],{input:script,encoding:"utf8"});
+ assert.equal(result.status,0,result.stderr||"Trusted shell syntax invalid");
+});
 test("The rolling shell workflow is syntactically valid",()=>{
   const s=section("Create or refresh the single rolling portfolio publication PR");
   const offset=s.indexOf("        run: |\n");
