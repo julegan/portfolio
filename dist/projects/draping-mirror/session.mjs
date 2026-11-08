@@ -200,6 +200,12 @@ const metals = {
   autumn: [['Antique brass',.61,.075,90,'satin'],['Copper',.59,.1,45,'polished'],['Bronze',.49,.07,70,'satin'],['Antique gold',.65,.09,85,'satin'],['Rose copper',.64,.07,30,'satin'],['Oxidized silver',.5,.02,95,'satin']],
   winter: [['Bright silver',.84,.006,265,'polished'],['Platinum',.76,.012,260,'polished'],['Blackened steel',.37,.012,270,'satin'],['White gold',.82,.02,95,'polished'],['High gold',.73,.1,85,'polished'],['Rose metal',.7,.055,350,'polished']]
 };
+export const HUE_FAMILIES = [
+  ['all','All colors'],['reds','Reds & corals'],['pinks','Pinks & berries'],
+  ['purples','Purples'],['blues','Blues'],['teals','Teals & aquas'],
+  ['greens','Greens'],['yellows','Yellows & golds']
+];
+const hueGroups={red:'reds',coral:'reds',wine:'reds',rust:'reds',rose:'pinks',pink:'pinks',berry:'pinks',apricot:'pinks',violet:'purples',lilac:'purples',blue:'blues',sky:'blues',navy:'blues',teal:'teals',aqua:'teals',pale:'teals',green:'greens',sage:'greens',forest:'greens',yellow:'yellows',lemon:'yellows',ochre:'yellows'};
 export function normalizeRefinements(input = {}) {
   return Object.fromEntries(['temperature','depth','intensity'].map(axis=>[axis,[-1,0,1].includes(input?.[axis]) ? input[axis] : 0]));
 }
@@ -225,7 +231,7 @@ export function wardrobePalette(homeId, flowKind = 'home', refinements = {}) {
     h += (thermalShift ?? (warm ? -5 : 5))*(warm?1:-1)*adjustments.temperature;
     l -= adjustments.depth*.055; c *= Math.pow(1.24,adjustments.intensity);
     const d = color(`${homeId}-${kind}-${key}-${keySuffix}`,name,Math.min(.985,Math.max(.12,l)),c,h,finish);
-    return Object.freeze({ ...d, group, family: homeId, flow: kind, adjustments });
+    return Object.freeze({ ...d, group, hueFamily: group==='colors' ? hueGroups[key.replace(/-\d+$/,'')] : group, family: homeId, flow: kind, adjustments });
   }
   return [
     ...hues.flatMap(([key,dl,scale,wh,ch],i) => {

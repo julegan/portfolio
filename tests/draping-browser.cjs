@@ -17,32 +17,44 @@ async function openTools(page){if(!await page.locator('#session-tools').isVisibl
 async function openSource(page){if(!await page.locator('#source-tools').isVisible()){await openTools(page);await page.locator('#change-portrait').click();}if(await page.locator('#source-tools').getAttribute('open')===null)await page.locator('#source-tools>summary').click();}
 async function phoneTaskFits(page,width){
  if(width>760)return;
- const rects=await page.evaluate(()=>Object.fromEntries(['question-title','portrait-a','drape-switch','decide'].map(id=>{const r=document.getElementById(id).getBoundingClientRect();return[id,{top:r.top,bottom:r.bottom,left:r.left,right:r.right,height:r.height}];})));
+ const rects=await page.evaluate(()=>Object.fromEntries(['question-title','portrait-a','drape-switch','decide','focus-mirror'].map(id=>{const r=document.getElementById(id).getBoundingClientRect();return[id,{top:r.top,bottom:r.bottom,left:r.left,right:r.right,height:r.height}];})));
  const viewport=page.viewportSize();
  for(const[id,r]of Object.entries(rects)){assert(r.top>=-1&&r.bottom<=viewport.height+1,`${id} stays on the phone screen ${width}: ${JSON.stringify(r)}`);assert(r.left>=-1&&r.right<=width+1);}
- assert(rects['portrait-a'].height>=viewport.height*.5,'mirror occupies at least half the phone viewport');
+ assert(rects['portrait-a'].height>=viewport.height*.4,'mirror stays large while its controls remain outside');
  assert(await page.evaluate(()=>document.documentElement.scrollHeight<=innerHeight+1),'comparison needs no vertical page scrolling');
+}
+function separated(a,b){return a.bottom<=b.top+1||b.bottom<=a.top+1||a.right<=b.left+1||b.right<=a.left+1;}
+async function protectedSurface(page,canvasId,controls){
+ const data=await page.evaluate(({canvasId,controls})=>{const r=document.getElementById(canvasId).getBoundingClientRect();return {canvas:r.toJSON(),fit:getComputedStyle(document.getElementById(canvasId)).objectFit,controls:controls.map(id=>({id,rect:document.getElementById(id).getBoundingClientRect().toJSON()}))};},{canvasId,controls});
+ assert.equal(data.fit,'contain','whole portrait and drape remain visible');
+ for(const control of data.controls)assert(separated(data.canvas,control.rect),control.id+' stays outside the image');
 }
 async function explorerChecks(page,name,width){
  await page.locator('#browse-results').click();
  assert.equal(await page.locator('#palette-family').inputValue(),'winter');assert.equal(await page.locator('#palette-flow').inputValue(),'balanced');
- assert.equal(await page.locator('#wardrobe button').count(),66);
+ assert.equal(await page.locator('#drape-family').inputValue(),'reds');assert.equal(await page.locator('#wardrobe button').count(),12);
  await page.locator('#wardrobe button').first().click();const first=await page.locator('#explore-caption').innerText();
+ assert.match(await page.locator('#explore-a').getAttribute('aria-label'),/pinned reference/);assert(await page.locator('#explore-b').isDisabled());
  const before=await page.locator('#portrait-explorer').evaluate(c=>[...c.getContext('2d').getImageData(400,300,100,100).data]);
  await page.locator('#collection-picker').click();await page.locator('#palette-flow').selectOption('thermal');await page.locator('#apply-collection').click();await page.locator('#wardrobe button').nth(1).click();
  assert.match(await page.locator('#explore-caption').innerText(),/Cool Winter/);
  assert.deepEqual(await page.locator('#portrait-explorer').evaluate(c=>[...c.getContext('2d').getImageData(400,300,100,100).data]),before);
- await page.locator('#explore-previous').click();assert.equal(await page.locator('#explore-caption').innerText(),first);
- await page.locator('[data-group="neutrals"]').click();assert.equal(await page.locator('#wardrobe button').count(),12);await page.locator('#wardrobe button').first().click();
- await page.locator('[data-group="metals"]').click();assert.equal(await page.locator('#wardrobe button').count(),8);await page.locator('#wardrobe button').first().click();assert.match(await page.locator('#explore-caption').innerText(),/metallic preview/);
- await page.locator('#explore-save').click();assert.match(await page.locator('#explore-status').innerText(),/saved/);assert.equal(await page.locator('.palette-chip').count(),2);
- // Long lists scroll beneath a fixed portrait. Every chip includes a readable
- // label and a real hit area; rows may not collapse into overlapping colors.
- await page.locator('[data-group="colors"]').click();
- const layout=await page.evaluate(()=>{const d=document.getElementById('palette-explorer'),w=document.getElementById('wardrobe'),p=document.getElementById('portrait-explorer').getBoundingClientRect(),buttons=[...w.querySelectorAll('button')].map(b=>b.getBoundingClientRect());return{height:innerHeight,dialog:d.getBoundingClientRect().toJSON(),scrollHeight:w.scrollHeight,clientHeight:w.clientHeight,scrollWidth:w.scrollWidth,clientWidth:w.clientWidth,portrait:p.toJSON(),first:buttons[0].toJSON(),next:buttons[4].toJSON()};});
- if(width<=760){assert(layout.first.height>=80);assert(layout.clientHeight>=80);assert(layout.scrollWidth>layout.clientWidth,'long collection scrolls horizontally');assert(layout.next.left>=layout.first.right,'chips do not overlap');}
+ await page.locator('#explore-a').click();assert.equal(await page.locator('#explore-caption').innerText(),first,'reference survives collection changes');
+ await page.locator('#explore-b').click();const candidate=await page.locator('#explore-caption').innerText();await page.locator('#pin-reference').click();
+ assert.equal((await page.locator('#explore-caption').innerText()).slice(4),candidate.slice(4),'explicit pin keeps the chosen drape');assert.equal(await page.locator('#explore-a').getAttribute('aria-pressed'),'true');
+ const anchor=await page.locator('#explore-a').getAttribute('aria-label');
+ await page.locator('#drape-family').selectOption('blues');assert.equal(await page.locator('#wardrobe button').count(),9);await page.locator('#wardrobe button').first().click();assert.equal(await page.locator('#explore-a').getAttribute('aria-label'),anchor,'browsing never replaces A');
+ await page.locator('#drape-family').selectOption('neutrals');assert.equal(await page.locator('#wardrobe button').count(),12);await page.locator('#wardrobe button').first().click();
+ await page.locator('#drape-family').selectOption('metals');assert.equal(await page.locator('#wardrobe button').count(),8);await page.locator('#wardrobe button').first().click();assert.match(await page.locator('#explore-caption').innerText(),/metallic preview/);
+ const surfaceBefore=await page.locator('#portrait-explorer').boundingBox();
+ await page.locator('#explore-save').click();assert.match(await page.locator('#explore-status').innerText(),/saved/);assert.equal(await page.locator('.palette-chip').count(),2);assert.deepEqual(await page.locator('#portrait-explorer').boundingBox(),surfaceBefore,'save feedback does not resize the mirror');
+ await page.locator('#explore-rest').click();assert.match(await page.locator('#explore-caption').innerText(),/Neutral cape/);await page.locator('#explore-a').click();assert.equal(await page.locator('#explore-a').getAttribute('aria-label'),anchor);
+ await protectedSurface(page,'portrait-explorer',['explore-a','explore-b','pin-reference','explore-rest','explore-save','comparison-purpose','explore-status','focus-explorer']);
+ await page.locator('#drape-family').selectOption('all');assert.equal(await page.locator('#wardrobe button').count(),66);
+ const layout=await page.evaluate(()=>{const w=document.getElementById('wardrobe'),p=document.getElementById('portrait-explorer').getBoundingClientRect(),buttons=[...w.querySelectorAll('button')].map(b=>b.getBoundingClientRect());return{height:innerHeight,scrollHeight:w.scrollHeight,clientHeight:w.clientHeight,scrollWidth:w.scrollWidth,clientWidth:w.clientWidth,portrait:p.toJSON(),first:buttons[0].toJSON(),next:buttons[4].toJSON()};});
+ if(width<=760){assert(layout.first.height>=76);assert(layout.clientHeight>=76);assert(layout.scrollWidth>layout.clientWidth);assert(layout.next.left>=layout.first.right);}
  else {assert(layout.first.height>=100);assert(layout.next.top>=layout.first.bottom);assert(layout.scrollHeight>layout.clientHeight);}
- assert(layout.portrait.top>=0&&layout.portrait.bottom<=layout.height);assert(layout.portrait.height>=layout.height*.5,'seasonal mirror is large');
+ assert(layout.portrait.top>=0&&layout.portrait.bottom<=layout.height);assert(layout.portrait.height>=layout.height*.4);
  await page.locator('#collection-picker').click();await page.locator('#palette-flow').selectOption('depth');await page.locator('[data-adjust="intensity"][data-value="-1"]').click();await page.locator('#apply-collection').click();await page.locator('#wardrobe button').first().click();assert.match(await page.locator('#explore-caption').innerText(),/Deep Winter.*softer/);
  await page.locator('#focus-explorer').click();assert(await page.locator('#portrait-viewer').isVisible());await page.locator('#viewer-next').click();await audit(page,name+' expanded mirror '+width);await page.locator('#close-viewer').click();
  await page.locator('#wardrobe button').last().focus();await audit(page,name+' explorer '+width);
@@ -55,7 +67,7 @@ async function comparisonChecks(browser,name,width){
   await page.goto(origin+'/projects/draping-mirror/');await page.waitForFunction(()=>document.getElementById('source-tag').textContent==='Illustrated sample');
   assert.equal(await page.title(),'Draping mirror — Julie Owens');assert.equal(await page.locator('header a').getAttribute('href'),'/projects/');
   assert.equal(await page.locator('input[type=color]').count(),0);await audit(page,name+' prepare '+width);
-  await page.locator('#begin').click();assert(await page.locator('#next').isDisabled());await phoneTaskFits(page,width);
+  await page.locator('#begin').click();assert(await page.locator('#next').isDisabled());await phoneTaskFits(page,width);await protectedSurface(page,'portrait-a',['drape-switch','focus-mirror','question-title','decide']);await audit(page,name+' comparing '+width);
   const original=await pixels(page);assert.deepEqual(original[0],original[1]);
   await page.locator('#show-b').click();assert.deepEqual((await pixels(page))[0],original[0],'drape swaps leave portrait pixels unchanged');
   await page.locator('#help').click();assert(await page.locator('#guidance').isVisible());await audit(page,name+' guided '+width);await page.locator('#close-help').click();
@@ -102,7 +114,7 @@ async function reflowChecks(browser,name){
  try{
   await page.goto(origin+'/projects/draping-mirror/');await page.waitForFunction(()=>!document.getElementById('begin').disabled);await page.locator('#begin').click();
   await page.locator('#show-b').click();await answer(page,'unsure');await page.locator('#next').click();await audit(page,name+' short/zoomed comparison');
-  await openSource(page);await page.locator('#browse-before').click();await page.locator('#wardrobe button').last().click();
+  await openSource(page);await page.locator('#browse-before').click();await page.locator('#drape-family').selectOption('all');await page.locator('#wardrobe button').last().click();
   assert.match(await page.locator('#explore-caption').innerText(),/Mint cream/);await audit(page,name+' short/zoomed explorer');
   assert(await page.evaluate(()=>{const d=document.getElementById('palette-explorer');return d.clientHeight<=innerHeight&&d.scrollHeight>d.clientHeight;}),'short or zoomed explorer can scroll instead of clipping');
   await page.locator('#close-explorer').click();assert(await page.locator('#prepare').isVisible());

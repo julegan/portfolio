@@ -1,13 +1,14 @@
 import { PALETTE_KEY, readPalette, fitColor } from './drapes.mjs';
 import { toOKLCH } from './color.mjs';
-import { STAGES, HOMES, REST_DRAPE, questionsFor, allQuestions, recordAnswer, profile, wardrobePalette, FLOW_KINDS, flowOptions, refinementLabel } from './session.mjs';
+import { STAGES, HOMES, REST_DRAPE, questionsFor, allQuestions, recordAnswer, profile, wardrobePalette, FLOW_KINDS, flowOptions, refinementLabel, HUE_FAMILIES } from './session.mjs';
+import { emptyComparison, chooseCandidate, showPinned, pinVisible, comparisonPurpose } from './comparison.mjs';
 import { createPortrait } from './portrait.mjs';
 
 const $ = id => document.getElementById(id);
 let stage = 0, index = 0, answers = {}, active = 0, resting = false, comparing = false, practice = null;
 let seen = new Set([0]), palette = [], storageAvailable = true, capture;
 let displayPair = [REST_DRAPE, REST_DRAPE];
-let exploreDrape = REST_DRAPE, previousDrape = null, collectionGroup = 'colors', refinements = {}, viewerMode = 'session';
+let exploreDrape = REST_DRAPE, pinned = emptyComparison(), collectionGroup = 'colors', hueFamily = 'reds', refinements = {}, viewerMode = 'session';
 const closeDialog = id => { if ($(id).open) $(id).close(); };
 const panels = [$('portrait-a'), $('portrait-b')];
 const status = message => { $('source-status').textContent = message; };
@@ -83,7 +84,7 @@ function renderQuestion() {
   const q = current(); if (!q) return;
   displayPair = q.drapes;
   $('question-stage').textContent = `${STAGES[stage]} · ${index+1} / ${questionsFor(stage,answers).length}`;
-  $('question-title').textContent = q.title; $('question-prompt').textContent = q.prompt; $('question-guide').textContent = q.guide;
+  $('question-title').textContent = q.axis==='temperature' ? 'Compare temperature' : q.axis==='intensity' ? 'Compare intensity' : q.id==='flow-temperature' ? 'Refine temperature' : q.id==='flow-depth' ? 'Compare depth' : q.id==='flow-intensity' ? 'Refine intensity' : q.title; $('question-prompt').textContent = q.prompt; $('question-guide').textContent = q.guide;
   $('mirror-context').textContent = q.purpose;
   $('stronger').hidden = !q.subtle;
   const selected = answers[q.id];
@@ -108,6 +109,7 @@ function render(focus = false) {
 function resetSession() {
   stage = 0; index = 0; answers = {}; active = 0; seen = new Set([0]); practice = null; resting = false;
   closeDialog('guidance'); closeDialog('session-tools'); closeDialog('palette-explorer'); closeDialog('response-sheet'); closeDialog('mirror-viewer'); closeDialog('collection-settings'); $('mirror-note').textContent='';
+  pinned=emptyComparison(); exploreDrape=REST_DRAPE; $('explore-status').textContent='';
   $('source-tools').open = true; render();
 }
 function go(stageNumber, questionIndex = 0) {
@@ -151,24 +153,52 @@ function renderFlows(selected = 'home') {
   }));
   $('palette-flow').value=FLOW_KINDS.includes(selected) ? selected : 'home';
 }
+function drapeOrigin(d) {
+  return d?.family ? flowOptions(d.family).find(f=>f.id===d.flow).label+(refinementLabel(d.adjustments)?' · '+refinementLabel(d.adjustments):'') : '';
+}
 function paintExplorer() {
+  exploreDrape=pinned.rest ? REST_DRAPE : pinned[pinned.active] ?? REST_DRAPE;
   drawPanel($('portrait-explorer'),exploreDrape);
-  const label=exploreDrape.family ? flowOptions(exploreDrape.family).find(f=>f.id===exploreDrape.flow).label + (refinementLabel(exploreDrape.adjustments) ? ' · '+refinementLabel(exploreDrape.adjustments) : '') : '';
-  $('explore-caption').textContent=exploreDrape === REST_DRAPE ? 'Neutral cape · choose a drape below' : `${exploreDrape.name} · ${label}${exploreDrape.finish !== 'matte' ? ' · metallic preview' : ''}`;
-  $('explore-previous').disabled=!previousDrape; $('explore-save').disabled=exploreDrape===REST_DRAPE;
-  if($('mirror-viewer').open) paintViewer();
+  $('explore-caption').textContent=exploreDrape===REST_DRAPE ? 'Neutral cape' : `${pinned.active.toUpperCase()} · ${exploreDrape.name} · ${drapeOrigin(exploreDrape)}${exploreDrape.finish!=='matte'?' · metallic preview':''}`;
+  for(const slot of ['a','b']) {
+    const d=pinned[slot], button=$('explore-'+slot);
+    button.disabled=!d;
+    button.setAttribute('aria-pressed',String(!pinned.rest&&pinned.active===slot&&Boolean(d)));
+    button.setAttribute('aria-label',d ? `${slot.toUpperCase()} · ${d.name} · ${drapeOrigin(d)}${slot==='a'?' · pinned reference':''}` : `${slot.toUpperCase()} · choose a drape`);
+    button.querySelector('.pin-swatch').style.background=d?swatchFill(d):'transparent';
+    const label=button.querySelector('.pin-label');label.replaceChildren(document.createTextNode(slot.toUpperCase()+' · '+(d?.name??'Choose a drape')+' '));
+    const origin=document.createElement('small');origin.textContent=d?.family?flowOptions(d.family).find(f=>f.id===d.flow).label:slot==='a'?'First choice pins A':'New choices go here';label.append(origin);button.setAttribute('aria-label',label.textContent+(d&&slot==='a'?' · pinned reference':'')+(d&&refinementLabel(d.adjustments)?' · '+refinementLabel(d.adjustments):''));
+  }
+  $('pin-reference').disabled=pinned.rest||pinned.active!=='b'||!pinned.b;
+  $('explore-save').disabled=exploreDrape===REST_DRAPE;
+  $('explore-rest').setAttribute('aria-pressed',String(pinned.rest));
+  const hasStatus=Boolean($('explore-status').textContent);
+  $('comparison-purpose').textContent=pinned.rest ? 'Neutral rest · choose A or B to resume.' : comparisonPurpose(pinned.a,pinned.b);
+  $('comparison-purpose').hidden=hasStatus; $('explore-status').hidden=!hasStatus;
+  if($('mirror-viewer').open)paintViewer();
   $('wardrobe').querySelectorAll('button').forEach(button=>button.setAttribute('aria-pressed',String(button.dataset.drape===exploreDrape.id)));
+}
+function browsedDrapes() {
+  return wardrobePalette($('palette-family').value,$('palette-flow').value,refinements).filter(d=>d.group===collectionGroup&&(collectionGroup!=='colors'||hueFamily==='all'||d.hueFamily===hueFamily));
+}
+function familyOptions() {
+  const select=$('drape-family');
+  const group=document.createElement('optgroup');group.label='Color families';
+  for(const [value,label] of HUE_FAMILIES){const o=document.createElement('option');o.value=value;o.textContent=label;group.append(o);}
+  const other=document.createElement('optgroup');other.label='Finishing drapes';
+  for(const [value,label] of [['neutrals','Neutrals'],['metals','Metallics']]){const o=document.createElement('option');o.value=value;o.textContent=label;other.append(o);}
+  select.replaceChildren(group,other);select.value=hueFamily;
 }
 function renderWardrobe() {
   const family=$('palette-family').value, flow=$('palette-flow').value;
-  const swatches=wardrobePalette(family,flow,refinements).filter(d=>d.group===collectionGroup);
+  const swatches=browsedDrapes();
   $('wardrobe-note').textContent=swatches.length+' '+collectionGroup+' · swipe the rail to explore';
   const name=flowOptions(family).find(f=>f.id===flow)?.label ?? HOMES[family].name, extra=refinementLabel(refinements);
   $('collection-picker').replaceChildren(document.createTextNode(name+(extra?' · '+extra:'')));
   const hint=document.createElement('span');hint.textContent='Change season & flow ▾';$('collection-picker').append(hint);
   $('collection-summary').textContent=name+(extra?' · '+extra:' · original set');
   document.querySelectorAll('[data-adjust]').forEach(b=>b.setAttribute('aria-pressed',String(Number(b.dataset.value)===(refinements[b.dataset.adjust]??0))));
-  document.querySelectorAll('[data-group]').forEach(button=>button.setAttribute('aria-pressed',String(button.dataset.group===collectionGroup)));
+  $('drape-family').value=collectionGroup==='colors'?hueFamily:collectionGroup;
   $('wardrobe').replaceChildren(...swatches.map(drape => {
     const button=document.createElement('button'); button.type='button'; button.dataset.drape=drape.id; button.setAttribute('aria-label','Try '+drape.name); button.setAttribute('aria-pressed',String(drape.id===exploreDrape.id));
     const swatch=document.createElement('span'); swatch.style.background=swatchFill(drape); swatch.setAttribute('aria-hidden','true');
@@ -178,18 +208,17 @@ function renderWardrobe() {
   $('wardrobe').scrollTop=0; $('wardrobe').scrollLeft=0;
 }
 function selectExplorerDrape(drape) {
-  if(exploreDrape.id!==drape.id) previousDrape=exploreDrape===REST_DRAPE?previousDrape:exploreDrape;
-  exploreDrape=drape; $('explore-status').textContent=''; paintExplorer();
+  pinned=chooseCandidate(pinned,drape); $('explore-status').textContent='';paintExplorer();
 }
 function paintViewer() {
   const d=viewerMode==='explorer' ? exploreDrape : (resting?REST_DRAPE:(practice?.drapes??displayPair)[active]);
-  drawPanel($('portrait-viewer'),d); $('viewer-caption').textContent=d.name;
+  drawPanel($('portrait-viewer'),d); $('viewer-caption').textContent=viewerMode==='explorer'&&d!==REST_DRAPE ? pinned.active.toUpperCase()+' · '+d.name : d.name;
+  for(const id of ['viewer-previous','viewer-next']) $(id).disabled=viewerMode==='explorer'&&!(pinned.a&&pinned.b);
 }
 function openViewer(mode) { viewerMode=mode; paintViewer(); $('mirror-viewer').showModal(); }
 function viewerStep(step) {
   if(viewerMode==='explorer') {
-    const list=wardrobePalette($('palette-family').value,$('palette-flow').value,refinements).filter(d=>d.group===collectionGroup);
-    const i=list.findIndex(d=>d.id===exploreDrape.id); selectExplorerDrape(list[i<0 ? (step>0?0:list.length-1) : (i+step+list.length)%list.length]);
+    if(pinned.a&&pinned.b){pinned=showPinned(pinned,pinned.active==='a'?'b':'a');$('explore-status').textContent='';paintExplorer();}
   } else { active=1-active; resting=false; seen.add(active);paint();observations(); }
   paintViewer();
 }
@@ -216,10 +245,10 @@ function persist() {
 }
 function saveShown() { saveDrape(resting ? REST_DRAPE : (practice?.drapes ?? displayPair)[active]); }
 function saveDrape(drape, target='mirror-note') {
-  if(palette.includes(drape.hex)){ $('palette-status').textContent='That color is already saved.'; $(target).textContent='That color is already in Saved colors.'; return; }
-  if(palette.length>=64){ $('palette-status').textContent='Your collection has 64 colors. Remove one before adding another.'; $('saved').open=true; $(target).textContent='Your collection has 64 colors. Open Tools → Saved colors to remove one.'; return; }
+  if(palette.includes(drape.hex)){ $('palette-status').textContent='That color is already saved.'; $(target).textContent='That color is already in Saved colors.';if(target==='explore-status')paintExplorer();return; }
+  if(palette.length>=64){ $('palette-status').textContent='Your collection has 64 colors. Remove one before adding another.'; $('saved').open=true; $(target).textContent='64 colors saved. Remove one in Tools to add another.';if(target==='explore-status')paintExplorer();return; }
   palette.push(drape.hex); persist(); paletteView();
-  if(target==='explore-status') { $(target).textContent=storageAvailable ? `${drape.name} saved.` : 'Kept for this session. Download in Tools.'; return; }
+  if(target==='explore-status') { $(target).textContent=storageAvailable ? `${drape.name} saved.` : 'Kept for this session. Download in Tools.';paintExplorer(); return; }
   $(target).textContent=storageAvailable ? `${drape.name} saved. Open Tools → Saved colors to download or remove it.` : `${drape.name} kept for this session. Browser storage is unavailable; download it from Saved colors to keep a copy.`;
 }
 function download(blob,filename) {
@@ -300,9 +329,14 @@ $('restart').addEventListener('click',()=>{resetSession();$('begin').focus();});
 $('palette-family').addEventListener('change',()=>{refinements={};renderFlows();renderWardrobe();});
 $('palette-flow').addEventListener('change',()=>{refinements={};renderWardrobe();});
 document.querySelectorAll('[data-adjust]').forEach(b=>b.addEventListener('click',()=>{refinements={...refinements,[b.dataset.adjust]:Number(b.dataset.value)};renderWardrobe();}));
-document.querySelectorAll('[data-group]').forEach(button=>button.addEventListener('click',()=>{collectionGroup=button.dataset.group;renderWardrobe();}));
-$('explore-previous').addEventListener('click',()=>{if(previousDrape){[exploreDrape,previousDrape]=[previousDrape,exploreDrape];$('explore-status').textContent='';paintExplorer();}});
-$('explore-rest').addEventListener('click',()=>{if(exploreDrape!==REST_DRAPE)previousDrape=exploreDrape;exploreDrape=REST_DRAPE;$('explore-status').textContent='';paintExplorer();});
+$('drape-family').addEventListener('change',()=>{
+  const value=$('drape-family').value;
+  if(value==='neutrals'||value==='metals')collectionGroup=value;else{collectionGroup='colors';hueFamily=value;}
+  renderWardrobe();
+});
+for(const slot of ['a','b']) $('explore-'+slot).addEventListener('click',()=>{pinned=showPinned(pinned,slot);$('explore-status').textContent='';paintExplorer();});
+$('pin-reference').addEventListener('click',()=>{pinned=pinVisible(pinned);$('explore-status').textContent=pinned.a.name+' pinned as A. New choices go into B.';paintExplorer();});
+$('explore-rest').addEventListener('click',()=>{pinned={...pinned,rest:!pinned.rest};$('explore-status').textContent='';paintExplorer();});
 $('explore-save').addEventListener('click',()=>saveDrape(exploreDrape,'explore-status'));
 $('save-shown').addEventListener('click',saveShown);
 $('download-palette').addEventListener('click',()=>download(new Blob([JSON.stringify({format:'draping-mirror-palette',version:1,colors:palette},null,2)],{type:'application/json'}),'draping-mirror-palette.json'));
@@ -317,4 +351,4 @@ $('download-comparison').addEventListener('click',()=>{
   canvas.toBlob(blob=>{download(blob,'draping-mirror-comparison.png');canvas.width=canvas.height=a.width=a.height=b.width=b.height=0;},'image/png');
 });
 try{palette=readPalette(localStorage.getItem(PALETTE_KEY));}catch(_){try{localStorage.getItem(PALETTE_KEY);$('palette-status').textContent='The saved colors could not be read. You can start a new collection.';}catch(_){storageAvailable=false;$('palette-status').textContent='Browser storage is unavailable. Download your colors to keep them.';}}
-renderFlows();renderWardrobe();paletteView();render();capture.sample();
+familyOptions();renderFlows();renderWardrobe();paletteView();render();capture.sample();

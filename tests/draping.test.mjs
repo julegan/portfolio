@@ -4,6 +4,7 @@ import { readFileSync } from 'node:fs';
 import { toOKLCH, normalizeHex } from '../dist/projects/draping-mirror/color.mjs';
 import { PALETTE_KEY, fitColor, portraitCrop, landmarkFrame, readPalette } from '../dist/projects/draping-mirror/drapes.mjs';
 import { questionsFor, allQuestions, profile, recordAnswer, wardrobePalette, HOMES, FLOW_KINDS, flowOptions, normalizeRefinements, refinementLabel } from '../dist/projects/draping-mirror/session.mjs';
+import { emptyComparison, chooseCandidate, showPinned, pinVisible, comparisonPurpose } from '../dist/projects/draping-mirror/comparison.mjs';
 import worker from '../src/shows-feedback.mjs';
 import { isDrapingPath } from '../src/draping-headers.mjs';
 
@@ -75,6 +76,32 @@ test('a named collection can explore combined flows in both directions without c
   assert.deepEqual(profile(coolBright),before);
   assert.deepEqual(normalizeRefinements({temperature:NaN,depth:9,intensity:'-1'}),{temperature:0,depth:0,intensity:0});
 });
+test('reference A stays pinned across candidates, families, neutral rests and explicit repinning',()=>{
+  const a=wardrobePalette('winter')[0],b=wardrobePalette('summer')[2],c=wardrobePalette('spring')[5];
+  let state=chooseCandidate(emptyComparison(),a);assert.equal(state.a,a);assert.equal(state.b,null);
+  assert.equal(showPinned(state,'b'),state);
+  state=chooseCandidate(state,b);assert.equal(state.a,a);assert.equal(state.b,b);assert.equal(state.active,'b');
+  state=showPinned(state,'a');state=chooseCandidate(state,c);assert.equal(state.a,a);assert.equal(state.b,c);
+  state=pinVisible(state);assert.equal(state.a,c);assert.equal(state.b,a);assert.equal(state.active,'a');
+  const rested={...state,rest:true};assert.equal(pinVisible(rested),rested);
+  assert.equal(showPinned(rested,'b').rest,false);assert.equal(chooseCandidate(state,a).a,c);
+});
+test('hue browsing partitions every prepared color and leaves finishing drapes separate',()=>{
+  const colors=wardrobePalette('winter').filter(d=>d.group==='colors');
+  const families=new Set(['reds','pinks','purples','blues','teals','greens','yellows']);
+  assert.equal(colors.length,66);assert(colors.every(d=>families.has(d.hueFamily)));
+  for(const family of families)assert(colors.filter(d=>d.hueFamily===family).length>=6);
+  assert(wardrobePalette('winter').filter(d=>d.group!=='colors').every(d=>d.hueFamily===d.group));
+});
+test('comparison descriptions explain actual drape differences without judging a face',()=>{
+  const x={id:'x',hex:fitColor(.6,.1,280).hex,finish:'matte'};
+  const depth={...x,id:'depth',hex:fitColor(.7,.1,280).hex};
+  assert.match(comparisonPurpose(x,depth),/^Depth · similar intensity and hue/);
+  const intensity={...x,id:'intensity',hex:fitColor(.6,.04,280).hex};
+  assert.match(comparisonPurpose(x,intensity),/^Intensity · similar depth and hue/);
+  assert.match(comparisonPurpose(x,{...x,finish:'satin'}),/^Finish/);
+  assert.match(comparisonPurpose(x,null),/Choose a drape for B/);
+});
 test('changing an earlier answer clears later branch-dependent observations',()=>{
   const original={...coolBright,'flow-depth':'b','finish-metals':'b'};
   const next=recordAnswer(original,'tone-red','a');assert.deepEqual(next,{'tone-red':'a'});assert.equal(original['finish-metals'],'b');
@@ -106,6 +133,6 @@ test('only the independent draping route receives camera permission and upload m
 });
 test('guided personal-color session stays independent from the digital picker',()=>{
   const read=path=>readFileSync(new URL('../'+path,import.meta.url),'utf8');
-  for(const file of ['index.html','mirror.css','mirror.mjs','drapes.mjs','color.mjs','session.mjs','portrait.mjs'])assert.doesNotMatch(read('dist/projects/draping-mirror/'+file),/color[- .]?lab|\.\.\/.*(?:\.css|\.mjs)/i,file);
+  for(const file of ['index.html','mirror.css','mirror.mjs','drapes.mjs','color.mjs','session.mjs','portrait.mjs','comparison.mjs'])assert.doesNotMatch(read('dist/projects/draping-mirror/'+file),/color[- .]?lab|\.\.\/.*(?:\.css|\.mjs)/i,file);
   const html=read('dist/projects/draping-mirror/index.html');assert.doesNotMatch(html,/type="color"|hex code|drape-chroma|drape-lightness/);assert.doesNotMatch(read('dist/projects/color-lab/index.html'),/draping/i);assert.equal(PALETTE_KEY,'julieowens.draping-mirror.palette.v1');
 });
