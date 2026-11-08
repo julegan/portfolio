@@ -82,3 +82,9 @@ Resolved the pending branch's three conflicts with main by retaining both SHOWS 
 ## Unobstructed comparison review
 
 Browser regression checks require the mirror to use containment and assert that controls/status labels do not intersect its rectangle. They verify stable mirror bounds before/after saving, A remaining pinned through collection changes, explicit repinning, neutral rest, hue-family navigation and continued uncertainty/privacy behavior. These checks address the reported jawline/fabric obstruction directly; they do not establish seasonal classification accuracy.
+
+## Portrait-first setup
+
+The mirror precedes camera/photo controls in the DOM. Desktop shows them beside each other; mobile puts the preview above the capture choices. A bounded preview stays visible while the visitor scrolls through framing controls. Capture status sits beside the preview outside the image; pending camera access, live video and frozen/photo states are explicit. Freeze is first in the camera toolbar when live capture is active. Compact setup chrome keeps the preview and initial camera/photo choices together. Scroll padding/margins keep keyboard-focused framing controls below the sticky preview. Guided comparison and seasonal exploration layouts are unaffected.
+
+Browser regression checks assert mobile setup order, visible initial capture choices, preview visibility during framing, non-overlap with a focused framing slider, and live-camera feedback/capture cleanup.

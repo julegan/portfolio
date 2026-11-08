@@ -17,13 +17,6 @@
   <div class="masthead"><h1>Draping mirror</h1><button id="open-tools" class="quiet" type="button" aria-label="Saved colors and session tools">Tools</button></div>
   <p id="intro" class="intro">Your face is the focus. Explore the colors around it, one drape at a time.</p>
   <nav aria-label="Session progress"><ol id="steps" class="steps"></ol></nav>
-  <details id="source-tools" open class="source-tools">
-    <summary>Your portrait <span id="source-tag">Loading illustration…</span></summary>
-    <div class="source-bar"><button id="start-camera" type="button">Use camera</button><label class="file-button" for="photo">Choose photo<input id="photo" type="file" accept="image/jpeg,image/png,image/webp,image/heic,image/heif"></label><button id="freeze" type="button" class="quiet" disabled>Freeze frame</button><button id="clear" type="button" class="quiet" disabled>Clear portrait</button><button id="use-sample" type="button" class="text-button">Use illustration</button></div>
-    <p class="small">Photos and video stay on your device for this session. Only colors you explicitly save remain in this browser.</p>
-    <p id="source-status" class="small" role="status" aria-live="polite">Loading an illustrated portrait so you can try the process.</p>
-    <details class="framing"><summary>Adjust portrait framing</summary><div class="frame-controls"><div><label for="frame-x">Left / right</label><input id="frame-x" type="range" min="0" max="100" value="50"></div><div><label for="frame-y">Up / down</label><input id="frame-y" type="range" min="0" max="100" value="42"></div><div><label for="frame-scale">Zoom</label><input id="frame-scale" type="range" min="70" max="400" value="100"></div></div><button id="auto-frame" class="quiet" type="button" disabled>Find face</button><p id="tracking-status" class="small" role="status">Framing controls work without automatic tracking.</p></details>
-  </details>
   <noscript>This session needs JavaScript. Camera and photo processing happen in your browser.</noscript>
   <div class="session-layout">
     <section class="mirror-workspace" aria-label="Draping mirror">
@@ -37,6 +30,14 @@
     </section>
     <section class="consultation" aria-label="Your guided session">
       <div id="prepare">
+  <details id="source-tools" open class="source-tools">
+    <summary>Camera &amp; photo <span id="source-tag">Loading illustration…</span></summary>
+    <div class="source-bar"><button id="freeze" type="button" class="quiet" disabled>Freeze frame</button><button id="start-camera" type="button">Use camera</button><label class="file-button" for="photo">Choose photo<input id="photo" type="file" accept="image/jpeg,image/png,image/webp,image/heic,image/heif"></label><button id="clear" type="button" class="quiet" disabled>Clear portrait</button><button id="use-sample" type="button" class="text-button">Use illustration</button></div>
+    <p class="small">Photos and video stay on your device for this session. Only colors you explicitly save remain in this browser.</p>
+    <p id="source-status" class="small" role="status" aria-live="polite">Loading an illustrated portrait so you can try the process.</p>
+    <details class="framing"><summary>Adjust portrait framing</summary><div class="frame-controls"><div><label for="frame-x">Left / right</label><input id="frame-x" type="range" min="0" max="100" value="50"></div><div><label for="frame-y">Up / down</label><input id="frame-y" type="range" min="0" max="100" value="42"></div><div><label for="frame-scale">Zoom</label><input id="frame-scale" type="range" min="70" max="400" value="100"></div></div><button id="auto-frame" class="quiet" type="button" disabled>Find face</button><p id="tracking-status" class="small" role="status">Framing controls work without automatic tracking.</p></details>
+  </details>
+
         <p class="eyebrow">BEFORE WE BEGIN</p><h2>Ready to compare?</h2>
         <p>Choose a portrait, then compare one pair at a time: undertone, home season, and flow.</p>
         <button id="begin" type="button" disabled>Begin with illustration</button><button id="browse-before" class="quiet browse-button" type="button" disabled>Explore the seasonal drapes</button>

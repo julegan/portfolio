@@ -96,6 +96,7 @@ function renderQuestion() {
 }
 function render(focus = false) {
   $('main').classList.toggle('in-session',stage > 0); $('main').classList.toggle('at-results',stage === 6);
+  document.body.classList.toggle('is-preparing',stage===0);
   document.body.classList.toggle('is-comparing',stage > 0 && stage < 6); document.body.classList.toggle('is-results',stage === 6);
   $('source-tools').hidden = stage !== 0; stepView();
   $('prepare').hidden = stage !== 0; $('question').hidden = stage === 0 || stage === 6; $('results').hidden = stage !== 6;
@@ -262,7 +263,8 @@ capture=createPortrait($('camera'),{
   onStatus:status,
   onState(state,reason){
     if(reason==='source'||reason==='clear') resetSession();
-    $('source-tag').textContent=sources[state.mode];
+    $('source-tag').textContent=state.waiting?'Opening camera…':sources[state.mode];
+    if(stage===0)$('mirror-context').textContent=state.waiting?'Opening camera…':state.mode==='camera'?'Live preview · freeze when ready':state.mode==='demo'?'Illustration · practice':state.mode==='empty'?'Add a camera frame or photo':'Your portrait preview';
     $('freeze').hidden=state.mode!=='camera'; $('clear').hidden=!state.waiting&&(state.mode==='demo'||state.mode==='empty'); $('clear').textContent=state.waiting?'Cancel camera':'Clear portrait'; $('use-sample').hidden=state.mode==='demo';
     $('freeze').disabled=!state.canFreeze; $('clear').disabled=state.mode==='empty'&&!state.waiting;
     $('start-camera').disabled=state.mode==='camera'||Boolean(state.waiting);

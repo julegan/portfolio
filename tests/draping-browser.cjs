@@ -60,13 +60,28 @@ async function explorerChecks(page,name,width){
  await page.locator('#wardrobe button').last().focus();await audit(page,name+' explorer '+width);
  await page.locator('#close-explorer').click();assert.equal(await page.locator('#result-title').innerText(),'True Winter','browsing does not reclassify');
 }
+async function setupOrder(page,width){
+ if(width>760)return;
+ const data=await page.evaluate(()=>{const c=document.getElementById('portrait-a').getBoundingClientRect(),s=document.getElementById('source-tools').getBoundingClientRect(),camera=document.getElementById('start-camera').getBoundingClientRect(),photo=document.getElementById('photo').getBoundingClientRect();return{height:innerHeight,c:c.toJSON(),s:s.toJSON(),camera:camera.toJSON(),photo:photo.toJSON()};});
+ assert(data.c.top>=0&&data.c.bottom<=data.height,'setup preview is on screen');
+ assert(data.c.bottom<=data.s.top+1,'mirror precedes camera/photo options');
+ assert(data.camera.bottom<=data.height+1&&data.photo.bottom<=data.height+1,'primary capture choices share the screen with preview');
+}
+async function framingKeepsPreview(page,width){
+ if(width>760)return;
+ await page.locator('.framing>summary').click();await page.locator('#frame-scale').focus();
+ const data=await page.evaluate(()=>({height:innerHeight,preview:document.getElementById('portrait-a').getBoundingClientRect().toJSON(),slider:document.getElementById('frame-scale').getBoundingClientRect().toJSON()}));
+ assert(data.preview.top>=-1&&data.preview.bottom<=data.height+1,'preview stays visible while framing');
+ assert(separated(data.preview,data.slider),'framing controls do not cover the preview');assert(data.slider.top>=data.preview.bottom-1&&data.slider.bottom<=data.height+1,'focused framing control stays below the visible preview');
+ await page.locator('#frame-scale').press('ArrowRight');await page.locator('.framing>summary').click();
+}
 async function comparisonChecks(browser,name,width){
  const context=await browser.newContext({viewport:{width,height:width===320?568:width===390?744:900}}),page=await context.newPage();const errors=[],unexpected=[];
  page.on('pageerror',e=>errors.push(e.message));page.on('request',r=>{const u=new URL(r.url());if(u.origin!==origin||r.method()!=='GET'||u.pathname.startsWith('/projects/color-lab/'))unexpected.push(r.url());});
  try{
   await page.goto(origin+'/projects/draping-mirror/');await page.waitForFunction(()=>document.getElementById('source-tag').textContent==='Illustrated sample');
   assert.equal(await page.title(),'Draping mirror — Julie Owens');assert.equal(await page.locator('header a').getAttribute('href'),'/projects/');
-  assert.equal(await page.locator('input[type=color]').count(),0);await audit(page,name+' prepare '+width);
+  assert.equal(await page.locator('input[type=color]').count(),0);await setupOrder(page,width);await audit(page,name+' prepare '+width);
   await page.locator('#begin').click();assert(await page.locator('#next').isDisabled());await phoneTaskFits(page,width);await protectedSurface(page,'portrait-a',['drape-switch','focus-mirror','question-title','decide']);await audit(page,name+' comparing '+width);
   const original=await pixels(page);assert.deepEqual(original[0],original[1]);
   await page.locator('#show-b').click();assert.deepEqual((await pixels(page))[0],original[0],'drape swaps leave portrait pixels unchanged');
@@ -100,7 +115,7 @@ async function comparisonChecks(browser,name,width){
   await page.waitForFunction(()=>document.getElementById('source-tag').textContent.includes('Your photo'));
   assert(await page.locator('#prepare').isVisible());assert(await page.locator('#results').isHidden());
   await page.waitForFunction(()=>/No single face found|Face framing is active|Automatic framing is unavailable/.test(document.getElementById('tracking-status').textContent),null,{timeout:60000});
-  await page.locator('#begin').click();const uploaded=await pixels(page);await page.locator('#show-b').click();assert.deepEqual((await pixels(page))[0],uploaded[0]);assert.deepEqual(uploaded[0],uploaded[1]);
+  await framingKeepsPreview(page,width);await page.locator('#begin').click();const uploaded=await pixels(page);await page.locator('#show-b').click();assert.deepEqual((await pixels(page))[0],uploaded[0]);assert.deepEqual(uploaded[0],uploaded[1]);
   const storage=await page.evaluate(async()=>({local:{...localStorage},session:{...sessionStorage},databases:typeof indexedDB.databases==='function'?(await indexedDB.databases()).length:null}));
   assert.deepEqual(Object.keys(storage.local),['julieowens.draping-mirror.palette.v1']);assert(!JSON.stringify(storage).includes('data:image'));assert.deepEqual(storage.session,{});if(storage.databases!==null)assert.equal(storage.databases,0);
   const savedColors=JSON.parse(Object.values(storage.local)[0]);assert.equal(savedColors.length,2);assert(savedColors.every(color=>typeof color==='string'&&/^#[0-9A-F]{6}$/.test(color)));assert.equal(savedColors[0],exported.colors[0]);
@@ -122,14 +137,14 @@ async function reflowChecks(browser,name){
  }finally{await context.close();}
 }
 async function cameraChecks(browser){
- const context=await browser.newContext();await context.addInitScript(()=>{
+ const context=await browser.newContext({viewport:{width:390,height:744}});await context.addInitScript(()=>{
   window.testCamera={stops:0,requests:[]};Object.defineProperty(navigator.mediaDevices,'getUserMedia',{configurable:true,value:async constraints=>{
    testCamera.requests.push(constraints);const c=document.createElement('canvas');c.width=640;c.height=480;const x=c.getContext('2d');const draw=()=>{x.fillStyle='#8A7362';x.fillRect(0,0,640,480);};draw();const timer=setInterval(draw,60);const stream=c.captureStream(15);
    for(const track of stream.getTracks()){const stop=track.stop.bind(track);track.stop=()=>{clearInterval(timer);testCamera.stops++;stop();};}return stream;
   }});
  });const page=await context.newPage();
  try{
-  await page.goto(origin+'/projects/draping-mirror/');await page.locator('#start-camera').click();await page.waitForFunction(()=>!document.getElementById('freeze').disabled);assert(await page.locator('#download-comparison').isDisabled());assert.equal(await page.evaluate(()=>testCamera.requests[0].audio),false);
+  await page.goto(origin+'/projects/draping-mirror/');await page.locator('#start-camera').click();await page.waitForFunction(()=>!document.getElementById('freeze').disabled);assert(await page.locator('#download-comparison').isDisabled());assert.equal(await page.evaluate(()=>testCamera.requests[0].audio),false);await setupOrder(page,390);assert.match(await page.locator('#mirror-context').innerText(),/Live preview/);
   await page.locator('#begin').click();assert.match(await page.locator('#source-tag').innerText(),/camera off/);assert.equal(await page.evaluate(()=>testCamera.stops),1);assert.deepEqual(...await pixels(page));
   await openSource(page);await page.locator('#start-camera').click();await page.waitForFunction(()=>!document.getElementById('freeze').disabled);assert(await page.locator('#prepare').isVisible());await page.locator('#clear').click();assert.equal(await page.evaluate(()=>testCamera.stops),2);
   await page.locator('#start-camera').click();await page.waitForFunction(()=>!document.getElementById('freeze').disabled);await page.evaluate(()=>window.dispatchEvent(new PageTransitionEvent('pagehide')));assert.equal(await page.evaluate(()=>testCamera.stops),3);
