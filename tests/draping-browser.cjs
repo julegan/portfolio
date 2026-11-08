@@ -10,7 +10,11 @@ async function audit(page,label){
   assert.deepEqual(result.violations.map(v=>({id:v.id,nodes:v.nodes.map(n=>n.target)})),[],label);
   assert(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth+1),label+' fits viewport');
 }
-async function pixels(page){return page.evaluate(()=>['portrait-a','portrait-b'].map(id=>{const c=document.getElementById(id).getContext('2d');return [...c.getImageData(400,300,100,100).data,...c.getImageData(450,730,40,30).data];}));}
+async function pixels(page,ids=['portrait-a','portrait-b']){return page.evaluate(ids=>ids.map(id=>{
+ const canvas=document.getElementById(id),ctx=canvas.getContext('2d'),b=JSON.parse(canvas.dataset.portraitBounds);
+ // Check the face and lower transparent-image backing at their actual size.
+ return [[.45,.3,.12,.1],[.48,.9,.06,.03]].flatMap(([x,y,w,h])=>[...ctx.getImageData(Math.round(b.x+x*b.width),Math.round(b.y+y*b.height),Math.max(1,Math.round(w*b.width)),Math.max(1,Math.round(h*b.height))).data]);
+}),ids);}
 async function answer(page,value){if(!await page.locator('#response-sheet').isVisible())await page.locator('#decide').click();await page.locator(`[data-answer="${value}"]`).click();}
 async function choose(page,value){await page.locator('#show-b').click();await answer(page,value);await page.locator('#next').click();}
 async function openTools(page){if(!await page.locator('#session-tools').isVisible())await page.locator(await page.locator('#question-tools').isVisible()?'#question-tools':'#open-tools').click();}
@@ -29,16 +33,33 @@ async function protectedSurface(page,canvasId,controls){
  assert.equal(data.fit,'contain','whole portrait and drape remain visible');
  for(const control of data.controls)assert(separated(data.canvas,control.rect),control.id+' stays outside the image');
 }
+async function edgeToEdge(page,canvasId,colored=true){
+ await page.waitForFunction(id=>{
+  const c=document.getElementById(id),r=c.getBoundingClientRect(),s=getComputedStyle(c),w=r.width-parseFloat(s.borderLeftWidth)-parseFloat(s.borderRightWidth),h=r.height-parseFloat(s.borderTopWidth)-parseFloat(s.borderBottomWidth);
+  const density=Math.min(2,4096/Math.max(w,h));
+  return c.width===Math.round(w*density)&&c.height===Math.round(h*density);
+ },canvasId);
+ const d=await page.locator('#'+canvasId).evaluate(c=>{
+  const b=JSON.parse(c.dataset.portraitBounds),ctx=c.getContext('2d');
+  const points=[.002,.5,.998].map(x=>[...ctx.getImageData(Math.min(c.width-1,Math.floor(c.width*x)),c.height-2,1,1).data]);
+  return {w:c.width,h:c.height,b,points};
+ });
+ assert(d.b.x>=0&&d.b.y>=0&&d.b.x+d.b.width<=d.w+1&&d.b.y+d.b.height<=d.h+1,'whole proportional portrait fits the frame');
+ assert(Math.abs(d.b.width/d.b.height-360/476)<.003,'portrait keeps its proportions');
+ for(const p of d.points){assert.equal(p[3],255);assert(Math.max(...p.slice(0,3).map((v,i)=>Math.abs(v-d.points[1][i])))<=25,'fabric reaches both edges without gray gutters: '+JSON.stringify(d.points));}
+ if(colored)assert(d.points.some(p=>Math.max(...p.slice(0,3))-Math.min(...p.slice(0,3))>30),'regression uses a colored drape, not the neutral backing');
+}
 async function explorerChecks(page,name,width){
  await page.locator('#browse-results').click();
  assert.equal(await page.locator('#palette-family').inputValue(),'winter');assert.equal(await page.locator('#palette-flow').inputValue(),'balanced');
  assert.equal(await page.locator('#drape-family').inputValue(),'reds');assert.equal(await page.locator('#wardrobe button').count(),12);
  await page.locator('#wardrobe button').first().click();const first=await page.locator('#explore-caption').innerText();
  assert.match(await page.locator('#explore-a').getAttribute('aria-label'),/pinned reference/);assert(await page.locator('#explore-b').isDisabled());
- const before=await page.locator('#portrait-explorer').evaluate(c=>[...c.getContext('2d').getImageData(400,300,100,100).data]);
+ await edgeToEdge(page,'portrait-explorer');
+ const before=await pixels(page,['portrait-explorer']);
  await page.locator('#collection-picker').click();await page.locator('#palette-flow').selectOption('thermal');await page.locator('#apply-collection').click();await page.locator('#wardrobe button').nth(1).click();
  assert.match(await page.locator('#explore-caption').innerText(),/Cool Winter/);
- assert.deepEqual(await page.locator('#portrait-explorer').evaluate(c=>[...c.getContext('2d').getImageData(400,300,100,100).data]),before);
+ assert.deepEqual(await pixels(page,['portrait-explorer']),before);
  await page.locator('#explore-a').click();assert.equal(await page.locator('#explore-caption').innerText(),first,'reference survives collection changes');
  await page.locator('#explore-b').click();const candidate=await page.locator('#explore-caption').innerText();await page.locator('#pin-reference').click();
  assert.equal((await page.locator('#explore-caption').innerText()).slice(4),candidate.slice(4),'explicit pin keeps the chosen drape');assert.equal(await page.locator('#explore-a').getAttribute('aria-pressed'),'true');
@@ -56,7 +77,7 @@ async function explorerChecks(page,name,width){
  else {assert(layout.first.height>=100);assert(layout.next.top>=layout.first.bottom);assert(layout.scrollHeight>layout.clientHeight);}
  assert(layout.portrait.top>=0&&layout.portrait.bottom<=layout.height);assert(layout.portrait.height>=layout.height*.4);
  await page.locator('#collection-picker').click();await page.locator('#palette-flow').selectOption('depth');await page.locator('[data-adjust="intensity"][data-value="-1"]').click();await page.locator('#apply-collection').click();await page.locator('#wardrobe button').first().click();assert.match(await page.locator('#explore-caption').innerText(),/Deep Winter.*softer/);
- await page.locator('#focus-explorer').click();assert(await page.locator('#portrait-viewer').isVisible());await page.locator('#viewer-next').click();await audit(page,name+' expanded mirror '+width);await page.locator('#close-viewer').click();
+ await page.locator('#focus-explorer').click();assert(await page.locator('#portrait-viewer').isVisible());await edgeToEdge(page,'portrait-viewer');await page.locator('#viewer-next').click();await audit(page,name+' expanded mirror '+width);await page.locator('#close-viewer').click();
  await page.locator('#wardrobe button').last().focus();await audit(page,name+' explorer '+width);
  await page.locator('#close-explorer').click();assert.equal(await page.locator('#result-title').innerText(),'True Winter','browsing does not reclassify');
 }
@@ -82,8 +103,9 @@ async function comparisonChecks(browser,name,width){
  try{
   await page.goto(origin+'/projects/draping-mirror/');await page.waitForFunction(()=>document.getElementById('source-tag').textContent==='Illustrated sample');
   assert.equal(await page.title(),'Draping mirror — Julie Owens');assert.equal(await page.locator('header a').getAttribute('href'),'/projects/');
-  assert.equal(await page.locator('input[type=color]').count(),0);await setupOrder(page,width);await audit(page,name+' prepare '+width);
+  assert.equal(await page.locator('input[type=color]').count(),0);await setupOrder(page,width);await edgeToEdge(page,'portrait-a',false);await audit(page,name+' prepare '+width);
   await page.locator('#begin').click();assert(await page.locator('#next').isDisabled());await phoneTaskFits(page,width);await protectedSurface(page,'portrait-a',['drape-switch','focus-mirror','question-title','decide']);await audit(page,name+' comparing '+width);
+  await edgeToEdge(page,'portrait-a');
   const original=await pixels(page);assert.deepEqual(original[0],original[1]);
   await page.locator('#show-b').click();assert.deepEqual((await pixels(page))[0],original[0],'drape swaps leave portrait pixels unchanged');
   await page.locator('#help').click();assert(await page.locator('#guidance').isVisible());await audit(page,name+' guided '+width);await page.locator('#close-help').click();
@@ -161,4 +183,18 @@ async function fallbackChecks(browser){
   console.log('PASS all-uncertain results, blocked storage and camera-denial fallback');
  }finally{await context.close();}
 }
-(async()=>{for(const[name,type]of[['Chromium',chromium],['WebKit',webkit]]){const browser=await type.launch();try{for(const width of[1440,390,320])await comparisonChecks(browser,name,width);await fallbackChecks(browser);await reflowChecks(browser,name);if(name==='Chromium')await cameraChecks(browser);}finally{await browser.close();}}})().catch(e=>{console.error(e);process.exitCode=1;});
+async function resizeChecks(browser,name){
+ const context=await browser.newContext({viewport:{width:390,height:744}}),page=await context.newPage();
+ try{
+  await page.goto(origin+'/projects/draping-mirror/');await page.waitForFunction(()=>!document.getElementById('begin').disabled);
+  await page.locator('#browse-before').click();await page.locator('#wardrobe button').first().click();
+  for(const [width,height]of[[900,500],[1440,900],[320,568],[390,844]]){await page.setViewportSize({width,height});await edgeToEdge(page,'portrait-explorer');}
+  await page.locator('#focus-explorer').click();
+  for(const [width,height]of[[844,390],[390,844]]){await page.setViewportSize({width,height});await edgeToEdge(page,'portrait-viewer');await protectedSurface(page,'portrait-viewer',['close-viewer','viewer-next','viewer-caption']);}
+  await page.locator('#close-viewer').click();await page.locator('#close-explorer').click();await page.locator('#begin').click();
+  await openTools(page);await page.locator('#compare-view').click();
+  for(const [width,height]of[[1440,900],[390,744],[744,390]]){await page.setViewportSize({width,height});await edgeToEdge(page,'portrait-a');await edgeToEdge(page,'portrait-b');assert.deepEqual(...await pixels(page),'paired portraits remain identical after resizing');}
+  console.log('PASS '+name+' edge-to-edge setup, exploration, fullscreen, side-by-side and rotation');
+ }finally{await context.close();}
+}
+(async()=>{for(const[name,type]of[['Chromium',chromium],['WebKit',webkit]]){const browser=await type.launch();try{for(const width of[1440,390,320])await comparisonChecks(browser,name,width);await resizeChecks(browser,name);await fallbackChecks(browser);await reflowChecks(browser,name);if(name==='Chromium')await cameraChecks(browser);}finally{await browser.close();}}})().catch(e=>{console.error(e);process.exitCode=1;});

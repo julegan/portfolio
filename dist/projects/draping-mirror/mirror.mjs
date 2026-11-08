@@ -3,6 +3,7 @@ import { toOKLCH } from './color.mjs';
 import { STAGES, HOMES, REST_DRAPE, questionsFor, allQuestions, recordAnswer, profile, wardrobePalette, FLOW_KINDS, flowOptions, refinementLabel, HUE_FAMILIES } from './session.mjs';
 import { emptyComparison, chooseCandidate, showPinned, pinVisible, comparisonPurpose } from './comparison.mjs';
 import { createPortrait } from './portrait.mjs';
+import { mirrorLayout } from './mirror-layout.mjs';
 
 const $ = id => document.getElementById(id);
 let stage = 0, index = 0, answers = {}, active = 0, resting = false, comparing = false, practice = null;
@@ -25,28 +26,43 @@ function metalStops(drape) {
 function swatchFill(drape) {
   return drape.finish === 'matte' ? drape.hex : `linear-gradient(130deg,${metalStops(drape).map(([stop,hex])=>`${hex} ${stop*100}%`).join(',')})`;
 }
-function metallicFill(ctx, drape) {
-  const gradient = ctx.createLinearGradient(0, 250, 480, 570);
+function metallicFill(ctx, drape, width, height, scale) {
+  const gradient = ctx.createLinearGradient(0, 250 * scale, width, height - 30 * scale);
   for (const [stop,hex] of metalStops(drape)) gradient.addColorStop(stop,hex);
   return gradient;
 }
-function drawPanel(canvas, drape) {
-  const ctx = canvas.getContext('2d'); ctx.setTransform(2,0,0,2,0,0); ctx.clearRect(0,0,480,600);
+function panelFrame(canvas, fallback) {
+  const rect = canvas.getBoundingClientRect(), style = getComputedStyle(canvas);
+  const width = rect.width - parseFloat(style.borderLeftWidth) - parseFloat(style.borderRightWidth);
+  const height = rect.height - parseFloat(style.borderTopWidth) - parseFloat(style.borderBottomWidth);
+  return width > 0 && height > 0 ? { width, height } : fallback;
+}
+function drawPanel(canvas, drape, frame = panelFrame(canvas)) {
+  if (!frame) return;
+  const { width, height, scale, left, pixelWidth, pixelHeight, portrait } = mirrorLayout(frame.width, frame.height);
+  if (canvas.width !== pixelWidth) canvas.width = pixelWidth;
+  if (canvas.height !== pixelHeight) canvas.height = pixelHeight;
+  const ctx = canvas.getContext('2d'); ctx.setTransform(pixelWidth/width,0,0,pixelHeight/height,0,0);
+  // Numeric bounds let pixel checks follow the portrait after a frame resize.
+  canvas.dataset.portraitBounds = JSON.stringify({x:portrait.x*pixelWidth/width,y:portrait.y*pixelHeight/height,width:portrait.width*pixelWidth/width,height:portrait.height*pixelHeight/height});
   // Surface colors are study content; interface theme colors never tint them.
-  ctx.fillStyle = '#D4D1CC'; ctx.fillRect(0,0,480,600);
-  ctx.fillStyle = drape.finish === 'matte' ? drape.hex : metallicFill(ctx,drape);
-  ctx.beginPath(); ctx.moveTo(0,410); ctx.quadraticCurveTo(240,330,480,410); ctx.lineTo(480,600); ctx.lineTo(0,600); ctx.closePath(); ctx.fill();
+  ctx.fillStyle = '#D4D1CC'; ctx.fillRect(0,0,width,height);
+  ctx.fillStyle = drape.finish === 'matte' ? drape.hex : metallicFill(ctx,drape,width,height,scale);
+  ctx.beginPath(); ctx.moveTo(0,410*scale); ctx.quadraticCurveTo(width/2,330*scale,width,410*scale); ctx.lineTo(width,height); ctx.lineTo(0,height); ctx.closePath(); ctx.fill();
   // Fixed, quiet folds are confined to the cloth, below the portrait window.
-  ctx.save(); ctx.strokeStyle = '#FFFFFF18'; ctx.lineWidth = 1;
-  for (let y = 438; y < 600; y += 65) { ctx.beginPath(); ctx.moveTo(0,y); ctx.quadraticCurveTo(235,y-50,480,y+15); ctx.stroke(); } ctx.restore();
+  ctx.save(); ctx.strokeStyle = '#FFFFFF18'; ctx.lineWidth = scale;
+  for (let y = 438*scale; y < height; y += 65*scale) { ctx.beginPath(); ctx.moveTo(0,y); ctx.quadraticCurveTo(width/2,y-50*scale,width,y+15*scale); ctx.stroke(); } ctx.restore();
+  ctx.save(); ctx.translate(left,0); ctx.scale(scale,scale);
   ctx.save(); ctx.beginPath(); ctx.ellipse(240,248,180,238,0,0,Math.PI*2); ctx.clip();
   // The same neutral backing also protects transparent portrait pixels.
   ctx.fillStyle = '#D4D1CC'; ctx.fillRect(60,10,360,476); ctx.translate(60-100*360/280,10-31*360/280); ctx.scale(360/280,360/280); capture?.draw(ctx); ctx.restore();
   ctx.strokeStyle = '#65615B'; ctx.lineWidth = .7; ctx.beginPath(); ctx.ellipse(240,248,180,238,0,0,Math.PI*2); ctx.stroke();
+  ctx.restore();
 }
 function paint() {
   const pair = practice?.drapes ?? displayPair;
-  drawPanel(panels[0],resting ? REST_DRAPE : pair[active]); drawPanel(panels[1],resting ? REST_DRAPE : pair[1-active]);
+  const frame = panelFrame(panels[0]);
+  drawPanel(panels[0],resting ? REST_DRAPE : pair[active],frame); drawPanel(panels[1],resting ? REST_DRAPE : pair[1-active],panelFrame(panels[1],frame));
   $('caption-current').textContent = resting ? REST_DRAPE.name : pair[active].name;
   $('caption-other').textContent = resting ? REST_DRAPE.name : pair[1-active].name;
   $('drape-letter').textContent = stage === 0 || resting ? '—' : active === 0 ? 'A' : 'B';
@@ -216,7 +232,7 @@ function paintViewer() {
   drawPanel($('portrait-viewer'),d); $('viewer-caption').textContent=viewerMode==='explorer'&&d!==REST_DRAPE ? pinned.active.toUpperCase()+' · '+d.name : d.name;
   for(const id of ['viewer-previous','viewer-next']) $(id).disabled=viewerMode==='explorer'&&!(pinned.a&&pinned.b);
 }
-function openViewer(mode) { viewerMode=mode; paintViewer(); $('mirror-viewer').showModal(); }
+function openViewer(mode) { viewerMode=mode; $('mirror-viewer').showModal(); paintViewer(); }
 function viewerStep(step) {
   if(viewerMode==='explorer') {
     if(pinned.a&&pinned.b){pinned=showPinned(pinned,pinned.active==='a'?'b':'a');$('explore-status').textContent='';paintExplorer();}
@@ -225,7 +241,7 @@ function viewerStep(step) {
 }
 function openExplorer() {
   if(capture.mode==='camera') capture.freeze();
-  renderWardrobe(); paintExplorer(); $('palette-explorer').showModal();
+  renderWardrobe(); $('palette-explorer').showModal(); paintExplorer();
 }
 function paletteView() {
   $('palette-count').textContent=palette.length; $('download-palette').disabled=palette.length===0;
@@ -360,10 +376,17 @@ $('download-comparison').addEventListener('click',()=>{
   const pair=practice?.drapes??displayPair, canvas=document.createElement('canvas');canvas.width=1920;canvas.height=1320;
   const ctx=canvas.getContext('2d');ctx.fillStyle='#151518';ctx.fillRect(0,0,1920,1320);
   const a=document.createElement('canvas'),b=document.createElement('canvas');a.width=b.width=960;a.height=b.height=1200;
-  drawPanel(a,pair[0]);drawPanel(b,pair[1]);ctx.drawImage(a,0,0);ctx.drawImage(b,960,0);
+  drawPanel(a,pair[0],{width:480,height:600});drawPanel(b,pair[1],{width:480,height:600});ctx.drawImage(a,0,0);ctx.drawImage(b,960,0);
   ctx.fillStyle='#F3F1EC';ctx.font='26px system-ui';ctx.fillText('A · '+pair[0].name,30,1245);ctx.fillText('B · '+pair[1].name,990,1245);
   ctx.fillStyle='#CFCCD5';ctx.font='22px system-ui';ctx.fillText('Draping mirror · '+(capture.mode==='demo'?'Illustrated practice':'Same portrait in both views')+' · Virtual drapes',30,1290);
   canvas.toBlob(blob=>{download(blob,'draping-mirror-comparison.png');canvas.width=canvas.height=a.width=a.height=b.width=b.height=0;},'image/png');
 });
 try{palette=readPalette(localStorage.getItem(PALETTE_KEY));}catch(_){try{localStorage.getItem(PALETTE_KEY);$('palette-status').textContent='The saved colors could not be read. You can start a new collection.';}catch(_){storageAvailable=false;$('palette-status').textContent='Browser storage is unavailable. Download your colors to keep them.';}}
+// Redraw on rotation, responsive layout changes and dialog expansion. Updating
+// the bitmap does not change the CSS frame's explicit size/aspect ratio.
+let resizePaint = 0;
+const mirrorResize = new ResizeObserver(() => {
+  if (!resizePaint) resizePaint = requestAnimationFrame(() => { resizePaint=0; paint(); });
+});
+for (const canvas of [...panels,$('portrait-explorer'),$('portrait-viewer')]) mirrorResize.observe(canvas);
 familyOptions();renderFlows();renderWardrobe();paletteView();render();capture.sample();
