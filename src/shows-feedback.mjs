@@ -1,3 +1,5 @@
+import {serveEventPreview} from "./shows-share.mjs";
+
 // Account-free SHOWS feedback receiver. Runs only for /api/shows/feedback*.
 const categories = {
   idea: "Idea",
@@ -29,6 +31,12 @@ function quote(value) {
 export default {
   async fetch(request, env) {
     const url = new URL(request.url);
+    // Only the exact SHOWS page route runs Worker-first for event previews.
+    if (url.pathname === "/projects/shows/") {
+      if (request.method === "GET" && url.searchParams.has("event"))
+        return serveEventPreview(request, env);
+      return env.ASSETS.fetch(request);
+    }
     if (url.pathname === "/api/shows/feedback/config" && request.method === "GET") {
       const enabled = configured(env) && PRODUCTION_HOSTNAMES.has(url.hostname);
       return json({ enabled, ...(enabled ? { sitekey: TURNSTILE_SITEKEY } : {}) });
