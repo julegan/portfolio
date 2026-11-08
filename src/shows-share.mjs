@@ -1,7 +1,7 @@
 // Server-rendered sharing metadata for already-published SHOWS event records.
 // Link crawlers cannot see URL fragments or JavaScript-only metadata.
 const PATH = "/projects/shows/";
-const CARD = "https://julieowens.me/projects/shows/share-card.png";
+const CARD = "https://julieowens.me/projects/shows/share-card.svg";
 const CANONICAL = "https://julieowens.me" + PATH;
 const ZONE = "America/Los_Angeles";
 const dateFmt = new Intl.DateTimeFormat("en-US", {
