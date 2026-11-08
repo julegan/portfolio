@@ -11,7 +11,7 @@ function parse(code){
  // retrieved JavaScript from the public GitHub repository.
  const match=code.match(/window\.SHOWS_DATASET\s*=\s*(\{[\s\S]*?\});\s*window\.SHOWS_EVENTS\s*=\s*(\[[\s\S]*?\]);\s*$/);
  if(!match)throw Error("Unrecognized canonical SHOWS JSON dataset format");
- const index=code.indexOf("window.SHOWS_DATASET");
+ const index=match.index;
  const prefix=code.slice(0,index);
  if(!/^(?:\s|\/\/[^\n]*\n|\/\*[\s\S]*?\*\/)*$/.test(prefix))
   throw Error("Executable prefix in canonical SHOWS dataset is not eligible for automatic sync");

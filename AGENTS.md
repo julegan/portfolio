@@ -2,6 +2,10 @@
 
 Julie Owens directs and approves this independent, personal creative and professional portfolio. Submit changes through pull requests; do not commit directly to main or merge on her behalf. The site is intentionally exploratory, not an official City website or a résumé replacement. Favor small, reversible, accessible experiments. Do not invent career metrics, claim sole credit for collaborative work, or describe an evolving platform as personally authored in all its versions. New SHOWS event additions require her review before publication, except that a repository-approved trusted-original auto-publishing policy may publish append-only verified events through scoped scheduled bots. Code changes, new source trust assignments and all exceptional events still require a user-reviewed PR. Never merge a PR on the user's behalf.
 
+## Independent color projects
+
+Color Lab (`/projects/color-lab/`) is the accessible digital color picker and readability explorer. Draping mirror (`/projects/draping-mirror/`) is a separate personal-color project for portraits, clothing and virtual drapes. Keep their routes, navigation, styles, runtime code, saved palettes and product plans independent. Do not make personal color analysis a mode of Color Lab. Draping mirror uses a guided, phone-oriented consultation with original prepared drapes: strong comparisons first, then closer season/flow checks. Drapes are study materials independent of the portfolio UI palette; do not add hex pickers or brand-tint the drapes. Preserve uncertain observations rather than forcing a season, and keep photos on-device. See `DRAPING-MIRROR.md` for its scope and privacy model.
+
 ## SHOWS snapshot
 
 `julegan/shows` is the canonical development source. This repository deploys its snapshot at `dist/projects/shows/`. Keep app logic, styles, and event data aligned with the corresponding SHOWS PR, while preserving the portfolio's return link to `/projects/`.

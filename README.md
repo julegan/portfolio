@@ -12,16 +12,19 @@ The site is intentionally in progress. Its visual direction is art-directed, typ
 | --- | --- |
 | `/` | Home: design, civic digital work, values, systems, and the person behind the work |
 | `/projects/` | Two collections: useful creative tools and the Possible Realities laboratory |
-
 | `/projects/shows/` | SHOWS, a reviewed Portland music and independent culture calendar snapshot |
+| `/projects/color-lab/` | Color Lab, a digital text-color picker and readability explorer |
 | `/projects/svg-hopper/` | SVG Hopper, a language-ready graphic composer prototype |
 | `/projects/tubes/` | Tubes, a local-first pattern generator for knitting in the round |
+| `/projects/draping-mirror/` | Draping mirror, an independent on-device personal-color and virtual-draping prototype |
 | `/projects/possible-realities/` | Possible Realities laboratory, including its rule workbench and notebook |
 | `/projects/chaos/` | Almost the Same: chaos and divergent trajectories |
 | `/projects/relationships/` | Only Between: relationships and emergent structure |
 | `/projects/without-coordinates/` | Without Coordinates: graph distance without predefined space |
 
 The last three experiments are linked as independent investigations within Possible Realities. Their existing URLs are preserved.
+
+Draping mirror and Color Lab are separate projects with their own interfaces, code, styles and saved palettes. Personal portraits stay in browser memory. See [DRAPING-MIRROR.md](DRAPING-MIRROR.md) for the mirror’s scope, privacy and validation notes.
 
 The retired SHOWS A/B comparison pages (`/projects/shows/preview-a/` and `/projects/shows/preview-b/`) are intentionally **not** deployed. The production SHOWS calendar uses `/projects/shows/` and still depends on `preview.css` despite that stylesheet's historical name. Do not restore the discarded demo pages or delete active production styles during future snapshot updates.
 

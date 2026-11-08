@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="560" height="740" viewBox="0 0 560 740">
+  <title>Illustrated portrait for trying the draping controls</title>
+  <rect width="560" height="740" fill="#C7C4BF"/>
+  <path d="M123 372C86 154 163 75 285 78c143 2 184 149 146 334l-38 220H140Z" fill="#252329"/>
+  <path d="M224 443h112v135c87 15 147 75 160 162H67c13-88 71-148 157-162Z" fill="#936C56"/>
+  <path d="M80 740c17-94 73-143 149-161l51 74 51-74c78 20 133 69 149 161Z" fill="#37363E"/>
+  <ellipse cx="151" cy="325" rx="23" ry="46" fill="#AE8064"/><ellipse cx="409" cy="325" rx="23" ry="46" fill="#AE8064"/>
+  <path d="M154 237c0-85 53-128 126-128s126 43 126 128v107c0 103-66 162-126 162s-126-59-126-162Z" fill="#BE9578"/>
+  <path d="M141 274c-9-112 43-173 131-178 79-7 148 52 148 170-29-19-57-63-68-111-42 63-119 102-211 119Z" fill="#252329"/>
+  <path d="M182 302q35-21 64-3M313 299q35-20 64 4" fill="none" stroke="#443832" stroke-width="10" stroke-linecap="round"/>
+  <path d="M182 326q32-18 63 0-31 18-63 0M314 326q31-18 62 0-31 18-62 0" fill="#E4DACB"/>
+  <ellipse cx="215" cy="326" rx="11" ry="13" fill="#62665B"/><ellipse cx="345" cy="326" rx="11" ry="13" fill="#62665B"/>
+  <circle cx="215" cy="326" r="5" fill="#252329"/><circle cx="345" cy="326" r="5" fill="#252329"/>
+  <path d="m282 331-13 49q13 9 26 0" fill="none" stroke="#9E745C" stroke-width="5" stroke-linecap="round"/>
+  <path d="M241 419q39-18 78 0-39 35-78 0" fill="#8E5550"/>
+  <path d="M246 420h68" stroke="#613E3D" stroke-width="3"/>
+</svg>

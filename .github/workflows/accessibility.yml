@@ -37,6 +37,9 @@ jobs:
       - name: Color Lab readability, saved pairs and WCAG checks
         run: node tests/color-lab.cjs
 
+      - name: Draping mirror uploads, camera lifecycle, exports and accessibility
+        run: node tests/draping-browser.cjs
+
       - name: GA4 opt-in and browser privacy controls
         run: node tests/analytics-browser.cjs
 
