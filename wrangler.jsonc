@@ -5,7 +5,7 @@
   "assets": {
     "directory": "./dist",
     "binding": "ASSETS",
-    "run_worker_first": ["/api/shows/feedback*", "/projects/draping-mirror", "/projects/draping-mirror/*"]
+    "run_worker_first": ["/api/shows/feedback*", "/projects/shows/", "/projects/draping-mirror", "/projects/draping-mirror/*"]
   },
   "previews": {}
 }

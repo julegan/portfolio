@@ -200,9 +200,17 @@ const metals = {
   autumn: [['Antique brass',.61,.075,90,'satin'],['Copper',.59,.1,45,'polished'],['Bronze',.49,.07,70,'satin'],['Antique gold',.65,.09,85,'satin'],['Rose copper',.64,.07,30,'satin'],['Oxidized silver',.5,.02,95,'satin']],
   winter: [['Bright silver',.84,.006,265,'polished'],['Platinum',.76,.012,260,'polished'],['Blackened steel',.37,.012,270,'satin'],['White gold',.82,.02,95,'polished'],['High gold',.73,.1,85,'polished'],['Rose metal',.7,.055,350,'polished']]
 };
-export function wardrobePalette(homeId, flowKind = 'home') {
+export function normalizeRefinements(input = {}) {
+  return Object.fromEntries(['temperature','depth','intensity'].map(axis=>[axis,[-1,0,1].includes(input?.[axis]) ? input[axis] : 0]));
+}
+export function refinementLabel(input = {}) {
+  const a=normalizeRefinements(input);
+  return [a.temperature ? a.temperature>0?'warmer':'cooler' : '',a.depth ? a.depth>0?'deeper':'lighter' : '',a.intensity ? a.intensity>0?'brighter':'softer' : ''].filter(Boolean).join(', ');
+}
+export function wardrobePalette(homeId, flowKind = 'home', refinements = {}) {
   const home = HOMES[homeId]; if (!home) return [];
   const kind = FLOW_KINDS.includes(flowKind) ? flowKind : 'home';
+  const adjustments=normalizeRefinements(refinements), keySuffix=`t${adjustments.temperature}d${adjustments.depth}i${adjustments.intensity}`;
   const warm = home.temperature > 0, light = home.depth === 'Light';
   const baseL = light ? .69 : homeId === 'autumn' ? .56 : .52;
   const baseC = { spring:.15, summer:.065, autumn:.085, winter:.185 }[homeId];
@@ -214,15 +222,19 @@ export function wardrobePalette(homeId, flowKind = 'home') {
     }
     if (kind === 'depth') { l += light ? .055 : -.055; c *= .96; }
     if (kind === 'energy') c *= home.intensity > 0 ? 1.22 : .7;
-    const d = color(`${homeId}-${kind}-${key}`,name,Math.min(.985,Math.max(.12,l)),c,h,finish);
-    return Object.freeze({ ...d, group, family: homeId, flow: kind });
+    h += (thermalShift ?? (warm ? -5 : 5))*(warm?1:-1)*adjustments.temperature;
+    l -= adjustments.depth*.055; c *= Math.pow(1.24,adjustments.intensity);
+    const d = color(`${homeId}-${kind}-${key}-${keySuffix}`,name,Math.min(.985,Math.max(.12,l)),c,h,finish);
+    return Object.freeze({ ...d, group, family: homeId, flow: kind, adjustments });
   }
   return [
-    ...hues.map(([key,dl,scale,wh,ch],i) => {
+    ...hues.flatMap(([key,dl,scale,wh,ch],i) => {
       const delta = ((wh-ch+540)%360)-180;
-      return make(key,names[homeId][i],baseL+dl,baseC*scale,warm?wh:ch,'colors','matte',delta*(warm ? .25 : -.25));
+      return [[0,'',1],[.07,' · light',.9],[-.07,' · deep',.94]].map(([tone,suffix,chromaScale],n)=>make(key+'-'+n,names[homeId][i]+suffix,baseL+dl+tone,baseC*scale*chromaScale,warm?wh:ch,'colors','matte',delta*(warm ? .25 : -.25)));
     }),
+    ...[ ['Silk white',.93,warm?.02:.008,warm?85:265], ['Stone beige',.76,.025,warm?70:290], ['Shadow gray',.46,.018,warm?70:265], ['Midnight',.24,.025,warm?60:265] ].map(([name,l,c,h],i)=>make('extra-neutral-'+i,name,l,c,h,'neutrals')),
     ...neutrals[homeId].map(([name,l,c,h],i)=>make('neutral-'+i,name,l,c,h,'neutrals')),
+    ...[ ['Satin silver',.8,.008,265,'satin'], ['Smoked copper',.48,.06,45,'satin'] ].map(([name,l,c,h,finish],i)=>make('extra-metal-'+i,name,l,c,h,'metals',finish)),
     ...metals[homeId].map(([name,l,c,h,finish],i)=>make('metal-'+i,name,l,c,h,'metals',finish))
   ];
 }

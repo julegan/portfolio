@@ -2,12 +2,12 @@
  * See EVENT-SOURCES.md, MUSIC-SOURCES.md, VENUE-COVERAGE.md and EDITORIAL.md for source checks and priorities.
  * Unknown cost/end times remain null. startTimeKind="doors" explicitly labels doors-only times. */
 window.SHOWS_DATASET = {
-  "sourceCheckedAt": "2026-11-03",
+  "sourceCheckedAt": "2026-11-07",
   "coverageThrough": "2027-09-09",
-  "totalOccurrences": 1075,
-  "addedOccurrences": 9,
-  "batchId": "2026-11-03-curated-alt-markets",
-  "editorialReview": "Source-backed curated alternative market candidates require explicit human PR approval",
+  "totalOccurrences": 1272,
+  "addedOccurrences": 2,
+  "batchId": "auto-discovery-2026-11-07-60",
+  "editorialReview": "Automatically discovered candidates require explicit human PR approval",
   "previousBatches": [
     {
       "batchId": "2026-10-17-expansion",
@@ -132,11 +132,35 @@ window.SHOWS_DATASET = {
     {
       "batchId": "auto-discovery-2026-11-03-39",
       "addedOccurrences": 5
+    },
+    {
+      "batchId": "2026-11-03-curated-alt-markets",
+      "addedOccurrences": 9
+    },
+    {
+      "batchId": "auto-discovery-2026-11-06-46",
+      "addedOccurrences": 33
+    },
+    {
+      "batchId": "auto-discovery-2026-11-06-51",
+      "addedOccurrences": 90
+    },
+    {
+      "batchId": "auto-discovery-2026-11-06-52",
+      "addedOccurrences": 2
+    },
+    {
+      "batchId": "auto-discovery-2026-11-06-55",
+      "addedOccurrences": 62
+    },
+    {
+      "batchId": "trusted-original-2026-11-07",
+      "addedOccurrences": 1
     }
   ],
   "newLiveBills": 0,
   "newDjNights": 0,
-  "musicOccurrences": 335
+  "musicOccurrences": 379
 };
 window.SHOWS_EVENTS = [
   {
@@ -12910,6 +12934,57 @@ window.SHOWS_EVENTS = [
     }
   },
   {
+    "id": "auto-alberta-street-pub-2026-11-06-f750cb818cf9",
+    "title": "Kalida with Opener Paper Plane",
+    "subtitle": "Source-discovered venue event · details need review",
+    "category": "Unclassified",
+    "tags": [
+      "Category needs review",
+      "Time needs confirmation",
+      "Format needs confirmation"
+    ],
+    "musicStyles": [],
+    "eventFormat": "unverified",
+    "classificationEvidence": "No verified event type or genre",
+    "startTimeKind": "listed",
+    "startsAt": "2026-11-06T18:00:00-08:00",
+    "endsAt": null,
+    "venue": "Alberta Street Pub",
+    "address": "1036 NE Alberta Street, Portland, OR 97211",
+    "neighborhood": "Alberta Arts District",
+    "price": "See organizer for current admission",
+    "free": null,
+    "age": "Not published",
+    "description": "Automatically discovered from a primary venue or promoter listing. Alberta Street Pub's original Squarespace event record supplies the start and end timestamp; exact performance-versus-doors distinction is unconfirmed. Original venue event listing. $12 Cover at the Door",
+    "source": "Alberta Street Pub",
+    "url": "https://www.albertastreetpub.com/music/2026/11/6/kalida-with-opener-paper-plane",
+    "icon": "◇",
+    "sourceCheckedAt": "2026-11-06",
+    "verificationMethod": "Automated venue data; editorial date, time, event type and cancellation verification required",
+    "sourceCategories": [],
+    "sources": [
+      {
+        "name": "Alberta Street Pub",
+        "url": "https://www.albertastreetpub.com/music/2026/11/6/kalida-with-opener-paper-plane",
+        "kind": "organizer",
+        "checkedAt": "2026-11-06",
+        "originalCategories": []
+      }
+    ],
+    "artwork": {
+      "url": "https://images.squarespace-cdn.com/content/v1/54109e68e4b06b163549a8dc/1792267410894-B6P9EIVFWJGZ6WOJKZ7S/Kalida.png",
+      "sourceUrl": "https://www.albertastreetpub.com/music/2026/11/6/kalida-with-opener-paper-plane",
+      "origin": "official-venue-calendar",
+      "credit": "Alberta Street Pub official event calendar",
+      "usageApproved": null
+    },
+    "addedIn": "auto-discovery-2026-11-06",
+    "discovery": {
+      "sourceId": "alberta-street-pub",
+      "method": "primary-source-collection"
+    }
+  },
+  {
     "id": "auto-holocene-2026-11-06-008ae222b709",
     "title": "Shanghai Quitian – w/ Dabda – EARLY SHOW! – All Ages",
     "subtitle": "Source-discovered venue event · details need review",
@@ -12956,6 +13031,66 @@ window.SHOWS_EVENTS = [
     "addedIn": "auto-discovery-2026-10-22",
     "discovery": {
       "sourceId": "holocene",
+      "method": "primary-source-collection"
+    }
+  },
+  {
+    "id": "auto-the-1905-2026-11-06-0023ce47fd7e",
+    "title": "Dmitri Matheny Group — 6:30 PM show",
+    "subtitle": "Source-discovered venue event · details need review",
+    "category": "Music",
+    "tags": [
+      "Source-listed Music",
+      "Source-mentioned Jazz",
+      "Time needs confirmation",
+      "Format needs confirmation"
+    ],
+    "musicStyles": [
+      "Jazz"
+    ],
+    "eventFormat": "unverified",
+    "classificationEvidence": "Event-specific source genre wording",
+    "startTimeKind": "listed",
+    "startsAt": "2026-11-06T18:30:00-08:00",
+    "endsAt": null,
+    "venue": "The 1905",
+    "address": "830 N Shaver St, Portland, OR 97227",
+    "neighborhood": "Boise",
+    "price": "See organizer for current admission",
+    "free": null,
+    "age": "Not published",
+    "description": "Automatically discovered from a primary venue or promoter listing. Original The 1905 performance 48280 supplies a ticketed show time (not doors) with independently matching Pacific and UTC timestamps. Original ticketed performance. $30 TICKETS | ALL AGES Dmitri Matheny - flugelhorn Adam Harris - saxophones Joe Bagg - piano Eric Gruber - bass Michael Raynor - drums “Dmitri Matheny is a jazz treasure. The lyrical Matheny has impressive chops, but it’s his warmth and soulfulness ",
+    "source": "The 1905",
+    "url": "https://the1905.turntabletickets.com/shows/13197/2026-11-06",
+    "icon": "♫",
+    "sourceCheckedAt": "2026-11-06",
+    "verificationMethod": "Automated venue data; editorial date, time, event type and cancellation verification required",
+    "sourceCategories": [
+      "Jazz"
+    ],
+    "sources": [
+      {
+        "name": "The 1905",
+        "url": "https://the1905.turntabletickets.com/shows/13197/2026-11-06",
+        "kind": "organizer",
+        "checkedAt": "2026-11-06",
+        "originalCategories": [
+          "Jazz"
+        ]
+      }
+    ],
+    "artwork": {
+      "url": "https://assets-prod.turntabletickets.com/media/the1905/show-13197/dmitri_pic.jpg",
+      "sourceUrl": "https://the1905.turntabletickets.com/shows/13197/2026-11-06",
+      "origin": "official-event-page",
+      "credit": "The 1905 original ticket listing",
+      "usageApproved": null
+    },
+    "sourcePerformanceId": "48280",
+    "sourceShowId": "13197",
+    "addedIn": "auto-discovery-2026-11-06",
+    "discovery": {
+      "sourceId": "the-1905",
       "method": "primary-source-collection"
     }
   },
@@ -13342,6 +13477,57 @@ window.SHOWS_EVENTS = [
     "doorsAt": "2026-11-06T19:30:00-08:00"
   },
   {
+    "id": "auto-alberta-rose-theatre-2026-11-06-83868a0e500a",
+    "title": "Chris Smither",
+    "subtitle": "Source-discovered venue event · details need review",
+    "category": "Unclassified",
+    "tags": [
+      "Category needs review",
+      "Time needs confirmation",
+      "Format needs confirmation"
+    ],
+    "musicStyles": [],
+    "eventFormat": "unverified",
+    "classificationEvidence": "No verified event type or genre",
+    "startTimeKind": "listed",
+    "startsAt": "2026-11-06T20:00:00-08:00",
+    "endsAt": null,
+    "venue": "Alberta Rose Theatre",
+    "address": "3000 NE Alberta Street, Portland, OR 97211",
+    "neighborhood": "Concordia",
+    "price": "See organizer for current admission",
+    "free": null,
+    "age": "Not published",
+    "description": "Automatically discovered from a primary venue or promoter listing. Original Alberta Rose dated calendar month/year, weekday, exact room and separately labeled SHOW time; doors not substituted. Original theatre calendar; music style and format require event-specific editorial assessment.",
+    "source": "Alberta Rose Theatre",
+    "url": "https://albertarosetheatre.com/event/chris-smither-2/alberta-rose-theatre/portland-oregon/",
+    "icon": "◇",
+    "sourceCheckedAt": "2026-11-06",
+    "verificationMethod": "Automated venue data; editorial date, time, event type and cancellation verification required",
+    "sourceCategories": [],
+    "sources": [
+      {
+        "name": "Alberta Rose Theatre",
+        "url": "https://albertarosetheatre.com/event/chris-smither-2/alberta-rose-theatre/portland-oregon/",
+        "kind": "organizer",
+        "checkedAt": "2026-11-06",
+        "originalCategories": []
+      }
+    ],
+    "artwork": {
+      "url": "https://albertarosetheatre.com/wp-content/uploads/2026/04/chris-smither-1.jfif",
+      "sourceUrl": "https://albertarosetheatre.com/event/chris-smither-2/alberta-rose-theatre/portland-oregon/",
+      "origin": "official-venue-calendar",
+      "credit": "Alberta Rose Theatre original event artwork",
+      "usageApproved": null
+    },
+    "addedIn": "auto-discovery-2026-11-06",
+    "discovery": {
+      "sourceId": "alberta-rose-theatre",
+      "method": "primary-source-collection"
+    }
+  },
+  {
     "id": "outlook-mission-2026-11-06-gully-boys",
     "title": "Gully Boys with Pollyanna and Nonbinary Girlfriend",
     "subtitle": "Live music · discovered through the scheduled outlook",
@@ -13686,6 +13872,67 @@ window.SHOWS_EVENTS = [
     }
   },
   {
+    "id": "auto-the-1905-2026-11-06-fa10049ecbb6",
+    "title": "Dmitri Matheny Group — 8:30 PM show",
+    "subtitle": "Source-discovered venue event · details need review",
+    "category": "Music",
+    "tags": [
+      "Source-listed Music",
+      "Source-mentioned Jazz",
+      "Time needs confirmation",
+      "Format needs confirmation",
+      "Separate same-day source listing; review bill and room"
+    ],
+    "musicStyles": [
+      "Jazz"
+    ],
+    "eventFormat": "unverified",
+    "classificationEvidence": "Event-specific source genre wording",
+    "startTimeKind": "listed",
+    "startsAt": "2026-11-06T20:30:00-08:00",
+    "endsAt": null,
+    "venue": "The 1905",
+    "address": "830 N Shaver St, Portland, OR 97227",
+    "neighborhood": "Boise",
+    "price": "See organizer for current admission",
+    "free": null,
+    "age": "Not published",
+    "description": "Automatically discovered from a primary venue or promoter listing. Original The 1905 performance 48281 supplies a ticketed show time (not doors) with independently matching Pacific and UTC timestamps. Original ticketed performance. $30 TICKETS | ALL AGES Dmitri Matheny - flugelhorn Adam Harris - saxophones Joe Bagg - piano Eric Gruber - bass Michael Raynor - drums “Dmitri Matheny is a jazz treasure. The lyrical Matheny has impressive chops, but it’s his warmth and soulfulness ",
+    "source": "The 1905",
+    "url": "https://the1905.turntabletickets.com/shows/13197/2026-11-06",
+    "icon": "♫",
+    "sourceCheckedAt": "2026-11-06",
+    "verificationMethod": "Automated venue data; editorial date, time, event type and cancellation verification required",
+    "sourceCategories": [
+      "Jazz"
+    ],
+    "sources": [
+      {
+        "name": "The 1905",
+        "url": "https://the1905.turntabletickets.com/shows/13197/2026-11-06",
+        "kind": "organizer",
+        "checkedAt": "2026-11-06",
+        "originalCategories": [
+          "Jazz"
+        ]
+      }
+    ],
+    "artwork": {
+      "url": "https://assets-prod.turntabletickets.com/media/the1905/show-13197/dmitri_pic.jpg",
+      "sourceUrl": "https://the1905.turntabletickets.com/shows/13197/2026-11-06",
+      "origin": "official-event-page",
+      "credit": "The 1905 original ticket listing",
+      "usageApproved": null
+    },
+    "sourcePerformanceId": "48281",
+    "sourceShowId": "13197",
+    "addedIn": "auto-discovery-2026-11-06",
+    "discovery": {
+      "sourceId": "the-1905",
+      "method": "primary-source-collection"
+    }
+  },
+  {
     "id": "auto-high-water-2026-11-06-3563f1ae4225",
     "title": "Uncanny Valley Girls, Mollyfy, The Eye See Yous, Dead Name Factory",
     "subtitle": "Source-discovered venue event · details need review",
@@ -13882,6 +14129,58 @@ window.SHOWS_EVENTS = [
     "addedIn": "auto-discovery-2026-10-22",
     "discovery": {
       "sourceId": "mississippi-polaris",
+      "method": "primary-source-collection"
+    }
+  },
+  {
+    "id": "auto-alberta-street-pub-2026-11-06-c83e6b2f0372",
+    "title": "Novamajiq Presents: The Second Breath Show - Sounds by Makaveli",
+    "subtitle": "Source-discovered venue event · details need review",
+    "category": "Unclassified",
+    "tags": [
+      "Category needs review",
+      "Time needs confirmation",
+      "Format needs confirmation",
+      "Separate same-day source listing; review bill and room"
+    ],
+    "musicStyles": [],
+    "eventFormat": "unverified",
+    "classificationEvidence": "No verified event type or genre",
+    "startTimeKind": "listed",
+    "startsAt": "2026-11-06T21:30:00-08:00",
+    "endsAt": null,
+    "venue": "Alberta Street Pub",
+    "address": "1036 NE Alberta Street, Portland, OR 97211",
+    "neighborhood": "Alberta Arts District",
+    "price": "See organizer for current admission",
+    "free": null,
+    "age": "Not published",
+    "description": "Automatically discovered from a primary venue or promoter listing. Alberta Street Pub's original Squarespace event record supplies the start and end timestamp; exact performance-versus-doors distinction is unconfirmed. Original venue event listing. $12 Cover at the Door",
+    "source": "Alberta Street Pub",
+    "url": "https://www.albertastreetpub.com/music/2026/11/6/novamajiq-presents-the-second-breath-show-sounds-by-makaveli",
+    "icon": "◇",
+    "sourceCheckedAt": "2026-11-06",
+    "verificationMethod": "Automated venue data; editorial date, time, event type and cancellation verification required",
+    "sourceCategories": [],
+    "sources": [
+      {
+        "name": "Alberta Street Pub",
+        "url": "https://www.albertastreetpub.com/music/2026/11/6/novamajiq-presents-the-second-breath-show-sounds-by-makaveli",
+        "kind": "organizer",
+        "checkedAt": "2026-11-06",
+        "originalCategories": []
+      }
+    ],
+    "artwork": {
+      "url": "https://images.squarespace-cdn.com/content/v1/54109e68e4b06b163549a8dc/1793035583591-8QJII1BERXQDODA5Q53M/Nova.jpg",
+      "sourceUrl": "https://www.albertastreetpub.com/music/2026/11/6/novamajiq-presents-the-second-breath-show-sounds-by-makaveli",
+      "origin": "official-venue-calendar",
+      "credit": "Alberta Street Pub official event calendar",
+      "usageApproved": null
+    },
+    "addedIn": "auto-discovery-2026-11-06",
+    "discovery": {
+      "sourceId": "alberta-street-pub",
       "method": "primary-source-collection"
     }
   },
@@ -14202,50 +14501,6 @@ window.SHOWS_EVENTS = [
     "addedIn": "2026-10-17-expansion"
   },
   {
-    "id": "saturday-market-2026-11-07",
-    "title": "Portland Saturday Market",
-    "subtitle": "Independent makers on the waterfront",
-    "category": "Markets",
-    "tags": [
-      "Craft market",
-      "Makers",
-      "Free"
-    ],
-    "startsAt": "2026-11-07T10:00:00-08:00",
-    "endsAt": "2026-11-07T17:00:00-08:00",
-    "venue": "Portland Saturday Market",
-    "address": "2 SW Naito Pkwy, Portland, OR 97204",
-    "neighborhood": "Waterfront",
-    "price": "Free admission · purchases extra",
-    "free": true,
-    "age": "See organizer",
-    "description": "Browse work from independent craftspeople; purchases cost extra.",
-    "source": "Portland Saturday Market",
-    "url": "https://www.portlandsaturdaymarket.com/hours-and-directions",
-    "icon": "▦",
-    "sourceCheckedAt": "2026-10-17",
-    "verificationMethod": "Dates expanded from organizer’s published recurring schedule",
-    "sourceCategories": [],
-    "sources": [
-      {
-        "name": "Portland Saturday Market",
-        "url": "https://www.portlandsaturdaymarket.com/hours-and-directions",
-        "kind": "organizer",
-        "checkedAt": "2026-10-17",
-        "originalCategories": []
-      },
-      {
-        "name": "Portland Saturday Market FAQ",
-        "url": "https://www.portlandsaturdaymarket.com/faq",
-        "kind": "organizer",
-        "checkedAt": "2026-10-17",
-        "originalCategories": []
-      }
-    ],
-    "addedIn": "2026-10-17-expansion",
-    "seriesId": "saturday-market-2026"
-  },
-  {
     "id": "oddities-expo-2026-11-07",
     "seriesId": "oddities-expo-portland-2026",
     "title": "Oddities & Curiosities Expo",
@@ -14306,6 +14561,50 @@ window.SHOWS_EVENTS = [
     "addedIn": "2026-11-03-curated-alt-markets"
   },
   {
+    "id": "saturday-market-2026-11-07",
+    "title": "Portland Saturday Market",
+    "subtitle": "Independent makers on the waterfront",
+    "category": "Markets",
+    "tags": [
+      "Craft market",
+      "Makers",
+      "Free"
+    ],
+    "startsAt": "2026-11-07T10:00:00-08:00",
+    "endsAt": "2026-11-07T17:00:00-08:00",
+    "venue": "Portland Saturday Market",
+    "address": "2 SW Naito Pkwy, Portland, OR 97204",
+    "neighborhood": "Waterfront",
+    "price": "Free admission · purchases extra",
+    "free": true,
+    "age": "See organizer",
+    "description": "Browse work from independent craftspeople; purchases cost extra.",
+    "source": "Portland Saturday Market",
+    "url": "https://www.portlandsaturdaymarket.com/hours-and-directions",
+    "icon": "▦",
+    "sourceCheckedAt": "2026-10-17",
+    "verificationMethod": "Dates expanded from organizer’s published recurring schedule",
+    "sourceCategories": [],
+    "sources": [
+      {
+        "name": "Portland Saturday Market",
+        "url": "https://www.portlandsaturdaymarket.com/hours-and-directions",
+        "kind": "organizer",
+        "checkedAt": "2026-10-17",
+        "originalCategories": []
+      },
+      {
+        "name": "Portland Saturday Market FAQ",
+        "url": "https://www.portlandsaturdaymarket.com/faq",
+        "kind": "organizer",
+        "checkedAt": "2026-10-17",
+        "originalCategories": []
+      }
+    ],
+    "addedIn": "2026-10-17-expansion",
+    "seriesId": "saturday-market-2026"
+  },
+  {
     "id": "auto-mississippi-polaris-2026-11-07-2f3630166587",
     "title": "Shamanic Sound Healing: a Portal Experience",
     "subtitle": "Source-discovered venue event · details need review",
@@ -14357,6 +14656,57 @@ window.SHOWS_EVENTS = [
     }
   },
   {
+    "id": "auto-alberta-street-pub-2026-11-07-41217cd005f8",
+    "title": "Ramblin Rose",
+    "subtitle": "Source-discovered venue event · details need review",
+    "category": "Unclassified",
+    "tags": [
+      "Category needs review",
+      "Time needs confirmation",
+      "Format needs confirmation"
+    ],
+    "musicStyles": [],
+    "eventFormat": "unverified",
+    "classificationEvidence": "No verified event type or genre",
+    "startTimeKind": "listed",
+    "startsAt": "2026-11-07T17:00:00-08:00",
+    "endsAt": null,
+    "venue": "Alberta Street Pub",
+    "address": "1036 NE Alberta Street, Portland, OR 97211",
+    "neighborhood": "Alberta Arts District",
+    "price": "See organizer for current admission",
+    "free": null,
+    "age": "Not published",
+    "description": "Automatically discovered from a primary venue or promoter listing. Alberta Street Pub's original Squarespace event record supplies the start and end timestamp; exact performance-versus-doors distinction is unconfirmed. Original venue event listing. $10 Cover at the Door",
+    "source": "Alberta Street Pub",
+    "url": "https://www.albertastreetpub.com/music/2025/1/31/ramblin-rose-wcxkb-m9ybz-e4ryw-cbrxx-8ntrx-l94xs",
+    "icon": "◇",
+    "sourceCheckedAt": "2026-11-06",
+    "verificationMethod": "Automated venue data; editorial date, time, event type and cancellation verification required",
+    "sourceCategories": [],
+    "sources": [
+      {
+        "name": "Alberta Street Pub",
+        "url": "https://www.albertastreetpub.com/music/2025/1/31/ramblin-rose-wcxkb-m9ybz-e4ryw-cbrxx-8ntrx-l94xs",
+        "kind": "organizer",
+        "checkedAt": "2026-11-06",
+        "originalCategories": []
+      }
+    ],
+    "artwork": {
+      "url": "https://images.squarespace-cdn.com/content/v1/54109e68e4b06b163549a8dc/1736365465175-QH9Z8KJ2GOJ4H4N4VBGM/Ramblin.jpg",
+      "sourceUrl": "https://www.albertastreetpub.com/music/2025/1/31/ramblin-rose-wcxkb-m9ybz-e4ryw-cbrxx-8ntrx-l94xs",
+      "origin": "official-venue-calendar",
+      "credit": "Alberta Street Pub official event calendar",
+      "usageApproved": null
+    },
+    "addedIn": "auto-discovery-2026-11-06",
+    "discovery": {
+      "sourceId": "alberta-street-pub",
+      "method": "primary-source-collection"
+    }
+  },
+  {
     "id": "auto-holocene-2026-11-07-cf69b9516617",
     "title": "RHYTHM IS A DANCER: An early evening 90s Dance Party hosted by SNAP! – 21+",
     "subtitle": "Source-discovered venue event · details need review",
@@ -14403,6 +14753,66 @@ window.SHOWS_EVENTS = [
     "addedIn": "auto-discovery-2026-10-22",
     "discovery": {
       "sourceId": "holocene",
+      "method": "primary-source-collection"
+    }
+  },
+  {
+    "id": "auto-the-1905-2026-11-07-2af8662c4d70",
+    "title": "Nicole McCabe — 6:30 PM show",
+    "subtitle": "Source-discovered venue event · details need review",
+    "category": "Music",
+    "tags": [
+      "Source-listed Music",
+      "Source-mentioned Jazz",
+      "Time needs confirmation",
+      "Format needs confirmation"
+    ],
+    "musicStyles": [
+      "Jazz"
+    ],
+    "eventFormat": "unverified",
+    "classificationEvidence": "Event-specific source genre wording",
+    "startTimeKind": "listed",
+    "startsAt": "2026-11-07T18:30:00-08:00",
+    "endsAt": null,
+    "venue": "The 1905",
+    "address": "830 N Shaver St, Portland, OR 97227",
+    "neighborhood": "Boise",
+    "price": "See organizer for current admission",
+    "free": null,
+    "age": "Not published",
+    "description": "Automatically discovered from a primary venue or promoter listing. Original The 1905 performance 48287 supplies a ticketed show time (not doors) with independently matching Pacific and UTC timestamps. Original ticketed performance. $35 TICKETS | ALL AGES Nicole McCabe - Sax Logan Kane - Bass George Colligan - Keys Ken Mastrogiovanni - Drums Nicole McCabe is a genre-defying saxophonist and composer bringing the expressive power of modern jazz into dialogue with the sonic worlds",
+    "source": "The 1905",
+    "url": "https://the1905.turntabletickets.com/shows/13202/2026-11-07",
+    "icon": "♫",
+    "sourceCheckedAt": "2026-11-06",
+    "verificationMethod": "Automated venue data; editorial date, time, event type and cancellation verification required",
+    "sourceCategories": [
+      "Jazz"
+    ],
+    "sources": [
+      {
+        "name": "The 1905",
+        "url": "https://the1905.turntabletickets.com/shows/13202/2026-11-07",
+        "kind": "organizer",
+        "checkedAt": "2026-11-06",
+        "originalCategories": [
+          "Jazz"
+        ]
+      }
+    ],
+    "artwork": {
+      "url": "https://assets-prod.turntabletickets.com/media/the1905/show-13202/c8436c9e-093c-4353-adb8-8bb2feee0dd8-Nicole_McCabe_Brian_Bixby.jpg",
+      "sourceUrl": "https://the1905.turntabletickets.com/shows/13202/2026-11-07",
+      "origin": "official-event-page",
+      "credit": "The 1905 original ticket listing",
+      "usageApproved": null
+    },
+    "sourcePerformanceId": "48287",
+    "sourceShowId": "13202",
+    "addedIn": "auto-discovery-2026-11-06",
+    "discovery": {
+      "sourceId": "the-1905",
       "method": "primary-source-collection"
     }
   },
@@ -14525,6 +14935,117 @@ window.SHOWS_EVENTS = [
     "discovery": {
       "sourceId": "revolution-hall",
       "method": "primary-source-collection"
+    }
+  },
+  {
+    "id": "auto-alberta-rose-theatre-2026-11-07-def264537803",
+    "title": "Live Wire with Luke Burbank",
+    "subtitle": "Source-discovered venue event · details need review",
+    "category": "Unclassified",
+    "tags": [
+      "Category needs review",
+      "Time needs confirmation",
+      "Format needs confirmation"
+    ],
+    "musicStyles": [],
+    "eventFormat": "unverified",
+    "classificationEvidence": "No verified event type or genre",
+    "startTimeKind": "listed",
+    "startsAt": "2026-11-07T19:30:00-08:00",
+    "endsAt": null,
+    "venue": "Alberta Rose Theatre",
+    "address": "3000 NE Alberta Street, Portland, OR 97211",
+    "neighborhood": "Concordia",
+    "price": "See organizer for current admission",
+    "free": null,
+    "age": "Not published",
+    "description": "Automatically discovered from a primary venue or promoter listing. Original Alberta Rose dated calendar month/year, weekday, exact room and separately labeled SHOW time; doors not substituted. Original theatre calendar; music style and format require event-specific editorial assessment.",
+    "source": "Alberta Rose Theatre",
+    "url": "https://albertarosetheatre.com/event/live-wire-with-luke-burbank-37/alberta-rose-theatre/portland-oregon/",
+    "icon": "◇",
+    "sourceCheckedAt": "2026-11-06",
+    "verificationMethod": "Automated venue data; editorial date, time, event type and cancellation verification required",
+    "sourceCategories": [],
+    "sources": [
+      {
+        "name": "Alberta Rose Theatre",
+        "url": "https://albertarosetheatre.com/event/live-wire-with-luke-burbank-37/alberta-rose-theatre/portland-oregon/",
+        "kind": "organizer",
+        "checkedAt": "2026-11-06",
+        "originalCategories": []
+      }
+    ],
+    "artwork": {
+      "url": "https://albertarosetheatre.com/wp-content/uploads/2024/03/11.7.26-Rose-Asset.png",
+      "sourceUrl": "https://albertarosetheatre.com/event/live-wire-with-luke-burbank-37/alberta-rose-theatre/portland-oregon/",
+      "origin": "official-venue-calendar",
+      "credit": "Alberta Rose Theatre original event artwork",
+      "usageApproved": null
+    },
+    "addedIn": "auto-discovery-2026-11-06",
+    "discovery": {
+      "sourceId": "alberta-rose-theatre",
+      "method": "primary-source-collection"
+    }
+  },
+  {
+    "id": "auto-mississippi-polaris-2026-11-07-8e99dd5da94b",
+    "title": "SOLD OUT: Roger Clyne & The Peacemakers - Hell To Breakfast Tour (Night 1)",
+    "subtitle": "Source-discovered venue event · details need review",
+    "category": "Unclassified",
+    "tags": [
+      "Category needs review",
+      "Time needs confirmation",
+      "Format needs confirmation"
+    ],
+    "musicStyles": [],
+    "eventFormat": "unverified",
+    "classificationEvidence": "No verified event type or genre",
+    "startTimeKind": "show",
+    "startsAt": "2026-11-07T19:30:00-08:00",
+    "endsAt": null,
+    "venue": "Mississippi Studios",
+    "address": "3939 N Mississippi Ave, Portland, OR 97227",
+    "neighborhood": "Boise",
+    "price": "See organizer for current admission",
+    "free": null,
+    "age": "Not published",
+    "description": "Automatically discovered from a primary venue or promoter listing. Original venue calendar explicitly labels doors and a separate showtime, plus exact date and venue Original Mississippi/Polaris room-verified official event listing. Supporting artists: Buffalo Jones, Stephen Ashbrook",
+    "source": "Mississippi Studios / Polaris Hall",
+    "url": "https://www.etix.com/ticket/p/67262153/sold-outroger-clyne-the-peacemakers-hell-to-breakfast-tour-night-1-portland-mississippi-studios",
+    "icon": "◇",
+    "sourceCheckedAt": "2026-11-07",
+    "verificationMethod": "Proposed original-source correction: uniquely matched ticket, room, date and explicitly labeled SHOW time",
+    "sourceCategories": [],
+    "sources": [
+      {
+        "name": "Mississippi Studios / Polaris Hall",
+        "url": "https://www.etix.com/ticket/p/67262153/sold-outroger-clyne-the-peacemakers-hell-to-breakfast-tour-night-1-portland-mississippi-studios",
+        "kind": "organizer",
+        "checkedAt": "2026-10-24",
+        "originalCategories": []
+      }
+    ],
+    "artwork": {
+      "url": "https://cdn.etix.com/etix/performance-image/performance_image_1200w/970901dc48d789a4742550ccfb2726e5.jpg",
+      "sourceUrl": "https://mississippistudios.com/calendar",
+      "origin": "official-venue-calendar",
+      "credit": "Venue-provided event flyer",
+      "usageApproved": null
+    },
+    "addedIn": "auto-discovery-2026-10-24",
+    "discovery": {
+      "sourceId": "mississippi-polaris",
+      "method": "primary-source-collection"
+    },
+    "sourceCorrection": {
+      "status": "source-confirmed",
+      "sourceId": "mississippi-polaris",
+      "sourceUrl": "https://www.etix.com/ticket/p/67262153/sold-outroger-clyne-the-peacemakers-hell-to-breakfast-tour-night-1-portland-mississippi-studios",
+      "previousStartsAt": "2026-11-07T20:00:00-08:00",
+      "observedStartsAt": "2026-11-07T19:30:00-08:00",
+      "checkedAt": "2026-11-07",
+      "evidence": "Original event ticket and venue calendar confirm a separately labeled SHOW time"
     }
   },
   {
@@ -14815,6 +15336,57 @@ window.SHOWS_EVENTS = [
     }
   },
   {
+    "id": "auto-jack-london-revue-2026-11-07-5fce22abd7f9",
+    "title": "LILA FORDE AND ZAN FISKUM",
+    "subtitle": "Source-discovered venue event · details need review",
+    "category": "Unclassified",
+    "tags": [
+      "Category needs review",
+      "Time needs confirmation",
+      "Format needs confirmation"
+    ],
+    "musicStyles": [],
+    "eventFormat": "unverified",
+    "classificationEvidence": "No verified event type or genre",
+    "startTimeKind": "listed",
+    "startsAt": "2026-11-07T20:00:00-08:00",
+    "endsAt": null,
+    "venue": "Jack London Revue",
+    "address": "529 SW 4th Ave, Portland, OR 97204",
+    "neighborhood": "Downtown",
+    "price": "See organizer for current admission",
+    "free": null,
+    "age": "Not published",
+    "description": "Automatically discovered from a primary venue or promoter listing. Original JLR event detail verifies full date, venue and showtime separately from doors; the date and clocks match the first-party roster. Original venue event: Soul'd Out Presents: Lila Forde and Zan Fiskum. Doors: 7:00pm Show: 8:00pm Ages 21+. Special Note : Ticket holders for this show receive free admission to Jack London's Burly Q Revue Cabaret after the music! LILA FORDE With a voice steeped in jazz, soul, fol",
+    "source": "Jack London Revue",
+    "url": "https://www.jacklondonrevue.com/tm-event/lila-forde/",
+    "icon": "◇",
+    "sourceCheckedAt": "2026-11-06",
+    "verificationMethod": "Automated venue data; editorial date, time, event type and cancellation verification required",
+    "sourceCategories": [],
+    "sources": [
+      {
+        "name": "Jack London Revue",
+        "url": "https://www.jacklondonrevue.com/tm-event/lila-forde/",
+        "kind": "organizer",
+        "checkedAt": "2026-11-06",
+        "originalCategories": []
+      }
+    ],
+    "artwork": {
+      "url": "https://i.ticketweb.com/i/00/12/99/68/74_Original.jpg?v=6",
+      "sourceUrl": "https://www.jacklondonrevue.com/tm-event/lila-forde/",
+      "origin": "official-event-page",
+      "credit": "Original TicketWeb artwork linked by Jack London Revue",
+      "usageApproved": null
+    },
+    "addedIn": "auto-discovery-2026-11-06",
+    "discovery": {
+      "sourceId": "jack-london-revue",
+      "method": "primary-source-collection"
+    }
+  },
+  {
     "id": "indie-no-love-hiss-crime-time-high-five-danger-2026-11-07",
     "title": "Love Hiss • Crime Time • High Five Danger",
     "subtitle": "Independent live show · style to be confirmed",
@@ -15053,57 +15625,6 @@ window.SHOWS_EVENTS = [
     }
   },
   {
-    "id": "auto-mississippi-polaris-2026-11-07-8e99dd5da94b",
-    "title": "SOLD OUT: Roger Clyne & The Peacemakers - Hell To Breakfast Tour (Night 1)",
-    "subtitle": "Source-discovered venue event · details need review",
-    "category": "Unclassified",
-    "tags": [
-      "Category needs review",
-      "Time needs confirmation",
-      "Format needs confirmation"
-    ],
-    "musicStyles": [],
-    "eventFormat": "unverified",
-    "classificationEvidence": "No verified event type or genre",
-    "startTimeKind": "listed",
-    "startsAt": "2026-11-07T20:00:00-08:00",
-    "endsAt": null,
-    "venue": "Mississippi Studios",
-    "address": "3939 N Mississippi Ave, Portland, OR 97227",
-    "neighborhood": "Boise",
-    "price": "See organizer for current admission",
-    "free": null,
-    "age": "Not published",
-    "description": "Automatically discovered from a primary venue or promoter listing. Original venue calendar explicitly labels doors and a separate showtime, plus exact date and venue Original Mississippi/Polaris room-verified official event listing. Supporting artists: Buffalo Jones, Stephen Ashbrook",
-    "source": "Mississippi Studios / Polaris Hall",
-    "url": "https://www.etix.com/ticket/p/67262153/sold-outroger-clyne-the-peacemakers-hell-to-breakfast-tour-night-1-portland-mississippi-studios",
-    "icon": "◇",
-    "sourceCheckedAt": "2026-10-24",
-    "verificationMethod": "Automated venue data; editorial date, time, event type and cancellation verification required",
-    "sourceCategories": [],
-    "sources": [
-      {
-        "name": "Mississippi Studios / Polaris Hall",
-        "url": "https://www.etix.com/ticket/p/67262153/sold-outroger-clyne-the-peacemakers-hell-to-breakfast-tour-night-1-portland-mississippi-studios",
-        "kind": "organizer",
-        "checkedAt": "2026-10-24",
-        "originalCategories": []
-      }
-    ],
-    "artwork": {
-      "url": "https://cdn.etix.com/etix/performance-image/performance_image_1200w/970901dc48d789a4742550ccfb2726e5.jpg",
-      "sourceUrl": "https://mississippistudios.com/calendar",
-      "origin": "official-venue-calendar",
-      "credit": "Venue-provided event flyer",
-      "usageApproved": null
-    },
-    "addedIn": "auto-discovery-2026-10-24",
-    "discovery": {
-      "sourceId": "mississippi-polaris",
-      "method": "primary-source-collection"
-    }
-  },
-  {
     "id": "auto-dantes-2026-11-07-b0ef3ab9d800",
     "title": "STOP LIGHT OBSERVATIONS with Runner And Bobby",
     "subtitle": "Source-discovered venue event · details need review",
@@ -15201,6 +15722,67 @@ window.SHOWS_EVENTS = [
     "addedIn": "auto-discovery-2026-10-29",
     "discovery": {
       "sourceId": "mission-theater",
+      "method": "primary-source-collection"
+    }
+  },
+  {
+    "id": "auto-the-1905-2026-11-07-50f0803c427d",
+    "title": "Nicole McCabe — 8:30 PM show",
+    "subtitle": "Source-discovered venue event · details need review",
+    "category": "Music",
+    "tags": [
+      "Source-listed Music",
+      "Source-mentioned Jazz",
+      "Time needs confirmation",
+      "Format needs confirmation",
+      "Separate same-day source listing; review bill and room"
+    ],
+    "musicStyles": [
+      "Jazz"
+    ],
+    "eventFormat": "unverified",
+    "classificationEvidence": "Event-specific source genre wording",
+    "startTimeKind": "listed",
+    "startsAt": "2026-11-07T20:30:00-08:00",
+    "endsAt": null,
+    "venue": "The 1905",
+    "address": "830 N Shaver St, Portland, OR 97227",
+    "neighborhood": "Boise",
+    "price": "See organizer for current admission",
+    "free": null,
+    "age": "Not published",
+    "description": "Automatically discovered from a primary venue or promoter listing. Original The 1905 performance 48289 supplies a ticketed show time (not doors) with independently matching Pacific and UTC timestamps. Original ticketed performance. $35 TICKETS | ALL AGES Nicole McCabe - Sax Logan Kane - Bass George Colligan - Keys Ken Mastrogiovanni - Drums Nicole McCabe is a genre-defying saxophonist and composer bringing the expressive power of modern jazz into dialogue with the sonic worlds",
+    "source": "The 1905",
+    "url": "https://the1905.turntabletickets.com/shows/13202/2026-11-07",
+    "icon": "♫",
+    "sourceCheckedAt": "2026-11-06",
+    "verificationMethod": "Automated venue data; editorial date, time, event type and cancellation verification required",
+    "sourceCategories": [
+      "Jazz"
+    ],
+    "sources": [
+      {
+        "name": "The 1905",
+        "url": "https://the1905.turntabletickets.com/shows/13202/2026-11-07",
+        "kind": "organizer",
+        "checkedAt": "2026-11-06",
+        "originalCategories": [
+          "Jazz"
+        ]
+      }
+    ],
+    "artwork": {
+      "url": "https://assets-prod.turntabletickets.com/media/the1905/show-13202/c8436c9e-093c-4353-adb8-8bb2feee0dd8-Nicole_McCabe_Brian_Bixby.jpg",
+      "sourceUrl": "https://the1905.turntabletickets.com/shows/13202/2026-11-07",
+      "origin": "official-event-page",
+      "credit": "The 1905 original ticket listing",
+      "usageApproved": null
+    },
+    "sourcePerformanceId": "48289",
+    "sourceShowId": "13202",
+    "addedIn": "auto-discovery-2026-11-06",
+    "discovery": {
+      "sourceId": "the-1905",
       "method": "primary-source-collection"
     }
   },
@@ -15465,6 +16047,112 @@ window.SHOWS_EVENTS = [
     "addedIn": "auto-discovery-2026-11-03",
     "discovery": {
       "sourceId": "holocene",
+      "method": "primary-source-collection"
+    }
+  },
+  {
+    "id": "auto-the-1905-2026-11-07-42fb55bde05a",
+    "title": "Late Show with Noah Mortola — 10:15 PM show",
+    "subtitle": "Source-discovered venue event · details need review",
+    "category": "Music",
+    "tags": [
+      "Source-listed Music",
+      "Time needs confirmation",
+      "Format needs confirmation",
+      "Separate same-day source listing; review bill and room"
+    ],
+    "musicStyles": [],
+    "eventFormat": "unverified",
+    "classificationEvidence": "Original source explicitly verifies music",
+    "startTimeKind": "listed",
+    "startsAt": "2026-11-07T22:15:00-08:00",
+    "endsAt": null,
+    "venue": "The 1905",
+    "address": "830 N Shaver St, Portland, OR 97227",
+    "neighborhood": "Boise",
+    "price": "See organizer for current admission",
+    "free": null,
+    "age": "Not published",
+    "description": "Automatically discovered from a primary venue or promoter listing. Original The 1905 performance 48292 supplies a ticketed show time (not doors) with independently matching Pacific and UTC timestamps. Original ticketed performance. $20 TICKETS | BAR SEATS $10 | 21+ PLEASE Chris Clark-Johnson - guitar Dario LaPoma - piano Garrett Baxter - bass Noah Mortola - drums Noah and three of his good friends will be exploring the quieter side of original compositions and arrangements.",
+    "source": "The 1905",
+    "url": "https://the1905.turntabletickets.com/shows/13204/2026-11-07",
+    "icon": "♫",
+    "sourceCheckedAt": "2026-11-06",
+    "verificationMethod": "Automated venue data; editorial date, time, event type and cancellation verification required",
+    "sourceCategories": [],
+    "sources": [
+      {
+        "name": "The 1905",
+        "url": "https://the1905.turntabletickets.com/shows/13204/2026-11-07",
+        "kind": "organizer",
+        "checkedAt": "2026-11-06",
+        "originalCategories": []
+      }
+    ],
+    "artwork": {
+      "url": "https://assets-prod.turntabletickets.com/media/the1905/show-13204/47c51a1b-7eea-4bde-93db-2ec8e24dd8c8-IMG_3611.jpg",
+      "sourceUrl": "https://the1905.turntabletickets.com/shows/13204/2026-11-07",
+      "origin": "official-event-page",
+      "credit": "The 1905 original ticket listing",
+      "usageApproved": null
+    },
+    "sourcePerformanceId": "48292",
+    "sourceShowId": "13204",
+    "addedIn": "auto-discovery-2026-11-06",
+    "discovery": {
+      "sourceId": "the-1905",
+      "method": "primary-source-collection"
+    }
+  },
+  {
+    "id": "auto-jack-london-revue-2026-11-07-b80d55014d1c",
+    "title": "BURLY-Q REVUE",
+    "subtitle": "Source-discovered venue event · details need review",
+    "category": "Unclassified",
+    "tags": [
+      "Category needs review",
+      "Time needs confirmation",
+      "Format needs confirmation",
+      "Separate same-day source listing; review bill and room"
+    ],
+    "musicStyles": [],
+    "eventFormat": "unverified",
+    "classificationEvidence": "No verified event type or genre",
+    "startTimeKind": "listed",
+    "startsAt": "2026-11-07T22:30:00-08:00",
+    "endsAt": null,
+    "venue": "Jack London Revue",
+    "address": "529 SW 4th Ave, Portland, OR 97204",
+    "neighborhood": "Downtown",
+    "price": "See organizer for current admission",
+    "free": null,
+    "age": "Not published",
+    "description": "Automatically discovered from a primary venue or promoter listing. Original JLR event detail verifies full date, venue and showtime separately from doors; the date and clocks match the first-party roster. Original venue event: Join us at the Jack London for the latest edition of our late-night cabaret spectacular, hosted by the Mad Marquis and featuring some of the finest dancers from the Rose City and beyond. Treat yourself to a sensational evening of sultry and exotic delights, ",
+    "source": "Jack London Revue",
+    "url": "https://www.jacklondonrevue.com/tm-event/burly-q-revue-18/",
+    "icon": "◇",
+    "sourceCheckedAt": "2026-11-06",
+    "verificationMethod": "Automated venue data; editorial date, time, event type and cancellation verification required",
+    "sourceCategories": [],
+    "sources": [
+      {
+        "name": "Jack London Revue",
+        "url": "https://www.jacklondonrevue.com/tm-event/burly-q-revue-18/",
+        "kind": "organizer",
+        "checkedAt": "2026-11-06",
+        "originalCategories": []
+      }
+    ],
+    "artwork": {
+      "url": "https://i.ticketweb.com/i/00/12/77/00/04_Original.jpg?v=5",
+      "sourceUrl": "https://www.jacklondonrevue.com/tm-event/burly-q-revue-18/",
+      "origin": "official-event-page",
+      "credit": "Original TicketWeb artwork linked by Jack London Revue",
+      "usageApproved": null
+    },
+    "addedIn": "auto-discovery-2026-11-06",
+    "discovery": {
+      "sourceId": "jack-london-revue",
       "method": "primary-source-collection"
     }
   },
@@ -15848,6 +16536,57 @@ window.SHOWS_EVENTS = [
     }
   },
   {
+    "id": "auto-alberta-street-pub-2026-11-08-f8cbb86a140e",
+    "title": "Smut City Jellyroll Society",
+    "subtitle": "Source-discovered venue event · details need review",
+    "category": "Unclassified",
+    "tags": [
+      "Category needs review",
+      "Time needs confirmation",
+      "Format needs confirmation"
+    ],
+    "musicStyles": [],
+    "eventFormat": "unverified",
+    "classificationEvidence": "No verified event type or genre",
+    "startTimeKind": "listed",
+    "startsAt": "2026-11-08T17:00:00-08:00",
+    "endsAt": null,
+    "venue": "Alberta Street Pub",
+    "address": "1036 NE Alberta Street, Portland, OR 97211",
+    "neighborhood": "Alberta Arts District",
+    "price": "See organizer for current admission",
+    "free": null,
+    "age": "Not published",
+    "description": "Automatically discovered from a primary venue or promoter listing. Alberta Street Pub's original Squarespace event record supplies the start and end timestamp; exact performance-versus-doors distinction is unconfirmed. Original venue event listing.",
+    "source": "Alberta Street Pub",
+    "url": "https://www.albertastreetpub.com/music/2026/11/8/smut-city-jellyroll-society",
+    "icon": "◇",
+    "sourceCheckedAt": "2026-11-06",
+    "verificationMethod": "Automated venue data; editorial date, time, event type and cancellation verification required",
+    "sourceCategories": [],
+    "sources": [
+      {
+        "name": "Alberta Street Pub",
+        "url": "https://www.albertastreetpub.com/music/2026/11/8/smut-city-jellyroll-society",
+        "kind": "organizer",
+        "checkedAt": "2026-11-06",
+        "originalCategories": []
+      }
+    ],
+    "artwork": {
+      "url": "https://images.squarespace-cdn.com/content/v1/54109e68e4b06b163549a8dc/1793860485601-KYSWLHJ882QO1QKTCM4Y/273E6255-B09A-4AC7-AB87-46D9B17D0FA8.JPG",
+      "sourceUrl": "https://www.albertastreetpub.com/music/2026/11/8/smut-city-jellyroll-society",
+      "origin": "official-venue-calendar",
+      "credit": "Alberta Street Pub official event calendar",
+      "usageApproved": null
+    },
+    "addedIn": "auto-discovery-2026-11-06",
+    "discovery": {
+      "sourceId": "alberta-street-pub",
+      "method": "primary-source-collection"
+    }
+  },
+  {
     "id": "auto-starday-tavern-2026-11-08-7927bf60f606",
     "title": "Bromf + Lee Walker",
     "subtitle": "Source-discovered venue event · details need review",
@@ -15888,6 +16627,117 @@ window.SHOWS_EVENTS = [
     "addedIn": "auto-discovery-2026-10-24",
     "discovery": {
       "sourceId": "starday-tavern",
+      "method": "primary-source-collection"
+    }
+  },
+  {
+    "id": "auto-the-1905-2026-11-08-081f1cec71e5",
+    "title": "Dave Tull — 5:30 PM show",
+    "subtitle": "Source-discovered venue event · details need review",
+    "category": "Music",
+    "tags": [
+      "Source-listed Music",
+      "Source-mentioned Jazz",
+      "Time needs confirmation",
+      "Format needs confirmation"
+    ],
+    "musicStyles": [
+      "Jazz"
+    ],
+    "eventFormat": "unverified",
+    "classificationEvidence": "Event-specific source genre wording",
+    "startTimeKind": "listed",
+    "startsAt": "2026-11-08T17:30:00-08:00",
+    "endsAt": null,
+    "venue": "The 1905",
+    "address": "830 N Shaver St, Portland, OR 97227",
+    "neighborhood": "Boise",
+    "price": "See organizer for current admission",
+    "free": null,
+    "age": "Not published",
+    "description": "Automatically discovered from a primary venue or promoter listing. Original The 1905 performance 48293 supplies a ticketed show time (not doors) with independently matching Pacific and UTC timestamps. Original ticketed performance. $25 MAINFLOOR / $20 BAR (21+) TICKETS | ALL AGES Dave Tull - drums, vocals Joe Bagg - piano Bill Athens - bass Singing from the drums, Dave brings to the stage a rare combination of joyous songwriting, world-class jazz singing and drumming. Think “F",
+    "source": "The 1905",
+    "url": "https://the1905.turntabletickets.com/shows/13205/2026-11-08",
+    "icon": "♫",
+    "sourceCheckedAt": "2026-11-06",
+    "verificationMethod": "Automated venue data; editorial date, time, event type and cancellation verification required",
+    "sourceCategories": [
+      "Jazz"
+    ],
+    "sources": [
+      {
+        "name": "The 1905",
+        "url": "https://the1905.turntabletickets.com/shows/13205/2026-11-08",
+        "kind": "organizer",
+        "checkedAt": "2026-11-06",
+        "originalCategories": [
+          "Jazz"
+        ]
+      }
+    ],
+    "artwork": {
+      "url": "https://assets-prod.turntabletickets.com/media/the1905/show-13205/d261d55c-e299-471c-9c1f-434a4eb43236-IMG_4642.jpg",
+      "sourceUrl": "https://the1905.turntabletickets.com/shows/13205/2026-11-08",
+      "origin": "official-event-page",
+      "credit": "The 1905 original ticket listing",
+      "usageApproved": null
+    },
+    "sourcePerformanceId": "48293",
+    "sourceShowId": "13205",
+    "addedIn": "auto-discovery-2026-11-06",
+    "discovery": {
+      "sourceId": "the-1905",
+      "method": "primary-source-collection"
+    }
+  },
+  {
+    "id": "auto-alberta-rose-theatre-2026-11-08-2ca444646747",
+    "title": "SOUVENIRS – Celebrating the Songs of John Prine",
+    "subtitle": "Source-discovered venue event · details need review",
+    "category": "Unclassified",
+    "tags": [
+      "Category needs review",
+      "Time needs confirmation",
+      "Format needs confirmation"
+    ],
+    "musicStyles": [],
+    "eventFormat": "unverified",
+    "classificationEvidence": "No verified event type or genre",
+    "startTimeKind": "listed",
+    "startsAt": "2026-11-08T19:00:00-08:00",
+    "endsAt": null,
+    "venue": "Alberta Rose Theatre",
+    "address": "3000 NE Alberta Street, Portland, OR 97211",
+    "neighborhood": "Concordia",
+    "price": "See organizer for current admission",
+    "free": null,
+    "age": "Not published",
+    "description": "Automatically discovered from a primary venue or promoter listing. Original Alberta Rose dated calendar month/year, weekday, exact room and separately labeled SHOW time; doors not substituted. Original theatre calendar; music style and format require event-specific editorial assessment.",
+    "source": "Alberta Rose Theatre",
+    "url": "https://albertarosetheatre.com/event/souvenirs-celebrating-the-songs-of-john-prine-4/alberta-rose-theatre/portland-oregon/",
+    "icon": "◇",
+    "sourceCheckedAt": "2026-11-06",
+    "verificationMethod": "Automated venue data; editorial date, time, event type and cancellation verification required",
+    "sourceCategories": [],
+    "sources": [
+      {
+        "name": "Alberta Rose Theatre",
+        "url": "https://albertarosetheatre.com/event/souvenirs-celebrating-the-songs-of-john-prine-4/alberta-rose-theatre/portland-oregon/",
+        "kind": "organizer",
+        "checkedAt": "2026-11-06",
+        "originalCategories": []
+      }
+    ],
+    "artwork": {
+      "url": "https://albertarosetheatre.com/wp-content/uploads/2026/06/souvenirs-celebrating-the-songs-of-john-prine.jfif",
+      "sourceUrl": "https://albertarosetheatre.com/event/souvenirs-celebrating-the-songs-of-john-prine-4/alberta-rose-theatre/portland-oregon/",
+      "origin": "official-venue-calendar",
+      "credit": "Alberta Rose Theatre original event artwork",
+      "usageApproved": null
+    },
+    "addedIn": "auto-discovery-2026-11-06",
+    "discovery": {
+      "sourceId": "alberta-rose-theatre",
       "method": "primary-source-collection"
     }
   },
@@ -15993,6 +16843,127 @@ window.SHOWS_EVENTS = [
     }
   },
   {
+    "id": "auto-the-1905-2026-11-08-a9cf86d29a2b",
+    "title": "Dave Tull — 7:30 PM show",
+    "subtitle": "Source-discovered venue event · details need review",
+    "category": "Music",
+    "tags": [
+      "Source-listed Music",
+      "Source-mentioned Jazz",
+      "Time needs confirmation",
+      "Format needs confirmation",
+      "Separate same-day source listing; review bill and room"
+    ],
+    "musicStyles": [
+      "Jazz"
+    ],
+    "eventFormat": "unverified",
+    "classificationEvidence": "Event-specific source genre wording",
+    "startTimeKind": "listed",
+    "startsAt": "2026-11-08T19:30:00-08:00",
+    "endsAt": null,
+    "venue": "The 1905",
+    "address": "830 N Shaver St, Portland, OR 97227",
+    "neighborhood": "Boise",
+    "price": "See organizer for current admission",
+    "free": null,
+    "age": "Not published",
+    "description": "Automatically discovered from a primary venue or promoter listing. Original The 1905 performance 48294 supplies a ticketed show time (not doors) with independently matching Pacific and UTC timestamps. Original ticketed performance. $25 MAINFLOOR / $20 BAR (21+) TICKETS | ALL AGES Dave Tull - drums, vocals Joe Bagg - piano Bill Athens - bass Singing from the drums, Dave brings to the stage a rare combination of joyous songwriting, world-class jazz singing and drumming. Think “F",
+    "source": "The 1905",
+    "url": "https://the1905.turntabletickets.com/shows/13205/2026-11-08",
+    "icon": "♫",
+    "sourceCheckedAt": "2026-11-06",
+    "verificationMethod": "Automated venue data; editorial date, time, event type and cancellation verification required",
+    "sourceCategories": [
+      "Jazz"
+    ],
+    "sources": [
+      {
+        "name": "The 1905",
+        "url": "https://the1905.turntabletickets.com/shows/13205/2026-11-08",
+        "kind": "organizer",
+        "checkedAt": "2026-11-06",
+        "originalCategories": [
+          "Jazz"
+        ]
+      }
+    ],
+    "artwork": {
+      "url": "https://assets-prod.turntabletickets.com/media/the1905/show-13205/d261d55c-e299-471c-9c1f-434a4eb43236-IMG_4642.jpg",
+      "sourceUrl": "https://the1905.turntabletickets.com/shows/13205/2026-11-08",
+      "origin": "official-event-page",
+      "credit": "The 1905 original ticket listing",
+      "usageApproved": null
+    },
+    "sourcePerformanceId": "48294",
+    "sourceShowId": "13205",
+    "addedIn": "auto-discovery-2026-11-06",
+    "discovery": {
+      "sourceId": "the-1905",
+      "method": "primary-source-collection"
+    }
+  },
+  {
+    "id": "auto-mississippi-polaris-2026-11-08-2c49c3bdf06c",
+    "title": "Roger Clyne & The Peacemakers - Hell To Breakfast Tour (Night 2)",
+    "subtitle": "Source-discovered venue event · details need review",
+    "category": "Unclassified",
+    "tags": [
+      "Category needs review",
+      "Time needs confirmation",
+      "Format needs confirmation"
+    ],
+    "musicStyles": [],
+    "eventFormat": "unverified",
+    "classificationEvidence": "No verified event type or genre",
+    "startTimeKind": "show",
+    "startsAt": "2026-11-08T19:30:00-08:00",
+    "endsAt": null,
+    "venue": "Mississippi Studios",
+    "address": "3939 N Mississippi Ave, Portland, OR 97227",
+    "neighborhood": "Boise",
+    "price": "See organizer for current admission",
+    "free": null,
+    "age": "Not published",
+    "description": "Automatically discovered from a primary venue or promoter listing. Original venue calendar explicitly labels doors and a separate showtime, plus exact date and venue Original Mississippi/Polaris room-verified official event listing. Supporting artists: Buffalo Jones, Stephen Ashbrook",
+    "source": "Mississippi Studios / Polaris Hall",
+    "url": "https://www.etix.com/ticket/p/38873954/roger-clyne-the-peacemakers-hell-to-breakfast-tour-night-2-portland-mississippi-studios",
+    "icon": "◇",
+    "sourceCheckedAt": "2026-11-07",
+    "verificationMethod": "Proposed original-source correction: uniquely matched ticket, room, date and explicitly labeled SHOW time",
+    "sourceCategories": [],
+    "sources": [
+      {
+        "name": "Mississippi Studios / Polaris Hall",
+        "url": "https://www.etix.com/ticket/p/38873954/roger-clyne-the-peacemakers-hell-to-breakfast-tour-night-2-portland-mississippi-studios",
+        "kind": "organizer",
+        "checkedAt": "2026-10-25",
+        "originalCategories": []
+      }
+    ],
+    "artwork": {
+      "url": "https://cdn.etix.com/etix/performance-image/performance_image_1200w/970901dc48d789a4742550ccfb2726e5.jpg",
+      "sourceUrl": "https://mississippistudios.com/calendar",
+      "origin": "official-venue-calendar",
+      "credit": "Venue-provided event flyer",
+      "usageApproved": null
+    },
+    "addedIn": "auto-discovery-2026-10-25",
+    "discovery": {
+      "sourceId": "mississippi-polaris",
+      "method": "primary-source-collection"
+    },
+    "sourceCorrection": {
+      "status": "source-confirmed",
+      "sourceId": "mississippi-polaris",
+      "sourceUrl": "https://www.etix.com/ticket/p/38873954/roger-clyne-the-peacemakers-hell-to-breakfast-tour-night-2-portland-mississippi-studios",
+      "previousStartsAt": "2026-11-08T20:00:00-08:00",
+      "observedStartsAt": "2026-11-08T19:30:00-08:00",
+      "checkedAt": "2026-11-07",
+      "evidence": "Original event ticket and venue calendar confirm a separately labeled SHOW time"
+    }
+  },
+  {
     "id": "auto-showdown-2026-11-08-811c1c2061fb",
     "title": "Tyler Hilton",
     "subtitle": "Source-discovered venue event · details need review",
@@ -16089,57 +17060,6 @@ window.SHOWS_EVENTS = [
       "usageApproved": null
     },
     "addedIn": "auto-discovery-2026-10-29",
-    "discovery": {
-      "sourceId": "mississippi-polaris",
-      "method": "primary-source-collection"
-    }
-  },
-  {
-    "id": "auto-mississippi-polaris-2026-11-08-2c49c3bdf06c",
-    "title": "Roger Clyne & The Peacemakers - Hell To Breakfast Tour (Night 2)",
-    "subtitle": "Source-discovered venue event · details need review",
-    "category": "Unclassified",
-    "tags": [
-      "Category needs review",
-      "Time needs confirmation",
-      "Format needs confirmation"
-    ],
-    "musicStyles": [],
-    "eventFormat": "unverified",
-    "classificationEvidence": "No verified event type or genre",
-    "startTimeKind": "listed",
-    "startsAt": "2026-11-08T20:00:00-08:00",
-    "endsAt": null,
-    "venue": "Mississippi Studios",
-    "address": "3939 N Mississippi Ave, Portland, OR 97227",
-    "neighborhood": "Boise",
-    "price": "See organizer for current admission",
-    "free": null,
-    "age": "Not published",
-    "description": "Automatically discovered from a primary venue or promoter listing. Original venue calendar explicitly labels doors and a separate showtime, plus exact date and venue Original Mississippi/Polaris room-verified official event listing. Supporting artists: Buffalo Jones, Stephen Ashbrook",
-    "source": "Mississippi Studios / Polaris Hall",
-    "url": "https://www.etix.com/ticket/p/38873954/roger-clyne-the-peacemakers-hell-to-breakfast-tour-night-2-portland-mississippi-studios",
-    "icon": "◇",
-    "sourceCheckedAt": "2026-10-25",
-    "verificationMethod": "Automated venue data; editorial date, time, event type and cancellation verification required",
-    "sourceCategories": [],
-    "sources": [
-      {
-        "name": "Mississippi Studios / Polaris Hall",
-        "url": "https://www.etix.com/ticket/p/38873954/roger-clyne-the-peacemakers-hell-to-breakfast-tour-night-2-portland-mississippi-studios",
-        "kind": "organizer",
-        "checkedAt": "2026-10-25",
-        "originalCategories": []
-      }
-    ],
-    "artwork": {
-      "url": "https://cdn.etix.com/etix/performance-image/performance_image_1200w/970901dc48d789a4742550ccfb2726e5.jpg",
-      "sourceUrl": "https://mississippistudios.com/calendar",
-      "origin": "official-venue-calendar",
-      "credit": "Venue-provided event flyer",
-      "usageApproved": null
-    },
-    "addedIn": "auto-discovery-2026-10-25",
     "discovery": {
       "sourceId": "mississippi-polaris",
       "method": "primary-source-collection"
@@ -16531,6 +17451,58 @@ window.SHOWS_EVENTS = [
     }
   },
   {
+    "id": "auto-alberta-street-pub-2026-11-08-71cd676b7f11",
+    "title": "SOULFUL SUNDAYS feat. Alea Loren & Co",
+    "subtitle": "Source-discovered venue event · details need review",
+    "category": "Unclassified",
+    "tags": [
+      "Category needs review",
+      "Time needs confirmation",
+      "Format needs confirmation",
+      "Separate same-day source listing; review bill and room"
+    ],
+    "musicStyles": [],
+    "eventFormat": "unverified",
+    "classificationEvidence": "No verified event type or genre",
+    "startTimeKind": "listed",
+    "startsAt": "2026-11-08T21:00:00-08:00",
+    "endsAt": null,
+    "venue": "Alberta Street Pub",
+    "address": "1036 NE Alberta Street, Portland, OR 97211",
+    "neighborhood": "Alberta Arts District",
+    "price": "See organizer for current admission",
+    "free": null,
+    "age": "Not published",
+    "description": "Automatically discovered from a primary venue or promoter listing. Alberta Street Pub's original Squarespace event record supplies the start and end timestamp; exact performance-versus-doors distinction is unconfirmed. Original venue event listing. FREE This Sunday featuring - Alea Loren & Co Free every Sunday night rotating the regions best Soul, Funk, R&B bands and DJs in one of the best sounding rooms in the city.",
+    "source": "Alberta Street Pub",
+    "url": "https://www.albertastreetpub.com/music/2023/3/5/soulful-sundays-p3a5l-3wl64-twxnj-wkacn-lc8tr-gphsj-x73af-5meh3-6cspz-9z8kp-wtz8c-47fe8-ekh63-lxhbe-7z8f3",
+    "icon": "◇",
+    "sourceCheckedAt": "2026-11-06",
+    "verificationMethod": "Automated venue data; editorial date, time, event type and cancellation verification required",
+    "sourceCategories": [],
+    "sources": [
+      {
+        "name": "Alberta Street Pub",
+        "url": "https://www.albertastreetpub.com/music/2023/3/5/soulful-sundays-p3a5l-3wl64-twxnj-wkacn-lc8tr-gphsj-x73af-5meh3-6cspz-9z8kp-wtz8c-47fe8-ekh63-lxhbe-7z8f3",
+        "kind": "organizer",
+        "checkedAt": "2026-11-06",
+        "originalCategories": []
+      }
+    ],
+    "artwork": {
+      "url": "https://images.squarespace-cdn.com/content/v1/54109e68e4b06b163549a8dc/1791018882336-B7V0SPXUB1TT1Z1N13QZ/IMG_1243.jpeg",
+      "sourceUrl": "https://www.albertastreetpub.com/music/2023/3/5/soulful-sundays-p3a5l-3wl64-twxnj-wkacn-lc8tr-gphsj-x73af-5meh3-6cspz-9z8kp-wtz8c-47fe8-ekh63-lxhbe-7z8f3",
+      "origin": "official-venue-calendar",
+      "credit": "Alberta Street Pub official event calendar",
+      "usageApproved": null
+    },
+    "addedIn": "auto-discovery-2026-11-06",
+    "discovery": {
+      "sourceId": "alberta-street-pub",
+      "method": "primary-source-collection"
+    }
+  },
+  {
     "id": "auto-dantes-2026-11-08-02aee0c4c754",
     "title": "SINFERNO CABARET",
     "subtitle": "Source-discovered venue event · details need review",
@@ -16579,6 +17551,57 @@ window.SHOWS_EVENTS = [
     "addedIn": "auto-discovery-2026-11-03",
     "discovery": {
       "sourceId": "dantes",
+      "method": "primary-source-collection"
+    }
+  },
+  {
+    "id": "auto-alberta-street-pub-2026-11-09-ee3d05f5d945",
+    "title": "Comedy & Monday Night Football with Hazel Dell Hottie",
+    "subtitle": "Source-discovered venue event · details need review",
+    "category": "Performance",
+    "tags": [
+      "Source-listed Performance",
+      "Time needs confirmation",
+      "Format needs confirmation"
+    ],
+    "musicStyles": [],
+    "eventFormat": "unverified",
+    "classificationEvidence": "Event-specific source wording",
+    "startTimeKind": "listed",
+    "startsAt": "2026-11-09T17:00:00-08:00",
+    "endsAt": null,
+    "venue": "Alberta Street Pub",
+    "address": "1036 NE Alberta Street, Portland, OR 97211",
+    "neighborhood": "Alberta Arts District",
+    "price": "See organizer for current admission",
+    "free": null,
+    "age": "Not published",
+    "description": "Automatically discovered from a primary venue or promoter listing. Alberta Street Pub's original Squarespace event record supplies the start and end timestamp; exact performance-versus-doors distinction is unconfirmed. Original venue event listing. Free!",
+    "source": "Alberta Street Pub",
+    "url": "https://www.albertastreetpub.com/music/2026/10/12/comedy-amp-monday-night-football-with-hazel-dell-hottie",
+    "icon": "◇",
+    "sourceCheckedAt": "2026-11-06",
+    "verificationMethod": "Automated venue data; editorial date, time, event type and cancellation verification required",
+    "sourceCategories": [],
+    "sources": [
+      {
+        "name": "Alberta Street Pub",
+        "url": "https://www.albertastreetpub.com/music/2026/10/12/comedy-amp-monday-night-football-with-hazel-dell-hottie",
+        "kind": "organizer",
+        "checkedAt": "2026-11-06",
+        "originalCategories": []
+      }
+    ],
+    "artwork": {
+      "url": "https://images.squarespace-cdn.com/content/v1/54109e68e4b06b163549a8dc/1790483055381-H68GPQ6ACG49YNJQUKE7/Marsha.jpg",
+      "sourceUrl": "https://www.albertastreetpub.com/music/2026/10/12/comedy-amp-monday-night-football-with-hazel-dell-hottie",
+      "origin": "official-venue-calendar",
+      "credit": "Alberta Street Pub official event calendar",
+      "usageApproved": null
+    },
+    "addedIn": "auto-discovery-2026-11-06",
+    "discovery": {
+      "sourceId": "alberta-street-pub",
       "method": "primary-source-collection"
     }
   },
@@ -16724,6 +17747,57 @@ window.SHOWS_EVENTS = [
     "addedIn": "auto-discovery-2026-10-29",
     "discovery": {
       "sourceId": "mission-theater",
+      "method": "primary-source-collection"
+    }
+  },
+  {
+    "id": "auto-alberta-rose-theatre-2026-11-09-32c01f73dc02",
+    "title": "Psychedelics and the Reimagining of Aging",
+    "subtitle": "Source-discovered venue event · details need review",
+    "category": "Unclassified",
+    "tags": [
+      "Category needs review",
+      "Time needs confirmation",
+      "Format needs confirmation"
+    ],
+    "musicStyles": [],
+    "eventFormat": "unverified",
+    "classificationEvidence": "No verified event type or genre",
+    "startTimeKind": "listed",
+    "startsAt": "2026-11-09T19:00:00-08:00",
+    "endsAt": null,
+    "venue": "Alberta Rose Theatre",
+    "address": "3000 NE Alberta Street, Portland, OR 97211",
+    "neighborhood": "Concordia",
+    "price": "See organizer for current admission",
+    "free": null,
+    "age": "Not published",
+    "description": "Automatically discovered from a primary venue or promoter listing. Original Alberta Rose dated calendar month/year, weekday, exact room and separately labeled SHOW time; doors not substituted. Original theatre calendar; music style and format require event-specific editorial assessment.",
+    "source": "Alberta Rose Theatre",
+    "url": "https://albertarosetheatre.com/event/psychedelics-and-the-reimagining-of-aging/alberta-rose-theatre/portland-oregon/",
+    "icon": "◇",
+    "sourceCheckedAt": "2026-11-06",
+    "verificationMethod": "Automated venue data; editorial date, time, event type and cancellation verification required",
+    "sourceCategories": [],
+    "sources": [
+      {
+        "name": "Alberta Rose Theatre",
+        "url": "https://albertarosetheatre.com/event/psychedelics-and-the-reimagining-of-aging/alberta-rose-theatre/portland-oregon/",
+        "kind": "organizer",
+        "checkedAt": "2026-11-06",
+        "originalCategories": []
+      }
+    ],
+    "artwork": {
+      "url": "https://albertarosetheatre.com/wp-content/uploads/2026/10/psychedelics-and-the-reimagining-of-aging.jfif",
+      "sourceUrl": "https://albertarosetheatre.com/event/psychedelics-and-the-reimagining-of-aging/alberta-rose-theatre/portland-oregon/",
+      "origin": "official-venue-calendar",
+      "credit": "Alberta Rose Theatre original event artwork",
+      "usageApproved": null
+    },
+    "addedIn": "auto-discovery-2026-11-06",
+    "discovery": {
+      "sourceId": "alberta-rose-theatre",
       "method": "primary-source-collection"
     }
   },
@@ -17083,6 +18157,57 @@ window.SHOWS_EVENTS = [
     "classificationEvidence": "Event-specific source wording"
   },
   {
+    "id": "auto-alberta-street-pub-2026-11-10-15d819c3a4a1",
+    "title": "Bridgetown Trivia on the Heated Patio!",
+    "subtitle": "Source-discovered venue event · details need review",
+    "category": "Other",
+    "tags": [
+      "Source-listed Other",
+      "Time needs confirmation",
+      "Format needs confirmation"
+    ],
+    "musicStyles": [],
+    "eventFormat": "unverified",
+    "classificationEvidence": "Event-specific source wording",
+    "startTimeKind": "listed",
+    "startsAt": "2026-11-10T19:00:00-08:00",
+    "endsAt": null,
+    "venue": "Alberta Street Pub",
+    "address": "1036 NE Alberta Street, Portland, OR 97211",
+    "neighborhood": "Alberta Arts District",
+    "price": "See organizer for current admission",
+    "free": null,
+    "age": "Not published",
+    "description": "Automatically discovered from a primary venue or promoter listing. Alberta Street Pub's original Squarespace event record supplies the start and end timestamp; exact performance-versus-doors distinction is unconfirmed. Original venue event listing.",
+    "source": "Alberta Street Pub",
+    "url": "https://www.albertastreetpub.com/music/2023/3/13/bridgetown-trivia-on-the-heated-patio-6cwzx-dg47h-78jwb-2lt32-azz6n-gd4lz-rd6wg-6ghnc-653hl-dnb5c-42dcy-r6ztl-37cda-7ljxc-fwzrf",
+    "icon": "◇",
+    "sourceCheckedAt": "2026-11-06",
+    "verificationMethod": "Automated venue data; editorial date, time, event type and cancellation verification required",
+    "sourceCategories": [],
+    "sources": [
+      {
+        "name": "Alberta Street Pub",
+        "url": "https://www.albertastreetpub.com/music/2023/3/13/bridgetown-trivia-on-the-heated-patio-6cwzx-dg47h-78jwb-2lt32-azz6n-gd4lz-rd6wg-6ghnc-653hl-dnb5c-42dcy-r6ztl-37cda-7ljxc-fwzrf",
+        "kind": "organizer",
+        "checkedAt": "2026-11-06",
+        "originalCategories": []
+      }
+    ],
+    "artwork": {
+      "url": "https://images.squarespace-cdn.com/content/v1/54109e68e4b06b163549a8dc/1677884390790-SZINMBG9BBM062BPTXE3/Bridgetown+Trivia.jpg",
+      "sourceUrl": "https://www.albertastreetpub.com/music/2023/3/13/bridgetown-trivia-on-the-heated-patio-6cwzx-dg47h-78jwb-2lt32-azz6n-gd4lz-rd6wg-6ghnc-653hl-dnb5c-42dcy-r6ztl-37cda-7ljxc-fwzrf",
+      "origin": "official-venue-calendar",
+      "credit": "Alberta Street Pub official event calendar",
+      "usageApproved": null
+    },
+    "addedIn": "auto-discovery-2026-11-06",
+    "discovery": {
+      "sourceId": "alberta-street-pub",
+      "method": "primary-source-collection"
+    }
+  },
+  {
     "id": "auto-aladdin-theater-2026-11-10-e27453541235",
     "title": "Foy Vance World Tour | 2026 & 2027",
     "subtitle": "Source-discovered venue event · details need review",
@@ -17130,6 +18255,57 @@ window.SHOWS_EVENTS = [
     "addedIn": "auto-discovery-2026-10-29",
     "discovery": {
       "sourceId": "aladdin-theater",
+      "method": "primary-source-collection"
+    }
+  },
+  {
+    "id": "auto-alberta-rose-theatre-2026-11-10-c079eb3ee1db",
+    "title": "Henry Diltz – Behind The Lens",
+    "subtitle": "Source-discovered venue event · details need review",
+    "category": "Unclassified",
+    "tags": [
+      "Category needs review",
+      "Time needs confirmation",
+      "Format needs confirmation"
+    ],
+    "musicStyles": [],
+    "eventFormat": "unverified",
+    "classificationEvidence": "No verified event type or genre",
+    "startTimeKind": "listed",
+    "startsAt": "2026-11-10T19:00:00-08:00",
+    "endsAt": null,
+    "venue": "Alberta Rose Theatre",
+    "address": "3000 NE Alberta Street, Portland, OR 97211",
+    "neighborhood": "Concordia",
+    "price": "See organizer for current admission",
+    "free": null,
+    "age": "Not published",
+    "description": "Automatically discovered from a primary venue or promoter listing. Original Alberta Rose dated calendar month/year, weekday, exact room and separately labeled SHOW time; doors not substituted. Original theatre calendar; music style and format require event-specific editorial assessment.",
+    "source": "Alberta Rose Theatre",
+    "url": "https://albertarosetheatre.com/event/henry-diltz-behind-the-lens/alberta-rose-theatre/portland-oregon/",
+    "icon": "◇",
+    "sourceCheckedAt": "2026-11-06",
+    "verificationMethod": "Automated venue data; editorial date, time, event type and cancellation verification required",
+    "sourceCategories": [],
+    "sources": [
+      {
+        "name": "Alberta Rose Theatre",
+        "url": "https://albertarosetheatre.com/event/henry-diltz-behind-the-lens/alberta-rose-theatre/portland-oregon/",
+        "kind": "organizer",
+        "checkedAt": "2026-11-06",
+        "originalCategories": []
+      }
+    ],
+    "artwork": {
+      "url": "https://albertarosetheatre.com/wp-content/uploads/2026/05/henry-diltz-behind-the-lens.jfif",
+      "sourceUrl": "https://albertarosetheatre.com/event/henry-diltz-behind-the-lens/alberta-rose-theatre/portland-oregon/",
+      "origin": "official-venue-calendar",
+      "credit": "Alberta Rose Theatre original event artwork",
+      "usageApproved": null
+    },
+    "addedIn": "auto-discovery-2026-11-06",
+    "discovery": {
+      "sourceId": "alberta-rose-theatre",
       "method": "primary-source-collection"
     }
   },
@@ -17903,6 +19079,117 @@ window.SHOWS_EVENTS = [
     }
   },
   {
+    "id": "auto-alberta-street-pub-2026-11-11-6dc9a064d20c",
+    "title": "Wednesday Night Social - Cigars, Dominos & Music",
+    "subtitle": "Source-discovered venue event · details need review",
+    "category": "Music",
+    "tags": [
+      "Source-listed Music",
+      "Time needs confirmation",
+      "Format needs confirmation"
+    ],
+    "musicStyles": [],
+    "eventFormat": "unverified",
+    "classificationEvidence": "Original source explicitly verifies music",
+    "startTimeKind": "listed",
+    "startsAt": "2026-11-11T18:00:00-08:00",
+    "endsAt": null,
+    "venue": "Alberta Street Pub",
+    "address": "1036 NE Alberta Street, Portland, OR 97211",
+    "neighborhood": "Alberta Arts District",
+    "price": "See organizer for current admission",
+    "free": null,
+    "age": "Not published",
+    "description": "Automatically discovered from a primary venue or promoter listing. Alberta Street Pub's original Squarespace event record supplies the start and end timestamp; exact performance-versus-doors distinction is unconfirmed. Original venue event listing. Free! On the Heated Patio! A rotating cast of DJ’s and musicians keep this party alive! Weekly every Wednesday at Alberta Street Pub",
+    "source": "Alberta Street Pub",
+    "url": "https://www.albertastreetpub.com/music/2023/10/18/wednesday-night-social-fkf88-mke97-4227c-l64xx-gss68-cjzan-8lsw3-nbgjn-yr6pm-6kblr-ff6b5-lsmb9-hkw2h-f5mft-hfbdc-nddag-sg2pm-ylbtn-7mp5t-b64gk-lwx2r-tbbpe-gkh64",
+    "icon": "♫",
+    "sourceCheckedAt": "2026-11-06",
+    "verificationMethod": "Automated venue data; editorial date, time, event type and cancellation verification required",
+    "sourceCategories": [],
+    "sources": [
+      {
+        "name": "Alberta Street Pub",
+        "url": "https://www.albertastreetpub.com/music/2023/10/18/wednesday-night-social-fkf88-mke97-4227c-l64xx-gss68-cjzan-8lsw3-nbgjn-yr6pm-6kblr-ff6b5-lsmb9-hkw2h-f5mft-hfbdc-nddag-sg2pm-ylbtn-7mp5t-b64gk-lwx2r-tbbpe-gkh64",
+        "kind": "organizer",
+        "checkedAt": "2026-11-06",
+        "originalCategories": []
+      }
+    ],
+    "artwork": {
+      "url": "https://images.squarespace-cdn.com/content/v1/54109e68e4b06b163549a8dc/1696788150496-QTGQKK7LANS0RZO9JQ5S/Wednesday+Cigars.jpg",
+      "sourceUrl": "https://www.albertastreetpub.com/music/2023/10/18/wednesday-night-social-fkf88-mke97-4227c-l64xx-gss68-cjzan-8lsw3-nbgjn-yr6pm-6kblr-ff6b5-lsmb9-hkw2h-f5mft-hfbdc-nddag-sg2pm-ylbtn-7mp5t-b64gk-lwx2r-tbbpe-gkh64",
+      "origin": "official-venue-calendar",
+      "credit": "Alberta Street Pub official event calendar",
+      "usageApproved": null
+    },
+    "addedIn": "auto-discovery-2026-11-06",
+    "discovery": {
+      "sourceId": "alberta-street-pub",
+      "method": "primary-source-collection"
+    }
+  },
+  {
+    "id": "auto-the-1905-2026-11-11-69c48323eb22",
+    "title": "Wil Blades fea. Andy Coe and Cory Limuaco — 6:30 PM show",
+    "subtitle": "Source-discovered venue event · details need review",
+    "category": "Music",
+    "tags": [
+      "Source-listed Music",
+      "Source-mentioned Jazz",
+      "Time needs confirmation",
+      "Format needs confirmation"
+    ],
+    "musicStyles": [
+      "Jazz"
+    ],
+    "eventFormat": "unverified",
+    "classificationEvidence": "Event-specific source genre wording",
+    "startTimeKind": "listed",
+    "startsAt": "2026-11-11T18:30:00-08:00",
+    "endsAt": null,
+    "venue": "The 1905",
+    "address": "830 N Shaver St, Portland, OR 97227",
+    "neighborhood": "Boise",
+    "price": "See organizer for current admission",
+    "free": null,
+    "age": "Not published",
+    "description": "Automatically discovered from a primary venue or promoter listing. Original The 1905 performance 48295 supplies a ticketed show time (not doors) with independently matching Pacific and UTC timestamps. Original ticketed performance. $35 TICKETS | ALL AGES Wil Blades - organ Andy Coe - guitar Cory Limuaco - drums No less a jazz organ authority than the legendary Dr. Lonnie Smith has called Wil Blades “the future,” anointing him the heir apparent to “carry on the legend and the l",
+    "source": "The 1905",
+    "url": "https://the1905.turntabletickets.com/shows/13206/2026-11-11",
+    "icon": "♫",
+    "sourceCheckedAt": "2026-11-07",
+    "verificationMethod": "Automated venue data; editorial date, time, event type and cancellation verification required",
+    "sourceCategories": [
+      "Jazz"
+    ],
+    "sources": [
+      {
+        "name": "The 1905",
+        "url": "https://the1905.turntabletickets.com/shows/13206/2026-11-11",
+        "kind": "organizer",
+        "checkedAt": "2026-11-07",
+        "originalCategories": [
+          "Jazz"
+        ]
+      }
+    ],
+    "artwork": {
+      "url": "https://assets-prod.turntabletickets.com/media/the1905/show-13206/Wil_Blades.jpg",
+      "sourceUrl": "https://the1905.turntabletickets.com/shows/13206/2026-11-11",
+      "origin": "official-event-page",
+      "credit": "The 1905 original ticket listing",
+      "usageApproved": null
+    },
+    "sourcePerformanceId": "48295",
+    "sourceShowId": "13206",
+    "addedIn": "auto-discovery-2026-11-07",
+    "discovery": {
+      "sourceId": "the-1905",
+      "method": "primary-source-collection"
+    }
+  },
+  {
     "id": "auto-showdown-2026-11-11-7888cdf8e46e",
     "title": "Intermediate Two-Step Lessons with Peggy and Dillon",
     "subtitle": "Source-discovered venue event · details need review",
@@ -17950,6 +19237,57 @@ window.SHOWS_EVENTS = [
     "addedIn": "auto-discovery-2026-11-02",
     "discovery": {
       "sourceId": "showdown",
+      "method": "primary-source-collection"
+    }
+  },
+  {
+    "id": "auto-alberta-rose-theatre-2026-11-11-ac4b4312a7bf",
+    "title": "John McCutcheon",
+    "subtitle": "Source-discovered venue event · details need review",
+    "category": "Unclassified",
+    "tags": [
+      "Category needs review",
+      "Time needs confirmation",
+      "Format needs confirmation"
+    ],
+    "musicStyles": [],
+    "eventFormat": "unverified",
+    "classificationEvidence": "No verified event type or genre",
+    "startTimeKind": "listed",
+    "startsAt": "2026-11-11T19:00:00-08:00",
+    "endsAt": null,
+    "venue": "Alberta Rose Theatre",
+    "address": "3000 NE Alberta Street, Portland, OR 97211",
+    "neighborhood": "Concordia",
+    "price": "See organizer for current admission",
+    "free": null,
+    "age": "Not published",
+    "description": "Automatically discovered from a primary venue or promoter listing. Original Alberta Rose dated calendar month/year, weekday, exact room and separately labeled SHOW time; doors not substituted. Original theatre calendar; music style and format require event-specific editorial assessment.",
+    "source": "Alberta Rose Theatre",
+    "url": "https://albertarosetheatre.com/event/john-mccutcheon-4/alberta-rose-theatre/portland-oregon/",
+    "icon": "◇",
+    "sourceCheckedAt": "2026-11-06",
+    "verificationMethod": "Automated venue data; editorial date, time, event type and cancellation verification required",
+    "sourceCategories": [],
+    "sources": [
+      {
+        "name": "Alberta Rose Theatre",
+        "url": "https://albertarosetheatre.com/event/john-mccutcheon-4/alberta-rose-theatre/portland-oregon/",
+        "kind": "organizer",
+        "checkedAt": "2026-11-06",
+        "originalCategories": []
+      }
+    ],
+    "artwork": {
+      "url": "https://albertarosetheatre.com/wp-content/uploads/2024/12/etix-John_2447411735530597.jfif",
+      "sourceUrl": "https://albertarosetheatre.com/event/john-mccutcheon-4/alberta-rose-theatre/portland-oregon/",
+      "origin": "official-venue-calendar",
+      "credit": "Alberta Rose Theatre original event artwork",
+      "usageApproved": null
+    },
+    "addedIn": "auto-discovery-2026-11-06",
+    "discovery": {
+      "sourceId": "alberta-rose-theatre",
       "method": "primary-source-collection"
     }
   },
@@ -18616,6 +19954,67 @@ window.SHOWS_EVENTS = [
     }
   },
   {
+    "id": "auto-the-1905-2026-11-11-6a5bb9fe9cc1",
+    "title": "Wil Blades fea. Andy Coe and Cory Limuaco — 8:30 PM show",
+    "subtitle": "Source-discovered venue event · details need review",
+    "category": "Music",
+    "tags": [
+      "Source-listed Music",
+      "Source-mentioned Jazz",
+      "Time needs confirmation",
+      "Format needs confirmation",
+      "Separate same-day source listing; review bill and room"
+    ],
+    "musicStyles": [
+      "Jazz"
+    ],
+    "eventFormat": "unverified",
+    "classificationEvidence": "Event-specific source genre wording",
+    "startTimeKind": "listed",
+    "startsAt": "2026-11-11T20:30:00-08:00",
+    "endsAt": null,
+    "venue": "The 1905",
+    "address": "830 N Shaver St, Portland, OR 97227",
+    "neighborhood": "Boise",
+    "price": "See organizer for current admission",
+    "free": null,
+    "age": "Not published",
+    "description": "Automatically discovered from a primary venue or promoter listing. Original The 1905 performance 48296 supplies a ticketed show time (not doors) with independently matching Pacific and UTC timestamps. Original ticketed performance. $35 TICKETS | ALL AGES Wil Blades - organ Andy Coe - guitar Cory Limuaco - drums No less a jazz organ authority than the legendary Dr. Lonnie Smith has called Wil Blades “the future,” anointing him the heir apparent to “carry on the legend and the l",
+    "source": "The 1905",
+    "url": "https://the1905.turntabletickets.com/shows/13206/2026-11-11",
+    "icon": "♫",
+    "sourceCheckedAt": "2026-11-07",
+    "verificationMethod": "Automated venue data; editorial date, time, event type and cancellation verification required",
+    "sourceCategories": [
+      "Jazz"
+    ],
+    "sources": [
+      {
+        "name": "The 1905",
+        "url": "https://the1905.turntabletickets.com/shows/13206/2026-11-11",
+        "kind": "organizer",
+        "checkedAt": "2026-11-07",
+        "originalCategories": [
+          "Jazz"
+        ]
+      }
+    ],
+    "artwork": {
+      "url": "https://assets-prod.turntabletickets.com/media/the1905/show-13206/Wil_Blades.jpg",
+      "sourceUrl": "https://the1905.turntabletickets.com/shows/13206/2026-11-11",
+      "origin": "official-event-page",
+      "credit": "The 1905 original ticket listing",
+      "usageApproved": null
+    },
+    "sourcePerformanceId": "48296",
+    "sourceShowId": "13206",
+    "addedIn": "auto-discovery-2026-11-07",
+    "discovery": {
+      "sourceId": "the-1905",
+      "method": "primary-source-collection"
+    }
+  },
+  {
     "id": "auto-starday-tavern-2026-11-11-e1ff8bc0a4b0",
     "title": "Gnosis Drum & Bass",
     "subtitle": "Source-discovered venue event · details need review",
@@ -18857,6 +20256,57 @@ window.SHOWS_EVENTS = [
     }
   },
   {
+    "id": "auto-alberta-street-pub-2026-11-12-f79f2f79f958",
+    "title": "Crystal Beach | Emily and the Squeamish | Talks To Plants",
+    "subtitle": "Source-discovered venue event · details need review",
+    "category": "Unclassified",
+    "tags": [
+      "Category needs review",
+      "Time needs confirmation",
+      "Format needs confirmation"
+    ],
+    "musicStyles": [],
+    "eventFormat": "unverified",
+    "classificationEvidence": "No verified event type or genre",
+    "startTimeKind": "listed",
+    "startsAt": "2026-11-12T18:00:00-08:00",
+    "endsAt": null,
+    "venue": "Alberta Street Pub",
+    "address": "1036 NE Alberta Street, Portland, OR 97211",
+    "neighborhood": "Alberta Arts District",
+    "price": "See organizer for current admission",
+    "free": null,
+    "age": "Not published",
+    "description": "Automatically discovered from a primary venue or promoter listing. Alberta Street Pub's original Squarespace event record supplies the start and end timestamp; exact performance-versus-doors distinction is unconfirmed. Original venue event listing. $10 COVER AT THE DOOR ALL AGES UNTIL 9PM Talks To Plants Crystal Beach Emily and the Squeamish",
+    "source": "Alberta Street Pub",
+    "url": "https://www.albertastreetpub.com/music/2026/11/12/crystal-beach-emily-and-the-squeamish-talks-to-plants",
+    "icon": "◇",
+    "sourceCheckedAt": "2026-11-06",
+    "verificationMethod": "Automated venue data; editorial date, time, event type and cancellation verification required",
+    "sourceCategories": [],
+    "sources": [
+      {
+        "name": "Alberta Street Pub",
+        "url": "https://www.albertastreetpub.com/music/2026/11/12/crystal-beach-emily-and-the-squeamish-talks-to-plants",
+        "kind": "organizer",
+        "checkedAt": "2026-11-06",
+        "originalCategories": []
+      }
+    ],
+    "artwork": {
+      "url": "https://images.squarespace-cdn.com/content/v1/54109e68e4b06b163549a8dc/1793997183808-1YN2IZRRUMKLDH858QSK/IMG_4626.jpeg",
+      "sourceUrl": "https://www.albertastreetpub.com/music/2026/11/12/crystal-beach-emily-and-the-squeamish-talks-to-plants",
+      "origin": "official-venue-calendar",
+      "credit": "Alberta Street Pub official event calendar",
+      "usageApproved": null
+    },
+    "addedIn": "auto-discovery-2026-11-06",
+    "discovery": {
+      "sourceId": "alberta-street-pub",
+      "method": "primary-source-collection"
+    }
+  },
+  {
     "id": "auto-high-water-2026-11-12-dbe0552d8b95",
     "title": "Hear You Loud & Queer!",
     "subtitle": "Source-discovered venue event · details need review",
@@ -18900,6 +20350,60 @@ window.SHOWS_EVENTS = [
     "addedIn": "auto-discovery-2026-11-02",
     "discovery": {
       "sourceId": "high-water",
+      "method": "primary-source-collection"
+    }
+  },
+  {
+    "id": "auto-jack-london-revue-2026-11-12-24f5b3cf5179",
+    "title": "MEL BROWN B3 ORGAN GROUP - Jazz Titan Thursdays",
+    "subtitle": "Source-discovered venue event · details need review",
+    "category": "Music",
+    "tags": [
+      "Source-listed Music",
+      "Source-mentioned Jazz",
+      "Time needs confirmation",
+      "Format needs confirmation"
+    ],
+    "musicStyles": [
+      "Jazz"
+    ],
+    "eventFormat": "unverified",
+    "classificationEvidence": "Event-specific source genre wording",
+    "startTimeKind": "listed",
+    "startsAt": "2026-11-12T19:00:00-08:00",
+    "endsAt": null,
+    "venue": "Jack London Revue",
+    "address": "529 SW 4th Ave, Portland, OR 97204",
+    "neighborhood": "Downtown",
+    "price": "See organizer for current admission",
+    "free": null,
+    "age": "Not published",
+    "description": "Automatically discovered from a primary venue or promoter listing. Original JLR event detail verifies full date, venue and showtime separately from doors; the date and clocks match the first-party roster. Original venue event: JLR Seating Map Notes : For this show, you may reserve individual tables on the map pictured. Note that some tables have limited sightlines as noted. All table reservations include admission. Instructions: For Table Reservations : Note the relative location ",
+    "source": "Jack London Revue",
+    "url": "https://www.jacklondonrevue.com/tm-event/mel-brown-b3-organ-group-jazz-titan-thursdays-8/",
+    "icon": "♫",
+    "sourceCheckedAt": "2026-11-06",
+    "verificationMethod": "Automated venue data; editorial date, time, event type and cancellation verification required",
+    "sourceCategories": [],
+    "sources": [
+      {
+        "name": "Jack London Revue",
+        "url": "https://www.jacklondonrevue.com/tm-event/mel-brown-b3-organ-group-jazz-titan-thursdays-8/",
+        "kind": "organizer",
+        "checkedAt": "2026-11-06",
+        "originalCategories": []
+      }
+    ],
+    "artwork": {
+      "url": "https://i.ticketweb.com/i/00/12/98/92/14_Original.jpg?v=5",
+      "sourceUrl": "https://www.jacklondonrevue.com/tm-event/mel-brown-b3-organ-group-jazz-titan-thursdays-8/",
+      "origin": "official-event-page",
+      "credit": "Original TicketWeb artwork linked by Jack London Revue",
+      "usageApproved": null
+    },
+    "addedIn": "auto-discovery-2026-11-06",
+    "discovery": {
+      "sourceId": "jack-london-revue",
       "method": "primary-source-collection"
     }
   },
@@ -19766,6 +21270,57 @@ window.SHOWS_EVENTS = [
     }
   },
   {
+    "id": "auto-alberta-street-pub-2026-11-13-4a9d706827d6",
+    "title": "TITS UP",
+    "subtitle": "Source-discovered venue event · details need review",
+    "category": "Unclassified",
+    "tags": [
+      "Category needs review",
+      "Time needs confirmation",
+      "Format needs confirmation"
+    ],
+    "musicStyles": [],
+    "eventFormat": "unverified",
+    "classificationEvidence": "No verified event type or genre",
+    "startTimeKind": "listed",
+    "startsAt": "2026-11-13T17:00:00-08:00",
+    "endsAt": null,
+    "venue": "Alberta Street Pub",
+    "address": "1036 NE Alberta Street, Portland, OR 97211",
+    "neighborhood": "Alberta Arts District",
+    "price": "See organizer for current admission",
+    "free": null,
+    "age": "Not published",
+    "description": "Automatically discovered from a primary venue or promoter listing. Alberta Street Pub's original Squarespace event record supplies the start and end timestamp; exact performance-versus-doors distinction is unconfirmed. Original venue event listing. $5-$10 Suggested Donation",
+    "source": "Alberta Street Pub",
+    "url": "https://www.albertastreetpub.com/music/2024/2/9/tits-up-3y8x8-z9wpc-wa6yf-6sspp-serrr-xgchh-yckjg-xal9h-ch8p7-ks3km",
+    "icon": "◇",
+    "sourceCheckedAt": "2026-11-06",
+    "verificationMethod": "Automated venue data; editorial date, time, event type and cancellation verification required",
+    "sourceCategories": [],
+    "sources": [
+      {
+        "name": "Alberta Street Pub",
+        "url": "https://www.albertastreetpub.com/music/2024/2/9/tits-up-3y8x8-z9wpc-wa6yf-6sspp-serrr-xgchh-yckjg-xal9h-ch8p7-ks3km",
+        "kind": "organizer",
+        "checkedAt": "2026-11-06",
+        "originalCategories": []
+      }
+    ],
+    "artwork": {
+      "url": "https://images.squarespace-cdn.com/content/v1/54109e68e4b06b163549a8dc/1706127624455-F6BFVC7NIKN94IY3650S/2.jpg",
+      "sourceUrl": "https://www.albertastreetpub.com/music/2024/2/9/tits-up-3y8x8-z9wpc-wa6yf-6sspp-serrr-xgchh-yckjg-xal9h-ch8p7-ks3km",
+      "origin": "official-venue-calendar",
+      "credit": "Alberta Street Pub official event calendar",
+      "usageApproved": null
+    },
+    "addedIn": "auto-discovery-2026-11-06",
+    "discovery": {
+      "sourceId": "alberta-street-pub",
+      "method": "primary-source-collection"
+    }
+  },
+  {
     "id": "auto-starday-tavern-2026-11-13-6dd5973cfd0e",
     "title": "Heather Christie & The Starlettes",
     "subtitle": "Source-discovered venue event · details need review",
@@ -20133,6 +21688,108 @@ window.SHOWS_EVENTS = [
     }
   },
   {
+    "id": "auto-turn-turn-turn-2026-11-13-75961ca47067",
+    "title": "Port Velvet + My Body",
+    "subtitle": "Source-discovered venue event · details need review",
+    "category": "Music",
+    "tags": [
+      "Source-listed Music",
+      "Time needs confirmation",
+      "Format needs confirmation"
+    ],
+    "musicStyles": [],
+    "eventFormat": "unverified",
+    "classificationEvidence": "Original source explicitly verifies music",
+    "startTimeKind": "listed",
+    "startsAt": "2026-11-13T20:00:00-08:00",
+    "endsAt": null,
+    "venue": "Turn! Turn! Turn!",
+    "address": "8 NE Killingsworth St, Portland, OR 97211",
+    "neighborhood": "Kenton",
+    "price": "See organizer for current admission",
+    "free": null,
+    "age": "Not published",
+    "description": "Automatically discovered from a primary venue or promoter listing. Official venue-embedded OpenDate listing explicitly labels separate doors and show times; scheduled show time is the event start. Original OpenDate event detail: Event-specific description not published.",
+    "source": "Turn! Turn! Turn!",
+    "url": "https://app.opendate.io/e/port-velvet-my-body-november-13-2026-797592",
+    "icon": "♫",
+    "sourceCheckedAt": "2026-11-06",
+    "verificationMethod": "Automated venue data; editorial date, time, event type and cancellation verification required",
+    "sourceCategories": [],
+    "sources": [
+      {
+        "name": "Turn! Turn! Turn!",
+        "url": "https://app.opendate.io/e/port-velvet-my-body-november-13-2026-797592",
+        "kind": "organizer",
+        "checkedAt": "2026-11-06",
+        "originalCategories": []
+      }
+    ],
+    "artwork": {
+      "url": "https://s3.amazonaws.com/opendate-aws-assets/confirms/main_event_images/000/797/592/compressed/Screenshot_2026-11-04_at_3.08.06%E2%80%AFPM.jpg?1793833735",
+      "sourceUrl": "https://app.opendate.io/e/port-velvet-my-body-november-13-2026-797592",
+      "origin": "official-event-page",
+      "credit": "Organizer-provided OpenDate event image",
+      "usageApproved": null
+    },
+    "addedIn": "auto-discovery-2026-11-06",
+    "discovery": {
+      "sourceId": "turn-turn-turn",
+      "method": "primary-source-collection"
+    }
+  },
+  {
+    "id": "auto-jack-london-revue-2026-11-13-b1e26a618e6b",
+    "title": "SHELLY RUDOLPH",
+    "subtitle": "Source-discovered venue event · details need review",
+    "category": "Unclassified",
+    "tags": [
+      "Category needs review",
+      "Time needs confirmation",
+      "Format needs confirmation"
+    ],
+    "musicStyles": [],
+    "eventFormat": "unverified",
+    "classificationEvidence": "No verified event type or genre",
+    "startTimeKind": "listed",
+    "startsAt": "2026-11-13T20:00:00-08:00",
+    "endsAt": null,
+    "venue": "Jack London Revue",
+    "address": "529 SW 4th Ave, Portland, OR 97204",
+    "neighborhood": "Downtown",
+    "price": "See organizer for current admission",
+    "free": null,
+    "age": "Not published",
+    "description": "Automatically discovered from a primary venue or promoter listing. Original JLR event detail verifies full date, venue and showtime separately from doors; the date and clocks match the first-party roster. Original venue event: https://www.shellyrudolph.com/ ---------------- SHELLY RUDOLPH: DIVA DELUXE ETTA. ARETHA. BLONDIE. Leading a stellar six-piece ensemble, Ms. Rudolph belts, caresses and struts her way through the music of Etta James, Aretha Franklin and Blondie: three singul",
+    "source": "Jack London Revue",
+    "url": "https://www.jacklondonrevue.com/tm-event/shelly-rudolph/",
+    "icon": "◇",
+    "sourceCheckedAt": "2026-11-06",
+    "verificationMethod": "Automated venue data; editorial date, time, event type and cancellation verification required",
+    "sourceCategories": [],
+    "sources": [
+      {
+        "name": "Jack London Revue",
+        "url": "https://www.jacklondonrevue.com/tm-event/shelly-rudolph/",
+        "kind": "organizer",
+        "checkedAt": "2026-11-06",
+        "originalCategories": []
+      }
+    ],
+    "artwork": {
+      "url": "https://i.ticketweb.com/i/00/13/04/79/74_Original.jpg?v=6",
+      "sourceUrl": "https://www.jacklondonrevue.com/tm-event/shelly-rudolph/",
+      "origin": "official-event-page",
+      "credit": "Original TicketWeb artwork linked by Jack London Revue",
+      "usageApproved": null
+    },
+    "addedIn": "auto-discovery-2026-11-06",
+    "discovery": {
+      "sourceId": "jack-london-revue",
+      "method": "primary-source-collection"
+    }
+  },
+  {
     "id": "twilight-cafe-and-bar-shoot-the-moon-fest-night-2-nox-novacula-berzerk-arcana-dj-crash-2026-11-13",
     "title": "Shoot the Moon Fest · Night 2: Nox Novacula, Berzerk, Arcana, DJ Crash",
     "subtitle": "Deathrock, Goth, Gothic rock · live bill",
@@ -20244,6 +21901,57 @@ window.SHOWS_EVENTS = [
     "addedIn": "auto-discovery-2026-11-02",
     "discovery": {
       "sourceId": "showdown",
+      "method": "primary-source-collection"
+    }
+  },
+  {
+    "id": "auto-alberta-rose-theatre-2026-11-13-c165a868623c",
+    "title": "The Big Trans Comedy Show",
+    "subtitle": "Source-discovered venue event · details need review",
+    "category": "Performance",
+    "tags": [
+      "Source-listed Performance",
+      "Time needs confirmation",
+      "Format needs confirmation"
+    ],
+    "musicStyles": [],
+    "eventFormat": "unverified",
+    "classificationEvidence": "Event-specific source wording",
+    "startTimeKind": "listed",
+    "startsAt": "2026-11-13T20:00:00-08:00",
+    "endsAt": null,
+    "venue": "Alberta Rose Theatre",
+    "address": "3000 NE Alberta Street, Portland, OR 97211",
+    "neighborhood": "Concordia",
+    "price": "See organizer for current admission",
+    "free": null,
+    "age": "Not published",
+    "description": "Automatically discovered from a primary venue or promoter listing. Original Alberta Rose dated calendar month/year, weekday, exact room and separately labeled SHOW time; doors not substituted. Original theatre calendar; music style and format require event-specific editorial assessment.",
+    "source": "Alberta Rose Theatre",
+    "url": "https://albertarosetheatre.com/event/the-big-trans-comedy-show/alberta-rose-theatre/portland-oregon/",
+    "icon": "◇",
+    "sourceCheckedAt": "2026-11-06",
+    "verificationMethod": "Automated venue data; editorial date, time, event type and cancellation verification required",
+    "sourceCategories": [],
+    "sources": [
+      {
+        "name": "Alberta Rose Theatre",
+        "url": "https://albertarosetheatre.com/event/the-big-trans-comedy-show/alberta-rose-theatre/portland-oregon/",
+        "kind": "organizer",
+        "checkedAt": "2026-11-06",
+        "originalCategories": []
+      }
+    ],
+    "artwork": {
+      "url": "https://albertarosetheatre.com/wp-content/uploads/2026/10/the-big-trans-comedy-show.jfif",
+      "sourceUrl": "https://albertarosetheatre.com/event/the-big-trans-comedy-show/alberta-rose-theatre/portland-oregon/",
+      "origin": "official-venue-calendar",
+      "credit": "Alberta Rose Theatre original event artwork",
+      "usageApproved": null
+    },
+    "addedIn": "auto-discovery-2026-11-06",
+    "discovery": {
+      "sourceId": "alberta-rose-theatre",
       "method": "primary-source-collection"
     }
   },
@@ -20538,6 +22246,58 @@ window.SHOWS_EVENTS = [
       "origin": "official-event-page",
       "credit": "Official event page",
       "usageApproved": null
+    }
+  },
+  {
+    "id": "auto-alberta-street-pub-2026-11-13-4ee1fa576313",
+    "title": "The Flip // Marshall Law Band",
+    "subtitle": "Source-discovered venue event · details need review",
+    "category": "Unclassified",
+    "tags": [
+      "Category needs review",
+      "Time needs confirmation",
+      "Format needs confirmation",
+      "Separate same-day source listing; review bill and room"
+    ],
+    "musicStyles": [],
+    "eventFormat": "unverified",
+    "classificationEvidence": "No verified event type or genre",
+    "startTimeKind": "listed",
+    "startsAt": "2026-11-13T21:00:00-08:00",
+    "endsAt": null,
+    "venue": "Alberta Street Pub",
+    "address": "1036 NE Alberta Street, Portland, OR 97211",
+    "neighborhood": "Alberta Arts District",
+    "price": "See organizer for current admission",
+    "free": null,
+    "age": "Not published",
+    "description": "Automatically discovered from a primary venue or promoter listing. Alberta Street Pub's original Squarespace event record supplies the start and end timestamp; exact performance-versus-doors distinction is unconfirmed. Original venue event listing. $10 Cover at the Door",
+    "source": "Alberta Street Pub",
+    "url": "https://www.albertastreetpub.com/music/2026/11/13/the-flip-marshall-law-band",
+    "icon": "◇",
+    "sourceCheckedAt": "2026-11-06",
+    "verificationMethod": "Automated venue data; editorial date, time, event type and cancellation verification required",
+    "sourceCategories": [],
+    "sources": [
+      {
+        "name": "Alberta Street Pub",
+        "url": "https://www.albertastreetpub.com/music/2026/11/13/the-flip-marshall-law-band",
+        "kind": "organizer",
+        "checkedAt": "2026-11-06",
+        "originalCategories": []
+      }
+    ],
+    "artwork": {
+      "url": "https://images.squarespace-cdn.com/content/v1/54109e68e4b06b163549a8dc/1791222107434-CX0WAAHV4NLDN1KWAYTA/The+Flip.jpg",
+      "sourceUrl": "https://www.albertastreetpub.com/music/2026/11/13/the-flip-marshall-law-band",
+      "origin": "official-venue-calendar",
+      "credit": "Alberta Street Pub official event calendar",
+      "usageApproved": null
+    },
+    "addedIn": "auto-discovery-2026-11-06",
+    "discovery": {
+      "sourceId": "alberta-street-pub",
+      "method": "primary-source-collection"
     }
   },
   {
@@ -20892,6 +22652,111 @@ window.SHOWS_EVENTS = [
     "seriesId": "outlet-riso-basics-2026"
   },
   {
+    "id": "auto-alberta-rose-theatre-2026-11-14-91e1a216785e",
+    "title": "Leapin’ Louie: The Upside Down Ocean",
+    "subtitle": "Source-discovered venue event · details need review",
+    "category": "Unclassified",
+    "tags": [
+      "Category needs review",
+      "Time needs confirmation",
+      "Format needs confirmation"
+    ],
+    "musicStyles": [],
+    "eventFormat": "unverified",
+    "classificationEvidence": "No verified event type or genre",
+    "startTimeKind": "listed",
+    "startsAt": "2026-11-14T13:00:00-08:00",
+    "endsAt": null,
+    "venue": "Alberta Rose Theatre",
+    "address": "3000 NE Alberta Street, Portland, OR 97211",
+    "neighborhood": "Concordia",
+    "price": "See organizer for current admission",
+    "free": null,
+    "age": "Not published",
+    "description": "Automatically discovered from a primary venue or promoter listing. Original Alberta Rose dated calendar month/year, weekday, exact room and separately labeled SHOW time; doors not substituted. Original theatre calendar; music style and format require event-specific editorial assessment.",
+    "source": "Alberta Rose Theatre",
+    "url": "https://albertarosetheatre.com/event/leapin-louie-the-upside-down-ocean/alberta-rose-theatre/portland-oregon/",
+    "icon": "◇",
+    "sourceCheckedAt": "2026-11-06",
+    "verificationMethod": "Automated venue data; editorial date, time, event type and cancellation verification required",
+    "sourceCategories": [],
+    "sources": [
+      {
+        "name": "Alberta Rose Theatre",
+        "url": "https://albertarosetheatre.com/event/leapin-louie-the-upside-down-ocean/alberta-rose-theatre/portland-oregon/",
+        "kind": "organizer",
+        "checkedAt": "2026-11-06",
+        "originalCategories": []
+      }
+    ],
+    "artwork": {
+      "url": "https://albertarosetheatre.com/wp-content/uploads/2026/10/leapin-louie-the-upside-down-ocean.jfif",
+      "sourceUrl": "https://albertarosetheatre.com/event/leapin-louie-the-upside-down-ocean/alberta-rose-theatre/portland-oregon/",
+      "origin": "official-venue-calendar",
+      "credit": "Alberta Rose Theatre original event artwork",
+      "usageApproved": null
+    },
+    "addedIn": "auto-discovery-2026-11-06",
+    "discovery": {
+      "sourceId": "alberta-rose-theatre",
+      "method": "primary-source-collection"
+    }
+  },
+  {
+    "id": "auto-alberta-street-pub-2026-11-14-09c24db6e6e7",
+    "title": "Lunch & Soul with the Mel Brown Organ Trio",
+    "subtitle": "Source-discovered venue event · details need review",
+    "category": "Music",
+    "tags": [
+      "Source-listed Music",
+      "Source-mentioned R&B & soul",
+      "Time needs confirmation",
+      "Format needs confirmation"
+    ],
+    "musicStyles": [
+      "R&B & soul"
+    ],
+    "eventFormat": "unverified",
+    "classificationEvidence": "Event-specific source genre wording",
+    "startTimeKind": "listed",
+    "startsAt": "2026-11-14T13:00:00-08:00",
+    "endsAt": null,
+    "venue": "Alberta Street Pub",
+    "address": "1036 NE Alberta Street, Portland, OR 97211",
+    "neighborhood": "Alberta Arts District",
+    "price": "See organizer for current admission",
+    "free": null,
+    "age": "Not published",
+    "description": "Automatically discovered from a primary venue or promoter listing. Alberta Street Pub's original Squarespace event record supplies the start and end timestamp; exact performance-versus-doors distinction is unconfirmed. Original venue event listing. on our heated patio, all ages and free entry",
+    "source": "Alberta Street Pub",
+    "url": "https://www.albertastreetpub.com/music/2025/12/6/lunch-amp-soul-with-the-mel-brown-organ-trio",
+    "icon": "♫",
+    "sourceCheckedAt": "2026-11-06",
+    "verificationMethod": "Automated venue data; editorial date, time, event type and cancellation verification required",
+    "sourceCategories": [],
+    "sources": [
+      {
+        "name": "Alberta Street Pub",
+        "url": "https://www.albertastreetpub.com/music/2025/12/6/lunch-amp-soul-with-the-mel-brown-organ-trio",
+        "kind": "organizer",
+        "checkedAt": "2026-11-06",
+        "originalCategories": []
+      }
+    ],
+    "artwork": {
+      "url": "https://images.squarespace-cdn.com/content/v1/54109e68e4b06b163549a8dc/1764142459702-YM6NPGIGKQZLOT84GND9/1000010759.jpg",
+      "sourceUrl": "https://www.albertastreetpub.com/music/2025/12/6/lunch-amp-soul-with-the-mel-brown-organ-trio",
+      "origin": "official-venue-calendar",
+      "credit": "Alberta Street Pub official event calendar",
+      "usageApproved": null
+    },
+    "addedIn": "auto-discovery-2026-11-06",
+    "discovery": {
+      "sourceId": "alberta-street-pub",
+      "method": "primary-source-collection"
+    }
+  },
+  {
     "id": "auto-revolution-hall-2026-11-14-607ed804f2ae",
     "title": "Heathens Homecoming West 2026 - Patterson Hood in conversation with Willy Vlautin",
     "subtitle": "Source-discovered venue event · details need review",
@@ -20939,6 +22804,111 @@ window.SHOWS_EVENTS = [
     "addedIn": "auto-discovery-2026-10-29",
     "discovery": {
       "sourceId": "revolution-hall",
+      "method": "primary-source-collection"
+    }
+  },
+  {
+    "id": "auto-alberta-rose-theatre-2026-11-14-acf1480d6a0f",
+    "title": "Mortified — 5:00 PM show",
+    "subtitle": "Source-discovered venue event · details need review",
+    "category": "Unclassified",
+    "tags": [
+      "Category needs review",
+      "Time needs confirmation",
+      "Format needs confirmation",
+      "Separate same-day source listing; review bill and room"
+    ],
+    "musicStyles": [],
+    "eventFormat": "unverified",
+    "classificationEvidence": "No verified event type or genre",
+    "startTimeKind": "listed",
+    "startsAt": "2026-11-14T17:00:00-08:00",
+    "endsAt": null,
+    "venue": "Alberta Rose Theatre",
+    "address": "3000 NE Alberta Street, Portland, OR 97211",
+    "neighborhood": "Concordia",
+    "price": "See organizer for current admission",
+    "free": null,
+    "age": "Not published",
+    "description": "Automatically discovered from a primary venue or promoter listing. Original Alberta Rose month/year heading plus individually scheduled series date, SHOW clock and room-scoped Etix performance ID. Original multi-performance series: Mortified. Event-specific ticket URL uniquely identifies this session; classify its format from verified source evidence.",
+    "source": "Alberta Rose Theatre",
+    "url": "https://www.etix.com/ticket/p/36870809/mortified-5-pm-show-portland-alberta-rose-theatre",
+    "icon": "◇",
+    "sourceCheckedAt": "2026-11-06",
+    "verificationMethod": "Automated venue data; editorial date, time, event type and cancellation verification required",
+    "sourceCategories": [],
+    "sources": [
+      {
+        "name": "Alberta Rose Theatre",
+        "url": "https://www.etix.com/ticket/p/36870809/mortified-5-pm-show-portland-alberta-rose-theatre",
+        "kind": "organizer",
+        "checkedAt": "2026-11-06",
+        "originalCategories": []
+      }
+    ],
+    "artwork": {
+      "url": "https://albertarosetheatre.com/wp-content/uploads/2025/01/etix-Mortified_2980331736959096.jfif",
+      "sourceUrl": "https://albertarosetheatre.com/calendar/category/series/mortified/alberta-rose-theatre/portland-oregon/",
+      "origin": "official-venue-calendar",
+      "credit": "Alberta Rose Theatre original event artwork",
+      "usageApproved": null
+    },
+    "sourceTicketId": "36870809",
+    "addedIn": "auto-discovery-2026-11-06",
+    "discovery": {
+      "sourceId": "alberta-rose-theatre",
+      "method": "primary-source-collection"
+    }
+  },
+  {
+    "id": "auto-alberta-street-pub-2026-11-14-fd158361992d",
+    "title": "These Foolish Things | The Get Tight!",
+    "subtitle": "Source-discovered venue event · details need review",
+    "category": "Unclassified",
+    "tags": [
+      "Category needs review",
+      "Time needs confirmation",
+      "Format needs confirmation",
+      "Separate same-day source listing; review bill and room"
+    ],
+    "musicStyles": [],
+    "eventFormat": "unverified",
+    "classificationEvidence": "No verified event type or genre",
+    "startTimeKind": "listed",
+    "startsAt": "2026-11-14T17:00:00-08:00",
+    "endsAt": null,
+    "venue": "Alberta Street Pub",
+    "address": "1036 NE Alberta Street, Portland, OR 97211",
+    "neighborhood": "Alberta Arts District",
+    "price": "See organizer for current admission",
+    "free": null,
+    "age": "Not published",
+    "description": "Automatically discovered from a primary venue or promoter listing. Alberta Street Pub's original Squarespace event record supplies the start and end timestamp; exact performance-versus-doors distinction is unconfirmed. Original venue event listing. $10 COVER AT THE DOOR",
+    "source": "Alberta Street Pub",
+    "url": "https://www.albertastreetpub.com/music/2026/11/14/these-foolish-things-the-get-tight",
+    "icon": "◇",
+    "sourceCheckedAt": "2026-11-06",
+    "verificationMethod": "Automated venue data; editorial date, time, event type and cancellation verification required",
+    "sourceCategories": [],
+    "sources": [
+      {
+        "name": "Alberta Street Pub",
+        "url": "https://www.albertastreetpub.com/music/2026/11/14/these-foolish-things-the-get-tight",
+        "kind": "organizer",
+        "checkedAt": "2026-11-06",
+        "originalCategories": []
+      }
+    ],
+    "artwork": {
+      "url": "https://images.squarespace-cdn.com/content/v1/54109e68e4b06b163549a8dc/1793862067722-Z2Q5P2XKRF6JWWY9J7MK/IMG_5072.jpeg",
+      "sourceUrl": "https://www.albertastreetpub.com/music/2026/11/14/these-foolish-things-the-get-tight",
+      "origin": "official-venue-calendar",
+      "credit": "Alberta Street Pub official event calendar",
+      "usageApproved": null
+    },
+    "addedIn": "auto-discovery-2026-11-06",
+    "discovery": {
+      "sourceId": "alberta-street-pub",
       "method": "primary-source-collection"
     }
   },
@@ -21334,6 +23304,161 @@ window.SHOWS_EVENTS = [
     "addedIn": "auto-discovery-2026-10-24",
     "discovery": {
       "sourceId": "starday-tavern",
+      "method": "primary-source-collection"
+    }
+  },
+  {
+    "id": "auto-jack-london-revue-2026-11-14-ebfb86ac5981",
+    "title": "Down in the Delta with Ms Vee and Yella P",
+    "subtitle": "Source-discovered venue event · details need review",
+    "category": "Unclassified",
+    "tags": [
+      "Category needs review",
+      "Time needs confirmation",
+      "Format needs confirmation"
+    ],
+    "musicStyles": [],
+    "eventFormat": "unverified",
+    "classificationEvidence": "No verified event type or genre",
+    "startTimeKind": "listed",
+    "startsAt": "2026-11-14T20:00:00-08:00",
+    "endsAt": null,
+    "venue": "Jack London Revue",
+    "address": "529 SW 4th Ave, Portland, OR 97204",
+    "neighborhood": "Downtown",
+    "price": "See organizer for current admission",
+    "free": null,
+    "age": "Not published",
+    "description": "Automatically discovered from a primary venue or promoter listing. Original JLR event detail verifies full date, venue and showtime separately from doors; the date and clocks match the first-party roster. Original venue event: Soul'd Out Presents: Down in the Delta with Ms Vee and Yella P Doors: 7:00pm Show: 8:00pm Ages 21+. You won't want to miss this Annual Birthday Celebration with the Bad Girl of the Blues! Harp/Guitar Extraordinaire Yella P joins Portland's Bad girl of the Bl",
+    "source": "Jack London Revue",
+    "url": "https://www.jacklondonrevue.com/tm-event/down-in-the-delta-with-ms-vee-and-yella-p/",
+    "icon": "◇",
+    "sourceCheckedAt": "2026-11-06",
+    "verificationMethod": "Automated venue data; editorial date, time, event type and cancellation verification required",
+    "sourceCategories": [],
+    "sources": [
+      {
+        "name": "Jack London Revue",
+        "url": "https://www.jacklondonrevue.com/tm-event/down-in-the-delta-with-ms-vee-and-yella-p/",
+        "kind": "organizer",
+        "checkedAt": "2026-11-06",
+        "originalCategories": []
+      }
+    ],
+    "artwork": {
+      "url": "https://i.ticketweb.com/i/00/13/03/22/34_Original.jpg?v=4",
+      "sourceUrl": "https://www.jacklondonrevue.com/tm-event/down-in-the-delta-with-ms-vee-and-yella-p/",
+      "origin": "official-event-page",
+      "credit": "Original TicketWeb artwork linked by Jack London Revue",
+      "usageApproved": null
+    },
+    "addedIn": "auto-discovery-2026-11-06",
+    "discovery": {
+      "sourceId": "jack-london-revue",
+      "method": "primary-source-collection"
+    }
+  },
+  {
+    "id": "auto-turn-turn-turn-2026-11-14-bdd8f08818a3",
+    "title": "Karaoke w/ KJ Stargazer",
+    "subtitle": "Source-discovered venue event · details need review",
+    "category": "Karaoke",
+    "tags": [
+      "Source-listed Karaoke",
+      "Time needs confirmation",
+      "Format needs confirmation"
+    ],
+    "musicStyles": [],
+    "eventFormat": "unverified",
+    "classificationEvidence": "Event-specific source wording",
+    "startTimeKind": "listed",
+    "startsAt": "2026-11-14T20:00:00-08:00",
+    "endsAt": null,
+    "venue": "Turn! Turn! Turn!",
+    "address": "8 NE Killingsworth St, Portland, OR 97211",
+    "neighborhood": "Kenton",
+    "price": "See organizer for current admission",
+    "free": null,
+    "age": "Not published",
+    "description": "Automatically discovered from a primary venue or promoter listing. Official venue-embedded OpenDate listing explicitly labels separate doors and show times; scheduled show time is the event start. Original OpenDate event detail: Event-specific description not published.",
+    "source": "Turn! Turn! Turn!",
+    "url": "https://app.opendate.io/e/karaoke-w-kj-stargazer-november-14-2026-797689",
+    "icon": "◇",
+    "sourceCheckedAt": "2026-11-06",
+    "verificationMethod": "Automated venue data; editorial date, time, event type and cancellation verification required",
+    "sourceCategories": [],
+    "sources": [
+      {
+        "name": "Turn! Turn! Turn!",
+        "url": "https://app.opendate.io/e/karaoke-w-kj-stargazer-november-14-2026-797689",
+        "kind": "organizer",
+        "checkedAt": "2026-11-06",
+        "originalCategories": []
+      }
+    ],
+    "artwork": {
+      "url": "https://s3.amazonaws.com/opendate-aws-assets/confirms/main_event_images/000/797/689/compressed/sinead-e1706141712785-620x350.jpg?1793874658",
+      "sourceUrl": "https://app.opendate.io/e/karaoke-w-kj-stargazer-november-14-2026-797689",
+      "origin": "official-event-page",
+      "credit": "Organizer-provided OpenDate event image",
+      "usageApproved": null
+    },
+    "addedIn": "auto-discovery-2026-11-06",
+    "discovery": {
+      "sourceId": "turn-turn-turn",
+      "method": "primary-source-collection"
+    }
+  },
+  {
+    "id": "auto-alberta-rose-theatre-2026-11-14-ac3eb3b6a3fd",
+    "title": "Mortified — 8:00 PM show",
+    "subtitle": "Source-discovered venue event · details need review",
+    "category": "Unclassified",
+    "tags": [
+      "Category needs review",
+      "Time needs confirmation",
+      "Format needs confirmation",
+      "Separate same-day source listing; review bill and room"
+    ],
+    "musicStyles": [],
+    "eventFormat": "unverified",
+    "classificationEvidence": "No verified event type or genre",
+    "startTimeKind": "listed",
+    "startsAt": "2026-11-14T20:00:00-08:00",
+    "endsAt": null,
+    "venue": "Alberta Rose Theatre",
+    "address": "3000 NE Alberta Street, Portland, OR 97211",
+    "neighborhood": "Concordia",
+    "price": "See organizer for current admission",
+    "free": null,
+    "age": "Not published",
+    "description": "Automatically discovered from a primary venue or promoter listing. Original Alberta Rose month/year heading plus individually scheduled series date, SHOW clock and room-scoped Etix performance ID. Original multi-performance series: Mortified. Event-specific ticket URL uniquely identifies this session; classify its format from verified source evidence.",
+    "source": "Alberta Rose Theatre",
+    "url": "https://www.etix.com/ticket/p/42566250/mortified-8-pm-show-portland-alberta-rose-theatre",
+    "icon": "◇",
+    "sourceCheckedAt": "2026-11-06",
+    "verificationMethod": "Automated venue data; editorial date, time, event type and cancellation verification required",
+    "sourceCategories": [],
+    "sources": [
+      {
+        "name": "Alberta Rose Theatre",
+        "url": "https://www.etix.com/ticket/p/42566250/mortified-8-pm-show-portland-alberta-rose-theatre",
+        "kind": "organizer",
+        "checkedAt": "2026-11-06",
+        "originalCategories": []
+      }
+    ],
+    "artwork": {
+      "url": "https://albertarosetheatre.com/wp-content/uploads/2025/01/etix-Mortified_2980331736959096.jfif",
+      "sourceUrl": "https://albertarosetheatre.com/calendar/category/series/mortified/alberta-rose-theatre/portland-oregon/",
+      "origin": "official-venue-calendar",
+      "credit": "Alberta Rose Theatre original event artwork",
+      "usageApproved": null
+    },
+    "sourceTicketId": "42566250",
+    "addedIn": "auto-discovery-2026-11-06",
+    "discovery": {
+      "sourceId": "alberta-rose-theatre",
       "method": "primary-source-collection"
     }
   },
@@ -22020,6 +24145,58 @@ window.SHOWS_EVENTS = [
     }
   },
   {
+    "id": "auto-alberta-street-pub-2026-11-14-7d24b4edd4c2",
+    "title": "Birdwar: Record Release - The Frequence // Jaycob Van Auken",
+    "subtitle": "Source-discovered venue event · details need review",
+    "category": "Music",
+    "tags": [
+      "Source-listed Music",
+      "Time needs confirmation",
+      "Format needs confirmation",
+      "Separate same-day source listing; review bill and room"
+    ],
+    "musicStyles": [],
+    "eventFormat": "unverified",
+    "classificationEvidence": "Event-specific source wording",
+    "startTimeKind": "listed",
+    "startsAt": "2026-11-14T21:00:00-08:00",
+    "endsAt": null,
+    "venue": "Alberta Street Pub",
+    "address": "1036 NE Alberta Street, Portland, OR 97211",
+    "neighborhood": "Alberta Arts District",
+    "price": "See organizer for current admission",
+    "free": null,
+    "age": "Not published",
+    "description": "Automatically discovered from a primary venue or promoter listing. Alberta Street Pub's original Squarespace event record supplies the start and end timestamp; exact performance-versus-doors distinction is unconfirmed. Original venue event listing. $10 Cover at the Door",
+    "source": "Alberta Street Pub",
+    "url": "https://www.albertastreetpub.com/music/2026/11/14/birdwar-record-release-the-frequence-jaycob-van-auken",
+    "icon": "♫",
+    "sourceCheckedAt": "2026-11-06",
+    "verificationMethod": "Automated venue data; editorial date, time, event type and cancellation verification required",
+    "sourceCategories": [],
+    "sources": [
+      {
+        "name": "Alberta Street Pub",
+        "url": "https://www.albertastreetpub.com/music/2026/11/14/birdwar-record-release-the-frequence-jaycob-van-auken",
+        "kind": "organizer",
+        "checkedAt": "2026-11-06",
+        "originalCategories": []
+      }
+    ],
+    "artwork": {
+      "url": "https://images.squarespace-cdn.com/content/v1/54109e68e4b06b163549a8dc/1793039284735-Y19RQZPQ0WK9QNXH0TJI/Frequence.jpg",
+      "sourceUrl": "https://www.albertastreetpub.com/music/2026/11/14/birdwar-record-release-the-frequence-jaycob-van-auken",
+      "origin": "official-venue-calendar",
+      "credit": "Alberta Street Pub official event calendar",
+      "usageApproved": null
+    },
+    "addedIn": "auto-discovery-2026-11-06",
+    "discovery": {
+      "sourceId": "alberta-street-pub",
+      "method": "primary-source-collection"
+    }
+  },
+  {
     "id": "auto-star-theater-2026-11-14-729b45c3c421",
     "title": "DESERT DWELLERS with Entangled Mind, Mah Ze Tar",
     "subtitle": "Source-discovered music listing · format and time need review",
@@ -22117,6 +24294,58 @@ window.SHOWS_EVENTS = [
     "addedIn": "auto-discovery-2026-10-31",
     "discovery": {
       "sourceId": "mississippi-polaris",
+      "method": "primary-source-collection"
+    }
+  },
+  {
+    "id": "auto-jack-london-revue-2026-11-14-38a0fcf49dce",
+    "title": "BURLY-Q REVUE",
+    "subtitle": "Source-discovered venue event · details need review",
+    "category": "Unclassified",
+    "tags": [
+      "Category needs review",
+      "Time needs confirmation",
+      "Format needs confirmation",
+      "Separate same-day source listing; review bill and room"
+    ],
+    "musicStyles": [],
+    "eventFormat": "unverified",
+    "classificationEvidence": "No verified event type or genre",
+    "startTimeKind": "listed",
+    "startsAt": "2026-11-14T22:30:00-08:00",
+    "endsAt": null,
+    "venue": "Jack London Revue",
+    "address": "529 SW 4th Ave, Portland, OR 97204",
+    "neighborhood": "Downtown",
+    "price": "See organizer for current admission",
+    "free": null,
+    "age": "Not published",
+    "description": "Automatically discovered from a primary venue or promoter listing. Original JLR event detail verifies full date, venue and showtime separately from doors; the date and clocks match the first-party roster. Original venue event: Join us at the Jack London for the latest edition of our late-night cabaret spectacular, hosted by the Mad Marquis and featuring some of the finest dancers from the Rose City and beyond. Treat yourself to a sensational evening of sultry and exotic delights, ",
+    "source": "Jack London Revue",
+    "url": "https://www.jacklondonrevue.com/tm-event/burly-q-revue-6/",
+    "icon": "◇",
+    "sourceCheckedAt": "2026-11-06",
+    "verificationMethod": "Automated venue data; editorial date, time, event type and cancellation verification required",
+    "sourceCategories": [],
+    "sources": [
+      {
+        "name": "Jack London Revue",
+        "url": "https://www.jacklondonrevue.com/tm-event/burly-q-revue-6/",
+        "kind": "organizer",
+        "checkedAt": "2026-11-06",
+        "originalCategories": []
+      }
+    ],
+    "artwork": {
+      "url": "https://i.ticketweb.com/i/00/12/77/00/04_Original.jpg?v=5",
+      "sourceUrl": "https://www.jacklondonrevue.com/tm-event/burly-q-revue-6/",
+      "origin": "official-event-page",
+      "credit": "Original TicketWeb artwork linked by Jack London Revue",
+      "usageApproved": null
+    },
+    "addedIn": "auto-discovery-2026-11-06",
+    "discovery": {
+      "sourceId": "jack-london-revue",
       "method": "primary-source-collection"
     }
   },
@@ -22453,6 +24682,57 @@ window.SHOWS_EVENTS = [
     }
   },
   {
+    "id": "auto-alberta-street-pub-2026-11-15-090159bd683e",
+    "title": "Cosmic Gnarly",
+    "subtitle": "Source-discovered venue event · details need review",
+    "category": "Unclassified",
+    "tags": [
+      "Category needs review",
+      "Time needs confirmation",
+      "Format needs confirmation"
+    ],
+    "musicStyles": [],
+    "eventFormat": "unverified",
+    "classificationEvidence": "No verified event type or genre",
+    "startTimeKind": "listed",
+    "startsAt": "2026-11-15T17:00:00-08:00",
+    "endsAt": null,
+    "venue": "Alberta Street Pub",
+    "address": "1036 NE Alberta Street, Portland, OR 97211",
+    "neighborhood": "Alberta Arts District",
+    "price": "See organizer for current admission",
+    "free": null,
+    "age": "Not published",
+    "description": "Automatically discovered from a primary venue or promoter listing. Alberta Street Pub's original Squarespace event record supplies the start and end timestamp; exact performance-versus-doors distinction is unconfirmed. Original venue event listing. $10 COVER AT THE DOOR ALL AGES SHOW | CHILDREN ARE FREE",
+    "source": "Alberta Street Pub",
+    "url": "https://www.albertastreetpub.com/music/2026/11/15/cosmic-gnarly",
+    "icon": "◇",
+    "sourceCheckedAt": "2026-11-06",
+    "verificationMethod": "Automated venue data; editorial date, time, event type and cancellation verification required",
+    "sourceCategories": [],
+    "sources": [
+      {
+        "name": "Alberta Street Pub",
+        "url": "https://www.albertastreetpub.com/music/2026/11/15/cosmic-gnarly",
+        "kind": "organizer",
+        "checkedAt": "2026-11-06",
+        "originalCategories": []
+      }
+    ],
+    "artwork": {
+      "url": "https://images.squarespace-cdn.com/content/v1/54109e68e4b06b163549a8dc/1793861760895-7ERXOVL86T1UTPMROL54/IMG_4860.jpeg",
+      "sourceUrl": "https://www.albertastreetpub.com/music/2026/11/15/cosmic-gnarly",
+      "origin": "official-venue-calendar",
+      "credit": "Alberta Street Pub official event calendar",
+      "usageApproved": null
+    },
+    "addedIn": "auto-discovery-2026-11-06",
+    "discovery": {
+      "sourceId": "alberta-street-pub",
+      "method": "primary-source-collection"
+    }
+  },
+  {
     "id": "auto-high-water-2026-11-15-d4af8db889c2",
     "title": "Art Shitz!",
     "subtitle": "Source-discovered venue event · details need review",
@@ -22496,6 +24776,57 @@ window.SHOWS_EVENTS = [
     "addedIn": "auto-discovery-2026-11-02",
     "discovery": {
       "sourceId": "high-water",
+      "method": "primary-source-collection"
+    }
+  },
+  {
+    "id": "auto-alberta-rose-theatre-2026-11-15-0e85bbb1237f",
+    "title": "The AERO Space Presents: MTV Pole Jams – A Pole Tribute to the Music Video Era",
+    "subtitle": "Source-discovered venue event · details need review",
+    "category": "Unclassified",
+    "tags": [
+      "Category needs review",
+      "Time needs confirmation",
+      "Format needs confirmation"
+    ],
+    "musicStyles": [],
+    "eventFormat": "unverified",
+    "classificationEvidence": "No verified event type or genre",
+    "startTimeKind": "listed",
+    "startsAt": "2026-11-15T18:00:00-08:00",
+    "endsAt": null,
+    "venue": "Alberta Rose Theatre",
+    "address": "3000 NE Alberta Street, Portland, OR 97211",
+    "neighborhood": "Concordia",
+    "price": "See organizer for current admission",
+    "free": null,
+    "age": "Not published",
+    "description": "Automatically discovered from a primary venue or promoter listing. Original Alberta Rose dated calendar month/year, weekday, exact room and separately labeled SHOW time; doors not substituted. Original theatre calendar; music style and format require event-specific editorial assessment.",
+    "source": "Alberta Rose Theatre",
+    "url": "https://albertarosetheatre.com/event/the-aero-space-presents-mtv-pole-jams-a-pole-tribute-to-the-music-video-era/alberta-rose-theatre/portland-oregon/",
+    "icon": "◇",
+    "sourceCheckedAt": "2026-11-06",
+    "verificationMethod": "Automated venue data; editorial date, time, event type and cancellation verification required",
+    "sourceCategories": [],
+    "sources": [
+      {
+        "name": "Alberta Rose Theatre",
+        "url": "https://albertarosetheatre.com/event/the-aero-space-presents-mtv-pole-jams-a-pole-tribute-to-the-music-video-era/alberta-rose-theatre/portland-oregon/",
+        "kind": "organizer",
+        "checkedAt": "2026-11-06",
+        "originalCategories": []
+      }
+    ],
+    "artwork": {
+      "url": "https://albertarosetheatre.com/wp-content/uploads/2026/10/the-aero-space-presents-mtv-pole-jams-a-pole-tribute-to-the-music-video-era.jfif",
+      "sourceUrl": "https://albertarosetheatre.com/event/the-aero-space-presents-mtv-pole-jams-a-pole-tribute-to-the-music-video-era/alberta-rose-theatre/portland-oregon/",
+      "origin": "official-venue-calendar",
+      "credit": "Alberta Rose Theatre original event artwork",
+      "usageApproved": null
+    },
+    "addedIn": "auto-discovery-2026-11-06",
+    "discovery": {
+      "sourceId": "alberta-rose-theatre",
       "method": "primary-source-collection"
     }
   },
@@ -23453,6 +25784,57 @@ window.SHOWS_EVENTS = [
     }
   },
   {
+    "id": "auto-alberta-street-pub-2026-11-16-0327e637cfd1",
+    "title": "Comedy & Monday Night Football with Hazel Dell Hottie",
+    "subtitle": "Source-discovered venue event · details need review",
+    "category": "Performance",
+    "tags": [
+      "Source-listed Performance",
+      "Time needs confirmation",
+      "Format needs confirmation"
+    ],
+    "musicStyles": [],
+    "eventFormat": "unverified",
+    "classificationEvidence": "Event-specific source wording",
+    "startTimeKind": "listed",
+    "startsAt": "2026-11-16T17:00:00-08:00",
+    "endsAt": null,
+    "venue": "Alberta Street Pub",
+    "address": "1036 NE Alberta Street, Portland, OR 97211",
+    "neighborhood": "Alberta Arts District",
+    "price": "See organizer for current admission",
+    "free": null,
+    "age": "Not published",
+    "description": "Automatically discovered from a primary venue or promoter listing. Alberta Street Pub's original Squarespace event record supplies the start and end timestamp; exact performance-versus-doors distinction is unconfirmed. Original venue event listing. Free!",
+    "source": "Alberta Street Pub",
+    "url": "https://www.albertastreetpub.com/music/2026/10/5/comedy-amp-monday-night-football-with-hazel-dell-hottie",
+    "icon": "◇",
+    "sourceCheckedAt": "2026-11-06",
+    "verificationMethod": "Automated venue data; editorial date, time, event type and cancellation verification required",
+    "sourceCategories": [],
+    "sources": [
+      {
+        "name": "Alberta Street Pub",
+        "url": "https://www.albertastreetpub.com/music/2026/10/5/comedy-amp-monday-night-football-with-hazel-dell-hottie",
+        "kind": "organizer",
+        "checkedAt": "2026-11-06",
+        "originalCategories": []
+      }
+    ],
+    "artwork": {
+      "url": "https://images.squarespace-cdn.com/content/v1/54109e68e4b06b163549a8dc/1790482919858-TA6VR55MI4QJ1E4M9CGC/Marsha.jpg",
+      "sourceUrl": "https://www.albertastreetpub.com/music/2026/10/5/comedy-amp-monday-night-football-with-hazel-dell-hottie",
+      "origin": "official-venue-calendar",
+      "credit": "Alberta Street Pub official event calendar",
+      "usageApproved": null
+    },
+    "addedIn": "auto-discovery-2026-11-06",
+    "discovery": {
+      "sourceId": "alberta-street-pub",
+      "method": "primary-source-collection"
+    }
+  },
+  {
     "id": "auto-starday-tavern-2026-11-16-a4b8fcbf52f3",
     "title": "Open Mic with Scott Allen",
     "subtitle": "Source-discovered venue event · details need review",
@@ -23493,6 +25875,58 @@ window.SHOWS_EVENTS = [
     "addedIn": "auto-discovery-2026-10-24",
     "discovery": {
       "sourceId": "starday-tavern",
+      "method": "primary-source-collection"
+    }
+  },
+  {
+    "id": "auto-alberta-street-pub-2026-11-16-9a61a3ef3c10",
+    "title": "Ben Rice & The PDX Hustle",
+    "subtitle": "Source-discovered venue event · details need review",
+    "category": "Unclassified",
+    "tags": [
+      "Category needs review",
+      "Time needs confirmation",
+      "Format needs confirmation",
+      "Separate same-day source listing; review bill and room"
+    ],
+    "musicStyles": [],
+    "eventFormat": "unverified",
+    "classificationEvidence": "No verified event type or genre",
+    "startTimeKind": "listed",
+    "startsAt": "2026-11-16T19:00:00-08:00",
+    "endsAt": null,
+    "venue": "Alberta Street Pub",
+    "address": "1036 NE Alberta Street, Portland, OR 97211",
+    "neighborhood": "Alberta Arts District",
+    "price": "See organizer for current admission",
+    "free": null,
+    "age": "Not published",
+    "description": "Automatically discovered from a primary venue or promoter listing. Alberta Street Pub's original Squarespace event record supplies the start and end timestamp; exact performance-versus-doors distinction is unconfirmed. Original venue event listing. $10 at the door",
+    "source": "Alberta Street Pub",
+    "url": "https://www.albertastreetpub.com/music/2026/1/19/ben-rice-amp-the-pdx-hustle",
+    "icon": "◇",
+    "sourceCheckedAt": "2026-11-06",
+    "verificationMethod": "Automated venue data; editorial date, time, event type and cancellation verification required",
+    "sourceCategories": [],
+    "sources": [
+      {
+        "name": "Alberta Street Pub",
+        "url": "https://www.albertastreetpub.com/music/2026/1/19/ben-rice-amp-the-pdx-hustle",
+        "kind": "organizer",
+        "checkedAt": "2026-11-06",
+        "originalCategories": []
+      }
+    ],
+    "artwork": {
+      "url": "https://images.squarespace-cdn.com/content/v1/54109e68e4b06b163549a8dc/1766027248619-N0YBL1TT2QM1LZ7RNTLU/1000010848.jpg",
+      "sourceUrl": "https://www.albertastreetpub.com/music/2026/1/19/ben-rice-amp-the-pdx-hustle",
+      "origin": "official-venue-calendar",
+      "credit": "Alberta Street Pub official event calendar",
+      "usageApproved": null
+    },
+    "addedIn": "auto-discovery-2026-11-06",
+    "discovery": {
+      "sourceId": "alberta-street-pub",
       "method": "primary-source-collection"
     }
   },
@@ -23543,6 +25977,57 @@ window.SHOWS_EVENTS = [
     "addedIn": "auto-discovery-2026-10-21",
     "discovery": {
       "sourceId": "no-fun",
+      "method": "primary-source-collection"
+    }
+  },
+  {
+    "id": "auto-alberta-rose-theatre-2026-11-16-94f8c3cf5951",
+    "title": "Jenny Tian",
+    "subtitle": "Source-discovered venue event · details need review",
+    "category": "Unclassified",
+    "tags": [
+      "Category needs review",
+      "Time needs confirmation",
+      "Format needs confirmation"
+    ],
+    "musicStyles": [],
+    "eventFormat": "unverified",
+    "classificationEvidence": "No verified event type or genre",
+    "startTimeKind": "listed",
+    "startsAt": "2026-11-16T19:00:00-08:00",
+    "endsAt": null,
+    "venue": "Alberta Rose Theatre",
+    "address": "3000 NE Alberta Street, Portland, OR 97211",
+    "neighborhood": "Concordia",
+    "price": "See organizer for current admission",
+    "free": null,
+    "age": "Not published",
+    "description": "Automatically discovered from a primary venue or promoter listing. Original Alberta Rose dated calendar month/year, weekday, exact room and separately labeled SHOW time; doors not substituted. Original theatre calendar; music style and format require event-specific editorial assessment.",
+    "source": "Alberta Rose Theatre",
+    "url": "https://albertarosetheatre.com/event/jenny-tian/alberta-rose-theatre/portland-oregon/",
+    "icon": "◇",
+    "sourceCheckedAt": "2026-11-06",
+    "verificationMethod": "Automated venue data; editorial date, time, event type and cancellation verification required",
+    "sourceCategories": [],
+    "sources": [
+      {
+        "name": "Alberta Rose Theatre",
+        "url": "https://albertarosetheatre.com/event/jenny-tian/alberta-rose-theatre/portland-oregon/",
+        "kind": "organizer",
+        "checkedAt": "2026-11-06",
+        "originalCategories": []
+      }
+    ],
+    "artwork": {
+      "url": "https://albertarosetheatre.com/wp-content/uploads/2026/05/jenny-tian-1.jfif",
+      "sourceUrl": "https://albertarosetheatre.com/event/jenny-tian/alberta-rose-theatre/portland-oregon/",
+      "origin": "official-venue-calendar",
+      "credit": "Alberta Rose Theatre original event artwork",
+      "usageApproved": null
+    },
+    "addedIn": "auto-discovery-2026-11-06",
+    "discovery": {
+      "sourceId": "alberta-rose-theatre",
       "method": "primary-source-collection"
     }
   },
@@ -23785,6 +26270,57 @@ window.SHOWS_EVENTS = [
       "origin": "official-event-page",
       "credit": "Official event page",
       "usageApproved": null
+    }
+  },
+  {
+    "id": "auto-jack-london-revue-2026-11-16-02f90f15e7dc",
+    "title": "OZ NOY TRIO w/ Brian Charette & Dave Weckl - Second Night Added!",
+    "subtitle": "Source-discovered venue event · details need review",
+    "category": "Unclassified",
+    "tags": [
+      "Category needs review",
+      "Time needs confirmation",
+      "Format needs confirmation"
+    ],
+    "musicStyles": [],
+    "eventFormat": "unverified",
+    "classificationEvidence": "No verified event type or genre",
+    "startTimeKind": "listed",
+    "startsAt": "2026-11-16T19:30:00-08:00",
+    "endsAt": null,
+    "venue": "Jack London Revue",
+    "address": "529 SW 4th Ave, Portland, OR 97204",
+    "neighborhood": "Downtown",
+    "price": "See organizer for current admission",
+    "free": null,
+    "age": "Not published",
+    "description": "Automatically discovered from a primary venue or promoter listing. Original JLR event detail verifies full date, venue and showtime separately from doors; the date and clocks match the first-party roster. Original venue event: Popular demand - Second Night Added! OZ NOY Virtuoso guitarist and composer Oz Noy has carved out a distinctive niche within the contemporary music landscape by creating an electrifying fusion of jazz, funk, rock, blues, and R&B. His innovative approach, des",
+    "source": "Jack London Revue",
+    "url": "https://www.jacklondonrevue.com/tm-event/oz-noy-trio-w-brian-charette-dave-weckl-second-night-added/",
+    "icon": "◇",
+    "sourceCheckedAt": "2026-11-06",
+    "verificationMethod": "Automated venue data; editorial date, time, event type and cancellation verification required",
+    "sourceCategories": [],
+    "sources": [
+      {
+        "name": "Jack London Revue",
+        "url": "https://www.jacklondonrevue.com/tm-event/oz-noy-trio-w-brian-charette-dave-weckl-second-night-added/",
+        "kind": "organizer",
+        "checkedAt": "2026-11-06",
+        "originalCategories": []
+      }
+    ],
+    "artwork": {
+      "url": "https://i.ticketweb.com/i/00/12/99/69/14_Original.jpg?v=3",
+      "sourceUrl": "https://www.jacklondonrevue.com/tm-event/oz-noy-trio-w-brian-charette-dave-weckl-second-night-added/",
+      "origin": "official-event-page",
+      "credit": "Original TicketWeb artwork linked by Jack London Revue",
+      "usageApproved": null
+    },
+    "addedIn": "auto-discovery-2026-11-06",
+    "discovery": {
+      "sourceId": "jack-london-revue",
+      "method": "primary-source-collection"
     }
   },
   {
@@ -24079,6 +26615,57 @@ window.SHOWS_EVENTS = [
     }
   },
   {
+    "id": "auto-alberta-street-pub-2026-11-17-dce391402b7a",
+    "title": "Bridgetown Trivia on the Heated Patio!",
+    "subtitle": "Source-discovered venue event · details need review",
+    "category": "Other",
+    "tags": [
+      "Source-listed Other",
+      "Time needs confirmation",
+      "Format needs confirmation"
+    ],
+    "musicStyles": [],
+    "eventFormat": "unverified",
+    "classificationEvidence": "Event-specific source wording",
+    "startTimeKind": "listed",
+    "startsAt": "2026-11-17T19:00:00-08:00",
+    "endsAt": null,
+    "venue": "Alberta Street Pub",
+    "address": "1036 NE Alberta Street, Portland, OR 97211",
+    "neighborhood": "Alberta Arts District",
+    "price": "See organizer for current admission",
+    "free": null,
+    "age": "Not published",
+    "description": "Automatically discovered from a primary venue or promoter listing. Alberta Street Pub's original Squarespace event record supplies the start and end timestamp; exact performance-versus-doors distinction is unconfirmed. Original venue event listing.",
+    "source": "Alberta Street Pub",
+    "url": "https://www.albertastreetpub.com/music/2023/3/13/bridgetown-trivia-on-the-heated-patio-6cwzx-dg47h-78jwb-2lt32-azz6n-gd4lz-rd6wg-6ghnc-653hl-dnb5c-42dcy-r6ztl-37cda-7ljxc-xm5zz",
+    "icon": "◇",
+    "sourceCheckedAt": "2026-11-06",
+    "verificationMethod": "Automated venue data; editorial date, time, event type and cancellation verification required",
+    "sourceCategories": [],
+    "sources": [
+      {
+        "name": "Alberta Street Pub",
+        "url": "https://www.albertastreetpub.com/music/2023/3/13/bridgetown-trivia-on-the-heated-patio-6cwzx-dg47h-78jwb-2lt32-azz6n-gd4lz-rd6wg-6ghnc-653hl-dnb5c-42dcy-r6ztl-37cda-7ljxc-xm5zz",
+        "kind": "organizer",
+        "checkedAt": "2026-11-06",
+        "originalCategories": []
+      }
+    ],
+    "artwork": {
+      "url": "https://images.squarespace-cdn.com/content/v1/54109e68e4b06b163549a8dc/1677884390790-SZINMBG9BBM062BPTXE3/Bridgetown+Trivia.jpg",
+      "sourceUrl": "https://www.albertastreetpub.com/music/2023/3/13/bridgetown-trivia-on-the-heated-patio-6cwzx-dg47h-78jwb-2lt32-azz6n-gd4lz-rd6wg-6ghnc-653hl-dnb5c-42dcy-r6ztl-37cda-7ljxc-xm5zz",
+      "origin": "official-venue-calendar",
+      "credit": "Alberta Street Pub official event calendar",
+      "usageApproved": null
+    },
+    "addedIn": "auto-discovery-2026-11-06",
+    "discovery": {
+      "sourceId": "alberta-street-pub",
+      "method": "primary-source-collection"
+    }
+  },
+  {
     "id": "auto-crystal-ballroom-2026-11-17-35cd81eea101",
     "title": "Rodrigo y Gabriela",
     "subtitle": "Source-discovered venue event · details need review",
@@ -24183,6 +26770,108 @@ window.SHOWS_EVENTS = [
     }
   },
   {
+    "id": "auto-alberta-rose-theatre-2026-11-17-9d4532236f96",
+    "title": "SUNDOWN 3 – A Salute to Gordon Lightfoot – A Benefit for The Jeremy Wilson Foundation",
+    "subtitle": "Source-discovered venue event · details need review",
+    "category": "Unclassified",
+    "tags": [
+      "Category needs review",
+      "Time needs confirmation",
+      "Format needs confirmation"
+    ],
+    "musicStyles": [],
+    "eventFormat": "unverified",
+    "classificationEvidence": "No verified event type or genre",
+    "startTimeKind": "listed",
+    "startsAt": "2026-11-17T19:00:00-08:00",
+    "endsAt": null,
+    "venue": "Alberta Rose Theatre",
+    "address": "3000 NE Alberta Street, Portland, OR 97211",
+    "neighborhood": "Concordia",
+    "price": "See organizer for current admission",
+    "free": null,
+    "age": "Not published",
+    "description": "Automatically discovered from a primary venue or promoter listing. Original Alberta Rose dated calendar month/year, weekday, exact room and separately labeled SHOW time; doors not substituted. Original theatre calendar; music style and format require event-specific editorial assessment.",
+    "source": "Alberta Rose Theatre",
+    "url": "https://albertarosetheatre.com/event/sundown-3-a-salute-to-gordon-lightfoot-a-benefit-for-the-jeremy-wilson-foundation/alberta-rose-theatre/portland-oregon/",
+    "icon": "◇",
+    "sourceCheckedAt": "2026-11-06",
+    "verificationMethod": "Automated venue data; editorial date, time, event type and cancellation verification required",
+    "sourceCategories": [],
+    "sources": [
+      {
+        "name": "Alberta Rose Theatre",
+        "url": "https://albertarosetheatre.com/event/sundown-3-a-salute-to-gordon-lightfoot-a-benefit-for-the-jeremy-wilson-foundation/alberta-rose-theatre/portland-oregon/",
+        "kind": "organizer",
+        "checkedAt": "2026-11-06",
+        "originalCategories": []
+      }
+    ],
+    "artwork": {
+      "url": "https://albertarosetheatre.com/wp-content/uploads/2026/07/sundown-3-a-salute-to-gordon-lightfoot-a-benefit-for-the-jeremy-wilson-foundation.jfif",
+      "sourceUrl": "https://albertarosetheatre.com/event/sundown-3-a-salute-to-gordon-lightfoot-a-benefit-for-the-jeremy-wilson-foundation/alberta-rose-theatre/portland-oregon/",
+      "origin": "official-venue-calendar",
+      "credit": "Alberta Rose Theatre original event artwork",
+      "usageApproved": null
+    },
+    "addedIn": "auto-discovery-2026-11-06",
+    "discovery": {
+      "sourceId": "alberta-rose-theatre",
+      "method": "primary-source-collection"
+    }
+  },
+  {
+    "id": "auto-jack-london-revue-2026-11-17-b8df77bf9a0a",
+    "title": "OZ NOY TRIO w/ Brian Charette & Dave Weckl",
+    "subtitle": "Source-discovered venue event · details need review",
+    "category": "Unclassified",
+    "tags": [
+      "Category needs review",
+      "Time needs confirmation",
+      "Format needs confirmation"
+    ],
+    "musicStyles": [],
+    "eventFormat": "unverified",
+    "classificationEvidence": "No verified event type or genre",
+    "startTimeKind": "listed",
+    "startsAt": "2026-11-17T19:30:00-08:00",
+    "endsAt": null,
+    "venue": "Jack London Revue",
+    "address": "529 SW 4th Ave, Portland, OR 97204",
+    "neighborhood": "Downtown",
+    "price": "See organizer for current admission",
+    "free": null,
+    "age": "Not published",
+    "description": "Automatically discovered from a primary venue or promoter listing. Original JLR event detail verifies full date, venue and showtime separately from doors; the date and clocks match the first-party roster. Original venue event: OZ NOY Virtuoso guitarist and composer Oz Noy has carved out a distinctive niche within the contemporary music landscape by creating an electrifying fusion of jazz, funk, rock, blues, and R&B. His innovative approach, described succinctly by Noy himself as &",
+    "source": "Jack London Revue",
+    "url": "https://www.jacklondonrevue.com/tm-event/oz-noy-trio-w-brian-charette-dave-weckl/",
+    "icon": "◇",
+    "sourceCheckedAt": "2026-11-06",
+    "verificationMethod": "Automated venue data; editorial date, time, event type and cancellation verification required",
+    "sourceCategories": [],
+    "sources": [
+      {
+        "name": "Jack London Revue",
+        "url": "https://www.jacklondonrevue.com/tm-event/oz-noy-trio-w-brian-charette-dave-weckl/",
+        "kind": "organizer",
+        "checkedAt": "2026-11-06",
+        "originalCategories": []
+      }
+    ],
+    "artwork": {
+      "url": "https://i.ticketweb.com/i/00/13/48/09/33_Original.jpg?v=9",
+      "sourceUrl": "https://www.jacklondonrevue.com/tm-event/oz-noy-trio-w-brian-charette-dave-weckl/",
+      "origin": "official-event-page",
+      "credit": "Original TicketWeb artwork linked by Jack London Revue",
+      "usageApproved": null
+    },
+    "addedIn": "auto-discovery-2026-11-06",
+    "discovery": {
+      "sourceId": "jack-london-revue",
+      "method": "primary-source-collection"
+    }
+  },
+  {
     "id": "auto-showdown-2026-11-17-bbd926bef79b",
     "title": "Two-Step Tuesday with Best Intentions and Dance Lessons with Peggy",
     "subtitle": "Source-discovered venue event · details need review",
@@ -24230,6 +26919,57 @@ window.SHOWS_EVENTS = [
     "addedIn": "auto-discovery-2026-11-02",
     "discovery": {
       "sourceId": "showdown",
+      "method": "primary-source-collection"
+    }
+  },
+  {
+    "id": "auto-mississippi-polaris-2026-11-17-d5871d2b3ed9",
+    "title": "Bayonne - The ‘Filters’ Tour",
+    "subtitle": "Source-discovered venue event · details need review",
+    "category": "Unclassified",
+    "tags": [
+      "Category needs review",
+      "Time needs confirmation",
+      "Format needs confirmation"
+    ],
+    "musicStyles": [],
+    "eventFormat": "unverified",
+    "classificationEvidence": "No verified event type or genre",
+    "startTimeKind": "listed",
+    "startsAt": "2026-11-17T20:00:00-08:00",
+    "endsAt": null,
+    "venue": "Mississippi Studios",
+    "address": "3939 N Mississippi Ave, Portland, OR 97227",
+    "neighborhood": "Boise",
+    "price": "See organizer for current admission",
+    "free": null,
+    "age": "Not published",
+    "description": "Automatically discovered from a primary venue or promoter listing. Original venue calendar explicitly labels doors and a separate showtime, plus exact date and venue Original Mississippi/Polaris room-verified official event listing. Supporting artists: Bobbing",
+    "source": "Mississippi Studios / Polaris Hall",
+    "url": "https://www.etix.com/ticket/p/80960269/bayonne-the-filterstour-portland-mississippi-studios",
+    "icon": "◇",
+    "sourceCheckedAt": "2026-11-06",
+    "verificationMethod": "Automated venue data; editorial date, time, event type and cancellation verification required",
+    "sourceCategories": [],
+    "sources": [
+      {
+        "name": "Mississippi Studios / Polaris Hall",
+        "url": "https://www.etix.com/ticket/p/80960269/bayonne-the-filterstour-portland-mississippi-studios",
+        "kind": "organizer",
+        "checkedAt": "2026-11-06",
+        "originalCategories": []
+      }
+    ],
+    "artwork": {
+      "url": "https://cdn.etix.com/etix/performance-image/performance_image_1200w/5c8bb83dd6d8de72e2820cca0aafe16c.jpg",
+      "sourceUrl": "https://mississippistudios.com/calendar",
+      "origin": "official-venue-calendar",
+      "credit": "Venue-provided event flyer",
+      "usageApproved": null
+    },
+    "addedIn": "auto-discovery-2026-11-06",
+    "discovery": {
+      "sourceId": "mississippi-polaris",
       "method": "primary-source-collection"
     }
   },
@@ -24390,6 +27130,57 @@ window.SHOWS_EVENTS = [
     "addedIn": "auto-discovery-2026-11-01",
     "discovery": {
       "sourceId": "revolution-hall",
+      "method": "primary-source-collection"
+    }
+  },
+  {
+    "id": "auto-mississippi-polaris-2026-11-17-7dc111d4d342",
+    "title": "Olivia O’Brien Presents: The PIXIE Tour",
+    "subtitle": "Source-discovered venue event · details need review",
+    "category": "Unclassified",
+    "tags": [
+      "Category needs review",
+      "Time needs confirmation",
+      "Format needs confirmation"
+    ],
+    "musicStyles": [],
+    "eventFormat": "unverified",
+    "classificationEvidence": "No verified event type or genre",
+    "startTimeKind": "listed",
+    "startsAt": "2026-11-17T20:00:00-08:00",
+    "endsAt": null,
+    "venue": "Polaris Hall",
+    "address": "635 N Killingsworth Ct, Portland, OR 97217",
+    "neighborhood": "Humboldt",
+    "price": "See organizer for current admission",
+    "free": null,
+    "age": "Not published",
+    "description": "Automatically discovered from a primary venue or promoter listing. Original venue calendar explicitly labels doors and a separate showtime, plus exact date and venue Original Mississippi/Polaris room-verified official event listing. Supporting artists: Sophie Cates",
+    "source": "Mississippi Studios / Polaris Hall",
+    "url": "https://www.etix.com/ticket/p/55541535/olivia-obrien-presentsthe-pixie-tour-portland-polaris-hall",
+    "icon": "◇",
+    "sourceCheckedAt": "2026-11-06",
+    "verificationMethod": "Automated venue data; editorial date, time, event type and cancellation verification required",
+    "sourceCategories": [],
+    "sources": [
+      {
+        "name": "Mississippi Studios / Polaris Hall",
+        "url": "https://www.etix.com/ticket/p/55541535/olivia-obrien-presentsthe-pixie-tour-portland-polaris-hall",
+        "kind": "organizer",
+        "checkedAt": "2026-11-06",
+        "originalCategories": []
+      }
+    ],
+    "artwork": {
+      "url": "https://cdn.etix.com/etix/performance-image/performance_image_1200w/64b9e2dfd8817a9dc1456f3cf79dac77.jpg",
+      "sourceUrl": "https://mississippistudios.com/calendar",
+      "origin": "official-venue-calendar",
+      "credit": "Venue-provided event flyer",
+      "usageApproved": null
+    },
+    "addedIn": "auto-discovery-2026-11-06",
+    "discovery": {
+      "sourceId": "mississippi-polaris",
       "method": "primary-source-collection"
     }
   },
@@ -24577,6 +27368,57 @@ window.SHOWS_EVENTS = [
     "addedIn": "auto-discovery-2026-10-24",
     "discovery": {
       "sourceId": "starday-tavern",
+      "method": "primary-source-collection"
+    }
+  },
+  {
+    "id": "auto-alberta-street-pub-2026-11-18-59018c2f8e96",
+    "title": "Wednesday Night Social - Cigars, Dominos & Music",
+    "subtitle": "Source-discovered venue event · details need review",
+    "category": "Music",
+    "tags": [
+      "Source-listed Music",
+      "Time needs confirmation",
+      "Format needs confirmation"
+    ],
+    "musicStyles": [],
+    "eventFormat": "unverified",
+    "classificationEvidence": "Original source explicitly verifies music",
+    "startTimeKind": "listed",
+    "startsAt": "2026-11-18T18:00:00-08:00",
+    "endsAt": null,
+    "venue": "Alberta Street Pub",
+    "address": "1036 NE Alberta Street, Portland, OR 97211",
+    "neighborhood": "Alberta Arts District",
+    "price": "See organizer for current admission",
+    "free": null,
+    "age": "Not published",
+    "description": "Automatically discovered from a primary venue or promoter listing. Alberta Street Pub's original Squarespace event record supplies the start and end timestamp; exact performance-versus-doors distinction is unconfirmed. Original venue event listing. Free! On the Heated Patio! A rotating cast of DJ’s and musicians keep this party alive! Weekly every Wednesday at Alberta Street Pub",
+    "source": "Alberta Street Pub",
+    "url": "https://www.albertastreetpub.com/music/2023/10/18/wednesday-night-social-fkf88-mke97-4227c-l64xx-gss68-cjzan-8lsw3-nbgjn-yr6pm-6kblr-ff6b5-lsmb9-hkw2h-f5mft-hfbdc-nddag-sg2pm-ylbtn-7mp5t-b64gk-lwx2r",
+    "icon": "♫",
+    "sourceCheckedAt": "2026-11-06",
+    "verificationMethod": "Automated venue data; editorial date, time, event type and cancellation verification required",
+    "sourceCategories": [],
+    "sources": [
+      {
+        "name": "Alberta Street Pub",
+        "url": "https://www.albertastreetpub.com/music/2023/10/18/wednesday-night-social-fkf88-mke97-4227c-l64xx-gss68-cjzan-8lsw3-nbgjn-yr6pm-6kblr-ff6b5-lsmb9-hkw2h-f5mft-hfbdc-nddag-sg2pm-ylbtn-7mp5t-b64gk-lwx2r",
+        "kind": "organizer",
+        "checkedAt": "2026-11-06",
+        "originalCategories": []
+      }
+    ],
+    "artwork": {
+      "url": "https://images.squarespace-cdn.com/content/v1/54109e68e4b06b163549a8dc/1696788150496-QTGQKK7LANS0RZO9JQ5S/Wednesday+Cigars.jpg",
+      "sourceUrl": "https://www.albertastreetpub.com/music/2023/10/18/wednesday-night-social-fkf88-mke97-4227c-l64xx-gss68-cjzan-8lsw3-nbgjn-yr6pm-6kblr-ff6b5-lsmb9-hkw2h-f5mft-hfbdc-nddag-sg2pm-ylbtn-7mp5t-b64gk-lwx2r",
+      "origin": "official-venue-calendar",
+      "credit": "Alberta Street Pub official event calendar",
+      "usageApproved": null
+    },
+    "addedIn": "auto-discovery-2026-11-06",
+    "discovery": {
+      "sourceId": "alberta-street-pub",
       "method": "primary-source-collection"
     }
   },
@@ -24794,6 +27636,57 @@ window.SHOWS_EVENTS = [
     }
   },
   {
+    "id": "auto-alberta-rose-theatre-2026-11-18-5d63e19fcf6f",
+    "title": "Science On Tap – Save the Planet: Recycle! …or Not?",
+    "subtitle": "Source-discovered venue event · details need review",
+    "category": "Unclassified",
+    "tags": [
+      "Category needs review",
+      "Time needs confirmation",
+      "Format needs confirmation"
+    ],
+    "musicStyles": [],
+    "eventFormat": "unverified",
+    "classificationEvidence": "No verified event type or genre",
+    "startTimeKind": "listed",
+    "startsAt": "2026-11-18T19:00:00-08:00",
+    "endsAt": null,
+    "venue": "Alberta Rose Theatre",
+    "address": "3000 NE Alberta Street, Portland, OR 97211",
+    "neighborhood": "Concordia",
+    "price": "See organizer for current admission",
+    "free": null,
+    "age": "Not published",
+    "description": "Automatically discovered from a primary venue or promoter listing. Original Alberta Rose dated calendar month/year, weekday, exact room and separately labeled SHOW time; doors not substituted. Original theatre calendar; music style and format require event-specific editorial assessment.",
+    "source": "Alberta Rose Theatre",
+    "url": "https://albertarosetheatre.com/event/science-on-tap-save-the-planet-recycle-or-not/alberta-rose-theatre/portland-oregon/",
+    "icon": "◇",
+    "sourceCheckedAt": "2026-11-06",
+    "verificationMethod": "Automated venue data; editorial date, time, event type and cancellation verification required",
+    "sourceCategories": [],
+    "sources": [
+      {
+        "name": "Alberta Rose Theatre",
+        "url": "https://albertarosetheatre.com/event/science-on-tap-save-the-planet-recycle-or-not/alberta-rose-theatre/portland-oregon/",
+        "kind": "organizer",
+        "checkedAt": "2026-11-06",
+        "originalCategories": []
+      }
+    ],
+    "artwork": {
+      "url": "https://albertarosetheatre.com/wp-content/uploads/2026/05/science-on-tap-save-the-planet-recycle-or-not.jfif",
+      "sourceUrl": "https://albertarosetheatre.com/event/science-on-tap-save-the-planet-recycle-or-not/alberta-rose-theatre/portland-oregon/",
+      "origin": "official-venue-calendar",
+      "credit": "Alberta Rose Theatre original event artwork",
+      "usageApproved": null
+    },
+    "addedIn": "auto-discovery-2026-11-06",
+    "discovery": {
+      "sourceId": "alberta-rose-theatre",
+      "method": "primary-source-collection"
+    }
+  },
+  {
     "id": "auto-high-water-2026-11-18-f0c035593c8e",
     "title": "Shady Pines Open Mic!",
     "subtitle": "Source-discovered venue event · details need review",
@@ -24935,6 +27828,57 @@ window.SHOWS_EVENTS = [
     "addedIn": "auto-discovery-2026-11-03",
     "discovery": {
       "sourceId": "revolution-hall",
+      "method": "primary-source-collection"
+    }
+  },
+  {
+    "id": "auto-jack-london-revue-2026-11-18-8ce6ac78588f",
+    "title": "BOMBARGO",
+    "subtitle": "Source-discovered venue event · details need review",
+    "category": "Unclassified",
+    "tags": [
+      "Category needs review",
+      "Time needs confirmation",
+      "Format needs confirmation"
+    ],
+    "musicStyles": [],
+    "eventFormat": "unverified",
+    "classificationEvidence": "No verified event type or genre",
+    "startTimeKind": "listed",
+    "startsAt": "2026-11-18T20:00:00-08:00",
+    "endsAt": null,
+    "venue": "Jack London Revue",
+    "address": "529 SW 4th Ave, Portland, OR 97204",
+    "neighborhood": "Downtown",
+    "price": "See organizer for current admission",
+    "free": null,
+    "age": "Not published",
+    "description": "Automatically discovered from a primary venue or promoter listing. Original JLR event detail verifies full date, venue and showtime separately from doors; the date and clocks match the first-party roster. Original venue event: Soul'd Out Presents: Bombargo with Dylan Chambers Doors: 7:00pm Show: 8:00pm Ages 21+. Bombargo is a Canadian based international touring band that drops a vibrant splash of soul over their distinctive &lsquo;vintage-pop&rsquo; sound. Well known for bringing",
+    "source": "Jack London Revue",
+    "url": "https://www.jacklondonrevue.com/tm-event/bombargo/",
+    "icon": "◇",
+    "sourceCheckedAt": "2026-11-06",
+    "verificationMethod": "Automated venue data; editorial date, time, event type and cancellation verification required",
+    "sourceCategories": [],
+    "sources": [
+      {
+        "name": "Jack London Revue",
+        "url": "https://www.jacklondonrevue.com/tm-event/bombargo/",
+        "kind": "organizer",
+        "checkedAt": "2026-11-06",
+        "originalCategories": []
+      }
+    ],
+    "artwork": {
+      "url": "https://i.ticketweb.com/i/00/12/92/20/24_Original.jpg?v=4",
+      "sourceUrl": "https://www.jacklondonrevue.com/tm-event/bombargo/",
+      "origin": "official-event-page",
+      "credit": "Original TicketWeb artwork linked by Jack London Revue",
+      "usageApproved": null
+    },
+    "addedIn": "auto-discovery-2026-11-06",
+    "discovery": {
+      "sourceId": "jack-london-revue",
       "method": "primary-source-collection"
     }
   },
@@ -25090,6 +28034,57 @@ window.SHOWS_EVENTS = [
     }
   },
   {
+    "id": "auto-mississippi-polaris-2026-11-18-c2ed57ae46b0",
+    "title": "Natural Child",
+    "subtitle": "Source-discovered venue event · details need review",
+    "category": "Unclassified",
+    "tags": [
+      "Category needs review",
+      "Time needs confirmation",
+      "Format needs confirmation"
+    ],
+    "musicStyles": [],
+    "eventFormat": "unverified",
+    "classificationEvidence": "No verified event type or genre",
+    "startTimeKind": "listed",
+    "startsAt": "2026-11-18T20:00:00-08:00",
+    "endsAt": null,
+    "venue": "Mississippi Studios",
+    "address": "3939 N Mississippi Ave, Portland, OR 97227",
+    "neighborhood": "Boise",
+    "price": "See organizer for current admission",
+    "free": null,
+    "age": "Not published",
+    "description": "Automatically discovered from a primary venue or promoter listing. Original venue calendar explicitly labels doors and a separate showtime, plus exact date and venue Original Mississippi/Polaris room-verified official event listing. Supporting artists: Samuel Globule",
+    "source": "Mississippi Studios / Polaris Hall",
+    "url": "https://www.etix.com/ticket/p/75106036/natural-child-portland-mississippi-studios",
+    "icon": "◇",
+    "sourceCheckedAt": "2026-11-06",
+    "verificationMethod": "Automated venue data; editorial date, time, event type and cancellation verification required",
+    "sourceCategories": [],
+    "sources": [
+      {
+        "name": "Mississippi Studios / Polaris Hall",
+        "url": "https://www.etix.com/ticket/p/75106036/natural-child-portland-mississippi-studios",
+        "kind": "organizer",
+        "checkedAt": "2026-11-06",
+        "originalCategories": []
+      }
+    ],
+    "artwork": {
+      "url": "https://cdn.etix.com/etix/performance-image/performance_image_1200w/40a071f6e402a8c4b86bf60c05388cd7.jpg",
+      "sourceUrl": "https://mississippistudios.com/calendar",
+      "origin": "official-venue-calendar",
+      "credit": "Venue-provided event flyer",
+      "usageApproved": null
+    },
+    "addedIn": "auto-discovery-2026-11-06",
+    "discovery": {
+      "sourceId": "mississippi-polaris",
+      "method": "primary-source-collection"
+    }
+  },
+  {
     "id": "auto-no-fun-2026-11-18-65030434ad63",
     "title": "NO FUN KARAOKE",
     "subtitle": "Source-discovered venue event · details need review",
@@ -25188,6 +28183,57 @@ window.SHOWS_EVENTS = [
     "addedIn": "auto-discovery-2026-10-24",
     "discovery": {
       "sourceId": "holocene",
+      "method": "primary-source-collection"
+    }
+  },
+  {
+    "id": "auto-mississippi-polaris-2026-11-18-926c896acf65",
+    "title": "WHITMER THOMAS",
+    "subtitle": "Source-discovered venue event · details need review",
+    "category": "Unclassified",
+    "tags": [
+      "Category needs review",
+      "Time needs confirmation",
+      "Format needs confirmation"
+    ],
+    "musicStyles": [],
+    "eventFormat": "unverified",
+    "classificationEvidence": "No verified event type or genre",
+    "startTimeKind": "listed",
+    "startsAt": "2026-11-18T20:00:00-08:00",
+    "endsAt": null,
+    "venue": "Polaris Hall",
+    "address": "635 N Killingsworth Ct, Portland, OR 97217",
+    "neighborhood": "Humboldt",
+    "price": "See organizer for current admission",
+    "free": null,
+    "age": "Not published",
+    "description": "Automatically discovered from a primary venue or promoter listing. Original venue calendar explicitly labels doors and a separate showtime, plus exact date and venue Original Mississippi/Polaris room-verified official event listing. Supporting artists: +with comedy from CLAY TATUM",
+    "source": "Mississippi Studios / Polaris Hall",
+    "url": "https://www.etix.com/ticket/p/41356454/whitmer-thomas-portland-polaris-hall",
+    "icon": "◇",
+    "sourceCheckedAt": "2026-11-06",
+    "verificationMethod": "Automated venue data; editorial date, time, event type and cancellation verification required",
+    "sourceCategories": [],
+    "sources": [
+      {
+        "name": "Mississippi Studios / Polaris Hall",
+        "url": "https://www.etix.com/ticket/p/41356454/whitmer-thomas-portland-polaris-hall",
+        "kind": "organizer",
+        "checkedAt": "2026-11-06",
+        "originalCategories": []
+      }
+    ],
+    "artwork": {
+      "url": "https://cdn.etix.com/etix/performance-image/performance_image_1200w/cdf32da87280f2316cc36c8b0b52079f.jpg",
+      "sourceUrl": "https://mississippistudios.com/calendar",
+      "origin": "official-venue-calendar",
+      "credit": "Venue-provided event flyer",
+      "usageApproved": null
+    },
+    "addedIn": "auto-discovery-2026-11-06",
+    "discovery": {
+      "sourceId": "mississippi-polaris",
       "method": "primary-source-collection"
     }
   },
@@ -25378,6 +28424,111 @@ window.SHOWS_EVENTS = [
     "addedIn": "auto-discovery-2026-10-29",
     "discovery": {
       "sourceId": "mission-theater",
+      "method": "primary-source-collection"
+    }
+  },
+  {
+    "id": "auto-jack-london-revue-2026-11-19-a16f7f75a33e",
+    "title": "CHUCK ISRAELS JAZZ ORCH - Jazz Titan Thursdays",
+    "subtitle": "Source-discovered venue event · details need review",
+    "category": "Music",
+    "tags": [
+      "Source-listed Music",
+      "Source-mentioned Jazz",
+      "Time needs confirmation",
+      "Format needs confirmation"
+    ],
+    "musicStyles": [
+      "Jazz"
+    ],
+    "eventFormat": "unverified",
+    "classificationEvidence": "Event-specific source genre wording",
+    "startTimeKind": "listed",
+    "startsAt": "2026-11-19T19:00:00-08:00",
+    "endsAt": null,
+    "venue": "Jack London Revue",
+    "address": "529 SW 4th Ave, Portland, OR 97204",
+    "neighborhood": "Downtown",
+    "price": "See organizer for current admission",
+    "free": null,
+    "age": "Not published",
+    "description": "Automatically discovered from a primary venue or promoter listing. Original JLR event detail verifies full date, venue and showtime separately from doors; the date and clocks match the first-party roster. Original venue event: C huck Israels, revered as one of the preeminent bassists in the world, GRAMMY winner has performed and recorded with Billie Holiday, Benny Goodman, Herbie Hancock, John Coltrane, Bud Powell, Coleman Hawkins, Stan Getz, Bill Evans, J.J. Johnson, Rosemary Clo",
+    "source": "Jack London Revue",
+    "url": "https://www.jacklondonrevue.com/tm-event/chuck-israels-jazz-orch-jazz-titan-thursdays-2/",
+    "icon": "♫",
+    "sourceCheckedAt": "2026-11-06",
+    "verificationMethod": "Automated venue data; editorial date, time, event type and cancellation verification required",
+    "sourceCategories": [],
+    "sources": [
+      {
+        "name": "Jack London Revue",
+        "url": "https://www.jacklondonrevue.com/tm-event/chuck-israels-jazz-orch-jazz-titan-thursdays-2/",
+        "kind": "organizer",
+        "checkedAt": "2026-11-06",
+        "originalCategories": []
+      }
+    ],
+    "artwork": {
+      "url": "https://i.ticketweb.com/i/00/13/08/90/34_Original.jpg?v=3",
+      "sourceUrl": "https://www.jacklondonrevue.com/tm-event/chuck-israels-jazz-orch-jazz-titan-thursdays-2/",
+      "origin": "official-event-page",
+      "credit": "Original TicketWeb artwork linked by Jack London Revue",
+      "usageApproved": null
+    },
+    "addedIn": "auto-discovery-2026-11-06",
+    "discovery": {
+      "sourceId": "jack-london-revue",
+      "method": "primary-source-collection"
+    }
+  },
+  {
+    "id": "auto-alberta-street-pub-2026-11-19-3d57a5712216",
+    "title": "MPEG-2 - Mike Prigodich Elektric Group",
+    "subtitle": "Source-discovered venue event · details need review",
+    "category": "Unclassified",
+    "tags": [
+      "Category needs review",
+      "Time needs confirmation",
+      "Format needs confirmation"
+    ],
+    "musicStyles": [],
+    "eventFormat": "unverified",
+    "classificationEvidence": "No verified event type or genre",
+    "startTimeKind": "listed",
+    "startsAt": "2026-11-19T19:00:00-08:00",
+    "endsAt": null,
+    "venue": "Alberta Street Pub",
+    "address": "1036 NE Alberta Street, Portland, OR 97211",
+    "neighborhood": "Alberta Arts District",
+    "price": "See organizer for current admission",
+    "free": null,
+    "age": "Not published",
+    "description": "Automatically discovered from a primary venue or promoter listing. Alberta Street Pub's original Squarespace event record supplies the start and end timestamp; exact performance-versus-doors distinction is unconfirmed. Original venue event listing. $15 Cover at the Door",
+    "source": "Alberta Street Pub",
+    "url": "https://www.albertastreetpub.com/music/2026/11/19/mpeg-2-mike-prigodich-elektric-group",
+    "icon": "◇",
+    "sourceCheckedAt": "2026-11-06",
+    "verificationMethod": "Automated venue data; editorial date, time, event type and cancellation verification required",
+    "sourceCategories": [],
+    "sources": [
+      {
+        "name": "Alberta Street Pub",
+        "url": "https://www.albertastreetpub.com/music/2026/11/19/mpeg-2-mike-prigodich-elektric-group",
+        "kind": "organizer",
+        "checkedAt": "2026-11-06",
+        "originalCategories": []
+      }
+    ],
+    "artwork": {
+      "url": "https://images.squarespace-cdn.com/content/v1/54109e68e4b06b163549a8dc/1793039421020-KTVQUAPZOR8KJGXHC17P/MPEG.jpg",
+      "sourceUrl": "https://www.albertastreetpub.com/music/2026/11/19/mpeg-2-mike-prigodich-elektric-group",
+      "origin": "official-venue-calendar",
+      "credit": "Alberta Street Pub official event calendar",
+      "usageApproved": null
+    },
+    "addedIn": "auto-discovery-2026-11-06",
+    "discovery": {
+      "sourceId": "alberta-street-pub",
       "method": "primary-source-collection"
     }
   },
@@ -25862,6 +29013,57 @@ window.SHOWS_EVENTS = [
     }
   },
   {
+    "id": "auto-mississippi-polaris-2026-11-19-e8ad5a067209",
+    "title": "Mattress 20 - 20 Years Of Mattress",
+    "subtitle": "Source-discovered venue event · details need review",
+    "category": "Unclassified",
+    "tags": [
+      "Category needs review",
+      "Time needs confirmation",
+      "Format needs confirmation"
+    ],
+    "musicStyles": [],
+    "eventFormat": "unverified",
+    "classificationEvidence": "No verified event type or genre",
+    "startTimeKind": "listed",
+    "startsAt": "2026-11-19T20:00:00-08:00",
+    "endsAt": null,
+    "venue": "Polaris Hall",
+    "address": "635 N Killingsworth Ct, Portland, OR 97217",
+    "neighborhood": "Humboldt",
+    "price": "See organizer for current admission",
+    "free": null,
+    "age": "Not published",
+    "description": "Automatically discovered from a primary venue or promoter listing. Original venue calendar explicitly labels doors and a separate showtime, plus exact date and venue Original Mississippi/Polaris room-verified official event listing. Supporting artists: Joe Von Appen, Thrones, Dragging An Ox Through Water, Black Shelton",
+    "source": "Mississippi Studios / Polaris Hall",
+    "url": "https://www.etix.com/ticket/p/91263217/mattress-20-20-years-of-mattress-portland-polaris-hall",
+    "icon": "◇",
+    "sourceCheckedAt": "2026-11-06",
+    "verificationMethod": "Automated venue data; editorial date, time, event type and cancellation verification required",
+    "sourceCategories": [],
+    "sources": [
+      {
+        "name": "Mississippi Studios / Polaris Hall",
+        "url": "https://www.etix.com/ticket/p/91263217/mattress-20-20-years-of-mattress-portland-polaris-hall",
+        "kind": "organizer",
+        "checkedAt": "2026-11-06",
+        "originalCategories": []
+      }
+    ],
+    "artwork": {
+      "url": "https://cdn.etix.com/etix/performance-image/performance_image_1200w/740773155a860c44223a06edef334bec.jpg",
+      "sourceUrl": "https://mississippistudios.com/calendar",
+      "origin": "official-venue-calendar",
+      "credit": "Venue-provided event flyer",
+      "usageApproved": null
+    },
+    "addedIn": "auto-discovery-2026-11-06",
+    "discovery": {
+      "sourceId": "mississippi-polaris",
+      "method": "primary-source-collection"
+    }
+  },
+  {
     "id": "indie-no-seb-el-zin-support-tba-2026-11-19",
     "title": "Seb El Zin • support TBA",
     "subtitle": "Independent live show · style to be confirmed",
@@ -25897,6 +29099,57 @@ window.SHOWS_EVENTS = [
     ],
     "addedIn": "2026-10-17-independent-venues",
     "doorsAt": "2026-11-19T19:00:00-08:00"
+  },
+  {
+    "id": "auto-mississippi-polaris-2026-11-19-dad5703292dc",
+    "title": "The Cactus Blossoms",
+    "subtitle": "Source-discovered venue event · details need review",
+    "category": "Unclassified",
+    "tags": [
+      "Category needs review",
+      "Time needs confirmation",
+      "Format needs confirmation"
+    ],
+    "musicStyles": [],
+    "eventFormat": "unverified",
+    "classificationEvidence": "No verified event type or genre",
+    "startTimeKind": "listed",
+    "startsAt": "2026-11-19T20:00:00-08:00",
+    "endsAt": null,
+    "venue": "Mississippi Studios",
+    "address": "3939 N Mississippi Ave, Portland, OR 97227",
+    "neighborhood": "Boise",
+    "price": "See organizer for current admission",
+    "free": null,
+    "age": "Not published",
+    "description": "Automatically discovered from a primary venue or promoter listing. Original venue calendar explicitly labels doors and a separate showtime, plus exact date and venue Original Mississippi/Polaris room-verified official event listing. Supporting artists: Devin Champlin",
+    "source": "Mississippi Studios / Polaris Hall",
+    "url": "https://www.etix.com/ticket/p/40638516/the-cactus-blossoms-portland-mississippi-studios",
+    "icon": "◇",
+    "sourceCheckedAt": "2026-11-06",
+    "verificationMethod": "Automated venue data; editorial date, time, event type and cancellation verification required",
+    "sourceCategories": [],
+    "sources": [
+      {
+        "name": "Mississippi Studios / Polaris Hall",
+        "url": "https://www.etix.com/ticket/p/40638516/the-cactus-blossoms-portland-mississippi-studios",
+        "kind": "organizer",
+        "checkedAt": "2026-11-06",
+        "originalCategories": []
+      }
+    ],
+    "artwork": {
+      "url": "https://cdn.etix.com/etix/performance-image/performance_image_1200w/7e5e3bcfb2690a77e5eec595e2e029f7.jpg",
+      "sourceUrl": "https://mississippistudios.com/calendar",
+      "origin": "official-venue-calendar",
+      "credit": "Venue-provided event flyer",
+      "usageApproved": null
+    },
+    "addedIn": "auto-discovery-2026-11-06",
+    "discovery": {
+      "sourceId": "mississippi-polaris",
+      "method": "primary-source-collection"
+    }
   },
   {
     "id": "auto-crystal-ballroom-2026-11-19-ca13483a4802",
@@ -26232,6 +29485,57 @@ window.SHOWS_EVENTS = [
     }
   },
   {
+    "id": "auto-alberta-street-pub-2026-11-20-3d2e78418ab7",
+    "title": "Lordymama",
+    "subtitle": "Source-discovered venue event · details need review",
+    "category": "Unclassified",
+    "tags": [
+      "Category needs review",
+      "Time needs confirmation",
+      "Format needs confirmation"
+    ],
+    "musicStyles": [],
+    "eventFormat": "unverified",
+    "classificationEvidence": "No verified event type or genre",
+    "startTimeKind": "listed",
+    "startsAt": "2026-11-20T18:00:00-08:00",
+    "endsAt": null,
+    "venue": "Alberta Street Pub",
+    "address": "1036 NE Alberta Street, Portland, OR 97211",
+    "neighborhood": "Alberta Arts District",
+    "price": "See organizer for current admission",
+    "free": null,
+    "age": "Not published",
+    "description": "Automatically discovered from a primary venue or promoter listing. Alberta Street Pub's original Squarespace event record supplies the start and end timestamp; exact performance-versus-doors distinction is unconfirmed. Original venue event listing. $10 COVER AT THE DOOR ALL AGES UNTIL 9PM",
+    "source": "Alberta Street Pub",
+    "url": "https://www.albertastreetpub.com/music/2026/11/20/lordymama",
+    "icon": "◇",
+    "sourceCheckedAt": "2026-11-06",
+    "verificationMethod": "Automated venue data; editorial date, time, event type and cancellation verification required",
+    "sourceCategories": [],
+    "sources": [
+      {
+        "name": "Alberta Street Pub",
+        "url": "https://www.albertastreetpub.com/music/2026/11/20/lordymama",
+        "kind": "organizer",
+        "checkedAt": "2026-11-06",
+        "originalCategories": []
+      }
+    ],
+    "artwork": {
+      "url": "https://images.squarespace-cdn.com/content/v1/54109e68e4b06b163549a8dc/1793997363278-EZYTRZZD2LZH0E9PWI3G/Image-1+2.jpeg",
+      "sourceUrl": "https://www.albertastreetpub.com/music/2026/11/20/lordymama",
+      "origin": "official-venue-calendar",
+      "credit": "Alberta Street Pub official event calendar",
+      "usageApproved": null
+    },
+    "addedIn": "auto-discovery-2026-11-06",
+    "discovery": {
+      "sourceId": "alberta-street-pub",
+      "method": "primary-source-collection"
+    }
+  },
+  {
     "id": "auto-the-off-beat-2026-11-20-3929789d8876",
     "title": "11/20 Heaven Skate, Rheumatoid Trapezoid, Steevee Von Schneedle, Dopamean",
     "subtitle": "Source-discovered venue event · details need review",
@@ -26331,6 +29635,110 @@ window.SHOWS_EVENTS = [
     "discovery": {
       "sourceId": "aladdin-theater",
       "method": "primary-source-collection"
+    }
+  },
+  {
+    "id": "auto-alberta-rose-theatre-2026-11-20-83967e9ce26a",
+    "title": "The Next Waltz - 50th Anniversary Celebration — 7:30 PM show",
+    "subtitle": "Source-discovered venue event · details need review",
+    "category": "Unclassified",
+    "tags": [
+      "Category needs review",
+      "Time needs confirmation",
+      "Format needs confirmation"
+    ],
+    "musicStyles": [],
+    "eventFormat": "unverified",
+    "classificationEvidence": "No verified event type or genre",
+    "startTimeKind": "listed",
+    "startsAt": "2026-11-20T19:30:00-08:00",
+    "endsAt": null,
+    "venue": "Alberta Rose Theatre",
+    "address": "3000 NE Alberta Street, Portland, OR 97211",
+    "neighborhood": "Concordia",
+    "price": "See organizer for current admission",
+    "free": null,
+    "age": "Not published",
+    "description": "Automatically discovered from a primary venue or promoter listing. Original Alberta Rose month/year heading plus individually scheduled series date, SHOW clock and room-scoped Etix performance ID. Original multi-performance series: The Next Waltz - 50th Anniversary Celebration. Event-specific ticket URL uniquely identifies this session; classify its format from verified source evidence.",
+    "source": "Alberta Rose Theatre",
+    "url": "https://www.etix.com/ticket/p/71026782/the-next-waltz-portland-alberta-rose-theatre",
+    "icon": "◇",
+    "sourceCheckedAt": "2026-11-06",
+    "verificationMethod": "Automated venue data; editorial date, time, event type and cancellation verification required",
+    "sourceCategories": [],
+    "sources": [
+      {
+        "name": "Alberta Rose Theatre",
+        "url": "https://www.etix.com/ticket/p/71026782/the-next-waltz-portland-alberta-rose-theatre",
+        "kind": "organizer",
+        "checkedAt": "2026-11-06",
+        "originalCategories": []
+      }
+    ],
+    "artwork": {
+      "url": "https://albertarosetheatre.com/wp-content/uploads/2026/11/the-next-waltz.jfif",
+      "sourceUrl": "https://albertarosetheatre.com/calendar/category/series/the-next-waltz-50th-anniversary-celebration/alberta-rose-theatre/portland-oregon/",
+      "origin": "official-venue-calendar",
+      "credit": "Alberta Rose Theatre original event artwork",
+      "usageApproved": null
+    },
+    "sourceTicketId": "71026782",
+    "addedIn": "auto-discovery-2026-11-06",
+    "discovery": {
+      "sourceId": "alberta-rose-theatre",
+      "method": "primary-source-collection"
+    }
+  },
+  {
+    "id": "auto-mississippi-polaris-2026-11-20-41ac72437aef",
+    "title": "The Teacher Show: Comedy from the Classroom (Night 1)",
+    "subtitle": "Source-discovered venue event · details need review",
+    "category": "Performance",
+    "tags": [
+      "Source-listed Performance",
+      "Time needs confirmation",
+      "Format needs confirmation"
+    ],
+    "musicStyles": [],
+    "eventFormat": "unverified",
+    "classificationEvidence": "Event-specific source wording",
+    "startTimeKind": "listed",
+    "startsAt": "2026-11-20T19:30:00-08:00",
+    "endsAt": null,
+    "venue": "Polaris Hall",
+    "address": "635 N Killingsworth Ct, Portland, OR 97217",
+    "neighborhood": "Humboldt",
+    "price": "See organizer for current admission",
+    "free": null,
+    "age": "Not published",
+    "description": "Automatically discovered from a primary venue or promoter listing. Original venue calendar explicitly labels doors and a separate showtime, plus exact date and venue Original Mississippi/Polaris room-verified official event listing",
+    "source": "Mississippi Studios / Polaris Hall",
+    "url": "https://www.etix.com/ticket/p/73273847/the-teacher-showcomedy-from-the-classroom-night-1-portland-polaris-hall",
+    "icon": "◇",
+    "sourceCheckedAt": "2026-11-07",
+    "verificationMethod": "Automated venue data; editorial date, time, event type and cancellation verification required",
+    "sourceCategories": [],
+    "sources": [
+      {
+        "name": "Mississippi Studios / Polaris Hall",
+        "url": "https://www.etix.com/ticket/p/73273847/the-teacher-showcomedy-from-the-classroom-night-1-portland-polaris-hall",
+        "kind": "organizer",
+        "checkedAt": "2026-11-07",
+        "originalCategories": []
+      }
+    ],
+    "artwork": {
+      "url": "https://cdn.etix.com/etix/performance-image/performance_image_1200w/bd07241848889769d6b8c5536948175d.jpg",
+      "sourceUrl": "https://mississippistudios.com/calendar",
+      "origin": "official-venue-calendar",
+      "credit": "Venue-provided event flyer",
+      "usageApproved": null
+    },
+    "addedIn": "auto-discovery-2026-11-07",
+    "discovery": {
+      "sourceId": "mississippi-polaris",
+      "method": "primary-source-collection",
+      "verifiedOriginalShowTime": true
     }
   },
   {
@@ -26548,6 +29956,57 @@ window.SHOWS_EVENTS = [
       "origin": "official-event-page",
       "credit": "Official event page",
       "usageApproved": null
+    }
+  },
+  {
+    "id": "auto-jack-london-revue-2026-11-20-c2221673a7fd",
+    "title": "ERIC JOHN KAISER - ALBUM RELEASE",
+    "subtitle": "Source-discovered venue event · details need review",
+    "category": "Music",
+    "tags": [
+      "Source-listed Music",
+      "Time needs confirmation",
+      "Format needs confirmation"
+    ],
+    "musicStyles": [],
+    "eventFormat": "unverified",
+    "classificationEvidence": "Event-specific source wording",
+    "startTimeKind": "listed",
+    "startsAt": "2026-11-20T20:00:00-08:00",
+    "endsAt": null,
+    "venue": "Jack London Revue",
+    "address": "529 SW 4th Ave, Portland, OR 97204",
+    "neighborhood": "Downtown",
+    "price": "See organizer for current admission",
+    "free": null,
+    "age": "Not published",
+    "description": "Automatically discovered from a primary venue or promoter listing. Original JLR event detail verifies full date, venue and showtime separately from doors; the date and clocks match the first-party roster. Original venue event: Soul'd Out Presents: An Evening with Eric John Kaiser. Join us for Eric's album release party @ Jack London Revue. Doors: 7:00pm Show: 8:00pm Ages 21+. https://www.ericjohnkaiser.com/ ------- Known as The French Troubadour, Parisian-born Eric John Kaiser is ",
+    "source": "Jack London Revue",
+    "url": "https://www.jacklondonrevue.com/tm-event/eric-john-kaiser-album-release/",
+    "icon": "♫",
+    "sourceCheckedAt": "2026-11-06",
+    "verificationMethod": "Automated venue data; editorial date, time, event type and cancellation verification required",
+    "sourceCategories": [],
+    "sources": [
+      {
+        "name": "Jack London Revue",
+        "url": "https://www.jacklondonrevue.com/tm-event/eric-john-kaiser-album-release/",
+        "kind": "organizer",
+        "checkedAt": "2026-11-06",
+        "originalCategories": []
+      }
+    ],
+    "artwork": {
+      "url": "https://i.ticketweb.com/i/00/13/04/96/64_Original.jpg?v=5",
+      "sourceUrl": "https://www.jacklondonrevue.com/tm-event/eric-john-kaiser-album-release/",
+      "origin": "official-event-page",
+      "credit": "Original TicketWeb artwork linked by Jack London Revue",
+      "usageApproved": null
+    },
+    "addedIn": "auto-discovery-2026-11-06",
+    "discovery": {
+      "sourceId": "jack-london-revue",
+      "method": "primary-source-collection"
     }
   },
   {
@@ -26998,6 +30457,58 @@ window.SHOWS_EVENTS = [
     }
   },
   {
+    "id": "auto-mississippi-polaris-2026-11-20-193f1cd5853b",
+    "title": "Sallie Ford & the Sound Outside",
+    "subtitle": "Source-discovered venue event · details need review",
+    "category": "Unclassified",
+    "tags": [
+      "Category needs review",
+      "Time needs confirmation",
+      "Format needs confirmation"
+    ],
+    "musicStyles": [],
+    "eventFormat": "unverified",
+    "classificationEvidence": "No verified event type or genre",
+    "startTimeKind": "listed",
+    "startsAt": "2026-11-20T21:00:00-08:00",
+    "endsAt": null,
+    "venue": "Mississippi Studios",
+    "address": "3939 N Mississippi Ave, Portland, OR 97227",
+    "neighborhood": "Boise",
+    "price": "See organizer for current admission",
+    "free": null,
+    "age": "Not published",
+    "description": "Automatically discovered from a primary venue or promoter listing. Original venue calendar explicitly labels doors and a separate showtime, plus exact date and venue Original Mississippi/Polaris room-verified official event listing. Supporting artists: MAITA",
+    "source": "Mississippi Studios / Polaris Hall",
+    "url": "https://www.etix.com/ticket/p/54677666/sallie-ford-the-sound-outside-portland-mississippi-studios",
+    "icon": "◇",
+    "sourceCheckedAt": "2026-11-07",
+    "verificationMethod": "Automated venue data; editorial date, time, event type and cancellation verification required",
+    "sourceCategories": [],
+    "sources": [
+      {
+        "name": "Mississippi Studios / Polaris Hall",
+        "url": "https://www.etix.com/ticket/p/54677666/sallie-ford-the-sound-outside-portland-mississippi-studios",
+        "kind": "organizer",
+        "checkedAt": "2026-11-07",
+        "originalCategories": []
+      }
+    ],
+    "artwork": {
+      "url": "https://cdn.etix.com/etix/performance-image/performance_image_1200w/7df058e401498fa00bdabb248008847c.jpg",
+      "sourceUrl": "https://mississippistudios.com/calendar",
+      "origin": "official-venue-calendar",
+      "credit": "Venue-provided event flyer",
+      "usageApproved": null
+    },
+    "addedIn": "auto-discovery-2026-11-07",
+    "discovery": {
+      "sourceId": "mississippi-polaris",
+      "method": "primary-source-collection",
+      "verifiedOriginalShowTime": true
+    }
+  },
+  {
     "id": "auto-dantes-2026-11-20-87c2b8c51875",
     "title": "SCHISM (TOOL TRIBUTE) with Guests",
     "subtitle": "Source-discovered venue event · details need review",
@@ -27096,6 +30607,58 @@ window.SHOWS_EVENTS = [
     "addedIn": "auto-discovery-2026-10-29",
     "discovery": {
       "sourceId": "holocene",
+      "method": "primary-source-collection"
+    }
+  },
+  {
+    "id": "auto-alberta-street-pub-2026-11-20-f431bf629841",
+    "title": "Mandela & Friends",
+    "subtitle": "Source-discovered venue event · details need review",
+    "category": "Unclassified",
+    "tags": [
+      "Category needs review",
+      "Time needs confirmation",
+      "Format needs confirmation",
+      "Separate same-day source listing; review bill and room"
+    ],
+    "musicStyles": [],
+    "eventFormat": "unverified",
+    "classificationEvidence": "No verified event type or genre",
+    "startTimeKind": "listed",
+    "startsAt": "2026-11-20T21:30:00-08:00",
+    "endsAt": null,
+    "venue": "Alberta Street Pub",
+    "address": "1036 NE Alberta Street, Portland, OR 97211",
+    "neighborhood": "Alberta Arts District",
+    "price": "See organizer for current admission",
+    "free": null,
+    "age": "Not published",
+    "description": "Automatically discovered from a primary venue or promoter listing. Alberta Street Pub's original Squarespace event record supplies the start and end timestamp; exact performance-versus-doors distinction is unconfirmed. Original venue event listing.",
+    "source": "Alberta Street Pub",
+    "url": "https://www.albertastreetpub.com/music/2026/11/20/mandela-amp-friends",
+    "icon": "◇",
+    "sourceCheckedAt": "2026-11-06",
+    "verificationMethod": "Automated venue data; editorial date, time, event type and cancellation verification required",
+    "sourceCategories": [],
+    "sources": [
+      {
+        "name": "Alberta Street Pub",
+        "url": "https://www.albertastreetpub.com/music/2026/11/20/mandela-amp-friends",
+        "kind": "organizer",
+        "checkedAt": "2026-11-06",
+        "originalCategories": []
+      }
+    ],
+    "artwork": {
+      "url": "https://images.squarespace-cdn.com/content/v1/54109e68e4b06b163549a8dc/1793640477206-2VF48GQXDCCIN7LJONY4/ASP+Logo.jpg",
+      "sourceUrl": "https://www.albertastreetpub.com/music/2026/11/20/mandela-amp-friends",
+      "origin": "official-venue-calendar",
+      "credit": "Alberta Street Pub official event calendar",
+      "usageApproved": null
+    },
+    "addedIn": "auto-discovery-2026-11-06",
+    "discovery": {
+      "sourceId": "alberta-street-pub",
       "method": "primary-source-collection"
     }
   },
@@ -27319,6 +30882,58 @@ window.SHOWS_EVENTS = [
     "seriesId": "psu-farmers-2026"
   },
   {
+    "id": "nopo-arts-market-2026-11-21",
+    "seriesId": "nopo-arts-market-november-2026",
+    "title": "NoPo Creatives Arts Market",
+    "subtitle": "Saturday · Small makers, local art and live music",
+    "category": "Markets",
+    "tags": [
+      "Independent makers",
+      "Art & DIY",
+      "Local music",
+      "Free"
+    ],
+    "startsAt": "2026-11-21T10:00:00-08:00",
+    "endsAt": "2026-11-21T18:00:00-08:00",
+    "venue": "Peninsula Odd Fellows Lodge",
+    "address": "4834 N Lombard St, Portland, OR 97203",
+    "neighborhood": "St. Johns",
+    "price": "Free admission · purchases extra",
+    "free": true,
+    "age": "See organizer",
+    "description": "First day of NoPo Creatives' intentionally small, community-centered Arts Market at Peninsula Odd Fellows, featuring local makers, handmade goods, live music and food. The organizer's vendor information explicitly lists Saturday show hours of 10 AM–6 PM.",
+    "accessibility": "Organizer says the market is in an upstairs second-floor lodge room with no elevator.",
+    "source": "NoPo Creatives",
+    "url": "https://nopocreatives.com/vendor-information/",
+    "icon": "▦",
+    "sourceCheckedAt": "2026-11-03",
+    "verificationMethod": "Original organizer / host published event details; proposed for human review before publication",
+    "sourceCategories": [
+      "Markets"
+    ],
+    "sources": [
+      {
+        "name": "NoPo Creatives",
+        "url": "https://nopocreatives.com/vendor-information/",
+        "kind": "organizer",
+        "checkedAt": "2026-11-03",
+        "originalCategories": [
+          "Markets"
+        ]
+      },
+      {
+        "name": "NoPo Creatives market overview",
+        "url": "https://nopocreatives.com/",
+        "kind": "organizer",
+        "checkedAt": "2026-11-03",
+        "originalCategories": [
+          "Markets"
+        ]
+      }
+    ],
+    "addedIn": "2026-11-03-curated-alt-markets"
+  },
+  {
     "id": "saturday-market-2026-11-21",
     "title": "Portland Saturday Market",
     "subtitle": "Independent makers on the waterfront",
@@ -27399,56 +31014,55 @@ window.SHOWS_EVENTS = [
     "seriesId": "outlet-riso-basics-2026"
   },
   {
-    "id": "nopo-arts-market-2026-11-21",
-    "seriesId": "nopo-arts-market-november-2026",
-    "title": "NoPo Creatives Arts Market",
-    "subtitle": "Saturday · Small makers, local art and live music",
-    "category": "Markets",
+    "id": "auto-alberta-street-pub-2026-11-21-7dede106eaf5",
+    "title": "Drag Brunch Hosted by Nicoleonoscopi!",
+    "subtitle": "Source-discovered venue event · details need review",
+    "category": "Unclassified",
     "tags": [
-      "Independent makers",
-      "Art & DIY",
-      "Local music",
-      "Free"
+      "Category needs review",
+      "Time needs confirmation",
+      "Format needs confirmation"
     ],
-    "startsAt": "2026-11-21T10:00:00-08:00",
-    "endsAt": "2026-11-21T18:00:00-08:00",
-    "venue": "Peninsula Odd Fellows Lodge",
-    "address": "4834 N Lombard St, Portland, OR 97203",
-    "neighborhood": "St. Johns",
-    "price": "Free admission · purchases extra",
-    "free": true,
-    "age": "See organizer",
-    "description": "First day of NoPo Creatives' intentionally small, community-centered Arts Market at Peninsula Odd Fellows, featuring local makers, handmade goods, live music and food. The organizer's vendor information explicitly lists Saturday show hours of 10 AM–6 PM.",
-    "accessibility": "Organizer says the market is in an upstairs second-floor lodge room with no elevator.",
-    "source": "NoPo Creatives",
-    "url": "https://nopocreatives.com/vendor-information/",
-    "icon": "▦",
-    "sourceCheckedAt": "2026-11-03",
-    "verificationMethod": "Original organizer / host published event details; proposed for human review before publication",
-    "sourceCategories": [
-      "Markets"
-    ],
+    "musicStyles": [],
+    "eventFormat": "unverified",
+    "classificationEvidence": "No verified event type or genre",
+    "startTimeKind": "listed",
+    "startsAt": "2026-11-21T12:00:00-08:00",
+    "endsAt": null,
+    "venue": "Alberta Street Pub",
+    "address": "1036 NE Alberta Street, Portland, OR 97211",
+    "neighborhood": "Alberta Arts District",
+    "price": "See organizer for current admission",
+    "free": null,
+    "age": "Not published",
+    "description": "Automatically discovered from a primary venue or promoter listing. Alberta Street Pub's original Squarespace event record supplies the start and end timestamp; exact performance-versus-doors distinction is unconfirmed. Original venue event listing. $20 Tickets can be Purchased HERE",
+    "source": "Alberta Street Pub",
+    "url": "https://www.albertastreetpub.com/music/2026/5/2/drag-brunch-hosted-by-nicoleonoscopi",
+    "icon": "◇",
+    "sourceCheckedAt": "2026-11-06",
+    "verificationMethod": "Automated venue data; editorial date, time, event type and cancellation verification required",
+    "sourceCategories": [],
     "sources": [
       {
-        "name": "NoPo Creatives",
-        "url": "https://nopocreatives.com/vendor-information/",
+        "name": "Alberta Street Pub",
+        "url": "https://www.albertastreetpub.com/music/2026/5/2/drag-brunch-hosted-by-nicoleonoscopi",
         "kind": "organizer",
-        "checkedAt": "2026-11-03",
-        "originalCategories": [
-          "Markets"
-        ]
-      },
-      {
-        "name": "NoPo Creatives market overview",
-        "url": "https://nopocreatives.com/",
-        "kind": "organizer",
-        "checkedAt": "2026-11-03",
-        "originalCategories": [
-          "Markets"
-        ]
+        "checkedAt": "2026-11-06",
+        "originalCategories": []
       }
     ],
-    "addedIn": "2026-11-03-curated-alt-markets"
+    "artwork": {
+      "url": "https://images.squarespace-cdn.com/content/v1/54109e68e4b06b163549a8dc/1776021819634-B38D3LJ4QW5XSP8HX12Y/ASP+Eventbrite+Banner+2026.png",
+      "sourceUrl": "https://www.albertastreetpub.com/music/2026/5/2/drag-brunch-hosted-by-nicoleonoscopi",
+      "origin": "official-venue-calendar",
+      "credit": "Alberta Street Pub official event calendar",
+      "usageApproved": null
+    },
+    "addedIn": "auto-discovery-2026-11-06",
+    "discovery": {
+      "sourceId": "alberta-street-pub",
+      "method": "primary-source-collection"
+    }
   },
   {
     "id": "plus-plus-bizarre-2026-11-21",
@@ -27588,6 +31202,110 @@ window.SHOWS_EVENTS = [
     }
   },
   {
+    "id": "auto-alberta-rose-theatre-2026-11-21-b4490d97f2ee",
+    "title": "The Next Waltz - 50th Anniversary Celebration — 7:30 PM show",
+    "subtitle": "Source-discovered venue event · details need review",
+    "category": "Unclassified",
+    "tags": [
+      "Category needs review",
+      "Time needs confirmation",
+      "Format needs confirmation"
+    ],
+    "musicStyles": [],
+    "eventFormat": "unverified",
+    "classificationEvidence": "No verified event type or genre",
+    "startTimeKind": "listed",
+    "startsAt": "2026-11-21T19:30:00-08:00",
+    "endsAt": null,
+    "venue": "Alberta Rose Theatre",
+    "address": "3000 NE Alberta Street, Portland, OR 97211",
+    "neighborhood": "Concordia",
+    "price": "See organizer for current admission",
+    "free": null,
+    "age": "Not published",
+    "description": "Automatically discovered from a primary venue or promoter listing. Original Alberta Rose month/year heading plus individually scheduled series date, SHOW clock and room-scoped Etix performance ID. Original multi-performance series: The Next Waltz - 50th Anniversary Celebration. Event-specific ticket URL uniquely identifies this session; classify its format from verified source evidence.",
+    "source": "Alberta Rose Theatre",
+    "url": "https://www.etix.com/ticket/p/48896518/the-next-waltz-portland-alberta-rose-theatre",
+    "icon": "◇",
+    "sourceCheckedAt": "2026-11-06",
+    "verificationMethod": "Automated venue data; editorial date, time, event type and cancellation verification required",
+    "sourceCategories": [],
+    "sources": [
+      {
+        "name": "Alberta Rose Theatre",
+        "url": "https://www.etix.com/ticket/p/48896518/the-next-waltz-portland-alberta-rose-theatre",
+        "kind": "organizer",
+        "checkedAt": "2026-11-06",
+        "originalCategories": []
+      }
+    ],
+    "artwork": {
+      "url": "https://albertarosetheatre.com/wp-content/uploads/2026/11/the-next-waltz.jfif",
+      "sourceUrl": "https://albertarosetheatre.com/calendar/category/series/the-next-waltz-50th-anniversary-celebration/alberta-rose-theatre/portland-oregon/",
+      "origin": "official-venue-calendar",
+      "credit": "Alberta Rose Theatre original event artwork",
+      "usageApproved": null
+    },
+    "sourceTicketId": "48896518",
+    "addedIn": "auto-discovery-2026-11-06",
+    "discovery": {
+      "sourceId": "alberta-rose-theatre",
+      "method": "primary-source-collection"
+    }
+  },
+  {
+    "id": "auto-mississippi-polaris-2026-11-21-df3a4de9a705",
+    "title": "The Teacher Show: Comedy from the Classroom (Night 2)",
+    "subtitle": "Source-discovered venue event · details need review",
+    "category": "Performance",
+    "tags": [
+      "Source-listed Performance",
+      "Time needs confirmation",
+      "Format needs confirmation"
+    ],
+    "musicStyles": [],
+    "eventFormat": "unverified",
+    "classificationEvidence": "Event-specific source wording",
+    "startTimeKind": "listed",
+    "startsAt": "2026-11-21T19:30:00-08:00",
+    "endsAt": null,
+    "venue": "Polaris Hall",
+    "address": "635 N Killingsworth Ct, Portland, OR 97217",
+    "neighborhood": "Humboldt",
+    "price": "See organizer for current admission",
+    "free": null,
+    "age": "Not published",
+    "description": "Automatically discovered from a primary venue or promoter listing. Original venue calendar explicitly labels doors and a separate showtime, plus exact date and venue Original Mississippi/Polaris room-verified official event listing",
+    "source": "Mississippi Studios / Polaris Hall",
+    "url": "https://www.etix.com/ticket/p/65038002/the-teacher-showcomedy-from-the-classroom-night-2-portland-polaris-hall",
+    "icon": "◇",
+    "sourceCheckedAt": "2026-11-07",
+    "verificationMethod": "Automated venue data; editorial date, time, event type and cancellation verification required",
+    "sourceCategories": [],
+    "sources": [
+      {
+        "name": "Mississippi Studios / Polaris Hall",
+        "url": "https://www.etix.com/ticket/p/65038002/the-teacher-showcomedy-from-the-classroom-night-2-portland-polaris-hall",
+        "kind": "organizer",
+        "checkedAt": "2026-11-07",
+        "originalCategories": []
+      }
+    ],
+    "artwork": {
+      "url": "https://cdn.etix.com/etix/performance-image/performance_image_1200w/bd07241848889769d6b8c5536948175d.jpg",
+      "sourceUrl": "https://mississippistudios.com/calendar",
+      "origin": "official-venue-calendar",
+      "credit": "Venue-provided event flyer",
+      "usageApproved": null
+    },
+    "addedIn": "auto-discovery-2026-11-07",
+    "discovery": {
+      "sourceId": "mississippi-polaris",
+      "method": "primary-source-collection",
+      "verifiedOriginalShowTime": true
+    }
+  },
+  {
     "id": "hawthorne-fear-factory-2026-11-21",
     "title": "Fear Factory — Cybernetic Domination Tour",
     "subtitle": "Industrial metal · With Darkest Hour, Brotality, Ligature Marks",
@@ -27645,6 +31363,112 @@ window.SHOWS_EVENTS = [
       "origin": "official-event-page",
       "credit": "Official event page",
       "usageApproved": null
+    }
+  },
+  {
+    "id": "auto-jack-london-revue-2026-11-21-b21e2ed187a9",
+    "title": "FOX WALKER, EARL GRACIOUS BAND, LIQUID SUN",
+    "subtitle": "Source-discovered venue event · details need review",
+    "category": "Unclassified",
+    "tags": [
+      "Category needs review",
+      "Time needs confirmation",
+      "Format needs confirmation"
+    ],
+    "musicStyles": [],
+    "eventFormat": "unverified",
+    "classificationEvidence": "No verified event type or genre",
+    "startTimeKind": "listed",
+    "startsAt": "2026-11-21T20:00:00-08:00",
+    "endsAt": null,
+    "venue": "Jack London Revue",
+    "address": "529 SW 4th Ave, Portland, OR 97204",
+    "neighborhood": "Downtown",
+    "price": "See organizer for current admission",
+    "free": null,
+    "age": "Not published",
+    "description": "Automatically discovered from a primary venue or promoter listing. Original JLR event detail verifies full date, venue and showtime separately from doors; the date and clocks match the first-party roster. Original venue event: Soul'd Out Presents: Fox Walker, Earl Gracious Band, Liquid Sun Doors: 7:00pm Show: 8:00pm Ages 21+. https://www.instagram.com/foxwalkermusic https://www.instagram.com/earlgraciousband/ https://www.instagram.com/liquidsun.pdx/ Notes on Seating: Open seating,",
+    "source": "Jack London Revue",
+    "url": "https://www.jacklondonrevue.com/tm-event/fox-walker-earl-gracious-band-liquid-sun/",
+    "icon": "◇",
+    "sourceCheckedAt": "2026-11-06",
+    "verificationMethod": "Automated venue data; editorial date, time, event type and cancellation verification required",
+    "sourceCategories": [],
+    "sources": [
+      {
+        "name": "Jack London Revue",
+        "url": "https://www.jacklondonrevue.com/tm-event/fox-walker-earl-gracious-band-liquid-sun/",
+        "kind": "organizer",
+        "checkedAt": "2026-11-06",
+        "originalCategories": []
+      }
+    ],
+    "artwork": {
+      "url": "https://i.ticketweb.com/i/00/13/03/32/24_Original.jpg?v=3",
+      "sourceUrl": "https://www.jacklondonrevue.com/tm-event/fox-walker-earl-gracious-band-liquid-sun/",
+      "origin": "official-event-page",
+      "credit": "Original TicketWeb artwork linked by Jack London Revue",
+      "usageApproved": null
+    },
+    "addedIn": "auto-discovery-2026-11-06",
+    "discovery": {
+      "sourceId": "jack-london-revue",
+      "method": "primary-source-collection"
+    }
+  },
+  {
+    "id": "auto-alberta-street-pub-2026-11-21-7d7b7ee2677f",
+    "title": "Goth Video Dance Night",
+    "subtitle": "Source-discovered venue event · details need review",
+    "category": "Music",
+    "tags": [
+      "Source-listed Music",
+      "Source-mentioned Goth & darkwave",
+      "Time needs confirmation",
+      "Format needs confirmation",
+      "Separate same-day source listing; review bill and room"
+    ],
+    "musicStyles": [
+      "Goth & darkwave"
+    ],
+    "eventFormat": "unverified",
+    "classificationEvidence": "Event-specific source genre wording",
+    "startTimeKind": "listed",
+    "startsAt": "2026-11-21T20:00:00-08:00",
+    "endsAt": null,
+    "venue": "Alberta Street Pub",
+    "address": "1036 NE Alberta Street, Portland, OR 97211",
+    "neighborhood": "Alberta Arts District",
+    "price": "See organizer for current admission",
+    "free": null,
+    "age": "Not published",
+    "description": "Automatically discovered from a primary venue or promoter listing. Alberta Street Pub's original Squarespace event record supplies the start and end timestamp; exact performance-versus-doors distinction is unconfirmed. Original venue event listing. $10 Cover at the Door",
+    "source": "Alberta Street Pub",
+    "url": "https://www.albertastreetpub.com/music/2026/3/21/video-goth-night",
+    "icon": "♫",
+    "sourceCheckedAt": "2026-11-06",
+    "verificationMethod": "Automated venue data; editorial date, time, event type and cancellation verification required",
+    "sourceCategories": [],
+    "sources": [
+      {
+        "name": "Alberta Street Pub",
+        "url": "https://www.albertastreetpub.com/music/2026/3/21/video-goth-night",
+        "kind": "organizer",
+        "checkedAt": "2026-11-06",
+        "originalCategories": []
+      }
+    ],
+    "artwork": {
+      "url": "https://images.squarespace-cdn.com/content/v1/54109e68e4b06b163549a8dc/1772912557862-DXR095EX06SYD472XOMP/Goth.jpg",
+      "sourceUrl": "https://www.albertastreetpub.com/music/2026/3/21/video-goth-night",
+      "origin": "official-venue-calendar",
+      "credit": "Alberta Street Pub official event calendar",
+      "usageApproved": null
+    },
+    "addedIn": "auto-discovery-2026-11-06",
+    "discovery": {
+      "sourceId": "alberta-street-pub",
+      "method": "primary-source-collection"
     }
   },
   {
@@ -27750,6 +31574,57 @@ window.SHOWS_EVENTS = [
     }
   },
   {
+    "id": "auto-revolution-hall-2026-11-21-0c46f3f47ff5",
+    "title": "Phoebe Robinson: Feral & Fired Up!",
+    "subtitle": "Source-discovered venue event · details need review",
+    "category": "Unclassified",
+    "tags": [
+      "Category needs review",
+      "Time needs confirmation",
+      "Format needs confirmation"
+    ],
+    "musicStyles": [],
+    "eventFormat": "unverified",
+    "classificationEvidence": "No verified event type or genre",
+    "startTimeKind": "listed",
+    "startsAt": "2026-11-21T20:00:00-08:00",
+    "endsAt": null,
+    "venue": "Revolution Hall",
+    "address": "1300 SE Stark St, Portland, OR 97214",
+    "neighborhood": "Buckman",
+    "price": "See organizer for current admission",
+    "free": null,
+    "age": "Not published",
+    "description": "Automatically discovered from a primary venue or promoter listing. Original Revolution Hall event card with complete year, exact room and explicitly labeled show time Official venue listing; lineup and show format need editorial review.",
+    "source": "Revolution Hall",
+    "url": "https://www.etix.com/ticket/p/91940693/phoebe-robinsonferal-fired-up-portland-revolution-hall",
+    "icon": "◇",
+    "sourceCheckedAt": "2026-11-06",
+    "verificationMethod": "Automated venue data; editorial date, time, event type and cancellation verification required",
+    "sourceCategories": [],
+    "sources": [
+      {
+        "name": "Revolution Hall",
+        "url": "https://www.etix.com/ticket/p/91940693/phoebe-robinsonferal-fired-up-portland-revolution-hall",
+        "kind": "organizer",
+        "checkedAt": "2026-11-06",
+        "originalCategories": []
+      }
+    ],
+    "artwork": {
+      "url": "https://cdn.etix.com/etix/performance-image/performance_image_1200w/dfb07c8557709c5999b14e2fb7ee2657.jpg",
+      "sourceUrl": "https://www.revolutionhall.com/",
+      "origin": "official-event-page",
+      "credit": "Official Revolution Hall event flyer via venue-linked Etix",
+      "usageApproved": null
+    },
+    "addedIn": "auto-discovery-2026-11-06",
+    "discovery": {
+      "sourceId": "revolution-hall",
+      "method": "primary-source-collection"
+    }
+  },
+  {
     "id": "auto-starday-tavern-2026-11-21-1a7874ab8b60",
     "title": "Seb El Zin",
     "subtitle": "Source-discovered venue event · details need review",
@@ -27845,6 +31720,57 @@ window.SHOWS_EVENTS = [
     }
   },
   {
+    "id": "auto-revolution-hall-2026-11-21-91790ae5a905",
+    "title": "Video Dance Attack Presents: Studio 54",
+    "subtitle": "Source-discovered venue event · details need review",
+    "category": "Unclassified",
+    "tags": [
+      "Category needs review",
+      "Time needs confirmation",
+      "Format needs confirmation"
+    ],
+    "musicStyles": [],
+    "eventFormat": "unverified",
+    "classificationEvidence": "No verified event type or genre",
+    "startTimeKind": "listed",
+    "startsAt": "2026-11-21T20:00:00-08:00",
+    "endsAt": null,
+    "venue": "Show Bar at Revolution Hall",
+    "address": "1300 SE Stark St, Portland, OR 97214",
+    "neighborhood": "Buckman",
+    "price": "See organizer for current admission",
+    "free": null,
+    "age": "Not published",
+    "description": "Automatically discovered from a primary venue or promoter listing. Original Revolution Hall event card with complete year, exact room and explicitly labeled show time Official venue listing; lineup and show format need editorial review.",
+    "source": "Revolution Hall",
+    "url": "https://www.etix.com/ticket/p/97866523/video-dance-attack-presentsstudio-54-portland-show-bar-at-revolution-hall",
+    "icon": "◇",
+    "sourceCheckedAt": "2026-11-06",
+    "verificationMethod": "Automated venue data; editorial date, time, event type and cancellation verification required",
+    "sourceCategories": [],
+    "sources": [
+      {
+        "name": "Revolution Hall",
+        "url": "https://www.etix.com/ticket/p/97866523/video-dance-attack-presentsstudio-54-portland-show-bar-at-revolution-hall",
+        "kind": "organizer",
+        "checkedAt": "2026-11-06",
+        "originalCategories": []
+      }
+    ],
+    "artwork": {
+      "url": "https://cdn.etix.com/etix/performance-image/performance_image_1200w/a24baef034263047e1685df00bccefdb.jpg",
+      "sourceUrl": "https://www.revolutionhall.com/",
+      "origin": "official-event-page",
+      "credit": "Official Revolution Hall event flyer via venue-linked Etix",
+      "usageApproved": null
+    },
+    "addedIn": "auto-discovery-2026-11-06",
+    "discovery": {
+      "sourceId": "revolution-hall",
+      "method": "primary-source-collection"
+    }
+  },
+  {
     "id": "auto-high-water-2026-11-21-5b9e3cc77dd6",
     "title": "Ils, Spares, Goldwing",
     "subtitle": "Source-discovered venue event · details need review",
@@ -27891,6 +31817,114 @@ window.SHOWS_EVENTS = [
       "method": "primary-source-collection"
     },
     "classificationSourceUrl": "https://www.songkick.com/concerts/43461474-ils-at-high-water-mark-lounge"
+  },
+  {
+    "id": "auto-twilight-2026-11-21-f0610feba1d7",
+    "title": "Alterlatino Night! Ska-Rock-Rock en Espanol-Punk-Y2K Vibras-Y Mas!",
+    "subtitle": "Source-discovered venue event · details need review",
+    "category": "Music",
+    "tags": [
+      "Source-listed Music",
+      "Source-mentioned Punk",
+      "Source-mentioned Reggae & ska",
+      "Time needs confirmation",
+      "Format needs confirmation"
+    ],
+    "musicStyles": [
+      "Punk",
+      "Reggae & ska"
+    ],
+    "eventFormat": "unverified",
+    "classificationEvidence": "Event-specific source genre wording",
+    "startTimeKind": "listed",
+    "startsAt": "2026-11-21T21:00:00-08:00",
+    "endsAt": null,
+    "venue": "Twilight Cafe and Bar",
+    "address": "832 SE Grand Ave, Portland, OR 97214",
+    "neighborhood": "Central Eastside",
+    "price": "See organizer for current admission",
+    "free": null,
+    "age": "Not published",
+    "description": "Automatically discovered from a primary venue or promoter listing. Twilight publishes this as performance start Official Twilight event schema",
+    "source": "Twilight Cafe and Bar",
+    "url": "https://www.twilightcafeandbar.com/event/468839/-alterlatino-night-ska-rock-rock-en-espanol-punk-y2k-vibras-y-mas",
+    "icon": "♫",
+    "sourceCheckedAt": "2026-11-06",
+    "verificationMethod": "Automated venue data; editorial date, time, event type and cancellation verification required",
+    "sourceCategories": [],
+    "sources": [
+      {
+        "name": "Twilight Cafe and Bar",
+        "url": "https://www.twilightcafeandbar.com/event/468839/-alterlatino-night-ska-rock-rock-en-espanol-punk-y2k-vibras-y-mas",
+        "kind": "organizer",
+        "checkedAt": "2026-11-06",
+        "originalCategories": []
+      }
+    ],
+    "artwork": {
+      "url": "https://files.holdmyticket.com/image/upload/q_68,dn_72,f_auto/v6/uploads/flyers2/w9mf0waee3ua9jogqz0b.jpg",
+      "sourceUrl": "https://www.twilightcafeandbar.com/event/468839/-alterlatino-night-ska-rock-rock-en-espanol-punk-y2k-vibras-y-mas",
+      "origin": "official-event-page",
+      "credit": "Official event page",
+      "usageApproved": null
+    },
+    "addedIn": "auto-discovery-2026-11-06",
+    "discovery": {
+      "sourceId": "twilight",
+      "method": "primary-source-collection"
+    }
+  },
+  {
+    "id": "auto-mississippi-polaris-2026-11-21-11ed8e405e33",
+    "title": "Bobby Short Shorts: An Evening of Grateful Dead Music",
+    "subtitle": "Source-discovered venue event · details need review",
+    "category": "Unclassified",
+    "tags": [
+      "Category needs review",
+      "Time needs confirmation",
+      "Format needs confirmation"
+    ],
+    "musicStyles": [],
+    "eventFormat": "unverified",
+    "classificationEvidence": "No verified event type or genre",
+    "startTimeKind": "listed",
+    "startsAt": "2026-11-21T21:00:00-08:00",
+    "endsAt": null,
+    "venue": "Mississippi Studios",
+    "address": "3939 N Mississippi Ave, Portland, OR 97227",
+    "neighborhood": "Boise",
+    "price": "See organizer for current admission",
+    "free": null,
+    "age": "Not published",
+    "description": "Automatically discovered from a primary venue or promoter listing. Original venue calendar explicitly labels doors and a separate showtime, plus exact date and venue Original Mississippi/Polaris room-verified official event listing",
+    "source": "Mississippi Studios / Polaris Hall",
+    "url": "https://www.etix.com/ticket/p/86386129/bobby-short-shortsan-evening-of-grateful-dead-music-portland-mississippi-studios",
+    "icon": "◇",
+    "sourceCheckedAt": "2026-11-07",
+    "verificationMethod": "Automated venue data; editorial date, time, event type and cancellation verification required",
+    "sourceCategories": [],
+    "sources": [
+      {
+        "name": "Mississippi Studios / Polaris Hall",
+        "url": "https://www.etix.com/ticket/p/86386129/bobby-short-shortsan-evening-of-grateful-dead-music-portland-mississippi-studios",
+        "kind": "organizer",
+        "checkedAt": "2026-11-07",
+        "originalCategories": []
+      }
+    ],
+    "artwork": {
+      "url": "https://cdn.etix.com/etix/performance-image/performance_image_1200w/5f5f3c259ac6516f8b3be9e966d5ebdc.jpg",
+      "sourceUrl": "https://mississippistudios.com/calendar",
+      "origin": "official-venue-calendar",
+      "credit": "Venue-provided event flyer",
+      "usageApproved": null
+    },
+    "addedIn": "auto-discovery-2026-11-07",
+    "discovery": {
+      "sourceId": "mississippi-polaris",
+      "method": "primary-source-collection",
+      "verifiedOriginalShowTime": true
+    }
   },
   {
     "id": "auto-nova-pdx-2026-11-21-52cc586ab22d",
@@ -28044,6 +32078,58 @@ window.SHOWS_EVENTS = [
     "addedIn": "auto-discovery-2026-10-21",
     "discovery": {
       "sourceId": "dantes",
+      "method": "primary-source-collection"
+    }
+  },
+  {
+    "id": "auto-jack-london-revue-2026-11-21-9128dcc602c2",
+    "title": "BURLY-Q REVUE",
+    "subtitle": "Source-discovered venue event · details need review",
+    "category": "Unclassified",
+    "tags": [
+      "Category needs review",
+      "Time needs confirmation",
+      "Format needs confirmation",
+      "Separate same-day source listing; review bill and room"
+    ],
+    "musicStyles": [],
+    "eventFormat": "unverified",
+    "classificationEvidence": "No verified event type or genre",
+    "startTimeKind": "listed",
+    "startsAt": "2026-11-21T22:30:00-08:00",
+    "endsAt": null,
+    "venue": "Jack London Revue",
+    "address": "529 SW 4th Ave, Portland, OR 97204",
+    "neighborhood": "Downtown",
+    "price": "See organizer for current admission",
+    "free": null,
+    "age": "Not published",
+    "description": "Automatically discovered from a primary venue or promoter listing. Original JLR event detail verifies full date, venue and showtime separately from doors; the date and clocks match the first-party roster. Original venue event: Join us at the Jack London for the latest edition of our late-night cabaret spectacular, hosted by the Mad Marquis and featuring some of the finest dancers from the Rose City and beyond. Treat yourself to a sensational evening of sultry and exotic delights, ",
+    "source": "Jack London Revue",
+    "url": "https://www.jacklondonrevue.com/tm-event/burly-q-revue-7/",
+    "icon": "◇",
+    "sourceCheckedAt": "2026-11-06",
+    "verificationMethod": "Automated venue data; editorial date, time, event type and cancellation verification required",
+    "sourceCategories": [],
+    "sources": [
+      {
+        "name": "Jack London Revue",
+        "url": "https://www.jacklondonrevue.com/tm-event/burly-q-revue-7/",
+        "kind": "organizer",
+        "checkedAt": "2026-11-06",
+        "originalCategories": []
+      }
+    ],
+    "artwork": {
+      "url": "https://i.ticketweb.com/i/00/12/77/00/04_Original.jpg?v=5",
+      "sourceUrl": "https://www.jacklondonrevue.com/tm-event/burly-q-revue-7/",
+      "origin": "official-event-page",
+      "credit": "Original TicketWeb artwork linked by Jack London Revue",
+      "usageApproved": null
+    },
+    "addedIn": "auto-discovery-2026-11-06",
+    "discovery": {
+      "sourceId": "jack-london-revue",
       "method": "primary-source-collection"
     }
   },
@@ -28425,6 +32511,57 @@ window.SHOWS_EVENTS = [
     "addedIn": "auto-discovery-2026-10-18",
     "discovery": {
       "sourceId": "no-fun",
+      "method": "primary-source-collection"
+    }
+  },
+  {
+    "id": "auto-revolution-hall-2026-11-22-f82cb7b51b11",
+    "title": "ERIC SKYE TRIO Plays Miles Davis featuring Tye North and Michah Kassell",
+    "subtitle": "Source-discovered venue event · details need review",
+    "category": "Unclassified",
+    "tags": [
+      "Category needs review",
+      "Time needs confirmation",
+      "Format needs confirmation"
+    ],
+    "musicStyles": [],
+    "eventFormat": "unverified",
+    "classificationEvidence": "No verified event type or genre",
+    "startTimeKind": "listed",
+    "startsAt": "2026-11-22T19:00:00-08:00",
+    "endsAt": null,
+    "venue": "Show Bar at Revolution Hall",
+    "address": "1300 SE Stark St, Portland, OR 97214",
+    "neighborhood": "Buckman",
+    "price": "See organizer for current admission",
+    "free": null,
+    "age": "Not published",
+    "description": "Automatically discovered from a primary venue or promoter listing. Original Revolution Hall event card with complete year, exact room and explicitly labeled show time Official venue listing; lineup and show format need editorial review.",
+    "source": "Revolution Hall",
+    "url": "https://www.etix.com/ticket/p/49532598/eric-skye-trio-plays-miles-davis-featuring-tye-north-and-michah-kassell-portland-show-bar-at-revolution-hall",
+    "icon": "◇",
+    "sourceCheckedAt": "2026-11-06",
+    "verificationMethod": "Automated venue data; editorial date, time, event type and cancellation verification required",
+    "sourceCategories": [],
+    "sources": [
+      {
+        "name": "Revolution Hall",
+        "url": "https://www.etix.com/ticket/p/49532598/eric-skye-trio-plays-miles-davis-featuring-tye-north-and-michah-kassell-portland-show-bar-at-revolution-hall",
+        "kind": "organizer",
+        "checkedAt": "2026-11-06",
+        "originalCategories": []
+      }
+    ],
+    "artwork": {
+      "url": "https://cdn.etix.com/etix/performance-image/performance_image_1200w/ff9131693028bfa80eb8221c5da0d4af.jpg",
+      "sourceUrl": "https://www.revolutionhall.com/",
+      "origin": "official-event-page",
+      "credit": "Official Revolution Hall event flyer via venue-linked Etix",
+      "usageApproved": null
+    },
+    "addedIn": "auto-discovery-2026-11-06",
+    "discovery": {
+      "sourceId": "revolution-hall",
       "method": "primary-source-collection"
     }
   },
@@ -29698,6 +33835,57 @@ window.SHOWS_EVENTS = [
     }
   },
   {
+    "id": "auto-jack-london-revue-2026-11-25-808d4d0d9383",
+    "title": "INFINITY",
+    "subtitle": "Source-discovered venue event · details need review",
+    "category": "Unclassified",
+    "tags": [
+      "Category needs review",
+      "Time needs confirmation",
+      "Format needs confirmation"
+    ],
+    "musicStyles": [],
+    "eventFormat": "unverified",
+    "classificationEvidence": "No verified event type or genre",
+    "startTimeKind": "listed",
+    "startsAt": "2026-11-25T20:00:00-08:00",
+    "endsAt": null,
+    "venue": "Jack London Revue",
+    "address": "529 SW 4th Ave, Portland, OR 97204",
+    "neighborhood": "Downtown",
+    "price": "See organizer for current admission",
+    "free": null,
+    "age": "Not published",
+    "description": "Automatically discovered from a primary venue or promoter listing. Original JLR event detail verifies full date, venue and showtime separately from doors; the date and clocks match the first-party roster. Original venue event: Soul'd Out & Jack London Presents: INFINITY featuring Rhys Phillips, Matthew Snyder, Ben Landsverk, Eric Phillips, Brian Foxworth and more. At the helm of INFINITY is band leader Rhys Phillips, who contributes keyboards, guitar, and vocals. Rhys brings a dis",
+    "source": "Jack London Revue",
+    "url": "https://www.jacklondonrevue.com/tm-event/infinity/",
+    "icon": "◇",
+    "sourceCheckedAt": "2026-11-06",
+    "verificationMethod": "Automated venue data; editorial date, time, event type and cancellation verification required",
+    "sourceCategories": [],
+    "sources": [
+      {
+        "name": "Jack London Revue",
+        "url": "https://www.jacklondonrevue.com/tm-event/infinity/",
+        "kind": "organizer",
+        "checkedAt": "2026-11-06",
+        "originalCategories": []
+      }
+    ],
+    "artwork": {
+      "url": "https://i.ticketweb.com/i/00/13/06/35/94_Original.jpg?v=8",
+      "sourceUrl": "https://www.jacklondonrevue.com/tm-event/infinity/",
+      "origin": "official-event-page",
+      "credit": "Original TicketWeb artwork linked by Jack London Revue",
+      "usageApproved": null
+    },
+    "addedIn": "auto-discovery-2026-11-06",
+    "discovery": {
+      "sourceId": "jack-london-revue",
+      "method": "primary-source-collection"
+    }
+  },
+  {
     "id": "auto-no-fun-2026-11-25-1f7ec0dd8f78",
     "title": "NO FUN KARAOKE",
     "subtitle": "Source-discovered venue event · details need review",
@@ -29747,6 +33935,57 @@ window.SHOWS_EVENTS = [
       "method": "primary-source-collection"
     },
     "classificationEvidence": "Event-specific source wording"
+  },
+  {
+    "id": "auto-revolution-hall-2026-11-25-28d809924442",
+    "title": "Scott Bradlee’s Postmodern Jukebox – The Future Is Vintage World Tour",
+    "subtitle": "Source-discovered venue event · details need review",
+    "category": "Unclassified",
+    "tags": [
+      "Category needs review",
+      "Time needs confirmation",
+      "Format needs confirmation"
+    ],
+    "musicStyles": [],
+    "eventFormat": "unverified",
+    "classificationEvidence": "No verified event type or genre",
+    "startTimeKind": "listed",
+    "startsAt": "2026-11-25T20:00:00-08:00",
+    "endsAt": null,
+    "venue": "Revolution Hall",
+    "address": "1300 SE Stark St, Portland, OR 97214",
+    "neighborhood": "Buckman",
+    "price": "See organizer for current admission",
+    "free": null,
+    "age": "Not published",
+    "description": "Automatically discovered from a primary venue or promoter listing. Original Revolution Hall event card with complete year, exact room and explicitly labeled show time Official venue listing; lineup and show format need editorial review.",
+    "source": "Revolution Hall",
+    "url": "https://www.etix.com/ticket/p/33093850/scott-bradlees-postmodern-jukebox-the-future-is-vintage-world-tour-portland-revolution-hall",
+    "icon": "◇",
+    "sourceCheckedAt": "2026-11-07",
+    "verificationMethod": "Automated venue data; editorial date, time, event type and cancellation verification required",
+    "sourceCategories": [],
+    "sources": [
+      {
+        "name": "Revolution Hall",
+        "url": "https://www.etix.com/ticket/p/33093850/scott-bradlees-postmodern-jukebox-the-future-is-vintage-world-tour-portland-revolution-hall",
+        "kind": "organizer",
+        "checkedAt": "2026-11-07",
+        "originalCategories": []
+      }
+    ],
+    "artwork": {
+      "url": "https://cdn.etix.com/etix/performance-image/performance_image_1200w/292567e65a2bab494ea128a507ccb166.jpg",
+      "sourceUrl": "https://www.revolutionhall.com/",
+      "origin": "official-event-page",
+      "credit": "Official Revolution Hall event flyer via venue-linked Etix",
+      "usageApproved": null
+    },
+    "addedIn": "auto-discovery-2026-11-07",
+    "discovery": {
+      "sourceId": "revolution-hall",
+      "method": "primary-source-collection"
+    }
   },
   {
     "id": "auto-aladdin-theater-2026-11-25-6d67fa98a9f7",
@@ -30325,6 +34564,57 @@ window.SHOWS_EVENTS = [
     }
   },
   {
+    "id": "auto-the-off-beat-2026-11-27-f25d6423d28c",
+    "title": "11/27 Let's Meet at The Off Beat",
+    "subtitle": "Source-discovered venue event · details need review",
+    "category": "Music",
+    "tags": [
+      "Source-listed Music",
+      "Time needs confirmation",
+      "Format needs confirmation"
+    ],
+    "musicStyles": [],
+    "eventFormat": "unverified",
+    "classificationEvidence": "Source event type: MusicEvent",
+    "startTimeKind": "listed",
+    "startsAt": "2026-11-27T19:00:00-08:00",
+    "endsAt": null,
+    "venue": "The Off Beat",
+    "address": "8440 N Interstate Ave, Portland, OR 97217",
+    "neighborhood": "Kenton",
+    "price": "See organizer for current admission",
+    "free": null,
+    "age": "Not published",
+    "description": "Automatically discovered from a primary venue or promoter listing. Official event schema and source description agree on the dated Pacific performance time; doors are separate. When November 27, 2026 · 7:00 pm - 10:00 pm Doors 6:30 pm Where The Off Beat Portland, OR Ages All Ages Price $0.00 Get Tickets 11/27 Let's Meet at The Off Beat Gambit Sinatra Butta Muzik Tai$hoku Sole Context Qibo JuanJose The Off Beat 8440 N Interstate Ave, 6:30 Doors 7:00 Show",
+    "source": "The Off Beat / Friends of Noise",
+    "url": "https://calendar.friendsofnoise.org/shows/11-27-let-s-meet-at-the-off-beat-november-27-2026-749620",
+    "icon": "♫",
+    "sourceCheckedAt": "2026-11-06",
+    "verificationMethod": "Automated venue data; editorial date, time, event type and cancellation verification required",
+    "sourceCategories": [],
+    "sources": [
+      {
+        "name": "The Off Beat / Friends of Noise",
+        "url": "https://calendar.friendsofnoise.org/shows/11-27-let-s-meet-at-the-off-beat-november-27-2026-749620",
+        "kind": "organizer",
+        "checkedAt": "2026-11-06",
+        "originalCategories": []
+      }
+    ],
+    "artwork": {
+      "url": "https://s3.amazonaws.com/opendate-aws-assets/confirms/website_event_images/000/749/620/compressed/Untitled_design.jpg?1793991430",
+      "sourceUrl": "https://calendar.friendsofnoise.org/shows/11-27-let-s-meet-at-the-off-beat-november-27-2026-749620",
+      "origin": "official-event-page",
+      "credit": "Friends of Noise / The Off Beat — source-provided event image",
+      "usageApproved": null
+    },
+    "addedIn": "auto-discovery-2026-11-06",
+    "discovery": {
+      "sourceId": "the-off-beat",
+      "method": "primary-source-collection"
+    }
+  },
+  {
     "id": "hawthorne-bodysnatcher-2026-11-27",
     "title": "Bodysnatcher — Hell Is Here, Hell Is Home",
     "subtitle": "Metal · With Gideon, Psycho-Frame, Volatile Ways",
@@ -30547,6 +34837,57 @@ window.SHOWS_EVENTS = [
     }
   },
   {
+    "id": "auto-alberta-rose-theatre-2026-11-27-d55c698d1ac4",
+    "title": "Red Light Romeos’ Yachtsgiving – A Yacht Rock Extravaganza",
+    "subtitle": "Source-discovered venue event · details need review",
+    "category": "Unclassified",
+    "tags": [
+      "Category needs review",
+      "Time needs confirmation",
+      "Format needs confirmation"
+    ],
+    "musicStyles": [],
+    "eventFormat": "unverified",
+    "classificationEvidence": "No verified event type or genre",
+    "startTimeKind": "listed",
+    "startsAt": "2026-11-27T20:00:00-08:00",
+    "endsAt": null,
+    "venue": "Alberta Rose Theatre",
+    "address": "3000 NE Alberta Street, Portland, OR 97211",
+    "neighborhood": "Concordia",
+    "price": "See organizer for current admission",
+    "free": null,
+    "age": "Not published",
+    "description": "Automatically discovered from a primary venue or promoter listing. Original Alberta Rose dated calendar month/year, weekday, exact room and separately labeled SHOW time; doors not substituted. Original theatre calendar; music style and format require event-specific editorial assessment.",
+    "source": "Alberta Rose Theatre",
+    "url": "https://albertarosetheatre.com/event/red-light-romeos-yachtsgiving-a-yacht-rock-extravaganza/alberta-rose-theatre/portland-oregon/",
+    "icon": "◇",
+    "sourceCheckedAt": "2026-11-06",
+    "verificationMethod": "Automated venue data; editorial date, time, event type and cancellation verification required",
+    "sourceCategories": [],
+    "sources": [
+      {
+        "name": "Alberta Rose Theatre",
+        "url": "https://albertarosetheatre.com/event/red-light-romeos-yachtsgiving-a-yacht-rock-extravaganza/alberta-rose-theatre/portland-oregon/",
+        "kind": "organizer",
+        "checkedAt": "2026-11-06",
+        "originalCategories": []
+      }
+    ],
+    "artwork": {
+      "url": "https://albertarosetheatre.com/wp-content/uploads/2026/10/red-light-romeos-yachtsgiving-a-yacht-rock-extravaganza.jfif",
+      "sourceUrl": "https://albertarosetheatre.com/event/red-light-romeos-yachtsgiving-a-yacht-rock-extravaganza/alberta-rose-theatre/portland-oregon/",
+      "origin": "official-venue-calendar",
+      "credit": "Alberta Rose Theatre original event artwork",
+      "usageApproved": null
+    },
+    "addedIn": "auto-discovery-2026-11-06",
+    "discovery": {
+      "sourceId": "alberta-rose-theatre",
+      "method": "primary-source-collection"
+    }
+  },
+  {
     "id": "auto-aladdin-theater-2026-11-27-3c5b3ce111c6",
     "title": "The Storm Large Holiday Ordeal (Night 1)",
     "subtitle": "Source-discovered venue event · details need review",
@@ -30645,6 +34986,60 @@ window.SHOWS_EVENTS = [
     "addedIn": "auto-discovery-2026-11-01",
     "discovery": {
       "sourceId": "star-theater",
+      "method": "primary-source-collection"
+    }
+  },
+  {
+    "id": "auto-jack-london-revue-2026-11-27-931156288124",
+    "title": "Black Friday Neo Soul Supper Club",
+    "subtitle": "Source-discovered venue event · details need review",
+    "category": "Music",
+    "tags": [
+      "Source-listed Music",
+      "Source-mentioned R&B & soul",
+      "Time needs confirmation",
+      "Format needs confirmation"
+    ],
+    "musicStyles": [
+      "R&B & soul"
+    ],
+    "eventFormat": "unverified",
+    "classificationEvidence": "Event-specific source genre wording",
+    "startTimeKind": "listed",
+    "startsAt": "2026-11-27T20:30:00-08:00",
+    "endsAt": null,
+    "venue": "Jack London Revue",
+    "address": "529 SW 4th Ave, Portland, OR 97204",
+    "neighborhood": "Downtown",
+    "price": "See organizer for current admission",
+    "free": null,
+    "age": "Not published",
+    "description": "Automatically discovered from a primary venue or promoter listing. Original JLR event detail verifies full date, venue and showtime separately from doors; the date and clocks match the first-party roster. Original venue event: Notes on Seating: Only tables 1-6 are reservable and come with 2 meals. The Reserved seating is first come, first seated. You may be seated with people not in your party. GA Tickets are not guaranteed a seat, and may be standing room only. Meals are availabl",
+    "source": "Jack London Revue",
+    "url": "https://www.jacklondonrevue.com/tm-event/black-friday-neo-soul-supper-club/",
+    "icon": "♫",
+    "sourceCheckedAt": "2026-11-06",
+    "verificationMethod": "Automated venue data; editorial date, time, event type and cancellation verification required",
+    "sourceCategories": [],
+    "sources": [
+      {
+        "name": "Jack London Revue",
+        "url": "https://www.jacklondonrevue.com/tm-event/black-friday-neo-soul-supper-club/",
+        "kind": "organizer",
+        "checkedAt": "2026-11-06",
+        "originalCategories": []
+      }
+    ],
+    "artwork": {
+      "url": "https://i.ticketweb.com/i/00/13/12/37/34_Original.jpg?v=8",
+      "sourceUrl": "https://www.jacklondonrevue.com/tm-event/black-friday-neo-soul-supper-club/",
+      "origin": "official-event-page",
+      "credit": "Original TicketWeb artwork linked by Jack London Revue",
+      "usageApproved": null
+    },
+    "addedIn": "auto-discovery-2026-11-06",
+    "discovery": {
+      "sourceId": "jack-london-revue",
       "method": "primary-source-collection"
     }
   },
@@ -30785,6 +35180,108 @@ window.SHOWS_EVENTS = [
     "addedIn": "auto-discovery-2026-10-24",
     "discovery": {
       "sourceId": "starday-tavern",
+      "method": "primary-source-collection"
+    }
+  },
+  {
+    "id": "auto-alberta-street-pub-2026-11-27-4fbd6706ce17",
+    "title": "Kitschmas Crackers Black Friday",
+    "subtitle": "Source-discovered venue event · details need review",
+    "category": "Unclassified",
+    "tags": [
+      "Category needs review",
+      "Time needs confirmation",
+      "Format needs confirmation"
+    ],
+    "musicStyles": [],
+    "eventFormat": "unverified",
+    "classificationEvidence": "No verified event type or genre",
+    "startTimeKind": "listed",
+    "startsAt": "2026-11-27T21:00:00-08:00",
+    "endsAt": null,
+    "venue": "Alberta Street Pub",
+    "address": "1036 NE Alberta Street, Portland, OR 97211",
+    "neighborhood": "Alberta Arts District",
+    "price": "See organizer for current admission",
+    "free": null,
+    "age": "Not published",
+    "description": "Automatically discovered from a primary venue or promoter listing. Alberta Street Pub's original Squarespace event record supplies the start and end timestamp; exact performance-versus-doors distinction is unconfirmed. Original venue event listing. Tickets at atouchtoomuch.com",
+    "source": "Alberta Street Pub",
+    "url": "https://www.albertastreetpub.com/music/2026/11/27/kitschmas-crackers-black-friday",
+    "icon": "◇",
+    "sourceCheckedAt": "2026-11-06",
+    "verificationMethod": "Automated venue data; editorial date, time, event type and cancellation verification required",
+    "sourceCategories": [],
+    "sources": [
+      {
+        "name": "Alberta Street Pub",
+        "url": "https://www.albertastreetpub.com/music/2026/11/27/kitschmas-crackers-black-friday",
+        "kind": "organizer",
+        "checkedAt": "2026-11-06",
+        "originalCategories": []
+      }
+    ],
+    "artwork": {
+      "url": "https://images.squarespace-cdn.com/content/v1/54109e68e4b06b163549a8dc/1793039554377-MYYRQJOW2G4FIM80UDG0/Black+Friday.jpg",
+      "sourceUrl": "https://www.albertastreetpub.com/music/2026/11/27/kitschmas-crackers-black-friday",
+      "origin": "official-venue-calendar",
+      "credit": "Alberta Street Pub official event calendar",
+      "usageApproved": null
+    },
+    "addedIn": "auto-discovery-2026-11-06",
+    "discovery": {
+      "sourceId": "alberta-street-pub",
+      "method": "primary-source-collection"
+    }
+  },
+  {
+    "id": "auto-holocene-2026-11-27-734cd74efdb1",
+    "title": "SNAP! '90s Dance Party!: '90s Thanksgiving Edition",
+    "subtitle": "Source-discovered venue event · details need review",
+    "category": "Music",
+    "tags": [
+      "Source-listed Music",
+      "Time needs confirmation",
+      "Format needs confirmation"
+    ],
+    "musicStyles": [],
+    "eventFormat": "unverified",
+    "classificationEvidence": "Source event type: MusicEvent",
+    "startTimeKind": "listed",
+    "startsAt": "2026-11-27T21:00:00-08:00",
+    "endsAt": null,
+    "venue": "Holocene",
+    "address": "1001 SE Morrison St, Portland, OR 97214",
+    "neighborhood": "Buckman",
+    "price": "See organizer for current admission",
+    "free": null,
+    "age": "Not published",
+    "description": "Automatically discovered from a primary venue or promoter listing. Original Holocene structured event data publishes a date/year and time; the site may label this as doors, not performance start Original venue event page; confirm actual performance start versus doors, event status and image rights during review",
+    "source": "Holocene",
+    "url": "https://www.holocene.org/events/2026-11-27-snap-90s-dance-party-90s-thanksgiving-edition",
+    "icon": "♫",
+    "sourceCheckedAt": "2026-11-06",
+    "verificationMethod": "Automated venue data; editorial date, time, event type and cancellation verification required",
+    "sourceCategories": [],
+    "sources": [
+      {
+        "name": "Holocene",
+        "url": "https://www.holocene.org/events/2026-11-27-snap-90s-dance-party-90s-thanksgiving-edition",
+        "kind": "organizer",
+        "checkedAt": "2026-11-06",
+        "originalCategories": []
+      }
+    ],
+    "artwork": {
+      "url": "https://cdn.etix.com/etix/performance-image/performance_image_1200w/94c4b4256a8d77740d305b533ff1b374.jpg",
+      "sourceUrl": "https://www.holocene.org/events/2026-11-27-snap-90s-dance-party-90s-thanksgiving-edition",
+      "origin": "official-event-page",
+      "credit": "Official event page",
+      "usageApproved": null
+    },
+    "addedIn": "auto-discovery-2026-11-06",
+    "discovery": {
+      "sourceId": "holocene",
       "method": "primary-source-collection"
     }
   },
@@ -31224,6 +35721,58 @@ window.SHOWS_EVENTS = [
     "addedIn": "2026-10-17-venue-coverage"
   },
   {
+    "id": "auto-alberta-rose-theatre-2026-11-28-ed831b20fef2",
+    "title": "The Next Waltz - 50th Anniversary Celebration — 7:30 PM show",
+    "subtitle": "Source-discovered venue event · details need review",
+    "category": "Unclassified",
+    "tags": [
+      "Category needs review",
+      "Time needs confirmation",
+      "Format needs confirmation"
+    ],
+    "musicStyles": [],
+    "eventFormat": "unverified",
+    "classificationEvidence": "No verified event type or genre",
+    "startTimeKind": "listed",
+    "startsAt": "2026-11-28T19:30:00-08:00",
+    "endsAt": null,
+    "venue": "Alberta Rose Theatre",
+    "address": "3000 NE Alberta Street, Portland, OR 97211",
+    "neighborhood": "Concordia",
+    "price": "See organizer for current admission",
+    "free": null,
+    "age": "Not published",
+    "description": "Automatically discovered from a primary venue or promoter listing. Original Alberta Rose month/year heading plus individually scheduled series date, SHOW clock and room-scoped Etix performance ID. Original multi-performance series: The Next Waltz - 50th Anniversary Celebration. Event-specific ticket URL uniquely identifies this session; classify its format from verified source evidence.",
+    "source": "Alberta Rose Theatre",
+    "url": "https://www.etix.com/ticket/p/31011747/the-next-waltz-portland-alberta-rose-theatre",
+    "icon": "◇",
+    "sourceCheckedAt": "2026-11-06",
+    "verificationMethod": "Automated venue data; editorial date, time, event type and cancellation verification required",
+    "sourceCategories": [],
+    "sources": [
+      {
+        "name": "Alberta Rose Theatre",
+        "url": "https://www.etix.com/ticket/p/31011747/the-next-waltz-portland-alberta-rose-theatre",
+        "kind": "organizer",
+        "checkedAt": "2026-11-06",
+        "originalCategories": []
+      }
+    ],
+    "artwork": {
+      "url": "https://albertarosetheatre.com/wp-content/uploads/2026/11/the-next-waltz.jfif",
+      "sourceUrl": "https://albertarosetheatre.com/calendar/category/series/the-next-waltz-50th-anniversary-celebration/alberta-rose-theatre/portland-oregon/",
+      "origin": "official-venue-calendar",
+      "credit": "Alberta Rose Theatre original event artwork",
+      "usageApproved": null
+    },
+    "sourceTicketId": "31011747",
+    "addedIn": "auto-discovery-2026-11-06",
+    "discovery": {
+      "sourceId": "alberta-rose-theatre",
+      "method": "primary-source-collection"
+    }
+  },
+  {
     "id": "auto-showdown-2026-11-28-6bec3e9d49be",
     "title": "FRIENDS IN LOW PLACES ~ 90s Country Night",
     "subtitle": "Source-discovered venue event · details need review",
@@ -31320,6 +35869,57 @@ window.SHOWS_EVENTS = [
     "addedIn": "auto-discovery-2026-10-21",
     "discovery": {
       "sourceId": "hawthorne-theatre",
+      "method": "primary-source-collection"
+    }
+  },
+  {
+    "id": "auto-jack-london-revue-2026-11-28-773b5c4e8fde",
+    "title": "ONE WAY OUT - ALLMAN BROTHERS BAND TRIBUTE",
+    "subtitle": "Source-discovered venue event · details need review",
+    "category": "Unclassified",
+    "tags": [
+      "Category needs review",
+      "Time needs confirmation",
+      "Format needs confirmation"
+    ],
+    "musicStyles": [],
+    "eventFormat": "unverified",
+    "classificationEvidence": "No verified event type or genre",
+    "startTimeKind": "listed",
+    "startsAt": "2026-11-28T20:00:00-08:00",
+    "endsAt": null,
+    "venue": "Jack London Revue",
+    "address": "529 SW 4th Ave, Portland, OR 97204",
+    "neighborhood": "Downtown",
+    "price": "See organizer for current admission",
+    "free": null,
+    "age": "Not published",
+    "description": "Automatically discovered from a primary venue or promoter listing. Original JLR event detail verifies full date, venue and showtime separately from doors; the date and clocks match the first-party roster. Original venue event: One Way Out - Portland's Tribute to the Allman Brothers Band. Doors: 7:00pm Show: 8:00pm Ages 21. Notes on Seating: Open seating, may be limited or standing room only. First come, first seated. Open dance floor may obscure sightlines. One Way Out - Portland'",
+    "source": "Jack London Revue",
+    "url": "https://www.jacklondonrevue.com/tm-event/one-way-out-allman-brothers-band-tribute/",
+    "icon": "◇",
+    "sourceCheckedAt": "2026-11-06",
+    "verificationMethod": "Automated venue data; editorial date, time, event type and cancellation verification required",
+    "sourceCategories": [],
+    "sources": [
+      {
+        "name": "Jack London Revue",
+        "url": "https://www.jacklondonrevue.com/tm-event/one-way-out-allman-brothers-band-tribute/",
+        "kind": "organizer",
+        "checkedAt": "2026-11-06",
+        "originalCategories": []
+      }
+    ],
+    "artwork": {
+      "url": "https://i.ticketweb.com/i/00/13/07/38/04_Original.jpg?v=4",
+      "sourceUrl": "https://www.jacklondonrevue.com/tm-event/one-way-out-allman-brothers-band-tribute/",
+      "origin": "official-event-page",
+      "credit": "Original TicketWeb artwork linked by Jack London Revue",
+      "usageApproved": null
+    },
+    "addedIn": "auto-discovery-2026-11-06",
+    "discovery": {
+      "sourceId": "jack-london-revue",
       "method": "primary-source-collection"
     }
   },
@@ -31673,6 +36273,58 @@ window.SHOWS_EVENTS = [
     }
   },
   {
+    "id": "auto-jack-london-revue-2026-11-28-e4dc6a701ba2",
+    "title": "BURLY-Q REVUE",
+    "subtitle": "Source-discovered venue event · details need review",
+    "category": "Unclassified",
+    "tags": [
+      "Category needs review",
+      "Time needs confirmation",
+      "Format needs confirmation",
+      "Separate same-day source listing; review bill and room"
+    ],
+    "musicStyles": [],
+    "eventFormat": "unverified",
+    "classificationEvidence": "No verified event type or genre",
+    "startTimeKind": "listed",
+    "startsAt": "2026-11-28T22:30:00-08:00",
+    "endsAt": null,
+    "venue": "Jack London Revue",
+    "address": "529 SW 4th Ave, Portland, OR 97204",
+    "neighborhood": "Downtown",
+    "price": "See organizer for current admission",
+    "free": null,
+    "age": "Not published",
+    "description": "Automatically discovered from a primary venue or promoter listing. Original JLR event detail verifies full date, venue and showtime separately from doors; the date and clocks match the first-party roster. Original venue event: Join us at the Jack London for the latest edition of our late-night cabaret spectacular, hosted by the Mad Marquis and featuring some of the finest dancers from the Rose City and beyond. Treat yourself to a sensational evening of sultry and exotic delights, ",
+    "source": "Jack London Revue",
+    "url": "https://www.jacklondonrevue.com/tm-event/burly-q-revue-8/",
+    "icon": "◇",
+    "sourceCheckedAt": "2026-11-06",
+    "verificationMethod": "Automated venue data; editorial date, time, event type and cancellation verification required",
+    "sourceCategories": [],
+    "sources": [
+      {
+        "name": "Jack London Revue",
+        "url": "https://www.jacklondonrevue.com/tm-event/burly-q-revue-8/",
+        "kind": "organizer",
+        "checkedAt": "2026-11-06",
+        "originalCategories": []
+      }
+    ],
+    "artwork": {
+      "url": "https://i.ticketweb.com/i/00/12/77/00/04_Original.jpg?v=5",
+      "sourceUrl": "https://www.jacklondonrevue.com/tm-event/burly-q-revue-8/",
+      "origin": "official-event-page",
+      "credit": "Original TicketWeb artwork linked by Jack London Revue",
+      "usageApproved": null
+    },
+    "addedIn": "auto-discovery-2026-11-06",
+    "discovery": {
+      "sourceId": "jack-london-revue",
+      "method": "primary-source-collection"
+    }
+  },
+  {
     "id": "auto-dantes-2026-11-28-d691bd5a4390",
     "title": "SMASH disco~glam~metal~punk-hiphop",
     "subtitle": "Source-discovered venue event · details need review",
@@ -31871,6 +36523,109 @@ window.SHOWS_EVENTS = [
     "addedIn": "auto-discovery-2026-10-29",
     "discovery": {
       "sourceId": "aladdin-theater",
+      "method": "primary-source-collection"
+    }
+  },
+  {
+    "id": "auto-alberta-street-pub-2026-11-29-2b351f28e508",
+    "title": "Soda Jinx // Jay and Hex // Gregory James Mckillop",
+    "subtitle": "Source-discovered venue event · details need review",
+    "category": "Unclassified",
+    "tags": [
+      "Category needs review",
+      "Time needs confirmation",
+      "Format needs confirmation"
+    ],
+    "musicStyles": [],
+    "eventFormat": "unverified",
+    "classificationEvidence": "No verified event type or genre",
+    "startTimeKind": "listed",
+    "startsAt": "2026-11-29T17:00:00-08:00",
+    "endsAt": null,
+    "venue": "Alberta Street Pub",
+    "address": "1036 NE Alberta Street, Portland, OR 97211",
+    "neighborhood": "Alberta Arts District",
+    "price": "See organizer for current admission",
+    "free": null,
+    "age": "Not published",
+    "description": "Automatically discovered from a primary venue or promoter listing. Alberta Street Pub's original Squarespace event record supplies the start and end timestamp; exact performance-versus-doors distinction is unconfirmed. Original venue event listing. $0-$16 Donation",
+    "source": "Alberta Street Pub",
+    "url": "https://www.albertastreetpub.com/music/2026/11/29/soda-jinx-jay-and-hex-gregory-james-mckillop",
+    "icon": "◇",
+    "sourceCheckedAt": "2026-11-06",
+    "verificationMethod": "Automated venue data; editorial date, time, event type and cancellation verification required",
+    "sourceCategories": [],
+    "sources": [
+      {
+        "name": "Alberta Street Pub",
+        "url": "https://www.albertastreetpub.com/music/2026/11/29/soda-jinx-jay-and-hex-gregory-james-mckillop",
+        "kind": "organizer",
+        "checkedAt": "2026-11-06",
+        "originalCategories": []
+      }
+    ],
+    "artwork": {
+      "url": "https://images.squarespace-cdn.com/content/v1/54109e68e4b06b163549a8dc/1791222300955-UFMD0LUXV3AS69YKV44A/Soda+Jinx.png",
+      "sourceUrl": "https://www.albertastreetpub.com/music/2026/11/29/soda-jinx-jay-and-hex-gregory-james-mckillop",
+      "origin": "official-venue-calendar",
+      "credit": "Alberta Street Pub official event calendar",
+      "usageApproved": null
+    },
+    "addedIn": "auto-discovery-2026-11-06",
+    "discovery": {
+      "sourceId": "alberta-street-pub",
+      "method": "primary-source-collection"
+    }
+  },
+  {
+    "id": "auto-alberta-rose-theatre-2026-11-29-83d04977f9a8",
+    "title": "The Next Waltz - 50th Anniversary Celebration — 5:00 PM show",
+    "subtitle": "Source-discovered venue event · details need review",
+    "category": "Unclassified",
+    "tags": [
+      "Category needs review",
+      "Time needs confirmation",
+      "Format needs confirmation"
+    ],
+    "musicStyles": [],
+    "eventFormat": "unverified",
+    "classificationEvidence": "No verified event type or genre",
+    "startTimeKind": "listed",
+    "startsAt": "2026-11-29T17:00:00-08:00",
+    "endsAt": null,
+    "venue": "Alberta Rose Theatre",
+    "address": "3000 NE Alberta Street, Portland, OR 97211",
+    "neighborhood": "Concordia",
+    "price": "See organizer for current admission",
+    "free": null,
+    "age": "Not published",
+    "description": "Automatically discovered from a primary venue or promoter listing. Original Alberta Rose month/year heading plus individually scheduled series date, SHOW clock and room-scoped Etix performance ID. Original multi-performance series: The Next Waltz - 50th Anniversary Celebration. Event-specific ticket URL uniquely identifies this session; classify its format from verified source evidence.",
+    "source": "Alberta Rose Theatre",
+    "url": "https://www.etix.com/ticket/p/47724670/the-next-waltz-portland-alberta-rose-theatre",
+    "icon": "◇",
+    "sourceCheckedAt": "2026-11-06",
+    "verificationMethod": "Automated venue data; editorial date, time, event type and cancellation verification required",
+    "sourceCategories": [],
+    "sources": [
+      {
+        "name": "Alberta Rose Theatre",
+        "url": "https://www.etix.com/ticket/p/47724670/the-next-waltz-portland-alberta-rose-theatre",
+        "kind": "organizer",
+        "checkedAt": "2026-11-06",
+        "originalCategories": []
+      }
+    ],
+    "artwork": {
+      "url": "https://albertarosetheatre.com/wp-content/uploads/2026/11/the-next-waltz.jfif",
+      "sourceUrl": "https://albertarosetheatre.com/calendar/category/series/the-next-waltz-50th-anniversary-celebration/alberta-rose-theatre/portland-oregon/",
+      "origin": "official-venue-calendar",
+      "credit": "Alberta Rose Theatre original event artwork",
+      "usageApproved": null
+    },
+    "sourceTicketId": "47724670",
+    "addedIn": "auto-discovery-2026-11-06",
+    "discovery": {
+      "sourceId": "alberta-rose-theatre",
       "method": "primary-source-collection"
     }
   },
@@ -32208,6 +36963,58 @@ window.SHOWS_EVENTS = [
     }
   },
   {
+    "id": "auto-alberta-street-pub-2026-11-29-a05546cf19bc",
+    "title": "SOULFUL SUNDAYS featuring Santiago & Friends",
+    "subtitle": "Source-discovered venue event · details need review",
+    "category": "Unclassified",
+    "tags": [
+      "Category needs review",
+      "Time needs confirmation",
+      "Format needs confirmation",
+      "Separate same-day source listing; review bill and room"
+    ],
+    "musicStyles": [],
+    "eventFormat": "unverified",
+    "classificationEvidence": "No verified event type or genre",
+    "startTimeKind": "listed",
+    "startsAt": "2026-11-29T21:00:00-08:00",
+    "endsAt": null,
+    "venue": "Alberta Street Pub",
+    "address": "1036 NE Alberta Street, Portland, OR 97211",
+    "neighborhood": "Alberta Arts District",
+    "price": "See organizer for current admission",
+    "free": null,
+    "age": "Not published",
+    "description": "Automatically discovered from a primary venue or promoter listing. Alberta Street Pub's original Squarespace event record supplies the start and end timestamp; exact performance-versus-doors distinction is unconfirmed. Original venue event listing. FREE This Sunday featuring - Santiago LaRochelle & Friends Free every Sunday night rotating the regions best Soul, Funk, R&B bands and DJs in one of the best sounding rooms in the city.",
+    "source": "Alberta Street Pub",
+    "url": "https://www.albertastreetpub.com/music/2023/3/5/soulful-sundays-p3a5l-3wl64-twxnj-wkacn-lc8tr-gphsj-x73af-5meh3-6cspz-9z8kp-wtz8c-47fe8-ekh63-lxhbe-7z8f3-e3gab-abftn",
+    "icon": "◇",
+    "sourceCheckedAt": "2026-11-06",
+    "verificationMethod": "Automated venue data; editorial date, time, event type and cancellation verification required",
+    "sourceCategories": [],
+    "sources": [
+      {
+        "name": "Alberta Street Pub",
+        "url": "https://www.albertastreetpub.com/music/2023/3/5/soulful-sundays-p3a5l-3wl64-twxnj-wkacn-lc8tr-gphsj-x73af-5meh3-6cspz-9z8kp-wtz8c-47fe8-ekh63-lxhbe-7z8f3-e3gab-abftn",
+        "kind": "organizer",
+        "checkedAt": "2026-11-06",
+        "originalCategories": []
+      }
+    ],
+    "artwork": {
+      "url": "https://images.squarespace-cdn.com/content/v1/54109e68e4b06b163549a8dc/1791018882336-B7V0SPXUB1TT1Z1N13QZ/IMG_1243.jpeg",
+      "sourceUrl": "https://www.albertastreetpub.com/music/2023/3/5/soulful-sundays-p3a5l-3wl64-twxnj-wkacn-lc8tr-gphsj-x73af-5meh3-6cspz-9z8kp-wtz8c-47fe8-ekh63-lxhbe-7z8f3-e3gab-abftn",
+      "origin": "official-venue-calendar",
+      "credit": "Alberta Street Pub official event calendar",
+      "usageApproved": null
+    },
+    "addedIn": "auto-discovery-2026-11-06",
+    "discovery": {
+      "sourceId": "alberta-street-pub",
+      "method": "primary-source-collection"
+    }
+  },
+  {
     "id": "auto-dantes-2026-11-29-92776b9fcb2b",
     "title": "SINFERNO CABARET",
     "subtitle": "Source-discovered venue event · details need review",
@@ -32453,6 +37260,57 @@ window.SHOWS_EVENTS = [
     }
   },
   {
+    "id": "auto-alberta-street-pub-2026-12-01-31f9049a1933",
+    "title": "Boomerang Sky | Onion | Rei Deora",
+    "subtitle": "Source-discovered venue event · details need review",
+    "category": "Unclassified",
+    "tags": [
+      "Category needs review",
+      "Time needs confirmation",
+      "Format needs confirmation"
+    ],
+    "musicStyles": [],
+    "eventFormat": "unverified",
+    "classificationEvidence": "No verified event type or genre",
+    "startTimeKind": "listed",
+    "startsAt": "2026-12-01T19:00:00-08:00",
+    "endsAt": null,
+    "venue": "Alberta Street Pub",
+    "address": "1036 NE Alberta Street, Portland, OR 97211",
+    "neighborhood": "Alberta Arts District",
+    "price": "See organizer for current admission",
+    "free": null,
+    "age": "Not published",
+    "description": "Automatically discovered from a primary venue or promoter listing. Alberta Street Pub's original Squarespace event record supplies the start and end timestamp; exact performance-versus-doors distinction is unconfirmed. Original venue event listing. $5 COVER AT THE DOOR ALL AGES UNTIL 9PM",
+    "source": "Alberta Street Pub",
+    "url": "https://www.albertastreetpub.com/music/2026/12/1/boomerang-sky-onion-rei-deora",
+    "icon": "◇",
+    "sourceCheckedAt": "2026-11-06",
+    "verificationMethod": "Automated venue data; editorial date, time, event type and cancellation verification required",
+    "sourceCategories": [],
+    "sources": [
+      {
+        "name": "Alberta Street Pub",
+        "url": "https://www.albertastreetpub.com/music/2026/12/1/boomerang-sky-onion-rei-deora",
+        "kind": "organizer",
+        "checkedAt": "2026-11-06",
+        "originalCategories": []
+      }
+    ],
+    "artwork": {
+      "url": "https://images.squarespace-cdn.com/content/v1/54109e68e4b06b163549a8dc/1793865016594-R447HEW6MGDZGS4ZHUDF/Image-1.JPEG",
+      "sourceUrl": "https://www.albertastreetpub.com/music/2026/12/1/boomerang-sky-onion-rei-deora",
+      "origin": "official-venue-calendar",
+      "credit": "Alberta Street Pub official event calendar",
+      "usageApproved": null
+    },
+    "addedIn": "auto-discovery-2026-11-06",
+    "discovery": {
+      "sourceId": "alberta-street-pub",
+      "method": "primary-source-collection"
+    }
+  },
+  {
     "id": "auto-mission-theater-2026-12-01-0582b167daff",
     "title": "OMSI SCience Pub: The River Remembers: Community, Science, and the Future of Portland Harbor",
     "subtitle": "Source-discovered venue event · details need review",
@@ -32564,6 +37422,57 @@ window.SHOWS_EVENTS = [
       "origin": "official-event-page",
       "credit": "Official event page",
       "usageApproved": null
+    }
+  },
+  {
+    "id": "auto-showdown-2026-12-01-20bd21e8eab4",
+    "title": "Two-Step Tuesday with Countryside Ride and Dance Lessons with Robbie",
+    "subtitle": "Source-discovered venue event · details need review",
+    "category": "Unclassified",
+    "tags": [
+      "Category needs review",
+      "Time needs confirmation",
+      "Format needs confirmation"
+    ],
+    "musicStyles": [],
+    "eventFormat": "unverified",
+    "classificationEvidence": "No verified event type or genre",
+    "startTimeKind": "listed",
+    "startsAt": "2026-12-01T19:30:00-08:00",
+    "endsAt": null,
+    "venue": "The Showdown",
+    "address": "1195 SE Powell Blvd, Portland, OR 97202",
+    "neighborhood": "Brooklyn",
+    "price": "See organizer for current admission",
+    "free": null,
+    "age": "Not published",
+    "description": "Automatically discovered from a primary venue or promoter listing. Original Showdown listing explicitly says Show 19:30 (Doors 19:00); original event-specific Google Calendar confirms 2026 date and time. Official The Showdown event listing; editorially verify category and genre.",
+    "source": "The Showdown",
+    "url": "https://www.showdownpdx.com/tm-event/two-step-tuesday-with-countryside-ride-and-dance-lessons-with-robbie-3/",
+    "icon": "◇",
+    "sourceCheckedAt": "2026-11-06",
+    "verificationMethod": "Automated venue data; editorial date, time, event type and cancellation verification required",
+    "sourceCategories": [],
+    "sources": [
+      {
+        "name": "The Showdown",
+        "url": "https://www.showdownpdx.com/tm-event/two-step-tuesday-with-countryside-ride-and-dance-lessons-with-robbie-3/",
+        "kind": "organizer",
+        "checkedAt": "2026-11-06",
+        "originalCategories": []
+      }
+    ],
+    "artwork": {
+      "url": "https://i.ticketweb.com/i/00/13/13/48/24_Original.jpg",
+      "sourceUrl": "https://www.showdownpdx.com/tm-event/two-step-tuesday-with-countryside-ride-and-dance-lessons-with-robbie-3/",
+      "origin": "official-venue-calendar",
+      "credit": "Original Showdown event artwork, distributed by TicketWeb",
+      "usageApproved": null
+    },
+    "addedIn": "auto-discovery-2026-11-06",
+    "discovery": {
+      "sourceId": "showdown",
+      "method": "primary-source-collection"
     }
   },
   {
@@ -32810,6 +37719,58 @@ window.SHOWS_EVENTS = [
     }
   },
   {
+    "id": "auto-alberta-rose-theatre-2026-12-02-2c5e9e2efcaa",
+    "title": "White Album Xmas — 7:30 PM show",
+    "subtitle": "Source-discovered venue event · details need review",
+    "category": "Unclassified",
+    "tags": [
+      "Category needs review",
+      "Time needs confirmation",
+      "Format needs confirmation"
+    ],
+    "musicStyles": [],
+    "eventFormat": "unverified",
+    "classificationEvidence": "No verified event type or genre",
+    "startTimeKind": "listed",
+    "startsAt": "2026-12-02T19:30:00-08:00",
+    "endsAt": null,
+    "venue": "Alberta Rose Theatre",
+    "address": "3000 NE Alberta Street, Portland, OR 97211",
+    "neighborhood": "Concordia",
+    "price": "See organizer for current admission",
+    "free": null,
+    "age": "Not published",
+    "description": "Automatically discovered from a primary venue or promoter listing. Original Alberta Rose month/year heading plus individually scheduled series date, SHOW clock and room-scoped Etix performance ID. Original multi-performance series: White Album Xmas. Event-specific ticket URL uniquely identifies this session; classify its format from verified source evidence.",
+    "source": "Alberta Rose Theatre",
+    "url": "https://www.etix.com/ticket/p/49162979/white-album-xmas-portland-alberta-rose-theatre",
+    "icon": "◇",
+    "sourceCheckedAt": "2026-11-06",
+    "verificationMethod": "Automated venue data; editorial date, time, event type and cancellation verification required",
+    "sourceCategories": [],
+    "sources": [
+      {
+        "name": "Alberta Rose Theatre",
+        "url": "https://www.etix.com/ticket/p/49162979/white-album-xmas-portland-alberta-rose-theatre",
+        "kind": "organizer",
+        "checkedAt": "2026-11-06",
+        "originalCategories": []
+      }
+    ],
+    "artwork": {
+      "url": "https://albertarosetheatre.com/wp-content/uploads/2025/07/etix-White_4482081752076130.jfif",
+      "sourceUrl": "https://albertarosetheatre.com/calendar/category/series/white-album-xmas/alberta-rose-theatre/portland-oregon/",
+      "origin": "official-venue-calendar",
+      "credit": "Alberta Rose Theatre original event artwork",
+      "usageApproved": null
+    },
+    "sourceTicketId": "49162979",
+    "addedIn": "auto-discovery-2026-11-06",
+    "discovery": {
+      "sourceId": "alberta-rose-theatre",
+      "method": "primary-source-collection"
+    }
+  },
+  {
     "id": "auto-no-fun-2026-12-02-224a9a098523",
     "title": "NO FUN KARAOKE",
     "subtitle": "Source-discovered venue event · details need review",
@@ -32859,6 +37820,57 @@ window.SHOWS_EVENTS = [
       "method": "primary-source-collection"
     },
     "classificationEvidence": "Event-specific source wording"
+  },
+  {
+    "id": "auto-jack-london-revue-2026-12-02-7e407106a040",
+    "title": "STEVE OLIVER",
+    "subtitle": "Source-discovered venue event · details need review",
+    "category": "Unclassified",
+    "tags": [
+      "Category needs review",
+      "Time needs confirmation",
+      "Format needs confirmation"
+    ],
+    "musicStyles": [],
+    "eventFormat": "unverified",
+    "classificationEvidence": "No verified event type or genre",
+    "startTimeKind": "listed",
+    "startsAt": "2026-12-02T20:00:00-08:00",
+    "endsAt": null,
+    "venue": "Jack London Revue",
+    "address": "529 SW 4th Ave, Portland, OR 97204",
+    "neighborhood": "Downtown",
+    "price": "See organizer for current admission",
+    "free": null,
+    "age": "Not published",
+    "description": "Automatically discovered from a primary venue or promoter listing. Original JLR event detail verifies full date, venue and showtime separately from doors; the date and clocks match the first-party roster. Original venue event: Soul'd Out Presents : An Evening with Steve Oliver Doors: 7:00pm Show: 8:00pm Ages 21+ https://www.steveolivermusic.com/ With a career spanning nearly 30 years in music, multi-instrumentalist, singer, songwriter, engineer and producer Steve Oliver is still b",
+    "source": "Jack London Revue",
+    "url": "https://www.jacklondonrevue.com/tm-event/steve-oliver/",
+    "icon": "◇",
+    "sourceCheckedAt": "2026-11-06",
+    "verificationMethod": "Automated venue data; editorial date, time, event type and cancellation verification required",
+    "sourceCategories": [],
+    "sources": [
+      {
+        "name": "Jack London Revue",
+        "url": "https://www.jacklondonrevue.com/tm-event/steve-oliver/",
+        "kind": "organizer",
+        "checkedAt": "2026-11-06",
+        "originalCategories": []
+      }
+    ],
+    "artwork": {
+      "url": "https://i.ticketweb.com/i/00/13/05/73/74_Original.jpg?v=4",
+      "sourceUrl": "https://www.jacklondonrevue.com/tm-event/steve-oliver/",
+      "origin": "official-event-page",
+      "credit": "Original TicketWeb artwork linked by Jack London Revue",
+      "usageApproved": null
+    },
+    "addedIn": "auto-discovery-2026-11-06",
+    "discovery": {
+      "sourceId": "jack-london-revue",
+      "method": "primary-source-collection"
+    }
   },
   {
     "id": "auto-holocene-2026-12-02-021e80dd5a92",
@@ -33143,6 +38155,60 @@ window.SHOWS_EVENTS = [
     }
   },
   {
+    "id": "auto-jack-london-revue-2026-12-03-444d648788da",
+    "title": "MEL BROWN B3 ORGAN GROUP - Jazz Titan Thursdays",
+    "subtitle": "Source-discovered venue event · details need review",
+    "category": "Music",
+    "tags": [
+      "Source-listed Music",
+      "Source-mentioned Jazz",
+      "Time needs confirmation",
+      "Format needs confirmation"
+    ],
+    "musicStyles": [
+      "Jazz"
+    ],
+    "eventFormat": "unverified",
+    "classificationEvidence": "Event-specific source genre wording",
+    "startTimeKind": "listed",
+    "startsAt": "2026-12-03T19:00:00-08:00",
+    "endsAt": null,
+    "venue": "Jack London Revue",
+    "address": "529 SW 4th Ave, Portland, OR 97204",
+    "neighborhood": "Downtown",
+    "price": "See organizer for current admission",
+    "free": null,
+    "age": "Not published",
+    "description": "Automatically discovered from a primary venue or promoter listing. Original JLR event detail verifies full date, venue and showtime separately from doors; the date and clocks match the first-party roster. Original venue event: JLR Seating Map Notes : For this show, you may reserve individual tables on the map pictured. Note that some tables have limited sightlines as noted. All table reservations include admission. Instructions: For Table Reservations : Note the relative location ",
+    "source": "Jack London Revue",
+    "url": "https://www.jacklondonrevue.com/tm-event/mel-brown-b3-organ-group-jazz-titan-thursdays/",
+    "icon": "♫",
+    "sourceCheckedAt": "2026-11-06",
+    "verificationMethod": "Automated venue data; editorial date, time, event type and cancellation verification required",
+    "sourceCategories": [],
+    "sources": [
+      {
+        "name": "Jack London Revue",
+        "url": "https://www.jacklondonrevue.com/tm-event/mel-brown-b3-organ-group-jazz-titan-thursdays/",
+        "kind": "organizer",
+        "checkedAt": "2026-11-06",
+        "originalCategories": []
+      }
+    ],
+    "artwork": {
+      "url": "https://i.ticketweb.com/i/00/13/08/90/44_Original.jpg?v=4",
+      "sourceUrl": "https://www.jacklondonrevue.com/tm-event/mel-brown-b3-organ-group-jazz-titan-thursdays/",
+      "origin": "official-event-page",
+      "credit": "Original TicketWeb artwork linked by Jack London Revue",
+      "usageApproved": null
+    },
+    "addedIn": "auto-discovery-2026-11-06",
+    "discovery": {
+      "sourceId": "jack-london-revue",
+      "method": "primary-source-collection"
+    }
+  },
+  {
     "id": "auto-the-off-beat-2026-12-03-7b91d87edaa0",
     "title": "12/3 Mel Bryant & the Mercy Makers, Everybody's Worried About Owen, Trans Panic",
     "subtitle": "Source-discovered venue event · details need review",
@@ -33190,6 +38256,58 @@ window.SHOWS_EVENTS = [
     "addedIn": "2026-10-29-offbeat-connection",
     "discovery": {
       "sourceId": "the-off-beat",
+      "method": "primary-source-collection"
+    }
+  },
+  {
+    "id": "auto-alberta-rose-theatre-2026-12-03-15725117537c",
+    "title": "White Album Xmas — 7:30 PM show",
+    "subtitle": "Source-discovered venue event · details need review",
+    "category": "Unclassified",
+    "tags": [
+      "Category needs review",
+      "Time needs confirmation",
+      "Format needs confirmation"
+    ],
+    "musicStyles": [],
+    "eventFormat": "unverified",
+    "classificationEvidence": "No verified event type or genre",
+    "startTimeKind": "listed",
+    "startsAt": "2026-12-03T19:30:00-08:00",
+    "endsAt": null,
+    "venue": "Alberta Rose Theatre",
+    "address": "3000 NE Alberta Street, Portland, OR 97211",
+    "neighborhood": "Concordia",
+    "price": "See organizer for current admission",
+    "free": null,
+    "age": "Not published",
+    "description": "Automatically discovered from a primary venue or promoter listing. Original Alberta Rose month/year heading plus individually scheduled series date, SHOW clock and room-scoped Etix performance ID. Original multi-performance series: White Album Xmas. Event-specific ticket URL uniquely identifies this session; classify its format from verified source evidence.",
+    "source": "Alberta Rose Theatre",
+    "url": "https://www.etix.com/ticket/p/43845222/white-album-xmas-portland-alberta-rose-theatre",
+    "icon": "◇",
+    "sourceCheckedAt": "2026-11-06",
+    "verificationMethod": "Automated venue data; editorial date, time, event type and cancellation verification required",
+    "sourceCategories": [],
+    "sources": [
+      {
+        "name": "Alberta Rose Theatre",
+        "url": "https://www.etix.com/ticket/p/43845222/white-album-xmas-portland-alberta-rose-theatre",
+        "kind": "organizer",
+        "checkedAt": "2026-11-06",
+        "originalCategories": []
+      }
+    ],
+    "artwork": {
+      "url": "https://albertarosetheatre.com/wp-content/uploads/2025/07/etix-White_4482081752076130.jfif",
+      "sourceUrl": "https://albertarosetheatre.com/calendar/category/series/white-album-xmas/alberta-rose-theatre/portland-oregon/",
+      "origin": "official-venue-calendar",
+      "credit": "Alberta Rose Theatre original event artwork",
+      "usageApproved": null
+    },
+    "sourceTicketId": "43845222",
+    "addedIn": "auto-discovery-2026-11-06",
+    "discovery": {
+      "sourceId": "alberta-rose-theatre",
       "method": "primary-source-collection"
     }
   },
@@ -33525,6 +38643,57 @@ window.SHOWS_EVENTS = [
     }
   },
   {
+    "id": "auto-twilight-2026-12-03-50f1faa9ca9a",
+    "title": "Witch, Please! Queer Krampus Dance Party! w/ Dj Blanche Deverheaux",
+    "subtitle": "Source-discovered venue event · details need review",
+    "category": "Music",
+    "tags": [
+      "Source-listed Music",
+      "Time needs confirmation",
+      "Format needs confirmation"
+    ],
+    "musicStyles": [],
+    "eventFormat": "unverified",
+    "classificationEvidence": "Original source explicitly verifies music",
+    "startTimeKind": "listed",
+    "startsAt": "2026-12-03T20:00:00-08:00",
+    "endsAt": null,
+    "venue": "Twilight Cafe and Bar",
+    "address": "832 SE Grand Ave, Portland, OR 97214",
+    "neighborhood": "Central Eastside",
+    "price": "See organizer for current admission",
+    "free": null,
+    "age": "Not published",
+    "description": "Automatically discovered from a primary venue or promoter listing. Twilight publishes this as performance start Official Twilight event schema",
+    "source": "Twilight Cafe and Bar",
+    "url": "https://www.twilightcafeandbar.com/event/468840/witch-please-queer-krampus-dance-party-w-dj-blanche-deverheaux",
+    "icon": "♫",
+    "sourceCheckedAt": "2026-11-06",
+    "verificationMethod": "Automated venue data; editorial date, time, event type and cancellation verification required",
+    "sourceCategories": [],
+    "sources": [
+      {
+        "name": "Twilight Cafe and Bar",
+        "url": "https://www.twilightcafeandbar.com/event/468840/witch-please-queer-krampus-dance-party-w-dj-blanche-deverheaux",
+        "kind": "organizer",
+        "checkedAt": "2026-11-06",
+        "originalCategories": []
+      }
+    ],
+    "artwork": {
+      "url": "https://files.holdmyticket.com/image/upload/q_68,dn_72,f_auto/v6/uploads/flyers2/brpxtcn6qm0io9rr6auw.jpg",
+      "sourceUrl": "https://www.twilightcafeandbar.com/event/468840/witch-please-queer-krampus-dance-party-w-dj-blanche-deverheaux",
+      "origin": "official-event-page",
+      "credit": "Official event page",
+      "usageApproved": null
+    },
+    "addedIn": "auto-discovery-2026-11-06",
+    "discovery": {
+      "sourceId": "twilight",
+      "method": "primary-source-collection"
+    }
+  },
+  {
     "id": "auto-aladdin-theater-2026-12-03-53968182ad24",
     "title": "Zepparella the Led Zeppelin Powerhouse",
     "subtitle": "Source-discovered venue event · details need review",
@@ -33816,6 +38985,58 @@ window.SHOWS_EVENTS = [
     }
   },
   {
+    "id": "auto-alberta-rose-theatre-2026-12-04-ed11a51585bc",
+    "title": "White Album Xmas — 7:30 PM show",
+    "subtitle": "Source-discovered venue event · details need review",
+    "category": "Unclassified",
+    "tags": [
+      "Category needs review",
+      "Time needs confirmation",
+      "Format needs confirmation"
+    ],
+    "musicStyles": [],
+    "eventFormat": "unverified",
+    "classificationEvidence": "No verified event type or genre",
+    "startTimeKind": "listed",
+    "startsAt": "2026-12-04T19:30:00-08:00",
+    "endsAt": null,
+    "venue": "Alberta Rose Theatre",
+    "address": "3000 NE Alberta Street, Portland, OR 97211",
+    "neighborhood": "Concordia",
+    "price": "See organizer for current admission",
+    "free": null,
+    "age": "Not published",
+    "description": "Automatically discovered from a primary venue or promoter listing. Original Alberta Rose month/year heading plus individually scheduled series date, SHOW clock and room-scoped Etix performance ID. Original multi-performance series: White Album Xmas. Event-specific ticket URL uniquely identifies this session; classify its format from verified source evidence.",
+    "source": "Alberta Rose Theatre",
+    "url": "https://www.etix.com/ticket/p/68841618/white-album-xmas-portland-alberta-rose-theatre",
+    "icon": "◇",
+    "sourceCheckedAt": "2026-11-06",
+    "verificationMethod": "Automated venue data; editorial date, time, event type and cancellation verification required",
+    "sourceCategories": [],
+    "sources": [
+      {
+        "name": "Alberta Rose Theatre",
+        "url": "https://www.etix.com/ticket/p/68841618/white-album-xmas-portland-alberta-rose-theatre",
+        "kind": "organizer",
+        "checkedAt": "2026-11-06",
+        "originalCategories": []
+      }
+    ],
+    "artwork": {
+      "url": "https://albertarosetheatre.com/wp-content/uploads/2025/07/etix-White_4482081752076130.jfif",
+      "sourceUrl": "https://albertarosetheatre.com/calendar/category/series/white-album-xmas/alberta-rose-theatre/portland-oregon/",
+      "origin": "official-venue-calendar",
+      "credit": "Alberta Rose Theatre original event artwork",
+      "usageApproved": null
+    },
+    "sourceTicketId": "68841618",
+    "addedIn": "auto-discovery-2026-11-06",
+    "discovery": {
+      "sourceId": "alberta-rose-theatre",
+      "method": "primary-source-collection"
+    }
+  },
+  {
     "id": "auto-aladdin-theater-2026-12-04-8e1c8d189b5a",
     "title": "Cat Clyde & Dean Johnson",
     "subtitle": "Source-discovered venue event · details need review",
@@ -33863,6 +39084,57 @@ window.SHOWS_EVENTS = [
     "addedIn": "auto-discovery-2026-10-29",
     "discovery": {
       "sourceId": "aladdin-theater",
+      "method": "primary-source-collection"
+    }
+  },
+  {
+    "id": "auto-jack-london-revue-2026-12-04-b4501a55350c",
+    "title": "L'Rain",
+    "subtitle": "Source-discovered venue event · details need review",
+    "category": "Unclassified",
+    "tags": [
+      "Category needs review",
+      "Time needs confirmation",
+      "Format needs confirmation"
+    ],
+    "musicStyles": [],
+    "eventFormat": "unverified",
+    "classificationEvidence": "No verified event type or genre",
+    "startTimeKind": "listed",
+    "startsAt": "2026-12-04T20:00:00-08:00",
+    "endsAt": null,
+    "venue": "Jack London Revue",
+    "address": "529 SW 4th Ave, Portland, OR 97204",
+    "neighborhood": "Downtown",
+    "price": "See organizer for current admission",
+    "free": null,
+    "age": "Not published",
+    "description": "Automatically discovered from a primary venue or promoter listing. Original JLR event detail verifies full date, venue and showtime separately from doors; the date and clocks match the first-party roster. Original venue event: Soul'd Out Presents: L'Rain with special guests TBA Doors: 7:00pm Show: 8:00pm Ages: 21+ Open Floor / Seating not guaranteed Notes on Seating: Open seating, may be limited or standing room only. First come, first seated. Open dance floor may obscure sightlin",
+    "source": "Jack London Revue",
+    "url": "https://www.jacklondonrevue.com/tm-event/lrain/",
+    "icon": "◇",
+    "sourceCheckedAt": "2026-11-06",
+    "verificationMethod": "Automated venue data; editorial date, time, event type and cancellation verification required",
+    "sourceCategories": [],
+    "sources": [
+      {
+        "name": "Jack London Revue",
+        "url": "https://www.jacklondonrevue.com/tm-event/lrain/",
+        "kind": "organizer",
+        "checkedAt": "2026-11-06",
+        "originalCategories": []
+      }
+    ],
+    "artwork": {
+      "url": "https://i.ticketweb.com/i/00/12/95/70/64_Original.jpg?v=5",
+      "sourceUrl": "https://www.jacklondonrevue.com/tm-event/lrain/",
+      "origin": "official-event-page",
+      "credit": "Original TicketWeb artwork linked by Jack London Revue",
+      "usageApproved": null
+    },
+    "addedIn": "auto-discovery-2026-11-06",
+    "discovery": {
+      "sourceId": "jack-london-revue",
       "method": "primary-source-collection"
     }
   },
@@ -34557,6 +39829,58 @@ window.SHOWS_EVENTS = [
     "addedIn": "2026-10-17-venue-coverage"
   },
   {
+    "id": "auto-alberta-rose-theatre-2026-12-05-0ab6ae636aca",
+    "title": "White Album Xmas — 7:30 PM show",
+    "subtitle": "Source-discovered venue event · details need review",
+    "category": "Unclassified",
+    "tags": [
+      "Category needs review",
+      "Time needs confirmation",
+      "Format needs confirmation"
+    ],
+    "musicStyles": [],
+    "eventFormat": "unverified",
+    "classificationEvidence": "No verified event type or genre",
+    "startTimeKind": "listed",
+    "startsAt": "2026-12-05T19:30:00-08:00",
+    "endsAt": null,
+    "venue": "Alberta Rose Theatre",
+    "address": "3000 NE Alberta Street, Portland, OR 97211",
+    "neighborhood": "Concordia",
+    "price": "See organizer for current admission",
+    "free": null,
+    "age": "Not published",
+    "description": "Automatically discovered from a primary venue or promoter listing. Original Alberta Rose month/year heading plus individually scheduled series date, SHOW clock and room-scoped Etix performance ID. Original multi-performance series: White Album Xmas. Event-specific ticket URL uniquely identifies this session; classify its format from verified source evidence.",
+    "source": "Alberta Rose Theatre",
+    "url": "https://www.etix.com/ticket/p/53711277/white-album-xmas-portland-alberta-rose-theatre",
+    "icon": "◇",
+    "sourceCheckedAt": "2026-11-06",
+    "verificationMethod": "Automated venue data; editorial date, time, event type and cancellation verification required",
+    "sourceCategories": [],
+    "sources": [
+      {
+        "name": "Alberta Rose Theatre",
+        "url": "https://www.etix.com/ticket/p/53711277/white-album-xmas-portland-alberta-rose-theatre",
+        "kind": "organizer",
+        "checkedAt": "2026-11-06",
+        "originalCategories": []
+      }
+    ],
+    "artwork": {
+      "url": "https://albertarosetheatre.com/wp-content/uploads/2025/07/etix-White_4482081752076130.jfif",
+      "sourceUrl": "https://albertarosetheatre.com/calendar/category/series/white-album-xmas/alberta-rose-theatre/portland-oregon/",
+      "origin": "official-venue-calendar",
+      "credit": "Alberta Rose Theatre original event artwork",
+      "usageApproved": null
+    },
+    "sourceTicketId": "53711277",
+    "addedIn": "auto-discovery-2026-11-06",
+    "discovery": {
+      "sourceId": "alberta-rose-theatre",
+      "method": "primary-source-collection"
+    }
+  },
+  {
     "id": "indie-tw-abraham-racquetball-album-release-lucia-luna-latinum-2026-12-05",
     "title": "Abraham Racquetball (album release) • Lucia Luna • Latinum",
     "subtitle": "Independent live show · style to be confirmed",
@@ -34737,6 +40061,57 @@ window.SHOWS_EVENTS = [
       "origin": "official-event-page",
       "credit": "Official event page",
       "usageApproved": null
+    }
+  },
+  {
+    "id": "auto-jack-london-revue-2026-12-05-b5f2c42acfc0",
+    "title": "LAU NOAH x ADAM NEELY",
+    "subtitle": "Source-discovered venue event · details need review",
+    "category": "Unclassified",
+    "tags": [
+      "Category needs review",
+      "Time needs confirmation",
+      "Format needs confirmation"
+    ],
+    "musicStyles": [],
+    "eventFormat": "unverified",
+    "classificationEvidence": "No verified event type or genre",
+    "startTimeKind": "listed",
+    "startsAt": "2026-12-05T20:00:00-08:00",
+    "endsAt": null,
+    "venue": "Jack London Revue",
+    "address": "529 SW 4th Ave, Portland, OR 97204",
+    "neighborhood": "Downtown",
+    "price": "See organizer for current admission",
+    "free": null,
+    "age": "Not published",
+    "description": "Automatically discovered from a primary venue or promoter listing. Original JLR event detail verifies full date, venue and showtime separately from doors; the date and clocks match the first-party roster. Original venue event: Soul'd Out Presents: Lau Noah & Adam Neely Doors: 7:00pm Show: 8:00pm Ages 21+ With the unlikely pairing of electric bass and classical acoustic guitar, Adam Neely & Lau Noah are carving out a singular space in the instrumental music world. Their debut EP, T",
+    "source": "Jack London Revue",
+    "url": "https://www.jacklondonrevue.com/tm-event/lau-noah-x-adam-neely/",
+    "icon": "◇",
+    "sourceCheckedAt": "2026-11-06",
+    "verificationMethod": "Automated venue data; editorial date, time, event type and cancellation verification required",
+    "sourceCategories": [],
+    "sources": [
+      {
+        "name": "Jack London Revue",
+        "url": "https://www.jacklondonrevue.com/tm-event/lau-noah-x-adam-neely/",
+        "kind": "organizer",
+        "checkedAt": "2026-11-06",
+        "originalCategories": []
+      }
+    ],
+    "artwork": {
+      "url": "https://i.ticketweb.com/i/00/13/57/76/33_Original.jpg?v=4",
+      "sourceUrl": "https://www.jacklondonrevue.com/tm-event/lau-noah-x-adam-neely/",
+      "origin": "official-event-page",
+      "credit": "Original TicketWeb artwork linked by Jack London Revue",
+      "usageApproved": null
+    },
+    "addedIn": "auto-discovery-2026-11-06",
+    "discovery": {
+      "sourceId": "jack-london-revue",
+      "method": "primary-source-collection"
     }
   },
   {
@@ -34931,6 +40306,53 @@ window.SHOWS_EVENTS = [
     }
   },
   {
+    "id": "auto-high-water-2026-12-05-8cdd48057484",
+    "title": "A Deeper Meaning Of Pain: A night of gore and noise",
+    "subtitle": "Source-discovered venue event · details need review",
+    "category": "Unclassified",
+    "tags": [
+      "Category needs review",
+      "Time needs confirmation",
+      "Format needs confirmation"
+    ],
+    "musicStyles": [],
+    "eventFormat": "unverified",
+    "classificationEvidence": "No verified event type or genre",
+    "startTimeKind": "listed",
+    "startsAt": "2026-12-05T20:30:00-08:00",
+    "endsAt": null,
+    "venue": "High Water Mark Lounge",
+    "address": "6800 NE Martin Luther King Jr Blvd, Portland, OR 97211",
+    "neighborhood": "Woodlawn",
+    "price": "See organizer for current admission",
+    "free": null,
+    "age": "Not published",
+    "description": "Automatically discovered from a primary venue or promoter listing. TreeTix published an event start clock; doors versus performance time still requires confirmation. ",
+    "source": "High Water Mark",
+    "url": "https://www.treetix.com/event/204955/highwatermark",
+    "icon": "◇",
+    "sourceCheckedAt": "2026-11-07",
+    "verificationMethod": "Automated venue data; editorial date, time, event type and cancellation verification required",
+    "sourceCategories": [],
+    "sources": [
+      {
+        "name": "High Water Mark",
+        "url": "https://www.treetix.com/event/204955/highwatermark",
+        "kind": "organizer",
+        "checkedAt": "2026-11-07",
+        "originalCategories": []
+      }
+    ],
+    "sourceArtworkUrl": "https://www.treetix.com/templates/highwatermark/images/events/2026-12-05-204955-pain.png",
+    "sourceEventId": 204955,
+    "sourceCalendar": "highwatermark",
+    "addedIn": "auto-discovery-2026-11-07",
+    "discovery": {
+      "sourceId": "high-water",
+      "method": "primary-source-collection"
+    }
+  },
+  {
     "id": "auto-dantes-2026-12-05-e7e199508ab6",
     "title": "DEAD ANIMAL ASSEMBLY PLANT with At The Heart Of The World & a special performance by Cryptid Creek Suspensions",
     "subtitle": "Source-discovered venue event · details need review",
@@ -34982,6 +40404,109 @@ window.SHOWS_EVENTS = [
     }
   },
   {
+    "id": "auto-alberta-street-pub-2026-12-05-88dbde5f86e4",
+    "title": "Lucky As Us | The Sirens | Nervous State",
+    "subtitle": "Source-discovered venue event · details need review",
+    "category": "Unclassified",
+    "tags": [
+      "Category needs review",
+      "Time needs confirmation",
+      "Format needs confirmation"
+    ],
+    "musicStyles": [],
+    "eventFormat": "unverified",
+    "classificationEvidence": "No verified event type or genre",
+    "startTimeKind": "listed",
+    "startsAt": "2026-12-05T21:00:00-08:00",
+    "endsAt": null,
+    "venue": "Alberta Street Pub",
+    "address": "1036 NE Alberta Street, Portland, OR 97211",
+    "neighborhood": "Alberta Arts District",
+    "price": "See organizer for current admission",
+    "free": null,
+    "age": "Not published",
+    "description": "Automatically discovered from a primary venue or promoter listing. Alberta Street Pub's original Squarespace event record supplies the start and end timestamp; exact performance-versus-doors distinction is unconfirmed. Original venue event listing. $18 AT THE DOOR",
+    "source": "Alberta Street Pub",
+    "url": "https://www.albertastreetpub.com/music/2026/12/5/lucky-as-us-the-sirens-nervous-state",
+    "icon": "◇",
+    "sourceCheckedAt": "2026-11-06",
+    "verificationMethod": "Automated venue data; editorial date, time, event type and cancellation verification required",
+    "sourceCategories": [],
+    "sources": [
+      {
+        "name": "Alberta Street Pub",
+        "url": "https://www.albertastreetpub.com/music/2026/12/5/lucky-as-us-the-sirens-nervous-state",
+        "kind": "organizer",
+        "checkedAt": "2026-11-06",
+        "originalCategories": []
+      }
+    ],
+    "artwork": {
+      "url": "https://images.squarespace-cdn.com/content/v1/54109e68e4b06b163549a8dc/1793997557232-H4EW6I29OO6JKOV72B83/IMG_7688.png",
+      "sourceUrl": "https://www.albertastreetpub.com/music/2026/12/5/lucky-as-us-the-sirens-nervous-state",
+      "origin": "official-venue-calendar",
+      "credit": "Alberta Street Pub official event calendar",
+      "usageApproved": null
+    },
+    "addedIn": "auto-discovery-2026-11-06",
+    "discovery": {
+      "sourceId": "alberta-street-pub",
+      "method": "primary-source-collection"
+    }
+  },
+  {
+    "id": "auto-jack-london-revue-2026-12-05-1d6bc7d8d327",
+    "title": "BURLY-Q REVUE",
+    "subtitle": "Source-discovered venue event · details need review",
+    "category": "Unclassified",
+    "tags": [
+      "Category needs review",
+      "Time needs confirmation",
+      "Format needs confirmation",
+      "Separate same-day source listing; review bill and room"
+    ],
+    "musicStyles": [],
+    "eventFormat": "unverified",
+    "classificationEvidence": "No verified event type or genre",
+    "startTimeKind": "listed",
+    "startsAt": "2026-12-05T22:30:00-08:00",
+    "endsAt": null,
+    "venue": "Jack London Revue",
+    "address": "529 SW 4th Ave, Portland, OR 97204",
+    "neighborhood": "Downtown",
+    "price": "See organizer for current admission",
+    "free": null,
+    "age": "Not published",
+    "description": "Automatically discovered from a primary venue or promoter listing. Original JLR event detail verifies full date, venue and showtime separately from doors; the date and clocks match the first-party roster. Original venue event: Join us at the Jack London for the latest edition of our late-night cabaret spectacular, hosted by the Mad Marquis and featuring some of the finest dancers from the Rose City and beyond. Treat yourself to a sensational evening of sultry and exotic delights, ",
+    "source": "Jack London Revue",
+    "url": "https://www.jacklondonrevue.com/tm-event/burly-q-revue-9/",
+    "icon": "◇",
+    "sourceCheckedAt": "2026-11-06",
+    "verificationMethod": "Automated venue data; editorial date, time, event type and cancellation verification required",
+    "sourceCategories": [],
+    "sources": [
+      {
+        "name": "Jack London Revue",
+        "url": "https://www.jacklondonrevue.com/tm-event/burly-q-revue-9/",
+        "kind": "organizer",
+        "checkedAt": "2026-11-06",
+        "originalCategories": []
+      }
+    ],
+    "artwork": {
+      "url": "https://i.ticketweb.com/i/00/12/77/00/04_Original.jpg?v=5",
+      "sourceUrl": "https://www.jacklondonrevue.com/tm-event/burly-q-revue-9/",
+      "origin": "official-event-page",
+      "credit": "Original TicketWeb artwork linked by Jack London Revue",
+      "usageApproved": null
+    },
+    "addedIn": "auto-discovery-2026-11-06",
+    "discovery": {
+      "sourceId": "jack-london-revue",
+      "method": "primary-source-collection"
+    }
+  },
+  {
     "id": "auto-mission-theater-2026-12-06-94f55d558593",
     "title": "Mission Theater History & Art Tour",
     "subtitle": "Source-discovered venue event · details need review",
@@ -35029,6 +40554,58 @@ window.SHOWS_EVENTS = [
     "addedIn": "auto-discovery-2026-11-02",
     "discovery": {
       "sourceId": "mission-theater",
+      "method": "primary-source-collection"
+    }
+  },
+  {
+    "id": "auto-alberta-rose-theatre-2026-12-06-5297eec29a3a",
+    "title": "White Album Xmas — 4:00 PM show",
+    "subtitle": "Source-discovered venue event · details need review",
+    "category": "Unclassified",
+    "tags": [
+      "Category needs review",
+      "Time needs confirmation",
+      "Format needs confirmation"
+    ],
+    "musicStyles": [],
+    "eventFormat": "unverified",
+    "classificationEvidence": "No verified event type or genre",
+    "startTimeKind": "listed",
+    "startsAt": "2026-12-06T16:00:00-08:00",
+    "endsAt": null,
+    "venue": "Alberta Rose Theatre",
+    "address": "3000 NE Alberta Street, Portland, OR 97211",
+    "neighborhood": "Concordia",
+    "price": "See organizer for current admission",
+    "free": null,
+    "age": "Not published",
+    "description": "Automatically discovered from a primary venue or promoter listing. Original Alberta Rose month/year heading plus individually scheduled series date, SHOW clock and room-scoped Etix performance ID. Original multi-performance series: White Album Xmas. Event-specific ticket URL uniquely identifies this session; classify its format from verified source evidence.",
+    "source": "Alberta Rose Theatre",
+    "url": "https://www.etix.com/ticket/p/63815578/white-album-xmas-matinee-portland-alberta-rose-theatre",
+    "icon": "◇",
+    "sourceCheckedAt": "2026-11-06",
+    "verificationMethod": "Automated venue data; editorial date, time, event type and cancellation verification required",
+    "sourceCategories": [],
+    "sources": [
+      {
+        "name": "Alberta Rose Theatre",
+        "url": "https://www.etix.com/ticket/p/63815578/white-album-xmas-matinee-portland-alberta-rose-theatre",
+        "kind": "organizer",
+        "checkedAt": "2026-11-06",
+        "originalCategories": []
+      }
+    ],
+    "artwork": {
+      "url": "https://albertarosetheatre.com/wp-content/uploads/2025/07/etix-White_4482081752076130.jfif",
+      "sourceUrl": "https://albertarosetheatre.com/calendar/category/series/white-album-xmas/alberta-rose-theatre/portland-oregon/",
+      "origin": "official-venue-calendar",
+      "credit": "Alberta Rose Theatre original event artwork",
+      "usageApproved": null
+    },
+    "sourceTicketId": "63815578",
+    "addedIn": "auto-discovery-2026-11-06",
+    "discovery": {
+      "sourceId": "alberta-rose-theatre",
       "method": "primary-source-collection"
     }
   },
@@ -35543,6 +41120,57 @@ window.SHOWS_EVENTS = [
     "addedIn": "auto-discovery-2026-10-22",
     "discovery": {
       "sourceId": "holocene",
+      "method": "primary-source-collection"
+    }
+  },
+  {
+    "id": "auto-jack-london-revue-2026-12-06-be2761321fb4",
+    "title": "JUNE MCDOOM",
+    "subtitle": "Source-discovered venue event · details need review",
+    "category": "Unclassified",
+    "tags": [
+      "Category needs review",
+      "Time needs confirmation",
+      "Format needs confirmation"
+    ],
+    "musicStyles": [],
+    "eventFormat": "unverified",
+    "classificationEvidence": "No verified event type or genre",
+    "startTimeKind": "listed",
+    "startsAt": "2026-12-06T20:00:00-08:00",
+    "endsAt": null,
+    "venue": "Jack London Revue",
+    "address": "529 SW 4th Ave, Portland, OR 97204",
+    "neighborhood": "Downtown",
+    "price": "See organizer for current admission",
+    "free": null,
+    "age": "Not published",
+    "description": "Automatically discovered from a primary venue or promoter listing. Original JLR event detail verifies full date, venue and showtime separately from doors; the date and clocks match the first-party roster. Original venue event: Soul'd Out Presents: June McDoom with Eliana Glass Doors: 7:00pm Show: 8:00pm Ages 21+. https://www.instagram.com/junemcdoom/ https://www.instagram.com/ladyliana There is a hush most of us only knew as children, the warm drift between familiar household soun",
+    "source": "Jack London Revue",
+    "url": "https://www.jacklondonrevue.com/tm-event/june-mcdoom/",
+    "icon": "◇",
+    "sourceCheckedAt": "2026-11-06",
+    "verificationMethod": "Automated venue data; editorial date, time, event type and cancellation verification required",
+    "sourceCategories": [],
+    "sources": [
+      {
+        "name": "Jack London Revue",
+        "url": "https://www.jacklondonrevue.com/tm-event/june-mcdoom/",
+        "kind": "organizer",
+        "checkedAt": "2026-11-06",
+        "originalCategories": []
+      }
+    ],
+    "artwork": {
+      "url": "https://i.ticketweb.com/i/00/13/59/51/43_Original.jpg?v=9",
+      "sourceUrl": "https://www.jacklondonrevue.com/tm-event/june-mcdoom/",
+      "origin": "official-event-page",
+      "credit": "Original TicketWeb artwork linked by Jack London Revue",
+      "usageApproved": null
+    },
+    "addedIn": "auto-discovery-2026-11-06",
+    "discovery": {
+      "sourceId": "jack-london-revue",
       "method": "primary-source-collection"
     }
   },
@@ -36089,6 +41717,57 @@ window.SHOWS_EVENTS = [
     }
   },
   {
+    "id": "auto-showdown-2026-12-08-b65a52328f4c",
+    "title": "Two-Step Tuesday with Shorty and the Mustangs and Dance Lessons with Peggy",
+    "subtitle": "Source-discovered venue event · details need review",
+    "category": "Unclassified",
+    "tags": [
+      "Category needs review",
+      "Time needs confirmation",
+      "Format needs confirmation"
+    ],
+    "musicStyles": [],
+    "eventFormat": "unverified",
+    "classificationEvidence": "No verified event type or genre",
+    "startTimeKind": "listed",
+    "startsAt": "2026-12-08T19:30:00-08:00",
+    "endsAt": null,
+    "venue": "The Showdown",
+    "address": "1195 SE Powell Blvd, Portland, OR 97202",
+    "neighborhood": "Brooklyn",
+    "price": "See organizer for current admission",
+    "free": null,
+    "age": "Not published",
+    "description": "Automatically discovered from a primary venue or promoter listing. Original Showdown listing explicitly says Show 19:30 (Doors 19:00); original event-specific Google Calendar confirms 2026 date and time. Official The Showdown event listing; editorially verify category and genre.",
+    "source": "The Showdown",
+    "url": "https://www.showdownpdx.com/tm-event/two-step-tuesday-with-shorty-and-the-mustangs-and-dance-lessons-with-peggy-2/",
+    "icon": "◇",
+    "sourceCheckedAt": "2026-11-06",
+    "verificationMethod": "Automated venue data; editorial date, time, event type and cancellation verification required",
+    "sourceCategories": [],
+    "sources": [
+      {
+        "name": "The Showdown",
+        "url": "https://www.showdownpdx.com/tm-event/two-step-tuesday-with-shorty-and-the-mustangs-and-dance-lessons-with-peggy-2/",
+        "kind": "organizer",
+        "checkedAt": "2026-11-06",
+        "originalCategories": []
+      }
+    ],
+    "artwork": {
+      "url": "https://i.ticketweb.com/i/00/13/13/48/34_Original.jpg",
+      "sourceUrl": "https://www.showdownpdx.com/tm-event/two-step-tuesday-with-shorty-and-the-mustangs-and-dance-lessons-with-peggy-2/",
+      "origin": "official-venue-calendar",
+      "credit": "Original Showdown event artwork, distributed by TicketWeb",
+      "usageApproved": null
+    },
+    "addedIn": "auto-discovery-2026-11-06",
+    "discovery": {
+      "sourceId": "showdown",
+      "method": "primary-source-collection"
+    }
+  },
+  {
     "id": "auto-mission-theater-2026-12-08-31ab04968b44",
     "title": "Apes of the State Pigeon Pit",
     "subtitle": "Source-discovered venue event · details need review",
@@ -36441,6 +42120,58 @@ window.SHOWS_EVENTS = [
       "origin": "official-event-page",
       "credit": "Official event page",
       "usageApproved": null
+    }
+  },
+  {
+    "id": "auto-alberta-rose-theatre-2026-12-09-a2e0b1cf2197",
+    "title": "White Album Xmas — 7:30 PM show",
+    "subtitle": "Source-discovered venue event · details need review",
+    "category": "Unclassified",
+    "tags": [
+      "Category needs review",
+      "Time needs confirmation",
+      "Format needs confirmation"
+    ],
+    "musicStyles": [],
+    "eventFormat": "unverified",
+    "classificationEvidence": "No verified event type or genre",
+    "startTimeKind": "listed",
+    "startsAt": "2026-12-09T19:30:00-08:00",
+    "endsAt": null,
+    "venue": "Alberta Rose Theatre",
+    "address": "3000 NE Alberta Street, Portland, OR 97211",
+    "neighborhood": "Concordia",
+    "price": "See organizer for current admission",
+    "free": null,
+    "age": "Not published",
+    "description": "Automatically discovered from a primary venue or promoter listing. Original Alberta Rose month/year heading plus individually scheduled series date, SHOW clock and room-scoped Etix performance ID. Original multi-performance series: White Album Xmas. Event-specific ticket URL uniquely identifies this session; classify its format from verified source evidence.",
+    "source": "Alberta Rose Theatre",
+    "url": "https://www.etix.com/ticket/p/93260618/white-album-xmas-portland-alberta-rose-theatre",
+    "icon": "◇",
+    "sourceCheckedAt": "2026-11-06",
+    "verificationMethod": "Automated venue data; editorial date, time, event type and cancellation verification required",
+    "sourceCategories": [],
+    "sources": [
+      {
+        "name": "Alberta Rose Theatre",
+        "url": "https://www.etix.com/ticket/p/93260618/white-album-xmas-portland-alberta-rose-theatre",
+        "kind": "organizer",
+        "checkedAt": "2026-11-06",
+        "originalCategories": []
+      }
+    ],
+    "artwork": {
+      "url": "https://albertarosetheatre.com/wp-content/uploads/2025/07/etix-White_4482081752076130.jfif",
+      "sourceUrl": "https://albertarosetheatre.com/calendar/category/series/white-album-xmas/alberta-rose-theatre/portland-oregon/",
+      "origin": "official-venue-calendar",
+      "credit": "Alberta Rose Theatre original event artwork",
+      "usageApproved": null
+    },
+    "sourceTicketId": "93260618",
+    "addedIn": "auto-discovery-2026-11-06",
+    "discovery": {
+      "sourceId": "alberta-rose-theatre",
+      "method": "primary-source-collection"
     }
   },
   {
@@ -36835,6 +42566,112 @@ window.SHOWS_EVENTS = [
     "addedIn": "auto-discovery-2026-11-02",
     "discovery": {
       "sourceId": "high-water",
+      "method": "primary-source-collection"
+    }
+  },
+  {
+    "id": "auto-jack-london-revue-2026-12-10-eac29624fe87",
+    "title": "MEL BROWN B3 ORGAN GROUP - Jazz Titan Thursdays",
+    "subtitle": "Source-discovered venue event · details need review",
+    "category": "Music",
+    "tags": [
+      "Source-listed Music",
+      "Source-mentioned Jazz",
+      "Time needs confirmation",
+      "Format needs confirmation"
+    ],
+    "musicStyles": [
+      "Jazz"
+    ],
+    "eventFormat": "unverified",
+    "classificationEvidence": "Event-specific source genre wording",
+    "startTimeKind": "listed",
+    "startsAt": "2026-12-10T19:00:00-08:00",
+    "endsAt": null,
+    "venue": "Jack London Revue",
+    "address": "529 SW 4th Ave, Portland, OR 97204",
+    "neighborhood": "Downtown",
+    "price": "See organizer for current admission",
+    "free": null,
+    "age": "Not published",
+    "description": "Automatically discovered from a primary venue or promoter listing. Original JLR event detail verifies full date, venue and showtime separately from doors; the date and clocks match the first-party roster. Original venue event: JLR Seating Map Notes : For this show, you may reserve individual tables on the map pictured. Note that some tables have limited sightlines as noted. All table reservations include admission. Instructions: For Table Reservations : Note the relative location ",
+    "source": "Jack London Revue",
+    "url": "https://www.jacklondonrevue.com/tm-event/mel-brown-b3-organ-group-jazz-titan-thursdays-11/",
+    "icon": "♫",
+    "sourceCheckedAt": "2026-11-06",
+    "verificationMethod": "Automated venue data; editorial date, time, event type and cancellation verification required",
+    "sourceCategories": [],
+    "sources": [
+      {
+        "name": "Jack London Revue",
+        "url": "https://www.jacklondonrevue.com/tm-event/mel-brown-b3-organ-group-jazz-titan-thursdays-11/",
+        "kind": "organizer",
+        "checkedAt": "2026-11-06",
+        "originalCategories": []
+      }
+    ],
+    "artwork": {
+      "url": "https://i.ticketweb.com/i/00/13/08/90/54_Original.jpg?v=3",
+      "sourceUrl": "https://www.jacklondonrevue.com/tm-event/mel-brown-b3-organ-group-jazz-titan-thursdays-11/",
+      "origin": "official-event-page",
+      "credit": "Original TicketWeb artwork linked by Jack London Revue",
+      "usageApproved": null
+    },
+    "addedIn": "auto-discovery-2026-11-06",
+    "discovery": {
+      "sourceId": "jack-london-revue",
+      "method": "primary-source-collection"
+    }
+  },
+  {
+    "id": "auto-alberta-rose-theatre-2026-12-10-3630c71ea489",
+    "title": "White Album Xmas — 7:30 PM show",
+    "subtitle": "Source-discovered venue event · details need review",
+    "category": "Unclassified",
+    "tags": [
+      "Category needs review",
+      "Time needs confirmation",
+      "Format needs confirmation"
+    ],
+    "musicStyles": [],
+    "eventFormat": "unverified",
+    "classificationEvidence": "No verified event type or genre",
+    "startTimeKind": "listed",
+    "startsAt": "2026-12-10T19:30:00-08:00",
+    "endsAt": null,
+    "venue": "Alberta Rose Theatre",
+    "address": "3000 NE Alberta Street, Portland, OR 97211",
+    "neighborhood": "Concordia",
+    "price": "See organizer for current admission",
+    "free": null,
+    "age": "Not published",
+    "description": "Automatically discovered from a primary venue or promoter listing. Original Alberta Rose month/year heading plus individually scheduled series date, SHOW clock and room-scoped Etix performance ID. Original multi-performance series: White Album Xmas. Event-specific ticket URL uniquely identifies this session; classify its format from verified source evidence.",
+    "source": "Alberta Rose Theatre",
+    "url": "https://www.etix.com/ticket/p/93577056/white-album-xmas-portland-alberta-rose-theatre",
+    "icon": "◇",
+    "sourceCheckedAt": "2026-11-06",
+    "verificationMethod": "Automated venue data; editorial date, time, event type and cancellation verification required",
+    "sourceCategories": [],
+    "sources": [
+      {
+        "name": "Alberta Rose Theatre",
+        "url": "https://www.etix.com/ticket/p/93577056/white-album-xmas-portland-alberta-rose-theatre",
+        "kind": "organizer",
+        "checkedAt": "2026-11-06",
+        "originalCategories": []
+      }
+    ],
+    "artwork": {
+      "url": "https://albertarosetheatre.com/wp-content/uploads/2025/07/etix-White_4482081752076130.jfif",
+      "sourceUrl": "https://albertarosetheatre.com/calendar/category/series/white-album-xmas/alberta-rose-theatre/portland-oregon/",
+      "origin": "official-venue-calendar",
+      "credit": "Alberta Rose Theatre original event artwork",
+      "usageApproved": null
+    },
+    "sourceTicketId": "93577056",
+    "addedIn": "auto-discovery-2026-11-06",
+    "discovery": {
+      "sourceId": "alberta-rose-theatre",
       "method": "primary-source-collection"
     }
   },
@@ -37481,6 +43318,58 @@ window.SHOWS_EVENTS = [
     }
   },
   {
+    "id": "auto-alberta-rose-theatre-2026-12-11-9544944e472d",
+    "title": "White Album Xmas — 7:30 PM show",
+    "subtitle": "Source-discovered venue event · details need review",
+    "category": "Unclassified",
+    "tags": [
+      "Category needs review",
+      "Time needs confirmation",
+      "Format needs confirmation"
+    ],
+    "musicStyles": [],
+    "eventFormat": "unverified",
+    "classificationEvidence": "No verified event type or genre",
+    "startTimeKind": "listed",
+    "startsAt": "2026-12-11T19:30:00-08:00",
+    "endsAt": null,
+    "venue": "Alberta Rose Theatre",
+    "address": "3000 NE Alberta Street, Portland, OR 97211",
+    "neighborhood": "Concordia",
+    "price": "See organizer for current admission",
+    "free": null,
+    "age": "Not published",
+    "description": "Automatically discovered from a primary venue or promoter listing. Original Alberta Rose month/year heading plus individually scheduled series date, SHOW clock and room-scoped Etix performance ID. Original multi-performance series: White Album Xmas. Event-specific ticket URL uniquely identifies this session; classify its format from verified source evidence.",
+    "source": "Alberta Rose Theatre",
+    "url": "https://www.etix.com/ticket/p/56163757/white-album-xmas-portland-alberta-rose-theatre",
+    "icon": "◇",
+    "sourceCheckedAt": "2026-11-06",
+    "verificationMethod": "Automated venue data; editorial date, time, event type and cancellation verification required",
+    "sourceCategories": [],
+    "sources": [
+      {
+        "name": "Alberta Rose Theatre",
+        "url": "https://www.etix.com/ticket/p/56163757/white-album-xmas-portland-alberta-rose-theatre",
+        "kind": "organizer",
+        "checkedAt": "2026-11-06",
+        "originalCategories": []
+      }
+    ],
+    "artwork": {
+      "url": "https://albertarosetheatre.com/wp-content/uploads/2025/07/etix-White_4482081752076130.jfif",
+      "sourceUrl": "https://albertarosetheatre.com/calendar/category/series/white-album-xmas/alberta-rose-theatre/portland-oregon/",
+      "origin": "official-venue-calendar",
+      "credit": "Alberta Rose Theatre original event artwork",
+      "usageApproved": null
+    },
+    "sourceTicketId": "56163757",
+    "addedIn": "auto-discovery-2026-11-06",
+    "discovery": {
+      "sourceId": "alberta-rose-theatre",
+      "method": "primary-source-collection"
+    }
+  },
+  {
     "id": "crystal-angine-de-poitrine-with-zouz-second-night-2026-12-11",
     "title": "Angine de Poitrine with Zouz — second night",
     "subtitle": "Live show · Rock, Noise & experimental",
@@ -37582,6 +43471,57 @@ window.SHOWS_EVENTS = [
     "addedIn": "auto-discovery-2026-10-29",
     "discovery": {
       "sourceId": "twilight",
+      "method": "primary-source-collection"
+    }
+  },
+  {
+    "id": "auto-jack-london-revue-2026-12-11-9d69a6026766",
+    "title": "MARK GUILIANA",
+    "subtitle": "Source-discovered venue event · details need review",
+    "category": "Unclassified",
+    "tags": [
+      "Category needs review",
+      "Time needs confirmation",
+      "Format needs confirmation"
+    ],
+    "musicStyles": [],
+    "eventFormat": "unverified",
+    "classificationEvidence": "No verified event type or genre",
+    "startTimeKind": "listed",
+    "startsAt": "2026-12-11T20:00:00-08:00",
+    "endsAt": null,
+    "venue": "Jack London Revue",
+    "address": "529 SW 4th Ave, Portland, OR 97204",
+    "neighborhood": "Downtown",
+    "price": "See organizer for current admission",
+    "free": null,
+    "age": "Not published",
+    "description": "Automatically discovered from a primary venue or promoter listing. Original JLR event detail verifies full date, venue and showtime separately from doors; the date and clocks match the first-party roster. Original venue event: Soul'd Out Presents: MARK GUILIANA Doors: 7:00pm Show: 8:00pm Ages 21+. Born out of relentless exploration of rhythm and sonic textures, BEAT MUSIC pulses with an electrifying fusion of jazz, electronic, and experimental sounds, captivating audiences worldwi",
+    "source": "Jack London Revue",
+    "url": "https://www.jacklondonrevue.com/tm-event/mark-guiliana/",
+    "icon": "◇",
+    "sourceCheckedAt": "2026-11-06",
+    "verificationMethod": "Automated venue data; editorial date, time, event type and cancellation verification required",
+    "sourceCategories": [],
+    "sources": [
+      {
+        "name": "Jack London Revue",
+        "url": "https://www.jacklondonrevue.com/tm-event/mark-guiliana/",
+        "kind": "organizer",
+        "checkedAt": "2026-11-06",
+        "originalCategories": []
+      }
+    ],
+    "artwork": {
+      "url": "https://i.ticketweb.com/i/00/12/98/28/54_Original.jpg?v=5",
+      "sourceUrl": "https://www.jacklondonrevue.com/tm-event/mark-guiliana/",
+      "origin": "official-event-page",
+      "credit": "Original TicketWeb artwork linked by Jack London Revue",
+      "usageApproved": null
+    },
+    "addedIn": "auto-discovery-2026-11-06",
+    "discovery": {
+      "sourceId": "jack-london-revue",
       "method": "primary-source-collection"
     }
   },
@@ -38076,6 +44016,57 @@ window.SHOWS_EVENTS = [
     }
   },
   {
+    "id": "auto-the-off-beat-2026-12-12-ccaeaa88a3da",
+    "title": "12/12 Bleakfest",
+    "subtitle": "Source-discovered venue event · details need review",
+    "category": "Music",
+    "tags": [
+      "Source-listed Music",
+      "Time needs confirmation",
+      "Format needs confirmation"
+    ],
+    "musicStyles": [],
+    "eventFormat": "unverified",
+    "classificationEvidence": "Source event type: MusicEvent",
+    "startTimeKind": "listed",
+    "startsAt": "2026-12-12T18:30:00-08:00",
+    "endsAt": null,
+    "venue": "The Off Beat",
+    "address": "8440 N Interstate Ave, Portland, OR 97217",
+    "neighborhood": "Kenton",
+    "price": "See organizer for current admission",
+    "free": null,
+    "age": "Not published",
+    "description": "Automatically discovered from a primary venue or promoter listing. Official event schema and source description agree on the dated Pacific performance time; doors are separate. When December 12, 2026 · 6:30 pm - 11:00 pm Doors 6:00 pm Where The Off Beat Portland, OR Ages All Ages Price $19.38 Get Tickets 12/12 Bleakfest Misery Whip King Yosef Knife Point Tolls Sacrament Asthelifeleavesyoureyes Deceased fasciculation The Off Beat 8440 N Interstate Ave, 6",
+    "source": "The Off Beat / Friends of Noise",
+    "url": "https://calendar.friendsofnoise.org/shows/12-12-bleakfest-december-12-2026-756862",
+    "icon": "♫",
+    "sourceCheckedAt": "2026-11-06",
+    "verificationMethod": "Automated venue data; editorial date, time, event type and cancellation verification required",
+    "sourceCategories": [],
+    "sources": [
+      {
+        "name": "The Off Beat / Friends of Noise",
+        "url": "https://calendar.friendsofnoise.org/shows/12-12-bleakfest-december-12-2026-756862",
+        "kind": "organizer",
+        "checkedAt": "2026-11-06",
+        "originalCategories": []
+      }
+    ],
+    "artwork": {
+      "url": "https://s3.amazonaws.com/opendate-aws-assets/confirms/website_event_images/000/756/862/compressed/BLEAKFEST_3__METAL_NIGHT_FLIER_4x5.jpg?1793996553",
+      "sourceUrl": "https://calendar.friendsofnoise.org/shows/12-12-bleakfest-december-12-2026-756862",
+      "origin": "official-event-page",
+      "credit": "Friends of Noise / The Off Beat — source-provided event image",
+      "usageApproved": null
+    },
+    "addedIn": "auto-discovery-2026-11-06",
+    "discovery": {
+      "sourceId": "the-off-beat",
+      "method": "primary-source-collection"
+    }
+  },
+  {
     "id": "auto-hawthorne-theatre-2026-12-12-defccee49b8b",
     "title": "Eyes Set To Kill",
     "subtitle": "Source-discovered venue event · details need review",
@@ -38170,6 +44161,58 @@ window.SHOWS_EVENTS = [
     "addedIn": "auto-discovery-2026-10-21",
     "discovery": {
       "sourceId": "roseland",
+      "method": "primary-source-collection"
+    }
+  },
+  {
+    "id": "auto-alberta-rose-theatre-2026-12-12-b3a60b0e7c26",
+    "title": "White Album Xmas — 7:30 PM show",
+    "subtitle": "Source-discovered venue event · details need review",
+    "category": "Unclassified",
+    "tags": [
+      "Category needs review",
+      "Time needs confirmation",
+      "Format needs confirmation"
+    ],
+    "musicStyles": [],
+    "eventFormat": "unverified",
+    "classificationEvidence": "No verified event type or genre",
+    "startTimeKind": "listed",
+    "startsAt": "2026-12-12T19:30:00-08:00",
+    "endsAt": null,
+    "venue": "Alberta Rose Theatre",
+    "address": "3000 NE Alberta Street, Portland, OR 97211",
+    "neighborhood": "Concordia",
+    "price": "See organizer for current admission",
+    "free": null,
+    "age": "Not published",
+    "description": "Automatically discovered from a primary venue or promoter listing. Original Alberta Rose month/year heading plus individually scheduled series date, SHOW clock and room-scoped Etix performance ID. Original multi-performance series: White Album Xmas. Event-specific ticket URL uniquely identifies this session; classify its format from verified source evidence.",
+    "source": "Alberta Rose Theatre",
+    "url": "https://www.etix.com/ticket/p/82960769/white-album-xmas-portland-alberta-rose-theatre",
+    "icon": "◇",
+    "sourceCheckedAt": "2026-11-06",
+    "verificationMethod": "Automated venue data; editorial date, time, event type and cancellation verification required",
+    "sourceCategories": [],
+    "sources": [
+      {
+        "name": "Alberta Rose Theatre",
+        "url": "https://www.etix.com/ticket/p/82960769/white-album-xmas-portland-alberta-rose-theatre",
+        "kind": "organizer",
+        "checkedAt": "2026-11-06",
+        "originalCategories": []
+      }
+    ],
+    "artwork": {
+      "url": "https://albertarosetheatre.com/wp-content/uploads/2025/07/etix-White_4482081752076130.jfif",
+      "sourceUrl": "https://albertarosetheatre.com/calendar/category/series/white-album-xmas/alberta-rose-theatre/portland-oregon/",
+      "origin": "official-venue-calendar",
+      "credit": "Alberta Rose Theatre original event artwork",
+      "usageApproved": null
+    },
+    "sourceTicketId": "82960769",
+    "addedIn": "auto-discovery-2026-11-06",
+    "discovery": {
+      "sourceId": "alberta-rose-theatre",
       "method": "primary-source-collection"
     }
   },
@@ -38310,6 +44353,57 @@ window.SHOWS_EVENTS = [
     ],
     "addedIn": "2026-10-17-independent-venues",
     "doorsAt": "2026-12-12T19:00:00-08:00"
+  },
+  {
+    "id": "auto-jack-london-revue-2026-12-12-69959f36bf4a",
+    "title": "THE ROYAL WE",
+    "subtitle": "Source-discovered venue event · details need review",
+    "category": "Unclassified",
+    "tags": [
+      "Category needs review",
+      "Time needs confirmation",
+      "Format needs confirmation"
+    ],
+    "musicStyles": [],
+    "eventFormat": "unverified",
+    "classificationEvidence": "No verified event type or genre",
+    "startTimeKind": "listed",
+    "startsAt": "2026-12-12T20:00:00-08:00",
+    "endsAt": null,
+    "venue": "Jack London Revue",
+    "address": "529 SW 4th Ave, Portland, OR 97204",
+    "neighborhood": "Downtown",
+    "price": "See organizer for current admission",
+    "free": null,
+    "age": "Not published",
+    "description": "Automatically discovered from a primary venue or promoter listing. Original JLR event detail verifies full date, venue and showtime separately from doors; the date and clocks match the first-party roster. Original venue event: Soul'd Out Presents: The Royal We featuring Skerik, Andy Coe, Wayne Horvitz, Geoff Harper, D'Vonne Lewis. Doors: 7:00pm Show: 8:00pm Ages 21+. The Royal We began informally playing the late night set at the Royal Room in Seattle every Wednesday night. The mu",
+    "source": "Jack London Revue",
+    "url": "https://www.jacklondonrevue.com/tm-event/the-royal-we/",
+    "icon": "◇",
+    "sourceCheckedAt": "2026-11-06",
+    "verificationMethod": "Automated venue data; editorial date, time, event type and cancellation verification required",
+    "sourceCategories": [],
+    "sources": [
+      {
+        "name": "Jack London Revue",
+        "url": "https://www.jacklondonrevue.com/tm-event/the-royal-we/",
+        "kind": "organizer",
+        "checkedAt": "2026-11-06",
+        "originalCategories": []
+      }
+    ],
+    "artwork": {
+      "url": "https://i.ticketweb.com/i/00/13/06/32/44_Original.jpg?v=5",
+      "sourceUrl": "https://www.jacklondonrevue.com/tm-event/the-royal-we/",
+      "origin": "official-event-page",
+      "credit": "Original TicketWeb artwork linked by Jack London Revue",
+      "usageApproved": null
+    },
+    "addedIn": "auto-discovery-2026-11-06",
+    "discovery": {
+      "sourceId": "jack-london-revue",
+      "method": "primary-source-collection"
+    }
   },
   {
     "id": "auto-high-water-2026-12-12-bb096780ab95",
@@ -38600,6 +44694,58 @@ window.SHOWS_EVENTS = [
     }
   },
   {
+    "id": "auto-alberta-rose-theatre-2026-12-13-edd12e0d35f0",
+    "title": "White Album Xmas — 4:00 PM show",
+    "subtitle": "Source-discovered venue event · details need review",
+    "category": "Unclassified",
+    "tags": [
+      "Category needs review",
+      "Time needs confirmation",
+      "Format needs confirmation"
+    ],
+    "musicStyles": [],
+    "eventFormat": "unverified",
+    "classificationEvidence": "No verified event type or genre",
+    "startTimeKind": "listed",
+    "startsAt": "2026-12-13T16:00:00-08:00",
+    "endsAt": null,
+    "venue": "Alberta Rose Theatre",
+    "address": "3000 NE Alberta Street, Portland, OR 97211",
+    "neighborhood": "Concordia",
+    "price": "See organizer for current admission",
+    "free": null,
+    "age": "Not published",
+    "description": "Automatically discovered from a primary venue or promoter listing. Original Alberta Rose month/year heading plus individually scheduled series date, SHOW clock and room-scoped Etix performance ID. Original multi-performance series: White Album Xmas. Event-specific ticket URL uniquely identifies this session; classify its format from verified source evidence.",
+    "source": "Alberta Rose Theatre",
+    "url": "https://www.etix.com/ticket/p/62225030/white-album-xmas-matinee-portland-alberta-rose-theatre",
+    "icon": "◇",
+    "sourceCheckedAt": "2026-11-06",
+    "verificationMethod": "Automated venue data; editorial date, time, event type and cancellation verification required",
+    "sourceCategories": [],
+    "sources": [
+      {
+        "name": "Alberta Rose Theatre",
+        "url": "https://www.etix.com/ticket/p/62225030/white-album-xmas-matinee-portland-alberta-rose-theatre",
+        "kind": "organizer",
+        "checkedAt": "2026-11-06",
+        "originalCategories": []
+      }
+    ],
+    "artwork": {
+      "url": "https://albertarosetheatre.com/wp-content/uploads/2025/07/etix-White_4482081752076130.jfif",
+      "sourceUrl": "https://albertarosetheatre.com/calendar/category/series/white-album-xmas/alberta-rose-theatre/portland-oregon/",
+      "origin": "official-venue-calendar",
+      "credit": "Alberta Rose Theatre original event artwork",
+      "usageApproved": null
+    },
+    "sourceTicketId": "62225030",
+    "addedIn": "auto-discovery-2026-11-06",
+    "discovery": {
+      "sourceId": "alberta-rose-theatre",
+      "method": "primary-source-collection"
+    }
+  },
+  {
     "id": "auto-turn-turn-turn-2026-12-13-2ffd11b1d3c0",
     "title": "An Orange Vanilla Christmas: An Original Musical w/ Tradie",
     "subtitle": "Source-discovered venue event · details need review",
@@ -38647,6 +44793,108 @@ window.SHOWS_EVENTS = [
     "addedIn": "auto-discovery-2026-10-25",
     "discovery": {
       "sourceId": "turn-turn-turn",
+      "method": "primary-source-collection"
+    }
+  },
+  {
+    "id": "auto-jack-london-revue-2026-12-13-a908e059ef70",
+    "title": "MARIA MAZZOTTA",
+    "subtitle": "Source-discovered venue event · details need review",
+    "category": "Unclassified",
+    "tags": [
+      "Category needs review",
+      "Time needs confirmation",
+      "Format needs confirmation"
+    ],
+    "musicStyles": [],
+    "eventFormat": "unverified",
+    "classificationEvidence": "No verified event type or genre",
+    "startTimeKind": "listed",
+    "startsAt": "2026-12-13T19:30:00-08:00",
+    "endsAt": null,
+    "venue": "Jack London Revue",
+    "address": "529 SW 4th Ave, Portland, OR 97204",
+    "neighborhood": "Downtown",
+    "price": "See organizer for current admission",
+    "free": null,
+    "age": "Not published",
+    "description": "Automatically discovered from a primary venue or promoter listing. Original JLR event detail verifies full date, venue and showtime separately from doors; the date and clocks match the first-party roster. Original venue event: MARIA MAZZOTTA Maria Mazzotta&rsquo;s unique versatility is what makes her one of the most important voices of the music scene of world music towards which she has an extremely respectful approach, backed by meticulous research into vocal characteristics of ",
+    "source": "Jack London Revue",
+    "url": "https://www.jacklondonrevue.com/tm-event/maria-mazzotta/",
+    "icon": "◇",
+    "sourceCheckedAt": "2026-11-06",
+    "verificationMethod": "Automated venue data; editorial date, time, event type and cancellation verification required",
+    "sourceCategories": [],
+    "sources": [
+      {
+        "name": "Jack London Revue",
+        "url": "https://www.jacklondonrevue.com/tm-event/maria-mazzotta/",
+        "kind": "organizer",
+        "checkedAt": "2026-11-06",
+        "originalCategories": []
+      }
+    ],
+    "artwork": {
+      "url": "https://i.ticketweb.com/i/00/12/92/91/14_Original.jpg?v=4",
+      "sourceUrl": "https://www.jacklondonrevue.com/tm-event/maria-mazzotta/",
+      "origin": "official-event-page",
+      "credit": "Original TicketWeb artwork linked by Jack London Revue",
+      "usageApproved": null
+    },
+    "addedIn": "auto-discovery-2026-11-06",
+    "discovery": {
+      "sourceId": "jack-london-revue",
+      "method": "primary-source-collection"
+    }
+  },
+  {
+    "id": "auto-star-theater-2026-12-13-b4f66b6ee316",
+    "title": "Rahzel, Ras Kass, DJ K-Salaam",
+    "subtitle": "Source-discovered venue event · details need review",
+    "category": "Music",
+    "tags": [
+      "Source-listed Music",
+      "Time needs confirmation",
+      "Format needs confirmation"
+    ],
+    "musicStyles": [],
+    "eventFormat": "unverified",
+    "classificationEvidence": "Original source explicitly verifies music",
+    "startTimeKind": "listed",
+    "startsAt": "2026-12-13T19:30:00-08:00",
+    "endsAt": null,
+    "venue": "Star Theater",
+    "address": "13 NW Sixth Avenue, Portland, OR 97209",
+    "neighborhood": "Old Town",
+    "price": "See organizer for current admission",
+    "free": null,
+    "age": "Not published",
+    "description": "Automatically discovered from a primary venue or promoter listing. Official Star Theater listing identifies show time Official Star Theater event calendar listing",
+    "source": "Star Theater",
+    "url": "https://www.startheaterportland.com/tm-event/rahzel-ras-kass-dj-k-salaam/",
+    "icon": "♫",
+    "sourceCheckedAt": "2026-11-06",
+    "verificationMethod": "Automated venue data; editorial date, time, event type and cancellation verification required",
+    "sourceCategories": [],
+    "sources": [
+      {
+        "name": "Star Theater",
+        "url": "https://www.startheaterportland.com/tm-event/rahzel-ras-kass-dj-k-salaam/",
+        "kind": "organizer",
+        "checkedAt": "2026-11-06",
+        "originalCategories": []
+      }
+    ],
+    "artwork": {
+      "url": "https://i.ticketweb.com/i/00/13/13/32/94_Original.jpg?v=8",
+      "sourceUrl": "https://www.startheaterportland.com/tm-event/rahzel-ras-kass-dj-k-salaam/",
+      "origin": "official-event-page",
+      "credit": "Official event page",
+      "usageApproved": null
+    },
+    "addedIn": "auto-discovery-2026-11-06",
+    "discovery": {
+      "sourceId": "star-theater",
       "method": "primary-source-collection"
     }
   },
@@ -38996,6 +45244,57 @@ window.SHOWS_EVENTS = [
     }
   },
   {
+    "id": "auto-showdown-2026-12-14-cf8a2eaa8b7b",
+    "title": "Square Dancing with Caller Amy Hofer and Forty Drop Few with Alexander Jones/ KARAOKE @ 9:30",
+    "subtitle": "Source-discovered venue event · details need review",
+    "category": "Karaoke",
+    "tags": [
+      "Source-listed Karaoke",
+      "Time needs confirmation",
+      "Format needs confirmation"
+    ],
+    "musicStyles": [],
+    "eventFormat": "unverified",
+    "classificationEvidence": "Event-specific source wording",
+    "startTimeKind": "listed",
+    "startsAt": "2026-12-14T19:00:00-08:00",
+    "endsAt": null,
+    "venue": "The Showdown",
+    "address": "1195 SE Powell Blvd, Portland, OR 97202",
+    "neighborhood": "Brooklyn",
+    "price": "See organizer for current admission",
+    "free": null,
+    "age": "Not published",
+    "description": "Automatically discovered from a primary venue or promoter listing. Original Showdown listing explicitly says Show 19:00 (Doors 18:00); original event-specific Google Calendar confirms 2026 date and time. Official The Showdown event listing; editorially verify category and genre.",
+    "source": "The Showdown",
+    "url": "https://www.showdownpdx.com/tm-event/square-dancing-with-miss-pralines-whip-lodge-tenderstrokes/",
+    "icon": "◇",
+    "sourceCheckedAt": "2026-11-06",
+    "verificationMethod": "Automated venue data; editorial date, time, event type and cancellation verification required",
+    "sourceCategories": [],
+    "sources": [
+      {
+        "name": "The Showdown",
+        "url": "https://www.showdownpdx.com/tm-event/square-dancing-with-miss-pralines-whip-lodge-tenderstrokes/",
+        "kind": "organizer",
+        "checkedAt": "2026-11-06",
+        "originalCategories": []
+      }
+    ],
+    "artwork": {
+      "url": "https://i.ticketweb.com/i/00/13/03/13/14_Original.jpg",
+      "sourceUrl": "https://www.showdownpdx.com/tm-event/square-dancing-with-miss-pralines-whip-lodge-tenderstrokes/",
+      "origin": "official-venue-calendar",
+      "credit": "Original Showdown event artwork, distributed by TicketWeb",
+      "usageApproved": null
+    },
+    "addedIn": "auto-discovery-2026-11-06",
+    "discovery": {
+      "sourceId": "showdown",
+      "method": "primary-source-collection"
+    }
+  },
+  {
     "id": "auto-holocene-2026-12-14-8abaacfadc82",
     "title": "The Moth StorySLAM: ANYTHING GOES – 21+",
     "subtitle": "Source-discovered venue event · details need review",
@@ -39090,6 +45389,57 @@ window.SHOWS_EVENTS = [
     }
   },
   {
+    "id": "auto-showdown-2026-12-15-ce8bb1530daf",
+    "title": "Two-Step Tuesday with Best Intentions and Dance Lessons with Robbie",
+    "subtitle": "Source-discovered venue event · details need review",
+    "category": "Unclassified",
+    "tags": [
+      "Category needs review",
+      "Time needs confirmation",
+      "Format needs confirmation"
+    ],
+    "musicStyles": [],
+    "eventFormat": "unverified",
+    "classificationEvidence": "No verified event type or genre",
+    "startTimeKind": "listed",
+    "startsAt": "2026-12-15T19:30:00-08:00",
+    "endsAt": null,
+    "venue": "The Showdown",
+    "address": "1195 SE Powell Blvd, Portland, OR 97202",
+    "neighborhood": "Brooklyn",
+    "price": "See organizer for current admission",
+    "free": null,
+    "age": "Not published",
+    "description": "Automatically discovered from a primary venue or promoter listing. Original Showdown listing explicitly says Show 19:30 (Doors 19:00); original event-specific Google Calendar confirms 2026 date and time. Official The Showdown event listing; editorially verify category and genre.",
+    "source": "The Showdown",
+    "url": "https://www.showdownpdx.com/tm-event/two-step-tuesday-with-best-intentions-and-dance-lessons-with-robbie/",
+    "icon": "◇",
+    "sourceCheckedAt": "2026-11-06",
+    "verificationMethod": "Automated venue data; editorial date, time, event type and cancellation verification required",
+    "sourceCategories": [],
+    "sources": [
+      {
+        "name": "The Showdown",
+        "url": "https://www.showdownpdx.com/tm-event/two-step-tuesday-with-best-intentions-and-dance-lessons-with-robbie/",
+        "kind": "organizer",
+        "checkedAt": "2026-11-06",
+        "originalCategories": []
+      }
+    ],
+    "artwork": {
+      "url": "https://i.ticketweb.com/i/00/13/13/48/54_Original.jpg",
+      "sourceUrl": "https://www.showdownpdx.com/tm-event/two-step-tuesday-with-best-intentions-and-dance-lessons-with-robbie/",
+      "origin": "official-venue-calendar",
+      "credit": "Original Showdown event artwork, distributed by TicketWeb",
+      "usageApproved": null
+    },
+    "addedIn": "auto-discovery-2026-11-06",
+    "discovery": {
+      "sourceId": "showdown",
+      "method": "primary-source-collection"
+    }
+  },
+  {
     "id": "auto-aladdin-theater-2026-12-15-e565d431834e",
     "title": "JD McPherson - SOCKS: A Rock N’ Roll Christmas Tour",
     "subtitle": "Source-discovered venue event · details need review",
@@ -39137,6 +45487,57 @@ window.SHOWS_EVENTS = [
     "addedIn": "auto-discovery-2026-10-29",
     "discovery": {
       "sourceId": "aladdin-theater",
+      "method": "primary-source-collection"
+    }
+  },
+  {
+    "id": "auto-alberta-rose-theatre-2026-12-15-0db2b79c374d",
+    "title": "Rizo & Making Movies",
+    "subtitle": "Source-discovered venue event · details need review",
+    "category": "Unclassified",
+    "tags": [
+      "Category needs review",
+      "Time needs confirmation",
+      "Format needs confirmation"
+    ],
+    "musicStyles": [],
+    "eventFormat": "unverified",
+    "classificationEvidence": "No verified event type or genre",
+    "startTimeKind": "listed",
+    "startsAt": "2026-12-15T20:00:00-08:00",
+    "endsAt": null,
+    "venue": "Alberta Rose Theatre",
+    "address": "3000 NE Alberta Street, Portland, OR 97211",
+    "neighborhood": "Concordia",
+    "price": "See organizer for current admission",
+    "free": null,
+    "age": "Not published",
+    "description": "Automatically discovered from a primary venue or promoter listing. Original Alberta Rose dated calendar month/year, weekday, exact room and separately labeled SHOW time; doors not substituted. Original theatre calendar; music style and format require event-specific editorial assessment.",
+    "source": "Alberta Rose Theatre",
+    "url": "https://albertarosetheatre.com/event/rizo-making-movies/alberta-rose-theatre/portland-oregon/",
+    "icon": "◇",
+    "sourceCheckedAt": "2026-11-06",
+    "verificationMethod": "Automated venue data; editorial date, time, event type and cancellation verification required",
+    "sourceCategories": [],
+    "sources": [
+      {
+        "name": "Alberta Rose Theatre",
+        "url": "https://albertarosetheatre.com/event/rizo-making-movies/alberta-rose-theatre/portland-oregon/",
+        "kind": "organizer",
+        "checkedAt": "2026-11-06",
+        "originalCategories": []
+      }
+    ],
+    "artwork": {
+      "url": "https://albertarosetheatre.com/wp-content/uploads/2026/10/rizo-making-movies.jfif",
+      "sourceUrl": "https://albertarosetheatre.com/event/rizo-making-movies/alberta-rose-theatre/portland-oregon/",
+      "origin": "official-venue-calendar",
+      "credit": "Alberta Rose Theatre original event artwork",
+      "usageApproved": null
+    },
+    "addedIn": "auto-discovery-2026-11-06",
+    "discovery": {
+      "sourceId": "alberta-rose-theatre",
       "method": "primary-source-collection"
     }
   },
@@ -39279,6 +45680,57 @@ window.SHOWS_EVENTS = [
     "addedIn": "auto-discovery-2026-10-24",
     "discovery": {
       "sourceId": "starday-tavern",
+      "method": "primary-source-collection"
+    }
+  },
+  {
+    "id": "auto-alberta-rose-theatre-2026-12-16-348bbce9ed90",
+    "title": "Peter Rowan Sam Grisman Duo: A Special Evening of Songs & Stories",
+    "subtitle": "Source-discovered venue event · details need review",
+    "category": "Unclassified",
+    "tags": [
+      "Category needs review",
+      "Time needs confirmation",
+      "Format needs confirmation"
+    ],
+    "musicStyles": [],
+    "eventFormat": "unverified",
+    "classificationEvidence": "No verified event type or genre",
+    "startTimeKind": "listed",
+    "startsAt": "2026-12-16T19:30:00-08:00",
+    "endsAt": null,
+    "venue": "Alberta Rose Theatre",
+    "address": "3000 NE Alberta Street, Portland, OR 97211",
+    "neighborhood": "Concordia",
+    "price": "See organizer for current admission",
+    "free": null,
+    "age": "Not published",
+    "description": "Automatically discovered from a primary venue or promoter listing. Original Alberta Rose dated calendar month/year, weekday, exact room and separately labeled SHOW time; doors not substituted. Original theatre calendar; music style and format require event-specific editorial assessment.",
+    "source": "Alberta Rose Theatre",
+    "url": "https://albertarosetheatre.com/event/peter-rowan-sam-grisman-duo-a-special-evening-of-songs-stories/alberta-rose-theatre/portland-oregon/",
+    "icon": "◇",
+    "sourceCheckedAt": "2026-11-06",
+    "verificationMethod": "Automated venue data; editorial date, time, event type and cancellation verification required",
+    "sourceCategories": [],
+    "sources": [
+      {
+        "name": "Alberta Rose Theatre",
+        "url": "https://albertarosetheatre.com/event/peter-rowan-sam-grisman-duo-a-special-evening-of-songs-stories/alberta-rose-theatre/portland-oregon/",
+        "kind": "organizer",
+        "checkedAt": "2026-11-06",
+        "originalCategories": []
+      }
+    ],
+    "artwork": {
+      "url": "https://albertarosetheatre.com/wp-content/uploads/2026/09/a-special-evening-of-songs-and-stories-with-the-peter-rowan-and-sam-grisman-duo.jfif",
+      "sourceUrl": "https://albertarosetheatre.com/event/peter-rowan-sam-grisman-duo-a-special-evening-of-songs-stories/alberta-rose-theatre/portland-oregon/",
+      "origin": "official-venue-calendar",
+      "credit": "Alberta Rose Theatre original event artwork",
+      "usageApproved": null
+    },
+    "addedIn": "auto-discovery-2026-11-06",
+    "discovery": {
+      "sourceId": "alberta-rose-theatre",
       "method": "primary-source-collection"
     }
   },
@@ -39579,6 +46031,60 @@ window.SHOWS_EVENTS = [
     }
   },
   {
+    "id": "auto-jack-london-revue-2026-12-17-89ae86696bf1",
+    "title": "MEL BROWN B3 ORGAN GROUP - Jazz Titan Thursdays",
+    "subtitle": "Source-discovered venue event · details need review",
+    "category": "Music",
+    "tags": [
+      "Source-listed Music",
+      "Source-mentioned Jazz",
+      "Time needs confirmation",
+      "Format needs confirmation"
+    ],
+    "musicStyles": [
+      "Jazz"
+    ],
+    "eventFormat": "unverified",
+    "classificationEvidence": "Event-specific source genre wording",
+    "startTimeKind": "listed",
+    "startsAt": "2026-12-17T19:00:00-08:00",
+    "endsAt": null,
+    "venue": "Jack London Revue",
+    "address": "529 SW 4th Ave, Portland, OR 97204",
+    "neighborhood": "Downtown",
+    "price": "See organizer for current admission",
+    "free": null,
+    "age": "Not published",
+    "description": "Automatically discovered from a primary venue or promoter listing. Original JLR event detail verifies full date, venue and showtime separately from doors; the date and clocks match the first-party roster. Original venue event: JLR Seating Map Notes : For this show, you may reserve individual tables on the map pictured. Note that some tables have limited sightlines as noted. All table reservations include admission. Instructions: For Table Reservations : Note the relative location ",
+    "source": "Jack London Revue",
+    "url": "https://www.jacklondonrevue.com/tm-event/mel-brown-b3-organ-group-jazz-titan-thursdays-10/",
+    "icon": "♫",
+    "sourceCheckedAt": "2026-11-06",
+    "verificationMethod": "Automated venue data; editorial date, time, event type and cancellation verification required",
+    "sourceCategories": [],
+    "sources": [
+      {
+        "name": "Jack London Revue",
+        "url": "https://www.jacklondonrevue.com/tm-event/mel-brown-b3-organ-group-jazz-titan-thursdays-10/",
+        "kind": "organizer",
+        "checkedAt": "2026-11-06",
+        "originalCategories": []
+      }
+    ],
+    "artwork": {
+      "url": "https://i.ticketweb.com/i/00/13/08/90/64_Original.jpg?v=5",
+      "sourceUrl": "https://www.jacklondonrevue.com/tm-event/mel-brown-b3-organ-group-jazz-titan-thursdays-10/",
+      "origin": "official-event-page",
+      "credit": "Original TicketWeb artwork linked by Jack London Revue",
+      "usageApproved": null
+    },
+    "addedIn": "auto-discovery-2026-11-06",
+    "discovery": {
+      "sourceId": "jack-london-revue",
+      "method": "primary-source-collection"
+    }
+  },
+  {
     "id": "auto-lolas-room-2026-12-17-3c2ccb1be3e2",
     "title": "The PNW Stompeders - Line Dance Night",
     "subtitle": "Source-discovered venue event · details need review",
@@ -39774,6 +46280,57 @@ window.SHOWS_EVENTS = [
     }
   },
   {
+    "id": "auto-alberta-street-pub-2026-12-18-e48a93e5aaa4",
+    "title": "CLASSY BRASSY with Clodewerks | Waffle Taco | Couch Brass",
+    "subtitle": "Source-discovered venue event · details need review",
+    "category": "Unclassified",
+    "tags": [
+      "Category needs review",
+      "Time needs confirmation",
+      "Format needs confirmation"
+    ],
+    "musicStyles": [],
+    "eventFormat": "unverified",
+    "classificationEvidence": "No verified event type or genre",
+    "startTimeKind": "listed",
+    "startsAt": "2026-12-18T18:00:00-08:00",
+    "endsAt": null,
+    "venue": "Alberta Street Pub",
+    "address": "1036 NE Alberta Street, Portland, OR 97211",
+    "neighborhood": "Alberta Arts District",
+    "price": "See organizer for current admission",
+    "free": null,
+    "age": "Not published",
+    "description": "Automatically discovered from a primary venue or promoter listing. Alberta Street Pub's original Squarespace event record supplies the start and end timestamp; exact performance-versus-doors distinction is unconfirmed. Original venue event listing. $10 COVER AT THE DOOR ALL AGES UNTIL 9PM",
+    "source": "Alberta Street Pub",
+    "url": "https://www.albertastreetpub.com/music/2026/12/18/classy-brassy-with-clodewerks-waffle-taco-couch-brass",
+    "icon": "◇",
+    "sourceCheckedAt": "2026-11-06",
+    "verificationMethod": "Automated venue data; editorial date, time, event type and cancellation verification required",
+    "sourceCategories": [],
+    "sources": [
+      {
+        "name": "Alberta Street Pub",
+        "url": "https://www.albertastreetpub.com/music/2026/12/18/classy-brassy-with-clodewerks-waffle-taco-couch-brass",
+        "kind": "organizer",
+        "checkedAt": "2026-11-06",
+        "originalCategories": []
+      }
+    ],
+    "artwork": {
+      "url": "https://images.squarespace-cdn.com/content/v1/54109e68e4b06b163549a8dc/1793864385827-6GWW06NOTDAW0FJQV8VR/xmas2026.PNG",
+      "sourceUrl": "https://www.albertastreetpub.com/music/2026/12/18/classy-brassy-with-clodewerks-waffle-taco-couch-brass",
+      "origin": "official-venue-calendar",
+      "credit": "Alberta Street Pub official event calendar",
+      "usageApproved": null
+    },
+    "addedIn": "auto-discovery-2026-11-06",
+    "discovery": {
+      "sourceId": "alberta-street-pub",
+      "method": "primary-source-collection"
+    }
+  },
+  {
     "id": "auto-turn-turn-turn-2026-12-18-be1c61a7ee2a",
     "title": "A Solstice + Stevie Nicks Celebration",
     "subtitle": "Source-discovered venue event · details need review",
@@ -39821,6 +46378,57 @@ window.SHOWS_EVENTS = [
     "addedIn": "auto-discovery-2026-11-03",
     "discovery": {
       "sourceId": "turn-turn-turn",
+      "method": "primary-source-collection"
+    }
+  },
+  {
+    "id": "auto-alberta-rose-theatre-2026-12-18-a439e7ea2cb2",
+    "title": "Booklover’s Burlesque – HOLIDAY EDITION",
+    "subtitle": "Source-discovered venue event · details need review",
+    "category": "Performance",
+    "tags": [
+      "Source-listed Performance",
+      "Time needs confirmation",
+      "Format needs confirmation"
+    ],
+    "musicStyles": [],
+    "eventFormat": "unverified",
+    "classificationEvidence": "Event-specific source wording",
+    "startTimeKind": "listed",
+    "startsAt": "2026-12-18T19:00:00-08:00",
+    "endsAt": null,
+    "venue": "Alberta Rose Theatre",
+    "address": "3000 NE Alberta Street, Portland, OR 97211",
+    "neighborhood": "Concordia",
+    "price": "See organizer for current admission",
+    "free": null,
+    "age": "Not published",
+    "description": "Automatically discovered from a primary venue or promoter listing. Original Alberta Rose dated calendar month/year, weekday, exact room and separately labeled SHOW time; doors not substituted. Original theatre calendar; music style and format require event-specific editorial assessment.",
+    "source": "Alberta Rose Theatre",
+    "url": "https://albertarosetheatre.com/event/booklovers-burlesque-holiday-edition/alberta-rose-theatre/portland-oregon/",
+    "icon": "◇",
+    "sourceCheckedAt": "2026-11-06",
+    "verificationMethod": "Automated venue data; editorial date, time, event type and cancellation verification required",
+    "sourceCategories": [],
+    "sources": [
+      {
+        "name": "Alberta Rose Theatre",
+        "url": "https://albertarosetheatre.com/event/booklovers-burlesque-holiday-edition/alberta-rose-theatre/portland-oregon/",
+        "kind": "organizer",
+        "checkedAt": "2026-11-06",
+        "originalCategories": []
+      }
+    ],
+    "artwork": {
+      "url": "https://albertarosetheatre.com/wp-content/uploads/2026/10/booklovers-burlesque-holiday-edition.jfif",
+      "sourceUrl": "https://albertarosetheatre.com/event/booklovers-burlesque-holiday-edition/alberta-rose-theatre/portland-oregon/",
+      "origin": "official-venue-calendar",
+      "credit": "Alberta Rose Theatre original event artwork",
+      "usageApproved": null
+    },
+    "addedIn": "auto-discovery-2026-11-06",
+    "discovery": {
+      "sourceId": "alberta-rose-theatre",
       "method": "primary-source-collection"
     }
   },
@@ -39967,6 +46575,57 @@ window.SHOWS_EVENTS = [
     "addedIn": "auto-discovery-2026-10-24",
     "discovery": {
       "sourceId": "starday-tavern",
+      "method": "primary-source-collection"
+    }
+  },
+  {
+    "id": "auto-jack-london-revue-2026-12-18-818335ff3914",
+    "title": "Cyrus Nabipoor's Crescent City Christmas Card",
+    "subtitle": "Source-discovered venue event · details need review",
+    "category": "Unclassified",
+    "tags": [
+      "Category needs review",
+      "Time needs confirmation",
+      "Format needs confirmation"
+    ],
+    "musicStyles": [],
+    "eventFormat": "unverified",
+    "classificationEvidence": "No verified event type or genre",
+    "startTimeKind": "listed",
+    "startsAt": "2026-12-18T20:00:00-08:00",
+    "endsAt": null,
+    "venue": "Jack London Revue",
+    "address": "529 SW 4th Ave, Portland, OR 97204",
+    "neighborhood": "Downtown",
+    "price": "See organizer for current admission",
+    "free": null,
+    "age": "Not published",
+    "description": "Automatically discovered from a primary venue or promoter listing. Original JLR event detail verifies full date, venue and showtime separately from doors; the date and clocks match the first-party roster. Original venue event: Soul'd Out Presents: Cyrus Nabipoor's Crescent City Christmas Card. A love letter to New Orleans. Doors: 7:00pm Show: 8:00pm Ages 21+ Cyrus Nabipoor delivers a bold and singular expression of American Music, cutting edge yet steeped in tradition. Known for u",
+    "source": "Jack London Revue",
+    "url": "https://www.jacklondonrevue.com/tm-event/cyrus-nabipoors-crescent-city-christmas-card/",
+    "icon": "◇",
+    "sourceCheckedAt": "2026-11-06",
+    "verificationMethod": "Automated venue data; editorial date, time, event type and cancellation verification required",
+    "sourceCategories": [],
+    "sources": [
+      {
+        "name": "Jack London Revue",
+        "url": "https://www.jacklondonrevue.com/tm-event/cyrus-nabipoors-crescent-city-christmas-card/",
+        "kind": "organizer",
+        "checkedAt": "2026-11-06",
+        "originalCategories": []
+      }
+    ],
+    "artwork": {
+      "url": "https://i.ticketweb.com/i/00/13/11/22/14_Original.jpg?v=4",
+      "sourceUrl": "https://www.jacklondonrevue.com/tm-event/cyrus-nabipoors-crescent-city-christmas-card/",
+      "origin": "official-event-page",
+      "credit": "Original TicketWeb artwork linked by Jack London Revue",
+      "usageApproved": null
+    },
+    "addedIn": "auto-discovery-2026-11-06",
+    "discovery": {
+      "sourceId": "jack-london-revue",
       "method": "primary-source-collection"
     }
   },
@@ -40175,6 +46834,58 @@ window.SHOWS_EVENTS = [
     "addedIn": "2026-11-03-curated-alt-markets"
   },
   {
+    "id": "auto-alberta-rose-theatre-2026-12-19-f14f93536ecb",
+    "title": "A Very George Michael Christmas with Holcombe Waller and Special Guests — 5:00 PM show",
+    "subtitle": "Source-discovered venue event · details need review",
+    "category": "Unclassified",
+    "tags": [
+      "Category needs review",
+      "Time needs confirmation",
+      "Format needs confirmation"
+    ],
+    "musicStyles": [],
+    "eventFormat": "unverified",
+    "classificationEvidence": "No verified event type or genre",
+    "startTimeKind": "listed",
+    "startsAt": "2026-12-19T17:00:00-08:00",
+    "endsAt": null,
+    "venue": "Alberta Rose Theatre",
+    "address": "3000 NE Alberta Street, Portland, OR 97211",
+    "neighborhood": "Concordia",
+    "price": "See organizer for current admission",
+    "free": null,
+    "age": "Not published",
+    "description": "Automatically discovered from a primary venue or promoter listing. Original Alberta Rose month/year heading plus individually scheduled series date, SHOW clock and room-scoped Etix performance ID. Original multi-performance series: A Very George Michael Christmas with Holcombe Waller and Special Guests. Event-specific ticket URL uniquely identifies this session; classify its format from verified source evidence.",
+    "source": "Alberta Rose Theatre",
+    "url": "https://www.etix.com/ticket/p/32253900/a-very-george-michael-christmas-with-holcombe-waller-and-special-guests-5-pm-show-portland-alberta-rose-theatre",
+    "icon": "◇",
+    "sourceCheckedAt": "2026-11-06",
+    "verificationMethod": "Automated venue data; editorial date, time, event type and cancellation verification required",
+    "sourceCategories": [],
+    "sources": [
+      {
+        "name": "Alberta Rose Theatre",
+        "url": "https://www.etix.com/ticket/p/32253900/a-very-george-michael-christmas-with-holcombe-waller-and-special-guests-5-pm-show-portland-alberta-rose-theatre",
+        "kind": "organizer",
+        "checkedAt": "2026-11-06",
+        "originalCategories": []
+      }
+    ],
+    "artwork": {
+      "url": "https://albertarosetheatre.com/wp-content/uploads/2026/11/a-very-george-michael-christmas-with-holcombe-waller-and-special-guests-5-pm-show.jfif",
+      "sourceUrl": "https://albertarosetheatre.com/calendar/category/series/a-very-george-michael-christmas-with-holcombe-waller-and-special-guests/alberta-rose-theatre/portland-oregon/",
+      "origin": "official-venue-calendar",
+      "credit": "Alberta Rose Theatre original event artwork",
+      "usageApproved": null
+    },
+    "sourceTicketId": "32253900",
+    "addedIn": "auto-discovery-2026-11-06",
+    "discovery": {
+      "sourceId": "alberta-rose-theatre",
+      "method": "primary-source-collection"
+    }
+  },
+  {
     "id": "auto-no-fun-2026-12-19-3b12f0ac9099",
     "title": "You, The Audience • TBA • TBA",
     "subtitle": "Source-discovered music listing · format and time need review",
@@ -40214,6 +46925,110 @@ window.SHOWS_EVENTS = [
     "addedIn": "auto-discovery-2026-10-18",
     "discovery": {
       "sourceId": "no-fun",
+      "method": "primary-source-collection"
+    }
+  },
+  {
+    "id": "auto-mission-theater-2026-12-19-d0d510b01ff7",
+    "title": "Holiday Cabaret: Featuring James Rossi & The Christmas Island Band",
+    "subtitle": "Source-discovered venue event · details need review",
+    "category": "Unclassified",
+    "tags": [
+      "Category needs review",
+      "Time needs confirmation",
+      "Format needs confirmation"
+    ],
+    "musicStyles": [],
+    "eventFormat": "unverified",
+    "classificationEvidence": "No verified event type or genre",
+    "startTimeKind": "listed",
+    "startsAt": "2026-12-19T19:30:00-08:00",
+    "endsAt": null,
+    "venue": "Mission Theater",
+    "address": "1624 NW Glisan St, Portland, OR 97209",
+    "neighborhood": "Northwest District",
+    "price": "See organizer for current admission",
+    "free": null,
+    "age": "Not published",
+    "description": "Automatically discovered from a primary venue or promoter listing. Official venue card and year-bearing event search data agree on event identity, title and weekday/date. Published starting-time label: show. Original Mission Theater event card; review format and genres. Doors remain distinct; a show label alone does not establish a concert.",
+    "source": "Mission Theater",
+    "url": "https://www.mcmenamins.com/events/279231-holiday-cabaret-featuring-james-rossi-the-christmas-island-band",
+    "icon": "◇",
+    "sourceCheckedAt": "2026-11-06",
+    "verificationMethod": "Automated venue data; editorial date, time, event type and cancellation verification required",
+    "sourceCategories": [],
+    "sources": [
+      {
+        "name": "Mission Theater",
+        "url": "https://www.mcmenamins.com/events/279231-holiday-cabaret-featuring-james-rossi-the-christmas-island-band",
+        "kind": "organizer",
+        "checkedAt": "2026-11-06",
+        "originalCategories": []
+      }
+    ],
+    "artwork": {
+      "url": "https://cdn.mcmenamins.com/system/uploads/MadborgAssets/JamesRossi26.jpg",
+      "sourceUrl": "https://www.mcmenamins.com/events/279231-holiday-cabaret-featuring-james-rossi-the-christmas-island-band",
+      "origin": "official-venue-calendar",
+      "credit": "McMenamins Mission Theater event-card image",
+      "usageApproved": null
+    },
+    "addedIn": "auto-discovery-2026-11-06",
+    "discovery": {
+      "sourceId": "mission-theater",
+      "method": "primary-source-collection"
+    }
+  },
+  {
+    "id": "auto-alberta-rose-theatre-2026-12-19-8bfb6bae9099",
+    "title": "A Very George Michael Christmas with Holcombe Waller and Special Guests — 8:00 PM show",
+    "subtitle": "Source-discovered venue event · details need review",
+    "category": "Unclassified",
+    "tags": [
+      "Category needs review",
+      "Time needs confirmation",
+      "Format needs confirmation",
+      "Separate same-day source listing; review bill and room"
+    ],
+    "musicStyles": [],
+    "eventFormat": "unverified",
+    "classificationEvidence": "No verified event type or genre",
+    "startTimeKind": "listed",
+    "startsAt": "2026-12-19T20:00:00-08:00",
+    "endsAt": null,
+    "venue": "Alberta Rose Theatre",
+    "address": "3000 NE Alberta Street, Portland, OR 97211",
+    "neighborhood": "Concordia",
+    "price": "See organizer for current admission",
+    "free": null,
+    "age": "Not published",
+    "description": "Automatically discovered from a primary venue or promoter listing. Original Alberta Rose month/year heading plus individually scheduled series date, SHOW clock and room-scoped Etix performance ID. Original multi-performance series: A Very George Michael Christmas with Holcombe Waller and Special Guests. Event-specific ticket URL uniquely identifies this session; classify its format from verified source evidence.",
+    "source": "Alberta Rose Theatre",
+    "url": "https://www.etix.com/ticket/p/32660764/a-very-george-michael-christmas-with-holcombe-waller-and-special-guests-8-pm-show-portland-alberta-rose-theatre",
+    "icon": "◇",
+    "sourceCheckedAt": "2026-11-06",
+    "verificationMethod": "Automated venue data; editorial date, time, event type and cancellation verification required",
+    "sourceCategories": [],
+    "sources": [
+      {
+        "name": "Alberta Rose Theatre",
+        "url": "https://www.etix.com/ticket/p/32660764/a-very-george-michael-christmas-with-holcombe-waller-and-special-guests-8-pm-show-portland-alberta-rose-theatre",
+        "kind": "organizer",
+        "checkedAt": "2026-11-06",
+        "originalCategories": []
+      }
+    ],
+    "artwork": {
+      "url": "https://albertarosetheatre.com/wp-content/uploads/2026/11/a-very-george-michael-christmas-with-holcombe-waller-and-special-guests-5-pm-show.jfif",
+      "sourceUrl": "https://albertarosetheatre.com/calendar/category/series/a-very-george-michael-christmas-with-holcombe-waller-and-special-guests/alberta-rose-theatre/portland-oregon/",
+      "origin": "official-venue-calendar",
+      "credit": "Alberta Rose Theatre original event artwork",
+      "usageApproved": null
+    },
+    "sourceTicketId": "32660764",
+    "addedIn": "auto-discovery-2026-11-06",
+    "discovery": {
+      "sourceId": "alberta-rose-theatre",
       "method": "primary-source-collection"
     }
   },
@@ -40265,6 +47080,57 @@ window.SHOWS_EVENTS = [
     "addedIn": "auto-discovery-2026-11-03",
     "discovery": {
       "sourceId": "mammoth-nw",
+      "method": "primary-source-collection"
+    }
+  },
+  {
+    "id": "auto-jack-london-revue-2026-12-19-87429ed28f4f",
+    "title": "LILLA'S SOULFUL CHRISTMAS",
+    "subtitle": "Source-discovered venue event · details need review",
+    "category": "Unclassified",
+    "tags": [
+      "Category needs review",
+      "Time needs confirmation",
+      "Format needs confirmation"
+    ],
+    "musicStyles": [],
+    "eventFormat": "unverified",
+    "classificationEvidence": "No verified event type or genre",
+    "startTimeKind": "listed",
+    "startsAt": "2026-12-19T20:00:00-08:00",
+    "endsAt": null,
+    "venue": "Jack London Revue",
+    "address": "529 SW 4th Ave, Portland, OR 97204",
+    "neighborhood": "Downtown",
+    "price": "See organizer for current admission",
+    "free": null,
+    "age": "Not published",
+    "description": "Automatically discovered from a primary venue or promoter listing. Original JLR event detail verifies full date, venue and showtime separately from doors; the date and clocks match the first-party roster. Original venue event: Soul'd Out and Jack London Revue Present: Lilla's Soulful Christmas Doors: 7:00pm // Show: 8:00pm // Ages 21+. It&rsquo;s an exciting time for Lilla! Born and raided in Portland, OR, Lilla is marking her mark in the music world. Combining Rhythm And Blues, S",
+    "source": "Jack London Revue",
+    "url": "https://www.jacklondonrevue.com/tm-event/lillas-soulful-christmas/",
+    "icon": "◇",
+    "sourceCheckedAt": "2026-11-06",
+    "verificationMethod": "Automated venue data; editorial date, time, event type and cancellation verification required",
+    "sourceCategories": [],
+    "sources": [
+      {
+        "name": "Jack London Revue",
+        "url": "https://www.jacklondonrevue.com/tm-event/lillas-soulful-christmas/",
+        "kind": "organizer",
+        "checkedAt": "2026-11-06",
+        "originalCategories": []
+      }
+    ],
+    "artwork": {
+      "url": "https://i.ticketweb.com/i/00/13/08/63/14_Original.jpg?v=3",
+      "sourceUrl": "https://www.jacklondonrevue.com/tm-event/lillas-soulful-christmas/",
+      "origin": "official-event-page",
+      "credit": "Original TicketWeb artwork linked by Jack London Revue",
+      "usageApproved": null
+    },
+    "addedIn": "auto-discovery-2026-11-06",
+    "discovery": {
+      "sourceId": "jack-london-revue",
       "method": "primary-source-collection"
     }
   },
@@ -40666,6 +47532,168 @@ window.SHOWS_EVENTS = [
     }
   },
   {
+    "id": "auto-alberta-rose-theatre-2026-12-20-880d7509c49f",
+    "title": "Stumptown Soul Holiday Spectacular — 3:00 PM show",
+    "subtitle": "Source-discovered venue event · details need review",
+    "category": "Music",
+    "tags": [
+      "Source-listed Music",
+      "Source-mentioned R&B & soul",
+      "Time needs confirmation",
+      "Format needs confirmation"
+    ],
+    "musicStyles": [
+      "R&B & soul"
+    ],
+    "eventFormat": "unverified",
+    "classificationEvidence": "Event-specific source genre wording",
+    "startTimeKind": "listed",
+    "startsAt": "2026-12-20T15:00:00-08:00",
+    "endsAt": null,
+    "venue": "Alberta Rose Theatre",
+    "address": "3000 NE Alberta Street, Portland, OR 97211",
+    "neighborhood": "Concordia",
+    "price": "See organizer for current admission",
+    "free": null,
+    "age": "Not published",
+    "description": "Automatically discovered from a primary venue or promoter listing. Original Alberta Rose month/year heading plus individually scheduled series date, SHOW clock and room-scoped Etix performance ID. Original multi-performance series: Stumptown Soul Holiday Spectacular. Event-specific ticket URL uniquely identifies this session; classify its format from verified source evidence.",
+    "source": "Alberta Rose Theatre",
+    "url": "https://www.etix.com/ticket/p/41664852/stumptown-soul-holiday-spectacular-portland-alberta-rose-theatre",
+    "icon": "♫",
+    "sourceCheckedAt": "2026-11-06",
+    "verificationMethod": "Automated venue data; editorial date, time, event type and cancellation verification required",
+    "sourceCategories": [],
+    "sources": [
+      {
+        "name": "Alberta Rose Theatre",
+        "url": "https://www.etix.com/ticket/p/41664852/stumptown-soul-holiday-spectacular-portland-alberta-rose-theatre",
+        "kind": "organizer",
+        "checkedAt": "2026-11-06",
+        "originalCategories": []
+      }
+    ],
+    "artwork": {
+      "url": "https://albertarosetheatre.com/wp-content/uploads/2026/11/stumptown-soul-holiday-spectacular.jfif",
+      "sourceUrl": "https://albertarosetheatre.com/calendar/category/series/stumptown-soul-holiday-spectacular/alberta-rose-theatre/portland-oregon/",
+      "origin": "official-venue-calendar",
+      "credit": "Alberta Rose Theatre original event artwork",
+      "usageApproved": null
+    },
+    "sourceTicketId": "41664852",
+    "addedIn": "auto-discovery-2026-11-06",
+    "discovery": {
+      "sourceId": "alberta-rose-theatre",
+      "method": "primary-source-collection"
+    }
+  },
+  {
+    "id": "auto-holocene-2026-12-20-c93e88590fa5",
+    "title": "Gothmas: Constant Debauchery (Depeche Mode), Kiss Me Kiss Me Kiss Me (The Cure), Precious Machinery (Siouxsie and the Banshees)",
+    "subtitle": "Source-discovered venue event · details need review",
+    "category": "Music",
+    "tags": [
+      "Source-listed Music",
+      "Time needs confirmation",
+      "Format needs confirmation"
+    ],
+    "musicStyles": [],
+    "eventFormat": "unverified",
+    "classificationEvidence": "Source event type: MusicEvent",
+    "startTimeKind": "listed",
+    "startsAt": "2026-12-20T19:00:00-08:00",
+    "endsAt": null,
+    "venue": "Holocene",
+    "address": "1001 SE Morrison St, Portland, OR 97214",
+    "neighborhood": "Buckman",
+    "price": "See organizer for current admission",
+    "free": null,
+    "age": "Not published",
+    "description": "Automatically discovered from a primary venue or promoter listing. Original Holocene structured event data publishes a date/year and time; the site may label this as doors, not performance start Original venue event page; confirm actual performance start versus doors, event status and image rights during review",
+    "source": "Holocene",
+    "url": "https://www.holocene.org/events/2026-12-20-gothmas-constant-debauchery-depeche-mode-kiss-me-kiss-me-kiss-me-the-cure-precio",
+    "icon": "♫",
+    "sourceCheckedAt": "2026-11-06",
+    "verificationMethod": "Automated venue data; editorial date, time, event type and cancellation verification required",
+    "sourceCategories": [],
+    "sources": [
+      {
+        "name": "Holocene",
+        "url": "https://www.holocene.org/events/2026-12-20-gothmas-constant-debauchery-depeche-mode-kiss-me-kiss-me-kiss-me-the-cure-precio",
+        "kind": "organizer",
+        "checkedAt": "2026-11-06",
+        "originalCategories": []
+      }
+    ],
+    "artwork": {
+      "url": "https://cdn.etix.com/etix/performance-image/performance_image_1200w/32196f6d7a061e7be6c0713a35ec00bd.jpg",
+      "sourceUrl": "https://www.holocene.org/events/2026-12-20-gothmas-constant-debauchery-depeche-mode-kiss-me-kiss-me-kiss-me-the-cure-precio",
+      "origin": "official-event-page",
+      "credit": "Official event page",
+      "usageApproved": null
+    },
+    "addedIn": "auto-discovery-2026-11-06",
+    "discovery": {
+      "sourceId": "holocene",
+      "method": "primary-source-collection"
+    }
+  },
+  {
+    "id": "auto-alberta-rose-theatre-2026-12-20-524c313ad127",
+    "title": "Stumptown Soul Holiday Spectacular — 7:00 PM show",
+    "subtitle": "Source-discovered venue event · details need review",
+    "category": "Music",
+    "tags": [
+      "Source-listed Music",
+      "Source-mentioned R&B & soul",
+      "Time needs confirmation",
+      "Format needs confirmation",
+      "Separate same-day source listing; review bill and room"
+    ],
+    "musicStyles": [
+      "R&B & soul"
+    ],
+    "eventFormat": "unverified",
+    "classificationEvidence": "Event-specific source genre wording",
+    "startTimeKind": "listed",
+    "startsAt": "2026-12-20T19:00:00-08:00",
+    "endsAt": null,
+    "venue": "Alberta Rose Theatre",
+    "address": "3000 NE Alberta Street, Portland, OR 97211",
+    "neighborhood": "Concordia",
+    "price": "See organizer for current admission",
+    "free": null,
+    "age": "Not published",
+    "description": "Automatically discovered from a primary venue or promoter listing. Original Alberta Rose month/year heading plus individually scheduled series date, SHOW clock and room-scoped Etix performance ID. Original multi-performance series: Stumptown Soul Holiday Spectacular. Event-specific ticket URL uniquely identifies this session; classify its format from verified source evidence.",
+    "source": "Alberta Rose Theatre",
+    "url": "https://www.etix.com/ticket/p/44031612/stumptown-soul-holiday-spectacular-portland-alberta-rose-theatre",
+    "icon": "♫",
+    "sourceCheckedAt": "2026-11-06",
+    "verificationMethod": "Automated venue data; editorial date, time, event type and cancellation verification required",
+    "sourceCategories": [],
+    "sources": [
+      {
+        "name": "Alberta Rose Theatre",
+        "url": "https://www.etix.com/ticket/p/44031612/stumptown-soul-holiday-spectacular-portland-alberta-rose-theatre",
+        "kind": "organizer",
+        "checkedAt": "2026-11-06",
+        "originalCategories": []
+      }
+    ],
+    "artwork": {
+      "url": "https://albertarosetheatre.com/wp-content/uploads/2026/11/stumptown-soul-holiday-spectacular.jfif",
+      "sourceUrl": "https://albertarosetheatre.com/calendar/category/series/stumptown-soul-holiday-spectacular/alberta-rose-theatre/portland-oregon/",
+      "origin": "official-venue-calendar",
+      "credit": "Alberta Rose Theatre original event artwork",
+      "usageApproved": null
+    },
+    "sourceTicketId": "44031612",
+    "addedIn": "auto-discovery-2026-11-06",
+    "discovery": {
+      "sourceId": "alberta-rose-theatre",
+      "method": "primary-source-collection"
+    }
+  },
+  {
     "id": "auto-showdown-2026-12-20-d5aa676cc898",
     "title": "Casual Eddie",
     "subtitle": "Source-discovered venue event · details need review",
@@ -40960,6 +47988,57 @@ window.SHOWS_EVENTS = [
     }
   },
   {
+    "id": "auto-showdown-2026-12-22-82cbc6cb26dc",
+    "title": "Two-Step Tuesday with Best Intentions and Dance Lessons with Peggy",
+    "subtitle": "Source-discovered venue event · details need review",
+    "category": "Unclassified",
+    "tags": [
+      "Category needs review",
+      "Time needs confirmation",
+      "Format needs confirmation"
+    ],
+    "musicStyles": [],
+    "eventFormat": "unverified",
+    "classificationEvidence": "No verified event type or genre",
+    "startTimeKind": "listed",
+    "startsAt": "2026-12-22T19:30:00-08:00",
+    "endsAt": null,
+    "venue": "The Showdown",
+    "address": "1195 SE Powell Blvd, Portland, OR 97202",
+    "neighborhood": "Brooklyn",
+    "price": "See organizer for current admission",
+    "free": null,
+    "age": "Not published",
+    "description": "Automatically discovered from a primary venue or promoter listing. Original Showdown listing explicitly says Show 19:30 (Doors 19:00); original event-specific Google Calendar confirms 2026 date and time. Official The Showdown event listing; editorially verify category and genre.",
+    "source": "The Showdown",
+    "url": "https://www.showdownpdx.com/tm-event/two-step-tuesday-with-best-intentions-and-dance-lessons-with-peggy-2/",
+    "icon": "◇",
+    "sourceCheckedAt": "2026-11-06",
+    "verificationMethod": "Automated venue data; editorial date, time, event type and cancellation verification required",
+    "sourceCategories": [],
+    "sources": [
+      {
+        "name": "The Showdown",
+        "url": "https://www.showdownpdx.com/tm-event/two-step-tuesday-with-best-intentions-and-dance-lessons-with-peggy-2/",
+        "kind": "organizer",
+        "checkedAt": "2026-11-06",
+        "originalCategories": []
+      }
+    ],
+    "artwork": {
+      "url": "https://i.ticketweb.com/i/00/13/13/48/64_Original.jpg",
+      "sourceUrl": "https://www.showdownpdx.com/tm-event/two-step-tuesday-with-best-intentions-and-dance-lessons-with-peggy-2/",
+      "origin": "official-venue-calendar",
+      "credit": "Original Showdown event artwork, distributed by TicketWeb",
+      "usageApproved": null
+    },
+    "addedIn": "auto-discovery-2026-11-06",
+    "discovery": {
+      "sourceId": "showdown",
+      "method": "primary-source-collection"
+    }
+  },
+  {
     "id": "auto-high-water-2026-12-22-51fb481de39b",
     "title": "Karaoke Night - Free!",
     "subtitle": "Source-discovered venue event · details need review",
@@ -41095,6 +48174,57 @@ window.SHOWS_EVENTS = [
     }
   },
   {
+    "id": "auto-the-off-beat-2026-12-23-60192b76e1b8",
+    "title": "12/23 Ant Kash, King E.D.O, Drew Dru, BBN Bosko, Burbya, Tai$hoku, Cask3tt Ashden Rain, Bxbymarr",
+    "subtitle": "Source-discovered venue event · details need review",
+    "category": "Music",
+    "tags": [
+      "Source-listed Music",
+      "Time needs confirmation",
+      "Format needs confirmation"
+    ],
+    "musicStyles": [],
+    "eventFormat": "unverified",
+    "classificationEvidence": "Source event type: MusicEvent",
+    "startTimeKind": "listed",
+    "startsAt": "2026-12-23T19:00:00-08:00",
+    "endsAt": null,
+    "venue": "The Off Beat",
+    "address": "8440 N Interstate Ave, Portland, OR 97217",
+    "neighborhood": "Kenton",
+    "price": "See organizer for current admission",
+    "free": null,
+    "age": "Not published",
+    "description": "Automatically discovered from a primary venue or promoter listing. Official event schema and source description agree on the dated Pacific performance time; doors are separate. When December 23, 2026 · 7:00 pm - 11:00 pm Doors 6:30 pm Where The Off Beat Portland, OR Ages All Ages Price $7.27 Get Tickets 12/23 Ant Kash King E.D.O Drew Dru BBN Bosko Burbya Tai$hoku Cask3tt Ashden Rain Bxbymarr The Off Beat 8440 N Interstate Ave, 6:30 Doors 7:00 Show $5 AD",
+    "source": "The Off Beat / Friends of Noise",
+    "url": "https://calendar.friendsofnoise.org/shows/12-23-ant-kash-king-e-d-o-drew-dru-bbn-bosko-burbya-tai-hoku-cask3tt-ashden-rain-bxbymarr-december-23-2026-798630",
+    "icon": "♫",
+    "sourceCheckedAt": "2026-11-06",
+    "verificationMethod": "Automated venue data; editorial date, time, event type and cancellation verification required",
+    "sourceCategories": [],
+    "sources": [
+      {
+        "name": "The Off Beat / Friends of Noise",
+        "url": "https://calendar.friendsofnoise.org/shows/12-23-ant-kash-king-e-d-o-drew-dru-bbn-bosko-burbya-tai-hoku-cask3tt-ashden-rain-bxbymarr-december-23-2026-798630",
+        "kind": "organizer",
+        "checkedAt": "2026-11-06",
+        "originalCategories": []
+      }
+    ],
+    "artwork": {
+      "url": "https://s3.amazonaws.com/opendate-aws-assets/confirms/website_event_images/000/798/630/compressed/285.jpg?1793990646",
+      "sourceUrl": "https://calendar.friendsofnoise.org/shows/12-23-ant-kash-king-e-d-o-drew-dru-bbn-bosko-burbya-tai-hoku-cask3tt-ashden-rain-bxbymarr-december-23-2026-798630",
+      "origin": "official-event-page",
+      "credit": "Friends of Noise / The Off Beat — source-provided event image",
+      "usageApproved": null
+    },
+    "addedIn": "auto-discovery-2026-11-06",
+    "discovery": {
+      "sourceId": "the-off-beat",
+      "method": "primary-source-collection"
+    }
+  },
+  {
     "id": "auto-no-fun-2026-12-23-7cd598c24013",
     "title": "NO FUN KARAOKE",
     "subtitle": "Source-discovered venue event · details need review",
@@ -41144,6 +48274,57 @@ window.SHOWS_EVENTS = [
       "method": "primary-source-collection"
     },
     "classificationEvidence": "Event-specific source wording"
+  },
+  {
+    "id": "auto-jack-london-revue-2026-12-23-68fcf95c01d1",
+    "title": "THE THREE DS",
+    "subtitle": "Source-discovered venue event · details need review",
+    "category": "Unclassified",
+    "tags": [
+      "Category needs review",
+      "Time needs confirmation",
+      "Format needs confirmation"
+    ],
+    "musicStyles": [],
+    "eventFormat": "unverified",
+    "classificationEvidence": "No verified event type or genre",
+    "startTimeKind": "listed",
+    "startsAt": "2026-12-23T20:00:00-08:00",
+    "endsAt": null,
+    "venue": "Jack London Revue",
+    "address": "529 SW 4th Ave, Portland, OR 97204",
+    "neighborhood": "Downtown",
+    "price": "See organizer for current admission",
+    "free": null,
+    "age": "Not published",
+    "description": "Automatically discovered from a primary venue or promoter listing. Original JLR event detail verifies full date, venue and showtime separately from doors; the date and clocks match the first-party roster. Original venue event: Soul'd Out Presents - The Three Ds - A Christmas Nog II Doors: 7:00pm Show: 8:00pm Ages: 21+ The Three Ds is fronted by Jessica Dover on Vocals, John Dover on Trumpet, and Mike Doolin on Guitars. Since 2016, they have performed and recorded together putting ",
+    "source": "Jack London Revue",
+    "url": "https://www.jacklondonrevue.com/tm-event/the-three-ds/",
+    "icon": "◇",
+    "sourceCheckedAt": "2026-11-06",
+    "verificationMethod": "Automated venue data; editorial date, time, event type and cancellation verification required",
+    "sourceCategories": [],
+    "sources": [
+      {
+        "name": "Jack London Revue",
+        "url": "https://www.jacklondonrevue.com/tm-event/the-three-ds/",
+        "kind": "organizer",
+        "checkedAt": "2026-11-06",
+        "originalCategories": []
+      }
+    ],
+    "artwork": {
+      "url": "https://i.ticketweb.com/i/00/13/07/18/34_Original.jpg?v=4",
+      "sourceUrl": "https://www.jacklondonrevue.com/tm-event/the-three-ds/",
+      "origin": "official-event-page",
+      "credit": "Original TicketWeb artwork linked by Jack London Revue",
+      "usageApproved": null
+    },
+    "addedIn": "auto-discovery-2026-11-06",
+    "discovery": {
+      "sourceId": "jack-london-revue",
+      "method": "primary-source-collection"
+    }
   },
   {
     "id": "auto-no-fun-2026-12-24-2d391355e748",
@@ -41655,6 +48836,53 @@ window.SHOWS_EVENTS = [
     }
   },
   {
+    "id": "auto-high-water-2026-12-27-d706d74caf6a",
+    "title": "Paint Fight! - Wrastle in the Castle",
+    "subtitle": "Source-discovered venue event · details need review",
+    "category": "Unclassified",
+    "tags": [
+      "Category needs review",
+      "Time needs confirmation",
+      "Format needs confirmation"
+    ],
+    "musicStyles": [],
+    "eventFormat": "unverified",
+    "classificationEvidence": "No verified event type or genre",
+    "startTimeKind": "listed",
+    "startsAt": "2026-12-27T19:00:00-08:00",
+    "endsAt": null,
+    "venue": "High Water Mark Lounge",
+    "address": "6800 NE Martin Luther King Jr Blvd, Portland, OR 97211",
+    "neighborhood": "Woodlawn",
+    "price": "See organizer for current admission",
+    "free": null,
+    "age": "Not published",
+    "description": "Automatically discovered from a primary venue or promoter listing. TreeTix published an event start clock; doors versus performance time still requires confirmation. ",
+    "source": "High Water Mark",
+    "url": "https://www.treetix.com/event/204956/highwatermark",
+    "icon": "◇",
+    "sourceCheckedAt": "2026-11-07",
+    "verificationMethod": "Automated venue data; editorial date, time, event type and cancellation verification required",
+    "sourceCategories": [],
+    "sources": [
+      {
+        "name": "High Water Mark",
+        "url": "https://www.treetix.com/event/204956/highwatermark",
+        "kind": "organizer",
+        "checkedAt": "2026-11-07",
+        "originalCategories": []
+      }
+    ],
+    "sourceArtworkUrl": "https://www.treetix.com/templates/highwatermark/images/events/2026-12-27-204956-Paint-Fight-12.26-Wrastle-in-the-Castle-Flyer-2026.jpg",
+    "sourceEventId": 204956,
+    "sourceCalendar": "highwatermark",
+    "addedIn": "auto-discovery-2026-11-07",
+    "discovery": {
+      "sourceId": "high-water",
+      "method": "primary-source-collection"
+    }
+  },
+  {
     "id": "auto-showdown-2026-12-27-39440a0612a6",
     "title": "Casual Eddie",
     "subtitle": "Source-discovered venue event · details need review",
@@ -41937,6 +49165,159 @@ window.SHOWS_EVENTS = [
     }
   },
   {
+    "id": "auto-alberta-rose-theatre-2026-12-29-50d4b9489412",
+    "title": "Kat Edmonson",
+    "subtitle": "Source-discovered venue event · details need review",
+    "category": "Unclassified",
+    "tags": [
+      "Category needs review",
+      "Time needs confirmation",
+      "Format needs confirmation"
+    ],
+    "musicStyles": [],
+    "eventFormat": "unverified",
+    "classificationEvidence": "No verified event type or genre",
+    "startTimeKind": "listed",
+    "startsAt": "2026-12-29T19:00:00-08:00",
+    "endsAt": null,
+    "venue": "Alberta Rose Theatre",
+    "address": "3000 NE Alberta Street, Portland, OR 97211",
+    "neighborhood": "Concordia",
+    "price": "See organizer for current admission",
+    "free": null,
+    "age": "Not published",
+    "description": "Automatically discovered from a primary venue or promoter listing. Original Alberta Rose dated calendar month/year, weekday, exact room and separately labeled SHOW time; doors not substituted. Original theatre calendar; music style and format require event-specific editorial assessment.",
+    "source": "Alberta Rose Theatre",
+    "url": "https://albertarosetheatre.com/event/kat-edmonson/alberta-rose-theatre/portland-oregon/",
+    "icon": "◇",
+    "sourceCheckedAt": "2026-11-06",
+    "verificationMethod": "Automated venue data; editorial date, time, event type and cancellation verification required",
+    "sourceCategories": [],
+    "sources": [
+      {
+        "name": "Alberta Rose Theatre",
+        "url": "https://albertarosetheatre.com/event/kat-edmonson/alberta-rose-theatre/portland-oregon/",
+        "kind": "organizer",
+        "checkedAt": "2026-11-06",
+        "originalCategories": []
+      }
+    ],
+    "artwork": {
+      "url": "https://albertarosetheatre.com/wp-content/uploads/2026/08/kat-edmonson.jfif",
+      "sourceUrl": "https://albertarosetheatre.com/event/kat-edmonson/alberta-rose-theatre/portland-oregon/",
+      "origin": "official-venue-calendar",
+      "credit": "Alberta Rose Theatre original event artwork",
+      "usageApproved": null
+    },
+    "addedIn": "auto-discovery-2026-11-06",
+    "discovery": {
+      "sourceId": "alberta-rose-theatre",
+      "method": "primary-source-collection"
+    }
+  },
+  {
+    "id": "auto-showdown-2026-12-29-2fe4073010a9",
+    "title": "Two-Step Tuesday with Best Intentions and Dance Lessons with Robbie",
+    "subtitle": "Source-discovered venue event · details need review",
+    "category": "Unclassified",
+    "tags": [
+      "Category needs review",
+      "Time needs confirmation",
+      "Format needs confirmation"
+    ],
+    "musicStyles": [],
+    "eventFormat": "unverified",
+    "classificationEvidence": "No verified event type or genre",
+    "startTimeKind": "listed",
+    "startsAt": "2026-12-29T19:30:00-08:00",
+    "endsAt": null,
+    "venue": "The Showdown",
+    "address": "1195 SE Powell Blvd, Portland, OR 97202",
+    "neighborhood": "Brooklyn",
+    "price": "See organizer for current admission",
+    "free": null,
+    "age": "Not published",
+    "description": "Automatically discovered from a primary venue or promoter listing. Original Showdown listing explicitly says Show 19:30 (Doors 19:00); original event-specific Google Calendar confirms 2026 date and time. Official The Showdown event listing; editorially verify category and genre.",
+    "source": "The Showdown",
+    "url": "https://www.showdownpdx.com/tm-event/two-step-tuesday-with-best-intentions-and-dance-lessons-with-robbie-2/",
+    "icon": "◇",
+    "sourceCheckedAt": "2026-11-06",
+    "verificationMethod": "Automated venue data; editorial date, time, event type and cancellation verification required",
+    "sourceCategories": [],
+    "sources": [
+      {
+        "name": "The Showdown",
+        "url": "https://www.showdownpdx.com/tm-event/two-step-tuesday-with-best-intentions-and-dance-lessons-with-robbie-2/",
+        "kind": "organizer",
+        "checkedAt": "2026-11-06",
+        "originalCategories": []
+      }
+    ],
+    "artwork": {
+      "url": "https://i.ticketweb.com/i/00/13/13/48/84_Original.jpg",
+      "sourceUrl": "https://www.showdownpdx.com/tm-event/two-step-tuesday-with-best-intentions-and-dance-lessons-with-robbie-2/",
+      "origin": "official-venue-calendar",
+      "credit": "Original Showdown event artwork, distributed by TicketWeb",
+      "usageApproved": null
+    },
+    "addedIn": "auto-discovery-2026-11-06",
+    "discovery": {
+      "sourceId": "showdown",
+      "method": "primary-source-collection"
+    }
+  },
+  {
+    "id": "auto-jack-london-revue-2026-12-29-d3a54ad007e5",
+    "title": "The Sean Holmes Band",
+    "subtitle": "Source-discovered venue event · details need review",
+    "category": "Unclassified",
+    "tags": [
+      "Category needs review",
+      "Time needs confirmation",
+      "Format needs confirmation"
+    ],
+    "musicStyles": [],
+    "eventFormat": "unverified",
+    "classificationEvidence": "No verified event type or genre",
+    "startTimeKind": "listed",
+    "startsAt": "2026-12-29T20:00:00-08:00",
+    "endsAt": null,
+    "venue": "Jack London Revue",
+    "address": "529 SW 4th Ave, Portland, OR 97204",
+    "neighborhood": "Downtown",
+    "price": "See organizer for current admission",
+    "free": null,
+    "age": "Not published",
+    "description": "Automatically discovered from a primary venue or promoter listing. Original JLR event detail verifies full date, venue and showtime separately from doors; the date and clocks match the first-party roster. Original venue event: Doors: 7:00pm Show: 8:00pm Ages: 21+ The Sean Holmes Band, featuring: Edwin Leon Coleman III-Drums Brian Pelky-Guitar Carl Falls-Bass Dave Aston-Keys Renato Caranto-Sax Set 1: Jazz + R&B Set 2: Dance JLR Seating Map Notes : For this show, you may reserve ind",
+    "source": "Jack London Revue",
+    "url": "https://www.jacklondonrevue.com/tm-event/the-sean-holmes-band/",
+    "icon": "◇",
+    "sourceCheckedAt": "2026-11-06",
+    "verificationMethod": "Automated venue data; editorial date, time, event type and cancellation verification required",
+    "sourceCategories": [],
+    "sources": [
+      {
+        "name": "Jack London Revue",
+        "url": "https://www.jacklondonrevue.com/tm-event/the-sean-holmes-band/",
+        "kind": "organizer",
+        "checkedAt": "2026-11-06",
+        "originalCategories": []
+      }
+    ],
+    "artwork": {
+      "url": "https://i.ticketweb.com/i/00/13/08/91/14_Original.jpg?v=6",
+      "sourceUrl": "https://www.jacklondonrevue.com/tm-event/the-sean-holmes-band/",
+      "origin": "official-event-page",
+      "credit": "Original TicketWeb artwork linked by Jack London Revue",
+      "usageApproved": null
+    },
+    "addedIn": "auto-discovery-2026-11-06",
+    "discovery": {
+      "sourceId": "jack-london-revue",
+      "method": "primary-source-collection"
+    }
+  },
+  {
     "id": "auto-high-water-2026-12-29-7c563399179a",
     "title": "Karaoke Night - Free!",
     "subtitle": "Source-discovered venue event · details need review",
@@ -42029,6 +49410,57 @@ window.SHOWS_EVENTS = [
     "addedIn": "auto-discovery-2026-10-21",
     "discovery": {
       "sourceId": "roseland",
+      "method": "primary-source-collection"
+    }
+  },
+  {
+    "id": "auto-jack-london-revue-2026-12-30-420fbf09fbce",
+    "title": "JERRY JOSEPH & THE JACKMORMONS",
+    "subtitle": "Source-discovered venue event · details need review",
+    "category": "Unclassified",
+    "tags": [
+      "Category needs review",
+      "Time needs confirmation",
+      "Format needs confirmation"
+    ],
+    "musicStyles": [],
+    "eventFormat": "unverified",
+    "classificationEvidence": "No verified event type or genre",
+    "startTimeKind": "listed",
+    "startsAt": "2026-12-30T20:00:00-08:00",
+    "endsAt": null,
+    "venue": "Jack London Revue",
+    "address": "529 SW 4th Ave, Portland, OR 97204",
+    "neighborhood": "Downtown",
+    "price": "See organizer for current admission",
+    "free": null,
+    "age": "Not published",
+    "description": "Automatically discovered from a primary venue or promoter listing. Original JLR event detail verifies full date, venue and showtime separately from doors; the date and clocks match the first-party roster. Original venue event: Soul'd Out Presents: Jerry Joseph @ Jack London Revue with Freddy Trujillo Band Doors: 7:00pm // Show @ 8:00pm Four nights. Four different sets. Zero repeats. One unforgettable way to ring in 2027. THE SCHEDULE Wednesday, December 30, 2026 — Jack London Revu",
+    "source": "Jack London Revue",
+    "url": "https://www.jacklondonrevue.com/tm-event/jerry-joseph/",
+    "icon": "◇",
+    "sourceCheckedAt": "2026-11-06",
+    "verificationMethod": "Automated venue data; editorial date, time, event type and cancellation verification required",
+    "sourceCategories": [],
+    "sources": [
+      {
+        "name": "Jack London Revue",
+        "url": "https://www.jacklondonrevue.com/tm-event/jerry-joseph/",
+        "kind": "organizer",
+        "checkedAt": "2026-11-06",
+        "originalCategories": []
+      }
+    ],
+    "artwork": {
+      "url": "https://i.ticketweb.com/i/00/13/10/89/44_Original.jpg?v=13",
+      "sourceUrl": "https://www.jacklondonrevue.com/tm-event/jerry-joseph/",
+      "origin": "official-event-page",
+      "credit": "Original TicketWeb artwork linked by Jack London Revue",
+      "usageApproved": null
+    },
+    "addedIn": "auto-discovery-2026-11-06",
+    "discovery": {
+      "sourceId": "jack-london-revue",
       "method": "primary-source-collection"
     }
   },
@@ -42429,6 +49861,57 @@ window.SHOWS_EVENTS = [
     "addedIn": "auto-discovery-2026-11-02",
     "discovery": {
       "sourceId": "nova-pdx",
+      "method": "primary-source-collection"
+    }
+  },
+  {
+    "id": "auto-alberta-rose-theatre-2026-12-31-30b300d0acc3",
+    "title": "Glitterfox with special guests Camp Crush – New Year’s Eve",
+    "subtitle": "Source-discovered venue event · details need review",
+    "category": "Unclassified",
+    "tags": [
+      "Category needs review",
+      "Time needs confirmation",
+      "Format needs confirmation"
+    ],
+    "musicStyles": [],
+    "eventFormat": "unverified",
+    "classificationEvidence": "No verified event type or genre",
+    "startTimeKind": "listed",
+    "startsAt": "2026-12-31T21:00:00-08:00",
+    "endsAt": null,
+    "venue": "Alberta Rose Theatre",
+    "address": "3000 NE Alberta Street, Portland, OR 97211",
+    "neighborhood": "Concordia",
+    "price": "See organizer for current admission",
+    "free": null,
+    "age": "Not published",
+    "description": "Automatically discovered from a primary venue or promoter listing. Original Alberta Rose dated calendar month/year, weekday, exact room and separately labeled SHOW time; doors not substituted. Original theatre calendar; music style and format require event-specific editorial assessment.",
+    "source": "Alberta Rose Theatre",
+    "url": "https://albertarosetheatre.com/event/glitterfox-with-special-guests-camp-crush-new-years-eve/alberta-rose-theatre/portland-oregon/",
+    "icon": "◇",
+    "sourceCheckedAt": "2026-11-06",
+    "verificationMethod": "Automated venue data; editorial date, time, event type and cancellation verification required",
+    "sourceCategories": [],
+    "sources": [
+      {
+        "name": "Alberta Rose Theatre",
+        "url": "https://albertarosetheatre.com/event/glitterfox-with-special-guests-camp-crush-new-years-eve/alberta-rose-theatre/portland-oregon/",
+        "kind": "organizer",
+        "checkedAt": "2026-11-06",
+        "originalCategories": []
+      }
+    ],
+    "artwork": {
+      "url": "https://albertarosetheatre.com/wp-content/uploads/2026/11/glitterfox-new-years-eve.jfif",
+      "sourceUrl": "https://albertarosetheatre.com/event/glitterfox-with-special-guests-camp-crush-new-years-eve/alberta-rose-theatre/portland-oregon/",
+      "origin": "official-venue-calendar",
+      "credit": "Alberta Rose Theatre original event artwork",
+      "usageApproved": null
+    },
+    "addedIn": "auto-discovery-2026-11-06",
+    "discovery": {
+      "sourceId": "alberta-rose-theatre",
       "method": "primary-source-collection"
     }
   },
@@ -43027,6 +50510,57 @@ window.SHOWS_EVENTS = [
     }
   },
   {
+    "id": "auto-jack-london-revue-2027-01-06-4381f2241c46",
+    "title": "The Mike Dillon Band Feat Brad Haas & Otto Schrang",
+    "subtitle": "Source-discovered venue event · details need review",
+    "category": "Unclassified",
+    "tags": [
+      "Category needs review",
+      "Time needs confirmation",
+      "Format needs confirmation"
+    ],
+    "musicStyles": [],
+    "eventFormat": "unverified",
+    "classificationEvidence": "No verified event type or genre",
+    "startTimeKind": "listed",
+    "startsAt": "2027-01-06T20:00:00-08:00",
+    "endsAt": null,
+    "venue": "Jack London Revue",
+    "address": "529 SW 4th Ave, Portland, OR 97204",
+    "neighborhood": "Downtown",
+    "price": "See organizer for current admission",
+    "free": null,
+    "age": "Not published",
+    "description": "Automatically discovered from a primary venue or promoter listing. Original JLR event detail verifies full date, venue and showtime separately from doors; the date and clocks match the first-party roster. Original venue event: Soul'd Out Presents: An Evening with The Mike Dillon Band, featuring Brad Haas & Otto Schrang: Mike & Beignet Go To The Zoo From the ever prolific mind of Mike Dillon comes Mike & Beignet Go to the Zoo, an 11-track, multi-dimensional percussion and vibraphon",
+    "source": "Jack London Revue",
+    "url": "https://www.jacklondonrevue.com/tm-event/the-mike-dillon-band-feat-brad-haas/",
+    "icon": "◇",
+    "sourceCheckedAt": "2026-11-06",
+    "verificationMethod": "Automated venue data; editorial date, time, event type and cancellation verification required",
+    "sourceCategories": [],
+    "sources": [
+      {
+        "name": "Jack London Revue",
+        "url": "https://www.jacklondonrevue.com/tm-event/the-mike-dillon-band-feat-brad-haas/",
+        "kind": "organizer",
+        "checkedAt": "2026-11-06",
+        "originalCategories": []
+      }
+    ],
+    "artwork": {
+      "url": "https://i.ticketweb.com/i/00/13/11/20/44_Original.jpg?v=5",
+      "sourceUrl": "https://www.jacklondonrevue.com/tm-event/the-mike-dillon-band-feat-brad-haas/",
+      "origin": "official-event-page",
+      "credit": "Original TicketWeb artwork linked by Jack London Revue",
+      "usageApproved": null
+    },
+    "addedIn": "auto-discovery-2026-11-06",
+    "discovery": {
+      "sourceId": "jack-london-revue",
+      "method": "primary-source-collection"
+    }
+  },
+  {
     "id": "auto-no-fun-2027-01-09-7dd9d3e98652",
     "title": "Walter Moses Band • TBA • TBA",
     "subtitle": "Source-discovered venue event · details need review",
@@ -43073,6 +50607,57 @@ window.SHOWS_EVENTS = [
     "addedIn": "auto-discovery-2026-10-21",
     "discovery": {
       "sourceId": "no-fun",
+      "method": "primary-source-collection"
+    }
+  },
+  {
+    "id": "auto-alberta-rose-theatre-2027-01-09-51e6ba0274f6",
+    "title": "Fernando Viciconte – The Lucky House Album Release with special guest Sarabeth Tucek",
+    "subtitle": "Source-discovered venue event · details need review",
+    "category": "Music",
+    "tags": [
+      "Source-listed Music",
+      "Time needs confirmation",
+      "Format needs confirmation"
+    ],
+    "musicStyles": [],
+    "eventFormat": "unverified",
+    "classificationEvidence": "Event-specific source wording",
+    "startTimeKind": "listed",
+    "startsAt": "2027-01-09T20:00:00-08:00",
+    "endsAt": null,
+    "venue": "Alberta Rose Theatre",
+    "address": "3000 NE Alberta Street, Portland, OR 97211",
+    "neighborhood": "Concordia",
+    "price": "See organizer for current admission",
+    "free": null,
+    "age": "Not published",
+    "description": "Automatically discovered from a primary venue or promoter listing. Original Alberta Rose dated calendar month/year, weekday, exact room and separately labeled SHOW time; doors not substituted. Original theatre calendar; music style and format require event-specific editorial assessment.",
+    "source": "Alberta Rose Theatre",
+    "url": "https://albertarosetheatre.com/event/fernando-viciconte-the-lucky-house-album-release-with-special-guest-sarabeth-tucek/alberta-rose-theatre/portland-oregon/",
+    "icon": "♫",
+    "sourceCheckedAt": "2026-11-06",
+    "verificationMethod": "Automated venue data; editorial date, time, event type and cancellation verification required",
+    "sourceCategories": [],
+    "sources": [
+      {
+        "name": "Alberta Rose Theatre",
+        "url": "https://albertarosetheatre.com/event/fernando-viciconte-the-lucky-house-album-release-with-special-guest-sarabeth-tucek/alberta-rose-theatre/portland-oregon/",
+        "kind": "organizer",
+        "checkedAt": "2026-11-06",
+        "originalCategories": []
+      }
+    ],
+    "artwork": {
+      "url": "https://albertarosetheatre.com/wp-content/uploads/2026/11/fernando-viciconte-the-lucky-house-album-release-with-special-guest-sarabeth-tucek.jfif",
+      "sourceUrl": "https://albertarosetheatre.com/event/fernando-viciconte-the-lucky-house-album-release-with-special-guest-sarabeth-tucek/alberta-rose-theatre/portland-oregon/",
+      "origin": "official-venue-calendar",
+      "credit": "Alberta Rose Theatre original event artwork",
+      "usageApproved": null
+    },
+    "addedIn": "auto-discovery-2026-11-06",
+    "discovery": {
+      "sourceId": "alberta-rose-theatre",
       "method": "primary-source-collection"
     }
   },
@@ -43228,6 +50813,108 @@ window.SHOWS_EVENTS = [
     }
   },
   {
+    "id": "auto-the-off-beat-2027-01-12-2aaa80e79f3a",
+    "title": "1/12 Perennial",
+    "subtitle": "Source-discovered venue event · details need review",
+    "category": "Music",
+    "tags": [
+      "Source-listed Music",
+      "Time needs confirmation",
+      "Format needs confirmation"
+    ],
+    "musicStyles": [],
+    "eventFormat": "unverified",
+    "classificationEvidence": "Source event type: MusicEvent",
+    "startTimeKind": "listed",
+    "startsAt": "2027-01-12T19:00:00-08:00",
+    "endsAt": null,
+    "venue": "The Off Beat",
+    "address": "8440 N Interstate Ave, Portland, OR 97217",
+    "neighborhood": "Kenton",
+    "price": "See organizer for current admission",
+    "free": null,
+    "age": "Not published",
+    "description": "Automatically discovered from a primary venue or promoter listing. Official event schema and source description agree on the dated Pacific performance time; doors are separate. When January 12, 2027 · 7:00 pm - 11:00 pm Doors 6:30 pm Where The Off Beat Portland, OR Ages All Ages Price $18.35 Get Tickets 1/12 Perennial The Off Beat 8440 N Interstate Ave, 6:30 Doors 7:00 Show $15 ADV /$20 DOS All Ages • All Access • No Booze • No Jerks Friends of Noise / ",
+    "source": "The Off Beat / Friends of Noise",
+    "url": "https://calendar.friendsofnoise.org/shows/1-12-perennial-january-12-2027-758117",
+    "icon": "♫",
+    "sourceCheckedAt": "2026-11-06",
+    "verificationMethod": "Automated venue data; editorial date, time, event type and cancellation verification required",
+    "sourceCategories": [],
+    "sources": [
+      {
+        "name": "The Off Beat / Friends of Noise",
+        "url": "https://calendar.friendsofnoise.org/shows/1-12-perennial-january-12-2027-758117",
+        "kind": "organizer",
+        "checkedAt": "2026-11-06",
+        "originalCategories": []
+      }
+    ],
+    "artwork": {
+      "url": "https://s3.amazonaws.com/opendate-aws-assets/confirms/website_event_images/000/758/117/compressed/Perennial_West_Coast_2027_Blank.jpg?1793818279",
+      "sourceUrl": "https://calendar.friendsofnoise.org/shows/1-12-perennial-january-12-2027-758117",
+      "origin": "official-event-page",
+      "credit": "Friends of Noise / The Off Beat — source-provided event image",
+      "usageApproved": null
+    },
+    "addedIn": "auto-discovery-2026-11-06",
+    "discovery": {
+      "sourceId": "the-off-beat",
+      "method": "primary-source-collection"
+    }
+  },
+  {
+    "id": "auto-showdown-2027-01-12-8be5a170722c",
+    "title": "Two-Step Tuesday with Shorty and the Mustangs and Dance Lessons with Peggy",
+    "subtitle": "Source-discovered venue event · details need review",
+    "category": "Unclassified",
+    "tags": [
+      "Category needs review",
+      "Time needs confirmation",
+      "Format needs confirmation"
+    ],
+    "musicStyles": [],
+    "eventFormat": "unverified",
+    "classificationEvidence": "No verified event type or genre",
+    "startTimeKind": "listed",
+    "startsAt": "2027-01-12T19:30:00-08:00",
+    "endsAt": null,
+    "venue": "The Showdown",
+    "address": "1195 SE Powell Blvd, Portland, OR 97202",
+    "neighborhood": "Brooklyn",
+    "price": "See organizer for current admission",
+    "free": null,
+    "age": "Not published",
+    "description": "Automatically discovered from a primary venue or promoter listing. Original Showdown listing explicitly says Show 19:30 (Doors 19:00); original event-specific Google Calendar confirms 2027 date and time. Official The Showdown event listing; editorially verify category and genre.",
+    "source": "The Showdown",
+    "url": "https://www.showdownpdx.com/tm-event/two-step-tuesday-with-shorty-and-the-mustangs-and-dance-lessons-with-peggy-3/",
+    "icon": "◇",
+    "sourceCheckedAt": "2026-11-06",
+    "verificationMethod": "Automated venue data; editorial date, time, event type and cancellation verification required",
+    "sourceCategories": [],
+    "sources": [
+      {
+        "name": "The Showdown",
+        "url": "https://www.showdownpdx.com/tm-event/two-step-tuesday-with-shorty-and-the-mustangs-and-dance-lessons-with-peggy-3/",
+        "kind": "organizer",
+        "checkedAt": "2026-11-06",
+        "originalCategories": []
+      }
+    ],
+    "artwork": {
+      "url": "https://i.ticketweb.com/i/00/13/13/49/64_Original.jpg",
+      "sourceUrl": "https://www.showdownpdx.com/tm-event/two-step-tuesday-with-shorty-and-the-mustangs-and-dance-lessons-with-peggy-3/",
+      "origin": "official-venue-calendar",
+      "credit": "Original Showdown event artwork, distributed by TicketWeb",
+      "usageApproved": null
+    },
+    "addedIn": "auto-discovery-2026-11-06",
+    "discovery": {
+      "sourceId": "showdown",
+      "method": "primary-source-collection"
+    }
+  },
+  {
     "id": "auto-high-water-2027-01-12-e04539eaf485",
     "title": "Karaoke Night - Free!",
     "subtitle": "Source-discovered venue event · details need review",
@@ -43271,6 +50958,57 @@ window.SHOWS_EVENTS = [
     "addedIn": "auto-discovery-2026-11-02",
     "discovery": {
       "sourceId": "high-water",
+      "method": "primary-source-collection"
+    }
+  },
+  {
+    "id": "auto-dantes-2027-01-13-ffe446ca5c90",
+    "title": "POPSMEAR",
+    "subtitle": "Source-discovered venue event · details need review",
+    "category": "Unclassified",
+    "tags": [
+      "Category needs review",
+      "Time needs confirmation",
+      "Format needs confirmation"
+    ],
+    "musicStyles": [],
+    "eventFormat": "unverified",
+    "classificationEvidence": "No verified event type or genre",
+    "startTimeKind": "listed",
+    "startsAt": "2027-01-13T21:00:00-08:00",
+    "endsAt": null,
+    "venue": "Dante's",
+    "address": "350 W Burnside St, Portland, OR 97209",
+    "neighborhood": "Old Town",
+    "price": "See organizer for current admission",
+    "free": null,
+    "age": "Not published",
+    "description": "Automatically discovered from a primary venue or promoter listing. Primary Dante's event detail explicitly specifies showtime and Pacific date Official Dante's event detail listing; show type, performance time and cancellation status remain subject to editorial review",
+    "source": "Dante's",
+    "url": "https://www.danteslive.com/tm-event/popsmear/",
+    "icon": "◇",
+    "sourceCheckedAt": "2026-11-06",
+    "verificationMethod": "Automated venue data; editorial date, time, event type and cancellation verification required",
+    "sourceCategories": [],
+    "sources": [
+      {
+        "name": "Dante's",
+        "url": "https://www.danteslive.com/tm-event/popsmear/",
+        "kind": "organizer",
+        "checkedAt": "2026-11-06",
+        "originalCategories": []
+      }
+    ],
+    "artwork": {
+      "url": "https://i.ticketweb.com/i/00/13/13/08/14_Original.jpg?v=2",
+      "sourceUrl": "https://www.danteslive.com/tm-event/popsmear/",
+      "origin": "official-event-page",
+      "credit": "Official event page",
+      "usageApproved": null
+    },
+    "addedIn": "auto-discovery-2026-11-06",
+    "discovery": {
+      "sourceId": "dantes",
       "method": "primary-source-collection"
     }
   },
@@ -43467,6 +51205,58 @@ window.SHOWS_EVENTS = [
     }
   },
   {
+    "id": "auto-alberta-rose-theatre-2027-01-15-2a2413f2a1bf",
+    "title": "Dark Side - A Piece for Assorted Lunatics — 8:00 PM show",
+    "subtitle": "Source-discovered venue event · details need review",
+    "category": "Unclassified",
+    "tags": [
+      "Category needs review",
+      "Time needs confirmation",
+      "Format needs confirmation"
+    ],
+    "musicStyles": [],
+    "eventFormat": "unverified",
+    "classificationEvidence": "No verified event type or genre",
+    "startTimeKind": "listed",
+    "startsAt": "2027-01-15T20:00:00-08:00",
+    "endsAt": null,
+    "venue": "Alberta Rose Theatre",
+    "address": "3000 NE Alberta Street, Portland, OR 97211",
+    "neighborhood": "Concordia",
+    "price": "See organizer for current admission",
+    "free": null,
+    "age": "Not published",
+    "description": "Automatically discovered from a primary venue or promoter listing. Original Alberta Rose month/year heading plus individually scheduled series date, SHOW clock and room-scoped Etix performance ID. Original multi-performance series: Dark Side - A Piece for Assorted Lunatics. Event-specific ticket URL uniquely identifies this session; classify its format from verified source evidence.",
+    "source": "Alberta Rose Theatre",
+    "url": "https://www.etix.com/ticket/p/56048997/dark-side-a-piece-for-assorted-lunatics-portland-alberta-rose-theatre",
+    "icon": "◇",
+    "sourceCheckedAt": "2026-11-06",
+    "verificationMethod": "Automated venue data; editorial date, time, event type and cancellation verification required",
+    "sourceCategories": [],
+    "sources": [
+      {
+        "name": "Alberta Rose Theatre",
+        "url": "https://www.etix.com/ticket/p/56048997/dark-side-a-piece-for-assorted-lunatics-portland-alberta-rose-theatre",
+        "kind": "organizer",
+        "checkedAt": "2026-11-06",
+        "originalCategories": []
+      }
+    ],
+    "artwork": {
+      "url": "https://albertarosetheatre.com/wp-content/uploads/2026/10/dark-side-a-piece-for-assorted-lunatics.jfif",
+      "sourceUrl": "https://albertarosetheatre.com/calendar/category/series/dark-side-a-piece-for-assorted-lunatics/alberta-rose-theatre/portland-oregon/",
+      "origin": "official-venue-calendar",
+      "credit": "Alberta Rose Theatre original event artwork",
+      "usageApproved": null
+    },
+    "sourceTicketId": "56048997",
+    "addedIn": "auto-discovery-2026-11-06",
+    "discovery": {
+      "sourceId": "alberta-rose-theatre",
+      "method": "primary-source-collection"
+    }
+  },
+  {
     "id": "auto-crystal-ballroom-2027-01-15-ba19a6e420e9",
     "title": "DJ Meredith Marks",
     "subtitle": "Source-discovered venue event · details need review",
@@ -43619,6 +51409,57 @@ window.SHOWS_EVENTS = [
     }
   },
   {
+    "id": "auto-45-east-2027-01-16-891fa70afae4",
+    "title": "ANAMĒ",
+    "subtitle": "Source-discovered venue event · details need review",
+    "category": "Music",
+    "tags": [
+      "Source-listed Music",
+      "Time needs confirmation",
+      "Format needs confirmation"
+    ],
+    "musicStyles": [],
+    "eventFormat": "unverified",
+    "classificationEvidence": "Original source explicitly verifies music",
+    "startTimeKind": "date-only",
+    "startsAt": "2027-01-16T00:00:00-08:00",
+    "endsAt": null,
+    "venue": "45 East",
+    "address": "315 SE 3rd Ave, Portland, OR 97214",
+    "neighborhood": "Central Eastside",
+    "price": "See organizer for current admission",
+    "free": null,
+    "age": "Not published",
+    "description": "Automatically discovered from a primary venue or promoter listing. Red Cube Presents confirms the full date and 45 East venue. Event show/doors start clock is NOT published on this card; no clock was inferred. Original Red Cube Presents 45 East show; music style, doors, show start, admission, cancellation and flyer permission need editorial review.",
+    "source": "45 East",
+    "url": "https://tixr.com/groups/45east/aname0116",
+    "icon": "♫",
+    "sourceCheckedAt": "2026-11-06",
+    "verificationMethod": "Automated venue data; editorial date, time, event type and cancellation verification required",
+    "sourceCategories": [],
+    "sources": [
+      {
+        "name": "45 East",
+        "url": "https://tixr.com/groups/45east/aname0116",
+        "kind": "organizer",
+        "checkedAt": "2026-11-06",
+        "originalCategories": []
+      }
+    ],
+    "artwork": {
+      "url": "https://www.redcubepresents.com/wp-content/uploads/2026/10/45-Aname1920X1080-1024x576.jpg",
+      "sourceUrl": "https://www.redcubepresents.com/events/",
+      "origin": "organizer-published-promo-art",
+      "credit": "Red Cube Presents original event image",
+      "usageApproved": null
+    },
+    "addedIn": "auto-discovery-2026-11-06",
+    "discovery": {
+      "sourceId": "45-east",
+      "method": "primary-source-collection"
+    }
+  },
+  {
     "id": "auto-no-fun-2027-01-16-6d787a26791b",
     "title": "BLISTER • TBA • TBA",
     "subtitle": "Source-discovered music listing · format and time need review",
@@ -43708,6 +51549,58 @@ window.SHOWS_EVENTS = [
     "addedIn": "auto-discovery-2026-11-03",
     "discovery": {
       "sourceId": "roseland",
+      "method": "primary-source-collection"
+    }
+  },
+  {
+    "id": "auto-alberta-rose-theatre-2027-01-16-534b10f980f2",
+    "title": "Dark Side - A Piece for Assorted Lunatics — 8:00 PM show",
+    "subtitle": "Source-discovered venue event · details need review",
+    "category": "Unclassified",
+    "tags": [
+      "Category needs review",
+      "Time needs confirmation",
+      "Format needs confirmation"
+    ],
+    "musicStyles": [],
+    "eventFormat": "unverified",
+    "classificationEvidence": "No verified event type or genre",
+    "startTimeKind": "listed",
+    "startsAt": "2027-01-16T20:00:00-08:00",
+    "endsAt": null,
+    "venue": "Alberta Rose Theatre",
+    "address": "3000 NE Alberta Street, Portland, OR 97211",
+    "neighborhood": "Concordia",
+    "price": "See organizer for current admission",
+    "free": null,
+    "age": "Not published",
+    "description": "Automatically discovered from a primary venue or promoter listing. Original Alberta Rose month/year heading plus individually scheduled series date, SHOW clock and room-scoped Etix performance ID. Original multi-performance series: Dark Side - A Piece for Assorted Lunatics. Event-specific ticket URL uniquely identifies this session; classify its format from verified source evidence.",
+    "source": "Alberta Rose Theatre",
+    "url": "https://www.etix.com/ticket/p/41650042/dark-side-a-piece-for-assorted-lunatics-portland-alberta-rose-theatre",
+    "icon": "◇",
+    "sourceCheckedAt": "2026-11-06",
+    "verificationMethod": "Automated venue data; editorial date, time, event type and cancellation verification required",
+    "sourceCategories": [],
+    "sources": [
+      {
+        "name": "Alberta Rose Theatre",
+        "url": "https://www.etix.com/ticket/p/41650042/dark-side-a-piece-for-assorted-lunatics-portland-alberta-rose-theatre",
+        "kind": "organizer",
+        "checkedAt": "2026-11-06",
+        "originalCategories": []
+      }
+    ],
+    "artwork": {
+      "url": "https://albertarosetheatre.com/wp-content/uploads/2026/10/dark-side-a-piece-for-assorted-lunatics.jfif",
+      "sourceUrl": "https://albertarosetheatre.com/calendar/category/series/dark-side-a-piece-for-assorted-lunatics/alberta-rose-theatre/portland-oregon/",
+      "origin": "official-venue-calendar",
+      "credit": "Alberta Rose Theatre original event artwork",
+      "usageApproved": null
+    },
+    "sourceTicketId": "41650042",
+    "addedIn": "auto-discovery-2026-11-06",
+    "discovery": {
+      "sourceId": "alberta-rose-theatre",
       "method": "primary-source-collection"
     }
   },
@@ -43810,6 +51703,108 @@ window.SHOWS_EVENTS = [
     "addedIn": "auto-discovery-2026-10-29",
     "discovery": {
       "sourceId": "aladdin-theater",
+      "method": "primary-source-collection"
+    }
+  },
+  {
+    "id": "auto-alberta-rose-theatre-2027-01-18-415d942d9d17",
+    "title": "AJ McLean Presents Alexander James : The Better Man Tour",
+    "subtitle": "Source-discovered venue event · details need review",
+    "category": "Unclassified",
+    "tags": [
+      "Category needs review",
+      "Time needs confirmation",
+      "Format needs confirmation"
+    ],
+    "musicStyles": [],
+    "eventFormat": "unverified",
+    "classificationEvidence": "No verified event type or genre",
+    "startTimeKind": "listed",
+    "startsAt": "2027-01-18T19:30:00-08:00",
+    "endsAt": null,
+    "venue": "Alberta Rose Theatre",
+    "address": "3000 NE Alberta Street, Portland, OR 97211",
+    "neighborhood": "Concordia",
+    "price": "See organizer for current admission",
+    "free": null,
+    "age": "Not published",
+    "description": "Automatically discovered from a primary venue or promoter listing. Original Alberta Rose dated calendar month/year, weekday, exact room and separately labeled SHOW time; doors not substituted. Original theatre calendar; music style and format require event-specific editorial assessment.",
+    "source": "Alberta Rose Theatre",
+    "url": "https://albertarosetheatre.com/event/aj-mclean-presents-alexander-james-the-better-man-tour/alberta-rose-theatre/portland-oregon/",
+    "icon": "◇",
+    "sourceCheckedAt": "2026-11-06",
+    "verificationMethod": "Automated venue data; editorial date, time, event type and cancellation verification required",
+    "sourceCategories": [],
+    "sources": [
+      {
+        "name": "Alberta Rose Theatre",
+        "url": "https://albertarosetheatre.com/event/aj-mclean-presents-alexander-james-the-better-man-tour/alberta-rose-theatre/portland-oregon/",
+        "kind": "organizer",
+        "checkedAt": "2026-11-06",
+        "originalCategories": []
+      }
+    ],
+    "artwork": {
+      "url": "https://albertarosetheatre.com/wp-content/uploads/2026/11/aj-mclean-presents-alexander-james-the-better-man-tour.jfif",
+      "sourceUrl": "https://albertarosetheatre.com/event/aj-mclean-presents-alexander-james-the-better-man-tour/alberta-rose-theatre/portland-oregon/",
+      "origin": "official-venue-calendar",
+      "credit": "Alberta Rose Theatre original event artwork",
+      "usageApproved": null
+    },
+    "addedIn": "auto-discovery-2026-11-06",
+    "discovery": {
+      "sourceId": "alberta-rose-theatre",
+      "method": "primary-source-collection"
+    }
+  },
+  {
+    "id": "auto-jack-london-revue-2027-01-18-2a7ba9074886",
+    "title": "KIMAYA DIGGS",
+    "subtitle": "Source-discovered venue event · details need review",
+    "category": "Unclassified",
+    "tags": [
+      "Category needs review",
+      "Time needs confirmation",
+      "Format needs confirmation"
+    ],
+    "musicStyles": [],
+    "eventFormat": "unverified",
+    "classificationEvidence": "No verified event type or genre",
+    "startTimeKind": "listed",
+    "startsAt": "2027-01-18T20:00:00-08:00",
+    "endsAt": null,
+    "venue": "Jack London Revue",
+    "address": "529 SW 4th Ave, Portland, OR 97204",
+    "neighborhood": "Downtown",
+    "price": "See organizer for current admission",
+    "free": null,
+    "age": "Not published",
+    "description": "Automatically discovered from a primary venue or promoter listing. Original JLR event detail verifies full date, venue and showtime separately from doors; the date and clocks match the first-party roster. Original venue event: Soul'd Out Presents: Kimaya Diggs with special guests Lexie, Les Ailes Doors: 7:00pm Show: 8:00pm Ages 21+. https://www.kimayadiggs.com/ When Kimaya Diggs thinks of green, she thinks first of her backyard in summer. Her house sits against woods that open ont",
+    "source": "Jack London Revue",
+    "url": "https://www.jacklondonrevue.com/tm-event/kimaya-diggs/",
+    "icon": "◇",
+    "sourceCheckedAt": "2026-11-06",
+    "verificationMethod": "Automated venue data; editorial date, time, event type and cancellation verification required",
+    "sourceCategories": [],
+    "sources": [
+      {
+        "name": "Jack London Revue",
+        "url": "https://www.jacklondonrevue.com/tm-event/kimaya-diggs/",
+        "kind": "organizer",
+        "checkedAt": "2026-11-06",
+        "originalCategories": []
+      }
+    ],
+    "artwork": {
+      "url": "https://i.ticketweb.com/i/00/13/07/97/84_Original.jpg?v=5",
+      "sourceUrl": "https://www.jacklondonrevue.com/tm-event/kimaya-diggs/",
+      "origin": "official-event-page",
+      "credit": "Original TicketWeb artwork linked by Jack London Revue",
+      "usageApproved": null
+    },
+    "addedIn": "auto-discovery-2026-11-06",
+    "discovery": {
+      "sourceId": "jack-london-revue",
       "method": "primary-source-collection"
     }
   },
@@ -44316,6 +52311,162 @@ window.SHOWS_EVENTS = [
     }
   },
   {
+    "id": "auto-alberta-rose-theatre-2027-01-23-14ac63b6bc21",
+    "title": "Dare and Derriere: NIGHTFALL",
+    "subtitle": "Source-discovered venue event · details need review",
+    "category": "Unclassified",
+    "tags": [
+      "Category needs review",
+      "Time needs confirmation",
+      "Format needs confirmation"
+    ],
+    "musicStyles": [],
+    "eventFormat": "unverified",
+    "classificationEvidence": "No verified event type or genre",
+    "startTimeKind": "listed",
+    "startsAt": "2027-01-23T20:00:00-08:00",
+    "endsAt": null,
+    "venue": "Alberta Rose Theatre",
+    "address": "3000 NE Alberta Street, Portland, OR 97211",
+    "neighborhood": "Concordia",
+    "price": "See organizer for current admission",
+    "free": null,
+    "age": "Not published",
+    "description": "Automatically discovered from a primary venue or promoter listing. Original Alberta Rose dated calendar month/year, weekday, exact room and separately labeled SHOW time; doors not substituted. Original theatre calendar; music style and format require event-specific editorial assessment.",
+    "source": "Alberta Rose Theatre",
+    "url": "https://albertarosetheatre.com/event/dare-and-derriere-nightfall/alberta-rose-theatre/portland-oregon/",
+    "icon": "◇",
+    "sourceCheckedAt": "2026-11-06",
+    "verificationMethod": "Automated venue data; editorial date, time, event type and cancellation verification required",
+    "sourceCategories": [],
+    "sources": [
+      {
+        "name": "Alberta Rose Theatre",
+        "url": "https://albertarosetheatre.com/event/dare-and-derriere-nightfall/alberta-rose-theatre/portland-oregon/",
+        "kind": "organizer",
+        "checkedAt": "2026-11-06",
+        "originalCategories": []
+      }
+    ],
+    "artwork": {
+      "url": "https://albertarosetheatre.com/wp-content/uploads/2026/11/dare-and-derriere-nightfall.jfif",
+      "sourceUrl": "https://albertarosetheatre.com/event/dare-and-derriere-nightfall/alberta-rose-theatre/portland-oregon/",
+      "origin": "official-venue-calendar",
+      "credit": "Alberta Rose Theatre original event artwork",
+      "usageApproved": null
+    },
+    "addedIn": "auto-discovery-2026-11-06",
+    "discovery": {
+      "sourceId": "alberta-rose-theatre",
+      "method": "primary-source-collection"
+    }
+  },
+  {
+    "id": "auto-jack-london-revue-2027-01-23-75655edf36e8",
+    "title": "LUIS J GOMEZ",
+    "subtitle": "Source-discovered venue event · details need review",
+    "category": "Unclassified",
+    "tags": [
+      "Category needs review",
+      "Time needs confirmation",
+      "Format needs confirmation"
+    ],
+    "musicStyles": [],
+    "eventFormat": "unverified",
+    "classificationEvidence": "No verified event type or genre",
+    "startTimeKind": "listed",
+    "startsAt": "2027-01-23T20:00:00-08:00",
+    "endsAt": null,
+    "venue": "Jack London Revue",
+    "address": "529 SW 4th Ave, Portland, OR 97204",
+    "neighborhood": "Downtown",
+    "price": "See organizer for current admission",
+    "free": null,
+    "age": "Not published",
+    "description": "Automatically discovered from a primary venue or promoter listing. Original JLR event detail verifies full date, venue and showtime separately from doors; the date and clocks match the first-party roster. Original venue event: LUIS J GOMEZ @ JACK LONDON REVUE. Doors: 7:00pm Show: 8:00pm Ages 21+. Luis J. Gomez is a New York-based comedian and podcast host known for his bold, unapologetic humor. He&rsquo;s the co-host of the wildly popular Legion of Skanks podcast, where he and his",
+    "source": "Jack London Revue",
+    "url": "https://www.jacklondonrevue.com/tm-event/luis-j-gomez/",
+    "icon": "◇",
+    "sourceCheckedAt": "2026-11-06",
+    "verificationMethod": "Automated venue data; editorial date, time, event type and cancellation verification required",
+    "sourceCategories": [],
+    "sources": [
+      {
+        "name": "Jack London Revue",
+        "url": "https://www.jacklondonrevue.com/tm-event/luis-j-gomez/",
+        "kind": "organizer",
+        "checkedAt": "2026-11-06",
+        "originalCategories": []
+      }
+    ],
+    "artwork": {
+      "url": "https://i.ticketweb.com/i/00/12/96/86/24_Original.jpg?v=6",
+      "sourceUrl": "https://www.jacklondonrevue.com/tm-event/luis-j-gomez/",
+      "origin": "official-event-page",
+      "credit": "Original TicketWeb artwork linked by Jack London Revue",
+      "usageApproved": null
+    },
+    "addedIn": "auto-discovery-2026-11-06",
+    "discovery": {
+      "sourceId": "jack-london-revue",
+      "method": "primary-source-collection"
+    }
+  },
+  {
+    "id": "auto-dantes-2027-01-23-8e200ad20dfc",
+    "title": "WESTERN STANDARD TIME (Ska Orchestra) with The Cascadians & Weekend Kids",
+    "subtitle": "Source-discovered venue event · details need review",
+    "category": "Music",
+    "tags": [
+      "Source-listed Music",
+      "Source-mentioned Reggae & ska",
+      "Time needs confirmation",
+      "Format needs confirmation"
+    ],
+    "musicStyles": [
+      "Reggae & ska"
+    ],
+    "eventFormat": "unverified",
+    "classificationEvidence": "Event-specific source genre wording",
+    "startTimeKind": "listed",
+    "startsAt": "2027-01-23T20:30:00-08:00",
+    "endsAt": null,
+    "venue": "Dante's",
+    "address": "350 W Burnside St, Portland, OR 97209",
+    "neighborhood": "Old Town",
+    "price": "See organizer for current admission",
+    "free": null,
+    "age": "Not published",
+    "description": "Automatically discovered from a primary venue or promoter listing. Primary Dante's event detail explicitly specifies showtime and Pacific date Official Dante's event detail listing; show type, performance time and cancellation status remain subject to editorial review",
+    "source": "Dante's",
+    "url": "https://www.danteslive.com/tm-event/western-standard-time-ska-orchestra-with-the-cascadians-weekend-kids/",
+    "icon": "♫",
+    "sourceCheckedAt": "2026-11-06",
+    "verificationMethod": "Automated venue data; editorial date, time, event type and cancellation verification required",
+    "sourceCategories": [],
+    "sources": [
+      {
+        "name": "Dante's",
+        "url": "https://www.danteslive.com/tm-event/western-standard-time-ska-orchestra-with-the-cascadians-weekend-kids/",
+        "kind": "organizer",
+        "checkedAt": "2026-11-06",
+        "originalCategories": []
+      }
+    ],
+    "artwork": {
+      "url": "https://i.ticketweb.com/i/00/13/13/32/24_Original.jpg?v=3",
+      "sourceUrl": "https://www.danteslive.com/tm-event/western-standard-time-ska-orchestra-with-the-cascadians-weekend-kids/",
+      "origin": "official-event-page",
+      "credit": "Official event page",
+      "usageApproved": null
+    },
+    "addedIn": "auto-discovery-2026-11-06",
+    "discovery": {
+      "sourceId": "dantes",
+      "method": "primary-source-collection"
+    }
+  },
+  {
     "id": "auto-lolas-room-2027-01-23-c8aa1ea0bcc3",
     "title": "2000's Dance Flashback",
     "subtitle": "Source-discovered venue event · details need review",
@@ -44363,6 +52514,57 @@ window.SHOWS_EVENTS = [
     "addedIn": "auto-discovery-2026-11-02",
     "discovery": {
       "sourceId": "lolas-room",
+      "method": "primary-source-collection"
+    }
+  },
+  {
+    "id": "auto-alberta-rose-theatre-2027-01-25-ed5b5f5be5e2",
+    "title": "Miko Marks: Hell or High Water Tour",
+    "subtitle": "Source-discovered venue event · details need review",
+    "category": "Unclassified",
+    "tags": [
+      "Category needs review",
+      "Time needs confirmation",
+      "Format needs confirmation"
+    ],
+    "musicStyles": [],
+    "eventFormat": "unverified",
+    "classificationEvidence": "No verified event type or genre",
+    "startTimeKind": "listed",
+    "startsAt": "2027-01-25T20:00:00-08:00",
+    "endsAt": null,
+    "venue": "Alberta Rose Theatre",
+    "address": "3000 NE Alberta Street, Portland, OR 97211",
+    "neighborhood": "Concordia",
+    "price": "See organizer for current admission",
+    "free": null,
+    "age": "Not published",
+    "description": "Automatically discovered from a primary venue or promoter listing. Original Alberta Rose dated calendar month/year, weekday, exact room and separately labeled SHOW time; doors not substituted. Original theatre calendar; music style and format require event-specific editorial assessment.",
+    "source": "Alberta Rose Theatre",
+    "url": "https://albertarosetheatre.com/event/miko-marks-hell-or-high-water-tour/alberta-rose-theatre/portland-oregon/",
+    "icon": "◇",
+    "sourceCheckedAt": "2026-11-06",
+    "verificationMethod": "Automated venue data; editorial date, time, event type and cancellation verification required",
+    "sourceCategories": [],
+    "sources": [
+      {
+        "name": "Alberta Rose Theatre",
+        "url": "https://albertarosetheatre.com/event/miko-marks-hell-or-high-water-tour/alberta-rose-theatre/portland-oregon/",
+        "kind": "organizer",
+        "checkedAt": "2026-11-06",
+        "originalCategories": []
+      }
+    ],
+    "artwork": {
+      "url": "https://albertarosetheatre.com/wp-content/uploads/2026/08/miko-marks.jfif",
+      "sourceUrl": "https://albertarosetheatre.com/event/miko-marks-hell-or-high-water-tour/alberta-rose-theatre/portland-oregon/",
+      "origin": "official-venue-calendar",
+      "credit": "Alberta Rose Theatre original event artwork",
+      "usageApproved": null
+    },
+    "addedIn": "auto-discovery-2026-11-06",
+    "discovery": {
+      "sourceId": "alberta-rose-theatre",
       "method": "primary-source-collection"
     }
   },
@@ -44460,6 +52662,57 @@ window.SHOWS_EVENTS = [
     "addedIn": "auto-discovery-2026-11-02",
     "discovery": {
       "sourceId": "high-water",
+      "method": "primary-source-collection"
+    }
+  },
+  {
+    "id": "auto-alberta-rose-theatre-2027-01-27-1eb3bac4b331",
+    "title": "Science on Tap – A Journey Through the Large Hadron Collider",
+    "subtitle": "Source-discovered venue event · details need review",
+    "category": "Unclassified",
+    "tags": [
+      "Category needs review",
+      "Time needs confirmation",
+      "Format needs confirmation"
+    ],
+    "musicStyles": [],
+    "eventFormat": "unverified",
+    "classificationEvidence": "No verified event type or genre",
+    "startTimeKind": "listed",
+    "startsAt": "2027-01-27T19:00:00-08:00",
+    "endsAt": null,
+    "venue": "Alberta Rose Theatre",
+    "address": "3000 NE Alberta Street, Portland, OR 97211",
+    "neighborhood": "Concordia",
+    "price": "See organizer for current admission",
+    "free": null,
+    "age": "Not published",
+    "description": "Automatically discovered from a primary venue or promoter listing. Original Alberta Rose dated calendar month/year, weekday, exact room and separately labeled SHOW time; doors not substituted. Original theatre calendar; music style and format require event-specific editorial assessment.",
+    "source": "Alberta Rose Theatre",
+    "url": "https://albertarosetheatre.com/event/science-on-tap-a-journey-through-the-large-hadron-collider/alberta-rose-theatre/portland-oregon/",
+    "icon": "◇",
+    "sourceCheckedAt": "2026-11-06",
+    "verificationMethod": "Automated venue data; editorial date, time, event type and cancellation verification required",
+    "sourceCategories": [],
+    "sources": [
+      {
+        "name": "Alberta Rose Theatre",
+        "url": "https://albertarosetheatre.com/event/science-on-tap-a-journey-through-the-large-hadron-collider/alberta-rose-theatre/portland-oregon/",
+        "kind": "organizer",
+        "checkedAt": "2026-11-06",
+        "originalCategories": []
+      }
+    ],
+    "artwork": {
+      "url": "https://albertarosetheatre.com/wp-content/uploads/2026/11/science-on-tap-a-journey-through-the-large-hadron-collider.jfif",
+      "sourceUrl": "https://albertarosetheatre.com/event/science-on-tap-a-journey-through-the-large-hadron-collider/alberta-rose-theatre/portland-oregon/",
+      "origin": "official-venue-calendar",
+      "credit": "Alberta Rose Theatre original event artwork",
+      "usageApproved": null
+    },
+    "addedIn": "auto-discovery-2026-11-06",
+    "discovery": {
+      "sourceId": "alberta-rose-theatre",
       "method": "primary-source-collection"
     }
   },
@@ -44566,6 +52819,57 @@ window.SHOWS_EVENTS = [
     }
   },
   {
+    "id": "auto-45-east-2027-01-29-37346f15fd41",
+    "title": "ROMAIN GARCIA",
+    "subtitle": "Source-discovered venue event · details need review",
+    "category": "Music",
+    "tags": [
+      "Source-listed Music",
+      "Time needs confirmation",
+      "Format needs confirmation"
+    ],
+    "musicStyles": [],
+    "eventFormat": "unverified",
+    "classificationEvidence": "Original source explicitly verifies music",
+    "startTimeKind": "date-only",
+    "startsAt": "2027-01-29T00:00:00-08:00",
+    "endsAt": null,
+    "venue": "45 East",
+    "address": "315 SE 3rd Ave, Portland, OR 97214",
+    "neighborhood": "Central Eastside",
+    "price": "See organizer for current admission",
+    "free": null,
+    "age": "Not published",
+    "description": "Automatically discovered from a primary venue or promoter listing. Red Cube Presents confirms the full date and 45 East venue. Event show/doors start clock is NOT published on this card; no clock was inferred. Original Red Cube Presents 45 East show; music style, doors, show start, admission, cancellation and flyer permission need editorial review.",
+    "source": "45 East",
+    "url": "https://tixr.com/groups/45east/romaingarcia0129",
+    "icon": "♫",
+    "sourceCheckedAt": "2026-11-06",
+    "verificationMethod": "Automated venue data; editorial date, time, event type and cancellation verification required",
+    "sourceCategories": [],
+    "sources": [
+      {
+        "name": "45 East",
+        "url": "https://tixr.com/groups/45east/romaingarcia0129",
+        "kind": "organizer",
+        "checkedAt": "2026-11-06",
+        "originalCategories": []
+      }
+    ],
+    "artwork": {
+      "url": "https://www.redcubepresents.com/wp-content/uploads/2026/11/45-RG_640X359.png",
+      "sourceUrl": "https://www.redcubepresents.com/events/",
+      "origin": "organizer-published-promo-art",
+      "credit": "Red Cube Presents original event image",
+      "usageApproved": null
+    },
+    "addedIn": "auto-discovery-2026-11-06",
+    "discovery": {
+      "sourceId": "45-east",
+      "method": "primary-source-collection"
+    }
+  },
+  {
     "id": "auto-crystal-ballroom-2027-01-29-677e73701aaf",
     "title": "Portland’s Folk Festival",
     "subtitle": "Source-discovered venue event · details need review",
@@ -44668,6 +52972,57 @@ window.SHOWS_EVENTS = [
     }
   },
   {
+    "id": "auto-jack-london-revue-2027-01-30-62a1e411ff4e",
+    "title": "Early Show-Black Tie/White Noise: Low with The Christopher Brown Quartet",
+    "subtitle": "Source-discovered venue event · details need review",
+    "category": "Unclassified",
+    "tags": [
+      "Category needs review",
+      "Time needs confirmation",
+      "Format needs confirmation"
+    ],
+    "musicStyles": [],
+    "eventFormat": "unverified",
+    "classificationEvidence": "No verified event type or genre",
+    "startTimeKind": "listed",
+    "startsAt": "2027-01-30T19:00:00-08:00",
+    "endsAt": null,
+    "venue": "Jack London Revue",
+    "address": "529 SW 4th Ave, Portland, OR 97204",
+    "neighborhood": "Downtown",
+    "price": "See organizer for current admission",
+    "free": null,
+    "age": "Not published",
+    "description": "Automatically discovered from a primary venue or promoter listing. Original JLR event detail verifies full date, venue and showtime separately from doors; the date and clocks match the first-party roster. Original venue event: Doors: 6:00pm Show: 7:00pm Ages 21+ oin us for the seventh installment of Black Tie/White Noise, where The Christopher Brown Quartet will perform David Bowie&rsquo;s 1977 album, Low, in its entirety. The first LP of the famous Berlin Trilogy, Low is regarded",
+    "source": "Jack London Revue",
+    "url": "https://www.jacklondonrevue.com/tm-event/early-show-black-tie-white-noise-low-with-the-christopher-brown-quartet/",
+    "icon": "◇",
+    "sourceCheckedAt": "2026-11-06",
+    "verificationMethod": "Automated venue data; editorial date, time, event type and cancellation verification required",
+    "sourceCategories": [],
+    "sources": [
+      {
+        "name": "Jack London Revue",
+        "url": "https://www.jacklondonrevue.com/tm-event/early-show-black-tie-white-noise-low-with-the-christopher-brown-quartet/",
+        "kind": "organizer",
+        "checkedAt": "2026-11-06",
+        "originalCategories": []
+      }
+    ],
+    "artwork": {
+      "url": "https://i.ticketweb.com/i/00/13/13/65/44_Original.jpg?v=7",
+      "sourceUrl": "https://www.jacklondonrevue.com/tm-event/early-show-black-tie-white-noise-low-with-the-christopher-brown-quartet/",
+      "origin": "official-event-page",
+      "credit": "Original TicketWeb artwork linked by Jack London Revue",
+      "usageApproved": null
+    },
+    "addedIn": "auto-discovery-2026-11-06",
+    "discovery": {
+      "sourceId": "jack-london-revue",
+      "method": "primary-source-collection"
+    }
+  },
+  {
     "id": "auto-aladdin-theater-2027-01-30-8ae3102092b3",
     "title": "Bonnie “Prince” Billy (Night 1)",
     "subtitle": "Source-discovered venue event · details need review",
@@ -44715,6 +53070,58 @@ window.SHOWS_EVENTS = [
     "addedIn": "auto-discovery-2026-10-29",
     "discovery": {
       "sourceId": "aladdin-theater",
+      "method": "primary-source-collection"
+    }
+  },
+  {
+    "id": "auto-jack-london-revue-2027-01-30-1b00962608a4",
+    "title": "Late Show-Black Tie/White Noise: Low with The Christopher Brown Quartet",
+    "subtitle": "Source-discovered venue event · details need review",
+    "category": "Unclassified",
+    "tags": [
+      "Category needs review",
+      "Time needs confirmation",
+      "Format needs confirmation",
+      "Separate same-day source listing; review bill and room"
+    ],
+    "musicStyles": [],
+    "eventFormat": "unverified",
+    "classificationEvidence": "No verified event type or genre",
+    "startTimeKind": "listed",
+    "startsAt": "2027-01-30T21:45:00-08:00",
+    "endsAt": null,
+    "venue": "Jack London Revue",
+    "address": "529 SW 4th Ave, Portland, OR 97204",
+    "neighborhood": "Downtown",
+    "price": "See organizer for current admission",
+    "free": null,
+    "age": "Not published",
+    "description": "Automatically discovered from a primary venue or promoter listing. Original JLR event detail verifies full date, venue and showtime separately from doors; the date and clocks match the first-party roster. Original venue event: Doors: 6:00pm Show: 7:00pm Ages 21+ oin us for the seventh installment of Black Tie/White Noise, where The Christopher Brown Quartet will perform David Bowie&rsquo;s 1977 album, Low, in its entirety. The first LP of the famous Berlin Trilogy, Low is regarded",
+    "source": "Jack London Revue",
+    "url": "https://www.jacklondonrevue.com/tm-event/late-show-black-tie-white-noise-low-with-the-christopher-brown-quartet/",
+    "icon": "◇",
+    "sourceCheckedAt": "2026-11-06",
+    "verificationMethod": "Automated venue data; editorial date, time, event type and cancellation verification required",
+    "sourceCategories": [],
+    "sources": [
+      {
+        "name": "Jack London Revue",
+        "url": "https://www.jacklondonrevue.com/tm-event/late-show-black-tie-white-noise-low-with-the-christopher-brown-quartet/",
+        "kind": "organizer",
+        "checkedAt": "2026-11-06",
+        "originalCategories": []
+      }
+    ],
+    "artwork": {
+      "url": "https://i.ticketweb.com/i/00/13/13/65/74_Original.jpg?v=5",
+      "sourceUrl": "https://www.jacklondonrevue.com/tm-event/late-show-black-tie-white-noise-low-with-the-christopher-brown-quartet/",
+      "origin": "official-event-page",
+      "credit": "Original TicketWeb artwork linked by Jack London Revue",
+      "usageApproved": null
+    },
+    "addedIn": "auto-discovery-2026-11-06",
+    "discovery": {
+      "sourceId": "jack-london-revue",
       "method": "primary-source-collection"
     }
   },
@@ -45172,6 +53579,57 @@ window.SHOWS_EVENTS = [
     }
   },
   {
+    "id": "auto-jack-london-revue-2027-02-05-59d89c762f69",
+    "title": "ROSE TINTED: A TRIBUTE TO J DILLA",
+    "subtitle": "Source-discovered venue event · details need review",
+    "category": "Unclassified",
+    "tags": [
+      "Category needs review",
+      "Time needs confirmation",
+      "Format needs confirmation"
+    ],
+    "musicStyles": [],
+    "eventFormat": "unverified",
+    "classificationEvidence": "No verified event type or genre",
+    "startTimeKind": "listed",
+    "startsAt": "2027-02-05T20:00:00-08:00",
+    "endsAt": null,
+    "venue": "Jack London Revue",
+    "address": "529 SW 4th Ave, Portland, OR 97204",
+    "neighborhood": "Downtown",
+    "price": "See organizer for current admission",
+    "free": null,
+    "age": "Not published",
+    "description": "Automatically discovered from a primary venue or promoter listing. Original JLR event detail verifies full date, venue and showtime separately from doors; the date and clocks match the first-party roster. Original venue event: Soul'd Out Presents: Rose Tinted - A Tribute to J Dilla Doors: 7:00pm Show: 8:00pm Ages 21+ Rose Tinted returns to Jack London Revue for the annual tribute! https://www.facebook.com/RoseTinted.band/ ----------------------------- JLR Seating Map Notes : For t",
+    "source": "Jack London Revue",
+    "url": "https://www.jacklondonrevue.com/tm-event/rose-tinted-a-tribute-to-j-dilla/",
+    "icon": "◇",
+    "sourceCheckedAt": "2026-11-06",
+    "verificationMethod": "Automated venue data; editorial date, time, event type and cancellation verification required",
+    "sourceCategories": [],
+    "sources": [
+      {
+        "name": "Jack London Revue",
+        "url": "https://www.jacklondonrevue.com/tm-event/rose-tinted-a-tribute-to-j-dilla/",
+        "kind": "organizer",
+        "checkedAt": "2026-11-06",
+        "originalCategories": []
+      }
+    ],
+    "artwork": {
+      "url": "https://i.ticketweb.com/i/00/13/05/73/24_Original.jpg?v=5",
+      "sourceUrl": "https://www.jacklondonrevue.com/tm-event/rose-tinted-a-tribute-to-j-dilla/",
+      "origin": "official-event-page",
+      "credit": "Original TicketWeb artwork linked by Jack London Revue",
+      "usageApproved": null
+    },
+    "addedIn": "auto-discovery-2026-11-06",
+    "discovery": {
+      "sourceId": "jack-london-revue",
+      "method": "primary-source-collection"
+    }
+  },
+  {
     "id": "auto-wonder-ballroom-2027-02-05-4d750108f78a",
     "title": "Whitey Morgan and the 78’s",
     "subtitle": "Source-discovered venue event · details need review",
@@ -45273,6 +53731,108 @@ window.SHOWS_EVENTS = [
     }
   },
   {
+    "id": "auto-jack-london-revue-2027-02-06-959bf054d84c",
+    "title": "IRON PROPHECY - BOB MARLEY B-DAY BASH",
+    "subtitle": "Source-discovered venue event · details need review",
+    "category": "Unclassified",
+    "tags": [
+      "Category needs review",
+      "Time needs confirmation",
+      "Format needs confirmation"
+    ],
+    "musicStyles": [],
+    "eventFormat": "unverified",
+    "classificationEvidence": "No verified event type or genre",
+    "startTimeKind": "listed",
+    "startsAt": "2027-02-06T20:00:00-08:00",
+    "endsAt": null,
+    "venue": "Jack London Revue",
+    "address": "529 SW 4th Ave, Portland, OR 97204",
+    "neighborhood": "Downtown",
+    "price": "See organizer for current admission",
+    "free": null,
+    "age": "Not published",
+    "description": "Automatically discovered from a primary venue or promoter listing. Original JLR event detail verifies full date, venue and showtime separately from doors; the date and clocks match the first-party roster. Original venue event: Soul'd Out and Jack London Present: Iron Prophecy - Bob Marley Birthday Bash, with Simba Puma and the Roaring Lions + Trinity Sound. Doors: 7:00pm Show: 8:00pm Ages 21+ Notes on Seating: Open seating, may be limited or standing room only. First come, first s",
+    "source": "Jack London Revue",
+    "url": "https://www.jacklondonrevue.com/tm-event/iron-prophecy-bob-marley-b-day-bash/",
+    "icon": "◇",
+    "sourceCheckedAt": "2026-11-06",
+    "verificationMethod": "Automated venue data; editorial date, time, event type and cancellation verification required",
+    "sourceCategories": [],
+    "sources": [
+      {
+        "name": "Jack London Revue",
+        "url": "https://www.jacklondonrevue.com/tm-event/iron-prophecy-bob-marley-b-day-bash/",
+        "kind": "organizer",
+        "checkedAt": "2026-11-06",
+        "originalCategories": []
+      }
+    ],
+    "artwork": {
+      "url": "https://i.ticketweb.com/i/00/13/61/60/63_Original.jpg?v=5",
+      "sourceUrl": "https://www.jacklondonrevue.com/tm-event/iron-prophecy-bob-marley-b-day-bash/",
+      "origin": "official-event-page",
+      "credit": "Original TicketWeb artwork linked by Jack London Revue",
+      "usageApproved": null
+    },
+    "addedIn": "auto-discovery-2026-11-06",
+    "discovery": {
+      "sourceId": "jack-london-revue",
+      "method": "primary-source-collection"
+    }
+  },
+  {
+    "id": "auto-jack-london-revue-2027-02-07-16d49a50a6bd",
+    "title": "Kahil El'Zabar - Ethnic Heritage Ensemble - Black History Month Tour - EARLY SHOW",
+    "subtitle": "Source-discovered venue event · details need review",
+    "category": "Unclassified",
+    "tags": [
+      "Category needs review",
+      "Time needs confirmation",
+      "Format needs confirmation"
+    ],
+    "musicStyles": [],
+    "eventFormat": "unverified",
+    "classificationEvidence": "No verified event type or genre",
+    "startTimeKind": "listed",
+    "startsAt": "2027-02-07T17:30:00-08:00",
+    "endsAt": null,
+    "venue": "Jack London Revue",
+    "address": "529 SW 4th Ave, Portland, OR 97204",
+    "neighborhood": "Downtown",
+    "price": "See organizer for current admission",
+    "free": null,
+    "age": "Not published",
+    "description": "Automatically discovered from a primary venue or promoter listing. Original JLR event detail verifies full date, venue and showtime separately from doors; the date and clocks match the first-party roster. Original venue event: Doors: 4:30pm Show: 5:30pm Ages 21+ Performing and recording at the vanguard of the global jazz/music scene for the past five decades, Sir Kahil El&rsquo;Zabar&rsquo;s impact on creative music and culture at large is immeasurable. Known firstly as world reno",
+    "source": "Jack London Revue",
+    "url": "https://www.jacklondonrevue.com/tm-event/kahil-elzabar-ethnic-heritage-ensemble-black-history-month-tour-early-show/",
+    "icon": "◇",
+    "sourceCheckedAt": "2026-11-06",
+    "verificationMethod": "Automated venue data; editorial date, time, event type and cancellation verification required",
+    "sourceCategories": [],
+    "sources": [
+      {
+        "name": "Jack London Revue",
+        "url": "https://www.jacklondonrevue.com/tm-event/kahil-elzabar-ethnic-heritage-ensemble-black-history-month-tour-early-show/",
+        "kind": "organizer",
+        "checkedAt": "2026-11-06",
+        "originalCategories": []
+      }
+    ],
+    "artwork": {
+      "url": "https://i.ticketweb.com/i/00/13/11/23/54_Original.jpg?v=6",
+      "sourceUrl": "https://www.jacklondonrevue.com/tm-event/kahil-elzabar-ethnic-heritage-ensemble-black-history-month-tour-early-show/",
+      "origin": "official-event-page",
+      "credit": "Original TicketWeb artwork linked by Jack London Revue",
+      "usageApproved": null
+    },
+    "addedIn": "auto-discovery-2026-11-06",
+    "discovery": {
+      "sourceId": "jack-london-revue",
+      "method": "primary-source-collection"
+    }
+  },
+  {
     "id": "auto-mammoth-nw-2027-02-07-e2337ac2d084",
     "title": "Riley!",
     "subtitle": "Source-discovered venue event · details need review",
@@ -45320,6 +53880,58 @@ window.SHOWS_EVENTS = [
     "addedIn": "auto-discovery-2026-11-03",
     "discovery": {
       "sourceId": "mammoth-nw",
+      "method": "primary-source-collection"
+    }
+  },
+  {
+    "id": "auto-jack-london-revue-2027-02-07-e0db8af04048",
+    "title": "Kahil El'Zabar - Ethnic Heritage Ensemble - Black History Month Tour - LATE SHOW",
+    "subtitle": "Source-discovered venue event · details need review",
+    "category": "Unclassified",
+    "tags": [
+      "Category needs review",
+      "Time needs confirmation",
+      "Format needs confirmation",
+      "Separate same-day source listing; review bill and room"
+    ],
+    "musicStyles": [],
+    "eventFormat": "unverified",
+    "classificationEvidence": "No verified event type or genre",
+    "startTimeKind": "listed",
+    "startsAt": "2027-02-07T20:00:00-08:00",
+    "endsAt": null,
+    "venue": "Jack London Revue",
+    "address": "529 SW 4th Ave, Portland, OR 97204",
+    "neighborhood": "Downtown",
+    "price": "See organizer for current admission",
+    "free": null,
+    "age": "Not published",
+    "description": "Automatically discovered from a primary venue or promoter listing. Original JLR event detail verifies full date, venue and showtime separately from doors; the date and clocks match the first-party roster. Original venue event: Doors: 4:30pm Show: 5:30pm Ages 21+ Performing and recording at the vanguard of the global jazz/music scene for the past five decades, Sir Kahil El&rsquo;Zabar&rsquo;s impact on creative music and culture at large is immeasurable. Known firstly as world reno",
+    "source": "Jack London Revue",
+    "url": "https://www.jacklondonrevue.com/tm-event/kahil-elzabar-ethnic-heritage-ensemble-black-history-month-tour-late-show/",
+    "icon": "◇",
+    "sourceCheckedAt": "2026-11-06",
+    "verificationMethod": "Automated venue data; editorial date, time, event type and cancellation verification required",
+    "sourceCategories": [],
+    "sources": [
+      {
+        "name": "Jack London Revue",
+        "url": "https://www.jacklondonrevue.com/tm-event/kahil-elzabar-ethnic-heritage-ensemble-black-history-month-tour-late-show/",
+        "kind": "organizer",
+        "checkedAt": "2026-11-06",
+        "originalCategories": []
+      }
+    ],
+    "artwork": {
+      "url": "https://i.ticketweb.com/i/00/13/11/24/04_Original.jpg?v=6",
+      "sourceUrl": "https://www.jacklondonrevue.com/tm-event/kahil-elzabar-ethnic-heritage-ensemble-black-history-month-tour-late-show/",
+      "origin": "official-event-page",
+      "credit": "Original TicketWeb artwork linked by Jack London Revue",
+      "usageApproved": null
+    },
+    "addedIn": "auto-discovery-2026-11-06",
+    "discovery": {
+      "sourceId": "jack-london-revue",
       "method": "primary-source-collection"
     }
   },
@@ -45773,6 +54385,57 @@ window.SHOWS_EVENTS = [
     }
   },
   {
+    "id": "auto-crystal-ballroom-2027-02-13-ea614e6b5106",
+    "title": "2000s Cupid’s Ball",
+    "subtitle": "Source-discovered venue event · details need review",
+    "category": "Unclassified",
+    "tags": [
+      "Category needs review",
+      "Time needs confirmation",
+      "Format needs confirmation"
+    ],
+    "musicStyles": [],
+    "eventFormat": "unverified",
+    "classificationEvidence": "No verified event type or genre",
+    "startTimeKind": "listed",
+    "startsAt": "2027-02-13T20:00:00-08:00",
+    "endsAt": null,
+    "venue": "Crystal Ballroom",
+    "address": "1332 W Burnside St, Portland, OR 97209",
+    "neighborhood": "West End",
+    "price": "See organizer for current admission",
+    "free": null,
+    "age": "Not published",
+    "description": "Automatically discovered from a primary venue or promoter listing. Original Crystal Ballroom Event structured data publishes exact Pacific date/year and starting time Original Crystal Ballroom event page; verify doors versus event start, lineup, event status and artwork rights before approval",
+    "source": "Crystal Ballroom",
+    "url": "https://www.crystalballroompdx.com/events/279805-2000s-cupids-ball/",
+    "icon": "◇",
+    "sourceCheckedAt": "2026-11-06",
+    "verificationMethod": "Automated venue data; editorial date, time, event type and cancellation verification required",
+    "sourceCategories": [],
+    "sources": [
+      {
+        "name": "Crystal Ballroom",
+        "url": "https://www.crystalballroompdx.com/events/279805-2000s-cupids-ball/",
+        "kind": "organizer",
+        "checkedAt": "2026-11-06",
+        "originalCategories": []
+      }
+    ],
+    "artwork": {
+      "url": "https://www.crystalballroompdx.com/wp-content/uploads/2026/11/2000sCupidsBall26-ws4S4j.jpg",
+      "sourceUrl": "https://www.crystalballroompdx.com/events/279805-2000s-cupids-ball/",
+      "origin": "official-event-page",
+      "credit": "Official event page",
+      "usageApproved": null
+    },
+    "addedIn": "auto-discovery-2026-11-06",
+    "discovery": {
+      "sourceId": "crystal-ballroom",
+      "method": "primary-source-collection"
+    }
+  },
+  {
     "id": "auto-aladdin-theater-2027-02-13-2c04548663f5",
     "title": "Los Lobos",
     "subtitle": "Source-discovered venue event · details need review",
@@ -45824,6 +54487,108 @@ window.SHOWS_EVENTS = [
     }
   },
   {
+    "id": "auto-jack-london-revue-2027-02-13-94229cdcdbf7",
+    "title": "Mouse Powell",
+    "subtitle": "Source-discovered venue event · details need review",
+    "category": "Unclassified",
+    "tags": [
+      "Category needs review",
+      "Time needs confirmation",
+      "Format needs confirmation"
+    ],
+    "musicStyles": [],
+    "eventFormat": "unverified",
+    "classificationEvidence": "No verified event type or genre",
+    "startTimeKind": "listed",
+    "startsAt": "2027-02-13T20:00:00-08:00",
+    "endsAt": null,
+    "venue": "Jack London Revue",
+    "address": "529 SW 4th Ave, Portland, OR 97204",
+    "neighborhood": "Downtown",
+    "price": "See organizer for current admission",
+    "free": null,
+    "age": "Not published",
+    "description": "Automatically discovered from a primary venue or promoter listing. Original JLR event detail verifies full date, venue and showtime separately from doors; the date and clocks match the first-party roster. Original venue event: Doors: 7:00pm Show: 8:00pm Ages: 21+ The Phoenix, Arizona artist has built his name through a sound that moves easily between scenes. Rooted first in underground hip-hop, Mouse Powell developed a following through sharp lyricism, offbeat personality and a de",
+    "source": "Jack London Revue",
+    "url": "https://www.jacklondonrevue.com/tm-event/mouse-powell/",
+    "icon": "◇",
+    "sourceCheckedAt": "2026-11-06",
+    "verificationMethod": "Automated venue data; editorial date, time, event type and cancellation verification required",
+    "sourceCategories": [],
+    "sources": [
+      {
+        "name": "Jack London Revue",
+        "url": "https://www.jacklondonrevue.com/tm-event/mouse-powell/",
+        "kind": "organizer",
+        "checkedAt": "2026-11-06",
+        "originalCategories": []
+      }
+    ],
+    "artwork": {
+      "url": "https://i.ticketweb.com/i/00/13/10/50/34_Original.jpg?v=4",
+      "sourceUrl": "https://www.jacklondonrevue.com/tm-event/mouse-powell/",
+      "origin": "official-event-page",
+      "credit": "Original TicketWeb artwork linked by Jack London Revue",
+      "usageApproved": null
+    },
+    "addedIn": "auto-discovery-2026-11-06",
+    "discovery": {
+      "sourceId": "jack-london-revue",
+      "method": "primary-source-collection"
+    }
+  },
+  {
+    "id": "auto-holocene-2027-02-13-22b33f98c495",
+    "title": "Spend The Night Presents: Jacques Greene",
+    "subtitle": "Source-discovered venue event · details need review",
+    "category": "Music",
+    "tags": [
+      "Source-listed Music",
+      "Time needs confirmation",
+      "Format needs confirmation"
+    ],
+    "musicStyles": [],
+    "eventFormat": "unverified",
+    "classificationEvidence": "Source event type: MusicEvent",
+    "startTimeKind": "listed",
+    "startsAt": "2027-02-13T21:00:00-08:00",
+    "endsAt": null,
+    "venue": "Holocene",
+    "address": "1001 SE Morrison St, Portland, OR 97214",
+    "neighborhood": "Buckman",
+    "price": "See organizer for current admission",
+    "free": null,
+    "age": "Not published",
+    "description": "Automatically discovered from a primary venue or promoter listing. Original Holocene structured event data publishes a date/year and time; the site may label this as doors, not performance start Original venue event page; confirm actual performance start versus doors, event status and image rights during review",
+    "source": "Holocene",
+    "url": "https://www.holocene.org/events/2027-02-13-spend-the-night-presents-jacques-greene-jg-album-tour",
+    "icon": "♫",
+    "sourceCheckedAt": "2026-11-06",
+    "verificationMethod": "Automated venue data; editorial date, time, event type and cancellation verification required",
+    "sourceCategories": [],
+    "sources": [
+      {
+        "name": "Holocene",
+        "url": "https://www.holocene.org/events/2027-02-13-spend-the-night-presents-jacques-greene-jg-album-tour",
+        "kind": "organizer",
+        "checkedAt": "2026-11-06",
+        "originalCategories": []
+      }
+    ],
+    "artwork": {
+      "url": "https://cdn.etix.com/etix/performance-image/performance_image_1200w/53cd83de3b008f1ce45e4cc5d248c0c5.jpg",
+      "sourceUrl": "https://www.holocene.org/events/2027-02-13-spend-the-night-presents-jacques-greene-jg-album-tour",
+      "origin": "official-event-page",
+      "credit": "Official event page",
+      "usageApproved": null
+    },
+    "addedIn": "auto-discovery-2026-11-06",
+    "discovery": {
+      "sourceId": "holocene",
+      "method": "primary-source-collection"
+    }
+  },
+  {
     "id": "auto-aladdin-theater-2027-02-14-d4111be6e943",
     "title": "Colin Mochrie & Friends Valentine's Day Show",
     "subtitle": "Source-discovered venue event · details need review",
@@ -45871,6 +54636,57 @@ window.SHOWS_EVENTS = [
     "addedIn": "auto-discovery-2026-10-29",
     "discovery": {
       "sourceId": "aladdin-theater",
+      "method": "primary-source-collection"
+    }
+  },
+  {
+    "id": "auto-alberta-rose-theatre-2027-02-16-4a352342e3f0",
+    "title": "Consider This with Rukaiyah Adams",
+    "subtitle": "Source-discovered venue event · details need review",
+    "category": "Unclassified",
+    "tags": [
+      "Category needs review",
+      "Time needs confirmation",
+      "Format needs confirmation"
+    ],
+    "musicStyles": [],
+    "eventFormat": "unverified",
+    "classificationEvidence": "No verified event type or genre",
+    "startTimeKind": "listed",
+    "startsAt": "2027-02-16T19:00:00-08:00",
+    "endsAt": null,
+    "venue": "Alberta Rose Theatre",
+    "address": "3000 NE Alberta Street, Portland, OR 97211",
+    "neighborhood": "Concordia",
+    "price": "See organizer for current admission",
+    "free": null,
+    "age": "Not published",
+    "description": "Automatically discovered from a primary venue or promoter listing. Original Alberta Rose dated calendar month/year, weekday, exact room and separately labeled SHOW time; doors not substituted. Original theatre calendar; music style and format require event-specific editorial assessment.",
+    "source": "Alberta Rose Theatre",
+    "url": "https://albertarosetheatre.com/event/consider-this-with-rukaiyah-adams/alberta-rose-theatre/portland-oregon/",
+    "icon": "◇",
+    "sourceCheckedAt": "2026-11-06",
+    "verificationMethod": "Automated venue data; editorial date, time, event type and cancellation verification required",
+    "sourceCategories": [],
+    "sources": [
+      {
+        "name": "Alberta Rose Theatre",
+        "url": "https://albertarosetheatre.com/event/consider-this-with-rukaiyah-adams/alberta-rose-theatre/portland-oregon/",
+        "kind": "organizer",
+        "checkedAt": "2026-11-06",
+        "originalCategories": []
+      }
+    ],
+    "artwork": {
+      "url": "https://albertarosetheatre.com/wp-content/uploads/2026/09/consider-this-with-rukaiyah-adams.jfif",
+      "sourceUrl": "https://albertarosetheatre.com/event/consider-this-with-rukaiyah-adams/alberta-rose-theatre/portland-oregon/",
+      "origin": "official-venue-calendar",
+      "credit": "Alberta Rose Theatre original event artwork",
+      "usageApproved": null
+    },
+    "addedIn": "auto-discovery-2026-11-06",
+    "discovery": {
+      "sourceId": "alberta-rose-theatre",
       "method": "primary-source-collection"
     }
   },
@@ -46075,6 +54891,57 @@ window.SHOWS_EVENTS = [
     }
   },
   {
+    "id": "auto-alberta-rose-theatre-2027-02-17-29102269fbcd",
+    "title": "The Smithereens with special guests Star Collector",
+    "subtitle": "Source-discovered venue event · details need review",
+    "category": "Unclassified",
+    "tags": [
+      "Category needs review",
+      "Time needs confirmation",
+      "Format needs confirmation"
+    ],
+    "musicStyles": [],
+    "eventFormat": "unverified",
+    "classificationEvidence": "No verified event type or genre",
+    "startTimeKind": "listed",
+    "startsAt": "2027-02-17T20:00:00-08:00",
+    "endsAt": null,
+    "venue": "Alberta Rose Theatre",
+    "address": "3000 NE Alberta Street, Portland, OR 97211",
+    "neighborhood": "Concordia",
+    "price": "See organizer for current admission",
+    "free": null,
+    "age": "Not published",
+    "description": "Automatically discovered from a primary venue or promoter listing. Original Alberta Rose dated calendar month/year, weekday, exact room and separately labeled SHOW time; doors not substituted. Original theatre calendar; music style and format require event-specific editorial assessment.",
+    "source": "Alberta Rose Theatre",
+    "url": "https://albertarosetheatre.com/event/the-smithereens-with-special-guests-star-collector/alberta-rose-theatre/portland-oregon/",
+    "icon": "◇",
+    "sourceCheckedAt": "2026-11-06",
+    "verificationMethod": "Automated venue data; editorial date, time, event type and cancellation verification required",
+    "sourceCategories": [],
+    "sources": [
+      {
+        "name": "Alberta Rose Theatre",
+        "url": "https://albertarosetheatre.com/event/the-smithereens-with-special-guests-star-collector/alberta-rose-theatre/portland-oregon/",
+        "kind": "organizer",
+        "checkedAt": "2026-11-06",
+        "originalCategories": []
+      }
+    ],
+    "artwork": {
+      "url": "https://albertarosetheatre.com/wp-content/uploads/2026/11/the-smithereens-with-special-guests-star-collector.jfif",
+      "sourceUrl": "https://albertarosetheatre.com/event/the-smithereens-with-special-guests-star-collector/alberta-rose-theatre/portland-oregon/",
+      "origin": "official-venue-calendar",
+      "credit": "Alberta Rose Theatre original event artwork",
+      "usageApproved": null
+    },
+    "addedIn": "auto-discovery-2026-11-06",
+    "discovery": {
+      "sourceId": "alberta-rose-theatre",
+      "method": "primary-source-collection"
+    }
+  },
+  {
     "id": "auto-aladdin-theater-2027-02-18-021b65e9d68a",
     "title": "DENNY LOVE: SHOW LOVE TOUR",
     "subtitle": "Source-discovered venue event · details need review",
@@ -46122,6 +54989,57 @@ window.SHOWS_EVENTS = [
     "addedIn": "auto-discovery-2026-10-29",
     "discovery": {
       "sourceId": "aladdin-theater",
+      "method": "primary-source-collection"
+    }
+  },
+  {
+    "id": "auto-jack-london-revue-2027-02-18-76bda3a84e72",
+    "title": "REVEREND HORTON HEAT with Special Guest",
+    "subtitle": "Source-discovered venue event · details need review",
+    "category": "Unclassified",
+    "tags": [
+      "Category needs review",
+      "Time needs confirmation",
+      "Format needs confirmation"
+    ],
+    "musicStyles": [],
+    "eventFormat": "unverified",
+    "classificationEvidence": "No verified event type or genre",
+    "startTimeKind": "listed",
+    "startsAt": "2027-02-18T20:00:00-08:00",
+    "endsAt": null,
+    "venue": "Jack London Revue",
+    "address": "529 SW 4th Ave, Portland, OR 97204",
+    "neighborhood": "Downtown",
+    "price": "See organizer for current admission",
+    "free": null,
+    "age": "Not published",
+    "description": "Automatically discovered from a primary venue or promoter listing. Original JLR event detail verifies full date, venue and showtime separately from doors; the date and clocks match the first-party roster. Original venue event: Jack London Revue Presents: Reverend Horton Heat with special guest TBA. Doors: 7:00pm Show: 8:00pm Ages 21+. GA Tickets and Reserved Tables are available Reverend Horton Heat",
+    "source": "Jack London Revue",
+    "url": "https://www.jacklondonrevue.com/tm-event/reverend-horton-heat-with-special-guest/",
+    "icon": "◇",
+    "sourceCheckedAt": "2026-11-06",
+    "verificationMethod": "Automated venue data; editorial date, time, event type and cancellation verification required",
+    "sourceCategories": [],
+    "sources": [
+      {
+        "name": "Jack London Revue",
+        "url": "https://www.jacklondonrevue.com/tm-event/reverend-horton-heat-with-special-guest/",
+        "kind": "organizer",
+        "checkedAt": "2026-11-06",
+        "originalCategories": []
+      }
+    ],
+    "artwork": {
+      "url": "https://i.ticketweb.com/i/00/13/07/77/04_Original.jpg?v=6",
+      "sourceUrl": "https://www.jacklondonrevue.com/tm-event/reverend-horton-heat-with-special-guest/",
+      "origin": "official-event-page",
+      "credit": "Original TicketWeb artwork linked by Jack London Revue",
+      "usageApproved": null
+    },
+    "addedIn": "auto-discovery-2026-11-06",
+    "discovery": {
+      "sourceId": "jack-london-revue",
       "method": "primary-source-collection"
     }
   },
@@ -46223,6 +55141,57 @@ window.SHOWS_EVENTS = [
     "addedIn": "auto-discovery-2026-10-24",
     "discovery": {
       "sourceId": "wonder-ballroom",
+      "method": "primary-source-collection"
+    }
+  },
+  {
+    "id": "auto-jack-london-revue-2027-02-19-2a900193f26f",
+    "title": "An Evening With Trio Subtonic",
+    "subtitle": "Source-discovered venue event · details need review",
+    "category": "Unclassified",
+    "tags": [
+      "Category needs review",
+      "Time needs confirmation",
+      "Format needs confirmation"
+    ],
+    "musicStyles": [],
+    "eventFormat": "unverified",
+    "classificationEvidence": "No verified event type or genre",
+    "startTimeKind": "listed",
+    "startsAt": "2027-02-19T20:00:00-08:00",
+    "endsAt": null,
+    "venue": "Jack London Revue",
+    "address": "529 SW 4th Ave, Portland, OR 97204",
+    "neighborhood": "Downtown",
+    "price": "See organizer for current admission",
+    "free": null,
+    "age": "Not published",
+    "description": "Automatically discovered from a primary venue or promoter listing. Original JLR event detail verifies full date, venue and showtime separately from doors; the date and clocks match the first-party roster. Original venue event: Doors: 7:00PM Show: 8:00PM Ages 21+ Micah Hummel - drums Bill Athens - bass Galen Clark - keys Trio Subtonic is a genre bending power trio out of Portland, Oregon that blends groove heavy funk, experimental soundscapes and soaring soul jazz. Led by keyboardi",
+    "source": "Jack London Revue",
+    "url": "https://www.jacklondonrevue.com/tm-event/an-evening-with-trio-subtonic/",
+    "icon": "◇",
+    "sourceCheckedAt": "2026-11-06",
+    "verificationMethod": "Automated venue data; editorial date, time, event type and cancellation verification required",
+    "sourceCategories": [],
+    "sources": [
+      {
+        "name": "Jack London Revue",
+        "url": "https://www.jacklondonrevue.com/tm-event/an-evening-with-trio-subtonic/",
+        "kind": "organizer",
+        "checkedAt": "2026-11-06",
+        "originalCategories": []
+      }
+    ],
+    "artwork": {
+      "url": "https://i.ticketweb.com/i/00/13/13/32/84_Original.jpg?v=3",
+      "sourceUrl": "https://www.jacklondonrevue.com/tm-event/an-evening-with-trio-subtonic/",
+      "origin": "official-event-page",
+      "credit": "Original TicketWeb artwork linked by Jack London Revue",
+      "usageApproved": null
+    },
+    "addedIn": "auto-discovery-2026-11-06",
+    "discovery": {
+      "sourceId": "jack-london-revue",
       "method": "primary-source-collection"
     }
   },
@@ -46375,6 +55344,57 @@ window.SHOWS_EVENTS = [
     "addedIn": "auto-discovery-2026-10-24",
     "discovery": {
       "sourceId": "star-theater",
+      "method": "primary-source-collection"
+    }
+  },
+  {
+    "id": "auto-alberta-rose-theatre-2027-02-20-3801920ddca9",
+    "title": "38th Annual WINTERFOLK – A Benefit for Transition Projects",
+    "subtitle": "Source-discovered venue event · details need review",
+    "category": "Unclassified",
+    "tags": [
+      "Category needs review",
+      "Time needs confirmation",
+      "Format needs confirmation"
+    ],
+    "musicStyles": [],
+    "eventFormat": "unverified",
+    "classificationEvidence": "No verified event type or genre",
+    "startTimeKind": "listed",
+    "startsAt": "2027-02-20T19:00:00-08:00",
+    "endsAt": null,
+    "venue": "Alberta Rose Theatre",
+    "address": "3000 NE Alberta Street, Portland, OR 97211",
+    "neighborhood": "Concordia",
+    "price": "See organizer for current admission",
+    "free": null,
+    "age": "Not published",
+    "description": "Automatically discovered from a primary venue or promoter listing. Original Alberta Rose dated calendar month/year, weekday, exact room and separately labeled SHOW time; doors not substituted. Original theatre calendar; music style and format require event-specific editorial assessment.",
+    "source": "Alberta Rose Theatre",
+    "url": "https://albertarosetheatre.com/event/38th-annual-winterfolk-a-benefit-for-transition-projects/alberta-rose-theatre/portland-oregon/",
+    "icon": "◇",
+    "sourceCheckedAt": "2026-11-06",
+    "verificationMethod": "Automated venue data; editorial date, time, event type and cancellation verification required",
+    "sourceCategories": [],
+    "sources": [
+      {
+        "name": "Alberta Rose Theatre",
+        "url": "https://albertarosetheatre.com/event/38th-annual-winterfolk-a-benefit-for-transition-projects/alberta-rose-theatre/portland-oregon/",
+        "kind": "organizer",
+        "checkedAt": "2026-11-06",
+        "originalCategories": []
+      }
+    ],
+    "artwork": {
+      "url": "https://albertarosetheatre.com/wp-content/uploads/2026/11/38th-annual-winterfolk-a-benefit-for-transition-projects.jfif",
+      "sourceUrl": "https://albertarosetheatre.com/event/38th-annual-winterfolk-a-benefit-for-transition-projects/alberta-rose-theatre/portland-oregon/",
+      "origin": "official-venue-calendar",
+      "credit": "Alberta Rose Theatre original event artwork",
+      "usageApproved": null
+    },
+    "addedIn": "auto-discovery-2026-11-06",
+    "discovery": {
+      "sourceId": "alberta-rose-theatre",
       "method": "primary-source-collection"
     }
   },
@@ -46634,6 +55654,57 @@ window.SHOWS_EVENTS = [
     }
   },
   {
+    "id": "auto-holocene-2027-02-21-7ff894b44e02",
+    "title": "Sylvie",
+    "subtitle": "Source-discovered venue event · details need review",
+    "category": "Music",
+    "tags": [
+      "Source-listed Music",
+      "Time needs confirmation",
+      "Format needs confirmation"
+    ],
+    "musicStyles": [],
+    "eventFormat": "unverified",
+    "classificationEvidence": "Source event type: MusicEvent",
+    "startTimeKind": "listed",
+    "startsAt": "2027-02-21T20:00:00-08:00",
+    "endsAt": null,
+    "venue": "Holocene",
+    "address": "1001 SE Morrison St, Portland, OR 97214",
+    "neighborhood": "Buckman",
+    "price": "See organizer for current admission",
+    "free": null,
+    "age": "Not published",
+    "description": "Automatically discovered from a primary venue or promoter listing. Original Holocene structured event data publishes a date/year and time; the site may label this as doors, not performance start Original venue event page; confirm actual performance start versus doors, event status and image rights during review",
+    "source": "Holocene",
+    "url": "https://www.holocene.org/events/2027-02-21-sylvie",
+    "icon": "♫",
+    "sourceCheckedAt": "2026-11-06",
+    "verificationMethod": "Automated venue data; editorial date, time, event type and cancellation verification required",
+    "sourceCategories": [],
+    "sources": [
+      {
+        "name": "Holocene",
+        "url": "https://www.holocene.org/events/2027-02-21-sylvie",
+        "kind": "organizer",
+        "checkedAt": "2026-11-06",
+        "originalCategories": []
+      }
+    ],
+    "artwork": {
+      "url": "https://cdn.etix.com/etix/performance-image/performance_image_1200w/c545ff8fd38cc7e0956d166515c546c1.jpg",
+      "sourceUrl": "https://www.holocene.org/events/2027-02-21-sylvie",
+      "origin": "official-event-page",
+      "credit": "Official event page",
+      "usageApproved": null
+    },
+    "addedIn": "auto-discovery-2026-11-06",
+    "discovery": {
+      "sourceId": "holocene",
+      "method": "primary-source-collection"
+    }
+  },
+  {
     "id": "auto-crystal-ballroom-2027-02-22-8d9575898f06",
     "title": "Sylvan Esso",
     "subtitle": "Source-discovered venue event · details need review",
@@ -46681,6 +55752,57 @@ window.SHOWS_EVENTS = [
     "addedIn": "auto-discovery-2026-10-24",
     "discovery": {
       "sourceId": "crystal-ballroom",
+      "method": "primary-source-collection"
+    }
+  },
+  {
+    "id": "auto-alberta-rose-theatre-2027-02-23-f2e22b9f1915",
+    "title": "Mardi Gras Mambo – featuring the Dirty Dozen Brass Band and Nathan & the Zydeco Cha Chas",
+    "subtitle": "Source-discovered venue event · details need review",
+    "category": "Unclassified",
+    "tags": [
+      "Category needs review",
+      "Time needs confirmation",
+      "Format needs confirmation"
+    ],
+    "musicStyles": [],
+    "eventFormat": "unverified",
+    "classificationEvidence": "No verified event type or genre",
+    "startTimeKind": "listed",
+    "startsAt": "2027-02-23T20:00:00-08:00",
+    "endsAt": null,
+    "venue": "Alberta Rose Theatre",
+    "address": "3000 NE Alberta Street, Portland, OR 97211",
+    "neighborhood": "Concordia",
+    "price": "See organizer for current admission",
+    "free": null,
+    "age": "Not published",
+    "description": "Automatically discovered from a primary venue or promoter listing. Original Alberta Rose dated calendar month/year, weekday, exact room and separately labeled SHOW time; doors not substituted. Original theatre calendar; music style and format require event-specific editorial assessment.",
+    "source": "Alberta Rose Theatre",
+    "url": "https://albertarosetheatre.com/event/mardi-gras-mambo-featuring-the-dirty-dozen-brass-band-and-nathan-the-zydeco-cha-chas/alberta-rose-theatre/portland-oregon/",
+    "icon": "◇",
+    "sourceCheckedAt": "2026-11-06",
+    "verificationMethod": "Automated venue data; editorial date, time, event type and cancellation verification required",
+    "sourceCategories": [],
+    "sources": [
+      {
+        "name": "Alberta Rose Theatre",
+        "url": "https://albertarosetheatre.com/event/mardi-gras-mambo-featuring-the-dirty-dozen-brass-band-and-nathan-the-zydeco-cha-chas/alberta-rose-theatre/portland-oregon/",
+        "kind": "organizer",
+        "checkedAt": "2026-11-06",
+        "originalCategories": []
+      }
+    ],
+    "artwork": {
+      "url": "https://albertarosetheatre.com/wp-content/uploads/2026/09/mardi-gras-mambo-featuring-the-dirty-dozen-brass-band-and-nathan-the-zydeco-cha-chas.jfif",
+      "sourceUrl": "https://albertarosetheatre.com/event/mardi-gras-mambo-featuring-the-dirty-dozen-brass-band-and-nathan-the-zydeco-cha-chas/alberta-rose-theatre/portland-oregon/",
+      "origin": "official-venue-calendar",
+      "credit": "Alberta Rose Theatre original event artwork",
+      "usageApproved": null
+    },
+    "addedIn": "auto-discovery-2026-11-06",
+    "discovery": {
+      "sourceId": "alberta-rose-theatre",
       "method": "primary-source-collection"
     }
   },
@@ -46783,6 +55905,55 @@ window.SHOWS_EVENTS = [
     }
   },
   {
+    "id": "auto-alberta-rose-theatre-2027-02-24-b8cb2f325655",
+    "title": "Science On Tap: A Rockhound’s Guide to Oregon & Washington",
+    "subtitle": "Original venue listing · showtime verified",
+    "category": "Unclassified",
+    "tags": [
+      "Category needs review",
+      "Format needs confirmation"
+    ],
+    "musicStyles": [],
+    "eventFormat": "unverified",
+    "classificationEvidence": "No verified event type or genre",
+    "startTimeKind": "show",
+    "startsAt": "2027-02-24T19:00:00-08:00",
+    "endsAt": null,
+    "venue": "Alberta Rose Theatre",
+    "address": "3000 NE Alberta Street, Portland, OR 97211",
+    "neighborhood": "Concordia",
+    "price": "See organizer for current admission",
+    "free": null,
+    "age": "Not published",
+    "description": "Automatically discovered from a primary venue or promoter listing. Original Alberta Rose dated calendar month/year, weekday, exact room and separately labeled SHOW time; doors not substituted. Original theatre calendar; music style and format require event-specific editorial assessment.",
+    "source": "Alberta Rose Theatre",
+    "url": "https://albertarosetheatre.com/event/science-on-tap-a-rockhounds-guide-to-oregon-washington/alberta-rose-theatre/portland-oregon/",
+    "icon": "◇",
+    "sourceCheckedAt": "2026-11-07",
+    "verificationMethod": "SHOWS trusted original calendar plus independent schedule checks",
+    "sourceCategories": [],
+    "sources": [
+      {
+        "name": "Alberta Rose Theatre",
+        "url": "https://albertarosetheatre.com/event/science-on-tap-a-rockhounds-guide-to-oregon-washington/alberta-rose-theatre/portland-oregon/",
+        "kind": "organizer",
+        "checkedAt": "2026-11-07",
+        "originalCategories": []
+      }
+    ],
+    "addedIn": "auto-discovery-2026-11-07",
+    "discovery": {
+      "sourceId": "alberta-rose-theatre",
+      "method": "primary-source-collection",
+      "verifiedOriginalShowTime": true
+    },
+    "trustPublication": {
+      "policyVersion": 1,
+      "mode": "trusted-original-addition",
+      "sourceId": "alberta-rose-theatre"
+    }
+  },
+  {
     "id": "auto-roseland-2027-02-25-612c04461719",
     "title": "Beast In Black: North American Tour 2027",
     "subtitle": "Source-discovered venue event · details need review",
@@ -46872,6 +56043,108 @@ window.SHOWS_EVENTS = [
     "addedIn": "auto-discovery-2026-10-29",
     "discovery": {
       "sourceId": "hawthorne-theatre",
+      "method": "primary-source-collection"
+    }
+  },
+  {
+    "id": "auto-alberta-rose-theatre-2027-02-25-860dc6c2f142",
+    "title": "Gunhild Carling",
+    "subtitle": "Source-discovered venue event · details need review",
+    "category": "Unclassified",
+    "tags": [
+      "Category needs review",
+      "Time needs confirmation",
+      "Format needs confirmation"
+    ],
+    "musicStyles": [],
+    "eventFormat": "unverified",
+    "classificationEvidence": "No verified event type or genre",
+    "startTimeKind": "listed",
+    "startsAt": "2027-02-25T20:00:00-08:00",
+    "endsAt": null,
+    "venue": "Alberta Rose Theatre",
+    "address": "3000 NE Alberta Street, Portland, OR 97211",
+    "neighborhood": "Concordia",
+    "price": "See organizer for current admission",
+    "free": null,
+    "age": "Not published",
+    "description": "Automatically discovered from a primary venue or promoter listing. Original Alberta Rose dated calendar month/year, weekday, exact room and separately labeled SHOW time; doors not substituted. Original theatre calendar; music style and format require event-specific editorial assessment.",
+    "source": "Alberta Rose Theatre",
+    "url": "https://albertarosetheatre.com/event/gunhild-carling-2/alberta-rose-theatre/portland-oregon/",
+    "icon": "◇",
+    "sourceCheckedAt": "2026-11-06",
+    "verificationMethod": "Automated venue data; editorial date, time, event type and cancellation verification required",
+    "sourceCategories": [],
+    "sources": [
+      {
+        "name": "Alberta Rose Theatre",
+        "url": "https://albertarosetheatre.com/event/gunhild-carling-2/alberta-rose-theatre/portland-oregon/",
+        "kind": "organizer",
+        "checkedAt": "2026-11-06",
+        "originalCategories": []
+      }
+    ],
+    "artwork": {
+      "url": "https://albertarosetheatre.com/wp-content/uploads/2025/01/etix-Gunhild_2970791737052771.jfif",
+      "sourceUrl": "https://albertarosetheatre.com/event/gunhild-carling-2/alberta-rose-theatre/portland-oregon/",
+      "origin": "official-venue-calendar",
+      "credit": "Alberta Rose Theatre original event artwork",
+      "usageApproved": null
+    },
+    "addedIn": "auto-discovery-2026-11-06",
+    "discovery": {
+      "sourceId": "alberta-rose-theatre",
+      "method": "primary-source-collection"
+    }
+  },
+  {
+    "id": "auto-alberta-rose-theatre-2027-02-26-813df2a3cbf0",
+    "title": "Holly Near with Tammy Hall, Jan Martinelli, and Emma’s Revolution.",
+    "subtitle": "Source-discovered venue event · details need review",
+    "category": "Unclassified",
+    "tags": [
+      "Category needs review",
+      "Time needs confirmation",
+      "Format needs confirmation"
+    ],
+    "musicStyles": [],
+    "eventFormat": "unverified",
+    "classificationEvidence": "No verified event type or genre",
+    "startTimeKind": "listed",
+    "startsAt": "2027-02-26T19:30:00-08:00",
+    "endsAt": null,
+    "venue": "Alberta Rose Theatre",
+    "address": "3000 NE Alberta Street, Portland, OR 97211",
+    "neighborhood": "Concordia",
+    "price": "See organizer for current admission",
+    "free": null,
+    "age": "Not published",
+    "description": "Automatically discovered from a primary venue or promoter listing. Original Alberta Rose dated calendar month/year, weekday, exact room and separately labeled SHOW time; doors not substituted. Original theatre calendar; music style and format require event-specific editorial assessment.",
+    "source": "Alberta Rose Theatre",
+    "url": "https://albertarosetheatre.com/event/holly-near-with-tammy-hall-jan-martinelli-and-emmas-revolution/alberta-rose-theatre/portland-oregon/",
+    "icon": "◇",
+    "sourceCheckedAt": "2026-11-06",
+    "verificationMethod": "Automated venue data; editorial date, time, event type and cancellation verification required",
+    "sourceCategories": [],
+    "sources": [
+      {
+        "name": "Alberta Rose Theatre",
+        "url": "https://albertarosetheatre.com/event/holly-near-with-tammy-hall-jan-martinelli-and-emmas-revolution/alberta-rose-theatre/portland-oregon/",
+        "kind": "organizer",
+        "checkedAt": "2026-11-06",
+        "originalCategories": []
+      }
+    ],
+    "artwork": {
+      "url": "https://albertarosetheatre.com/wp-content/uploads/2026/11/holly-near-with-tammy-hall-jan-martinelli-and-emmas-revolution-1.jfif",
+      "sourceUrl": "https://albertarosetheatre.com/event/holly-near-with-tammy-hall-jan-martinelli-and-emmas-revolution/alberta-rose-theatre/portland-oregon/",
+      "origin": "official-venue-calendar",
+      "credit": "Alberta Rose Theatre original event artwork",
+      "usageApproved": null
+    },
+    "addedIn": "auto-discovery-2026-11-06",
+    "discovery": {
+      "sourceId": "alberta-rose-theatre",
       "method": "primary-source-collection"
     }
   },
@@ -47024,6 +56297,57 @@ window.SHOWS_EVENTS = [
     "addedIn": "auto-discovery-2026-10-24",
     "discovery": {
       "sourceId": "roseland",
+      "method": "primary-source-collection"
+    }
+  },
+  {
+    "id": "auto-alberta-rose-theatre-2027-02-27-4402bc410327",
+    "title": "BOYeurism Anniversary Spectacular",
+    "subtitle": "Source-discovered venue event · details need review",
+    "category": "Unclassified",
+    "tags": [
+      "Category needs review",
+      "Time needs confirmation",
+      "Format needs confirmation"
+    ],
+    "musicStyles": [],
+    "eventFormat": "unverified",
+    "classificationEvidence": "No verified event type or genre",
+    "startTimeKind": "listed",
+    "startsAt": "2027-02-27T20:00:00-08:00",
+    "endsAt": null,
+    "venue": "Alberta Rose Theatre",
+    "address": "3000 NE Alberta Street, Portland, OR 97211",
+    "neighborhood": "Concordia",
+    "price": "See organizer for current admission",
+    "free": null,
+    "age": "Not published",
+    "description": "Automatically discovered from a primary venue or promoter listing. Original Alberta Rose dated calendar month/year, weekday, exact room and separately labeled SHOW time; doors not substituted. Original theatre calendar; music style and format require event-specific editorial assessment.",
+    "source": "Alberta Rose Theatre",
+    "url": "https://albertarosetheatre.com/event/boyeurism-anniversary-spectacular/alberta-rose-theatre/portland-oregon/",
+    "icon": "◇",
+    "sourceCheckedAt": "2026-11-06",
+    "verificationMethod": "Automated venue data; editorial date, time, event type and cancellation verification required",
+    "sourceCategories": [],
+    "sources": [
+      {
+        "name": "Alberta Rose Theatre",
+        "url": "https://albertarosetheatre.com/event/boyeurism-anniversary-spectacular/alberta-rose-theatre/portland-oregon/",
+        "kind": "organizer",
+        "checkedAt": "2026-11-06",
+        "originalCategories": []
+      }
+    ],
+    "artwork": {
+      "url": "https://albertarosetheatre.com/wp-content/uploads/2026/10/boyeurism-anniversary-spectacular.jfif",
+      "sourceUrl": "https://albertarosetheatre.com/event/boyeurism-anniversary-spectacular/alberta-rose-theatre/portland-oregon/",
+      "origin": "official-venue-calendar",
+      "credit": "Alberta Rose Theatre original event artwork",
+      "usageApproved": null
+    },
+    "addedIn": "auto-discovery-2026-11-06",
+    "discovery": {
+      "sourceId": "alberta-rose-theatre",
       "method": "primary-source-collection"
     }
   },
@@ -47330,6 +56654,57 @@ window.SHOWS_EVENTS = [
     }
   },
   {
+    "id": "auto-jack-london-revue-2027-03-01-bf917e867215",
+    "title": "Hot 8 Brass Band",
+    "subtitle": "Source-discovered venue event · details need review",
+    "category": "Unclassified",
+    "tags": [
+      "Category needs review",
+      "Time needs confirmation",
+      "Format needs confirmation"
+    ],
+    "musicStyles": [],
+    "eventFormat": "unverified",
+    "classificationEvidence": "No verified event type or genre",
+    "startTimeKind": "listed",
+    "startsAt": "2027-03-01T20:00:00-08:00",
+    "endsAt": null,
+    "venue": "Jack London Revue",
+    "address": "529 SW 4th Ave, Portland, OR 97204",
+    "neighborhood": "Downtown",
+    "price": "See organizer for current admission",
+    "free": null,
+    "age": "Not published",
+    "description": "Automatically discovered from a primary venue or promoter listing. Original JLR event detail verifies full date, venue and showtime separately from doors; the date and clocks match the first-party roster. Original venue event: Doors: 7:00pm Show: 8:00pm Ages: 21+ Drawing on the traditional jazz heritage of their hometown of New Orleans, the Hot 8 Brass Band are renowned for including elements of funk, hip hop, rap, and its local variation, &ldquo;bounce&rdquo; in their music. The ",
+    "source": "Jack London Revue",
+    "url": "https://www.jacklondonrevue.com/tm-event/hot-8-brass-band/",
+    "icon": "◇",
+    "sourceCheckedAt": "2026-11-06",
+    "verificationMethod": "Automated venue data; editorial date, time, event type and cancellation verification required",
+    "sourceCategories": [],
+    "sources": [
+      {
+        "name": "Jack London Revue",
+        "url": "https://www.jacklondonrevue.com/tm-event/hot-8-brass-band/",
+        "kind": "organizer",
+        "checkedAt": "2026-11-06",
+        "originalCategories": []
+      }
+    ],
+    "artwork": {
+      "url": "https://i.ticketweb.com/i/00/13/11/85/94_Original.jpg?v=4",
+      "sourceUrl": "https://www.jacklondonrevue.com/tm-event/hot-8-brass-band/",
+      "origin": "official-event-page",
+      "credit": "Original TicketWeb artwork linked by Jack London Revue",
+      "usageApproved": null
+    },
+    "addedIn": "auto-discovery-2026-11-06",
+    "discovery": {
+      "sourceId": "jack-london-revue",
+      "method": "primary-source-collection"
+    }
+  },
+  {
     "id": "auto-wonder-ballroom-2027-03-02-9dd3ba2ada4b",
     "title": "Caroline Rose",
     "subtitle": "Source-discovered venue event · details need review",
@@ -47478,6 +56853,60 @@ window.SHOWS_EVENTS = [
     }
   },
   {
+    "id": "auto-jack-london-revue-2027-03-04-c82dfd2c09ca",
+    "title": "CHUCK ISRAELS JAZZ ORCH - Jazz Titan Thursdays",
+    "subtitle": "Source-discovered venue event · details need review",
+    "category": "Music",
+    "tags": [
+      "Source-listed Music",
+      "Source-mentioned Jazz",
+      "Time needs confirmation",
+      "Format needs confirmation"
+    ],
+    "musicStyles": [
+      "Jazz"
+    ],
+    "eventFormat": "unverified",
+    "classificationEvidence": "Event-specific source genre wording",
+    "startTimeKind": "listed",
+    "startsAt": "2027-03-04T19:00:00-08:00",
+    "endsAt": null,
+    "venue": "Jack London Revue",
+    "address": "529 SW 4th Ave, Portland, OR 97204",
+    "neighborhood": "Downtown",
+    "price": "See organizer for current admission",
+    "free": null,
+    "age": "Not published",
+    "description": "Automatically discovered from a primary venue or promoter listing. Original JLR event detail verifies full date, venue and showtime separately from doors; the date and clocks match the first-party roster. Original venue event: C huck Israels, revered as one of the preeminent bassists in the world, GRAMMY winner has performed and recorded with Billie Holiday, Benny Goodman, Herbie Hancock, John Coltrane, Bud Powell, Coleman Hawkins, Stan Getz, Bill Evans, J.J. Johnson, Rosemary Clo",
+    "source": "Jack London Revue",
+    "url": "https://www.jacklondonrevue.com/tm-event/chuck-israels-jazz-orch-jazz-titan-thursdays-3/",
+    "icon": "♫",
+    "sourceCheckedAt": "2026-11-06",
+    "verificationMethod": "Automated venue data; editorial date, time, event type and cancellation verification required",
+    "sourceCategories": [],
+    "sources": [
+      {
+        "name": "Jack London Revue",
+        "url": "https://www.jacklondonrevue.com/tm-event/chuck-israels-jazz-orch-jazz-titan-thursdays-3/",
+        "kind": "organizer",
+        "checkedAt": "2026-11-06",
+        "originalCategories": []
+      }
+    ],
+    "artwork": {
+      "url": "https://i.ticketweb.com/i/00/13/08/78/84_Original.jpg?v=14",
+      "sourceUrl": "https://www.jacklondonrevue.com/tm-event/chuck-israels-jazz-orch-jazz-titan-thursdays-3/",
+      "origin": "official-event-page",
+      "credit": "Original TicketWeb artwork linked by Jack London Revue",
+      "usageApproved": null
+    },
+    "addedIn": "auto-discovery-2026-11-06",
+    "discovery": {
+      "sourceId": "jack-london-revue",
+      "method": "primary-source-collection"
+    }
+  },
+  {
     "id": "auto-crystal-ballroom-2027-03-04-34b1c8a95d04",
     "title": "Alan Walker",
     "subtitle": "Source-discovered venue event · details need review",
@@ -47525,6 +56954,111 @@ window.SHOWS_EVENTS = [
     "addedIn": "auto-discovery-2026-10-24",
     "discovery": {
       "sourceId": "crystal-ballroom",
+      "method": "primary-source-collection"
+    }
+  },
+  {
+    "id": "auto-alberta-rose-theatre-2027-03-04-db0952717a93",
+    "title": "Biamp Portland Jazz Festival Presented by PDX Jazz Jazzmeia Horn",
+    "subtitle": "Source-discovered venue event · details need review",
+    "category": "Music",
+    "tags": [
+      "Source-listed Music",
+      "Source-mentioned Jazz",
+      "Time needs confirmation",
+      "Format needs confirmation"
+    ],
+    "musicStyles": [
+      "Jazz"
+    ],
+    "eventFormat": "unverified",
+    "classificationEvidence": "Event-specific source genre wording",
+    "startTimeKind": "listed",
+    "startsAt": "2027-03-04T20:00:00-08:00",
+    "endsAt": null,
+    "venue": "Alberta Rose Theatre",
+    "address": "3000 NE Alberta Street, Portland, OR 97211",
+    "neighborhood": "Concordia",
+    "price": "See organizer for current admission",
+    "free": null,
+    "age": "Not published",
+    "description": "Automatically discovered from a primary venue or promoter listing. Original Alberta Rose dated calendar month/year, weekday, exact room and separately labeled SHOW time; doors not substituted. Original theatre calendar; music style and format require event-specific editorial assessment.",
+    "source": "Alberta Rose Theatre",
+    "url": "https://albertarosetheatre.com/event/biamp-portland-jazz-festival-presented-by-pdx-jazz-jazzmeia-horn/alberta-rose-theatre/portland-oregon/",
+    "icon": "♫",
+    "sourceCheckedAt": "2026-11-06",
+    "verificationMethod": "Automated venue data; editorial date, time, event type and cancellation verification required",
+    "sourceCategories": [],
+    "sources": [
+      {
+        "name": "Alberta Rose Theatre",
+        "url": "https://albertarosetheatre.com/event/biamp-portland-jazz-festival-presented-by-pdx-jazz-jazzmeia-horn/alberta-rose-theatre/portland-oregon/",
+        "kind": "organizer",
+        "checkedAt": "2026-11-06",
+        "originalCategories": []
+      }
+    ],
+    "artwork": {
+      "url": "https://albertarosetheatre.com/wp-content/uploads/2026/10/biamp-portland-jazz-festival-presented-by-pdx-jazz-jazzmeia-horn.jfif",
+      "sourceUrl": "https://albertarosetheatre.com/event/biamp-portland-jazz-festival-presented-by-pdx-jazz-jazzmeia-horn/alberta-rose-theatre/portland-oregon/",
+      "origin": "official-venue-calendar",
+      "credit": "Alberta Rose Theatre original event artwork",
+      "usageApproved": null
+    },
+    "addedIn": "auto-discovery-2026-11-06",
+    "discovery": {
+      "sourceId": "alberta-rose-theatre",
+      "method": "primary-source-collection"
+    }
+  },
+  {
+    "id": "auto-jack-london-revue-2027-03-05-b0a8ace44ad0",
+    "title": "Kneebody - Early Show",
+    "subtitle": "Source-discovered venue event · details need review",
+    "category": "Unclassified",
+    "tags": [
+      "Category needs review",
+      "Time needs confirmation",
+      "Format needs confirmation"
+    ],
+    "musicStyles": [],
+    "eventFormat": "unverified",
+    "classificationEvidence": "No verified event type or genre",
+    "startTimeKind": "listed",
+    "startsAt": "2027-03-05T19:30:00-08:00",
+    "endsAt": null,
+    "venue": "Jack London Revue",
+    "address": "529 SW 4th Ave, Portland, OR 97204",
+    "neighborhood": "Downtown",
+    "price": "See organizer for current admission",
+    "free": null,
+    "age": "Not published",
+    "description": "Automatically discovered from a primary venue or promoter listing. Original JLR event detail verifies full date, venue and showtime separately from doors; the date and clocks match the first-party roster. Original venue event: *Early Show* Doors: 6:30 pm Show: 7:30 pm 21+ Kneebody - Early Show",
+    "source": "Jack London Revue",
+    "url": "https://www.jacklondonrevue.com/tm-event/kneebody-early-show/",
+    "icon": "◇",
+    "sourceCheckedAt": "2026-11-06",
+    "verificationMethod": "Automated venue data; editorial date, time, event type and cancellation verification required",
+    "sourceCategories": [],
+    "sources": [
+      {
+        "name": "Jack London Revue",
+        "url": "https://www.jacklondonrevue.com/tm-event/kneebody-early-show/",
+        "kind": "organizer",
+        "checkedAt": "2026-11-06",
+        "originalCategories": []
+      }
+    ],
+    "artwork": {
+      "url": "https://i.ticketweb.com/i/00/13/08/28/54_Original.jpg?v=18",
+      "sourceUrl": "https://www.jacklondonrevue.com/tm-event/kneebody-early-show/",
+      "origin": "official-event-page",
+      "credit": "Original TicketWeb artwork linked by Jack London Revue",
+      "usageApproved": null
+    },
+    "addedIn": "auto-discovery-2026-11-06",
+    "discovery": {
+      "sourceId": "jack-london-revue",
       "method": "primary-source-collection"
     }
   },
@@ -47627,6 +57161,58 @@ window.SHOWS_EVENTS = [
     "addedIn": "auto-discovery-2026-10-24",
     "discovery": {
       "sourceId": "crystal-ballroom",
+      "method": "primary-source-collection"
+    }
+  },
+  {
+    "id": "auto-jack-london-revue-2027-03-05-b4b21988f9bb",
+    "title": "Kneebody - Late Show",
+    "subtitle": "Source-discovered venue event · details need review",
+    "category": "Unclassified",
+    "tags": [
+      "Category needs review",
+      "Time needs confirmation",
+      "Format needs confirmation",
+      "Separate same-day source listing; review bill and room"
+    ],
+    "musicStyles": [],
+    "eventFormat": "unverified",
+    "classificationEvidence": "No verified event type or genre",
+    "startTimeKind": "listed",
+    "startsAt": "2027-03-05T22:00:00-08:00",
+    "endsAt": null,
+    "venue": "Jack London Revue",
+    "address": "529 SW 4th Ave, Portland, OR 97204",
+    "neighborhood": "Downtown",
+    "price": "See organizer for current admission",
+    "free": null,
+    "age": "Not published",
+    "description": "Automatically discovered from a primary venue or promoter listing. Original JLR event detail verifies full date, venue and showtime separately from doors; the date and clocks match the first-party roster. Original venue event: *Late Show* Doors: 9:30 pm Show: 10:00 pm 21+ Kneebody - Late Show",
+    "source": "Jack London Revue",
+    "url": "https://www.jacklondonrevue.com/tm-event/kneebody-late-show/",
+    "icon": "◇",
+    "sourceCheckedAt": "2026-11-06",
+    "verificationMethod": "Automated venue data; editorial date, time, event type and cancellation verification required",
+    "sourceCategories": [],
+    "sources": [
+      {
+        "name": "Jack London Revue",
+        "url": "https://www.jacklondonrevue.com/tm-event/kneebody-late-show/",
+        "kind": "organizer",
+        "checkedAt": "2026-11-06",
+        "originalCategories": []
+      }
+    ],
+    "artwork": {
+      "url": "https://i.ticketweb.com/i/00/13/08/70/04_Original.jpg?v=4",
+      "sourceUrl": "https://www.jacklondonrevue.com/tm-event/kneebody-late-show/",
+      "origin": "official-event-page",
+      "credit": "Original TicketWeb artwork linked by Jack London Revue",
+      "usageApproved": null
+    },
+    "addedIn": "auto-discovery-2026-11-06",
+    "discovery": {
+      "sourceId": "jack-london-revue",
       "method": "primary-source-collection"
     }
   },
@@ -47779,6 +57365,57 @@ window.SHOWS_EVENTS = [
     "addedIn": "auto-discovery-2026-10-24",
     "discovery": {
       "sourceId": "holocene",
+      "method": "primary-source-collection"
+    }
+  },
+  {
+    "id": "auto-jack-london-revue-2027-03-06-ce4a0208f8a5",
+    "title": "GATA GALACTICA w/ DJ PAPI",
+    "subtitle": "Source-discovered venue event · details need review",
+    "category": "Music",
+    "tags": [
+      "Source-listed Music",
+      "Time needs confirmation",
+      "Format needs confirmation"
+    ],
+    "musicStyles": [],
+    "eventFormat": "unverified",
+    "classificationEvidence": "Event-specific source wording",
+    "startTimeKind": "listed",
+    "startsAt": "2027-03-06T21:00:00-08:00",
+    "endsAt": null,
+    "venue": "Jack London Revue",
+    "address": "529 SW 4th Ave, Portland, OR 97204",
+    "neighborhood": "Downtown",
+    "price": "See organizer for current admission",
+    "free": null,
+    "age": "Not published",
+    "description": "Automatically discovered from a primary venue or promoter listing. Original JLR event detail verifies full date, venue and showtime separately from doors; the date and clocks match the first-party roster. Original venue event: Biamp Portland Jazz Festival Presented by PDX Jazz: Gata Gal&aacute;ctica w/ DJ Papi Doors: 8:00pm Show: 9:00pm Ages 21+ https://www.instagram.com/gatagalacticaband/ GATA GAL&Aacute;CTICA are a Portland-based band that blend elements of cumbia, afrobeat, sur",
+    "source": "Jack London Revue",
+    "url": "https://www.jacklondonrevue.com/tm-event/gata-galactica-w-dj-papi/",
+    "icon": "♫",
+    "sourceCheckedAt": "2026-11-06",
+    "verificationMethod": "Automated venue data; editorial date, time, event type and cancellation verification required",
+    "sourceCategories": [],
+    "sources": [
+      {
+        "name": "Jack London Revue",
+        "url": "https://www.jacklondonrevue.com/tm-event/gata-galactica-w-dj-papi/",
+        "kind": "organizer",
+        "checkedAt": "2026-11-06",
+        "originalCategories": []
+      }
+    ],
+    "artwork": {
+      "url": "https://i.ticketweb.com/i/00/13/08/53/84_Original.jpg?v=9",
+      "sourceUrl": "https://www.jacklondonrevue.com/tm-event/gata-galactica-w-dj-papi/",
+      "origin": "official-event-page",
+      "credit": "Original TicketWeb artwork linked by Jack London Revue",
+      "usageApproved": null
+    },
+    "addedIn": "auto-discovery-2026-11-06",
+    "discovery": {
+      "sourceId": "jack-london-revue",
       "method": "primary-source-collection"
     }
   },
@@ -48132,6 +57769,60 @@ window.SHOWS_EVENTS = [
     }
   },
   {
+    "id": "auto-alberta-rose-theatre-2027-03-10-c94f07efdaa3",
+    "title": "Biamp Portland Jazz Festival: Particle Kid / Daniel Lanois",
+    "subtitle": "Source-discovered venue event · details need review",
+    "category": "Music",
+    "tags": [
+      "Source-listed Music",
+      "Source-mentioned Jazz",
+      "Time needs confirmation",
+      "Format needs confirmation"
+    ],
+    "musicStyles": [
+      "Jazz"
+    ],
+    "eventFormat": "unverified",
+    "classificationEvidence": "Event-specific source genre wording",
+    "startTimeKind": "listed",
+    "startsAt": "2027-03-10T20:00:00-08:00",
+    "endsAt": null,
+    "venue": "Alberta Rose Theatre",
+    "address": "3000 NE Alberta Street, Portland, OR 97211",
+    "neighborhood": "Concordia",
+    "price": "See organizer for current admission",
+    "free": null,
+    "age": "Not published",
+    "description": "Automatically discovered from a primary venue or promoter listing. Original Alberta Rose dated calendar month/year, weekday, exact room and separately labeled SHOW time; doors not substituted. Original theatre calendar; music style and format require event-specific editorial assessment.",
+    "source": "Alberta Rose Theatre",
+    "url": "https://albertarosetheatre.com/event/biamp-portland-jazz-festival-particle-kid-daniel-lanois/alberta-rose-theatre/portland-oregon/",
+    "icon": "♫",
+    "sourceCheckedAt": "2026-11-06",
+    "verificationMethod": "Automated venue data; editorial date, time, event type and cancellation verification required",
+    "sourceCategories": [],
+    "sources": [
+      {
+        "name": "Alberta Rose Theatre",
+        "url": "https://albertarosetheatre.com/event/biamp-portland-jazz-festival-particle-kid-daniel-lanois/alberta-rose-theatre/portland-oregon/",
+        "kind": "organizer",
+        "checkedAt": "2026-11-06",
+        "originalCategories": []
+      }
+    ],
+    "artwork": {
+      "url": "https://albertarosetheatre.com/wp-content/uploads/2026/10/biamp-portland-jazz-festival-particle-kid-daniel-lanois.jfif",
+      "sourceUrl": "https://albertarosetheatre.com/event/biamp-portland-jazz-festival-particle-kid-daniel-lanois/alberta-rose-theatre/portland-oregon/",
+      "origin": "official-venue-calendar",
+      "credit": "Alberta Rose Theatre original event artwork",
+      "usageApproved": null
+    },
+    "addedIn": "auto-discovery-2026-11-06",
+    "discovery": {
+      "sourceId": "alberta-rose-theatre",
+      "method": "primary-source-collection"
+    }
+  },
+  {
     "id": "auto-crystal-ballroom-2027-03-10-49c34798e7b2",
     "title": "Braxton Keith",
     "subtitle": "Source-discovered venue event · details need review",
@@ -48276,6 +57967,60 @@ window.SHOWS_EVENTS = [
     "addedIn": "auto-discovery-2026-10-29",
     "discovery": {
       "sourceId": "roseland",
+      "method": "primary-source-collection"
+    }
+  },
+  {
+    "id": "auto-alberta-rose-theatre-2027-03-11-9f02b145acc3",
+    "title": "Biamp Portland Jazz Festival Presented by PDX Jazz Gretchen Parlato",
+    "subtitle": "Source-discovered venue event · details need review",
+    "category": "Music",
+    "tags": [
+      "Source-listed Music",
+      "Source-mentioned Jazz",
+      "Time needs confirmation",
+      "Format needs confirmation"
+    ],
+    "musicStyles": [
+      "Jazz"
+    ],
+    "eventFormat": "unverified",
+    "classificationEvidence": "Event-specific source genre wording",
+    "startTimeKind": "listed",
+    "startsAt": "2027-03-11T20:00:00-08:00",
+    "endsAt": null,
+    "venue": "Alberta Rose Theatre",
+    "address": "3000 NE Alberta Street, Portland, OR 97211",
+    "neighborhood": "Concordia",
+    "price": "See organizer for current admission",
+    "free": null,
+    "age": "Not published",
+    "description": "Automatically discovered from a primary venue or promoter listing. Original Alberta Rose dated calendar month/year, weekday, exact room and separately labeled SHOW time; doors not substituted. Original theatre calendar; music style and format require event-specific editorial assessment.",
+    "source": "Alberta Rose Theatre",
+    "url": "https://albertarosetheatre.com/event/biamp-portland-jazz-festival-presented-by-pdx-jazz-gretchen-parlato/alberta-rose-theatre/portland-oregon/",
+    "icon": "♫",
+    "sourceCheckedAt": "2026-11-06",
+    "verificationMethod": "Automated venue data; editorial date, time, event type and cancellation verification required",
+    "sourceCategories": [],
+    "sources": [
+      {
+        "name": "Alberta Rose Theatre",
+        "url": "https://albertarosetheatre.com/event/biamp-portland-jazz-festival-presented-by-pdx-jazz-gretchen-parlato/alberta-rose-theatre/portland-oregon/",
+        "kind": "organizer",
+        "checkedAt": "2026-11-06",
+        "originalCategories": []
+      }
+    ],
+    "artwork": {
+      "url": "https://albertarosetheatre.com/wp-content/uploads/2026/10/biamp-portland-jazz-festival-presented-by-pdx-jazz-gretchen-parlato.jfif",
+      "sourceUrl": "https://albertarosetheatre.com/event/biamp-portland-jazz-festival-presented-by-pdx-jazz-gretchen-parlato/alberta-rose-theatre/portland-oregon/",
+      "origin": "official-venue-calendar",
+      "credit": "Alberta Rose Theatre original event artwork",
+      "usageApproved": null
+    },
+    "addedIn": "auto-discovery-2026-11-06",
+    "discovery": {
+      "sourceId": "alberta-rose-theatre",
       "method": "primary-source-collection"
     }
   },
@@ -48986,6 +58731,56 @@ window.SHOWS_EVENTS = [
     }
   },
   {
+    "id": "auto-roseland-2027-03-19-03814c060141",
+    "title": "Akira Yamaoka",
+    "subtitle": "Source-discovered venue event · details need review",
+    "category": "Unclassified",
+    "tags": [
+      "Category needs review",
+      "Time needs confirmation",
+      "Format needs confirmation"
+    ],
+    "musicStyles": [],
+    "eventFormat": "unverified",
+    "classificationEvidence": "No verified event type or genre",
+    "startTimeKind": "listed",
+    "startsAt": "2027-03-19T20:30:00-07:00",
+    "endsAt": null,
+    "venue": "Roseland Theater",
+    "neighborhood": "Not confirmed",
+    "price": "See organizer for current admission",
+    "free": null,
+    "age": "Not published",
+    "description": "Automatically discovered from a primary venue or promoter listing. Venue event-detail page explicitly publishes the full date, year and performance time Official Roseland Theater dated event page; verify the time, format and status before approval",
+    "source": "Roseland Theater",
+    "url": "https://roselandpdx.com/event/akira-yamaoka/roseland-theater/portland-oregon/",
+    "icon": "◇",
+    "sourceCheckedAt": "2026-11-06",
+    "verificationMethod": "Automated venue data; editorial date, time, event type and cancellation verification required",
+    "sourceCategories": [],
+    "sources": [
+      {
+        "name": "Roseland Theater",
+        "url": "https://roselandpdx.com/event/akira-yamaoka/roseland-theater/portland-oregon/",
+        "kind": "organizer",
+        "checkedAt": "2026-11-06",
+        "originalCategories": []
+      }
+    ],
+    "artwork": {
+      "url": "https://roselandpdx.com/wp-content/uploads/2026/11/akira-yamaoka-1.jpeg",
+      "sourceUrl": "https://roselandpdx.com/event/akira-yamaoka/roseland-theater/portland-oregon/",
+      "origin": "official-event-page",
+      "credit": "Official event page",
+      "usageApproved": null
+    },
+    "addedIn": "auto-discovery-2026-11-06",
+    "discovery": {
+      "sourceId": "roseland",
+      "method": "primary-source-collection"
+    }
+  },
+  {
     "id": "auto-holocene-2027-03-20-1f805ac3b0a3",
     "title": "Helena Deland – EARLY SHOW! – 21+",
     "subtitle": "Source-discovered venue event · details need review",
@@ -49190,6 +58985,57 @@ window.SHOWS_EVENTS = [
     }
   },
   {
+    "id": "auto-alberta-rose-theatre-2027-03-23-42b15c4d5119",
+    "title": "Kaki King",
+    "subtitle": "Source-discovered venue event · details need review",
+    "category": "Unclassified",
+    "tags": [
+      "Category needs review",
+      "Time needs confirmation",
+      "Format needs confirmation"
+    ],
+    "musicStyles": [],
+    "eventFormat": "unverified",
+    "classificationEvidence": "No verified event type or genre",
+    "startTimeKind": "listed",
+    "startsAt": "2027-03-23T19:00:00-07:00",
+    "endsAt": null,
+    "venue": "Alberta Rose Theatre",
+    "address": "3000 NE Alberta Street, Portland, OR 97211",
+    "neighborhood": "Concordia",
+    "price": "See organizer for current admission",
+    "free": null,
+    "age": "Not published",
+    "description": "Automatically discovered from a primary venue or promoter listing. Original Alberta Rose dated calendar month/year, weekday, exact room and separately labeled SHOW time; doors not substituted. Original theatre calendar; music style and format require event-specific editorial assessment.",
+    "source": "Alberta Rose Theatre",
+    "url": "https://albertarosetheatre.com/event/kaki-king/alberta-rose-theatre/portland-oregon/",
+    "icon": "◇",
+    "sourceCheckedAt": "2026-11-06",
+    "verificationMethod": "Automated venue data; editorial date, time, event type and cancellation verification required",
+    "sourceCategories": [],
+    "sources": [
+      {
+        "name": "Alberta Rose Theatre",
+        "url": "https://albertarosetheatre.com/event/kaki-king/alberta-rose-theatre/portland-oregon/",
+        "kind": "organizer",
+        "checkedAt": "2026-11-06",
+        "originalCategories": []
+      }
+    ],
+    "artwork": {
+      "url": "https://albertarosetheatre.com/wp-content/uploads/2026/08/kaki-king.jfif",
+      "sourceUrl": "https://albertarosetheatre.com/event/kaki-king/alberta-rose-theatre/portland-oregon/",
+      "origin": "official-venue-calendar",
+      "credit": "Alberta Rose Theatre original event artwork",
+      "usageApproved": null
+    },
+    "addedIn": "auto-discovery-2026-11-06",
+    "discovery": {
+      "sourceId": "alberta-rose-theatre",
+      "method": "primary-source-collection"
+    }
+  },
+  {
     "id": "auto-high-water-2027-03-23-ceea31353119",
     "title": "Karaoke Night - Free!",
     "subtitle": "Source-discovered venue event · details need review",
@@ -49233,6 +59079,57 @@ window.SHOWS_EVENTS = [
     "addedIn": "auto-discovery-2026-11-02",
     "discovery": {
       "sourceId": "high-water",
+      "method": "primary-source-collection"
+    }
+  },
+  {
+    "id": "auto-alberta-rose-theatre-2027-03-24-117877ab6b92",
+    "title": "Science On Tap: Meet the Bees in Your Garden",
+    "subtitle": "Source-discovered venue event · details need review",
+    "category": "Unclassified",
+    "tags": [
+      "Category needs review",
+      "Time needs confirmation",
+      "Format needs confirmation"
+    ],
+    "musicStyles": [],
+    "eventFormat": "unverified",
+    "classificationEvidence": "No verified event type or genre",
+    "startTimeKind": "listed",
+    "startsAt": "2027-03-24T19:00:00-07:00",
+    "endsAt": null,
+    "venue": "Alberta Rose Theatre",
+    "address": "3000 NE Alberta Street, Portland, OR 97211",
+    "neighborhood": "Concordia",
+    "price": "See organizer for current admission",
+    "free": null,
+    "age": "Not published",
+    "description": "Automatically discovered from a primary venue or promoter listing. Original Alberta Rose dated calendar month/year, weekday, exact room and separately labeled SHOW time; doors not substituted. Original theatre calendar; music style and format require event-specific editorial assessment.",
+    "source": "Alberta Rose Theatre",
+    "url": "https://albertarosetheatre.com/event/science-on-tap-meet-the-bees-in-your-garden/alberta-rose-theatre/portland-oregon/",
+    "icon": "◇",
+    "sourceCheckedAt": "2026-11-06",
+    "verificationMethod": "Automated venue data; editorial date, time, event type and cancellation verification required",
+    "sourceCategories": [],
+    "sources": [
+      {
+        "name": "Alberta Rose Theatre",
+        "url": "https://albertarosetheatre.com/event/science-on-tap-meet-the-bees-in-your-garden/alberta-rose-theatre/portland-oregon/",
+        "kind": "organizer",
+        "checkedAt": "2026-11-06",
+        "originalCategories": []
+      }
+    ],
+    "artwork": {
+      "url": "https://albertarosetheatre.com/wp-content/uploads/2026/10/science-on-tap-meet-the-bees-in-your-garden-1.jfif",
+      "sourceUrl": "https://albertarosetheatre.com/event/science-on-tap-meet-the-bees-in-your-garden/alberta-rose-theatre/portland-oregon/",
+      "origin": "official-venue-calendar",
+      "credit": "Alberta Rose Theatre original event artwork",
+      "usageApproved": null
+    },
+    "addedIn": "auto-discovery-2026-11-06",
+    "discovery": {
+      "sourceId": "alberta-rose-theatre",
       "method": "primary-source-collection"
     }
   },
@@ -50199,6 +60096,57 @@ window.SHOWS_EVENTS = [
     }
   },
   {
+    "id": "auto-alberta-rose-theatre-2027-04-06-51dd0fb7c290",
+    "title": "Consider This with Christian Wiman",
+    "subtitle": "Source-discovered venue event · details need review",
+    "category": "Unclassified",
+    "tags": [
+      "Category needs review",
+      "Time needs confirmation",
+      "Format needs confirmation"
+    ],
+    "musicStyles": [],
+    "eventFormat": "unverified",
+    "classificationEvidence": "No verified event type or genre",
+    "startTimeKind": "listed",
+    "startsAt": "2027-04-06T19:00:00-07:00",
+    "endsAt": null,
+    "venue": "Alberta Rose Theatre",
+    "address": "3000 NE Alberta Street, Portland, OR 97211",
+    "neighborhood": "Concordia",
+    "price": "See organizer for current admission",
+    "free": null,
+    "age": "Not published",
+    "description": "Automatically discovered from a primary venue or promoter listing. Original Alberta Rose dated calendar month/year, weekday, exact room and separately labeled SHOW time; doors not substituted. Original theatre calendar; music style and format require event-specific editorial assessment.",
+    "source": "Alberta Rose Theatre",
+    "url": "https://albertarosetheatre.com/event/consider-this-with-christian-wiman/alberta-rose-theatre/portland-oregon/",
+    "icon": "◇",
+    "sourceCheckedAt": "2026-11-06",
+    "verificationMethod": "Automated venue data; editorial date, time, event type and cancellation verification required",
+    "sourceCategories": [],
+    "sources": [
+      {
+        "name": "Alberta Rose Theatre",
+        "url": "https://albertarosetheatre.com/event/consider-this-with-christian-wiman/alberta-rose-theatre/portland-oregon/",
+        "kind": "organizer",
+        "checkedAt": "2026-11-06",
+        "originalCategories": []
+      }
+    ],
+    "artwork": {
+      "url": "https://albertarosetheatre.com/wp-content/uploads/2026/09/consider-this-with-christian-wiman.jfif",
+      "sourceUrl": "https://albertarosetheatre.com/event/consider-this-with-christian-wiman/alberta-rose-theatre/portland-oregon/",
+      "origin": "official-venue-calendar",
+      "credit": "Alberta Rose Theatre original event artwork",
+      "usageApproved": null
+    },
+    "addedIn": "auto-discovery-2026-11-06",
+    "discovery": {
+      "sourceId": "alberta-rose-theatre",
+      "method": "primary-source-collection"
+    }
+  },
+  {
     "id": "auto-wonder-ballroom-2027-04-06-e1ae72cbb1ae",
     "title": "Sleaford Mods",
     "subtitle": "Source-discovered venue event · details need review",
@@ -50296,6 +60244,57 @@ window.SHOWS_EVENTS = [
     }
   },
   {
+    "id": "auto-alberta-rose-theatre-2027-04-07-9a68b2376956",
+    "title": "Karla Bonoff",
+    "subtitle": "Source-discovered venue event · details need review",
+    "category": "Unclassified",
+    "tags": [
+      "Category needs review",
+      "Time needs confirmation",
+      "Format needs confirmation"
+    ],
+    "musicStyles": [],
+    "eventFormat": "unverified",
+    "classificationEvidence": "No verified event type or genre",
+    "startTimeKind": "listed",
+    "startsAt": "2027-04-07T20:00:00-07:00",
+    "endsAt": null,
+    "venue": "Alberta Rose Theatre",
+    "address": "3000 NE Alberta Street, Portland, OR 97211",
+    "neighborhood": "Concordia",
+    "price": "See organizer for current admission",
+    "free": null,
+    "age": "Not published",
+    "description": "Automatically discovered from a primary venue or promoter listing. Original Alberta Rose dated calendar month/year, weekday, exact room and separately labeled SHOW time; doors not substituted. Original theatre calendar; music style and format require event-specific editorial assessment.",
+    "source": "Alberta Rose Theatre",
+    "url": "https://albertarosetheatre.com/event/karla-bonoff-3/alberta-rose-theatre/portland-oregon/",
+    "icon": "◇",
+    "sourceCheckedAt": "2026-11-06",
+    "verificationMethod": "Automated venue data; editorial date, time, event type and cancellation verification required",
+    "sourceCategories": [],
+    "sources": [
+      {
+        "name": "Alberta Rose Theatre",
+        "url": "https://albertarosetheatre.com/event/karla-bonoff-3/alberta-rose-theatre/portland-oregon/",
+        "kind": "organizer",
+        "checkedAt": "2026-11-06",
+        "originalCategories": []
+      }
+    ],
+    "artwork": {
+      "url": "https://albertarosetheatre.com/wp-content/uploads/2024/12/etix-Karla_1169301735530618.jfif",
+      "sourceUrl": "https://albertarosetheatre.com/event/karla-bonoff-3/alberta-rose-theatre/portland-oregon/",
+      "origin": "official-venue-calendar",
+      "credit": "Alberta Rose Theatre original event artwork",
+      "usageApproved": null
+    },
+    "addedIn": "auto-discovery-2026-11-06",
+    "discovery": {
+      "sourceId": "alberta-rose-theatre",
+      "method": "primary-source-collection"
+    }
+  },
+  {
     "id": "auto-high-water-2027-04-08-d181a67dd184",
     "title": "Hear You Loud & Queer!",
     "subtitle": "Source-discovered venue event · details need review",
@@ -50389,6 +60388,56 @@ window.SHOWS_EVENTS = [
     "addedIn": "auto-discovery-2026-10-24",
     "discovery": {
       "sourceId": "wonder-ballroom",
+      "method": "primary-source-collection"
+    }
+  },
+  {
+    "id": "auto-roseland-2027-04-09-6d61b7a3be5d",
+    "title": "The Chats US TOUR",
+    "subtitle": "Source-discovered venue event · details need review",
+    "category": "Unclassified",
+    "tags": [
+      "Category needs review",
+      "Time needs confirmation",
+      "Format needs confirmation"
+    ],
+    "musicStyles": [],
+    "eventFormat": "unverified",
+    "classificationEvidence": "No verified event type or genre",
+    "startTimeKind": "listed",
+    "startsAt": "2027-04-09T20:00:00-07:00",
+    "endsAt": null,
+    "venue": "Roseland Theater",
+    "neighborhood": "Not confirmed",
+    "price": "See organizer for current admission",
+    "free": null,
+    "age": "Not published",
+    "description": "Automatically discovered from a primary venue or promoter listing. Venue event-detail page explicitly publishes the full date, year and performance time Official Roseland Theater dated event page; verify the time, format and status before approval",
+    "source": "Roseland Theater",
+    "url": "https://roselandpdx.com/event/the-chats-us-tour/roseland-theater/portland-oregon/",
+    "icon": "◇",
+    "sourceCheckedAt": "2026-11-06",
+    "verificationMethod": "Automated venue data; editorial date, time, event type and cancellation verification required",
+    "sourceCategories": [],
+    "sources": [
+      {
+        "name": "Roseland Theater",
+        "url": "https://roselandpdx.com/event/the-chats-us-tour/roseland-theater/portland-oregon/",
+        "kind": "organizer",
+        "checkedAt": "2026-11-06",
+        "originalCategories": []
+      }
+    ],
+    "artwork": {
+      "url": "https://roselandpdx.com/wp-content/uploads/2026/11/the-chats-us-tour.jpeg",
+      "sourceUrl": "https://roselandpdx.com/event/the-chats-us-tour/roseland-theater/portland-oregon/",
+      "origin": "official-event-page",
+      "credit": "Official event page",
+      "usageApproved": null
+    },
+    "addedIn": "auto-discovery-2026-11-06",
+    "discovery": {
+      "sourceId": "roseland",
       "method": "primary-source-collection"
     }
   },
@@ -51092,6 +61141,108 @@ window.SHOWS_EVENTS = [
     }
   },
   {
+    "id": "auto-alberta-rose-theatre-2027-04-28-f678b2fbe712",
+    "title": "Science On Tap – The Relationship Anarchist: Deepening Connections with Friends, Lovers, and Others",
+    "subtitle": "Source-discovered venue event · details need review",
+    "category": "Unclassified",
+    "tags": [
+      "Category needs review",
+      "Time needs confirmation",
+      "Format needs confirmation"
+    ],
+    "musicStyles": [],
+    "eventFormat": "unverified",
+    "classificationEvidence": "No verified event type or genre",
+    "startTimeKind": "listed",
+    "startsAt": "2027-04-28T19:00:00-07:00",
+    "endsAt": null,
+    "venue": "Alberta Rose Theatre",
+    "address": "3000 NE Alberta Street, Portland, OR 97211",
+    "neighborhood": "Concordia",
+    "price": "See organizer for current admission",
+    "free": null,
+    "age": "Not published",
+    "description": "Automatically discovered from a primary venue or promoter listing. Original Alberta Rose dated calendar month/year, weekday, exact room and separately labeled SHOW time; doors not substituted. Original theatre calendar; music style and format require event-specific editorial assessment.",
+    "source": "Alberta Rose Theatre",
+    "url": "https://albertarosetheatre.com/event/science-on-tap-the-relationship-anarchist-deepening-connections-with-friends-lovers-and-others/alberta-rose-theatre/portland-oregon/",
+    "icon": "◇",
+    "sourceCheckedAt": "2026-11-06",
+    "verificationMethod": "Automated venue data; editorial date, time, event type and cancellation verification required",
+    "sourceCategories": [],
+    "sources": [
+      {
+        "name": "Alberta Rose Theatre",
+        "url": "https://albertarosetheatre.com/event/science-on-tap-the-relationship-anarchist-deepening-connections-with-friends-lovers-and-others/alberta-rose-theatre/portland-oregon/",
+        "kind": "organizer",
+        "checkedAt": "2026-11-06",
+        "originalCategories": []
+      }
+    ],
+    "artwork": {
+      "url": "https://albertarosetheatre.com/wp-content/uploads/2026/08/science-on-tap-the-relationship-anarchist-deepening-connections-with-friends-lovers-and-others.jfif",
+      "sourceUrl": "https://albertarosetheatre.com/event/science-on-tap-the-relationship-anarchist-deepening-connections-with-friends-lovers-and-others/alberta-rose-theatre/portland-oregon/",
+      "origin": "official-venue-calendar",
+      "credit": "Alberta Rose Theatre original event artwork",
+      "usageApproved": null
+    },
+    "addedIn": "auto-discovery-2026-11-06",
+    "discovery": {
+      "sourceId": "alberta-rose-theatre",
+      "method": "primary-source-collection"
+    }
+  },
+  {
+    "id": "auto-alberta-rose-theatre-2027-04-30-32920e4d85cc",
+    "title": "LEATHER AND LACE: A Tribute to all things Fleetwood and Stevie",
+    "subtitle": "Source-discovered venue event · details need review",
+    "category": "Unclassified",
+    "tags": [
+      "Category needs review",
+      "Time needs confirmation",
+      "Format needs confirmation"
+    ],
+    "musicStyles": [],
+    "eventFormat": "unverified",
+    "classificationEvidence": "No verified event type or genre",
+    "startTimeKind": "listed",
+    "startsAt": "2027-04-30T20:00:00-07:00",
+    "endsAt": null,
+    "venue": "Alberta Rose Theatre",
+    "address": "3000 NE Alberta Street, Portland, OR 97211",
+    "neighborhood": "Concordia",
+    "price": "See organizer for current admission",
+    "free": null,
+    "age": "Not published",
+    "description": "Automatically discovered from a primary venue or promoter listing. Original Alberta Rose dated calendar month/year, weekday, exact room and separately labeled SHOW time; doors not substituted. Original theatre calendar; music style and format require event-specific editorial assessment.",
+    "source": "Alberta Rose Theatre",
+    "url": "https://albertarosetheatre.com/event/leather-and-lace-a-tribute-to-all-things-fleetwood-and-stevie-11/alberta-rose-theatre/portland-oregon/",
+    "icon": "◇",
+    "sourceCheckedAt": "2026-11-06",
+    "verificationMethod": "Automated venue data; editorial date, time, event type and cancellation verification required",
+    "sourceCategories": [],
+    "sources": [
+      {
+        "name": "Alberta Rose Theatre",
+        "url": "https://albertarosetheatre.com/event/leather-and-lace-a-tribute-to-all-things-fleetwood-and-stevie-11/alberta-rose-theatre/portland-oregon/",
+        "kind": "organizer",
+        "checkedAt": "2026-11-06",
+        "originalCategories": []
+      }
+    ],
+    "artwork": {
+      "url": "https://albertarosetheatre.com/wp-content/uploads/2026/11/leather-and-lace-a-tribute-to-all-things-fleetwood-and-stevie.jfif",
+      "sourceUrl": "https://albertarosetheatre.com/event/leather-and-lace-a-tribute-to-all-things-fleetwood-and-stevie-11/alberta-rose-theatre/portland-oregon/",
+      "origin": "official-venue-calendar",
+      "credit": "Alberta Rose Theatre original event artwork",
+      "usageApproved": null
+    },
+    "addedIn": "auto-discovery-2026-11-06",
+    "discovery": {
+      "sourceId": "alberta-rose-theatre",
+      "method": "primary-source-collection"
+    }
+  },
+  {
     "id": "auto-roseland-2027-04-30-ec580062d423",
     "title": "FAUN – USA & CANADA TOUR 2027",
     "subtitle": "Source-discovered venue event · details need review",
@@ -51189,6 +61340,57 @@ window.SHOWS_EVENTS = [
     "addedIn": "auto-discovery-2026-10-29",
     "discovery": {
       "sourceId": "aladdin-theater",
+      "method": "primary-source-collection"
+    }
+  },
+  {
+    "id": "auto-crystal-ballroom-2027-05-03-4af049f94090",
+    "title": "Ricky Montgomery: The Monty Tour",
+    "subtitle": "Source-discovered venue event · details need review",
+    "category": "Unclassified",
+    "tags": [
+      "Category needs review",
+      "Time needs confirmation",
+      "Format needs confirmation"
+    ],
+    "musicStyles": [],
+    "eventFormat": "unverified",
+    "classificationEvidence": "No verified event type or genre",
+    "startTimeKind": "listed",
+    "startsAt": "2027-05-03T20:30:00-07:00",
+    "endsAt": null,
+    "venue": "Crystal Ballroom",
+    "address": "1332 W Burnside St, Portland, OR 97209",
+    "neighborhood": "West End",
+    "price": "See organizer for current admission",
+    "free": null,
+    "age": "Not published",
+    "description": "Automatically discovered from a primary venue or promoter listing. Original Crystal Ballroom Event structured data publishes exact Pacific date/year and starting time Original Crystal Ballroom event page; verify doors versus event start, lineup, event status and artwork rights before approval",
+    "source": "Crystal Ballroom",
+    "url": "https://www.crystalballroompdx.com/events/279373-ricky-montgomery-the-monty-tour/",
+    "icon": "◇",
+    "sourceCheckedAt": "2026-11-06",
+    "verificationMethod": "Automated venue data; editorial date, time, event type and cancellation verification required",
+    "sourceCategories": [],
+    "sources": [
+      {
+        "name": "Crystal Ballroom",
+        "url": "https://www.crystalballroompdx.com/events/279373-ricky-montgomery-the-monty-tour/",
+        "kind": "organizer",
+        "checkedAt": "2026-11-06",
+        "originalCategories": []
+      }
+    ],
+    "artwork": {
+      "url": "https://www.crystalballroompdx.com/wp-content/uploads/2026/11/RickyMontgomery26-irljUd.jpg",
+      "sourceUrl": "https://www.crystalballroompdx.com/events/279373-ricky-montgomery-the-monty-tour/",
+      "origin": "official-event-page",
+      "credit": "Official event page",
+      "usageApproved": null
+    },
+    "addedIn": "auto-discovery-2026-11-06",
+    "discovery": {
+      "sourceId": "crystal-ballroom",
       "method": "primary-source-collection"
     }
   },
@@ -52755,6 +62957,57 @@ window.SHOWS_EVENTS = [
     "addedIn": "auto-discovery-2026-11-02",
     "discovery": {
       "sourceId": "high-water",
+      "method": "primary-source-collection"
+    }
+  },
+  {
+    "id": "auto-aladdin-theater-2027-07-29-fb6d92dfbdfc",
+    "title": "Steam Powered Giraffe",
+    "subtitle": "Source-discovered venue event · details need review",
+    "category": "Unclassified",
+    "tags": [
+      "Category needs review",
+      "Time needs confirmation",
+      "Format needs confirmation"
+    ],
+    "musicStyles": [],
+    "eventFormat": "unverified",
+    "classificationEvidence": "No verified event type or genre",
+    "startTimeKind": "listed",
+    "startsAt": "2027-07-29T19:00:00-07:00",
+    "endsAt": null,
+    "venue": "Aladdin Theater",
+    "address": "3017 SE Milwaukie Ave, Portland, OR 97202",
+    "neighborhood": "Brooklyn",
+    "price": "See organizer for current admission",
+    "free": null,
+    "age": "Not published",
+    "description": "Automatically discovered from a primary venue or promoter listing. Official Aladdin card independently matches its UTC doors date, printed Pacific doors/show clocks, full weekday/date (or source-backed relative label), and exact ticket event ID. Original Aladdin venue listing. Event type and genres require review.",
+    "source": "Aladdin Theater",
+    "url": "https://www.etix.com/ticket/p/44288175/steam-powered-giraffe-portland-aladdin-theater",
+    "icon": "◇",
+    "sourceCheckedAt": "2026-11-06",
+    "verificationMethod": "Automated venue data; editorial date, time, event type and cancellation verification required",
+    "sourceCategories": [],
+    "sources": [
+      {
+        "name": "Aladdin Theater",
+        "url": "https://www.etix.com/ticket/p/44288175/steam-powered-giraffe-portland-aladdin-theater",
+        "kind": "organizer",
+        "checkedAt": "2026-11-06",
+        "originalCategories": []
+      }
+    ],
+    "artwork": {
+      "url": "https://cdn.etix.com/etix/performance-image/performance_image_1200w/0f444f809a1dae27ced8a0aceaa288e8.jpg",
+      "sourceUrl": "https://www.etix.com/ticket/p/44288175/steam-powered-giraffe-portland-aladdin-theater",
+      "origin": "official-venue-calendar",
+      "credit": "Aladdin Theater event image via venue-linked Etix",
+      "usageApproved": null
+    },
+    "addedIn": "auto-discovery-2026-11-06",
+    "discovery": {
+      "sourceId": "aladdin-theater",
       "method": "primary-source-collection"
     }
   },

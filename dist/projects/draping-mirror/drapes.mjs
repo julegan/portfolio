@@ -43,5 +43,5 @@ export function landmarkFrame(landmarks, width, height) {
 export function readPalette(raw) {
   const parsed = JSON.parse(raw ?? '[]');
   if (!Array.isArray(parsed)) throw new TypeError('Invalid palette');
-  return [...new Set(parsed.filter(value => typeof value === 'string').map(normalizeHex).filter(Boolean))].slice(0, 20);
+  return [...new Set(parsed.filter(value => typeof value === 'string').map(normalizeHex).filter(Boolean))].slice(0, 64);
 }

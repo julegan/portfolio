@@ -1,13 +1,13 @@
 import { PALETTE_KEY, readPalette, fitColor } from './drapes.mjs';
 import { toOKLCH } from './color.mjs';
-import { STAGES, HOMES, REST_DRAPE, questionsFor, allQuestions, recordAnswer, profile, wardrobePalette, FLOW_KINDS, flowOptions } from './session.mjs';
+import { STAGES, HOMES, REST_DRAPE, questionsFor, allQuestions, recordAnswer, profile, wardrobePalette, FLOW_KINDS, flowOptions, refinementLabel } from './session.mjs';
 import { createPortrait } from './portrait.mjs';
 
 const $ = id => document.getElementById(id);
 let stage = 0, index = 0, answers = {}, active = 0, resting = false, comparing = false, practice = null;
 let seen = new Set([0]), palette = [], storageAvailable = true, capture;
 let displayPair = [REST_DRAPE, REST_DRAPE];
-let exploreDrape = REST_DRAPE, previousDrape = null, collectionGroup = 'colors';
+let exploreDrape = REST_DRAPE, previousDrape = null, collectionGroup = 'colors', refinements = {}, viewerMode = 'session';
 const closeDialog = id => { if ($(id).open) $(id).close(); };
 const panels = [$('portrait-a'), $('portrait-b')];
 const status = message => { $('source-status').textContent = message; };
@@ -34,14 +34,14 @@ function drawPanel(canvas, drape) {
   // Surface colors are study content; interface theme colors never tint them.
   ctx.fillStyle = '#D4D1CC'; ctx.fillRect(0,0,480,600);
   ctx.fillStyle = drape.finish === 'matte' ? drape.hex : metallicFill(ctx,drape);
-  ctx.beginPath(); ctx.moveTo(0,352); ctx.quadraticCurveTo(240,267,480,352); ctx.lineTo(480,600); ctx.lineTo(0,600); ctx.closePath(); ctx.fill();
+  ctx.beginPath(); ctx.moveTo(0,410); ctx.quadraticCurveTo(240,330,480,410); ctx.lineTo(480,600); ctx.lineTo(0,600); ctx.closePath(); ctx.fill();
   // Fixed, quiet folds are confined to the cloth, below the portrait window.
   ctx.save(); ctx.strokeStyle = '#FFFFFF18'; ctx.lineWidth = 1;
   for (let y = 438; y < 600; y += 65) { ctx.beginPath(); ctx.moveTo(0,y); ctx.quadraticCurveTo(235,y-50,480,y+15); ctx.stroke(); } ctx.restore();
-  ctx.save(); ctx.beginPath(); ctx.ellipse(240,216,140,185,0,0,Math.PI*2); ctx.clip();
+  ctx.save(); ctx.beginPath(); ctx.ellipse(240,248,180,238,0,0,Math.PI*2); ctx.clip();
   // The same neutral backing also protects transparent portrait pixels.
-  ctx.fillStyle = '#D4D1CC'; ctx.fillRect(100,31,280,370); capture?.draw(ctx); ctx.restore();
-  ctx.strokeStyle = '#65615B'; ctx.lineWidth = .7; ctx.beginPath(); ctx.ellipse(240,216,140,185,0,0,Math.PI*2); ctx.stroke();
+  ctx.fillStyle = '#D4D1CC'; ctx.fillRect(60,10,360,476); ctx.translate(60-100*360/280,10-31*360/280); ctx.scale(360/280,360/280); capture?.draw(ctx); ctx.restore();
+  ctx.strokeStyle = '#65615B'; ctx.lineWidth = .7; ctx.beginPath(); ctx.ellipse(240,248,180,238,0,0,Math.PI*2); ctx.stroke();
 }
 function paint() {
   const pair = practice?.drapes ?? displayPair;
@@ -55,7 +55,8 @@ function paint() {
   $('show-a').setAttribute('aria-pressed',String(active === 0 && !resting)); $('show-b').setAttribute('aria-pressed',String(active === 1 && !resting));
   $('rest').setAttribute('aria-pressed',String(resting));
   $('show-a').style.setProperty('--swatch',swatchFill(pair[0])); $('show-b').style.setProperty('--swatch',swatchFill(pair[1]));
-  paintExplorer();
+  if($('palette-explorer').open) paintExplorer();
+  if($('mirror-viewer').open) paintViewer();
 }
 function observations() {
   const q = current(), ready = canAssess() && seen.size === 2 && !practice && !resting;
@@ -64,6 +65,8 @@ function observations() {
     button.setAttribute('aria-pressed',String(q && answers[q.id] === button.dataset.answer));
     if (['a','b'].includes(button.dataset.answer)) button.textContent = q?.axis === 'finish' ? `I’d choose ${button.dataset.answer.toUpperCase()}` : `${button.dataset.answer.toUpperCase()} looks clearer`;
   });
+  $('decide').disabled=!ready;
+  $('decide').textContent=practice ? 'Practice · return to compare' : ready ? 'Choose what works →' : resting ? 'Return to a drape' : 'See both drapes first';
   $('next').disabled = !ready || !q || !Object.hasOwn(answers,q.id);
   $('answer-hint').textContent = practice ? 'Practice only. Return to the closer comparison to record an observation.' : !canAssess() ? 'Add a photo or freeze a frame to compare.' : resting ? 'Return to A or B when your eye is ready.' : seen.size < 2 ? 'Tap A and B to compare, then choose.' : 'Which drape supports your face?';
 }
@@ -104,12 +107,12 @@ function render(focus = false) {
 }
 function resetSession() {
   stage = 0; index = 0; answers = {}; active = 0; seen = new Set([0]); practice = null; resting = false;
-  closeDialog('guidance'); closeDialog('session-tools'); closeDialog('palette-explorer'); $('mirror-note').textContent='';
+  closeDialog('guidance'); closeDialog('session-tools'); closeDialog('palette-explorer'); closeDialog('response-sheet'); closeDialog('mirror-viewer'); closeDialog('collection-settings'); $('mirror-note').textContent='';
   $('source-tools').open = true; render();
 }
 function go(stageNumber, questionIndex = 0) {
   stage = stageNumber; index = questionIndex; active = 0; seen = new Set(comparing ? [0,1] : [0]); practice = null; resting = false;
-  closeDialog('guidance'); closeDialog('session-tools'); closeDialog('palette-explorer'); $('source-tools').open = stageNumber === 0;
+  closeDialog('guidance'); closeDialog('session-tools'); closeDialog('palette-explorer'); closeDialog('response-sheet'); closeDialog('mirror-viewer'); closeDialog('collection-settings'); $('source-tools').open = stageNumber === 0;
   render(true);
   window.scrollTo({top:0,behavior:'instant'});
 }
@@ -127,6 +130,7 @@ function renderResults() {
   $('evidence').replaceChildren(evidenceLine('Undertone',p.temperature,'warm','cool'),evidenceLine('Intensity',p.intensity,'bright','soft'));
   if (p.mixed) { const note=document.createElement('p'); note.textContent='Some comparisons pointed in different directions. Treat this as a starting point and revisit the differences.'; $('evidence').append(note); }
   $('flow-description').textContent = !p.leader ? 'Flow remains open while the home season is unresolved.' : p.flow ? `The closer comparisons suggest ${p.flow.kind === 'balanced' ? 'a balanced expression of this season' : `the ${p.flow.label.split(' ')[0].toLowerCase()} direction within this family`}. This prototype has not been validated against professional analysis.` : 'The closer comparisons did not single out one flow. We can suggest the home season without forcing a subtype.';
+  refinements={};
   $('palette-family').value = p.leader?.id ?? p.candidates[0].id;
   renderFlows(p.leader ? p.flow?.kind : 'home');
   $('review-list').replaceChildren();
@@ -149,26 +153,45 @@ function renderFlows(selected = 'home') {
 }
 function paintExplorer() {
   drawPanel($('portrait-explorer'),exploreDrape);
-  const label=exploreDrape.family ? flowOptions(exploreDrape.family).find(f=>f.id===exploreDrape.flow).label : '';
+  const label=exploreDrape.family ? flowOptions(exploreDrape.family).find(f=>f.id===exploreDrape.flow).label + (refinementLabel(exploreDrape.adjustments) ? ' · '+refinementLabel(exploreDrape.adjustments) : '') : '';
   $('explore-caption').textContent=exploreDrape === REST_DRAPE ? 'Neutral cape · choose a drape below' : `${exploreDrape.name} · ${label}${exploreDrape.finish !== 'matte' ? ' · metallic preview' : ''}`;
   $('explore-previous').disabled=!previousDrape; $('explore-save').disabled=exploreDrape===REST_DRAPE;
+  if($('mirror-viewer').open) paintViewer();
   $('wardrobe').querySelectorAll('button').forEach(button=>button.setAttribute('aria-pressed',String(button.dataset.drape===exploreDrape.id)));
 }
 function renderWardrobe() {
   const family=$('palette-family').value, flow=$('palette-flow').value;
-  const swatches=wardrobePalette(family,flow).filter(d=>d.group===collectionGroup);
-  $('wardrobe-note').textContent=collectionGroup==='metals' ? 'Simulated finishes. Try them here, then check real jewelry.' : 'Tap a chip to drape it. Scroll for more.';
+  const swatches=wardrobePalette(family,flow,refinements).filter(d=>d.group===collectionGroup);
+  $('wardrobe-note').textContent=swatches.length+' '+collectionGroup+' · swipe the rail to explore';
+  const name=flowOptions(family).find(f=>f.id===flow)?.label ?? HOMES[family].name, extra=refinementLabel(refinements);
+  $('collection-picker').replaceChildren(document.createTextNode(name+(extra?' · '+extra:'')));
+  const hint=document.createElement('span');hint.textContent='Change season & flow ▾';$('collection-picker').append(hint);
+  $('collection-summary').textContent=name+(extra?' · '+extra:' · original set');
+  document.querySelectorAll('[data-adjust]').forEach(b=>b.setAttribute('aria-pressed',String(Number(b.dataset.value)===(refinements[b.dataset.adjust]??0))));
   document.querySelectorAll('[data-group]').forEach(button=>button.setAttribute('aria-pressed',String(button.dataset.group===collectionGroup)));
   $('wardrobe').replaceChildren(...swatches.map(drape => {
     const button=document.createElement('button'); button.type='button'; button.dataset.drape=drape.id; button.setAttribute('aria-label','Try '+drape.name); button.setAttribute('aria-pressed',String(drape.id===exploreDrape.id));
     const swatch=document.createElement('span'); swatch.style.background=swatchFill(drape); swatch.setAttribute('aria-hidden','true');
     const label=document.createElement('span'); label.textContent=drape.name; button.append(swatch,label);
-    button.addEventListener('click',()=>{
-      if(exploreDrape.id!==drape.id) previousDrape=exploreDrape===REST_DRAPE?previousDrape:exploreDrape;
-      exploreDrape=drape; $('explore-status').textContent=''; paintExplorer();
-    }); return button;
+    button.addEventListener('click',()=>selectExplorerDrape(drape)); return button;
   }));
-  $('wardrobe').scrollTop=0;
+  $('wardrobe').scrollTop=0; $('wardrobe').scrollLeft=0;
+}
+function selectExplorerDrape(drape) {
+  if(exploreDrape.id!==drape.id) previousDrape=exploreDrape===REST_DRAPE?previousDrape:exploreDrape;
+  exploreDrape=drape; $('explore-status').textContent=''; paintExplorer();
+}
+function paintViewer() {
+  const d=viewerMode==='explorer' ? exploreDrape : (resting?REST_DRAPE:(practice?.drapes??displayPair)[active]);
+  drawPanel($('portrait-viewer'),d); $('viewer-caption').textContent=d.name;
+}
+function openViewer(mode) { viewerMode=mode; paintViewer(); $('mirror-viewer').showModal(); }
+function viewerStep(step) {
+  if(viewerMode==='explorer') {
+    const list=wardrobePalette($('palette-family').value,$('palette-flow').value,refinements).filter(d=>d.group===collectionGroup);
+    const i=list.findIndex(d=>d.id===exploreDrape.id); selectExplorerDrape(list[i<0 ? (step>0?0:list.length-1) : (i+step+list.length)%list.length]);
+  } else { active=1-active; resting=false; seen.add(active);paint();observations(); }
+  paintViewer();
 }
 function openExplorer() {
   if(capture.mode==='camera') capture.freeze();
@@ -194,7 +217,7 @@ function persist() {
 function saveShown() { saveDrape(resting ? REST_DRAPE : (practice?.drapes ?? displayPair)[active]); }
 function saveDrape(drape, target='mirror-note') {
   if(palette.includes(drape.hex)){ $('palette-status').textContent='That color is already saved.'; $(target).textContent='That color is already in Saved colors.'; return; }
-  if(palette.length>=20){ $('palette-status').textContent='Your collection has 20 colors. Remove one before adding another.'; $('saved').open=true; $(target).textContent='Your collection has 20 colors. Open Tools → Saved colors to remove one.'; return; }
+  if(palette.length>=64){ $('palette-status').textContent='Your collection has 64 colors. Remove one before adding another.'; $('saved').open=true; $(target).textContent='Your collection has 64 colors. Open Tools → Saved colors to remove one.'; return; }
   palette.push(drape.hex); persist(); paletteView();
   if(target==='explore-status') { $(target).textContent=storageAvailable ? `${drape.name} saved.` : 'Kept for this session. Download in Tools.'; return; }
   $(target).textContent=storageAvailable ? `${drape.name} saved. Open Tools → Saved colors to download or remove it.` : `${drape.name} kept for this session. Browser storage is unavailable; download it from Saved colors to keep a copy.`;
@@ -246,6 +269,22 @@ $('close-tools').addEventListener('click',()=>closeDialog('session-tools'));
 $('change-portrait').addEventListener('click',()=>go(0));
 for(const id of ['browse-before','browse-results']) $(id).addEventListener('click',openExplorer);
 $('close-explorer').addEventListener('click',()=>closeDialog('palette-explorer'));
+$('collection-picker').addEventListener('click',()=>$('collection-settings').showModal());
+$('apply-collection').addEventListener('click',()=>closeDialog('collection-settings'));
+$('focus-mirror').addEventListener('click',()=>openViewer('session'));
+$('focus-explorer').addEventListener('click',()=>openViewer('explorer'));
+$('close-viewer').addEventListener('click',()=>closeDialog('mirror-viewer'));
+$('viewer-previous').addEventListener('click',()=>viewerStep(-1));$('viewer-next').addEventListener('click',()=>viewerStep(1));
+function swipe(element, next) {
+  let origin=null;
+  element.style.touchAction='pan-y pinch-zoom';
+  element.addEventListener('pointerdown',e=>{origin=e.isPrimary?{x:e.clientX,y:e.clientY}:null;});
+  element.addEventListener('pointercancel',()=>origin=null);
+  element.addEventListener('pointerup',e=>{if(origin){const dx=e.clientX-origin.x,dy=e.clientY-origin.y;origin=null;if(Math.abs(dx)>45&&Math.abs(dy)<35)next(dx<0?1:-1);}});
+}
+swipe($('portrait-a'),()=>{if(stage>0&&stage<6){active=1-active;resting=false;seen.add(active);paint();observations();}});
+swipe($('portrait-explorer'),step=>{const mode=viewerMode;viewerMode='explorer';viewerStep(step);viewerMode=mode;});
+swipe($('portrait-viewer'),viewerStep);
 $('stronger').addEventListener('click',()=>{
   const q=current();
   practice=q.id.includes('depth')?{drapes:[{...REST_DRAPE,name:'Deep blue-green',hex:fitColor(.32,.05,195).hex},{...REST_DRAPE,name:'Light blue-green',hex:fitColor(.84,.05,195).hex}]}:questionsFor(q.axis==='temperature'||q.id.includes('temperature')?1:2,answers)[0];
@@ -253,11 +292,14 @@ $('stronger').addEventListener('click',()=>{
 });
 $('exit-practice').addEventListener('click',()=>{practice=null;active=0;seen=new Set(comparing?[0,1]:[0]);$('practice-tag').hidden=true;$('exit-practice').hidden=true;paint();observations();});
 document.querySelectorAll('[data-answer]').forEach(button=>button.addEventListener('click',()=>{answers=recordAnswer(answers,current().id,button.dataset.answer);renderQuestion();}));
+$('decide').addEventListener('click',()=>{if(!$('decide').disabled)$('response-sheet').showModal();});
+$('close-response').addEventListener('click',()=>closeDialog('response-sheet'));
 $('next').addEventListener('click',()=>{ if($('next').disabled)return; if(index+1<questionsFor(stage,answers).length)go(stage,index+1);else go(stage+1); });
 $('back').addEventListener('click',()=>{if(index>0)go(stage,index-1);else if(stage>1)go(stage-1,questionsFor(stage-1,answers).length-1);else go(0);});
 $('restart').addEventListener('click',()=>{resetSession();$('begin').focus();});
-$('palette-family').addEventListener('change',()=>{renderFlows();renderWardrobe();});
-$('palette-flow').addEventListener('change',renderWardrobe);
+$('palette-family').addEventListener('change',()=>{refinements={};renderFlows();renderWardrobe();});
+$('palette-flow').addEventListener('change',()=>{refinements={};renderWardrobe();});
+document.querySelectorAll('[data-adjust]').forEach(b=>b.addEventListener('click',()=>{refinements={...refinements,[b.dataset.adjust]:Number(b.dataset.value)};renderWardrobe();}));
 document.querySelectorAll('[data-group]').forEach(button=>button.addEventListener('click',()=>{collectionGroup=button.dataset.group;renderWardrobe();}));
 $('explore-previous').addEventListener('click',()=>{if(previousDrape){[exploreDrape,previousDrape]=[previousDrape,exploreDrape];$('explore-status').textContent='';paintExplorer();}});
 $('explore-rest').addEventListener('click',()=>{if(exploreDrape!==REST_DRAPE)previousDrape=exploreDrape;exploreDrape=REST_DRAPE;$('explore-status').textContent='';paintExplorer();});
