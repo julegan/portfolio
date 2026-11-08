@@ -28,7 +28,7 @@ dialog{color:#f3f1ec;background:#202025;border:1px solid #87838f;border-radius:1
  .is-preparing .guided-controls{grid-column:2;grid-row:2;display:flex;justify-content:flex-end;padding:0}
  .is-preparing #prepare{grid-row:auto;min-width:0}.is-preparing #source-tools{margin:0 0 18px}.is-preparing #source-tools>summary{font-size:14px}.is-preparing .source-bar{margin-top:6px;align-items:center}.is-preparing .source-bar .file-button{margin:0}
  .is-preparing #prepare .eyebrow{margin-bottom:6px}.is-preparing #prepare h2{font-size:25px;margin-bottom:10px}
- .is-preparing #source-tools :is(button,input,summary){scroll-margin-top:calc(var(--setup-preview-height) + 56px + env(safe-area-inset-top))}
+ .is-preparing #source-tools :is(button,input,summary){scroll-margin-top:8px}
 }
 @media(max-width:760px) and (max-height:519px),(max-width:279px){
  .is-comparing #main{height:auto;min-height:100svh}.is-comparing .session-layout{display:flex;flex-direction:column}.question-topline{order:-1}.is-comparing .mirror-workspace{height:420px;flex:none}.is-comparing .question-actions{order:1}.explorer{height:auto;min-height:0;max-height:100svh;overflow-y:auto}.explorer[open]{display:block}.explorer-heading{position:sticky;top:0;z-index:5}.explorer-mirror{height:360px}.collection-browser{min-height:250px}.mirror-viewer{min-height:300px}

@@ -70,9 +70,10 @@ async function setupOrder(page,width){
 async function framingKeepsPreview(page,width){
  if(width>760)return;
  await page.locator('.framing>summary').click();await page.locator('#frame-scale').focus();
+ await page.waitForFunction(()=>{const p=document.getElementById('portrait-a').getBoundingClientRect(),s=document.getElementById('frame-scale').getBoundingClientRect();return p.top>=-1&&p.bottom<=innerHeight+1&&s.top>=p.bottom-1&&s.bottom<=innerHeight+1;},null,{timeout:3000});
  const data=await page.evaluate(()=>({height:innerHeight,preview:document.getElementById('portrait-a').getBoundingClientRect().toJSON(),slider:document.getElementById('frame-scale').getBoundingClientRect().toJSON()}));
  assert(data.preview.top>=-1&&data.preview.bottom<=data.height+1,'preview stays visible while framing');
- assert(separated(data.preview,data.slider),'framing controls do not cover the preview');assert(data.slider.top>=data.preview.bottom-1&&data.slider.bottom<=data.height+1,'focused framing control stays below the visible preview');
+ assert(separated(data.preview,data.slider),'framing controls do not cover the preview');assert(data.slider.top>=data.preview.bottom-1&&data.slider.bottom<=data.height+1,'focused framing control stays below the visible preview: '+JSON.stringify(data));
  await page.locator('#frame-scale').press('ArrowRight');await page.locator('.framing>summary').click();
 }
 async function comparisonChecks(browser,name,width){

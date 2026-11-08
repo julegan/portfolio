@@ -278,6 +278,19 @@ capture=createPortrait($('camera'),{
     if(stage>0&&stage<6) observations();
   }
 });
+// Native focus scrolling differs between mobile engines. Keep the focused
+// setup control in the free area below the sticky preview after that scroll.
+$('source-tools').addEventListener('focusin',event=>{
+  const target=event.target;
+  if(stage!==0||!matchMedia('(max-width:760px)').matches)return;
+  requestAnimationFrame(()=>{
+    if(stage!==0||!target.isConnected||!target.getClientRects().length)return;
+    const preview=document.querySelector('.mirror-workspace').getBoundingClientRect();
+    const rect=target.getBoundingClientRect(),top=preview.bottom+8,bottom=innerHeight-8;
+    if(rect.bottom>bottom)window.scrollBy({top:rect.bottom-bottom,behavior:'instant'});
+    else if(rect.top<top)window.scrollBy({top:rect.top-top,behavior:'instant'});
+  });
+});
 $('start-camera').addEventListener('click',()=>capture.startCamera()); $('freeze').addEventListener('click',()=>capture.freeze());
 $('clear').addEventListener('click',()=>{ $('photo').value='';capture.clear(); });
 $('use-sample').addEventListener('click',()=>capture.sample());
