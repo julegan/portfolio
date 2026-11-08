@@ -45,7 +45,7 @@ test("distinct social preview metadata comes from reviewed events, escaped in ra
   assert.match(first, /og:title" content="Band &lt;A&gt; &amp; &quot;B&quot; — SHOWS/);
   assert.match(first, /Doors 7:00 PM · High Limit Room/);
   assert.match(first, /og:url" content="https:\/\/julieowens.me\/projects\/shows\/\?event=concert-100"/);
-  assert.match(first, /og:image" content="https:\/\/julieowens.me\/projects\/shows\/share-card.png"/);
+  assert.match(first, /og:image" content="https:\/\/julieowens.me\/projects\/shows\/share-card.svg"/);
   assert.match(first, /twitter:description/);
   assert.match(second, /Night Market — SHOWS/);
   assert.match(second, /Time TBA/);
@@ -69,11 +69,11 @@ test("an updated approved publication changes preview without editing a separate
 });
 
 test("artwork is only shareable with explicit social permission", () => {
-  assert.equal(eventMetadata(event1).image, "https://julieowens.me/projects/shows/share-card.png");
+  assert.equal(eventMetadata(event1).image, "https://julieowens.me/projects/shows/share-card.svg");
   assert.equal(eventMetadata({...event1,artwork:{...event1.artwork,usageApproved:true,socialSharingApproved:true}}).image,
     "https://source.example/flyer.jpg");
   assert.equal(eventMetadata({...event1,artwork:{...event1.artwork,url:"javascript:evil",usageApproved:true,socialSharingApproved:true}}).image,
-    "https://julieowens.me/projects/shows/share-card.png");
+    "https://julieowens.me/projects/shows/share-card.svg");
 });
 
 test("hostile event fields cannot inject HTML metadata", () => {
