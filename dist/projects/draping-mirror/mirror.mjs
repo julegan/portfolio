@@ -61,8 +61,6 @@ function drawPanel(canvas, drape, frame = panelFrame(canvas)) {
 }
 function paint() {
   const pair = practice?.drapes ?? displayPair;
-  const frame = panelFrame(panels[0]);
-  drawPanel(panels[0],resting ? REST_DRAPE : pair[active],frame); drawPanel(panels[1],resting ? REST_DRAPE : pair[1-active],panelFrame(panels[1],frame));
   $('caption-current').textContent = resting ? REST_DRAPE.name : pair[active].name;
   $('caption-other').textContent = resting ? REST_DRAPE.name : pair[1-active].name;
   $('drape-letter').textContent = stage === 0 || resting ? '—' : active === 0 ? 'A' : 'B';
@@ -72,6 +70,9 @@ function paint() {
   $('show-a').setAttribute('aria-pressed',String(active === 0 && !resting)); $('show-b').setAttribute('aria-pressed',String(active === 1 && !resting));
   $('rest').setAttribute('aria-pressed',String(resting));
   $('show-a').style.setProperty('--swatch',swatchFill(pair[0])); $('show-b').style.setProperty('--swatch',swatchFill(pair[1]));
+  // Labels can change the available frame height on small screens.
+  const frame = panelFrame(panels[0]);
+  drawPanel(panels[0],resting ? REST_DRAPE : pair[active],frame); drawPanel(panels[1],resting ? REST_DRAPE : pair[1-active],panelFrame(panels[1],frame));
   if($('palette-explorer').open) paintExplorer();
   if($('mirror-viewer').open) paintViewer();
 }
@@ -108,7 +109,7 @@ function renderQuestion() {
   $('next').textContent = stage === 5 && index === questionsFor(5,answers).length-1 ? 'See my direction' : 'Continue';
   const p = profile(answers);
   $('branch-note').textContent = stage === 3 ? `Flow explores smaller differences within a working seasonal family. ${p.leader ? `Your observations currently point toward ${p.leader.name}.` : 'Your home season is still open; these comparisons are exploratory.'}` : stage === 5 ? 'These finishing touches help you explore colors and metals. They do not change the season suggestion.' : '';
-  paint(); observations();
+  observations(); paint();
 }
 function render(focus = false) {
   $('main').classList.toggle('in-session',stage > 0); $('main').classList.toggle('at-results',stage === 6);
@@ -175,7 +176,6 @@ function drapeOrigin(d) {
 }
 function paintExplorer() {
   exploreDrape=pinned.rest ? REST_DRAPE : pinned[pinned.active] ?? REST_DRAPE;
-  drawPanel($('portrait-explorer'),exploreDrape);
   $('explore-caption').textContent=exploreDrape===REST_DRAPE ? 'Neutral cape' : `${pinned.active.toUpperCase()} · ${exploreDrape.name} · ${drapeOrigin(exploreDrape)}${exploreDrape.finish!=='matte'?' · metallic preview':''}`;
   for(const slot of ['a','b']) {
     const d=pinned[slot], button=$('explore-'+slot);
@@ -192,6 +192,7 @@ function paintExplorer() {
   const hasStatus=Boolean($('explore-status').textContent);
   $('comparison-purpose').textContent=pinned.rest ? 'Neutral rest · choose A or B to resume.' : comparisonPurpose(pinned.a,pinned.b);
   $('comparison-purpose').hidden=hasStatus; $('explore-status').hidden=!hasStatus;
+  drawPanel($('portrait-explorer'),exploreDrape);
   if($('mirror-viewer').open)paintViewer();
   $('wardrobe').querySelectorAll('button').forEach(button=>button.setAttribute('aria-pressed',String(button.dataset.drape===exploreDrape.id)));
 }

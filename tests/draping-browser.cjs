@@ -2,6 +2,7 @@ const assert = require('node:assert/strict');
 const {chromium,webkit}=require('playwright');
 const axePath=require.resolve('axe-core/axe.min.js');
 const fs=require('node:fs');
+const {createHash}=require('node:crypto');
 const origin='http://127.0.0.1:4173';
 const choices=['b','a','b','a','b','a','a','a','b','a','b','both','a','b','a','b'];
 async function audit(page,label){
@@ -10,11 +11,22 @@ async function audit(page,label){
   assert.deepEqual(result.violations.map(v=>({id:v.id,nodes:v.nodes.map(n=>n.target)})),[],label);
   assert(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth+1),label+' fits viewport');
 }
-async function pixels(page,ids=['portrait-a','portrait-b']){return page.evaluate(ids=>ids.map(id=>{
+async function pixels(page,ids=['portrait-a','portrait-b']){
+ // ResizeObserver paints on the next animation frame. Do not sample an old
+ // setup bitmap while its CSS frame has already entered comparison mode.
+ await page.waitForFunction(ids=>ids.every(id=>{
+  const c=document.getElementById(id),reference=c.getClientRects().length?c:document.getElementById('portrait-a'),r=reference.getBoundingClientRect(),s=getComputedStyle(reference);
+  const w=r.width-parseFloat(s.borderLeftWidth)-parseFloat(s.borderRightWidth),h=r.height-parseFloat(s.borderTopWidth)-parseFloat(s.borderBottomWidth),density=Math.min(2,4096/Math.max(w,h));
+  return c.width===Math.round(w*density)&&c.height===Math.round(h*density);
+ }),ids);
+ const samples=await page.evaluate(ids=>ids.map(id=>{
  const canvas=document.getElementById(id),ctx=canvas.getContext('2d'),b=JSON.parse(canvas.dataset.portraitBounds);
  // Check the face and lower transparent-image backing at their actual size.
  return [[.45,.3,.12,.1],[.48,.9,.06,.03]].flatMap(([x,y,w,h])=>[...ctx.getImageData(Math.round(b.x+x*b.width),Math.round(b.y+y*b.height),Math.max(1,Math.round(w*b.width)),Math.max(1,Math.round(h*b.height))).data]);
-}),ids);}
+ }),ids);
+ // Hash the complete pixel samples so a failure stays readable in CI logs.
+ return samples.map(data=>createHash('sha256').update(Uint8Array.from(data)).digest('hex'));
+}
 async function answer(page,value){if(!await page.locator('#response-sheet').isVisible())await page.locator('#decide').click();await page.locator(`[data-answer="${value}"]`).click();}
 async function choose(page,value){await page.locator('#show-b').click();await answer(page,value);await page.locator('#next').click();}
 async function openTools(page){if(!await page.locator('#session-tools').isVisible())await page.locator(await page.locator('#question-tools').isVisible()?'#question-tools':'#open-tools').click();}
