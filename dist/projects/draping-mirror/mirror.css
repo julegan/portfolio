@@ -43,3 +43,14 @@ dialog{color:#f3f1ec;background:#202025;border:1px solid #87838f;border-radius:1
 .season-cycle #season-exit{font-size:12px;min-width:62px}
 .season-cycle #season-position{text-align:center;font-size:12px;line-height:1.2;color:var(--muted);overflow-wrap:anywhere}
 @media(max-width:760px){.season-tools{flex:none}.season-cycle{gap:3px}.season-cycle button{min-width:44px}.season-cycle #season-exit{min-width:60px;padding-inline:5px}}
+
+/* Keep the face comfortably large on narrow phones even with season controls. */
+@media (min-width:280px) and (max-width:359px) and (min-height:520px){
+ .explorer-heading{padding-block:5px}
+ .collection-browser{gap:3px;padding:5px 8px}
+ .collection-browser .wardrobe{height:78px}
+ .pinned-drapes>button{min-height:48px}
+ .explorer-actions button{min-height:42px}
+ .season-tools #season-start{min-height:40px}
+ .season-cycle button{height:40px}
+}
