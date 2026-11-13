@@ -34,3 +34,12 @@ dialog{color:#f3f1ec;background:#202025;border:1px solid #87838f;border-radius:1
  .is-comparing #main{height:auto;min-height:100svh}.is-comparing .session-layout{display:flex;flex-direction:column}.question-topline{order:-1}.is-comparing .mirror-workspace{height:420px;flex:none}.is-comparing .question-actions{order:1}.explorer{height:auto;min-height:0;max-height:100svh;overflow-y:auto}.explorer[open]{display:block}.explorer-heading{position:sticky;top:0;z-index:5}.explorer-mirror{height:360px}.collection-browser{min-height:250px}.mirror-viewer{min-height:300px}
 }
 @media(forced-colors:active){.portrait-pair canvas,.explorer-mirror canvas,.chip-color,.wardrobe button>span:first-child,.pin-swatch,.drape-switch button:before{forced-color-adjust:none}}
+
+/* Seasonal cycling stays beside the existing drape controls, not over the portrait. */
+.season-tools:empty{display:none}.season-tools #season-start{width:100%;min-height:42px;border-radius:22px;font-size:13px}
+.season-cycle{display:grid;grid-template-columns:44px minmax(0,1fr) 44px auto;align-items:center;gap:5px;min-width:0}
+.season-cycle[hidden],#season-start[hidden]{display:none}
+.season-cycle button{height:44px;min-width:44px;padding:5px 7px;border-radius:22px;font-size:15px}
+.season-cycle #season-exit{font-size:12px;min-width:62px}
+.season-cycle #season-position{text-align:center;font-size:12px;line-height:1.2;color:var(--muted);overflow-wrap:anywhere}
+@media(max-width:760px){.season-tools{flex:none}.season-cycle{gap:3px}.season-cycle button{min-width:44px}.season-cycle #season-exit{min-width:60px;padding-inline:5px}}
