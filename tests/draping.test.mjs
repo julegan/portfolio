@@ -70,7 +70,8 @@ test('season cycling preserves the exact color slot across all homes and flows',
     assert.equal(variants.length,20);
     assert.equal(new Set(variants.map(d=>d.id)).size,20);
     assert.equal(variants[0].id,chosen.id,'selected swatch comes first');
-    assert.deepEqual(variants.slice(0,4).map(d=>d.family),[home,...Object.keys(HOMES).filter(h=>h!==home)]);
+    const homes=Object.keys(HOMES),start=homes.indexOf(home);
+    assert.deepEqual(variants.slice(0,4).map(d=>d.family),[...homes.slice(start),...homes.slice(0,start)]);
     assert(variants.every(d=>d.swatchKey===chosen.swatchKey&&d.group==='colors'&&FLOW_KINDS.includes(d.flow)));
     assert(variants.every(d=>d.adjustments.depth===1&&d.adjustments.intensity===-1));
   }
