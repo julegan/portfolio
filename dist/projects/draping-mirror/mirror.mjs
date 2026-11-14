@@ -1,6 +1,6 @@
 import { PALETTE_KEY, readPalette, fitColor } from './drapes.mjs';
 import { toOKLCH } from './color.mjs';
-import { STAGES, HOMES, REST_DRAPE, questionsFor, allQuestions, recordAnswer, profile, wardrobePalette, FLOW_KINDS, flowOptions, refinementLabel, HUE_FAMILIES } from './session.mjs';
+import { STAGES, HOMES, REST_DRAPE, questionsFor, allQuestions, recordAnswer, profile, wardrobePalette, FLOW_KINDS, flowOptions, refinementLabel, HUE_FAMILIES, seasonColorVariants } from './session.mjs';
 import { emptyComparison, chooseCandidate, showPinned, pinVisible, comparisonPurpose } from './comparison.mjs';
 import { createPortrait } from './portrait.mjs';
 import { mirrorLayout } from './mirror-layout.mjs';
@@ -9,7 +9,7 @@ const $ = id => document.getElementById(id);
 let stage = 0, index = 0, answers = {}, active = 0, resting = false, comparing = false, practice = null;
 let seen = new Set([0]), palette = [], storageAvailable = true, capture;
 let displayPair = [REST_DRAPE, REST_DRAPE];
-let exploreDrape = REST_DRAPE, pinned = emptyComparison(), collectionGroup = 'colors', hueFamily = 'reds', refinements = {}, viewerMode = 'session';
+let exploreDrape = REST_DRAPE, pinned = emptyComparison(), collectionGroup = 'colors', hueFamily = 'reds', refinements = {}, viewerMode = 'session', seasonMode = null;
 const closeDialog = id => { if ($(id).open) $(id).close(); };
 const panels = [$('portrait-a'), $('portrait-b')];
 const status = message => { $('source-status').textContent = message; };
@@ -127,7 +127,7 @@ function render(focus = false) {
 function resetSession() {
   stage = 0; index = 0; answers = {}; active = 0; seen = new Set([0]); practice = null; resting = false;
   closeDialog('guidance'); closeDialog('session-tools'); closeDialog('palette-explorer'); closeDialog('response-sheet'); closeDialog('mirror-viewer'); closeDialog('collection-settings'); $('mirror-note').textContent='';
-  pinned=emptyComparison(); exploreDrape=REST_DRAPE; $('explore-status').textContent='';
+  seasonMode=null; pinned=emptyComparison(); exploreDrape=REST_DRAPE; $('explore-status').textContent='';
   $('source-tools').open = true; render();
 }
 function go(stageNumber, questionIndex = 0) {
@@ -188,6 +188,7 @@ function paintExplorer() {
   }
   $('pin-reference').disabled=pinned.rest||pinned.active!=='b'||!pinned.b;
   $('explore-save').disabled=exploreDrape===REST_DRAPE;
+  refreshSeasonControls();
   $('explore-rest').setAttribute('aria-pressed',String(pinned.rest));
   const hasStatus=Boolean($('explore-status').textContent);
   $('comparison-purpose').textContent=pinned.rest ? 'Neutral rest · choose A or B to resume.' : comparisonPurpose(pinned.a,pinned.b);
@@ -224,18 +225,56 @@ function renderWardrobe() {
     button.addEventListener('click',()=>selectExplorerDrape(drape)); return button;
   }));
   $('wardrobe').scrollTop=0; $('wardrobe').scrollLeft=0;
+  refreshSeasonControls();
 }
 function selectExplorerDrape(drape) {
+  seasonMode=null;
   pinned=chooseCandidate(pinned,drape); $('explore-status').textContent='';paintExplorer();
+}
+function refreshSeasonControls() {
+  const available=!seasonMode&&exploreDrape?.group==='colors';
+  $('season-start').hidden=!available;
+  $('season-cycle').hidden=!seasonMode;
+  if(seasonMode){
+    const variant=seasonMode.variants[seasonMode.index];
+    $('season-position').textContent=`${drapeOrigin(variant)} · ${seasonMode.index+1} of ${seasonMode.variants.length}`;
+  }
+}
+function seasonStep(direction) {
+  if(!seasonMode)return;
+  const {variants,reference}=seasonMode;
+  seasonMode.index=(seasonMode.index+direction+variants.length)%variants.length;
+  const next=variants[seasonMode.index];
+  pinned=next.id===reference.id
+    ? {a:reference,b:null,active:'a',rest:false}
+    : {a:reference,b:next,active:'b',rest:false};
+  $('explore-status').textContent='';
+  paintExplorer();
+}
+function startSeasonCycle() {
+  const reference=exploreDrape, variants=seasonColorVariants(reference);
+  if(variants.length<2)return;
+  seasonMode={reference,variants,index:variants.findIndex(d=>d.id===reference.id)};
+  if(seasonMode.index<0)seasonMode.index=0;
+  pinned={a:reference,b:null,active:'a',rest:false};
+  seasonStep(1);
+}
+function exitSeasonCycle() {
+  if(!seasonMode)return;
+  pinned={a:seasonMode.reference,b:null,active:'a',rest:false};
+  seasonMode=null;
+  $('explore-status').textContent='';
+  paintExplorer();
 }
 function paintViewer() {
   const d=viewerMode==='explorer' ? exploreDrape : (resting?REST_DRAPE:(practice?.drapes??displayPair)[active]);
-  drawPanel($('portrait-viewer'),d); $('viewer-caption').textContent=viewerMode==='explorer'&&d!==REST_DRAPE ? pinned.active.toUpperCase()+' · '+d.name : d.name;
-  for(const id of ['viewer-previous','viewer-next']) $(id).disabled=viewerMode==='explorer'&&!(pinned.a&&pinned.b);
+  drawPanel($('portrait-viewer'),d); $('viewer-caption').textContent=viewerMode==='explorer'&&d!==REST_DRAPE ? pinned.active.toUpperCase()+' · '+d.name+(seasonMode?' · '+drapeOrigin(d):'') : d.name;
+  for(const id of ['viewer-previous','viewer-next']) $(id).disabled=viewerMode==='explorer'&&!seasonMode&&!(pinned.a&&pinned.b);
 }
 function openViewer(mode) { viewerMode=mode; $('mirror-viewer').showModal(); paintViewer(); }
 function viewerStep(step) {
   if(viewerMode==='explorer') {
+    if(seasonMode){seasonStep(step);return;}
     if(pinned.a&&pinned.b){pinned=showPinned(pinned,pinned.active==='a'?'b':'a');$('explore-status').textContent='';paintExplorer();}
   } else { active=1-active; resting=false; seen.add(active);paint();observations(); }
   paintViewer();
@@ -331,6 +370,10 @@ $('change-portrait').addEventListener('click',()=>go(0));
 for(const id of ['browse-before','browse-results']) $(id).addEventListener('click',openExplorer);
 $('close-explorer').addEventListener('click',()=>closeDialog('palette-explorer'));
 $('collection-picker').addEventListener('click',()=>$('collection-settings').showModal());
+$('season-start').addEventListener('click',startSeasonCycle);
+$('season-previous').addEventListener('click',()=>seasonStep(-1));
+$('season-next').addEventListener('click',()=>seasonStep(1));
+$('season-exit').addEventListener('click',exitSeasonCycle);
 $('apply-collection').addEventListener('click',()=>closeDialog('collection-settings'));
 $('focus-mirror').addEventListener('click',()=>openViewer('session'));
 $('focus-explorer').addEventListener('click',()=>openViewer('explorer'));
@@ -358,17 +401,18 @@ $('close-response').addEventListener('click',()=>closeDialog('response-sheet'));
 $('next').addEventListener('click',()=>{ if($('next').disabled)return; if(index+1<questionsFor(stage,answers).length)go(stage,index+1);else go(stage+1); });
 $('back').addEventListener('click',()=>{if(index>0)go(stage,index-1);else if(stage>1)go(stage-1,questionsFor(stage-1,answers).length-1);else go(0);});
 $('restart').addEventListener('click',()=>{resetSession();$('begin').focus();});
-$('palette-family').addEventListener('change',()=>{refinements={};renderFlows();renderWardrobe();});
-$('palette-flow').addEventListener('change',()=>{refinements={};renderWardrobe();});
-document.querySelectorAll('[data-adjust]').forEach(b=>b.addEventListener('click',()=>{refinements={...refinements,[b.dataset.adjust]:Number(b.dataset.value)};renderWardrobe();}));
+$('palette-family').addEventListener('change',()=>{seasonMode=null;refinements={};renderFlows();renderWardrobe();});
+$('palette-flow').addEventListener('change',()=>{seasonMode=null;refinements={};renderWardrobe();});
+document.querySelectorAll('[data-adjust]').forEach(b=>b.addEventListener('click',()=>{seasonMode=null;refinements={...refinements,[b.dataset.adjust]:Number(b.dataset.value)};renderWardrobe();}));
 $('drape-family').addEventListener('change',()=>{
+  seasonMode=null;
   const value=$('drape-family').value;
   if(value==='neutrals'||value==='metals')collectionGroup=value;else{collectionGroup='colors';hueFamily=value;}
   renderWardrobe();
 });
-for(const slot of ['a','b']) $('explore-'+slot).addEventListener('click',()=>{pinned=showPinned(pinned,slot);$('explore-status').textContent='';paintExplorer();});
-$('pin-reference').addEventListener('click',()=>{pinned=pinVisible(pinned);$('explore-status').textContent=pinned.a.name+' pinned as A. New choices go into B.';paintExplorer();});
-$('explore-rest').addEventListener('click',()=>{pinned={...pinned,rest:!pinned.rest};$('explore-status').textContent='';paintExplorer();});
+for(const slot of ['a','b']) $('explore-'+slot).addEventListener('click',()=>{seasonMode=null;pinned=showPinned(pinned,slot);$('explore-status').textContent='';paintExplorer();});
+$('pin-reference').addEventListener('click',()=>{seasonMode=null;pinned=pinVisible(pinned);$('explore-status').textContent=pinned.a.name+' pinned as A. New choices go into B.';paintExplorer();});
+$('explore-rest').addEventListener('click',()=>{seasonMode=null;pinned={...pinned,rest:!pinned.rest};$('explore-status').textContent='';paintExplorer();});
 $('explore-save').addEventListener('click',()=>saveDrape(exploreDrape,'explore-status'));
 $('save-shown').addEventListener('click',saveShown);
 $('download-palette').addEventListener('click',()=>download(new Blob([JSON.stringify({format:'draping-mirror-palette',version:1,colors:palette},null,2)],{type:'application/json'}),'draping-mirror-palette.json'));

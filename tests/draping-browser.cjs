@@ -68,6 +68,24 @@ async function explorerChecks(page,name,width){
  await page.locator('#wardrobe button').first().click();const first=await page.locator('#explore-caption').innerText();
  assert.match(await page.locator('#explore-a').getAttribute('aria-label'),/pinned reference/);assert(await page.locator('#explore-b').isDisabled());
  await edgeToEdge(page,'portrait-explorer');
+ // One tap launches related seasonal variants; the starting drape stays A.
+ assert(await page.locator('#season-start').isVisible());
+ const anchored=await page.locator('#explore-a').getAttribute('aria-label');
+ const initial=await page.locator('#explore-caption').innerText();
+ await page.locator('#season-start').click();
+ assert(await page.locator('#season-cycle').isVisible());
+ assert.match(await page.locator('#season-position').innerText(),/2 of 20/);
+ assert.equal(await page.locator('#explore-a').getAttribute('aria-label'),anchored);
+ const firstVariant=await page.locator('#explore-caption').innerText();
+ assert.notEqual(firstVariant,initial);
+ await page.locator('#season-next').click();await page.locator('#season-previous').click();
+ assert.equal(await page.locator('#explore-caption').innerText(),firstVariant,'previous retraces the same swatch');
+ await page.locator('#focus-explorer').click();await page.locator('#viewer-next').click();
+ assert.match(await page.locator('#viewer-caption').innerText(),/·/);
+ await page.locator('#close-viewer').click();
+ await page.locator('#season-exit').click();
+ assert.equal(await page.locator('#explore-caption').innerText(),initial,'exit returns to starting color');
+ assert(await page.locator('#season-start').isVisible());
  const before=await pixels(page,['portrait-explorer']);
  await page.locator('#collection-picker').click();await page.locator('#palette-flow').selectOption('thermal');await page.locator('#apply-collection').click();await page.locator('#wardrobe button').nth(1).click();
  assert.match(await page.locator('#explore-caption').innerText(),/Cool Winter/);
@@ -77,8 +95,8 @@ async function explorerChecks(page,name,width){
  assert.equal((await page.locator('#explore-caption').innerText()).slice(4),candidate.slice(4),'explicit pin keeps the chosen drape');assert.equal(await page.locator('#explore-a').getAttribute('aria-pressed'),'true');
  const anchor=await page.locator('#explore-a').getAttribute('aria-label');
  await page.locator('#drape-family').selectOption('blues');assert.equal(await page.locator('#wardrobe button').count(),9);await page.locator('#wardrobe button').first().click();assert.equal(await page.locator('#explore-a').getAttribute('aria-label'),anchor,'browsing never replaces A');
- await page.locator('#drape-family').selectOption('neutrals');assert.equal(await page.locator('#wardrobe button').count(),12);await page.locator('#wardrobe button').first().click();
- await page.locator('#drape-family').selectOption('metals');assert.equal(await page.locator('#wardrobe button').count(),8);await page.locator('#wardrobe button').first().click();assert.match(await page.locator('#explore-caption').innerText(),/metallic preview/);
+ await page.locator('#drape-family').selectOption('neutrals');assert.equal(await page.locator('#wardrobe button').count(),12);await page.locator('#wardrobe button').first().click();assert(await page.locator('#season-start').isHidden());
+ await page.locator('#drape-family').selectOption('metals');assert.equal(await page.locator('#wardrobe button').count(),8);await page.locator('#wardrobe button').first().click();assert.match(await page.locator('#explore-caption').innerText(),/metallic preview/);assert(await page.locator('#season-start').isHidden());
  const surfaceBefore=await page.locator('#portrait-explorer').boundingBox();
  await page.locator('#explore-save').click();assert.match(await page.locator('#explore-status').innerText(),/saved/);assert.equal(await page.locator('.palette-chip').count(),2);assert.deepEqual(await page.locator('#portrait-explorer').boundingBox(),surfaceBefore,'save feedback does not resize the mirror');
  await page.locator('#explore-rest').click();assert.match(await page.locator('#explore-caption').innerText(),/Neutral cape/);await page.locator('#explore-a').click();assert.equal(await page.locator('#explore-a').getAttribute('aria-label'),anchor);

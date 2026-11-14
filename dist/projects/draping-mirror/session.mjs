@@ -231,7 +231,7 @@ export function wardrobePalette(homeId, flowKind = 'home', refinements = {}) {
     h += (thermalShift ?? (warm ? -5 : 5))*(warm?1:-1)*adjustments.temperature;
     l -= adjustments.depth*.055; c *= Math.pow(1.24,adjustments.intensity);
     const d = color(`${homeId}-${kind}-${key}-${keySuffix}`,name,Math.min(.985,Math.max(.12,l)),c,h,finish);
-    return Object.freeze({ ...d, group, hueFamily: group==='colors' ? hueGroups[key.replace(/-\d+$/,'')] : group, family: homeId, flow: kind, adjustments });
+    return Object.freeze({ ...d, swatchKey:key, group, hueFamily: group==='colors' ? hueGroups[key.replace(/-\d+$/,'')] : group, family: homeId, flow: kind, adjustments });
   }
   return [
     ...hues.flatMap(([key,dl,scale,wh,ch],i) => {
@@ -243,4 +243,17 @@ export function wardrobePalette(homeId, flowKind = 'home', refinements = {}) {
     ...[ ['Satin silver',.8,.008,265,'satin'], ['Smoked copper',.48,.06,45,'satin'] ].map(([name,l,c,h,finish],i)=>make('extra-metal-'+i,name,l,c,h,'metals',finish)),
     ...metals[homeId].map(([name,l,c,h,finish],i)=>make('metal-'+i,name,l,c,h,'metals',finish))
   ];
+}
+
+// A stable authored hue/tone slot (not a nearest-RGB guess) links the same
+// drape across home seasons and named flow sets. The chosen set comes first,
+// followed by neighboring home seasons, so the first tap is a useful contrast.
+export function seasonColorVariants(selected) {
+  if (selected?.group !== 'colors' || !selected.swatchKey || !HOMES[selected.family]) return [];
+  const homes=Object.keys(HOMES), homeIndex=homes.indexOf(selected.family);
+  const orderedHomes=[...homes.slice(homeIndex),...homes.slice(0,homeIndex)];
+  const kinds=[...new Set([selected.flow,...FLOW_KINDS])].filter(kind=>FLOW_KINDS.includes(kind));
+  return kinds.flatMap(kind=>orderedHomes.map(home=>
+    wardrobePalette(home,kind,selected.adjustments).find(d=>d.swatchKey===selected.swatchKey)
+  ).filter(Boolean));
 }

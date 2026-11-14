@@ -3,7 +3,7 @@ import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
 import { toOKLCH, normalizeHex } from '../dist/projects/draping-mirror/color.mjs';
 import { PALETTE_KEY, fitColor, portraitCrop, landmarkFrame, readPalette } from '../dist/projects/draping-mirror/drapes.mjs';
-import { questionsFor, allQuestions, profile, recordAnswer, wardrobePalette, HOMES, FLOW_KINDS, flowOptions, normalizeRefinements, refinementLabel } from '../dist/projects/draping-mirror/session.mjs';
+import { questionsFor, allQuestions, profile, recordAnswer, wardrobePalette, HOMES, FLOW_KINDS, flowOptions, normalizeRefinements, refinementLabel, seasonColorVariants } from '../dist/projects/draping-mirror/session.mjs';
 import { emptyComparison, chooseCandidate, showPinned, pinVisible, comparisonPurpose } from '../dist/projects/draping-mirror/comparison.mjs';
 import worker from '../src/shows-feedback.mjs';
 import { isDrapingPath } from '../src/draping-headers.mjs';
@@ -63,6 +63,22 @@ test('every home and flow has a broad, independently browsable collection includ
   }
   assert.deepEqual(wardrobePalette('unknown'),[]);
 });
+test('season cycling preserves the exact color slot across all homes and flows',()=>{
+  for(const home of Object.keys(HOMES))for(const flow of FLOW_KINDS){
+    const chosen=wardrobePalette(home,flow,{intensity:-1,depth:1}).find(d=>d.group==='colors'&&d.swatchKey==='green-1');
+    const variants=seasonColorVariants(chosen);
+    assert.equal(variants.length,20);
+    assert.equal(new Set(variants.map(d=>d.id)).size,20);
+    assert.equal(variants[0].id,chosen.id,'selected swatch comes first');
+    const homes=Object.keys(HOMES),start=homes.indexOf(home);
+    assert.deepEqual(variants.slice(0,4).map(d=>d.family),[...homes.slice(start),...homes.slice(0,start)]);
+    assert(variants.every(d=>d.swatchKey===chosen.swatchKey&&d.group==='colors'&&FLOW_KINDS.includes(d.flow)));
+    assert(variants.every(d=>d.adjustments.depth===1&&d.adjustments.intensity===-1));
+  }
+  assert.deepEqual(seasonColorVariants(wardrobePalette('winter')[70]),[],'neutrals are not cycled as hues');
+  assert.deepEqual(seasonColorVariants(null),[]);
+});
+
 test('a named collection can explore combined flows in both directions without changing classification',()=>{
   const base=wardrobePalette('winter','depth'), softDeep=wardrobePalette('winter','depth',{intensity:-1});
   const a=toOKLCH(base[0].hex),b=toOKLCH(softDeep[0].hex);
