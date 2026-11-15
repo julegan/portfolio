@@ -11,7 +11,7 @@
   <link rel="icon" type="image/svg+xml" href="./favicon.svg">
   <link rel="stylesheet" href="./styles.css?v=20261024a">
   <link rel="stylesheet" href="./preview.css?v=a688333e8af5">
-  <link rel="stylesheet" href="./theme.css?v=14087db596ce">
+  <link rel="stylesheet" href="./theme.css?v=20261114-style-pills">
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to events</a>
@@ -43,8 +43,17 @@
         <span class="preview-date-field"><span class="preview-date-display" id="fromDateDisplay" aria-hidden="true">Select date</span><input type="date" id="fromDate"></span></label>
       <label for="neighborhood">Neighborhood
         <select id="neighborhood"><option value="">All neighborhoods</option></select></label>
-      <label id="styleLabel" for="style">Music style
-        <select id="style"><option value="">All styles</option></select></label>
+    </section>
+    <section class="preview-style-filter" aria-labelledby="styleHeading">
+      <div class="preview-style-header">
+        <div>
+          <h2 id="styleHeading">Music styles</h2>
+          <p id="styleHelp">Choose any number. Events match any selected style.</p>
+        </div>
+        <span class="preview-style-count" id="styleCount">All styles</span>
+      </div>
+      <div class="preview-style-chips" id="styleChips" role="group" aria-labelledby="styleHeading" aria-describedby="styleHelp"></div>
+      <button type="button" class="preview-style-more" id="showStyles" aria-expanded="false" hidden>Browse all music styles</button>
     </section>
     <div class="preview-actions">
       <button type="button" id="jumpToday">Start today</button>
@@ -99,7 +108,7 @@
   <dialog id="eventDialog" class="preview-dialog" aria-labelledby="dialogTitle"><div id="dialogContent"></div></dialog>
   <script src="./places.js?v=3979cf0171c4"></script>
   <script src="./events.js?v=a4821b39c566"></script>
-  <script src="./app.js?v=baa74bf9b6c0"></script>
+  <script src="./app.js?v=20261114-style-pills"></script>
   <script src="./feedback.js?v=20261104-turnstile"></script>
 </body>
 </html>
