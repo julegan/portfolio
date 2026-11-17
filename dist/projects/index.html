@@ -27,6 +27,13 @@
 .family-heading > p { margin: 0 0 5px; max-width: 42ch; color: #c5ccd5; }
 .project-family > .project-grid { margin-top: 25px; margin-bottom: 64px; }
 .project-grid .project h3 { font-size: clamp(27px,3vw,39px); font-weight: 520; letter-spacing: -.055em; line-height: 1.15; margin: 21px 0 11px; }
+.draper-thumbnail { position: relative; display: grid; grid-template-columns: 1fr .9fr; background: #1c131c; color: #fbedf4; text-decoration: none; }
+.draper-thumbnail > img { object-position: 50% 58%; min-height: 0; }
+.draper-thumbnail::after { content: ""; position: absolute; inset: 10% 7% 10% 55%; border: 1px solid #f4cee894; border-radius: 50%; pointer-events: none; }
+.draper-thumbnail-copy { display: flex; flex-direction: column; justify-content: center; gap: .35em; min-width: 0; padding: 12%; }
+.draper-thumbnail-name { font-family: Georgia, serif; font-size: clamp(25px, 5vw, 60px); line-height: 1; letter-spacing: -.045em; }
+.draper-thumbnail-caption { color: #edbbd7; font-family: var(--mono); font-size: clamp(9px, 1.15vw, 12px); letter-spacing: .1em; text-transform: uppercase; }
+.draper-thumbnail-strip { height: 7px; width: 85%; margin-top: .62em; background: linear-gradient(90deg, #f4d8d6 0 20%, #ce8eaf 20% 40%, #a13d62 40% 60%, #635b7f 60% 80%, #426364 80%); }
 .laboratory { border-top: 1px solid #626d78; padding-top: 4px; }
 .laboratory .family-heading h2 { font-family: Georgia,"Times New Roman",serif; font-style: italic; letter-spacing: -.065em; }
 .lab-feature { display: grid; grid-template-columns: 1.05fr .95fr; background: #e5e9ee; color: #111214; overflow: hidden; border: 1px solid #bec9d4; min-height: 425px; }
@@ -113,14 +120,14 @@
       </div>
     </article>
       <article class="project project--beam">
-        <a class="thumbnail" href="/projects/draping-mirror/" aria-label="Open Draping mirror"><img src="/projects/draping-mirror/thumb.svg" alt="The same illustrated portrait framed by two different fabric colors" width="1020" height="600"></a>
+        <a class="thumbnail draper-thumbnail" href="/projects/draping-mirror/" aria-label="Open DRAPER personal color studio"><span class="draper-thumbnail-copy" aria-hidden="true"><span class="draper-thumbnail-caption">Personal color studio</span><span class="draper-thumbnail-name">DRAPER</span><span class="draper-thumbnail-strip"></span></span><img src="/projects/draping-mirror/studio-portrait.webp" alt="" width="880" height="1320" loading="lazy"></a>
         <div class="project-body">
-          <div class="project-meta"><span>05 / personal color</span><span class="status">Early prototype</span></div>
-          <h3>Draping mirror</h3>
-          <p class="project-desc">Follow a guided personal color session. Compare prepared drapes, learn what to notice, explore undertone, season and flow, and keep colors you enjoy.</p>
+          <div class="project-meta"><span>Personal color</span></div>
+          <h3>DRAPER</h3>
+          <p class="project-desc">Find your season through virtual draping, compare whole palettes and explore portrait contrast. Keep the colors and comparisons you want to try in person.</p>
           <ul class="tags" aria-label="Project topics"><li>Personal color</li><li>Virtual draping</li><li>On-device</li></ul>
-          <div class="actions"><a class="launch" href="/projects/draping-mirror/">Try the mirror <span aria-hidden="true">↗</span></a></div>
-          <p class="small-note">Photos stay on your device. An exploration of personal color; compare with real fabric to check the effect.</p>
+          <div class="actions"><a class="launch" href="/projects/draping-mirror/">Open DRAPER <svg viewBox="0 0 16 16" width="14" height="14" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 13 13 3M5 3h8v8"/></svg></a></div>
+          <p class="small-note">Free to use. Your portrait stays on your device.</p>
         </div>
       </article>
     </div>

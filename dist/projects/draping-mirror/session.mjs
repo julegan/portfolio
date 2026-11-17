@@ -3,7 +3,8 @@ import { fitColor } from './drapes.mjs';
 // Original experimental drapes. Coordinates, selections and groupings are ours;
 // no vendor's kit, swatch measurements or palette assets are reproduced.
 export const COLLECTION = 'Draping mirror studies · 02';
-export const STAGES = ['Prepare', 'Undertone', 'Season', 'Flow', 'Confirm', 'Finishes', 'Palette'];
+export const STAGES = ['Portrait', 'Undertone', 'Intensity', 'Sub-season', 'Cross-check', 'Finishes', 'Results', 'Primary season'];
+export const QUESTION_STAGES = [1, 2, 4, 3, 5];
 export function drape(id, name, l, c, h, finish = 'matte') {
   return Object.freeze({ id, name, hex: fitColor(l, c, h).hex, finish });
 }
@@ -73,8 +74,10 @@ function provisionalHome(answers) {
   }
   return Object.keys(HOMES).find(key => HOMES[key].temperature === (t || -1) && HOMES[key].intensity === (Math.sign(i) || 1));
 }
-function flowPairs(answers) {
-  const key = provisionalHome(answers), home = HOMES[key];
+function flowPairs(answers, primary) {
+  const key = primary === undefined ? provisionalHome(answers) : primary;
+  if (!Object.hasOwn(HOMES, key)) return [];
+  const home = HOMES[key];
   const warm = home.temperature > 0;
   const baseL = home.depth === 'Light' ? .72 : .51;
   const baseC = home.intensity > 0 ? .125 : .055;
@@ -110,13 +113,13 @@ const finishes = [
   pair('finish-metals', 'Silver or gold?', 'Finishing touches · metallic preview', 'Which finish would you explore in real jewelry?', color('silver', 'Silver', .75, .012, 260, 'polished'), color('gold', 'Gold', .75, .11, 85, 'polished'), 'finish', [], 'These are simulated finishes. They cannot reproduce metal reflecting light onto your skin. Use them as a preview and confirm with real jewelry.'),
   pair('finish-special', 'Try softer metals', 'Finishing touches · specialty metallics', 'Would you try rose copper, champagne, or both?', color('rose-copper', 'Rose copper', .72, .065, 35, 'satin'), color('champagne', 'Champagne', .82, .045, 85, 'satin'), 'finish', [], 'These original specialty previews add softer metal options. They are not undertone measurements and do not influence the seasonal suggestion.')
 ];
-export function questionsFor(stage, answers = {}) {
-  return ({ 1: () => temperature, 2: () => seasonPairs(answers), 3: () => flowPairs(answers), 4: () => confirmationPairs(answers), 5: () => finishes }[stage]?.() ?? []);
+export function questionsFor(stage, answers = {}, primary) {
+  return ({ 1: () => temperature, 2: () => seasonPairs(answers), 3: () => flowPairs(answers, primary), 4: () => confirmationPairs(answers), 5: () => finishes }[stage]?.() ?? []);
 }
-export function allQuestions(answers = {}) { return [1, 2, 3, 4, 5].flatMap(stage => questionsFor(stage, answers)); }
-export function recordAnswer(answers, id, answer) {
+export function allQuestions(answers = {}, primary) { return QUESTION_STAGES.flatMap(stage => questionsFor(stage, answers, primary)); }
+export function recordAnswer(answers, id, answer, primary) {
   if (!['a', 'b', 'both', 'unsure'].includes(answer)) throw new TypeError('Unknown observation');
-  const ordered = allQuestions(answers), index = ordered.findIndex(q => q.id === id);
+  const ordered = allQuestions(answers, primary), index = ordered.findIndex(q => q.id === id);
   if (index < 0) throw new TypeError('Unknown comparison');
   if (answers[id] === answer) return { ...answers };
   const next = { ...answers };
@@ -125,7 +128,7 @@ export function recordAnswer(answers, id, answer) {
   next[id] = answer;
   return next;
 }
-export function profile(answers = {}) {
+export function profile(answers = {}, primary) {
   const temperature = axisEvidence(answers, 'temperature'), intensity = axisEvidence(answers, 'intensity');
   const candidates = Object.entries(HOMES).map(([id, home]) => ({ id, name: home.name,
     score: (home.temperature > 0 ? temperature.positive : temperature.negative) + (home.intensity > 0 ? intensity.positive : intensity.negative)
@@ -133,14 +136,16 @@ export function profile(answers = {}) {
   const known = temperature.clear && intensity.clear;
   const leader = known ? candidates[0] : null;
   let flow = null;
-  if (leader && flowPairs(answers).every(q => ['a', 'b'].includes(answers[q.id]))) {
-    const qs = flowPairs(answers), scores = { balanced: 0, thermal: 0, depth: 0, energy: 0 };
+  const qs = flowPairs(answers, primary);
+  const flowHome = primary === undefined ? leader?.id : primary;
+  if (flowHome && qs.length && qs.every(q => ['a', 'b'].includes(answers[q.id]))) {
+    const scores = { balanced: 0, thermal: 0, depth: 0, energy: 0 };
     for (const q of qs) {
       const answer = answers[q.id];
       if (answer === 'a' || answer === 'b') scores[q.values[answer === 'a' ? 0 : 1]]++;
     }
     const winners = Object.entries(scores).filter(([key]) => key !== 'balanced').sort((a,b) => b[1] - a[1]);
-    const home = HOMES[leader.id];
+    const home = HOMES[flowHome];
     // "Balanced" requires positive observations for the anchor in all three
     // tests; a tie, skipped response or missing evidence never becomes True.
     if (scores.balanced === 3) flow = { label: 'True ' + home.name, kind: 'balanced' };
@@ -148,12 +153,10 @@ export function profile(answers = {}) {
       const kind = winners[0][0];
       flow = { kind, label: ({ thermal: home.thermal, depth: home.depth, energy: home.energy }[kind]) + ' ' + home.name };
     }
-    // If confirmation changes the home, the previous flow tests concerned a
-    // different family. Keep only the home result and invite a new session.
-    if (leader.id !== provisionalHome(answers)) flow = null;
+    if (primary === undefined && leader.id !== provisionalHome(answers)) flow = null;
   }
   return { temperature, intensity, candidates, leader, flow,
-    label: flow?.label ?? leader?.name ?? 'Still exploring',
+    label: primary && leader?.id !== primary ? 'Exploring ' + HOMES[primary].name : flow?.label ?? leader?.name ?? 'Still exploring',
     mixed: temperature.mixed || intensity.mixed,
     leadingIds: candidates.filter(c => c.score === candidates[0].score).map(c => c.id)
   };
