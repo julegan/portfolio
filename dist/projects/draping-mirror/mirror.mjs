@@ -605,7 +605,7 @@ $('source-tools').addEventListener('focusin',event=>{
   const control=event.target;
   if(!document.body.classList.contains('framing-open')||!matchMedia('(max-width:760px) and (min-height:516px) and (min-width:280px)').matches)return;
   requestAnimationFrame(()=>{
-    if(stage!==0||!control.getClientRects().length)return;
+    if(stage!==0||document.activeElement!==control||!control.getClientRects().length)return;
     const preview=document.querySelector('.mirror-workspace').getBoundingClientRect();
     const rect=control.getBoundingClientRect(),top=preview.bottom+8,bottom=innerHeight-8;
     if(rect.bottom>bottom)window.scrollBy({top:rect.bottom-bottom,behavior:'instant'});
@@ -618,7 +618,10 @@ $('use-sample').addEventListener('click',()=>capture.sample());
 $('photo').addEventListener('change',event=>{ const file=event.target.files[0]; event.target.value=''; capture.choosePhoto(file); });
 $('auto-frame').addEventListener('click',()=>capture.autoFrame());
 $('reset-frame').addEventListener('click',()=>capture.resetFrame());
-$('keyboard-frame').addEventListener('click', () => panels[0].focus());
+$('keyboard-frame').addEventListener('click', () => {
+  syncFraming();
+  panels[0].focus();
+});
 panels[0].addEventListener('keydown', framing.keyboard);
 for (const id of ['framing', 'source-tools']) $(id).addEventListener('toggle', syncFraming);
 for(const button of document.querySelectorAll('[data-frame]')) button.addEventListener('click', () => {
