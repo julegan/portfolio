@@ -5,6 +5,9 @@ import { toOKLCH, normalizeHex } from '../dist/projects/draping-mirror/color.mjs
 import { PALETTE_KEY, fitColor, portraitCrop, landmarkFrame, readPalette } from '../dist/projects/draping-mirror/drapes.mjs';
 import { questionsFor, allQuestions, profile, recordAnswer, wardrobePalette, HOMES, FLOW_KINDS, flowOptions, normalizeRefinements, refinementLabel, seasonColorVariants } from '../dist/projects/draping-mirror/session.mjs';
 import { emptyComparison, chooseCandidate, showPinned, pinVisible, comparisonPurpose } from '../dist/projects/draping-mirror/comparison.mjs';
+import { analysisFile, buildReport, describeColor, parseAnalysis, readSettings, seasonalFlag } from '../dist/projects/draping-mirror/study.mjs';
+import { meanLightness, tonalSpan } from '../dist/projects/draping-mirror/contrast.mjs';
+import { normalizeFrame, transformFrame } from '../dist/projects/draping-mirror/framing.mjs';
 import worker from '../src/shows-feedback.mjs';
 import { isDrapingPath } from '../src/draping-headers.mjs';
 
@@ -149,6 +152,81 @@ test('only the independent draping route receives camera permission and upload m
 });
 test('guided personal-color session stays independent from the digital picker',()=>{
   const read=path=>readFileSync(new URL('../'+path,import.meta.url),'utf8');
-  for(const file of ['index.html','mirror.css','mirror.mjs','drapes.mjs','color.mjs','session.mjs','portrait.mjs','comparison.mjs'])assert.doesNotMatch(read('dist/projects/draping-mirror/'+file),/color[- .]?lab|\.\.\/.*(?:\.css|\.mjs)/i,file);
+  for(const file of ['index.html','mirror.css','mirror.mjs','drapes.mjs','color.mjs','session.mjs','portrait.mjs','comparison.mjs','study.mjs','framing.mjs','preferences.mjs','contrast.mjs','flags.mjs','report.mjs'])assert.doesNotMatch(read('dist/projects/draping-mirror/'+file),/\bcolor[- .]?lab\b|\.\.\/.*(?:\.css|\.mjs)/i,file);
   const html=read('dist/projects/draping-mirror/index.html');assert.doesNotMatch(html,/type="color"|hex code|drape-chroma|drape-lightness/);assert.doesNotMatch(read('dist/projects/color-lab/index.html'),/draping/i);assert.equal(PALETTE_KEY,'julieowens.draping-mirror.palette.v1');
+});
+
+test('portrait transforms preserve the scale limits and direction of a mirrored drag', () => {
+  const frame = normalizeFrame({ x: .5, y: .5, zoom: 2 });
+  const source = { width: 880, height: 1320, mirrored: false };
+  const middle = { x: 280, y: 370 }, right = { x: 320, y: 370 };
+  const moved = transformFrame(frame, source, middle, right);
+  const mirrored = transformFrame(frame, { ...source, mirrored: true }, middle, right);
+  assert(moved.x < frame.x);
+  assert(mirrored.x > frame.x);
+  assert.equal(moved.y, frame.y);
+  assert.deepEqual(transformFrame(frame, source, middle, middle, 9, 185), { ...frame, zoom: 4, rotation: -175 });
+  assert.equal(transformFrame(frame, source, middle, middle, .01).zoom, .7);
+});
+
+test('whole-palette flags include the original 66 colors, 12 neutrals and 8 metals', () => {
+  for (const season of ['spring', 'summer', 'autumn', 'winter']) {
+    for (const flow of ['home', 'balanced', 'thermal', 'depth', 'energy']) {
+      const flag = seasonalFlag(season, flow, { depth: -1 });
+      assert.deepEqual(flag.rows.map(row => row.length), [22, 22, 22, 20]);
+      assert.deepEqual(flag.rows.flat().map(drape => drape.id).sort(),
+        wardrobePalette(season, flow, { depth: -1 }).map(drape => drape.id).sort());
+    }
+  }
+});
+
+test('primary-season choice selects the refinement drapes without overriding scored evidence', () => {
+  const picks = { 'tone-red':'b','tone-pink':'a','tone-neutral':'b','season-green':'a','season-rose':'b',
+    'season-blue':'a','check-temperature':'a','check-intensity':'b' };
+  const closer = { ...picks, 'flow-temperature':'a','flow-depth':'a','flow-intensity':'b' };
+  assert.equal(questionsFor(3, picks, null).length, 0);
+  assert.match(questionsFor(3, picks, 'summer')[0].drapes[0].id, /^summer/);
+  assert.equal(profile(closer, 'winter').label, 'True Winter');
+  assert.equal(profile(closer, 'summer').label, 'Exploring Summer');
+  assert.equal(profile(closer, 'summer').leader.id, 'winter');
+  assert.equal(profile(closer, null).label, 'Winter');
+  assert(!Object.hasOwn(recordAnswer(closer, 'check-intensity', 'a', 'winter'), 'flow-temperature'));
+});
+
+test('tonal sampling averages linear sRGB luminance and excludes transparent pixels', () => {
+  assert.equal(meanLightness([255, 255, 255, 0]), null);
+  assert.equal(meanLightness([0, 0, 0, 255, 255, 255, 255, 255]), 50);
+  assert.equal(meanLightness([0, 255, 0, 255, 255, 255, 255, 0]), 71.52);
+  assert(Math.abs(meanLightness([128, 128, 128, 255]) - 21.586) < .01);
+  assert.equal(tonalSpan([5, 22, 60]), 55);
+});
+
+test('the portable report restores observations, measurements and saved pairs without image data', () => {
+  const photo = 'data:image/jpeg;base64,user-portrait';
+  const source = {
+    answers: { 'tone-red': 'unsure', 'unknown-q': 'a', 'flow-depth': 'b' },
+    primary: 'winter', practice: true, colors: ['#abc', '#ABC', { photo }],
+    comparisons: [{ a: { name: 'A', hex: '#123', photo }, b: { name: 'B', hex: '#456', finish: 'satin' }, title: 'Pair', choice:'both' }],
+    notes: 'A difference in the surrounding colors.', contrast: [24.1234, 5, 20], photo, flagsSeen: ['winter','summer','winter', 'invalid']
+  };
+  const saved = analysisFile(source);
+  const text = JSON.stringify(saved);
+  assert(!text.includes(photo));
+  assert.deepEqual(parseAnalysis(text), saved);
+  assert.deepEqual(saved.answers, { 'tone-red': 'unsure', 'flow-depth': 'b' });
+  assert.deepEqual(saved.colors, ['#AABBCC']);
+  assert.deepEqual(saved.contrast, [24.1, 5, 20]);
+  assert.deepEqual(saved.flagsSeen, ['winter','summer']);
+  assert.equal(buildReport(saved).groups.filter(group => group.colors.length).length, 6);
+  assert.equal(buildReport(saved).result.label, 'Exploring Winter');
+  assert.equal(parseAnalysis('{"format":"draping-mirror-palette","version":1,"colors":["#fff"]}').colors[0], '#FFFFFF');
+  assert.throws(() => parseAnalysis('{"format":"draper-analysis","version":7}'));
+});
+
+test('color access settings describe the swatches independently of the interface theme', () => {
+  assert.equal(readSettings({theme:'light', surround:'charcoal'}).surround, 'charcoal');
+  assert.equal(readSettings({theme:'bogus', surround:'#00ff00', paired: 'yes'}).paired, false);
+  assert.match(describeColor('#EF3220', 'red-green'), /red/);
+  assert.doesNotMatch(describeColor('#EF3220', 'blue-yellow'), /red/);
+  assert.equal(describeColor('#EF3220', 'standard'), '');
 });
