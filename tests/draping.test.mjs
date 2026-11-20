@@ -8,6 +8,7 @@ import { emptyComparison, chooseCandidate, showPinned, pinVisible, comparisonPur
 import { analysisFile, buildReport, describeColor, parseAnalysis, readSettings, seasonalFlag } from '../dist/projects/draping-mirror/study.mjs';
 import { meanLightness, tonalSpan } from '../dist/projects/draping-mirror/contrast.mjs';
 import { normalizeFrame, transformFrame } from '../dist/projects/draping-mirror/framing.mjs';
+import { BRIDGES, collectionColorVariants, collectionPalette, readCollection } from '../dist/projects/draping-mirror/collections.mjs';
 import worker from '../src/shows-feedback.mjs';
 import { isDrapingPath } from '../src/draping-headers.mjs';
 
@@ -152,7 +153,7 @@ test('only the independent draping route receives camera permission and upload m
 });
 test('guided personal-color session stays independent from the digital picker',()=>{
   const read=path=>readFileSync(new URL('../'+path,import.meta.url),'utf8');
-  for(const file of ['index.html','mirror.css','mirror.mjs','drapes.mjs','color.mjs','session.mjs','portrait.mjs','comparison.mjs','study.mjs','framing.mjs','preferences.mjs','contrast.mjs','flags.mjs','report.mjs'])assert.doesNotMatch(read('dist/projects/draping-mirror/'+file),/\bcolor[- .]?lab\b|\.\.\/.*(?:\.css|\.mjs)/i,file);
+  for(const file of ['index.html','mirror.css','mirror.mjs','drapes.mjs','color.mjs','session.mjs','portrait.mjs','comparison.mjs','study.mjs','framing.mjs','preferences.mjs','contrast.mjs','flags.mjs','report.mjs','collections.mjs'])assert.doesNotMatch(read('dist/projects/draping-mirror/'+file),/\bcolor[- .]?lab\b|\.\.\/.*(?:\.css|\.mjs)/i,file);
   const html=read('dist/projects/draping-mirror/index.html');assert.doesNotMatch(html,/type="color"|hex code|drape-chroma|drape-lightness/);assert.doesNotMatch(read('dist/projects/color-lab/index.html'),/draping/i);assert.equal(PALETTE_KEY,'julieowens.draping-mirror.palette.v1');
 });
 
@@ -229,4 +230,76 @@ test('color access settings describe the swatches independently of the interface
   assert.match(describeColor('#EF3220', 'red-green'), /red/);
   assert.doesNotMatch(describeColor('#EF3220', 'blue-yellow'), /red/);
   assert.equal(describeColor('#EF3220', 'standard'), '');
+});
+
+
+test('bridge palettes cover the four shared characteristics and keep every authored color slot', () => {
+  assert.deepEqual(Object.keys(BRIDGES), ['deep-neutral','light-neutral','soft-neutral','bright-neutral']);
+  for (const [family, bridge] of Object.entries(BRIDGES)) {
+    const drapes = collectionPalette(family);
+    assert.equal(drapes.length, 86);
+    assert.equal(drapes.filter(d => d.group === 'colors').length, 66);
+    assert.equal(drapes.filter(d => d.group === 'neutrals').length, 12);
+    assert.equal(drapes.filter(d => d.group === 'metals').length, 8);
+    assert.equal(new Set(drapes.map(d => d.id)).size, 86);
+    assert.deepEqual(drapes.map(d => d.swatchKey), wardrobePalette('winter').map(d => d.swatchKey));
+    const sources = bridge.members.map(home => wardrobePalette(home, bridge.flow));
+    for (const [i, d] of drapes.entries()) {
+      assert.equal(d.hex, normalizeHex(d.hex));
+      assert(d.name && d.family === family);
+      if (d.group === 'metals') continue;
+      const average = sources.map(list => toOKLCH(list[i].hex).lightness).reduce((a,b) => a+b) / 2;
+      assert(Math.abs(toOKLCH(d.hex).lightness - average) < .005);
+    }
+    assert.equal(seasonalFlag(family).rows.flat().length, 86);
+    const changed = collectionPalette(family,'home',{depth:1,intensity:-1});
+    assert(changed.some((d,i) => d.hex !== drapes[i].hex));
+  }
+});
+
+test('same-color cycling reaches each neutral bridge while preserving the original seasonal loop', () => {
+  for (const family of [...Object.keys(HOMES),...Object.keys(BRIDGES)]) {
+    const choice = collectionPalette(family,'home',{depth:1,intensity:-1}).find(d => d.swatchKey === 'blue-2');
+    const variants = collectionColorVariants(choice);
+    assert.equal(variants.length,24);
+    assert.equal(variants[0].id,choice.id);
+    assert.equal(new Set(variants.map(d => d.id)).size,24);
+    assert(variants.every(d => d.swatchKey === choice.swatchKey && d.adjustments.depth === 1 && d.adjustments.intensity === -1));
+    assert.equal(variants.filter(d => Object.hasOwn(BRIDGES,d.family)).length,4);
+    if (HOMES[family]) assert.deepEqual(variants.slice(0,20),seasonColorVariants(choice));
+  }
+  assert.deepEqual(collectionColorVariants(collectionPalette('deep-neutral')[70]),[]);
+});
+
+test('explored bridge palettes round-trip independently from the recorded season and legacy files', () => {
+  const input = { answers:coolBright, primary:'winter', practice:false, colors:[],comparisons:[],notes:'',flagsSeen:[],collection:{family:'deep-neutral',flow:'depth',adjustments:{intensity:-1}} };
+  const data = analysisFile(input), report = buildReport(data);
+  assert.deepEqual(parseAnalysis(JSON.stringify(data)),data);
+  assert.equal(data.collection.flow,'home');
+  assert.equal(report.result.leader.id,'winter');
+  assert.match(report.collectionLabel,/Deep Neutral.*softer/);
+  assert(report.groups.find(g => g.title === 'Deep Neutral').colors.length === 7);
+  const legacy = {...data}; delete legacy.collection;
+  assert.equal(parseAnalysis(JSON.stringify(legacy)).collection,null);
+  assert.equal(readCollection({family:'constructor'}),null);
+  assert.equal(readCollection({family:'made-up'}),null);
+  assert.equal(readSettings({surround:'charcoal',theme:'light'}).background,'drape');
+  assert.equal(readSettings({surround:'charcoal',background:'neutral'}).background,'neutral');
+});
+
+test('DRAPER interface and report styling use neutral black, gray and bone', () => {
+  const base = new URL('../dist/projects/draping-mirror/', import.meta.url);
+  const files = ['mirror.css','mirror.mjs','preferences.mjs','report.mjs','mark.svg','index.html'];
+  for (const file of files) {
+    const source = readFileSync(new URL(file, base), 'utf8');
+    const colors = source.match(/#[0-9a-f]{6}(?:[0-9a-f]{2})?\b/gi) ?? [];
+    for (const color of colors) assert(toOKLCH(color.slice(0,7)).chroma < .01, file + ' contains a tinted interface color ' + color);
+  }
+  const css = readFileSync(new URL('mirror.css', base), 'utf8');
+  assert.match(css, /--background: #F3F1EC/);
+  assert.match(css, /--background: #151515/);
+  const projects = readFileSync(new URL('../dist/projects/index.html', import.meta.url), 'utf8');
+  for (const rule of projects.match(/\.draper-[^{]+\{[^}]+\}/g)) {
+    for (const color of rule.match(/#[0-9a-f]{6}(?:[0-9a-f]{2})?\b/gi) ?? []) assert(toOKLCH(color.slice(0,7)).chroma < .01);
+  }
 });

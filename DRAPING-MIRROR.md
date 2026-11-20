@@ -17,7 +17,7 @@ The original OKLCH collections still have 86 drapes per home or named flow set. 
 
 In the drape browser, A remains pinned while new selections load into B. **Pin A** promotes B. Neutral rest keeps both pins. **Compare seasons of this color** follows a single authored hue/tone slot through the four home ranges and 16 flows. The starting flow comes first. Previous and next wrap, and **Original** returns to the starting color. The expanded mirror shares the current pair and seasonal position.
 
-The center of the portrait uses the same pixels for A, B, and flags. The surrounding drape fills the view to its edges. The interface theme and achromatic mirror surround have independent controls. An optional face-region guide uses the sample's authored coordinates or existing on-device landmarks to position a ring and suggest where to look. A text cue is available if the ring has no valid target. Ring movement respects reduced-motion preferences.
+The center of the portrait uses the same pixels for A, B, and flags. The selected drape or palette flag fills the whole area outside the portrait, including the top and sides. The same neutral backing protects transparent pixels inside the portrait window. Appearance offers a uniform pale gray, mid gray, or charcoal background as an alternative. The interface theme has its own setting. An optional face-region guide uses the sample's authored coordinates or existing on-device landmarks to position a ring and suggest where to look. A text cue is available if the ring has no valid target. Ring movement respects reduced-motion preferences.
 
 ## Observations, measurements, and exports
 
@@ -25,13 +25,13 @@ The center of the portrait uses the same pixels for A, B, and flags. The surroun
 - **Measured from the photo** includes up to three selected patches. Contrast Finder reads a 13 × 13 patch around each marker from the framed portrait and averages [linear sRGB relative luminance](https://www.w3.org/TR/WCAG22/#dfn-relative-luminance), weighted by opacity. The tonal span is the largest reading minus the smallest in percentage points. The grayscale preview, swatch surrounds, and labeled light/medium/high examples are independent of those readings.
 - **Palette ideas to try** use prepared swatches from the explored season or sub-season. They are style suggestions. Cameras, displays, lighting, and physical fabrics affect appearance. Visitors can take their findings to a trained personal color professional.
 
-Use **Print / Save PDF** for a text-and-swatches report through the browser's print dialog. The palette PNG is a portrait-free graphic. The separate comparison PNG in Tools includes the same portrait in both views and retains its 1920 × 1320 layout. Analysis JSON contains validated observations, color data, a selected season, practice status, notes, comparisons, and saved readings. It opens as a portrait-free report. Adding the same portrait allows an unfinished session to resume. The legacy color-only JSON format can also be imported.
+Use **Print / Save PDF** for a text-and-swatches report through the browser's print dialog. The palette PNG is a portrait-free graphic. The separate comparison PNG in Tools includes the same portrait in both views and retains its 1920 × 1320 layout. Analysis JSON contains validated observations, color data, a selected season, practice status, notes, comparisons, saved readings, and an optional explored collection. Older analysis files open with no collection preference. It opens as a portrait-free report. Adding the same portrait allows an unfinished session to resume. The legacy color-only JSON format can also be imported.
 
 ## Capture and storage
 
 Camera capture stops on freeze, backgrounding, clear, or page exit. Uploaded images use local blob URLs, are reduced to 1600 pixels on their longest side, and are released after decoding. Photos, landmarks, notes, and measurements stay in session memory. The code has no upload API, analytics, third-party runtime requests, service worker, or IndexedDB. The same-origin MediaPipe runtime and model in `vendor/` provide optional framing. The route worker responds to GET/HEAD and supplies route-scoped camera permission.
 
-Only deliberately saved colors and selected preferences persist in browser storage. The old `julieowens.draping-mirror.palette.v1` key still stores an array of up to 64 colors. The separate `julieowens.draper.settings.v1` key stores presentation preferences. Analysis files and exported PNGs are created on the device when requested.
+Only deliberately saved colors and selected preferences persist in browser storage. The old `julieowens.draping-mirror.palette.v1` key still stores an array of up to 64 colors. The separate `julieowens.draper.settings.v1` key stores presentation preferences. Existing neutral-surround values are retained for portrait backing, while the new background setting defaults to filling the mirror with drape colors. Analysis files and exported PNGs are created on the device when requested.
 
 ## Validation
 
@@ -49,4 +49,27 @@ The browser suite uses Playwright Chromium and WebKit and axe-core checks across
 - [NIST on digital-camera color error](https://www.nist.gov/publications/color-error-digital-camera-image-capture-process) and [material color and appearance](https://www.nist.gov/publications/chapter-10-color-and-appearance).
 - [CSS Color 4 on OKLCH](https://www.w3.org/TR/css-color-4/#ok-lab) and [WCAG 2.2 on alternatives to dragging](https://www.w3.org/WAI/WCAG22/Understanding/dragging-movements).
 - [MediaPipe Face Landmarker for Web](https://developers.google.com/edge/mediapipe/solutions/vision/face_landmarker/web_js).
-- The DRAPER portrait is a generated sample. DM Sans and Instrument Serif are self-hosted with their licenses in the project font directory.
+- The DRAPER portrait is a generated sample with a neutral gray backdrop and black clothing. DM Sans and Instrument Serif are self-hosted with their licenses in the project font directory.
+
+
+## Neutral palettes between seasons
+
+The palette browser and flag comparison include four original collections for exploring a shared characteristic across warm and cool neighbors.
+
+| Collection | Neighboring ranges | Shared characteristic |
+| --- | --- | --- |
+| Deep Neutral | Deep Autumn and Deep Winter | Depth |
+| Light Neutral | Light Spring and Light Summer | Lightness |
+| Soft Neutral | Soft Autumn and Soft Summer | Softness |
+| Bright Neutral | Bright Spring and Bright Winter | Brightness |
+
+Each collection contains 66 colored drapes, 12 neutrals, and eight simulated metals. Colored and neutral swatches are equal-weight Oklab midpoints of corresponding original seasonal slots. The eight metal previews retain named original swatches spanning silver, gold, copper, champagne, pewter, and bronze. Temperature, depth, and intensity refinements act on the source colors before blending. The colors are original exploration materials with an explicit neighbor description.
+
+The season classifier continues to use recorded comparisons. Choosing a collection records a palette to explore. It appears as **Palette explored** in results, printable reports, and palette PNGs, and in the optional `collection` field of analysis JSON. Neutral collections provide palette ideas without assigning a primary season. Existing original ranges retain their colors and authored slots. Same-color cycling includes the 20 original ranges and the four neutral collections, with the starting swatch pinned as A.
+
+**Choose a palette** groups the home seasons and neutral collections. The range selector appears for home seasons. **Fine-tune this palette** opens the optional three-axis refinements. From a whole-palette flag, **Try these drapes** opens that collection directly. The primary-season checkpoint links to neutral flags for visitors exploring between families.
+
+
+## Interface color
+
+Both themes use neutral black, grayscale, and bone. This applies to surfaces, buttons, focus and selection indicators, dialogs, guide markers, the project card, and exported report typography and backgrounds. The portrait and actual drape or palette swatches supply color. The generated sample has a gray backdrop and black clothing. The welcome and project card use the same neutral identity.

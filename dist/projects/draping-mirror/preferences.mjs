@@ -8,7 +8,7 @@ export function createPreferences($, changed) {
     const dark = settings.theme === 'dark' || (settings.theme === 'system' && deviceDark.matches);
     document.documentElement.dataset.theme = dark ? 'dark' : 'light';
     document.documentElement.dataset.large = String(settings.large);
-    document.querySelector('meta[name="theme-color"]').content = dark ? '#151116' : '#fbf6f6';
+    document.querySelector('meta[name="theme-color"]').content = dark ? '#151515' : '#F3F1EC';
   }
   function set(patch) {
     settings = readSettings({ ...settings, ...patch });
@@ -21,11 +21,14 @@ export function createPreferences($, changed) {
 
   $('preferences').addEventListener('click', () => {
     $('interface-theme').value = settings.theme;
-    $('mirror-surround').value = settings.surround;
+    $('mirror-surround').value = settings.background === 'drape' ? 'drape' : settings.surround;
     $('appearance').showModal();
   });
   $('interface-theme').addEventListener('change', event => set({ theme: event.target.value }));
-  $('mirror-surround').addEventListener('change', event => set({ surround: event.target.value }));
+  $('mirror-surround').addEventListener('change', event => {
+    const value = event.target.value;
+    set(value === 'drape' ? { background: 'drape' } : { background: 'neutral', surround: value });
+  });
   $('close-appearance').addEventListener('click', () => $('appearance').close());
 
   function step(guidance, focus) {

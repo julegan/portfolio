@@ -79,7 +79,7 @@ async function explorerChecks(page,name,width){
  const initial=await page.locator('#explore-caption').innerText();
  await page.locator('#season-start').click();
  assert(await page.locator('#season-cycle').isVisible());
- assert.match(await page.locator('#season-position').innerText(),/2 of 20/);
+ assert.match(await page.locator('#season-position').innerText(),/2 of 24/);
  assert.equal(await page.locator('#explore-a').getAttribute('aria-label'),anchored);
  const firstVariant=await page.locator('#explore-caption').innerText();
  assert.notEqual(firstVariant,initial);
@@ -111,7 +111,7 @@ async function explorerChecks(page,name,width){
  if(width<=760){assert(layout.first.height>=76);assert(layout.clientHeight>=76);assert(layout.scrollWidth>layout.clientWidth);assert(layout.next.left>=layout.first.right);}
  else {assert(layout.first.height>=100);assert(layout.next.top>=layout.first.bottom);assert(layout.scrollHeight>layout.clientHeight);}
  assert(layout.portrait.top>=0&&layout.portrait.bottom<=layout.height);assert(layout.portrait.height>=layout.height*.36);
- await page.locator('#collection-picker').click();await page.locator('#palette-flow').selectOption('depth');await page.locator('[data-adjust="intensity"][data-value="-1"]').click();await page.locator('#apply-collection').click();await page.locator('#wardrobe button').first().click();assert.match(await page.locator('#explore-caption').innerText(),/Deep Winter.*softer/);
+ await page.locator('#collection-picker').click();await page.locator('#palette-flow').selectOption('depth');await page.locator('.palette-adjustments summary').click();await page.locator('[data-adjust="intensity"][data-value="-1"]').click();await page.locator('#apply-collection').click();await page.locator('#wardrobe button').first().click();assert.match(await page.locator('#explore-caption').innerText(),/Deep Winter.*softer/);
  await page.locator('#focus-explorer').click();assert(await page.locator('#portrait-viewer').isVisible());await edgeToEdge(page,'portrait-viewer');await page.locator('#viewer-next').click();await audit(page,name+' expanded mirror '+width);await page.locator('#close-viewer').click();
  await page.locator('#wardrobe button').last().focus();await audit(page,name+' explorer '+width);
  await page.locator('#close-explorer').click();assert.equal(await page.locator('#result-title').innerText(),'True Winter','browsing does not reclassify');
@@ -264,6 +264,9 @@ async function v2Checks(browser,name) {
   await page.locator('#preferences').press('Enter');
   await page.locator('#interface-theme').selectOption('light');
   assert.equal(await page.locator('html').getAttribute('data-theme'),'light');
+  // Audit a completed repaint after changing both the theme and backdrop.
+  await page.evaluate(()=>new Promise(resolve=>requestAnimationFrame(()=>requestAnimationFrame(resolve))));
+  await audit(page,name+' light theme appearance');
   assert.equal((await pixels(page))[0],still);
   const corner=()=>page.locator('#portrait-a').evaluate(canvas=>Array.from(canvas.getContext('2d').getImageData(2,2,1,1).data));
   const pale=await corner();
@@ -382,4 +385,91 @@ async function v2Checks(browser,name) {
  } finally { await context.close(); }
 }
 
-(async()=>{for(const[name,type]of[['Chromium',chromium],['WebKit',webkit]]){const browser=await type.launch();try{for(const width of[1440,390,320])await comparisonChecks(browser,name,width);await resizeChecks(browser,name);await fallbackChecks(browser);await reflowChecks(browser,name);await v2Checks(browser,name);if(name==='Chromium')await cameraChecks(browser);}finally{await browser.close();}}})().catch(e=>{console.error(e);process.exitCode=1;});
+async function bridgeChecks(browser,name) {
+ const context=await browser.newContext({viewport:{width:390,height:844},reducedMotion:'reduce'});
+ const page=await context.newPage(),errors=[],requests=[];
+ page.on('pageerror',e=>errors.push(e.message));
+ page.on('request',r=>{if(!r.url().startsWith(origin+'/')) requests.push(r.url());});
+ const outside=()=>page.locator('#portrait-explorer').evaluate(canvas=>{
+   const ctx=canvas.getContext('2d');
+   return [[2,2],[canvas.width-3,2],[2,canvas.height-3],[canvas.width-3,canvas.height-3]].map(([x,y])=>Array.from(ctx.getImageData(x,y,1,1).data));
+ });
+ try {
+  await enter(page);await page.locator('#browse-before').click();
+  await page.locator('#wardrobe button').first().click();
+  const base=await outside();assert(base.every(p=>JSON.stringify(p)===JSON.stringify(base[0])),'single drape fills every corner');
+  await page.locator('#focus-explorer').click();
+  const wide=await page.locator('#portrait-viewer').evaluate(c=>{
+   const ctx=c.getContext('2d');return[...ctx.getImageData(2,2,1,1).data];
+  });
+  assert.deepEqual(wide,base[0]);await page.locator('#close-viewer').click();
+  const pinned=await page.locator('#explore-a').getAttribute('aria-label');
+  for(const family of ['light-neutral','soft-neutral','bright-neutral','deep-neutral']) {
+   await page.locator('#collection-picker').press('Enter');
+   await page.locator('#palette-family').selectOption(family);
+   assert(await page.locator('#flow-field').isHidden());
+   assert.equal(await page.locator('.palette-adjustments').getAttribute('open'),null);
+   assert(await page.locator('#bridge-note').isVisible());
+   await audit(page,name+' '+family+' chooser');
+   await page.locator('#apply-collection').press('Enter');
+   await page.locator('#drape-family').selectOption('all');assert.equal(await page.locator('#wardrobe button').count(),66);
+   await page.locator('#wardrobe button').first().click();
+   assert.equal(await page.locator('#explore-a').getAttribute('aria-label'),pinned);
+   const candidate = await pixels(page,['portrait-explorer']);
+   await page.locator('#explore-a').press('Enter');
+   assert.deepEqual(await pixels(page,['portrait-explorer']),candidate,'pinned original and bridge share portrait pixels in the same responsive frame');
+   await page.locator('#explore-b').press('Enter');
+   const surface=await outside();assert(surface.every(p=>JSON.stringify(p)===JSON.stringify(surface[0])));
+   for(const [group,count] of [['neutrals',12],['metals',8]]){
+    await page.locator('#drape-family').selectOption(group);assert.equal(await page.locator('#wardrobe button').count(),count);
+   }
+  }
+  await page.locator('#drape-family').selectOption('all');await page.locator('#wardrobe button').first().click();
+  const initial=await page.locator('#explore-caption').innerText();
+  await page.locator('#season-start').press('Enter');assert.match(await page.locator('#season-position').innerText(),/Deep Autumn.*2 of 24/);
+  await page.locator('#season-previous').press('Enter');assert.equal((await page.locator('#explore-caption').innerText()).slice(4),initial.slice(4));
+  await page.locator('#season-exit').press('Enter');
+  await page.locator('#explore-save').press('Enter');
+  await page.locator('#wardrobe button').nth(1).click();await page.locator('#save-explore-pair').press('Enter');
+  await page.locator('#flags-explorer').press('Enter');
+  assert.equal(await page.locator('#flag-range').inputValue(),'bridges');
+  assert.equal(await page.locator('#flag-options button').count(),4);
+  assert.match(await page.locator('#flag-status').innerText(),/Deep Neutral/);
+  const flagCorners=await page.locator('#portrait-flags').evaluate(c=>{const x=c.getContext('2d');return[...x.getImageData(2,2,1,1).data];});
+  assert(flagCorners[0]!==flagCorners[1]||flagCorners[1]!==flagCorners[2],'flag reaches the top edge');
+  await page.locator('#flag-range').selectOption('primary');
+  assert.equal(await page.locator('#flag-options button').count(),4);
+  await page.locator('#flag-range').selectOption('bridges');
+  await audit(page,name+' bridge flags');
+  await page.locator('#try-flag').press('Enter');
+  await page.locator('#close-explorer').press('Enter');
+  await page.locator('#preferences').press('Enter');
+  assert.equal(await page.locator('#mirror-surround').inputValue(),'drape');
+  await page.locator('#mirror-surround').selectOption('middle');
+  await page.locator('#close-appearance').press('Enter');
+  await page.locator('#browse-before').press('Enter');
+  const neutral=await outside();assert(neutral.every(p=>JSON.stringify(p)===JSON.stringify([150,150,150,255])),'neutral option fills the whole background');
+  await page.locator('#close-explorer').press('Enter');
+  await page.locator('#open-tools').press('Enter');
+  const downloaded=page.waitForEvent('download');await page.locator('#download-analysis-tools').press('Enter');
+  const json=fs.readFileSync(await(await downloaded).path());
+  const data=JSON.parse(json);assert.equal(data.primary,null);assert.equal(data.collection.family,'deep-neutral');
+  assert.equal(data.comparisons.length,1);assert(!json.includes('data:image'));
+  await page.locator('#close-tools').press('Enter');
+  await page.locator('#analysis-input').setInputFiles({name:'analysis.json',mimeType:'application/json',buffer:json});
+  await page.waitForFunction(()=>!document.getElementById('results').hidden);
+  assert.equal(await page.locator('#result-title').innerText(),'Still exploring');
+  assert.match(await page.locator('#report-details').innerText(),/Palette explored.*Deep Neutral/s);
+  assert.match(await page.locator('#report-details').innerText(),/Deep Neutral.*Palette explored/s);
+  await page.evaluate(()=>{window.print=()=>{};});await page.locator('#report-pdf').press('Enter');
+  assert.match(await page.locator('#print-report').innerText(),/Palette explored.*Deep Neutral/s);
+  await page.evaluate(()=>window.dispatchEvent(new Event('afterprint')));
+  await page.locator('#browse-results').press('Enter');
+  assert.equal(await page.locator('#palette-family').inputValue(),'deep-neutral');
+  await page.locator('#close-explorer').press('Enter');
+  await audit(page,name+' bridge result');assert.deepEqual(errors,[]);assert.deepEqual(requests,[]);
+  console.log('PASS '+name+' full mirror fill, neutral bridge palettes, original pins, flag navigation, and portable results');
+ } finally {await context.close();}
+}
+
+(async()=>{for(const[name,type]of[['Chromium',chromium],['WebKit',webkit]]){const browser=await type.launch();try{for(const width of[1440,390,320])await comparisonChecks(browser,name,width);await resizeChecks(browser,name);await fallbackChecks(browser);await reflowChecks(browser,name);await v2Checks(browser,name);await bridgeChecks(browser,name);if(name==='Chromium')await cameraChecks(browser);}finally{await browser.close();}}})().catch(e=>{console.error(e);process.exitCode=1;});
