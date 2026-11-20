@@ -27,13 +27,19 @@
 .family-heading > p { margin: 0 0 5px; max-width: 42ch; color: #c5ccd5; }
 .project-family > .project-grid { margin-top: 25px; margin-bottom: 64px; }
 .project-grid .project h3 { font-size: clamp(27px,3vw,39px); font-weight: 520; letter-spacing: -.055em; line-height: 1.15; margin: 21px 0 11px; }
-.draper-thumbnail { position: relative; display: grid; grid-template-columns: 1fr .9fr; background: #1c131c; color: #fbedf4; text-decoration: none; }
+.draper-thumbnail { position: relative; display: grid; grid-template-columns: 1fr .9fr; background: #181818; color: #F3F1EC; text-decoration: none; }
 .draper-thumbnail > img { object-position: 50% 58%; min-height: 0; }
-.draper-thumbnail::after { content: ""; position: absolute; inset: 10% 7% 10% 55%; border: 1px solid #f4cee894; border-radius: 50%; pointer-events: none; }
+.draper-thumbnail::after { content: ""; position: absolute; inset: 10% 7% 10% 55%; border: 1px solid #F3F1EC94; border-radius: 50%; pointer-events: none; }
 .draper-thumbnail-copy { display: flex; flex-direction: column; justify-content: center; gap: .35em; min-width: 0; padding: 12%; }
 .draper-thumbnail-name { font-family: Georgia, serif; font-size: clamp(25px, 5vw, 60px); line-height: 1; letter-spacing: -.045em; }
-.draper-thumbnail-caption { color: #edbbd7; font-family: var(--mono); font-size: clamp(9px, 1.15vw, 12px); letter-spacing: .1em; text-transform: uppercase; }
-.draper-thumbnail-strip { height: 7px; width: 85%; margin-top: .62em; background: linear-gradient(90deg, #f4d8d6 0 20%, #ce8eaf 20% 40%, #a13d62 40% 60%, #635b7f 60% 80%, #426364 80%); }
+.draper-thumbnail-caption { color: #BEBEBE; font-family: var(--mono); font-size: clamp(9px, 1.15vw, 12px); letter-spacing: .1em; text-transform: uppercase; }
+.project--draper { background: #181818; color: #F3F1EC; border-color: #767676; }
+.project--draper::before { background: #F3F1EC border-box; }
+.project--draper .thumbnail { border-color: #565656; }
+.project--draper :is(.project-meta, .project-desc, .small-note) { color: #BEBEBE; }
+.project--draper .tags li { color: #BEBEBE; border-color: #767676; }
+.project--draper .launch { background: #F3F1EC; color: #181818; }
+
 .laboratory { border-top: 1px solid #626d78; padding-top: 4px; }
 .laboratory .family-heading h2 { font-family: Georgia,"Times New Roman",serif; font-style: italic; letter-spacing: -.065em; }
 .lab-feature { display: grid; grid-template-columns: 1.05fr .95fr; background: #e5e9ee; color: #111214; overflow: hidden; border: 1px solid #bec9d4; min-height: 425px; }
@@ -119,8 +125,8 @@
         <p class="small-note">Independent proof of concept. Example styles are not City of Portland-approved designs; human review is still required for translations and accessibility.</p>
       </div>
     </article>
-      <article class="project project--beam">
-        <a class="thumbnail draper-thumbnail" href="/projects/draping-mirror/"><span class="draper-thumbnail-copy"><span class="draper-thumbnail-caption">Personal color studio</span><span class="draper-thumbnail-name">DRAPER</span><span class="draper-thumbnail-strip"></span></span><img src="/projects/draping-mirror/studio-portrait.webp" alt="" width="880" height="1320" loading="lazy"></a>
+      <article class="project project--beam project--draper">
+        <a class="thumbnail draper-thumbnail" href="/projects/draping-mirror/"><span class="draper-thumbnail-copy"><span class="draper-thumbnail-caption">Personal color studio</span><span class="draper-thumbnail-name">DRAPER</span></span><img src="/projects/draping-mirror/studio-portrait-neutral.webp" alt="" width="880" height="1320" loading="lazy"></a>
         <div class="project-body">
           <div class="project-meta"><span>Personal color</span></div>
           <h3>DRAPER</h3>

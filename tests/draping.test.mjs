@@ -286,3 +286,20 @@ test('explored bridge palettes round-trip independently from the recorded season
   assert.equal(readSettings({surround:'charcoal',theme:'light'}).background,'drape');
   assert.equal(readSettings({surround:'charcoal',background:'neutral'}).background,'neutral');
 });
+
+test('DRAPER interface and report styling use neutral black, gray and bone', () => {
+  const base = new URL('../dist/projects/draping-mirror/', import.meta.url);
+  const files = ['mirror.css','mirror.mjs','preferences.mjs','report.mjs','mark.svg','index.html'];
+  for (const file of files) {
+    const source = readFileSync(new URL(file, base), 'utf8');
+    const colors = source.match(/#[0-9a-f]{6}(?:[0-9a-f]{2})?\b/gi) ?? [];
+    for (const color of colors) assert(toOKLCH(color.slice(0,7)).chroma < .01, file + ' contains a tinted interface color ' + color);
+  }
+  const css = readFileSync(new URL('mirror.css', base), 'utf8');
+  assert.match(css, /--background: #F3F1EC/);
+  assert.match(css, /--background: #151515/);
+  const projects = readFileSync(new URL('../dist/projects/index.html', import.meta.url), 'utf8');
+  for (const rule of projects.match(/\.draper-[^{]+\{[^}]+\}/g)) {
+    for (const color of rule.match(/#[0-9a-f]{6}(?:[0-9a-f]{2})?\b/gi) ?? []) assert(toOKLCH(color.slice(0,7)).chroma < .01);
+  }
+});

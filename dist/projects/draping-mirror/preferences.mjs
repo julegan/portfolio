@@ -8,7 +8,7 @@ export function createPreferences($, changed) {
     const dark = settings.theme === 'dark' || (settings.theme === 'system' && deviceDark.matches);
     document.documentElement.dataset.theme = dark ? 'dark' : 'light';
     document.documentElement.dataset.large = String(settings.large);
-    document.querySelector('meta[name="theme-color"]').content = dark ? '#151116' : '#fbf6f6';
+    document.querySelector('meta[name="theme-color"]').content = dark ? '#151515' : '#F3F1EC';
   }
   function set(patch) {
     settings = readSettings({ ...settings, ...patch });

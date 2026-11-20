@@ -124,26 +124,26 @@ export function paletteGraphic(report) {
   canvas.width = width;
   canvas.height = (report.collectionLabel ? 450 : 410) + groups.reduce((height, group) => height + 96 + 105 * rows(group), 0);
   const ctx = canvas.getContext('2d');
-  ctx.fillStyle = '#181218'; ctx.fillRect(0, 0, canvas.width, canvas.height);
-  ctx.fillStyle = '#E9B9D0'; ctx.font = '600 28px system-ui'; ctx.fillText('D R A P E R', margin, 86);
-  ctx.fillStyle = '#FFF3F5'; ctx.font = '84px "Instrument Serif", Georgia, serif'; ctx.fillText(report.result.label, margin, 190, width - 2 * margin);
-  ctx.font = '24px system-ui'; ctx.fillStyle = '#DCC8D4';
+  ctx.fillStyle = '#181818'; ctx.fillRect(0, 0, canvas.width, canvas.height);
+  ctx.fillStyle = '#F3F1EC'; ctx.font = '600 28px system-ui'; ctx.fillText('D R A P E R', margin, 86);
+  ctx.fillStyle = '#F3F1EC'; ctx.font = '84px "Instrument Serif", Georgia, serif'; ctx.fillText(report.result.label, margin, 190, width - 2 * margin);
+  ctx.font = '24px system-ui'; ctx.fillStyle = '#BEBEBE';
   ctx.fillText(report.practice ? 'Practice palette · sample portrait' : 'Personal color palette', margin, 246);
   if (report.collectionLabel) ctx.fillText('Palette explored · ' + report.collectionLabel, margin, 284, width - 2 * margin);
   let y = report.collectionLabel ? 360 : 320;
   for (const group of groups) {
-    ctx.fillStyle = '#FFF3F5'; ctx.font = '36px "Instrument Serif", Georgia, serif'; ctx.fillText(group.title, margin, y);
-    ctx.fillStyle = '#DCC8D4'; ctx.font = '20px system-ui'; ctx.fillText(group.origin, margin, y + 31);
+    ctx.fillStyle = '#F3F1EC'; ctx.font = '36px "Instrument Serif", Georgia, serif'; ctx.fillText(group.title, margin, y);
+    ctx.fillStyle = '#BEBEBE'; ctx.font = '20px system-ui'; ctx.fillText(group.origin, margin, y + 31);
     group.colors.forEach(({ name, hex }, index) => {
       const x = margin + index % columns * stride, top = y + 53 + Math.floor(index / columns) * 105;
       ctx.fillStyle = hex; ctx.fillRect(x, top, tile, 61);
-      ctx.fillStyle = '#FFF3F5'; ctx.font = '17px system-ui'; ctx.fillText(name, x, top + 85, tile - 4);
+      ctx.fillStyle = '#F3F1EC'; ctx.font = '17px system-ui'; ctx.fillText(name, x, top + 85, tile - 4);
     });
     y += 96 + 105 * rows(group);
   }
   if (!groups.length) {
-    ctx.fillStyle = '#DCC8D4'; ctx.fillText('Your palette is open. Try more comparisons to collect colors.', margin, 325);
+    ctx.fillStyle = '#BEBEBE'; ctx.fillText('Your palette is open. Try more comparisons to collect colors.', margin, 325);
   }
-  ctx.fillStyle = '#DCC8D4'; ctx.font = '16px system-ui'; ctx.fillText('Digital swatches · verify with physical materials', margin, canvas.height - 37);
+  ctx.fillStyle = '#BEBEBE'; ctx.font = '16px system-ui'; ctx.fillText('Digital swatches · verify with physical materials', margin, canvas.height - 37);
   return canvas;
 }

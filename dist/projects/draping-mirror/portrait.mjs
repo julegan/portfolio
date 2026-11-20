@@ -147,7 +147,7 @@ export function createPortrait(video, { onState, onFrame, onStatus, onTracking }
   }
   async function sample() {
     const token = ++operation; stop();
-    const image = new Image(); image.src = new URL('studio-portrait.webp',import.meta.url).href;
+    const image = new Image(); image.src = new URL('studio-portrait-neutral.webp',import.meta.url).href;
     try {
       await image.decode(); if (token !== operation) return;
       photo.width = image.naturalWidth; photo.height = image.naturalHeight; photo.getContext('2d').drawImage(image,0,0);

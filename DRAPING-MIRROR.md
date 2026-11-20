@@ -49,7 +49,7 @@ The browser suite uses Playwright Chromium and WebKit and axe-core checks across
 - [NIST on digital-camera color error](https://www.nist.gov/publications/color-error-digital-camera-image-capture-process) and [material color and appearance](https://www.nist.gov/publications/chapter-10-color-and-appearance).
 - [CSS Color 4 on OKLCH](https://www.w3.org/TR/css-color-4/#ok-lab) and [WCAG 2.2 on alternatives to dragging](https://www.w3.org/WAI/WCAG22/Understanding/dragging-movements).
 - [MediaPipe Face Landmarker for Web](https://developers.google.com/edge/mediapipe/solutions/vision/face_landmarker/web_js).
-- The DRAPER portrait is a generated sample. DM Sans and Instrument Serif are self-hosted with their licenses in the project font directory.
+- The DRAPER portrait is a generated sample with a neutral gray backdrop and black clothing. DM Sans and Instrument Serif are self-hosted with their licenses in the project font directory.
 
 
 ## Neutral palettes between seasons
@@ -68,3 +68,8 @@ Each collection contains 66 colored drapes, 12 neutrals, and eight simulated met
 The season classifier continues to use recorded comparisons. Choosing a collection records a palette to explore. It appears as **Palette explored** in results, printable reports, and palette PNGs, and in the optional `collection` field of analysis JSON. Neutral collections provide palette ideas without assigning a primary season. Existing original ranges retain their colors and authored slots. Same-color cycling includes the 20 original ranges and the four neutral collections, with the starting swatch pinned as A.
 
 **Choose a palette** groups the home seasons and neutral collections. The range selector appears for home seasons. **Fine-tune this palette** opens the optional three-axis refinements. From a whole-palette flag, **Try these drapes** opens that collection directly. The primary-season checkpoint links to neutral flags for visitors exploring between families.
+
+
+## Interface color
+
+Both themes use neutral black, grayscale, and bone. This applies to surfaces, buttons, focus and selection indicators, dialogs, guide markers, the project card, and exported report typography and backgrounds. The portrait and actual drape or palette swatches supply color. The generated sample has a gray backdrop and black clothing. The welcome and project card use the same neutral identity.

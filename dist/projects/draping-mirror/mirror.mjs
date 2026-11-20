@@ -80,7 +80,7 @@ function drawPanel(canvas, drape, frame = panelFrame(canvas)) {
   ctx.save(); ctx.beginPath(); ctx.ellipse(240,248,180,238,0,0,Math.PI*2); ctx.clip();
   // The same neutral backing also protects transparent portrait pixels.
   ctx.fillStyle = surround; ctx.fillRect(60,10,360,476); ctx.translate(60-100*360/280,10-31*360/280); ctx.scale(360/280,360/280); capture?.draw(ctx); ctx.restore();
-  ctx.strokeStyle = '#65615B'; ctx.lineWidth = .7; ctx.beginPath(); ctx.ellipse(240,248,180,238,0,0,Math.PI*2); ctx.stroke();
+  ctx.strokeStyle = '#656565'; ctx.lineWidth = .7; ctx.beginPath(); ctx.ellipse(240,248,180,238,0,0,Math.PI*2); ctx.stroke();
   ctx.restore();
 }
 function paint() {
@@ -759,11 +759,11 @@ $('download-palette').addEventListener('click',()=>download(new Blob([JSON.strin
 $('download-comparison').addEventListener('click',()=>{
   if(!canAssess()||!current())return;
   const pair=practice?.drapes??displayPair, canvas=document.createElement('canvas');canvas.width=1920;canvas.height=1320;
-  const ctx=canvas.getContext('2d');ctx.fillStyle='#151518';ctx.fillRect(0,0,1920,1320);
+  const ctx=canvas.getContext('2d');ctx.fillStyle='#151515';ctx.fillRect(0,0,1920,1320);
   const a=document.createElement('canvas'),b=document.createElement('canvas');a.width=b.width=960;a.height=b.height=1200;
   drawPanel(a,pair[0],{width:480,height:600});drawPanel(b,pair[1],{width:480,height:600});ctx.drawImage(a,0,0);ctx.drawImage(b,960,0);
   ctx.fillStyle='#F3F1EC';ctx.font='26px system-ui';ctx.fillText('A · '+pair[0].name,30,1245);ctx.fillText('B · '+pair[1].name,990,1245);
-  ctx.fillStyle='#CFCCD5';ctx.font='22px system-ui';ctx.fillText('DRAPER · '+(capture.mode==='demo'?'Sample portrait':'Same portrait in both views')+' · Virtual drapes',30,1290);
+  ctx.fillStyle='#BEBEBE';ctx.font='22px system-ui';ctx.fillText('DRAPER · '+(capture.mode==='demo'?'Sample portrait':'Same portrait in both views')+' · Virtual drapes',30,1290);
   canvas.toBlob(blob=>{download(blob,'draper-comparison.png');canvas.width=canvas.height=a.width=a.height=b.width=b.height=0;},'image/png');
 });
 $('session-notes').addEventListener('input', event => { notes = event.target.value; });
