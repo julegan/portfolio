@@ -264,6 +264,8 @@ async function v2Checks(browser,name) {
   await page.locator('#preferences').press('Enter');
   await page.locator('#interface-theme').selectOption('light');
   assert.equal(await page.locator('html').getAttribute('data-theme'),'light');
+  // Audit a completed repaint after changing both the theme and backdrop.
+  await page.evaluate(()=>new Promise(resolve=>requestAnimationFrame(()=>requestAnimationFrame(resolve))));
   await audit(page,name+' light theme appearance');
   assert.equal((await pixels(page))[0],still);
   const corner=()=>page.locator('#portrait-a').evaluate(canvas=>Array.from(canvas.getContext('2d').getImageData(2,2,1,1).data));
