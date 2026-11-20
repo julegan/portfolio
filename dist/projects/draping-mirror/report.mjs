@@ -28,6 +28,8 @@ export function renderReport(root, report, { openPair, removePair } = {}) {
   const printable = !openPair;
   const { result, groups, comparisons, observations, contrast, notes, practice, flagsSeen } = report;
   const sectionGrid = element('div', '', 'report-grid');
+  const selected = [];
+  if (report.collectionLabel) selected.push(element('p', 'Palette explored · ' + report.collectionLabel, 'small'));
   for (const group of groups) {
     const section = heading(group.title, group.origin);
     if (group.colors.length) {
@@ -96,7 +98,7 @@ export function renderReport(root, report, { openPair, removePair } = {}) {
   } else saved.append(element('p', 'Keep an A/B pair from Tools or the palette browser.', 'small'));
 
   if (!printable) {
-    root.replaceChildren(sectionGrid, observationsSection, measured, saved);
+    root.replaceChildren(...selected, sectionGrid, observationsSection, measured, saved);
     return;
   }
   const title = element('h1', 'DRAPER');
@@ -105,7 +107,7 @@ export function renderReport(root, report, { openPair, removePair } = {}) {
   if (report.primary) root.append(element('p', 'Season explored · ' + report.primary + (result.flow ? ' · ' + result.flow.label : ' · sub-season open')));
   else root.append(element('p', 'Sub-season open'));
   if (result.leader) root.append(element('p', 'Direction from your observations · ' + result.leader.name));
-  root.append(sectionGrid, observationsSection, measured, saved);
+  root.append(...selected, sectionGrid, observationsSection, measured, saved);
   if (notes.trim()) {
     const note = heading('Your notes');
     note.append(element('p', notes, 'written-note'));
@@ -120,14 +122,15 @@ export function paletteGraphic(report) {
   const rows = group => Math.ceil(group.colors.length / columns);
   const canvas = document.createElement('canvas');
   canvas.width = width;
-  canvas.height = 410 + groups.reduce((height, group) => height + 96 + 105 * rows(group), 0);
+  canvas.height = (report.collectionLabel ? 450 : 410) + groups.reduce((height, group) => height + 96 + 105 * rows(group), 0);
   const ctx = canvas.getContext('2d');
   ctx.fillStyle = '#181218'; ctx.fillRect(0, 0, canvas.width, canvas.height);
   ctx.fillStyle = '#E9B9D0'; ctx.font = '600 28px system-ui'; ctx.fillText('D R A P E R', margin, 86);
   ctx.fillStyle = '#FFF3F5'; ctx.font = '84px "Instrument Serif", Georgia, serif'; ctx.fillText(report.result.label, margin, 190, width - 2 * margin);
   ctx.font = '24px system-ui'; ctx.fillStyle = '#DCC8D4';
   ctx.fillText(report.practice ? 'Practice palette · sample portrait' : 'Personal color palette', margin, 246);
-  let y = 320;
+  if (report.collectionLabel) ctx.fillText('Palette explored · ' + report.collectionLabel, margin, 284, width - 2 * margin);
+  let y = report.collectionLabel ? 360 : 320;
   for (const group of groups) {
     ctx.fillStyle = '#FFF3F5'; ctx.font = '36px "Instrument Serif", Georgia, serif'; ctx.fillText(group.title, margin, y);
     ctx.fillStyle = '#DCC8D4'; ctx.font = '20px system-ui'; ctx.fillText(group.origin, margin, y + 31);

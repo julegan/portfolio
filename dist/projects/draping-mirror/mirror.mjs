@@ -1,6 +1,7 @@
 import { PALETTE_KEY, readPalette, fitColor } from './drapes.mjs';
 import { toOKLCH } from './color.mjs';
-import { STAGES, QUESTION_STAGES, HOMES, REST_DRAPE, questionsFor, allQuestions, recordAnswer, profile, wardrobePalette, FLOW_KINDS, flowOptions, refinementLabel, HUE_FAMILIES, seasonColorVariants } from './session.mjs';
+import { STAGES, QUESTION_STAGES, HOMES, REST_DRAPE, questionsFor, allQuestions, recordAnswer, profile, FLOW_KINDS, refinementLabel, HUE_FAMILIES } from './session.mjs';
+import { BRIDGES, COLLECTION_FAMILIES, collectionColorVariants, collectionName, collectionOptions, collectionPalette, readCollection } from './collections.mjs';
 import { emptyComparison, chooseCandidate, showPinned, pinVisible, comparisonPurpose } from './comparison.mjs';
 import { createPortrait } from './portrait.mjs';
 import { mirrorLayout } from './mirror-layout.mjs';
@@ -18,6 +19,7 @@ const primaryFlags = SEASONS.map(season => seasonalFlag(season));
 let stage = 0, index = 0, answers = {}, active = 0, resting = false, comparing = false, practice = null;
 let seen = new Set([0]), palette = [], storageAvailable = true, capture;
 let displayPair = [REST_DRAPE, REST_DRAPE];
+let exploredCollection = null;
 let primary = null, flagPreview = primaryFlags[0], modalFlag = flagPreview, flagsSeen = new Set();
 let practiceSession = false, savedComparisons = [], sessionColors = [], notes = '', reading = null;
 let welcome = true, loadedAnalysis = false, reattaching = false, importRevision = 0;
@@ -61,23 +63,19 @@ function drawPanel(canvas, drape, frame = panelFrame(canvas)) {
   const ctx = canvas.getContext('2d'); ctx.setTransform(pixelWidth/width,0,0,pixelHeight/height,0,0);
   // Numeric bounds let pixel checks follow the portrait after a frame resize.
   canvas.dataset.portraitBounds = JSON.stringify({x:portrait.x*pixelWidth/width,y:portrait.y*pixelHeight/height,width:portrait.width*pixelWidth/width,height:portrait.height*pixelHeight/height});
-  const surround = SURROUNDS[settings().surround];
-  ctx.fillStyle = surround; ctx.fillRect(0,0,width,height);
-  ctx.save(); ctx.beginPath(); ctx.moveTo(0,410*scale); ctx.quadraticCurveTo(width/2,330*scale,width,410*scale); ctx.lineTo(width,height); ctx.lineTo(0,height); ctx.closePath(); ctx.clip();
-  if (drape.rows) {
-    const start = 369 * scale, rowHeight = (height - start) / drape.rows.length;
+  const surround = SURROUNDS[settings().surround] ?? SURROUNDS.pale;
+  if (settings().background === 'neutral' || drape === REST_DRAPE) {
+    ctx.fillStyle = surround; ctx.fillRect(0,0,width,height);
+  } else if (drape.rows) {
+    const rowHeight = height / drape.rows.length;
     drape.rows.forEach((row, y) => row.forEach((swatch, x) => {
       ctx.fillStyle = swatch.hex;
-      ctx.fillRect(x * width / row.length, start + y * rowHeight, width / row.length + .4, rowHeight + .4);
+      ctx.fillRect(x * width / row.length, y * rowHeight, width / row.length + .4, rowHeight + .4);
     }));
   } else {
     ctx.fillStyle = drape.finish === 'matte' ? drape.hex : metallicFill(ctx,drape,width,height,scale);
     ctx.fillRect(0,0,width,height);
   }
-  // Fixed, quiet folds are confined to the cloth, below the portrait window.
-  ctx.save(); ctx.strokeStyle = '#FFFFFF18'; ctx.lineWidth = scale;
-  for (let y = 438*scale; y < height; y += 65*scale) { ctx.beginPath(); ctx.moveTo(0,y); ctx.quadraticCurveTo(width/2,y-50*scale,width,y+15*scale); ctx.stroke(); } ctx.restore();
-  ctx.restore();
   ctx.save(); ctx.translate(left,0); ctx.scale(scale,scale);
   ctx.save(); ctx.beginPath(); ctx.ellipse(240,248,180,238,0,0,Math.PI*2); ctx.clip();
   // The same neutral backing also protects transparent portrait pixels.
@@ -224,7 +222,7 @@ function closeSessionDialogs() {
 }
 function resetSession() {
   stage=0; index=0; answers={}; primary=null; flagsSeen=new Set(); active=0; seen=new Set([0]); practice=null; resting=false;
-  savedComparisons=[]; sessionColors=[]; reading=null; notes=''; $('session-notes').value=''; loadedAnalysis=false; reattaching=false;
+  exploredCollection=null; savedComparisons=[]; sessionColors=[]; reading=null; notes=''; $('session-notes').value=''; loadedAnalysis=false; reattaching=false;
   closeSessionDialogs(); setText('mirror-note',''); setText('report-status','');
   seasonMode=null; pinned=emptyComparison(); exploreDrape=REST_DRAPE; setText('explore-status','');
   $('source-tools').open = true; $('framing').open = false;
@@ -253,7 +251,7 @@ function previousQuestion() {
   go(previous, Math.max(0, questions(previous).length-1));
 }
 function sessionData() {
-  return analysisFile({ answers, primary, practice: practiceSession, colors: sessionColors, comparisons: savedComparisons, notes, contrast: reading, flagsSeen: [...flagsSeen] });
+  return analysisFile({ answers, primary, practice: practiceSession, colors: sessionColors, comparisons: savedComparisons, notes, contrast: reading, flagsSeen: [...flagsSeen], collection: exploredCollection });
 }
 function resultCopy(report) {
   const { result } = report;
@@ -276,7 +274,8 @@ function renderResults() {
   $('resume-analysis').hidden = !loadedAnalysis || canAssess();
   $('review').hidden = !canAssess();
   $('session-notes').value = notes;
-  const lead = home ? seasonalFlag(home, p.flow?.kind).rows[0].filter((_, i) => i % 3 === 0) : [];
+  const selection = exploredCollection ?? (home ? { family: home, flow: p.flow?.kind } : null);
+  const lead = selection ? seasonalFlag(selection.family, selection.flow, selection.adjustments).rows[0].filter((_, i) => i % 3 === 0) : [];
   $('result-colors').replaceChildren(...lead.map(drape => {
     const band = document.createElement('span'); band.style.backgroundColor = drape.hex; return band;
   }));
@@ -310,18 +309,20 @@ function renderResults() {
 function prepareResults() {
   const result = profile(answers, primary);
   refinements = {};
-  $('palette-family').value = primary ?? result.leader?.id ?? result.candidates[0].id;
-  renderFlows(result.flow?.kind);
+  $('palette-family').value = exploredCollection?.family ?? primary ?? result.leader?.id ?? result.candidates[0].id;
+  refinements = exploredCollection?.adjustments ?? {};
+  renderFlows(exploredCollection?.flow ?? result.flow?.kind);
   go(RESULTS);
 }
 function renderFlows(selected = 'home') {
-  $('palette-flow').replaceChildren(...flowOptions($('palette-family').value).map(flow=>{
+  $('palette-flow').replaceChildren(...collectionOptions($('palette-family').value).map(flow=>{
     const option=document.createElement('option'); option.value=flow.id; option.textContent=flow.id==='home' ? 'Full home range' : flow.label; return option;
   }));
-  $('palette-flow').value=FLOW_KINDS.includes(selected) ? selected : 'home';
+  $('palette-flow').value = collectionOptions($('palette-family').value).some(option => option.id === selected) ? selected : 'home';
+  $('flow-field').hidden = Object.hasOwn(BRIDGES, $('palette-family').value);
 }
 function drapeOrigin(d) {
-  return d?.family ? flowOptions(d.family).find(f=>f.id===d.flow).label+(refinementLabel(d.adjustments)?' · '+refinementLabel(d.adjustments):'') : '';
+  return d?.family ? collectionName(d.family,d.flow)+(refinementLabel(d.adjustments)?' · '+refinementLabel(d.adjustments):'') : '';
 }
 function paintExplorer() {
   exploreDrape=pinned.rest ? REST_DRAPE : pinned[pinned.active] ?? REST_DRAPE;
@@ -333,7 +334,7 @@ function paintExplorer() {
     button.setAttribute('aria-label',d ? `${slot.toUpperCase()} · ${d.name} · ${drapeOrigin(d)}${slot==='a'?' · pinned reference':''}` : `${slot.toUpperCase()} · choose a drape`);
     button.querySelector('.pin-swatch').style.background=d?swatchFill(d):'transparent';
     const label=button.querySelector('.pin-label');label.replaceChildren(document.createTextNode(slot.toUpperCase()+' · '+(d?.name??'Choose a drape')+' '));
-    const origin=document.createElement('small');origin.textContent=d?.family?flowOptions(d.family).find(f=>f.id===d.flow).label:slot==='a'?'First choice pins A':'New choices go here';label.append(origin);button.setAttribute('aria-label',label.textContent+(d&&slot==='a'?' · pinned reference':'')+(d&&refinementLabel(d.adjustments)?' · '+refinementLabel(d.adjustments):''));
+    const origin=document.createElement('small');origin.textContent=d?.family?collectionName(d.family,d.flow):slot==='a'?'First choice pins A':'New choices go here';label.append(origin);button.setAttribute('aria-label',label.textContent+(d&&slot==='a'?' · pinned reference':'')+(d&&refinementLabel(d.adjustments)?' · '+refinementLabel(d.adjustments):''));
   }
   $('pin-reference').disabled=pinned.rest||pinned.active!=='b'||!pinned.b;
   $('explore-save').disabled=exploreDrape===REST_DRAPE;
@@ -349,7 +350,7 @@ function paintExplorer() {
   $('wardrobe').querySelectorAll('button').forEach(button=>button.setAttribute('aria-pressed',String(button.dataset.drape===exploreDrape.id)));
 }
 function browsedDrapes() {
-  return wardrobePalette($('palette-family').value,$('palette-flow').value,refinements).filter(d=>d.group===collectionGroup&&(collectionGroup!=='colors'||hueFamily==='all'||d.hueFamily===hueFamily));
+  return collectionPalette($('palette-family').value,$('palette-flow').value,refinements).filter(d=>d.group===collectionGroup&&(collectionGroup!=='colors'||hueFamily==='all'||d.hueFamily===hueFamily));
 }
 function familyOptions() {
   const select=$('drape-family');
@@ -363,10 +364,12 @@ function renderWardrobe() {
   const family=$('palette-family').value, flow=$('palette-flow').value;
   const swatches=browsedDrapes();
   $('wardrobe-note').textContent=swatches.length+' '+collectionGroup+' · swipe the rail to explore';
-  const name=flowOptions(family).find(f=>f.id===flow)?.label ?? HOMES[family].name, extra=refinementLabel(refinements);
+  const name = collectionName(family,flow), extra = refinementLabel(refinements);
   $('collection-picker').replaceChildren(document.createTextNode(name+(extra?' · '+extra:'')));
-  const hint=document.createElement('span');hint.textContent='Change season & flow ▾';$('collection-picker').append(hint);
-  $('collection-summary').textContent=name+(extra?' · '+extra:' · original set');
+  const hint=document.createElement('span');hint.textContent='Choose a palette ▾';$('collection-picker').append(hint);
+  $('collection-summary').textContent=name+(extra?' · '+extra:'');
+  $('collection-description').textContent = BRIDGES[family]?.description ?? 'Choose a season, then a range to explore.';
+  $('bridge-note').hidden = !Object.hasOwn(BRIDGES, family);
   document.querySelectorAll('[data-adjust]').forEach(b=>b.setAttribute('aria-pressed',String(Number(b.dataset.value)===(refinements[b.dataset.adjust]??0))));
   $('drape-family').value=collectionGroup==='colors'?hueFamily:collectionGroup;
   $('wardrobe').replaceChildren(...swatches.map(drape => {
@@ -408,7 +411,7 @@ function seasonStep(direction) {
   paintExplorer();
 }
 function startSeasonCycle() {
-  const reference=exploreDrape, variants=seasonColorVariants(reference);
+  const reference=exploreDrape, variants=collectionColorVariants(reference);
   if(variants.length<2)return;
   seasonMode={reference,variants,index:variants.findIndex(d=>d.id===reference.id)};
   if(seasonMode.index<0)seasonMode.index=0;
@@ -446,7 +449,7 @@ function paletteView() {
   $('palette').replaceChildren(...palette.map((hex,i)=>{
     const chip=document.createElement('div'); chip.className='palette-chip';
     const color=document.createElement('span'); color.className='chip-color'; color.style.backgroundColor=hex;
-    const known=[...allQuestions(answers).flatMap(q=>q.drapes),...Object.keys(HOMES).flatMap(h=>FLOW_KINDS.flatMap(flow=>wardrobePalette(h,flow)))].find(d=>d.hex===hex);
+    const known=[...allQuestions(answers).flatMap(q=>q.drapes),...COLLECTION_FAMILIES.flatMap(h=>collectionOptions(h).flatMap(flow=>collectionPalette(h,flow.id)))].find(d=>d.hex===hex);
     const label=document.createElement('p'); label.textContent=known?.name ?? `Saved color ${i+1}`;
     const actions=document.createElement('div'); actions.className='chip-actions';
     const remove=document.createElement('button'); remove.type='button'; remove.className='quiet'; remove.textContent='Remove'; remove.setAttribute('aria-label','Remove '+label.textContent);
@@ -552,24 +555,42 @@ const primaryPicker = flagControls('primary', 'primary-flags', flag => {
 });
 const modalPicker = flagControls('flag', 'flag-options', flag => {
   modalFlag = flag;
+  $('flag-description').textContent = BRIDGES[flag.family]?.description ?? '';
+  $('flag-bridge-note').hidden = !Object.hasOwn(BRIDGES, flag.family);
   drawPanel($('portrait-flags'), flag);
 });
 function setFlagRange() {
   const family = $('palette-family').value;
-  if ($('flag-range').value === 'flow') {
+  const mode = $('flag-range').value;
+  if (mode === 'bridges') {
+    modalPicker.show(Object.keys(BRIDGES).map(id => seasonalFlag(id)), 'flag-' + family + '-home');
+  } else if (mode === 'flow' && HOMES[family]) {
     modalPicker.show(FLOW_KINDS.filter(flow => flow !== 'home').map(flow => seasonalFlag(family, flow, refinements)), 'flag-' + family + '-' + $('palette-flow').value);
   } else modalPicker.show(primaryFlags, 'flag-' + (primary ?? family) + '-home');
 }
-function openFlags() {
+function openFlags(mode) {
   if (capture.mode === 'camera') capture.freeze();
   capture.lockFraming();
-  $('flag-range').value = 'primary';
-  $('flag-range').options[1].textContent = 'Sub-seasons · ' + HOMES[$('palette-family').value].name;
+  const family = $('palette-family').value;
+  $('flag-range').value = mode === 'bridges' || BRIDGES[family] ? 'bridges' : 'primary';
+  $('flag-range').options[1].disabled = Boolean(BRIDGES[family]);
+  $('flag-range').options[1].textContent = HOMES[family] ? 'Sub-seasons · ' + HOMES[family].name : 'Sub-seasons';
   $('flag-studio').showModal();
   setFlagRange();
 }
 $('flag-range').addEventListener('change', setFlagRange);
-for (const id of ['flags-explorer', 'flags-tools']) $(id).addEventListener('click', openFlags);
+for (const id of ['flags-explorer', 'flags-tools']) $(id).addEventListener('click', () => openFlags());
+$('primary-bridges').addEventListener('click', () => openFlags('bridges'));
+$('try-flag').addEventListener('click', () => {
+  seasonMode = null;
+  $('palette-family').value = modalFlag.family;
+  refinements = modalFlag.adjustments ?? {};
+  renderFlows(modalFlag.flow);
+  rememberCollection();
+  closeDialog('flag-studio');
+  if (!$('palette-explorer').open) openExplorer();
+  else renderWardrobe();
+});
 $('close-flags').addEventListener('click', () => closeDialog('flag-studio'));
 $('primary-back').addEventListener('click', previousQuestion);
 function chooseHome(value) {
@@ -663,12 +684,16 @@ $('close-tools').addEventListener('click',()=>closeDialog('session-tools'));
 $('change-portrait').addEventListener('click',()=>go(0));
 for(const id of ['browse-before','browse-results']) $(id).addEventListener('click',openExplorer);
 $('close-explorer').addEventListener('click',()=>closeDialog('palette-explorer'));
+$('palette-explorer').addEventListener('close', () => { if (stage === RESULTS) renderResults(); });
 $('collection-picker').addEventListener('click',()=>$('collection-settings').showModal());
 $('season-start').addEventListener('click',startSeasonCycle);
 $('season-previous').addEventListener('click',()=>seasonStep(-1));
 $('season-next').addEventListener('click',()=>seasonStep(1));
 $('season-exit').addEventListener('click',exitSeasonCycle);
-$('apply-collection').addEventListener('click',()=>closeDialog('collection-settings'));
+$('apply-collection').addEventListener('click',()=>{ rememberCollection(); closeDialog('collection-settings'); });
+function rememberCollection() {
+  exploredCollection = readCollection({ family: $('palette-family').value, flow: $('palette-flow').value, adjustments: refinements });
+}
 $('focus-mirror').addEventListener('click',()=>openViewer('session'));
 $('focus-explorer').addEventListener('click',()=>openViewer('explorer'));
 $('close-viewer').addEventListener('click',()=>closeDialog('mirror-viewer'));
@@ -701,9 +726,9 @@ $('close-response').addEventListener('click',()=>closeDialog('response-sheet'));
 $('next').addEventListener('click',()=>{ if(!$('next').disabled) nextQuestion(); });
 $('back').addEventListener('click', previousQuestion);
 $('restart').addEventListener('click',()=>{ resetSession(); go(0); });
-$('palette-family').addEventListener('change',()=>{seasonMode=null;refinements={};renderFlows();renderWardrobe();});
-$('palette-flow').addEventListener('change',()=>{seasonMode=null;refinements={};renderWardrobe();});
-document.querySelectorAll('[data-adjust]').forEach(b=>b.addEventListener('click',()=>{seasonMode=null;refinements={...refinements,[b.dataset.adjust]:Number(b.dataset.value)};renderWardrobe();}));
+$('palette-family').addEventListener('change',()=>{seasonMode=null;refinements={};renderFlows();rememberCollection();renderWardrobe();});
+$('palette-flow').addEventListener('change',()=>{seasonMode=null;refinements={};rememberCollection();renderWardrobe();});
+document.querySelectorAll('[data-adjust]').forEach(b=>b.addEventListener('click',()=>{seasonMode=null;refinements={...refinements,[b.dataset.adjust]:Number(b.dataset.value)};rememberCollection();renderWardrobe();}));
 $('drape-family').addEventListener('change',()=>{
   seasonMode=null;
   const value=$('drape-family').value;
@@ -778,6 +803,7 @@ $('analysis-input').addEventListener('change', async event => {
     capture.clear();
     ({ answers, primary, notes, colors: sessionColors, comparisons: savedComparisons, contrast: reading, practice: practiceSession } = data);
     flagsSeen = new Set(data.flagsSeen);
+    exploredCollection = data.collection;
     loadedAnalysis = true;
     prepareResults();
     setText('report-status','Analysis opened. You can review and export it or continue with a portrait.');

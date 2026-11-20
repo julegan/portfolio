@@ -1,11 +1,12 @@
 import { normalizeHex, toOKLCH } from './color.mjs';
 import { readPalette } from './drapes.mjs';
-import { HOMES, allQuestions, flowOptions, profile, wardrobePalette } from './session.mjs';
+import { HOMES, allQuestions, profile } from './session.mjs';
+import { BRIDGES, COLLECTION_FAMILIES, collectionLabel, collectionName, collectionPalette, readCollection } from './collections.mjs';
 
 export const SEASONS = Object.keys(HOMES);
 export const SURROUNDS = { pale: '#D4D4D4', middle: '#969696', charcoal: '#424242' };
 export const DEFAULT_SETTINGS = Object.freeze({
-  theme: 'dark', surround: 'pale', guidance: 'independent', colorAccess: 'standard', large: false, paired: false
+  theme: 'dark', surround: 'pale', background: 'drape', guidance: 'independent', colorAccess: 'standard', large: false, paired: false
 });
 export const SETTINGS_KEY = 'julieowens.draper.settings.v1';
 const oneOf = (value, options, fallback) => options.includes(value) ? value : fallback;
@@ -13,6 +14,7 @@ export function readSettings(input = {}) {
   return {
     theme: oneOf(input?.theme, ['system', 'light', 'dark'], 'dark'),
     surround: oneOf(input?.surround, Object.keys(SURROUNDS), 'pale'),
+    background: oneOf(input?.background, ['drape', 'neutral'], 'drape'),
     guidance: oneOf(input?.guidance, ['independent', 'guided', 'assisted'], 'independent'),
     colorAccess: oneOf(input?.colorAccess, ['standard', 'red-green', 'blue-yellow', 'any'], 'standard'),
     large: input?.large === true, paired: input?.paired === true
@@ -20,11 +22,11 @@ export function readSettings(input = {}) {
 }
 
 export function seasonalFlag(family, flow = 'home', adjustments) {
-  const colors = wardrobePalette(family, flow, adjustments);
+  const colors = collectionPalette(family, flow, adjustments);
   const wearable = colors.filter(drape => drape.group === 'colors');
   const rows = [0, 1, 2].map(tone => wearable.filter((_, index) => index % 3 === tone));
   rows.push(colors.filter(drape => drape.group !== 'colors'));
-  return { id: 'flag-' + family + '-' + flow, name: flow === 'home' ? HOMES[family].name : flowOptions(family).find(option => option.id === flow).label, family, rows };
+  return { id: 'flag-' + family + '-' + flow, name: flow === 'home' && HOMES[family] ? HOMES[family].name : collectionName(family, flow), family, flow, adjustments, rows };
 }
 
 export function describeColor(hex, colorAccess) {
@@ -66,7 +68,7 @@ function reading(input) {
   return input.map(value => Math.round(value * 10) / 10);
 }
 
-export function analysisFile({ answers, primary, practice, colors, comparisons, notes, contrast, flagsSeen }) {
+export function analysisFile({ answers, primary, practice, colors, comparisons, notes, contrast, flagsSeen, collection }) {
   const safeAnswers = {};
   const chosenHome = oneOf(primary, SEASONS, null);
   for (const q of allQuestions(answers, chosenHome)) {
@@ -83,7 +85,8 @@ export function analysisFile({ answers, primary, practice, colors, comparisons, 
     }) : [],
     notes: typeof notes === 'string' ? notes.slice(0, MAX_NOTES) : '',
     contrast: reading(contrast),
-    flagsSeen: Array.isArray(flagsSeen) ? [...new Set(flagsSeen.filter(season => SEASONS.includes(season)))] : []
+    flagsSeen: Array.isArray(flagsSeen) ? [...new Set(flagsSeen.filter(season => SEASONS.includes(season)))] : [],
+    collection: readCollection(collection)
   };
 }
 
@@ -110,9 +113,11 @@ export const SAMPLE_LABELS = ['Skin', 'Hair or brow', 'Eye or lip'];
 export function buildReport(data) {
   const result = profile(data.answers, data.primary);
   const home = data.primary ?? result.leader?.id;
-  const collection = home ? wardrobePalette(home, data.primary === home ? result.flow?.kind : 'home') : [];
-  const lookup = keys => keys.map(key => collection.find(drape => drape.swatchKey === key)).filter(Boolean);
-  const makeup = makeupFamilies[home];
+  const selection = readCollection(data.collection);
+  const family = selection?.family ?? home;
+  const drapes = family ? collectionPalette(family, selection?.flow ?? result.flow?.kind, selection?.adjustments) : [];
+  const lookup = keys => keys.map(key => drapes.find(drape => drape.swatchKey === key)).filter(Boolean);
+  const makeup = makeupFamilies[family] ?? (BRIDGES[family] && { lip: ['red-0', 'rose-0', 'berry-0'], face: ['pink-1', 'rose-1', 'neutral-4'], eye: ['lilac-0', 'neutral-4', 'neutral-5'] });
   const favorites = [];
   const finishes = { neutrals: [], metals: [] };
   const observations = [];
@@ -124,7 +129,7 @@ export function buildReport(data) {
     else if (picks.length === 1) favorites.push(...picks);
     observations.push({ title: q.title, choice: picks.map(drape => drape.name).join(' and ') || 'Undecided' });
   }
-  const namedColors = new Map([...favorites, ...Object.keys(HOMES).flatMap(season => wardrobePalette(season))].map(drape => [drape.hex, drape.name]));
+  const namedColors = new Map([...favorites, ...COLLECTION_FAMILIES.flatMap(season => collectionPalette(season))].map(drape => [drape.hex, drape.name]));
   const kept = data.colors.map(hex => ({ name: namedColors.get(hex) ?? 'Saved color', hex }));
   const unique = swatches => [...new Map(swatches.map(drape => [drape.hex, drape])).values()];
   const groups = [
@@ -135,5 +140,9 @@ export function buildReport(data) {
     { title: 'Makeup palette · cheeks', origin: 'Palette ideas to try', colors: makeup ? lookup(makeup.face) : [] },
     { title: 'Makeup palette · eyes', origin: 'Palette ideas to try', colors: makeup ? lookup(makeup.eye) : [] }
   ];
-  return { result, home, groups, observations, ...data };
+  const bridge = BRIDGES[family];
+  if (bridge) {
+    groups.splice(1, 0, { title: bridge.name, origin: 'Palette explored · ' + bridge.description, colors: lookup(['red-0', 'rose-0', 'violet-0', 'blue-0', 'teal-0', 'green-0', 'yellow-0']) });
+  }
+  return { ...data, result, home, groups, observations, collectionLabel: collectionLabel(selection) };
 }

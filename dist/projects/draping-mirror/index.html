@@ -107,6 +107,7 @@
           <div id="primary-flags" class="flag-choices" role="group" aria-label="Preview primary-season palettes"></div>
           <div class="flag-navigation"><button id="primary-prev" class="quiet" type="button" aria-label="Previous season flag">←</button><p id="primary-flag-status" role="status"></p><button id="primary-next" class="quiet" type="button" aria-label="Next season flag">→</button></div>
           <div class="primary-actions"><button id="primary-choose" type="button">Refine this season</button><button id="primary-skip" class="text-button" type="button">Keep my season open</button></div>
+          <button id="primary-bridges" class="text-button" type="button">Explore neutral palettes between seasons</button>
           <p class="small">Each flag includes core, light, and deep colors, plus neutrals and metals. You can leave the sub-season open if the closer comparisons feel uncertain.</p>
         </div>
         <div id="results" hidden>
@@ -163,13 +164,16 @@
     <p id="wardrobe-note" class="sr-only"></p><div id="wardrobe" class="wardrobe" tabindex="0" role="region" aria-label="Seasonal drapes; scroll for more colors"></div>
   </div>
 </dialog>
-<dialog id="collection-settings" class="sheet" aria-labelledby="collection-title"><div class="sheet-heading"><h2 id="collection-title">Your drape collection</h2><button id="apply-collection" class="quiet" type="button">Use collection</button></div>
-  <div class="collection-choices"><div><label for="palette-family">Home season</label><select id="palette-family"><option value="spring">Spring</option><option value="summer">Summer</option><option value="autumn">Autumn</option><option value="winter">Winter</option></select></div><div><label for="palette-flow">Home range or flow</label><select id="palette-flow"></select></div></div>
-<p class="small">Start with a named set, then explore a flow of your own. These prepared refinements can work together.</p>
+<dialog id="collection-settings" class="sheet" aria-labelledby="collection-title"><div class="sheet-heading"><h2 id="collection-title">Choose a palette</h2><button id="apply-collection" class="quiet" type="button">Use palette</button></div>
+  <div class="collection-choices"><div><label for="palette-family">Palette</label><select id="palette-family"><optgroup label="Seasons"><option value="spring">Spring</option><option value="summer">Summer</option><option value="autumn">Autumn</option><option value="winter">Winter</option></optgroup><optgroup label="Between seasons"><option value="deep-neutral">Deep Neutral</option><option value="light-neutral">Light Neutral</option><option value="soft-neutral">Soft Neutral</option><option value="bright-neutral">Bright Neutral</option></optgroup></select></div><div id="flow-field"><label for="palette-flow">Range</label><select id="palette-flow"></select></div></div>
+<p id="collection-description" class="small"></p>
+<p id="bridge-note" class="small" hidden>These exploratory palettes balance warm and cool neighbors. Try several shades and keep what works for you.</p>
+<details class="palette-adjustments"><summary>Fine-tune this palette</summary>
 <fieldset class="refinement"><legend>Temperature</legend><div role="group" aria-label="Refine temperature"><button type="button" data-adjust="temperature" data-value="-1">Cooler</button><button type="button" data-adjust="temperature" data-value="0" aria-pressed="true">Original</button><button type="button" data-adjust="temperature" data-value="1">Warmer</button></div></fieldset>
 <fieldset class="refinement"><legend>Depth</legend><div role="group" aria-label="Refine depth"><button type="button" data-adjust="depth" data-value="-1">Lighter</button><button type="button" data-adjust="depth" data-value="0" aria-pressed="true">Original</button><button type="button" data-adjust="depth" data-value="1">Deeper</button></div></fieldset>
 <fieldset class="refinement"><legend>Intensity</legend><div role="group" aria-label="Refine intensity"><button type="button" data-adjust="intensity" data-value="-1">Softer</button><button type="button" data-adjust="intensity" data-value="0" aria-pressed="true">Original</button><button type="button" data-adjust="intensity" data-value="1">Brighter</button></div></fieldset>
-<p id="collection-summary" class="small" role="status"></p><p class="small">Exploration is independent of your recorded result. Metallic finishes are simulations.</p></dialog>
+</details>
+<p id="collection-summary" class="sr-only" role="status"></p><p class="small">Metallic finishes are simulations.</p></dialog>
 <dialog id="mirror-viewer" class="mirror-viewer" aria-labelledby="viewer-title"><div class="viewer-heading"><h2 id="viewer-title">Focus mirror</h2><button id="close-viewer" class="quiet" type="button">Done</button></div><canvas id="portrait-viewer" width="960" height="1200" role="img" aria-label="Enlarged unchanged portrait with the current drape."></canvas><div class="viewer-controls"><button id="viewer-previous" class="quiet" type="button" aria-label="Previous drape">←</button><p id="viewer-caption" role="status"></p><button id="viewer-next" class="quiet" type="button" aria-label="Next drape">→</button></div></dialog>
 <dialog id="assistance" class="sheet" aria-labelledby="assistance-title">
   <form id="assistance-form">
@@ -197,9 +201,9 @@
   <div class="sheet-heading"><h2 id="appearance-title">Appearance</h2><button id="close-appearance" class="quiet" type="button">Done</button></div>
   <label for="interface-theme">Interface theme</label>
   <select id="interface-theme"><option value="system">Follow device</option><option value="light">Light</option><option value="dark">Dark</option></select>
-  <label for="mirror-surround">Neutral mirror surround</label>
-  <select id="mirror-surround"><option value="pale">Pale gray</option><option value="middle">Mid gray</option><option value="charcoal">Charcoal</option></select>
-  <p class="small">The mirror surround and interface theme can be set independently.</p>
+  <label for="mirror-surround">Mirror background</label>
+  <select id="mirror-surround"><option value="drape">Fill with drape colors</option><option value="pale">Pale gray</option><option value="middle">Mid gray</option><option value="charcoal">Charcoal</option></select>
+  <p class="small">Choose drape colors or a neutral background for the mirror. The interface theme has its own setting.</p>
 </dialog>
 <dialog id="flag-studio" class="feature-dialog" aria-labelledby="flag-studio-title">
   <div class="sheet-heading"><h2 id="flag-studio-title">Seasonal flags</h2><button id="close-flags" class="quiet" type="button">Done</button></div>
@@ -207,9 +211,12 @@
     <canvas id="portrait-flags" width="960" height="1200" role="img" aria-label="Portrait framed by the selected seasonal palette"></canvas>
     <div>
       <label for="flag-range">Compare palettes</label>
-      <select id="flag-range"><option value="primary">Four primary seasons</option><option value="flow">Sub-seasons in this family</option></select>
+      <select id="flag-range"><option value="primary">Four primary seasons</option><option value="flow">Sub-seasons in this family</option><option value="bridges">Neutral palettes between seasons</option></select>
+      <p id="flag-description" class="small"></p>
       <div id="flag-options" class="flag-choices" role="group" aria-label="Season palette previews"></div>
       <div class="flag-navigation"><button id="flag-prev" class="quiet" type="button" aria-label="Previous palette flag">←</button><p id="flag-status" role="status"></p><button id="flag-next" class="quiet" type="button" aria-label="Next palette flag">→</button></div>
+      <button id="try-flag" type="button">Try these drapes</button>
+      <p id="flag-bridge-note" class="small" hidden>These original palettes explore neighboring seasons. A palette choice records what you want to try.</p>
       <p class="tip small">Use a flag to see how a palette works as a whole. To compare like for like, choose a single drape and cycle that color through the seasons.</p>
     </div>
   </div>

@@ -468,6 +468,8 @@ dialog::backdrop { background: #110d16c4; }
 .wardrobe button > span:last-child { display: block; line-height: 1.15; min-height: 2.3em; }
 .wardrobe button small { display: block; color: var(--muted); font-size: .85em; }
 .collection-choices select { margin-top: .3em; }
+.palette-adjustments { border-block: 1px solid var(--hairline); margin-top: .75rem; }
+#bridge-note, #flag-bridge-note, #flag-description { margin-top: .6rem; }
 .refinement { margin-block: .7rem; }
 .refinement > div { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: .3em; }
 .refinement button { background: var(--background); color: var(--text); border-color: var(--line); padding-inline: .25em; }
