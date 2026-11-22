@@ -117,6 +117,7 @@ function render(){
   $("colorsOutput").textContent=s.colors;
   const checker=s.design==="checkerboard";
   $("checkerControls").hidden=!checker;
+  $("generate").disabled=checker;
   for(const id of ["motifWidth","vertical","complexity","colors","texture"]){
     $(id).closest("label").hidden=checker;
     $(id).disabled=checker;
