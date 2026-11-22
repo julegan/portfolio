@@ -41,7 +41,7 @@
       <fieldset><legend>Motif & repetition</legend>
         <div class="fields">
           <label for="design">Design family<select id="design" name="design">
-            <option value="diamonds">Diamonds</option><option value="chevrons">Chevrons</option><option value="waves">Waves</option><option value="speckles">Speckles</option><option value="landscape">Little landscape</option>
+            <option value="diamonds">Diamonds</option><option value="checkerboard">Checkerboard</option><option value="chevrons">Chevrons</option><option value="waves">Waves</option><option value="speckles">Speckles</option><option value="landscape">Little landscape</option>
           </select></label>
           <label for="arrangement">Around the tube<select id="arrangement" name="arrangement">
             <option value="repeat">Repeat a motif</option><option value="scene">One wraparound design</option>
@@ -53,6 +53,16 @@
           <label for="repeats">Times around<input id="repeats" name="repeats" type="number" min="1" max="30" step="1" value="10"></label>
           <label for="complexity">Complexity <output id="complexityOutput" for="complexity">2 / 4</output><input id="complexity" name="complexity" type="range" min="1" max="4" step="1" value="2"></label>
         </div>
+        <div id="checkerControls" hidden>
+          <p class="hint">Start with a 5-stitch × 5-round square. Alternate knit/purl blocks with one yarn, or switch to two-color stockinette. The repeat stays continuous at the round join.</p>
+          <div class="fields">
+            <label for="checkerStyle">Checkerboard technique<select id="checkerStyle" name="checkerStyle">
+              <option value="texture">One yarn · knit/purl texture</option><option value="colorwork">Two yarns · colorwork</option>
+            </select></label>
+            <label for="checkerStitches">Square width (stitches)<input id="checkerStitches" name="checkerStitches" type="number" min="2" max="12" step="1" value="5"></label>
+            <label for="checkerRounds">Square height (rounds)<input id="checkerRounds" name="checkerRounds" type="number" min="2" max="12" step="1" value="5"></label>
+          </div>
+        </div>
         <p class="hint" id="repeatHint">Repeating the motif sets the cast-on count. Changing repeats changes the finished circumference.</p>
       </fieldset>
       <fieldset><legend>Color & stitches</legend>
@@ -61,7 +71,7 @@
           <label for="colors">Yarn colors <output id="colorsOutput" for="colors">4</output><input id="colors" name="colors" type="range" min="1" max="6" value="4"></label>
         </div>
         <label class="checkbox-label"><input id="texture" name="texture" type="checkbox"> Allow purl stitches for texture</label>
-        <p class="hint">Knit stitches are always available. V1 does not yet generate lace, cables, or shaping.</p>
+        <p class="hint">Checkerboard uses the chosen one-yarn or two-yarn technique; the regular yarn-color and optional-texture controls apply to other design families. V1 does not generate lace, cables, or shaping.</p>
       </fieldset>
       <div class="generate"><button id="generate" class="primary" type="button">↻ Generate another</button><button id="undo" type="button" disabled>Undo</button><button id="redo" type="button" disabled>Redo</button></div>
     </form>
@@ -73,7 +83,7 @@
           <div><strong id="roundCount">84</strong><span>Total rounds</span></div>
           <div><strong id="finishedSize">24 × 12 in</strong><span>Est. circumference × height</span></div>
         </div>
-        <p class="hint">Round 1 is at the bottom; read each round from right to left. Each square is one stitch. Click a square to change its color; use the accessible stitch editor below for precise edits.</p>
+        <p class="hint">Round 1 is at the bottom; read each round from right to left. Each square is one stitch. Click a square to change its color in multicolor designs or toggle knit/purl in one-yarn designs; use the accessible stitch editor below for precise edits.</p>
         <div class="tabs" role="group" aria-label="Preview type"><button type="button" id="chartTab" aria-pressed="true">Flat chart</button><button type="button" id="tubeTab" aria-pressed="false">On the tube</button></div>
         <div class="canvas-wrap" id="chartWrap"><div id="graphic" class="graphic" role="img" aria-label="Generated stitch chart"></div></div>
         <p class="graphic-caption" id="graphicCaption">Flat chart / bottom to top. Swipe horizontally to inspect every stitch.</p>
