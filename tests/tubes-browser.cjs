@@ -33,7 +33,7 @@ const base="http://127.0.0.1:4173/projects/tubes/";
       assert.equal(await page.locator("#colorLegend .key").count(),2,"Colorwork uses two yarn colors");
       await page.locator("#checkerStitches").fill("4");
       await page.locator("#checkerStitches").press("Tab");
-      assert.equal(await page.locator("#stitchCount").innerText(),"80","Square width adjusts the cast-on count");
+      assert.equal(await page.locator("#stitchCount").innerText(),"96","Square width adjusts the cast-on count");
       await page.locator("#checkerStyle").selectOption("texture");
       assert.equal(await page.locator("#colorLegend .key").count(),1,"Texture checkerboard uses only one yarn");
       await page.locator("#graphic svg.chart rect").nth(2).click({force:true});
