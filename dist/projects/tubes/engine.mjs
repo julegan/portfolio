@@ -14,7 +14,8 @@ export const DEFAULTS = {
   name:"My first tube", weight:"worsted", stitches4:20, rounds4:28,
   circumference:24, height:12, motifWidth:12, repeats:10,
   arrangement:"repeat", vertical:"repeat", design:"diamonds", complexity:2,
-  colors:4, palette:"electric", texture:false, seed:20261029
+  colors:4, palette:"electric", texture:false, seed:20261029,
+  checkerStyle:"texture", checkerStitches:5, checkerRounds:5
 };
 const clamp=(x,min,max)=>Math.max(min,Math.min(max,x));
 const int=(x,min,max,fallback)=>Number.isFinite(Number(x))?clamp(Math.round(Number(x)),min,max):fallback;
@@ -34,31 +35,40 @@ export function sanitizeSettings(input={}){
     repeats:int(input.repeats,1,30,d.repeats),
     arrangement:pick(input.arrangement,["repeat","scene"],d.arrangement),
     vertical:pick(input.vertical,["repeat","once"],d.vertical),
-    design:pick(input.design,["diamonds","chevrons","waves","speckles","landscape"],d.design),
+    design:pick(input.design,["diamonds","chevrons","waves","speckles","landscape","checkerboard"],d.design),
     complexity:int(input.complexity,1,4,d.complexity),
-    colors:int(input.colors,1,6,d.colors),
+    colors:input.design==="checkerboard"?(input.checkerStyle==="colorwork"?2:1):int(input.colors,1,6,d.colors),
     palette:pick(input.palette,Object.keys(PALETTES),d.palette),
     texture:input.texture===true,
-    seed:int(input.seed,0,2147483647,d.seed)
+    seed:int(input.seed,0,2147483647,d.seed),
+    checkerStyle:pick(input.checkerStyle,["texture","colorwork"],d.checkerStyle),
+    checkerStitches:int(input.checkerStitches,2,12,d.checkerStitches),
+    checkerRounds:int(input.checkerRounds,2,12,d.checkerRounds)
   };
 }
 export function dimensions(s){
-  const stitches=s.arrangement==="repeat"
-    ?s.motifWidth*s.repeats
-    :Math.round(s.circumference*s.stitches4/4/2)*2;
+  // Complete two-square repeats prevent a broken checkerboard at the round join.
+  const checker=s.design==="checkerboard",pair=2*s.checkerStitches;
+  const stitches=checker
+    ?(s.arrangement==="repeat"?pair*s.repeats:Math.max(pair,Math.round(s.circumference*s.stitches4/4/pair)*pair))
+    :(s.arrangement==="repeat"?s.motifWidth*s.repeats:Math.round(s.circumference*s.stitches4/4/2)*2);
   const rounds=clamp(Math.round(s.height*s.rounds4/4),6,400);
   if(stitches>240||rounds>200) throw Error("This design exceeds the v1 chart limit (240 stitches × 200 rounds). Reduce repeats, size, or gauge.");
   return {
     stitches,rounds,actualCircumference:stitches*4/s.stitches4,
-    actualHeight:rounds*4/s.rounds4, repeatWidth:s.arrangement==="repeat"?s.motifWidth:stitches,
-    repeatHeight:s.vertical==="repeat"?Math.min(rounds,12+s.complexity*4):rounds
+    actualHeight:rounds*4/s.rounds4, repeatWidth:checker?pair:(s.arrangement==="repeat"?s.motifWidth:stitches),
+    repeatHeight:checker?2*s.checkerRounds:(s.vertical==="repeat"?Math.min(rounds,12+s.complexity*4):rounds)
   };
 }
 function hash(x,y,seed){
   let h=Math.imul(x+17,374761393)^Math.imul(y+53,668265263)^Math.imul(seed+1,1274126177);
   h=Math.imul(h^(h>>>13),1274126177);return ((h^(h>>>16))>>>0)/4294967296;
 }
+function checkerPhase(s,x,r){
+  return (Math.floor(x/s.checkerStitches)+Math.floor(r/s.checkerRounds))%2;
+}
 function colorAt(s,d,x,r){
+  if(s.design==="checkerboard")return s.checkerStyle==="colorwork"?checkerPhase(s,x,r):0;
   if(s.colors===1)return 0;
   const w=d.repeatWidth, h=d.repeatHeight;
   const u=(x%w)/w,v=(r%h)/h;
@@ -92,10 +102,12 @@ export function makeGrid(s,overrides=[]){
   for(let r=0;r<d.rounds;r++){
     const row=[];
     for(let c=0;c<d.stitches;c++){
-      const x=s.arrangement==="repeat"?c%s.motifWidth:c;
-      const rr=s.vertical==="repeat"?r%d.repeatHeight:r;
-      const p=s.texture&&((Math.floor(x/Math.max(2,6-s.complexity))+
-        Math.floor(rr/Math.max(2,6-s.complexity)))%3===0);
+      const x=s.design==="checkerboard"?c:(s.arrangement==="repeat"?c%s.motifWidth:c);
+      const rr=s.design==="checkerboard"?r:(s.vertical==="repeat"?r%d.repeatHeight:r);
+      const p=s.design==="checkerboard"
+        ?s.checkerStyle==="texture"&&checkerPhase(s,x,rr)===1
+        :s.texture&&((Math.floor(x/Math.max(2,6-s.complexity))+
+          Math.floor(rr/Math.max(2,6-s.complexity)))%3===0);
       row.push({color:colorAt(s,d,x,rr),stitch:p?"p":"k"});
     }
     grid.push(row);
@@ -158,10 +170,23 @@ export function patternMarkdown(project,model){
     "- Cast on: "+d.stitches+" stitches; join without twisting and mark beginning of round",
     "- Estimated finished circumference: "+d.actualCircumference.toFixed(2)+" in (target "+s.circumference+" in)",
     "- Estimated height: "+d.actualHeight.toFixed(2)+" in",
-    "- Horizontal arrangement: "+(s.arrangement==="repeat"?s.repeats+" repeats of "+s.motifWidth+" stitches":"one continuous wraparound scene"),
-    "- Vertical arrangement: "+(s.vertical==="repeat"?"repeating motif":"single design"),
+    "- Horizontal arrangement: "+(s.design==="checkerboard"
+      ?(s.arrangement==="repeat"?s.repeats+" repeats of "+(2*s.checkerStitches)+" stitches":"fitted to target circumference using complete checker pairs")
+      :(s.arrangement==="repeat"?s.repeats+" repeats of "+s.motifWidth+" stitches":"one continuous wraparound scene")),
+    "- Vertical arrangement: "+(s.design==="checkerboard"?"checkerboard repeats every "+(2*s.checkerRounds)+" rounds":s.vertical==="repeat"?"repeating motif":"single design"),
     "","## Colors","",
     ...colors.map((color,i)=>"- C"+(i+1)+": "+color+" (choose your yarn equivalent)"),
+    ...(s.design==="checkerboard"?[
+      "","## Checkerboard repeat","",
+      "- Style: "+(s.checkerStyle==="texture"?"single-yarn knit/purl texture":"two-color stockinette"),
+      "- Each square: "+s.checkerStitches+" stitches wide × "+s.checkerRounds+" rounds tall",
+      "- Base repeat (before manual stitch edits): work "+s.checkerRounds+" rounds of "+
+        (s.checkerStyle==="texture"?"(K"+s.checkerStitches+", P"+s.checkerStitches+")":"(K"+s.checkerStitches+" in C1, K"+s.checkerStitches+" in C2)")+
+        " around, then "+s.checkerRounds+" rounds of "+
+        (s.checkerStyle==="texture"?"(P"+s.checkerStitches+", K"+s.checkerStitches+")":"(K"+s.checkerStitches+" in C2, K"+s.checkerStitches+" in C1)")+
+        " around; repeat these "+(2*s.checkerRounds)+" rounds.",
+      "- Cast on a whole number of "+(2*s.checkerStitches)+"-stitch pairs to keep the checkerboard continuous across the round join.",
+    ]:[]),
     "","## Instructions","",
     "Cast on "+d.stitches+" stitches using your preferred stretchy method. Join for working in the round.",
     "Follow each round as listed below. K = knit, P = purl; number after K/P refers to color C1–C"+s.colors+".",
@@ -169,7 +194,7 @@ export function patternMarkdown(project,model){
     "","## Round-by-round","",...rows,"",
     "## Notes","",
     "- This is a generated design, not a gauge-tested pattern. Knit a swatch and check fit.",
-    "- For stranded colorwork, manage long floats and yarn dominance. Longest computed unused-color span: "+maxFloat(g,s.colors)+" stitches.",
+    ...(s.colors>1?["- For stranded colorwork, manage long floats and yarn dominance. Longest computed unused-color span: "+maxFloat(g,s.colors)+" stitches."]:["- This single-yarn design has no stranded-colorwork floats."]),
     "- No increases, decreases, cables, lace, shaping, or construction-specific finishing are included in v1.",
     "- Chart reads bottom-up, and every round reads right-to-left (Round 1 at bottom).",
     "- PNG/SVG charts are visual companions; the .tubes.json file is the editable source.",

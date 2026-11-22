@@ -32,6 +32,11 @@ function applyControl(id,value){
     s.stitches4=WEIGHTS[value].st;
     s.rounds4=WEIGHTS[value].rows;
   }
+  if(id==="design"&&value==="checkerboard"&&s.arrangement==="repeat"){
+    // Keep the target circumference close when switching from another motif.
+    const pair=2*s.checkerStitches;
+    s.repeats=Math.max(1,Math.min(30,Math.round(s.circumference*s.stitches4/4/pair)));
+  }
   try{
     const clean=sanitizeSettings(s);
     const dims=dimensions(clean);
@@ -39,7 +44,7 @@ function applyControl(id,value){
     prev.overrides=prev.overrides.filter(o=>o.r<dims.rounds&&o.c<dims.stitches&&o.color<clean.colors);
     if(update(prev))status("Pattern updated. Changes can be undone.");
     else hydrate();
-    if(id==="weight")hydrate();
+    if(["weight","design","checkerStyle"].includes(id))hydrate();
   }catch(err){status(err.message);hydrate();}
 }
 for(const field of form.querySelectorAll("input,select")){
@@ -110,10 +115,21 @@ function render(){
   $("finishedSize").textContent=d.actualCircumference.toFixed(1)+" × "+d.actualHeight.toFixed(1)+" in";
   $("complexityOutput").textContent=s.complexity+" / 4";
   $("colorsOutput").textContent=s.colors;
-  $("repeatHint").textContent=s.arrangement==="repeat"
-    ?"Repeating sets the cast-on count. Changing repeats changes the finished circumference (which can differ from the target)."
-    :"One continuous wraparound design uses target circumference and gauge to calculate cast-on stitches.";
-  $("motifWidth").disabled=s.arrangement!=="repeat";
+  const checker=s.design==="checkerboard";
+  $("checkerControls").hidden=!checker;
+  $("generate").disabled=checker;
+  for(const id of ["motifWidth","vertical","complexity","colors","texture"]){
+    $(id).closest("label").hidden=checker;
+    $(id).disabled=checker;
+  }
+  $("repeatHint").textContent=checker
+    ?(s.arrangement==="repeat"
+      ?"Each repeat is two "+s.checkerStitches+"-stitch squares. Repeats set your cast-on count; the pattern joins seamlessly around the tube."
+      :"Cast-on stitches are fitted to your target circumference and rounded to complete checker pairs so the round join stays seamless.")
+    :(s.arrangement==="repeat"
+      ?"Repeating sets the cast-on count. Changing repeats changes the finished circumference (which can differ from the target)."
+      :"One continuous wraparound design uses target circumference and gauge to calculate cast-on stitches.");
+  $("motifWidth").disabled=checker||s.arrangement!=="repeat";
   $("repeats").disabled=s.arrangement!=="repeat";
   $("colorLegend").innerHTML=colors.slice(0,s.colors).map((c,i)=>'<span class="key"><span class="swatch" style="background:'+c+'"></span>C'+(i+1)+' '+c+'</span>').join("");
   $("editColor").innerHTML=colors.slice(0,s.colors).map((c,i)=>'<option value="'+i+'">C'+(i+1)+' · '+c+'</option>').join("");
@@ -125,11 +141,11 @@ function render(){
   $("graphic").innerHTML=view==="chart"?chartSVG(project,model):tubeSVG(project,model);
   $("graphic").setAttribute("aria-label",view==="chart"?"Stitch chart: "+d.stitches+" stitches across, "+d.rounds+" rounds, bottom up":"Schematic cylinder showing the front half of the generated pattern");
   $("graphicCaption").textContent=view==="chart"
-    ?"Flat chart / Round 1 at bottom. Read each round right-to-left. Scroll to inspect stitches. Click a square to cycle its yarn color."
+    ?"Flat chart / Round 1 at bottom. Read each round right-to-left. Scroll to inspect stitches. Click a square to "+(s.colors===1?"toggle knit/purl.":"cycle its yarn color.")
     :"Schematic cylinder / front half of the actual chart, shaded for depth. Not a photograph or a stitch-accurate fabric simulation.";
   $("floatNote").textContent=s.colors>1
     ?"Longest unused-color span in a round: "+maxFloat(model.grid,s.colors)+" stitches. Check strand management and catch long floats where needed."
-    :"Single-color design: use the purl markers (white dots) if texture is enabled.";
+    :"Single-color design: white dots mark purl stitches on the chart; no stranded-colorwork floats.";
   $("undo").disabled=undo.length===0;$("redo").disabled=redo.length===0;
   $("heroTiles").innerHTML=Array.from({length:18*8},(_,i)=>{
     const x=i%18,y=Math.floor(i/18),idx=(Math.abs(x-8-y)%4);
@@ -152,7 +168,8 @@ $("graphic").addEventListener("click",event=>{
   const c=model.dimensions.stitches-1-Math.floor((x-37)/12),displayR=Math.floor((y-12)/12),r=model.dimensions.rounds-displayR-1;
   if(c<0||c>=model.dimensions.stitches||r<0||r>=model.dimensions.rounds)return;
   const old=model.grid[r][c];
-  editStitch(r,c,(old.color+1)%project.settings.colors,old.stitch);
+  if(project.settings.colors===1)editStitch(r,c,old.color,old.stitch==="p"?"k":"p");
+  else editStitch(r,c,(old.color+1)%project.settings.colors,old.stitch);
 });
 $("applyEdit").addEventListener("click",()=>{
   const r=Number($("editRound").value)-1,c=Number($("editStitch").value)-1;
