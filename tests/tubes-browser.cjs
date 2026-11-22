@@ -27,6 +27,7 @@ const base="http://127.0.0.1:4173/projects/tubes/";
       await page.locator("#chartTab").click();
       await page.locator("#design").selectOption("checkerboard");
       assert.equal(await page.locator("#checkerControls").isVisible(),true);
+      assert.equal(await page.locator("#generate").isDisabled(),true,"Exact checkerboard should not pretend to randomize");
       assert.equal(await page.locator("#stitchCount").innerText(),"120","Checkerboard starts near target circumference with twelve seamless pairs");
       assert(await page.locator("#graphic svg.chart circle").count()>0,"One-yarn checkerboard draws purl symbols");
       await page.locator("#checkerStyle").selectOption("colorwork");
