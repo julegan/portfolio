@@ -32,6 +32,11 @@ function applyControl(id,value){
     s.stitches4=WEIGHTS[value].st;
     s.rounds4=WEIGHTS[value].rows;
   }
+  if(id==="design"&&value==="checkerboard"&&s.arrangement==="repeat"){
+    // Keep the target circumference close when switching from another motif.
+    const pair=2*s.checkerStitches;
+    s.repeats=Math.max(1,Math.min(30,Math.round(s.circumference*s.stitches4/4/pair)));
+  }
   try{
     const clean=sanitizeSettings(s);
     const dims=dimensions(clean);
