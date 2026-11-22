@@ -37,7 +37,7 @@ const base="http://127.0.0.1:4173/projects/tubes/";
       assert.equal(await page.locator("#stitchCount").innerText(),"96","Square width adjusts the cast-on count");
       await page.locator("#checkerStyle").selectOption("texture");
       assert.equal(await page.locator("#colorLegend .key").count(),1,"Texture checkerboard uses only one yarn");
-      await page.locator("#graphic svg.chart rect").nth(2).click({force:true});
+      await page.locator("#graphic svg.chart rect").last().click();
       assert.match(await page.locator("#status").innerText(),/updated/,"One-yarn chart edits should toggle stitches");
       const projectPromise=page.waitForEvent("download");
       await page.locator("#downloadProject").click();
