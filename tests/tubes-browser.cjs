@@ -27,7 +27,7 @@ const base="http://127.0.0.1:4173/projects/tubes/";
       await page.locator("#chartTab").click();
       await page.locator("#design").selectOption("checkerboard");
       assert.equal(await page.locator("#checkerControls").isVisible(),true);
-      assert.equal(await page.locator("#stitchCount").innerText(),"100","Ten 10-stitch checker pairs make a seamless tube");
+      assert.equal(await page.locator("#stitchCount").innerText(),"120","Checkerboard starts near target circumference with twelve seamless pairs");
       assert(await page.locator("#graphic svg.chart circle").count()>0,"One-yarn checkerboard draws purl symbols");
       await page.locator("#checkerStyle").selectOption("colorwork");
       assert.equal(await page.locator("#colorLegend .key").count(),2,"Colorwork uses two yarn colors");
