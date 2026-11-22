@@ -20,7 +20,8 @@ account, font download, or third-party script is required.
 - Change circumference, height, yarn category, and gauge independently.
 - Repeated motifs around the circumference or a continuous wraparound
   design; repeat vertically or generate one design up the tube.
-- Diamonds, chevrons, waves, speckles, and a stylized landscape.
+- Diamonds, chevrons, waves, speckles, a stylized landscape, and a seamless checkerboard.
+- Checkerboard offers 5-stitch × 5-round knit/purl squares by default (K5/P5 for five rounds, then P5/K5 for five rounds), adjustable square width and height, or a two-yarn stockinette colorwork version. Complete two-square repeats keep the round join aligned.
 - 1–6 colors in four palettes, four complexity levels, optional purl texture.
 - Deterministic generation with repeatable random seed; Generate another,
   Undo, and Redo.
@@ -36,7 +37,10 @@ account, font download, or third-party script is required.
 ## Crucial sizing behavior
 
 When a motif repeats around the tube, cast-on stitches =
-motif width × number of repeats. The *actual* circumference therefore
+motif width × number of repeats. Checkerboard uses a motif width of **two squares**
+(2 × square width in stitches), and a vertical repeat of **two square heights**;
+when fitting checkerboard to target circumference, cast-on rounds to a full
+number of these stitch pairs, preserving the circular seam. The *actual* circumference therefore
 changes if repeats change, even when the target size is unchanged. The
 displayed estimate comes from cast-on count and measured stitch gauge;
 yarn category is only a starting suggestion.
