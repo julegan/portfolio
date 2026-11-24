@@ -274,7 +274,11 @@ async function v2Checks(browser,name) {
   assert.notDeepEqual(await corner(),pale);
   assert.equal((await pixels(page))[0],still);
   await page.emulateMedia({colorScheme:'dark'});
+  // WebKit can apply the emulated device preference asynchronously. Confirm
+  // the browser media query settled before testing DRAPER's system theme.
+  await page.waitForFunction(()=>matchMedia('(prefers-color-scheme: dark)').matches);
   await page.locator('#interface-theme').selectOption('system');
+  await page.waitForFunction(()=>document.documentElement.dataset.theme==='dark');
   assert.equal(await page.locator('html').getAttribute('data-theme'),'dark');
   await page.locator('#close-appearance').press('Enter');
 
