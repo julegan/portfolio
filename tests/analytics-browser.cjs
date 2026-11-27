@@ -15,111 +15,68 @@ async function localRoute(route) {
   try {
     const data = await fs.readFile(name);
     const types = {".html":"text/html; charset=utf-8",".js":"application/javascript; charset=utf-8",
-      ".css":"text/css; charset=utf-8",".svg":"image/svg+xml",".mjs":"application/javascript; charset=utf-8"};
+      ".css":"text/css; charset=utf-8",".svg":"image/svg+xml",".mjs":"application/javascript; charset=utf-8",".wasm":"application/wasm"};
     return route.fulfill({status:200,contentType:types[path.extname(name)]||"application/octet-stream",body:data});
   } catch (_) { return route.fulfill({status:404,body:"Not found"}); }
 }
 async function main(){
   const browser=await chromium.launch();
   try {
-    const context=await browser.newContext();
-    const tagRequests=[];
-    const pageErrors=[];
-    // Browser script creation and outgoing network requests occur on different
-    // turns. Wait for the fulfilled vendor response before asserting counts.
-    const isTagResponse=response=>response.url().startsWith("https://www.googletagmanager.com/gtag/js?id=")&&response.status()===200;
-    await context.route("https://julieowens.me/**",localRoute);
-    await context.route("https://www.googletagmanager.com/**",route=>{
-      tagRequests.push(route.request().url());
-      return route.fulfill({status:200,contentType:"application/javascript",body:""});
-    });
-    await context.route("https://www.google-analytics.com/**",route=>route.fulfill({status:204,body:""}));
-    const page=await context.newPage();
-    page.on("pageerror",error=>pageErrors.push(error.message));
-    await page.goto(origin+"/",{waitUntil:"load"});
-    assert(!await page.locator("#portfolio-analytics-choices").isVisible(),"No consent panel on first visit");
-    const preferences=page.getByRole("button",{name:"Analytics preferences"});
-    assert(await preferences.isVisible(),"Footer preferences remain accessible on first visit");
-    assert.equal(await preferences.evaluate(el=>el.closest("footer")?.tagName),"FOOTER","Preferences control is inside the page footer");
-    assert.notEqual(await preferences.evaluate(el=>getComputedStyle(el).position),"fixed","Privacy control never floats over page content");
-    assert.equal(await preferences.getAttribute("aria-expanded"),"false");
-    assert.equal(tagRequests.length,0,"No Google tag/network request before opt-in");
-    await preferences.click();
-    const details=page.locator("#portfolio-analytics-choices");
-    assert(await details.isVisible(),"Explicit action expands consent details");
-    assert.equal(await preferences.getAttribute("aria-expanded"),"true");
-    assert.equal(await details.evaluate(el=>getComputedStyle(el).position),"static","Expanded details remain in document flow");
-    assert.equal(await details.evaluate(el=>el.previousElementSibling?.tagName),"FOOTER","Expanded choices appear below footer instead of over site content");
-    await page.locator("#portfolio-analytics-decline").click();
-    assert(await preferences.isVisible(),"Footer preferences remain accessible after declining");
-    assert.equal(await preferences.getAttribute("aria-expanded"),"false");
-    assert.equal(await page.evaluate(()=>localStorage.getItem("julieowens.analytics.choice.v1")),"deny");
-    assert.equal(tagRequests.length,0,"Decline never calls Google");
-    await page.goto(origin+"/projects/",{waitUntil:"load"});
-    assert(!await page.locator("#portfolio-analytics-choices").isVisible(),"Choice respected across pages");
-    await page.getByRole("button",{name:"Analytics preferences"}).click();
-    assert(await page.locator("#portfolio-analytics-choices").isVisible(),"Preference can be reopened from footer");
-    const firstTag=page.waitForResponse(isTagResponse);
-    await page.locator("#portfolio-analytics-allow").click();
-    await firstTag;
-    assert.equal(tagRequests.length,1,"One Google tag request following consent on production");
-    const flags=await page.evaluate(()=>({
-      disabled:window["ga-disable-G-LMS6LWDK63"],
-      data:window.dataLayer.map(x=>Array.from(x).slice(0,3)),
-      storage:localStorage.getItem("julieowens.analytics.choice.v1")
-    }));
-    assert.equal(flags.disabled,false);
-    assert.equal(flags.storage,"allow");
-    const config=flags.data.find(x=>x[0]==="config");
-    assert.equal(config[1],"G-LMS6LWDK63");
-    assert.equal(config[2].page_location,origin+"/projects/","No query strings or hashes in analytics page location");
-    const secondTag=page.waitForResponse(isTagResponse);
-    await page.goto(origin+"/projects/shows/",{waitUntil:"load"});
-    await secondTag;
-    assert.equal(tagRequests.length,2,"Stored opt-in applies to other portfolio routes");
-    await page.getByRole("button",{name:"Analytics preferences"}).click();
-    await page.locator("#portfolio-analytics-decline").click();
-    assert.equal(await page.evaluate(()=>window["ga-disable-G-LMS6LWDK63"]),true,"Withdrawal stops GA");
-    await page.reload({waitUntil:"load"});
-    assert.equal(tagRequests.length,2,"No Google tag after withdrawal and reload");
-    assert(!await page.locator("#portfolio-analytics-choices").isVisible());
-
-    // Verify changing one's mind again without reloading reinits analytics.
-    await page.getByRole("button",{name:"Analytics preferences"}).click();
-    const thirdTag=page.waitForResponse(isTagResponse);
-    await page.locator("#portfolio-analytics-allow").click();
-    await thirdTag;
-    assert.equal(tagRequests.length,3);
-    await page.getByRole("button",{name:"Analytics preferences"}).click();
-    await page.locator("#portfolio-analytics-decline").click();
-    await page.getByRole("button",{name:"Analytics preferences"}).click();
-    await page.locator("#portfolio-analytics-allow").click();
-    const reEnabled=await page.evaluate(()=>window["ga-disable-G-LMS6LWDK63"]);
-    assert.equal(reEnabled,false,"Re-enable following withdrawal on the same page");
-    assert.equal(tagRequests.length,3,"No second vendor script injected when re-granting");
-    assert.deepEqual(pageErrors,[],"No portfolio or consent script page errors");
-    await context.close();
-
-    const privacyContext=await browser.newContext();
-    const privacyRequests=[];
-    await privacyContext.addInitScript(()=>{
-      Object.defineProperty(navigator,"globalPrivacyControl",{value:true,configurable:true});
-      localStorage.setItem("julieowens.analytics.choice.v1","allow");
-    });
-    await privacyContext.route("https://julieowens.me/**",localRoute);
-    await privacyContext.route("https://www.googletagmanager.com/**",route=>{
-      privacyRequests.push(route.request().url());
-      return route.fulfill({status:200,contentType:"application/javascript",body:""});
-    });
-    const privatePage=await privacyContext.newPage();
-    await privatePage.goto(origin+"/",{waitUntil:"load"});
-    assert.equal(privacyRequests.length,0,"GPC overrides previously stored consent");
-    assert(!await privatePage.locator("#portfolio-analytics-choices").isVisible(),"No forced banner with privacy signal");
-    await privatePage.getByRole("button",{name:"Analytics preferences"}).click();
-    assert(await privatePage.locator("#portfolio-analytics-allow").isHidden(),"No misleading opt-in when GPC is active");
-    assert.match(await privatePage.locator("#portfolio-analytics-status").innerText(),/browser requests no tracking/i);
-    await privacyContext.close();
-    console.log("PASS — GA4 consent across nine-page portfolio, opt-in only, withdrawal/regrant and global privacy control");
+    async function scenario(label, init, host, shouldLoad) {
+      const context=await browser.newContext();
+      try {
+        const requests=[];
+        const errors=[];
+        if(init) await context.addInitScript(init);
+        await context.route(host+"/**",localRoute);
+        await context.route("https://www.googletagmanager.com/**",route=>{
+          requests.push(route.request().url());
+          return route.fulfill({status:200,contentType:"application/javascript",body:""});
+        });
+        await context.route("https://www.google-analytics.com/**",route=>route.fulfill({status:204,body:""}));
+        const page=await context.newPage();
+        page.on("pageerror",error=>errors.push(error.message));
+        const routes = ["/?private=test#fragment","/projects/shows/","/projects/color-lab/","/projects/draping-mirror/"];
+        if(label==="Fresh visit"){
+          for(const route of ["/projects/","/projects/tubes/","/projects/svg-hopper/","/projects/possible-realities/","/projects/chaos/","/projects/relationships/","/projects/without-coordinates/"]) routes.push(route);
+        }
+        for(const route of routes){
+          const before=requests.length;
+          const tag=shouldLoad?page.waitForResponse(r=>r.url().startsWith("https://www.googletagmanager.com/gtag/js?id=")&&r.status()===200):null;
+          await page.goto(host+route,{waitUntil:"load"});
+          if(tag) await tag;
+          assert.equal(requests.length,before+(shouldLoad?1:0),label+" vendor requests");
+          assert.equal(await page.locator("#portfolio-google-tag").count(),shouldLoad?1:0);
+          assert.equal(await page.getByRole("button",{name:"Analytics preferences"}).count(),0);
+          assert.equal(await page.locator("#portfolio-analytics-choices").count(),0);
+          assert.equal(await page.locator(".portfolio-analytics-notice").count(),1);
+          const flags=await page.evaluate(()=>({
+            disabled:window["ga-disable-G-LMS6LWDK63"],
+            data:(window.dataLayer||[]).map(x=>Array.from(x)),
+          }));
+          assert.equal(flags.disabled,!shouldLoad);
+          if(shouldLoad){
+            const config=flags.data.find(x=>x[0]==="config");
+            assert.equal(config[1],"G-LMS6LWDK63");
+            assert.equal(config[2].page_location,host+route.split("?")[0]);
+            assert.equal(config[2].allow_google_signals,false);
+            assert(!/[?#]/.test(config[2].page_referrer), "No query strings or hashes in analytics referrer");
+            assert.equal(config[2].allow_ad_personalization_signals,false);
+            const consent=flags.data.find(x=>x[0]==="consent");
+            for(const key of ["ad_storage","ad_user_data","ad_personalization"]) assert.equal(consent[2][key],"denied");
+          }
+        }
+        assert.deepEqual(errors,[],label+" page errors");
+      }finally{await context.close();}
+    }
+    await scenario("Fresh visit",null,origin,true);
+    await scenario("Previously allowed",()=>localStorage.setItem("julieowens.analytics.choice.v1","allow"),origin,true);
+    await scenario("Previously declined",()=>localStorage.setItem("julieowens.analytics.choice.v1","deny"),origin,false);
+    await scenario("GPC",()=>Object.defineProperty(navigator,"globalPrivacyControl",{value:true,configurable:true}),origin,false);
+    await scenario("DNT",()=>Object.defineProperty(navigator,"doNotTrack",{value:"1",configurable:true}),origin,false);
+    await scenario("Unavailable storage",()=>{const get=Storage.prototype.getItem;Object.defineProperty(Storage.prototype,"getItem",{value(key){if(key==="julieowens.analytics.choice.v1")throw Error("blocked");return get.call(this,key)},configurable:true})},origin,false);
+    await scenario("Preview",null,"https://preview.example.test",false);
+    console.log("PASS — GA4 default loading, no consent controls, prior refusals, GPC, DNT and production-only guard");
   }finally{await browser.close();}
 }
 main().catch(error=>{console.error(error);process.exitCode=1});

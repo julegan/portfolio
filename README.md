@@ -40,19 +40,18 @@ python3 -m http.server 8000 --directory dist
 
 Visit <http://localhost:8000>. A local HTTP server is important because internal routes are root-relative and some prototypes use JavaScript modules.
 
-## Optional Google Analytics (GA4)
+## Google Analytics (GA4)
 
-Measurement ID: `G-LMS6LWDK63`. The nine static portfolio HTML routes share `/assets/analytics-consent.js` and `/assets/analytics-consent.css`; **do not add a second unconditional Google tag**. This is the **Google tag (gtag.js)**, not a Google Tag Manager container.
+Measurement ID: `G-LMS6LWDK63`. All public static portfolio HTML routes share `/assets/analytics-consent.js` and `/assets/analytics-consent.css`; **do not add a second unconditional Google tag**. This is the **Google tag (gtag.js)**, not a Google Tag Manager container.
 
-- A visitor must **explicitly allow analytics** before the browser loads Google's script or sets GA cookies. **Privacy is the default**: there is no automatic prompt, banner, sticky button, or overlay. The sole **Analytics preferences** button lives inside the footer on all nine pages. Opening it reveals a nonmodal, **in-flow panel below the footer** with *Allow analytics*, *Decline* and *Close*. Visitors can ignore it indefinitely without being tracked, and can change an earlier choice at any time.
-- The preference is stored locally (`julieowens.analytics.choice.v1`). If storage is blocked, consent only applies to the current page. Browser Global Privacy Control or Do Not Track overrides a stored allowance and keeps Google disabled.
-- On consent, the only site-authored Google command is `gtag('config', 'G-LMS6LWDK63', …)` for page views. No custom user events, saved SHOWS data, knitting pattern values, project designs or form contents are sent by this code. Google Analytics' optional *enhanced measurement* is **controlled separately in the GA4 web-stream settings** and may generate additional events. Consider turning off form interactions and other extras that are unnecessary for the portfolio.
-- Page location is explicitly limited to **origin and pathname** (no user-generated query strings or fragments). The source tag disables Google Signals and all Google advertising consent categories. Consent withdrawal disables GA measurement and attempts to clear first-party `_ga` cookies; previously sent data cannot be recalled.
-- Analytics only loads on `julieowens.me` / `www.julieowens.me`, **not localhost or temporary preview domains**, to avoid test traffic. It is not a substitute for a legal privacy notice or review of your Google Analytics data settings.
+- Analytics runs automatically on all public portfolio and project production routes, including DRAPER and Color Lab. There is no banner, preference button, accept/reject panel, or new stored choice. Previously stored refusals remain respected, as do browser Global Privacy Control and Do Not Track. If local storage cannot be read, the loader fails closed.
+- The existing measurement ID, page-view configuration, and advertising restrictions remain unchanged. Page location and referrer are limited to origin and pathname. No site-authored custom events, saved SHOWS data, knitting patterns, project designs or form contents are sent by this code. GA4 enhanced measurement is controlled separately in the property settings; review and disable unnecessary automatic events.
+- Analytics is not enabled on localhost or preview domains. All public pages display a short noninteractive footer disclosure linking to Google's opt-out add-on. That add-on is not supported by every browser.
+- GA4 may set analytics cookies and process device and visit information. Removing opt-in is a change in privacy posture, not a determination that consent is unnecessary. Review applicable consent and notice requirements before merging; where consent is required, suppress analytics or obtain consent. Browser signals alone do not constitute consent.
 
-After merging and deployment, open the production site in a fresh browser, scroll to the footer and select **Analytics preferences**, then explicitly choose *Allow analytics* and inspect **GA4 > Reports > Realtime** or **Admin > Data streams > Web** / [Google Tag Assistant](https://tagassistant.google.com/) to confirm page views. Test `/`, `/projects/`, `/projects/shows/` and a project detail page. Decline and check that Google Analytics requests do not occur on subsequent pages. Check the GA4 property for internal traffic filters, retention and enhanced measurement settings. Existing Cloudflare or browser blockers can prevent reports despite correct code.
+After merging and deployment, inspect **GA4 > Reports > Realtime** or [Google Tag Assistant](https://tagassistant.google.com/) on production. Verify the tag loads on a fresh visit without interaction and is absent with GPC, DNT, or a previously stored refusal. Confirm retention, enhanced measurement and property privacy settings separately.
 
-Tests: `node --test tests/analytics-consent.test.mjs` (static structure) and `node tests/analytics-browser.cjs` (Playwright, run in accessibility CI). These test privacy behavior without sending measurement hits to Google.
+Tests: `node --test tests/analytics-consent.test.mjs` (static structure) and `node tests/analytics-browser.cjs` (Playwright, run in accessibility CI). These test privacy behavior without sending measurement hits to Google. The static test discovers public HTML files recursively, so new pages must include the shared loader.
 
 ## SHOWS: source of truth and updates
 
