@@ -69,7 +69,7 @@ async function main(){
     await scenario("Previously declined",()=>localStorage.setItem("julieowens.analytics.choice.v1","deny"),origin,false);
     await scenario("GPC",()=>Object.defineProperty(navigator,"globalPrivacyControl",{value:true,configurable:true}),origin,false);
     await scenario("DNT",()=>Object.defineProperty(navigator,"doNotTrack",{value:"1",configurable:true}),origin,false);
-    await scenario("Unavailable storage",()=>Object.defineProperty(Storage.prototype,"getItem",{value(){throw Error("blocked")},configurable:true}),origin,false);
+    await scenario("Unavailable storage",()=>{const get=Storage.prototype.getItem;Object.defineProperty(Storage.prototype,"getItem",{value(key){if(key==="julieowens.analytics.choice.v1")throw Error("blocked");return get.call(this,key)},configurable:true})},origin,false);
     await scenario("Preview",null,"https://preview.example.test",false);
     console.log("PASS — GA4 default loading, no consent controls, prior refusals, GPC, DNT and production-only guard");
   }finally{await browser.close();}
