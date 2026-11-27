@@ -42,16 +42,16 @@ Visit <http://localhost:8000>. A local HTTP server is important because internal
 
 ## Google Analytics (GA4)
 
-Measurement ID: `G-LMS6LWDK63`. The nine static portfolio HTML routes share `/assets/analytics-consent.js` and `/assets/analytics-consent.css`; **do not add a second unconditional Google tag**. This is the **Google tag (gtag.js)**, not a Google Tag Manager container.
+Measurement ID: `G-LMS6LWDK63`. All public static portfolio HTML routes share `/assets/analytics-consent.js` and `/assets/analytics-consent.css`; **do not add a second unconditional Google tag**. This is the **Google tag (gtag.js)**, not a Google Tag Manager container.
 
-- Analytics runs automatically on the nine existing GA4-enabled production routes. There is no banner, preference button, accept/reject panel, or new stored choice. Previously stored refusals remain respected, as do browser Global Privacy Control and Do Not Track. If local storage cannot be read, the loader fails closed.
-- The existing measurement ID, page-view configuration, and advertising restrictions remain unchanged. Page location is limited to origin and pathname. No site-authored custom events, saved SHOWS data, knitting patterns, project designs or form contents are sent by this code. GA4 enhanced measurement is controlled separately in the property settings; review and disable unnecessary automatic events.
-- Analytics is not enabled on localhost, preview domains, DRAPER or Color Lab by this change. The tracked pages display a short noninteractive footer disclosure linking to Google's opt-out add-on. That add-on is not supported by every browser.
+- Analytics runs automatically on all public portfolio and project production routes, including DRAPER and Color Lab. There is no banner, preference button, accept/reject panel, or new stored choice. Previously stored refusals remain respected, as do browser Global Privacy Control and Do Not Track. If local storage cannot be read, the loader fails closed.
+- The existing measurement ID, page-view configuration, and advertising restrictions remain unchanged. Page location and referrer are limited to origin and pathname. No site-authored custom events, saved SHOWS data, knitting patterns, project designs or form contents are sent by this code. GA4 enhanced measurement is controlled separately in the property settings; review and disable unnecessary automatic events.
+- Analytics is not enabled on localhost or preview domains. All public pages display a short noninteractive footer disclosure linking to Google's opt-out add-on. That add-on is not supported by every browser.
 - GA4 may set analytics cookies and process device and visit information. Removing opt-in is a change in privacy posture, not a determination that consent is unnecessary. Review applicable consent and notice requirements before merging; where consent is required, suppress analytics or obtain consent. Browser signals alone do not constitute consent.
 
 After merging and deployment, inspect **GA4 > Reports > Realtime** or [Google Tag Assistant](https://tagassistant.google.com/) on production. Verify the tag loads on a fresh visit without interaction and is absent with GPC, DNT, or a previously stored refusal. Confirm retention, enhanced measurement and property privacy settings separately.
 
-Tests: `node --test tests/analytics-consent.test.mjs` (static structure) and `node tests/analytics-browser.cjs` (Playwright, run in accessibility CI). These test privacy behavior without sending measurement hits to Google.
+Tests: `node --test tests/analytics-consent.test.mjs` (static structure) and `node tests/analytics-browser.cjs` (Playwright, run in accessibility CI). These test privacy behavior without sending measurement hits to Google. The static test discovers public HTML files recursively, so new pages must include the shared loader.
 
 ## SHOWS: source of truth and updates
 
