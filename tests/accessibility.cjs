@@ -224,6 +224,15 @@ async function main(){
     assert.equal(await page.locator("#field-nodes [data-field-node]").count(),9,"Diagram has nine moving points");
     const pathDestinations=await page.locator(".hero-doors .door").evaluateAll(nodes=>nodes.map(n=>new URL(n.href).pathname));
     assert.deepEqual(pathDestinations,["/projects/","/projects/","/"],"Paths remain within the site");
+    const usefulProjects = [["SHOWS","/projects/shows/"],["Color Lab","/projects/color-lab/"],["Tubes","/projects/tubes/"],["SVG Hopper","/projects/svg-hopper/"],["DRAPER","/projects/draping-mirror/"]];
+    const heroTools = await page.locator(".hero-doors .door").first().innerText();
+    for (const [name, route] of usefulProjects) {
+      assert(heroTools.includes(name), name + " appears in the homepage tools entrance");
+      const link = page.locator(".more-work").getByRole("link", {name, exact:true});
+      assert(await link.isVisible(), name + " has a visible homepage link");
+      assert.equal(await link.getAttribute("href"),route);
+      assert.equal((await page.request.get(origin+route)).status(),200,name+" route loads");
+    }
     assert.equal(await page.locator('#work-results > [data-paths]').count(),6,"Six selected practice, illustration and design threads");
     assert.equal(await page.locator('#science-illustration .science-cover').count(),3,"All three Science issue covers appear");
     assert.equal(await page.locator('#science-illustration .science-cover img[alt]').count(),3,"Each Science cover has descriptive alternative text");
