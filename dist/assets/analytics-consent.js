@@ -24,7 +24,7 @@
   if (footer) {
     const notice = document.createElement("small");
     notice.className = "portfolio-analytics-notice";
-    notice.append("This site uses Google Analytics on selected pages. ");
+    notice.append("This site uses Google Analytics. ");
     const link = document.createElement("a");
     link.href = "https://tools.google.com/dlpage/gaoptout";
     link.textContent = "Google Analytics opt-out";
@@ -44,10 +44,17 @@
     ad_personalization: "denied"
   });
   window.gtag("js", new Date());
+  // Strip query strings/fragments from referrers as well as page locations.
+  let pageReferrer = "";
+  try {
+    const referrer = new URL(document.referrer);
+    if (referrer.protocol === "https:" || referrer.protocol === "http:") pageReferrer = referrer.origin + referrer.pathname;
+  } catch (_) {}
   window.gtag("config", MEASUREMENT_ID, {
     send_page_view: true,
     allow_google_signals: false,
     allow_ad_personalization_signals: false,
+    page_referrer: pageReferrer,
     page_location: window.location.origin + window.location.pathname
   });
   const tag = document.createElement("script");
