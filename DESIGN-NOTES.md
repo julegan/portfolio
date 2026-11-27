@@ -25,7 +25,7 @@ This art direction is an experiment, not a permanent personal brand. We are deli
 
 ## Project architecture
 
-The project gallery now distinguishes useful tools (SHOWS, SVG Hopper, Tubes) from exploratory work (Possible Realities). Almost the Same, Only Between, and Without Coordinates remain individually launchable investigations within the laboratory. Do not break or silently redirect their routes.
+The project gallery now distinguishes useful tools (SHOWS, Color Lab, Tubes, SVG Hopper, DRAPER) from exploratory work (Possible Realities). Almost the Same, Only Between, and Without Coordinates remain individually launchable investigations within the laboratory. Do not break or silently redirect their routes.
 
 ## Design and accessibility guardrails
 
