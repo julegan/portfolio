@@ -15,7 +15,7 @@ async function localRoute(route) {
   try {
     const data = await fs.readFile(name);
     const types = {".html":"text/html; charset=utf-8",".js":"application/javascript; charset=utf-8",
-      ".css":"text/css; charset=utf-8",".svg":"image/svg+xml",".mjs":"application/javascript; charset=utf-8"};
+      ".css":"text/css; charset=utf-8",".svg":"image/svg+xml",".mjs":"application/javascript; charset=utf-8",".wasm":"application/wasm"};
     return route.fulfill({status:200,contentType:types[path.extname(name)]||"application/octet-stream",body:data});
   } catch (_) { return route.fulfill({status:404,body:"Not found"}); }
 }
@@ -36,7 +36,11 @@ async function main(){
         await context.route("https://www.google-analytics.com/**",route=>route.fulfill({status:204,body:""}));
         const page=await context.newPage();
         page.on("pageerror",error=>errors.push(error.message));
-        for(const route of ["/?private=test#fragment","/projects/shows/"]){
+        const routes = ["/?private=test#fragment","/projects/shows/","/projects/color-lab/","/projects/draping-mirror/"];
+        if(label==="Fresh visit"){
+          for(const route of ["/projects/","/projects/tubes/","/projects/svg-hopper/","/projects/possible-realities/","/projects/chaos/","/projects/relationships/","/projects/without-coordinates/"]) routes.push(route);
+        }
+        for(const route of routes){
           const before=requests.length;
           const tag=shouldLoad?page.waitForResponse(r=>r.url().startsWith("https://www.googletagmanager.com/gtag/js?id=")&&r.status()===200):null;
           await page.goto(host+route,{waitUntil:"load"});
@@ -56,6 +60,7 @@ async function main(){
             assert.equal(config[1],"G-LMS6LWDK63");
             assert.equal(config[2].page_location,host+route.split("?")[0]);
             assert.equal(config[2].allow_google_signals,false);
+            assert(!/[?#]/.test(config[2].page_referrer), "No query strings or hashes in analytics referrer");
             assert.equal(config[2].allow_ad_personalization_signals,false);
             const consent=flags.data.find(x=>x[0]==="consent");
             for(const key of ["ad_storage","ad_user_data","ad_personalization"]) assert.equal(consent[2][key],"denied");
