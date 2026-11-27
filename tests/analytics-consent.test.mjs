@@ -16,40 +16,36 @@ const pages = [
 ];
 const js = readFileSync(join(root, "assets/analytics-consent.js"), "utf8");
 const css = readFileSync(join(root, "assets/analytics-consent.css"), "utf8");
-test("one shared, first-party consent loader on all nine portfolio pages", () => {
+test("one shared first-party loader on the nine existing portfolio pages", () => {
   assert.equal(pages.length, 9);
   for (const page of pages) {
     const html = readFileSync(join(root, page), "utf8");
     assert.equal((html.match(/<script src="\/assets\/analytics-consent\.js" defer><\/script>/g) || []).length, 1, page);
     assert.equal((html.match(/<link rel="stylesheet" href="\/assets\/analytics-consent\.css">/g) || []).length, 1, page);
-    assert(!html.includes("https://www.googletagmanager.com/gtag/js"), "No unconditional vendor tag: " + page);
-    assert(html.indexOf("analytics-consent.js") < html.indexOf("</head>"), "Consent initialized via head: " + page);
+    assert(!html.includes("https://www.googletagmanager.com/gtag/js"), "No duplicate vendor tag: " + page);
   }
 });
-test("GA4 measurement and privacy guardrails match the approved opt-in tag", () => {
+test("GA4 starts by default with privacy safeguards and no interactive consent", () => {
   assert.match(js, /G-LMS6LWDK63/);
-  assert(js.includes("https://www.googletagmanager.com/gtag/js?id="));
   assert.match(js, /analytics_storage: "granted"/);
   assert.match(js, /ad_storage: "denied"/);
   assert.match(js, /ad_user_data: "denied"/);
   assert.match(js, /ad_personalization: "denied"/);
+  assert.match(js, /allow_google_signals: false/);
+  assert.match(js, /allow_ad_personalization_signals: false/);
   assert.match(js, /window\.location\.origin \+ window\.location\.pathname/);
   assert.match(js, /PRODUCTION_HOSTS\.has\(window\.location\.hostname\)/);
   assert.match(js, /navigator\.globalPrivacyControl/);
   assert.match(js, /navigator\.doNotTrack/);
-  assert.match(js, /saveChoice\("deny"\)/);
-  assert.match(js, /clearAnalyticsCookies\(\)/);
-  assert.match(css, /\.portfolio-analytics-panel/);
-  assert.doesNotMatch(css, /\.portfolio-analytics-settings--prompt/);
-  assert.doesNotMatch(css, /position:\s*fixed/);
-  assert.match(css, /position:\s*static/);
-  assert.doesNotMatch(js, /Analytics off · Options/);
-  assert.match(js, /footer\.insertAdjacentElement\("afterend", panel\)/);
-  assert.doesNotMatch(js, /if \(choice === null && !browserOptOut\) showPanel\(false\)/);
-  assert.match(css, /:focus-visible/);
+  assert.match(js, /localStorage\.getItem\(CONSENT_KEY\) === "deny"/);
+  assert.match(js, /if \(!isProduction \|\| browserOptOut \|\| previouslyDeclined\) return;/);
+  assert.doesNotMatch(js, /localStorage\.setItem|Analytics preferences|portfolio-analytics-choices|createElement\("button"\)/);
+  assert.doesNotMatch(css, /portfolio-analytics-panel|position:\s*fixed/);
+  assert.match(js, /tools\.google\.com\/dlpage\/gaoptout/);
 });
-test("SHOWS accurately discloses optional tracking without implying saved events are sent", () => {
+test("SHOWS accurately discloses tracking and local saved events", () => {
   const html = readFileSync(join(root, "projects/shows/index.html"), "utf8");
-  assert.match(html, /Optional Google Analytics runs only if you allow it/);
-  assert.doesNotMatch(html, /no accounts or behavioral tracking/i);
+  assert.match(html, /Google Analytics measures visits by default/);
+  assert.match(html, /saved events stay in this browser/);
+  assert.doesNotMatch(html, /Optional Google Analytics runs only if you allow it/);
 });
