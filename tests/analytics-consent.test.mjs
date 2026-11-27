@@ -1,23 +1,21 @@
 import test from "node:test";
 import assert from "node:assert/strict";
-import {readFileSync} from "node:fs";
+import {readFileSync, readdirSync} from "node:fs";
 import {join} from "node:path";
 const root = join(process.cwd(), "dist");
-const pages = [
-  "index.html",
-  "projects/index.html",
-  "projects/shows/index.html",
-  "projects/svg-hopper/index.html",
-  "projects/tubes/index.html",
-  "projects/possible-realities/index.html",
-  "projects/chaos/index.html",
-  "projects/relationships/index.html",
-  "projects/without-coordinates/index.html"
-];
+function publicHtml(dir, prefix = "") {
+  return readdirSync(dir, {withFileTypes:true}).flatMap(entry => {
+    const relative = prefix + entry.name;
+    if (entry.isDirectory()) return entry.name === "vendor" ? [] : publicHtml(join(dir, entry.name), relative + "/");
+    return entry.isFile() && entry.name.endsWith(".html") ? [relative] : [];
+  });
+}
+const pages = publicHtml(root);
 const js = readFileSync(join(root, "assets/analytics-consent.js"), "utf8");
 const css = readFileSync(join(root, "assets/analytics-consent.css"), "utf8");
-test("one shared first-party loader on the nine existing portfolio pages", () => {
-  assert.equal(pages.length, 9);
+test("one shared first-party loader on every public HTML page", () => {
+  for (const page of ["index.html", "projects/index.html", "projects/shows/index.html", "projects/color-lab/index.html", "projects/draping-mirror/index.html"]) assert(pages.includes(page), page);
+  assert(pages.length >= 11);
   for (const page of pages) {
     const html = readFileSync(join(root, page), "utf8");
     assert.equal((html.match(/<script src="\/assets\/analytics-consent\.js" defer><\/script>/g) || []).length, 1, page);
@@ -34,6 +32,7 @@ test("GA4 starts by default with privacy safeguards and no interactive consent",
   assert.match(js, /allow_google_signals: false/);
   assert.match(js, /allow_ad_personalization_signals: false/);
   assert.match(js, /window\.location\.origin \+ window\.location\.pathname/);
+  assert.match(js, /referrer\.origin \+ referrer\.pathname/);
   assert.match(js, /PRODUCTION_HOSTS\.has\(window\.location\.hostname\)/);
   assert.match(js, /navigator\.globalPrivacyControl/);
   assert.match(js, /navigator\.doNotTrack/);
